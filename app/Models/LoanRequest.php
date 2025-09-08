@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property-read LoanStatus $status
+ */
 class LoanRequest extends Model
 {
     use HasFactory;
@@ -146,7 +149,7 @@ class LoanRequest extends Model
 
         if ($lastRequest) {
             $lastSequence = intval(substr($lastRequest->request_number, -3));
-            $sequence = str_pad($lastSequence + 1, 3, '0', STR_PAD_LEFT);
+            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
         } else {
             $sequence = '001';
         }

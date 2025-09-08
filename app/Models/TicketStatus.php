@@ -23,6 +23,10 @@ class TicketStatus extends Model
     ];
 
     protected function casts(): array
+        /**
+         * @property string $code
+         * @property bool $is_final
+         */
     {
         return [
             'is_active' => 'boolean',

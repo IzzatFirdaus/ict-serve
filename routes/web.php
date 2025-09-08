@@ -1,12 +1,14 @@
+
+<?php
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\InventoryController;
 use App\Livewire\Login;
 use App\Livewire\Register;
+use App\Livewire\Counter;
+
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
-<?php
-
-use App\Http\Controllers\InventoryController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,7 +24,5 @@ Route::post('/inventories/create', [InventoryController::class, 'store'])->name(
 Route::get('/inventories/{inventory}', [InventoryController::class, 'show'])->name('inventory.show');
 Route::get('/inventories/{inventory}/edit', [InventoryController::class, 'edit'])->name('inventory.edit');
 Route::post('/inventories/{inventory}/edit', [InventoryController::class, 'update'])->name('inventory.update');
-
-use App\Livewire\Counter;
 
 Route::get('/counter', Counter::class);

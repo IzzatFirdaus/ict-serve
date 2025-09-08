@@ -1,7 +1,4 @@
 <?php
-
-use Illuminate\Support\Facades\Auth;
-
 namespace App\Livewire;
 
 use App\Models\User;
@@ -12,9 +9,7 @@ use Livewire\Component;
 class Register extends Component
 {
     public string $name = '';
-
     public string $email = '';
-
     public string $password = '';
 
     public function register(): void

@@ -119,7 +119,10 @@ class EquipmentItem extends Model
      */
     public function currentLoan(): ?LoanRequest
     {
-        return $this->loanRequests()
+        return LoanRequest::query()
+            ->whereHas('equipmentItems', function ($query) {
+                $query->where('equipment_item_id', $this->id);
+            })
             ->whereIn('status_id', function ($query) {
                 $query->select('id')
                     ->from('loan_statuses')

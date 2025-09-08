@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property-read TicketStatus $status
+ */
 class HelpdeskTicket extends Model
 {
     use HasFactory;
@@ -128,7 +131,7 @@ class HelpdeskTicket extends Model
 
         if ($lastTicket) {
             $lastSequence = intval(substr($lastTicket->ticket_number, -3));
-            $sequence = str_pad($lastSequence + 1, 3, '0', STR_PAD_LEFT);
+            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
         } else {
             $sequence = '001';
         }
