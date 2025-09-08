@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -21,6 +23,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'staff_id',
+        'division',
+        'department',
+        'position',
+        'phone',
+        'role',
+        'supervisor_id',
+        'is_active',
+        'last_login_at',
     ];
 
     /**
@@ -43,6 +54,120 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => 'boolean',
+            'last_login_at' => 'datetime',
         ];
+    }
+
+    /**
+     * Get the supervisor of this user
+     */
+    public function supervisor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'supervisor_id');
+    }
+
+    /**
+     * Get users supervised by this user
+     */
+    public function subordinates(): HasMany
+    {
+        return $this->hasMany(User::class, 'supervisor_id');
+    }
+
+    /**
+     * Get loan requests made by this user
+     */
+    public function loanRequests(): HasMany
+    {
+        return $this->hasMany(LoanRequest::class);
+    }
+
+    /**
+     * Get loan requests supervised by this user
+     */
+    public function supervisedLoanRequests(): HasMany
+    {
+        return $this->hasMany(LoanRequest::class, 'supervisor_id');
+    }
+
+    /**
+     * Get loan requests approved by this user as ICT admin
+     */
+    public function ictApprovedLoanRequests(): HasMany
+    {
+        return $this->hasMany(LoanRequest::class, 'ict_admin_id');
+    }
+
+    /**
+     * Get helpdesk tickets created by this user
+     */
+    public function helpdeskTickets(): HasMany
+    {
+        return $this->hasMany(HelpdeskTicket::class);
+    }
+
+    /**
+     * Get helpdesk tickets assigned to this user
+     */
+    public function assignedTickets(): HasMany
+    {
+        return $this->hasMany(HelpdeskTicket::class, 'assigned_to');
+    }
+
+    /**
+     * Get audit logs for this user
+     */
+    public function auditLogs(): HasMany
+    {
+        return $this->hasMany(AuditLog::class);
+    }
+
+    /**
+     * Check if user has specific role
+     */
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
+
+    /**
+     * Check if user is supervisor
+     */
+    public function isSupervisor(): bool
+    {
+        return $this->role === 'supervisor';
+    }
+
+    /**
+     * Check if user is ICT admin
+     */
+    public function isIctAdmin(): bool
+    {
+        return $this->role === 'ict_admin';
+    }
+
+    /**
+     * Check if user is helpdesk staff
+     */
+    public function isHelpdeskStaff(): bool
+    {
+        return $this->role === 'helpdesk_staff';
+    }
+
+    /**
+     * Check if user is super admin
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->role === 'super_admin';
+    }
+
+    /**
+     * Get full name with staff ID
+     */
+    public function getFullNameWithStaffIdAttribute(): string
+    {
+        return $this->name.' ('.$this->staff_id.')';
     }
 }

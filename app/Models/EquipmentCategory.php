@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class EquipmentCategory extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'name_bm',
+        'description',
+        'description_bm',
+        'icon',
+        'is_active',
+        'sort_order',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'sort_order' => 'integer',
+        ];
+    }
+
+    /**
+     * Get all equipment items in this category
+     */
+    public function equipmentItems(): HasMany
+    {
+        return $this->hasMany(EquipmentItem::class, 'category_id');
+    }
+
+    /**
+     * Get active equipment items in this category
+     */
+    public function activeEquipmentItems(): HasMany
+    {
+        return $this->hasMany(EquipmentItem::class, 'category_id')
+            ->where('is_active', true);
+    }
+
+    /**
+     * Get available equipment items for loan
+     */
+    public function availableEquipmentItems(): HasMany
+    {
+        return $this->hasMany(EquipmentItem::class, 'category_id')
+            ->where('is_active', true)
+            ->where('status', 'available');
+    }
+
+    /**
+     * Scope for active categories only
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
+    /**
+     * Scope to order by sort_order
+     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
+    }
+}
