@@ -5,7 +5,5 @@ import { Button } from "@govtechmy/myds-react/button";
 const container = document.getElementById("app");
 if (container) {
     const root = createRoot(container);
-    root.render(
-        <Button variant="primary-fill">Hello MYDS</Button>
-    );
+    root.render(<Button variant="primary-fill">Hello MYDS</Button>);
 }
