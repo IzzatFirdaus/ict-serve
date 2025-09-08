@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,14 +23,6 @@ class LoanItem extends Model
         'damage_reported',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'quantity' => 'integer',
-            'damage_reported' => 'boolean',
-        ];
-    }
-
     /**
      * Get the loan request this item belongs to
      */
@@ -43,5 +37,13 @@ class LoanItem extends Model
     public function equipmentItem(): BelongsTo
     {
         return $this->belongsTo(EquipmentItem::class);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'quantity' => 'integer',
+            'damage_reported' => 'boolean',
+        ];
     }
 }

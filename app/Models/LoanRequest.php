@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,20 +42,6 @@ class LoanRequest extends Model
         'return_signature_path',
         'return_condition_notes',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'requested_from' => 'date',
-            'requested_to' => 'date',
-            'actual_from' => 'date',
-            'actual_to' => 'date',
-            'supervisor_approved_at' => 'datetime',
-            'ict_approved_at' => 'datetime',
-            'issued_at' => 'datetime',
-            'returned_at' => 'datetime',
-        ];
-    }
 
     /**
      * Get the user who made this loan request
@@ -122,42 +110,6 @@ class LoanRequest extends Model
     }
 
     /**
-     * Generate unique request number
-     */
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::creating(function ($loanRequest) {
-            if (empty($loanRequest->request_number)) {
-                $loanRequest->request_number = static::generateRequestNumber();
-            }
-        });
-    }
-
-    /**
-     * Generate request number in format: LR-YYYY-MMDD-XXX
-     */
-    protected static function generateRequestNumber(): string
-    {
-        $date = now();
-        $prefix = 'LR-'.$date->format('Y-md');
-
-        $lastRequest = static::where('request_number', 'like', $prefix.'%')
-            ->orderBy('request_number', 'desc')
-            ->first();
-
-        if ($lastRequest) {
-            $lastSequence = intval(substr($lastRequest->request_number, -3));
-            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
-        } else {
-            $sequence = '001';
-        }
-
-        return $prefix.'-'.$sequence;
-    }
-
-    /**
      * Check if request is pending approval
      */
     public function isPending(): bool
@@ -207,5 +159,55 @@ class LoanRequest extends Model
         }
 
         return now()->isAfter($this->requested_to);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'requested_from' => 'date',
+            'requested_to' => 'date',
+            'actual_from' => 'date',
+            'actual_to' => 'date',
+            'supervisor_approved_at' => 'datetime',
+            'ict_approved_at' => 'datetime',
+            'issued_at' => 'datetime',
+            'returned_at' => 'datetime',
+        ];
+    }
+
+    /**
+     * Generate unique request number
+     */
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($loanRequest): void {
+            if (empty($loanRequest->request_number)) {
+                $loanRequest->request_number = static::generateRequestNumber();
+            }
+        });
+    }
+
+    /**
+     * Generate request number in format: LR-YYYY-MMDD-XXX
+     */
+    protected static function generateRequestNumber(): string
+    {
+        $date = now();
+        $prefix = 'LR-'.$date->format('Y-md');
+
+        $lastRequest = static::where('request_number', 'like', $prefix.'%')
+            ->orderBy('request_number', 'desc')
+            ->first();
+
+        if ($lastRequest) {
+            $lastSequence = intval(substr($lastRequest->request_number, -3));
+            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
+        } else {
+            $sequence = '001';
+        }
+
+        return $prefix.'-'.$sequence;
     }
 }

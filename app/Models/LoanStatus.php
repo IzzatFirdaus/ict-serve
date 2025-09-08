@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,14 +25,6 @@ class LoanStatus extends Model
         'is_active',
         'sort_order',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'sort_order' => 'integer',
-        ];
-    }
 
     /**
      * Get loan requests with this status
@@ -62,5 +56,13 @@ class LoanStatus extends Model
     public static function getByCode(string $code): ?self
     {
         return static::where('code', $code)->first();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'sort_order' => 'integer',
+        ];
     }
 }

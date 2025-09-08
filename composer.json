@@ -25,6 +25,7 @@
         "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
+        "nunomaduro/phpinsights": "^2.13",
         "phpdocumentor/shim": "^3.8",
         "phpunit/phpunit": "^11.5.3"
     },
@@ -77,7 +78,8 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true,
-            "phpdocumentor/shim": true
+            "phpdocumentor/shim": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "minimum-stability": "stable",

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,18 +39,6 @@ class HelpdeskTicket extends Model
         'feedback',
         'attachments',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'assigned_at' => 'datetime',
-            'due_at' => 'datetime',
-            'resolved_at' => 'datetime',
-            'closed_at' => 'datetime',
-            'satisfaction_rating' => 'integer',
-            'attachments' => 'json',
-        ];
-    }
 
     /**
      * Get the user who created this ticket
@@ -99,47 +89,6 @@ class HelpdeskTicket extends Model
     }
 
     /**
-     * Generate unique ticket number
-     */
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::creating(function ($ticket) {
-            if (empty($ticket->ticket_number)) {
-                $ticket->ticket_number = static::generateTicketNumber();
-            }
-
-            // Set due_at based on category SLA if not set
-            if (empty($ticket->due_at) && $ticket->category) {
-                $ticket->due_at = now()->addHours($ticket->category->default_sla_hours);
-            }
-        });
-    }
-
-    /**
-     * Generate ticket number in format: HD-YYYY-MMDD-XXX
-     */
-    protected static function generateTicketNumber(): string
-    {
-        $date = now();
-        $prefix = 'HD-'.$date->format('Y-md');
-
-        $lastTicket = static::where('ticket_number', 'like', $prefix.'%')
-            ->orderBy('ticket_number', 'desc')
-            ->first();
-
-        if ($lastTicket) {
-            $lastSequence = intval(substr($lastTicket->ticket_number, -3));
-            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
-        } else {
-            $sequence = '001';
-        }
-
-        return $prefix.'-'.$sequence;
-    }
-
-    /**
      * Check if ticket is overdue
      */
     public function isOverdue(): bool
@@ -181,5 +130,58 @@ class HelpdeskTicket extends Model
     public function isClosed(): bool
     {
         return $this->status->code === 'closed';
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'assigned_at' => 'datetime',
+            'due_at' => 'datetime',
+            'resolved_at' => 'datetime',
+            'closed_at' => 'datetime',
+            'satisfaction_rating' => 'integer',
+            'attachments' => 'json',
+        ];
+    }
+
+    /**
+     * Generate unique ticket number
+     */
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($ticket): void {
+            if (empty($ticket->ticket_number)) {
+                $ticket->ticket_number = static::generateTicketNumber();
+            }
+
+            // Set due_at based on category SLA if not set
+            if (empty($ticket->due_at) && $ticket->category) {
+                $ticket->due_at = now()->addHours($ticket->category->default_sla_hours);
+            }
+        });
+    }
+
+    /**
+     * Generate ticket number in format: HD-YYYY-MMDD-XXX
+     */
+    protected static function generateTicketNumber(): string
+    {
+        $date = now();
+        $prefix = 'HD-'.$date->format('Y-md');
+
+        $lastTicket = static::where('ticket_number', 'like', $prefix.'%')
+            ->orderBy('ticket_number', 'desc')
+            ->first();
+
+        if ($lastTicket) {
+            $lastSequence = intval(substr($lastTicket->ticket_number, -3));
+            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
+        } else {
+            $sequence = '001';
+        }
+
+        return $prefix.'-'.$sequence;
     }
 }

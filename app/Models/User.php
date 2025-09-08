@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -43,21 +45,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'is_active' => 'boolean',
-            'last_login_at' => 'datetime',
-        ];
-    }
 
     /**
      * Get the supervisor of this user
@@ -169,5 +156,20 @@ class User extends Authenticatable
     public function getFullNameWithStaffIdAttribute(): string
     {
         return $this->name.' ('.$this->staff_id.')';
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'is_active' => 'boolean',
+            'last_login_at' => 'datetime',
+        ];
     }
 }
