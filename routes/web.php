@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use App\Http\Controllers\InventoryController;
 use App\Livewire\Counter;
+use App\Livewire\Dashboard;
 use App\Livewire\Login;
 use App\Livewire\Register;
-use App\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
@@ -16,6 +16,7 @@ Route::post('/logout', function () {
     auth()->guard()->logout();
     session()->invalidate();
     session()->regenerateToken();
+
     return redirect()->route('login');
 })->name('logout');
 
@@ -47,24 +48,26 @@ Route::middleware('auth')->group(function () {
         })->name('show');
     });
 
-    // Helpdesk Module Routes
+    // Helpdesk routes
     Route::prefix('helpdesk')->name('helpdesk.')->group(function () {
-        Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
-        Route::get('/create', \App\Livewire\Helpdesk\Create::class)->name('create');
-        Route::get('/{ticket}', function () {
-            // Will create HelpdeskShow Livewire component
-            return 'Helpdesk Show - Coming Soon';
-        })->name('show');
+        Route::get('/', [\App\Livewire\Helpdesk\Index::class, '__invoke'])->name('index');
+        Route::get('/enhanced', [\App\Livewire\Helpdesk\IndexEnhanced::class, '__invoke'])->name('index-enhanced');
+        Route::get('/create', [\App\Livewire\Helpdesk\Create::class, '__invoke'])->name('create');
+        Route::get('/create-enhanced', [\App\Livewire\Helpdesk\CreateEnhanced::class, '__invoke'])->name('create-enhanced');
+        Route::get('/assign/{ticket}', [\App\Livewire\Helpdesk\Assignment::class, '__invoke'])->name('assign');
+        Route::get('/sla-tracker', [\App\Livewire\Helpdesk\SlaTracker::class, '__invoke'])->name('sla-tracker');
+        Route::get('/attachments/{ticket}', [\App\Livewire\Helpdesk\AttachmentManager::class, '__invoke'])->name('attachments');
     });
 
-    // Ticket Routes (alias for helpdesk to support legacy navigation)
+    // Ticket routes (legacy alias for helpdesk)
     Route::prefix('tickets')->name('ticket.')->group(function () {
-        Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
-        Route::get('/create', \App\Livewire\Helpdesk\Create::class)->name('create');
-        Route::get('/{ticket}', function () {
-            // Will create HelpdeskShow Livewire component
-            return 'Helpdesk Show - Coming Soon';
-        })->name('show');
+        Route::get('/', [\App\Livewire\Helpdesk\Index::class, '__invoke'])->name('index');
+        Route::get('/enhanced', [\App\Livewire\Helpdesk\IndexEnhanced::class, '__invoke'])->name('index-enhanced');
+        Route::get('/create', [\App\Livewire\Helpdesk\Create::class, '__invoke'])->name('create');
+        Route::get('/create-enhanced', [\App\Livewire\Helpdesk\CreateEnhanced::class, '__invoke'])->name('create-enhanced');
+        Route::get('/assign/{ticket}', [\App\Livewire\Helpdesk\Assignment::class, '__invoke'])->name('assign');
+        Route::get('/sla-tracker', [\App\Livewire\Helpdesk\SlaTracker::class, '__invoke'])->name('sla-tracker');
+        Route::get('/attachments/{ticket}', [\App\Livewire\Helpdesk\AttachmentManager::class, '__invoke'])->name('attachments');
     });
 
     // Equipment Catalog Routes
@@ -83,6 +86,21 @@ Route::middleware('auth')->group(function () {
         })->name('index');
     });
 
+    // Notification routes
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/', \App\Livewire\Notifications\NotificationCenter::class)->name('index');
+    });
+
+    // Profile routes
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', \App\Livewire\Profile\UserProfile::class)->name('index');
+    });
+
+    // Test notification route (temporary)
+    Route::get('/test-notifications', function () {
+        return view('test-notifications');
+    })->name('test.notifications');
+
     // Admin Routes (for ICT Admin and Super Admin)
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', function () {
@@ -94,6 +112,8 @@ Route::middleware('auth')->group(function () {
             // Will create Reports Livewire component
             return 'Admin Reports - Coming Soon';
         })->name('reports.index');
+
+        Route::get('/audit-logs', \App\Livewire\Admin\AuditLogViewer::class)->name('audit-logs');
     });
 });
 
@@ -114,5 +134,6 @@ Route::get('/language/{locale}', function ($locale) {
         session(['locale' => $locale]);
         app()->setLocale($locale);
     }
+
     return redirect()->back();
 })->name('language.switch');
