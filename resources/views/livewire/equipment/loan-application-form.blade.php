@@ -564,44 +564,43 @@
             <span>Maklumat anda dilindungi dan disulitkan</span>
         </div>
     </div>
+    <!-- Same styles as damage complaint form -->
+    <style>
+        .myds-field {
+            @apply space-y-2;
+        }
+
+        .myds-label {
+            @apply block text-body-sm font-medium text-txt-black-900;
+        }
+
+        .myds-input, .myds-select, .myds-textarea {
+            @apply w-full px-4 py-3 border border-otl-gray-300 rounded-lg
+                   bg-bg-white-0 text-txt-black-900 text-body-sm
+                   focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-primary-600
+                   disabled:bg-bg-washed disabled:text-txt-black-400
+                   transition-colors duration-200;
+        }
+
+        .myds-input-error {
+            @apply border-danger-600 focus:ring-danger-600 focus:border-danger-600;
+        }
+
+        .myds-field-error {
+            @apply text-body-sm text-danger-600 mt-1;
+        }
+
+        .myds-field-hint {
+            @apply text-body-xs text-txt-black-500 mt-1;
+        }
+
+        .myds-checkbox {
+            @apply w-4 h-4 text-primary-600 bg-bg-white-0 border-otl-gray-300 rounded
+                   focus:ring-primary-600 focus:ring-2;
+        }
+
+        .myds-textarea {
+            @apply resize-y min-h-[120px];
+        }
+    </style>
 </div>
-
-<!-- Same styles as damage complaint form -->
-<style>
-    .myds-field {
-        @apply space-y-2;
-    }
-
-    .myds-label {
-        @apply block text-body-sm font-medium text-txt-black-900;
-    }
-
-    .myds-input, .myds-select, .myds-textarea {
-        @apply w-full px-4 py-3 border border-otl-gray-300 rounded-lg
-               bg-bg-white-0 text-txt-black-900 text-body-sm
-               focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-primary-600
-               disabled:bg-bg-washed disabled:text-txt-black-400
-               transition-colors duration-200;
-    }
-
-    .myds-input-error {
-        @apply border-danger-600 focus:ring-danger-600 focus:border-danger-600;
-    }
-
-    .myds-field-error {
-        @apply text-body-sm text-danger-600 mt-1;
-    }
-
-    .myds-field-hint {
-        @apply text-body-xs text-txt-black-500 mt-1;
-    }
-
-    .myds-checkbox {
-        @apply w-4 h-4 text-primary-600 bg-bg-white-0 border-otl-gray-300 rounded
-               focus:ring-primary-600 focus:ring-2;
-    }
-
-    .myds-textarea {
-        @apply resize-y min-h-[120px];
-    }
-</style>

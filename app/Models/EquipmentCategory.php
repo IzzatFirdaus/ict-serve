@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,14 +21,6 @@ class EquipmentCategory extends Model
         'is_active',
         'sort_order',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'sort_order' => 'integer',
-        ];
-    }
 
     /**
      * Get all equipment items in this category
@@ -69,5 +63,13 @@ class EquipmentCategory extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'sort_order' => 'integer',
+        ];
     }
 }

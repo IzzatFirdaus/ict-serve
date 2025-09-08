@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Models\AuditLog;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -34,7 +33,7 @@ class DamageType extends Model
         'name',
         'name_bm',
         'description',
-        'description_bm', 
+        'description_bm',
         'icon',
         'severity',
         'is_active',
@@ -60,19 +59,11 @@ class DamageType extends Model
     }
 
     /**
-     * Scope to order by sort_order and name
+     * Scope to order by name_en
      */
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
-    }
-
-    /**
-     * Scope to filter by severity
-     */
-    public function scopeBySeverity($query, string $severity)
-    {
-        return $query->where('severity', $severity);
     }
 
     /**
@@ -81,22 +72,22 @@ class DamageType extends Model
     public function getDisplayName(?string $locale = null): string
     {
         $locale = $locale ?? app()->getLocale();
-        
-        return $locale === 'ms' || $locale === 'bm' 
-            ? $this->name_bm 
+
+        return $locale === 'ms' || $locale === 'bm'
+            ? $this->name_bm
             : $this->name;
     }
 
     /**
      * Get display description based on locale
      */
-    public function getDisplayDescription(?string $locale = null): ?string
+    public function getDisplayDescription(?string $locale = null): string
     {
         $locale = $locale ?? app()->getLocale();
-        
-        return $locale === 'ms' || $locale === 'bm' 
-            ? $this->description_bm 
-            : $this->description;
+
+        return $locale === 'ms' || $locale === 'bm'
+            ? ($this->description_bm ?? $this->description ?? '')
+            : ($this->description ?? $this->description_bm ?? '');
     }
 
     /**
@@ -126,7 +117,7 @@ class DamageType extends Model
     {
         try {
             AuditLog::create([
-                'user_id' => auth()->id(),
+                'user_id' => \Illuminate\Support\Facades\Auth::id(),
                 'action' => $action,
                 'auditable_type' => static::class,
                 'auditable_id' => $model->id,
@@ -138,7 +129,7 @@ class DamageType extends Model
             ]);
         } catch (\Exception $e) {
             // Log error but don't fail the operation
-            logger('Failed to create audit log: ' . $e->getMessage());
+            logger('Failed to create audit log: '.$e->getMessage());
         }
     }
 
@@ -147,7 +138,7 @@ class DamageType extends Model
         return [
             'is_active' => 'boolean',
             'sort_order' => 'integer',
-            'metadata' => 'json',
+            'metadata' => 'array',
         ];
     }
 }

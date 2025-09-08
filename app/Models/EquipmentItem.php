@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,16 +31,6 @@ class EquipmentItem extends Model
         'notes',
         'is_active',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'purchase_price' => 'decimal:2',
-            'purchase_date' => 'date',
-            'warranty_expiry' => 'date',
-        ];
-    }
 
     /**
      * Get the category this equipment belongs to
@@ -120,14 +112,24 @@ class EquipmentItem extends Model
     public function currentLoan(): ?LoanRequest
     {
         return LoanRequest::query()
-            ->whereHas('equipmentItems', function ($query) {
+            ->whereHas('equipmentItems', function ($query): void {
                 $query->where('equipment_item_id', $this->id);
             })
-            ->whereIn('status_id', function ($query) {
+            ->whereIn('status_id', function ($query): void {
                 $query->select('id')
                     ->from('loan_statuses')
                     ->whereIn('code', ['ict_approved', 'active']);
             })
             ->first();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'purchase_price' => 'decimal:2',
+            'purchase_date' => 'date',
+            'warranty_expiry' => 'date',
+        ];
     }
 }

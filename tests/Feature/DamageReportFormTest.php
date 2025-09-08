@@ -4,9 +4,7 @@ namespace Tests\Feature;
 
 use App\Livewire\DamageReportForm;
 use App\Models\DamageType;
-use App\Models\EquipmentItem;
 use App\Models\HelpdeskTicket;
-use App\Models\TicketCategory;
 use App\Models\TicketStatus;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,7 +18,7 @@ class DamageReportFormTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         // Create test user
         $this->user = User::factory()->create();
 
@@ -57,7 +55,7 @@ class DamageReportFormTest extends TestCase
 
         $component = Livewire::test(DamageReportForm::class);
         $damageTypes = $component->get('damageTypes');
-        
+
         $this->assertCount(1, $damageTypes);
         $this->assertEquals('Hardware Failure', $damageTypes[0]['name']);
     }
@@ -203,7 +201,7 @@ class DamageReportFormTest extends TestCase
 
         $component = Livewire::test(DamageReportForm::class);
         $damageTypes = $component->get('damageTypes');
-        
+
         $this->assertCount(1, $damageTypes);
         $this->assertEquals('Active Type', $damageTypes[0]['name']);
     }
@@ -226,7 +224,7 @@ class DamageReportFormTest extends TestCase
 
         // Trigger the refresh event
         $component->dispatch('damage-type-updated');
-        
+
         $updatedCount = count($component->get('damageTypes'));
         $this->assertEquals($initialCount + 1, $updatedCount);
     }

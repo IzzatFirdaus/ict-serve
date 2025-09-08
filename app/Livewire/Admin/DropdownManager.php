@@ -46,9 +46,13 @@ class DropdownManager extends Component
 
     // Component state
     public ?int $editingId = null;
+
     public bool $showForm = false;
+
     public string $search = '';
+
     public string $severityFilter = '';
+
     public string $statusFilter = '';
 
     protected $paginationTheme = 'simple-bootstrap-4';
@@ -85,7 +89,7 @@ class DropdownManager extends Component
     public function edit(int $id): void
     {
         $damageType = DamageType::findOrFail($id);
-        
+
         $this->editingId = $id;
         $this->name = $damageType->name;
         $this->name_bm = $damageType->name_bm;
@@ -96,7 +100,7 @@ class DropdownManager extends Component
         $this->is_active = $damageType->is_active;
         $this->sort_order = $damageType->sort_order;
         $this->color_code = $damageType->color_code ?? '';
-        
+
         $this->showForm = true;
     }
 
@@ -134,8 +138,8 @@ class DropdownManager extends Component
             $this->dispatch('damage-type-updated');
 
         } catch (\Exception $e) {
-            logger('Error saving damage type: ' . $e->getMessage());
-            $this->addError('save', 'Ralat semasa menyimpan: ' . $e->getMessage() . ' / Error saving: ' . $e->getMessage());
+            logger('Error saving damage type: '.$e->getMessage());
+            $this->addError('save', 'Ralat semasa menyimpan: '.$e->getMessage().' / Error saving: '.$e->getMessage());
         }
     }
 
@@ -151,8 +155,8 @@ class DropdownManager extends Component
             $this->dispatch('damage-type-updated');
 
         } catch (\Exception $e) {
-            logger('Error deleting damage type: ' . $e->getMessage());
-            session()->flash('error', 'Ralat semasa memadam: ' . $e->getMessage() . ' / Error deleting: ' . $e->getMessage());
+            logger('Error deleting damage type: '.$e->getMessage());
+            session()->flash('error', 'Ralat semasa memadam: '.$e->getMessage().' / Error deleting: '.$e->getMessage());
         }
     }
 
@@ -161,13 +165,13 @@ class DropdownManager extends Component
         try {
             DB::transaction(function () use ($id): void {
                 $damageType = DamageType::findOrFail($id);
-                $damageType->update(['is_active' => !$damageType->is_active]);
+                $damageType->update(['is_active' => ! $damageType->is_active]);
             });
 
             $this->dispatch('damage-type-updated');
 
         } catch (\Exception $e) {
-            logger('Error toggling damage type status: ' . $e->getMessage());
+            logger('Error toggling damage type status: '.$e->getMessage());
             session()->flash('error', 'Ralat semasa mengubah status. / Error changing status.');
         }
     }
@@ -190,7 +194,7 @@ class DropdownManager extends Component
         $this->sort_order = 0;
         $this->color_code = '';
         $this->editingId = null;
-        
+
         $this->resetValidation();
     }
 
@@ -199,10 +203,10 @@ class DropdownManager extends Component
         $damageTypes = DamageType::query()
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('name', 'like', '%' . $this->search . '%')
-                      ->orWhere('name_bm', 'like', '%' . $this->search . '%')
-                      ->orWhere('description', 'like', '%' . $this->search . '%')
-                      ->orWhere('description_bm', 'like', '%' . $this->search . '%');
+                    $q->where('name', 'like', '%'.$this->search.'%')
+                        ->orWhere('name_bm', 'like', '%'.$this->search.'%')
+                        ->orWhere('description', 'like', '%'.$this->search.'%')
+                        ->orWhere('description_bm', 'like', '%'.$this->search.'%');
                 });
             })
             ->when($this->severityFilter, function ($query) {

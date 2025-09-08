@@ -47,7 +47,9 @@ class DamageReportForm extends Component
     public array $attachments = [];
 
     public array $damageTypes = [];
+
     public array $equipmentItems = [];
+
     public bool $showEquipmentSelector = false;
 
     public function mount(): void
@@ -86,7 +88,7 @@ class DamageReportForm extends Component
                 })
                 ->toArray();
         } catch (\Exception $e) {
-            logger('Error loading damage types: ' . $e->getMessage());
+            logger('Error loading damage types: '.$e->getMessage());
             $this->damageTypes = [];
         }
     }
@@ -101,7 +103,7 @@ class DamageReportForm extends Component
                 ->get()
                 ->toArray();
         } catch (\Exception $e) {
-            logger('Error loading equipment items: ' . $e->getMessage());
+            logger('Error loading equipment items: '.$e->getMessage());
             $this->equipmentItems = [];
         }
     }
@@ -110,10 +112,10 @@ class DamageReportForm extends Component
     {
         // Show equipment selector for damage types that involve equipment
         $damageType = collect($this->damageTypes)->firstWhere('id', $this->damage_type_id);
-        
+
         $this->showEquipmentSelector = $damageType && in_array($damageType['severity'], ['high', 'critical']);
 
-        if (!$this->showEquipmentSelector) {
+        if (! $this->showEquipmentSelector) {
             $this->equipment_item_id = null;
         }
 
@@ -128,8 +130,9 @@ class DamageReportForm extends Component
         try {
             $this->validate();
         } catch (\Exception $e) {
-            logger('Validation error in damage report form: ' . $e->getMessage());
-            $this->addError('submit', 'Ralat pengesahan: ' . $e->getMessage() . ' / Validation error: ' . $e->getMessage());
+            logger('Validation error in damage report form: '.$e->getMessage());
+            $this->addError('submit', 'Ralat pengesahan: '.$e->getMessage().' / Validation error: '.$e->getMessage());
+
             return;
         }
 
@@ -140,7 +143,7 @@ class DamageReportForm extends Component
                     ->orWhere('name_bm', 'Kerosakan Peralatan')
                     ->first();
 
-                if (!$category) {
+                if (! $category) {
                     // Create a default damage category if it doesn't exist
                     $category = TicketCategory::create([
                         'name' => 'Equipment Damage',
@@ -157,7 +160,7 @@ class DamageReportForm extends Component
 
                 // Get initial status (new)
                 $newStatus = TicketStatus::where('code', 'new')->first();
-                if (!$newStatus) {
+                if (! $newStatus) {
                     throw new \Exception('Initial ticket status not found');
                 }
 
@@ -171,7 +174,7 @@ class DamageReportForm extends Component
                     'category_id' => $category->id,
                     'status_id' => $newStatus->id,
                     'title' => $this->title,
-                    'description' => $this->description . "\n\n--- Jenis Kerosakan / Damage Type ---\n" . $damageTypeName,
+                    'description' => $this->description."\n\n--- Jenis Kerosakan / Damage Type ---\n".$damageTypeName,
                     'priority' => $this->priority,
                     'equipment_item_id' => $this->equipment_item_id,
                     'location' => $this->location,
@@ -199,19 +202,20 @@ class DamageReportForm extends Component
                         'notes' => "Damage report created: {$ticket->ticket_number} - {$damageTypeName}",
                     ]);
                 } catch (\Exception $e) {
-                    logger('Failed to create audit log for damage report: ' . $e->getMessage());
+                    logger('Failed to create audit log for damage report: '.$e->getMessage());
                 }
 
                 session()->flash('success',
                     'Laporan kerosakan telah berjaya dihantar. / Damage report has been successfully submitted. '.
-                    'Nombor tiket / Ticket number: ' . $ticket->ticket_number
+                    'Nombor tiket / Ticket number: '.$ticket->ticket_number
                 );
             });
 
             return redirect()->route('helpdesk.index');
         } catch (\Exception $e) {
-            logger('Damage report creation error: ' . $e->getMessage());
-            $this->addError('submit', 'Ralat semasa menghantar laporan: ' . $e->getMessage() . ' / Error submitting report: ' . $e->getMessage());
+            logger('Damage report creation error: '.$e->getMessage());
+            $this->addError('submit', 'Ralat semasa menghantar laporan: '.$e->getMessage().' / Error submitting report: '.$e->getMessage());
+
             return null;
         }
     }

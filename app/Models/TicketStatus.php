@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,19 +23,6 @@ class TicketStatus extends Model
         'is_final',
         'sort_order',
     ];
-
-    protected function casts(): array
-        /**
-         * @property string $code
-         * @property bool $is_final
-         */
-    {
-        return [
-            'is_active' => 'boolean',
-            'is_final' => 'boolean',
-            'sort_order' => 'integer',
-        ];
-    }
 
     /**
      * Get helpdesk tickets with this status
@@ -65,5 +54,18 @@ class TicketStatus extends Model
     public static function getByCode(string $code): ?self
     {
         return static::where('code', $code)->first();
+    }
+
+    protected function casts(): array
+    /**
+     * @property string $code
+     * @property bool $is_final
+     */
+    {
+        return [
+            'is_active' => 'boolean',
+            'is_final' => 'boolean',
+            'sort_order' => 'integer',
+        ];
     }
 }

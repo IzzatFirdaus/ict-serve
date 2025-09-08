@@ -97,7 +97,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 ### Constructors
 
 - Use PHP 8 constructor property promotion in `__construct()`.
-    - <code-snippet>public function \_\_construct(public GitHub $github) { }</code-snippet>
+  - <code-snippet>public function \_\_construct(public GitHub $github) { }</code-snippet>
 - Do not allow empty `__construct()` methods with zero parameters.
 
 ### Type Declarations
@@ -218,13 +218,13 @@ protected function isAccessible(User $user, ?string $path = null): bool
 - Use `wire:loading` and `wire:dirty` for delightful loading states.
 - Add `wire:key` in loops:
 
-    ```blade
-    @foreach ($items as $item)
-        <div wire:key="item-{{ $item->id }}">
-            {{ $item->name }}
-        </div>
-    @endforeach
-    ```
+  ```blade
+  @foreach ($items as $item)
+      <div wire:key="item-{{ $item->id }}">
+          {{ $item->name }}
+      </div>
+  @endforeach
+  ```
 
 - Prefer lifecycle hooks like `mount()`, `updatedFoo()`) for initialization and reactive side effects:
 
@@ -256,10 +256,10 @@ protected function isAccessible(User $user, ?string $path = null): bool
 ### Key Changes From Livewire 2
 
 - These things changed in Livewire 2, but may not have been updated in this application. Verify this application's setup to ensure you conform with application conventions.
-    - Use `wire:model.live` for real-time updates, `wire:model` is now deferred by default.
-    - Components now use the `App\Livewire` namespace (not `App\Http\Livewire`).
-    - Use `$this->dispatch()` to dispatch events (not `emit` or `dispatchBrowserEvent`).
-    - Use the `components.layouts.app` view as the typical layout path (not `layouts.app`).
+  - Use `wire:model.live` for real-time updates, `wire:model` is now deferred by default.
+  - Components now use the `App\Livewire` namespace (not `App\Http\Livewire`).
+  - Use `$this->dispatch()` to dispatch events (not `emit` or `dispatchBrowserEvent`).
+  - Use the `components.layouts.app` view as the typical layout path (not `layouts.app`).
 
 ### New Directives
 
