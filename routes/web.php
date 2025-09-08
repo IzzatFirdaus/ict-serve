@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use App\Http\Controllers\InventoryController;
 use App\Livewire\Counter;
+use App\Livewire\Dashboard;
 use App\Livewire\Login;
 use App\Livewire\Register;
-use App\Livewire\Dashboard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +17,7 @@ Route::post('/logout', function () {
     auth()->guard()->logout();
     session()->invalidate();
     session()->regenerateToken();
+
     return redirect()->route('login');
 })->name('logout');
 
@@ -131,7 +132,7 @@ Route::middleware('auth')->group(function () {
 
     // ICT Loan Module Routes
     Route::prefix('loan')->name('loan.')->group(function () {
-        Route::get('/', \App\Livewire\Loan\Index::class)->name('index');
+        // Route::get('/', \App\Livewire\Loan\Index::class)->name('index'); // TODO: Create this class
         Route::get('/create', \App\Livewire\Loan\Create::class)->name('create');
 
         Route::get('/{loan}', function () {
@@ -151,11 +152,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/attachments/{ticket}', [\App\Livewire\Helpdesk\AttachmentManager::class, '__invoke'])->name('attachments');
         Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
 
-    // New MYDS Components
-    Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
+        // New MYDS Components
+        Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
 
-    // Legacy alias for older paths /ict/* used in tests and external links
-    Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint');
+        // Legacy alias for older paths /ict/* used in tests and external links
+        Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint');
     });
 
     // Ticket routes (legacy alias for helpdesk)
@@ -249,6 +250,7 @@ Route::get('/language/{locale}', function ($locale) {
         session(['locale' => $locale]);
         app()->setLocale($locale);
     }
+
     return redirect()->back();
 })->name('language.switch');
 

@@ -111,6 +111,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Get notifications for this user
+     */
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    /**
+     * Get unread notifications for this user
+     */
+    public function unreadNotifications(): HasMany
+    {
+        return $this->hasMany(Notification::class)->unread()->notExpired();
+    }
+
+    /**
      * Check if user has specific role
      */
     public function hasRole(string $role): bool

@@ -3,86 +3,70 @@
 .env
 .env*
 /vendor/
+# Laravel & general
+/vendor/
 /node_modules/
-/storage/
-/public/storage
-/bootstrap/cache/
-/database/*.sqlite
-/database/*.sqlite3
-/database/migrations/*.php~
-/database/factories/*.php~
-/database/seeders/*.php~
-/test-results/
-/*.log
-/*.lock
-/npm-debug.log*
-/yarn-debug.log*
-/yarn-error.log*
+/.env
+/.env.*
 /composer.phar
-/composer.lock
-/package-lock.json
+
+# Laravel storage & cache
+/storage/
+/storage/*.key
+/storage/debugbar
+/bootstrap/cache/
+
+# Build artifacts
 /public/hot
 /public/build
 /public/mix-manifest.json
-/public/css/app.css
-/public/js/app.js
-/public/js/app.js.map
-/public/css/app.css.map
-/public/favicon.ico
-/public/robots.txt
-/public/index.php
-/public/.htaccess
-/public/storage/
-/resources/sass/
-/resources/js/
-/resources/css/
-/resources/views/
-/app/Http/Middleware/
-/app/Console/Kernel.php
-/app/Providers/
-/app/Exceptions/
-/app/Models/
-/app/Livewire/
-/app/Http/Controllers/
-/app/Http/Requests/
-/bootstrap/app.php
-/bootstrap/providers.php
-/bootstrap/cache/
-/config/
-/routes/
-/tests/
-/phpunit.xml
-/phpstan.neon
-/stylelint.config.cjs
-/vite.config.js
-/README.md
-/artisan
-/playwright.spec.js
-/docs/
-# IDE files
-.idea/
-.vscode/
+
+# Database
+/database/*.sqlite
+/database/*.sqlite3
+
+# Test results & caches
+/test-results/
+/.phpunit.result.cache
+/.phpunit.cache
+
+# Package managers
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+
+# Editor directories and metadata
+/.idea/
+/.vscode/
 .DS_Store
 Thumbs.db
-.phpdoc/cache/
+
+# Documentation generators / tooling
+/.phpdoc/cache/
+/.phpactor.json
+/.phpdoc/build/
+/.phpdoc/build/classes/
+
+# Misc
+/composer.phar
+/auth.json
+/Homestead.json
+/Homestead.yaml
+/playwright-report/
+
+# Keep source files and configuration tracked. Do NOT ignore these:
+# - app/
+# - bootstrap/
+# - config/
+# - database/migrations (except editor backups, which are safe to ignore)
+# - resources/
+# - routes/
+# - tests/
+# - artisan, README.md, and other project files
+
+# If you have local env backups you want ignored
 .env.backup
 .env.production
+
+# End of file
 .phpactor.json
-.phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
-/auth.json
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/storage/pail
-/vendor
-Homestead.json
-Homestead.yaml
-Thumbs.db
