@@ -48,20 +48,22 @@ Route::middleware('auth')->group(function () {
     });
 
     // Helpdesk Module Routes
-    Route::prefix('ticket')->name('ticket.')->group(function () {
-        Route::get('/', function () {
-            // Will create TicketIndex Livewire component
-            return 'Ticket Index - Coming Soon';
-        })->name('index');
-
-        Route::get('/create', function () {
-            // Will create TicketCreate Livewire component
-            return 'Ticket Create - Coming Soon';
-        })->name('create');
-
+    Route::prefix('helpdesk')->name('helpdesk.')->group(function () {
+        Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
+        Route::get('/create', \App\Livewire\Helpdesk\Create::class)->name('create');
         Route::get('/{ticket}', function () {
-            // Will create TicketShow Livewire component
-            return 'Ticket Show - Coming Soon';
+            // Will create HelpdeskShow Livewire component
+            return 'Helpdesk Show - Coming Soon';
+        })->name('show');
+    });
+
+    // Ticket Routes (alias for helpdesk to support legacy navigation)
+    Route::prefix('tickets')->name('ticket.')->group(function () {
+        Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
+        Route::get('/create', \App\Livewire\Helpdesk\Create::class)->name('create');
+        Route::get('/{ticket}', function () {
+            // Will create HelpdeskShow Livewire component
+            return 'Helpdesk Show - Coming Soon';
         })->name('show');
     });
 
@@ -70,6 +72,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () {
             // Will create EquipmentIndex Livewire component
             return 'Equipment Index - Coming Soon';
+        })->name('index');
+    });
+
+    // Reports Routes (top-level)
+    Route::prefix('reports')->name('reports.')->group(function () {
+        Route::get('/', function () {
+            // Will create Reports Livewire component
+            return 'Reports - Coming Soon';
         })->name('index');
     });
 
@@ -82,7 +92,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/reports', function () {
             // Will create Reports Livewire component
-            return 'Reports - Coming Soon';
+            return 'Admin Reports - Coming Soon';
         })->name('reports.index');
     });
 });
