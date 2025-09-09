@@ -12,14 +12,13 @@ class TicketCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
+        'code',
         'name',
         'name_bm',
         'description',
         'description_bm',
-        'icon',
-        'priority',
-        'default_sla_hours',
         'is_active',
         'sort_order',
     ];

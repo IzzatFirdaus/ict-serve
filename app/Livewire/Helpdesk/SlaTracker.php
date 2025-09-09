@@ -7,11 +7,9 @@ namespace App\Livewire\Helpdesk;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Livewire\Component;
+use Exception;
 use Livewire\Attributes\Layout;
-use Carbon\Carbon;
+use Livewire\Component;
 
 #[Layout('layouts.iserve')]
 class SlaTracker extends Component
@@ -63,7 +61,7 @@ class SlaTracker extends Component
 
     public function loadSlaMetrics(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $query = $this->getBaseQuery($isAdmin);
@@ -72,25 +70,25 @@ class SlaTracker extends Component
         $totalTickets = (clone $query)->count();
         $metSla = (clone $query)->where(function ($q) {
             $q->whereNull('resolved_at')
-              ->where('due_at', '>', now())
-              ->orWhere(function ($subQ) {
-                  $subQ->whereNotNull('resolved_at')
-                       ->whereRaw('resolved_at <= due_at');
-              });
+                ->where('due_at', '>', now())
+                ->orWhere(function ($subQ) {
+                    $subQ->whereNotNull('resolved_at')
+                        ->whereRaw('resolved_at <= due_at');
+                });
         })->count();
 
         $breachedSla = (clone $query)->where(function ($q) {
             $q->where('due_at', '<', now())
-              ->whereHas('status', fn($statusQ) => $statusQ->where('is_final', false))
-              ->orWhere(function ($subQ) {
-                  $subQ->whereNotNull('resolved_at')
-                       ->whereRaw('resolved_at > due_at');
-              });
+                ->whereHas('status', fn ($statusQ) => $statusQ->where('is_final', false))
+                ->orWhere(function ($subQ) {
+                    $subQ->whereNotNull('resolved_at')
+                        ->whereRaw('resolved_at > due_at');
+                });
         })->count();
 
         $atRisk = (clone $query)->where('due_at', '>', now())
             ->where('due_at', '<=', now()->addHours(24))
-            ->whereHas('status', fn($statusQ) => $statusQ->where('is_final', false))
+            ->whereHas('status', fn ($statusQ) => $statusQ->where('is_final', false))
             ->count();
 
         $this->slaMetrics = [
@@ -105,44 +103,44 @@ class SlaTracker extends Component
 
     public function loadCategoryBreakdown(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $categories = TicketCategory::withCount([
             'helpdeskTickets as total' => function ($query) use ($isAdmin) {
-                if (!$isAdmin) {
-                    $query->where('user_id', Auth::id());
+                if (! $isAdmin) {
+                    $query->where('user_id', auth()->id());
                 }
                 $this->applyDateRange($query);
             },
             'helpdeskTickets as met_sla' => function ($query) use ($isAdmin) {
-                if (!$isAdmin) {
-                    $query->where('user_id', Auth::id());
+                if (! $isAdmin) {
+                    $query->where('user_id', auth()->id());
                 }
                 $this->applyDateRange($query);
                 $query->where(function ($q) {
                     $q->whereNull('resolved_at')
-                      ->where('due_at', '>', now())
-                      ->orWhere(function ($subQ) {
-                          $subQ->whereNotNull('resolved_at')
-                               ->whereRaw('resolved_at <= due_at');
-                      });
+                        ->where('due_at', '>', now())
+                        ->orWhere(function ($subQ) {
+                            $subQ->whereNotNull('resolved_at')
+                                ->whereRaw('resolved_at <= due_at');
+                        });
                 });
             },
             'helpdeskTickets as breached_sla' => function ($query) use ($isAdmin) {
-                if (!$isAdmin) {
-                    $query->where('user_id', Auth::id());
+                if (! $isAdmin) {
+                    $query->where('user_id', auth()->id());
                 }
                 $this->applyDateRange($query);
                 $query->where(function ($q) {
                     $q->where('due_at', '<', now())
-                      ->whereHas('status', fn($statusQ) => $statusQ->where('is_final', false))
-                      ->orWhere(function ($subQ) {
-                          $subQ->whereNotNull('resolved_at')
-                               ->whereRaw('resolved_at > due_at');
-                      });
+                        ->whereHas('status', fn ($statusQ) => $statusQ->where('is_final', false))
+                        ->orWhere(function ($subQ) {
+                            $subQ->whereNotNull('resolved_at')
+                                ->whereRaw('resolved_at > due_at');
+                        });
                 });
-            }
+            },
         ])->get();
 
         $this->categoryBreakdown = $categories->map(function ($category) {
@@ -162,23 +160,23 @@ class SlaTracker extends Component
 
     public function loadRecentBreaches(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser']);
 
-        if (!$isAdmin) {
-            $query->where('user_id', Auth::id());
+        if (! $isAdmin) {
+            $query->where('user_id', auth()->id());
         }
 
         $this->recentBreaches = $query->where(function ($q) {
-                $q->where('due_at', '<', now())
-                  ->whereHas('status', fn($statusQ) => $statusQ->where('is_final', false))
-                  ->orWhere(function ($subQ) {
-                      $subQ->whereNotNull('resolved_at')
-                           ->whereRaw('resolved_at > due_at');
-                  });
-            })
+            $q->where('due_at', '<', now())
+                ->whereHas('status', fn ($statusQ) => $statusQ->where('is_final', false))
+                ->orWhere(function ($subQ) {
+                    $subQ->whereNotNull('resolved_at')
+                        ->whereRaw('resolved_at > due_at');
+                });
+        })
             ->orderBy('due_at', 'asc')
             ->limit(10)
             ->get()
@@ -195,25 +193,25 @@ class SlaTracker extends Component
                     'due_at' => $ticket->due_at,
                     'resolved_at' => $ticket->resolved_at,
                     'breach_duration' => $this->calculateBreachDuration($ticket),
-                    'is_resolved' => !is_null($ticket->resolved_at),
+                    'is_resolved' => ! is_null($ticket->resolved_at),
                 ];
             })->toArray();
     }
 
     public function loadAtRiskTickets(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser']);
 
-        if (!$isAdmin) {
-            $query->where('user_id', Auth::id());
+        if (! $isAdmin) {
+            $query->where('user_id', auth()->id());
         }
 
         $this->atRiskTickets = $query->where('due_at', '>', now())
             ->where('due_at', '<=', now()->addHours(24))
-            ->whereHas('status', fn($statusQ) => $statusQ->where('is_final', false))
+            ->whereHas('status', fn ($statusQ) => $statusQ->where('is_final', false))
             ->orderBy('due_at', 'asc')
             ->limit(10)
             ->get()
@@ -234,12 +232,47 @@ class SlaTracker extends Component
             })->toArray();
     }
 
+    public function escalateAtRiskTicket(int $ticketId): void
+    {
+        try {
+            $ticket = HelpdeskTicket::findOrFail($ticketId);
+
+            // Increase priority
+            $newPriority = match ($ticket->priority) {
+                'low' => 'medium',
+                'medium' => 'high',
+                'high' => 'critical',
+                'critical' => 'critical', // Already max
+            };
+
+            $ticket->update(['priority' => $newPriority]);
+
+            session()->flash(
+                'success',
+                'Tiket ' . $ticket->ticket_number . ' telah dinaikkan keutamaannya / Ticket ' . $ticket->ticket_number . ' priority has been escalated'
+            );
+
+            $this->loadAtRiskTickets();
+        } catch (Exception $e) {
+            logger('SLA escalation error: ' . $e->getMessage());
+            session()->flash('error', 'Ralat mengeskalasi tiket / Error escalating ticket');
+        }
+    }
+
+    public function render()
+    {
+        $categories = TicketCategory::active()->ordered()->get();
+        $statuses = TicketStatus::ordered()->get();
+
+        return view('livewire.helpdesk.sla-tracker', compact('categories', 'statuses'));
+    }
+
     private function getBaseQuery(bool $isAdmin)
     {
         $query = HelpdeskTicket::with(['category', 'status']);
 
-        if (!$isAdmin) {
-            $query->where('user_id', Auth::id());
+        if (! $isAdmin) {
+            $query->where('user_id', auth()->id());
         }
 
         if ($this->categoryFilter !== 'all') {
@@ -274,19 +307,19 @@ class SlaTracker extends Component
             return [
                 'value' => round($duration / 1440, 1),
                 'unit' => 'hari',
-                'unit_en' => 'days'
+                'unit_en' => 'days',
             ];
         } elseif ($duration >= 60) { // More than 1 hour
             return [
                 'value' => round($duration / 60, 1),
                 'unit' => 'jam',
-                'unit_en' => 'hours'
+                'unit_en' => 'hours',
             ];
         } else {
             return [
                 'value' => $duration,
                 'unit' => 'minit',
-                'unit_en' => 'minutes'
+                'unit_en' => 'minutes',
             ];
         }
     }
@@ -299,19 +332,19 @@ class SlaTracker extends Component
             return [
                 'value' => round($remaining / 1440, 1),
                 'unit' => 'hari',
-                'unit_en' => 'days'
+                'unit_en' => 'days',
             ];
         } elseif ($remaining >= 60) { // More than 1 hour
             return [
                 'value' => round($remaining / 60, 1),
                 'unit' => 'jam',
-                'unit_en' => 'hours'
+                'unit_en' => 'hours',
             ];
         } else {
             return [
                 'value' => $remaining,
                 'unit' => 'minit',
-                'unit_en' => 'minutes'
+                'unit_en' => 'minutes',
             ];
         }
     }
@@ -329,40 +362,5 @@ class SlaTracker extends Component
         } else {
             return 'low';
         }
-    }
-
-    public function escalateAtRiskTicket(int $ticketId): void
-    {
-        try {
-            $ticket = HelpdeskTicket::findOrFail($ticketId);
-
-            // Increase priority
-            $newPriority = match ($ticket->priority) {
-                'low' => 'medium',
-                'medium' => 'high',
-                'high' => 'critical',
-                'critical' => 'critical', // Already max
-            };
-
-            $ticket->update(['priority' => $newPriority]);
-
-            session()->flash('success',
-                'Tiket ' . $ticket->ticket_number . ' telah dinaikkan keutamaannya / ' .
-                'Ticket ' . $ticket->ticket_number . ' priority has been escalated'
-            );
-
-            $this->loadAtRiskTickets();
-        } catch (\Exception $e) {
-            logger('SLA escalation error: ' . $e->getMessage());
-            session()->flash('error', 'Ralat mengeskalasi tiket / Error escalating ticket');
-        }
-    }
-
-    public function render()
-    {
-        $categories = TicketCategory::active()->ordered()->get();
-        $statuses = TicketStatus::ordered()->get();
-
-        return view('livewire.helpdesk.sla-tracker', compact('categories', 'statuses'));
     }
 }

@@ -12,12 +12,13 @@ class EquipmentCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
+        'code',
         'name',
         'name_bm',
         'description',
         'description_bm',
-        'icon',
         'is_active',
         'sort_order',
     ];

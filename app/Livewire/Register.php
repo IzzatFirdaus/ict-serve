@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Livewire;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -29,7 +28,7 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        Auth::login($user);
+        auth()->login($user);
         session()->regenerate();
         $this->redirect('/home');
     }

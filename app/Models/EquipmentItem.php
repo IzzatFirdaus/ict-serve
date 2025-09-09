@@ -14,7 +14,8 @@ class EquipmentItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
         'category_id',
         'asset_tag',
         'serial_number',

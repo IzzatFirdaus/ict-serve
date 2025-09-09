@@ -4,22 +4,28 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
-use App\Models\LoanRequest;
 use App\Models\HelpdeskTicket;
-use App\Models\EquipmentItem;
+use App\Models\LoanRequest;
+use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.iserve')]
 class Dashboard extends Component
 {
     public Collection $recentLoans;
     public Collection $recentTickets;
+
+    /** @var array<string, int> */
     public array $loanStats = [];
+
+    /** @var array<string, int> */
     public array $ticketStats = [];
+
+    /** @var array<int, array<string, string>> */
     public array $quickActions = [];
 
     public function mount(): void
@@ -29,7 +35,7 @@ class Dashboard extends Component
 
         try {
             $this->loadDashboardData();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             // Graceful fallback if database issues
             $this->loanStats = ['total' => 0, 'active' => 0, 'pending_approval' => 0, 'overdue' => 0];
             $this->ticketStats = ['total' => 0, 'open' => 0, 'in_progress' => 0, 'resolved_today' => 0];
@@ -38,11 +44,18 @@ class Dashboard extends Component
         $this->setupQuickActions();
     }
 
+    public function render()
+    {
+        return view('livewire.dashboard', [
+            'title' => 'Papan Pemuka / Dashboard',
+        ]);
+    }
+
     private function loadDashboardData(): void
     {
         $user = Auth::user();
 
-        if (!$user) {
+        if (! $user) {
             $this->loanStats = ['total' => 0, 'active' => 0, 'pending_approval' => 0, 'overdue' => 0];
             $this->ticketStats = ['total' => 0, 'open' => 0, 'in_progress' => 0, 'resolved_today' => 0];
             $this->recentLoans = collect();
@@ -99,7 +112,7 @@ class Dashboard extends Component
                 ->latest()
                 ->take(5)
                 ->get();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             // Keep defaults if database query fails
             Log::error('Dashboard data loading failed: ' . $e->getMessage());
         }
@@ -169,12 +182,5 @@ class Dashboard extends Component
     {
         // Return status IDs for in-progress tickets
         return [3, 4]; // Adjust based on your ticket_statuses table
-    }
-
-    public function render()
-    {
-        return view('livewire.dashboard', [
-            'title' => 'Papan Pemuka / Dashboard'
-        ]);
     }
 }

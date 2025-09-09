@@ -8,11 +8,11 @@ use App\Models\EquipmentCategory;
 use App\Models\EquipmentItem;
 use App\Models\LoanRequest;
 use App\Models\LoanStatus;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
 
 #[Layout('layouts.iserve')]
 class Create extends Component
@@ -44,7 +44,7 @@ class Create extends Component
     public function mount(): void
     {
         $this->loadEquipmentCategories();
-        $this->contact_phone = Auth::user()->phone ?? '';
+        $this->contact_phone = auth()->user()->phone ?? '';
 
         // Set default dates (tomorrow to next week)
         $this->requested_from = now()->addDay()->format('Y-m-d');
@@ -59,7 +59,7 @@ class Create extends Component
                 ->orderBy('name')
                 ->get()
                 ->toArray();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->equipmentCategories = [];
         }
     }
@@ -79,7 +79,7 @@ class Create extends Component
                 ->toArray();
 
             $this->showEquipmentModal = true;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->availableEquipment = [];
             $this->addError('equipment', 'Failed to load equipment. Please try again.');
         }
@@ -88,7 +88,7 @@ class Create extends Component
     public function toggleEquipment(int $equipmentId): void
     {
         if (in_array($equipmentId, $this->selectedEquipment)) {
-            $this->selectedEquipment = array_filter($this->selectedEquipment, fn($id) => $id !== $equipmentId);
+            $this->selectedEquipment = array_filter($this->selectedEquipment, fn ($id) => $id !== $equipmentId);
             unset($this->equipmentQuantities[$equipmentId]);
         } else {
             $this->selectedEquipment[] = $equipmentId;
@@ -105,7 +105,7 @@ class Create extends Component
 
     public function removeEquipment(int $equipmentId): void
     {
-        $this->selectedEquipment = array_filter($this->selectedEquipment, fn($id) => $id !== $equipmentId);
+        $this->selectedEquipment = array_filter($this->selectedEquipment, fn ($id) => $id !== $equipmentId);
         unset($this->equipmentQuantities[$equipmentId]);
     }
 
@@ -126,20 +126,20 @@ class Create extends Component
 
             // Get pending status (assuming status ID 1 is 'pending')
             $pendingStatus = LoanStatus::where('code', 'pending')->first();
-            if (!$pendingStatus) {
+            if (! $pendingStatus) {
                 $pendingStatus = LoanStatus::first(); // Fallback
             }
 
             // Create loan request
             $loanRequest = LoanRequest::create([
                 'request_number' => $requestNumber,
-                'user_id' => Auth::id(),
+                'user_id' => auth()->id(),
                 'status_id' => $pendingStatus->id,
                 'purpose' => $this->purpose,
                 'requested_from' => $this->requested_from,
                 'requested_to' => $this->requested_to,
                 'notes' => $this->notes,
-                'supervisor_id' => Auth::user()->supervisor_id,
+                'supervisor_id' => auth()->user()->supervisor_id,
             ]);
 
             // Add equipment items
@@ -159,7 +159,7 @@ class Create extends Component
             // Redirect to loan index
             $this->redirect(route('loan.index'), navigate: true);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             $this->addError('form', 'Ralat berlaku semasa menghantar permohonan. Sila cuba lagi.');
         }
@@ -176,7 +176,7 @@ class Create extends Component
                 ->with('category')
                 ->get()
                 ->toArray();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return [];
         }
     }
@@ -189,7 +189,7 @@ class Create extends Component
                 ['title' => 'Papan Pemuka / Dashboard', 'url' => route('dashboard')],
                 ['title' => 'Pinjaman ICT / ICT Loan', 'url' => route('loan.index')],
                 ['title' => 'Mohon Pinjaman / Request Loan'],
-            ]
+            ],
         ]);
     }
 }

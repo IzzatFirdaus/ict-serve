@@ -12,7 +12,8 @@ class TicketStatus extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
         'code',
         'name',
         'name_bm',
@@ -59,7 +60,7 @@ class TicketStatus extends Model
     protected function casts(): array
     /**
      * @property string $code
-     * @property bool $is_final
+     * @property bool   $is_final
      */
     {
         return [

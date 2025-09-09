@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Login extends Component
@@ -19,7 +18,7 @@ class Login extends Component
             'password' => 'required',
         ]);
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        if (auth()->attempt(['email' => $this->email, 'password' => $this->password])) {
             session()->regenerate();
             $this->redirect('/home');
 

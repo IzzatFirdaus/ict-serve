@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Helpdesk;
 
 use App\Models\HelpdeskTicket;
+use App\Models\TicketCategory;
+use App\Models\TicketStatus;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -45,8 +49,8 @@ class Index extends Component
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
                     $q->where('title', 'like', '%' . $this->search . '%')
-                      ->orWhere('description', 'like', '%' . $this->search . '%')
-                      ->orWhere('ticket_number', 'like', '%' . $this->search . '%');
+                        ->orWhere('description', 'like', '%' . $this->search . '%')
+                        ->orWhere('ticket_number', 'like', '%' . $this->search . '%');
                 });
             })
             ->when($this->statusFilter !== 'all', function ($query) {
@@ -63,8 +67,8 @@ class Index extends Component
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        $categories = \App\Models\TicketCategory::all();
-        $statuses = \App\Models\TicketStatus::all();
+        $categories = TicketCategory::all();
+        $statuses = TicketStatus::all();
 
         return view('livewire.helpdesk.index', compact('tickets', 'categories', 'statuses'));
     }

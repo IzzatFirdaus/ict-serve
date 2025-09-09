@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Livewire\Helpdesk;
 
 use App\Models\HelpdeskTicket;
-use App\Models\User;
 use App\Models\TicketStatus;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.iserve')]
 class Assignment extends Component
@@ -56,12 +57,12 @@ class Assignment extends Component
             'category',
             'status',
             'assignedToUser',
-            'resolvedByUser'
+            'resolvedByUser',
         ])->findOrFail($ticketId);
 
         // Check permissions
-        $user = Auth::user();
-        if (!in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
+        $user = auth()->user();
+        if (! in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
             abort(403, 'Unauthorized access');
         }
 
@@ -115,7 +116,7 @@ class Assignment extends Component
                     'assigned_to' => $this->selectedTechnician,
                     'assigned_at' => now(),
                     'priority' => $this->priority,
-                    'due_at' => $this->dueDate ? \Carbon\Carbon::parse($this->dueDate) : null,
+                    'due_at' => $this->dueDate ? Carbon::parse($this->dueDate) : null,
                 ]);
 
                 // Update status to 'assigned' if it's currently 'new'
@@ -130,7 +131,8 @@ class Assignment extends Component
                 $this->logActivity('assigned', 'Ticket assigned to ' . User::find($this->selectedTechnician)->name . '. Note: ' . $this->assignmentNote);
             });
 
-            session()->flash('success',
+            session()->flash(
+                'success',
                 'Tiket berjaya ditugaskan kepada ' . User::find($this->selectedTechnician)->name .
                 ' / Ticket successfully assigned to ' . User::find($this->selectedTechnician)->name
             );
@@ -141,7 +143,7 @@ class Assignment extends Component
             // Refresh ticket data
             $this->ticket->refresh();
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             logger('Ticket assignment error: ' . $e->getMessage());
             session()->flash('error', 'Ralat menugaskan tiket / Error assigning ticket');
         } finally {
@@ -178,7 +180,8 @@ class Assignment extends Component
                 $this->logActivity('escalated', 'Ticket escalated to ' . User::find($this->escalateTo)->name . '. Reason: ' . $this->escalationReason);
             });
 
-            session()->flash('success',
+            session()->flash(
+                'success',
                 'Tiket berjaya dieskalasi kepada ' . User::find($this->escalateTo)->name .
                 ' / Ticket successfully escalated to ' . User::find($this->escalateTo)->name
             );
@@ -190,7 +193,7 @@ class Assignment extends Component
             // Refresh ticket data
             $this->ticket->refresh();
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             logger('Ticket escalation error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengeskalasi tiket / Error escalating ticket');
         } finally {
@@ -206,7 +209,7 @@ class Assignment extends Component
 
         try {
             $status = TicketStatus::where('code', $this->statusUpdate)->first();
-            if (!$status) {
+            if (! $status) {
                 session()->flash('error', 'Status tidak sah / Invalid status');
                 return;
             }
@@ -217,7 +220,7 @@ class Assignment extends Component
             if (in_array($this->statusUpdate, ['resolved', 'closed'])) {
                 $this->ticket->update([
                     'resolved_at' => now(),
-                    'resolved_by' => Auth::id(),
+                    'resolved_by' => auth()->id(),
                 ]);
             }
 
@@ -228,7 +231,7 @@ class Assignment extends Component
             // Refresh ticket data
             $this->ticket->refresh();
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             logger('Status update error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengemaskini status / Error updating status');
         }
@@ -247,7 +250,7 @@ class Assignment extends Component
             $this->newComment = '';
             $this->loadComments();
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             logger('Comment add error: ' . $e->getMessage());
             session()->flash('error', 'Ralat menambah komen / Error adding comment');
         }
@@ -255,9 +258,9 @@ class Assignment extends Component
 
     public function reassignToSelf(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
-        if (!in_array($user->role, ['technician', 'ict_admin', 'supervisor'])) {
+        if (! in_array($user->role, ['technician', 'ict_admin', 'supervisor'])) {
             session()->flash('error', 'Tiada kebenaran / No permission');
             return;
         }
@@ -275,17 +278,10 @@ class Assignment extends Component
             // Refresh ticket data
             $this->ticket->refresh();
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             logger('Reassignment error: ' . $e->getMessage());
             session()->flash('error', 'Ralat menugaskan semula tiket / Error reassigning ticket');
         }
-    }
-
-    private function logActivity(string $action, string $description): void
-    {
-        // In a real implementation, this would save to an audit_logs or ticket_activities table
-        // For now, we'll just log it
-        logger("Ticket {$this->ticket->ticket_number}: {$action} by " . Auth::user()->name . " - {$description}");
     }
 
     public function render()
@@ -293,5 +289,12 @@ class Assignment extends Component
         $statuses = TicketStatus::ordered()->get();
 
         return view('livewire.helpdesk.assignment', compact('statuses'));
+    }
+
+    private function logActivity(string $action, string $description): void
+    {
+        // In a real implementation, this would save to an audit_logs or ticket_activities table
+        // For now, we'll just log it
+        logger("Ticket {$this->ticket->ticket_number}: {$action} by " . auth()->user()->name . " - {$description}");
     }
 }

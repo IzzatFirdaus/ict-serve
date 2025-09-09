@@ -161,7 +161,9 @@ class NotificationService
             ->get();
 
         foreach ($dueItems as $loan) {
-            $this->notifyLoanEvent($loan, 'equipment_due',
+            $this->notifyLoanEvent(
+                $loan,
+                'equipment_due',
                 "Peralatan {$loan->equipmentItem->name} akan tamat tempoh dalam 3 hari."
             );
         }
@@ -173,7 +175,9 @@ class NotificationService
             ->get();
 
         foreach ($overdueItems as $loan) {
-            $this->notifyLoanEvent($loan, 'equipment_overdue',
+            $this->notifyLoanEvent(
+                $loan,
+                'equipment_overdue',
                 "Peralatan {$loan->equipmentItem->name} telah lewat tempoh!"
             );
         }

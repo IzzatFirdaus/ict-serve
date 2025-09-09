@@ -8,11 +8,11 @@ use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Attributes\Layout;
 
 #[Layout('layouts.iserve')]
 class IndexEnhanced extends Component
@@ -136,7 +136,7 @@ class IndexEnhanced extends Component
 
     public function toggleAdvancedFilters(): void
     {
-        $this->showAdvancedFilters = !$this->showAdvancedFilters;
+        $this->showAdvancedFilters = ! $this->showAdvancedFilters;
     }
 
     public function executeBulkAction(): void
@@ -170,19 +170,89 @@ class IndexEnhanced extends Component
             $this->loadStats();
 
             session()->flash('success', count($this->selectedTickets) . ' tiket telah dikemaskini / tickets updated');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             logger('Bulk action error: ' . $e->getMessage());
             session()->flash('error', 'Ralat semasa menjalankan tindakan / Error executing action');
         }
     }
 
+    public function assignTicket(int $ticketId, int $technicianId): void
+    {
+        try {
+            $ticket = HelpdeskTicket::findOrFail($ticketId);
+
+            // Check permissions
+            $user = auth()->user();
+            if (! in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
+                session()->flash('error', 'Tiada kebenaran / No permission');
+                return;
+            }
+
+            $ticket->update([
+                'assigned_to' => $technicianId,
+                'assigned_at' => now(),
+            ]);
+
+            session()->flash('success', 'Tiket berjaya ditugaskan / Ticket assigned successfully');
+            $this->loadStats();
+        } catch (Exception $e) {
+            logger('Ticket assignment error: ' . $e->getMessage());
+            session()->flash('error', 'Ralat menugaskan tiket / Error assigning ticket');
+        }
+    }
+
+    public function updateTicketStatus(int $ticketId, string $status): void
+    {
+        try {
+            $ticket = HelpdeskTicket::findOrFail($ticketId);
+            $statusModel = TicketStatus::where('code', $status)->first();
+
+            if (! $statusModel) {
+                session()->flash('error', 'Status tidak sah / Invalid status');
+                return;
+            }
+
+            $ticket->update(['status_id' => $statusModel->id]);
+
+            // Update resolution timestamp if status is resolved or closed
+            if (in_array($status, ['resolved', 'closed'])) {
+                $ticket->update([
+                    'resolved_at' => now(),
+                    'resolved_by' => auth()->id(),
+                ]);
+            }
+
+            session()->flash('success', 'Status tiket dikemaskini / Ticket status updated');
+            $this->loadStats();
+        } catch (Exception $e) {
+            logger('Ticket status update error: ' . $e->getMessage());
+            session()->flash('error', 'Ralat mengemaskini status / Error updating status');
+        }
+    }
+
+    public function render()
+    {
+        $tickets = $this->getTicketsQuery()->paginate($this->perPage);
+
+        $categories = TicketCategory::active()->ordered()->get();
+        $statuses = TicketStatus::ordered()->get();
+        $technicians = User::whereIn('role', ['technician', 'ict_admin'])->get();
+
+        return view('livewire.helpdesk.index-enhanced', compact(
+            'tickets',
+            'categories',
+            'statuses',
+            'technicians'
+        ));
+    }
+
     private function bulkDelete(): void
     {
         // Only allow users to delete their own tickets if they're not admin/technician
-        $user = Auth::user();
+        $user = auth()->user();
         $query = HelpdeskTicket::whereIn('id', $this->selectedTickets);
 
-        if (!in_array($user->role, ['ict_admin', 'supervisor'])) {
+        if (! in_array($user->role, ['ict_admin', 'supervisor'])) {
             $query->where('user_id', $user->id);
         }
 
@@ -207,95 +277,41 @@ class IndexEnhanced extends Component
         // This would require additional form fields for the assignee
     }
 
-    public function assignTicket(int $ticketId, int $technicianId): void
-    {
-        try {
-            $ticket = HelpdeskTicket::findOrFail($ticketId);
-
-            // Check permissions
-            $user = Auth::user();
-            if (!in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
-                session()->flash('error', 'Tiada kebenaran / No permission');
-                return;
-            }
-
-            $ticket->update([
-                'assigned_to' => $technicianId,
-                'assigned_at' => now(),
-            ]);
-
-            session()->flash('success', 'Tiket berjaya ditugaskan / Ticket assigned successfully');
-            $this->loadStats();
-        } catch (\Exception $e) {
-            logger('Ticket assignment error: ' . $e->getMessage());
-            session()->flash('error', 'Ralat menugaskan tiket / Error assigning ticket');
-        }
-    }
-
-    public function updateTicketStatus(int $ticketId, string $status): void
-    {
-        try {
-            $ticket = HelpdeskTicket::findOrFail($ticketId);
-            $statusModel = TicketStatus::where('code', $status)->first();
-
-            if (!$statusModel) {
-                session()->flash('error', 'Status tidak sah / Invalid status');
-                return;
-            }
-
-            $ticket->update(['status_id' => $statusModel->id]);
-
-            // Update resolution timestamp if status is resolved or closed
-            if (in_array($status, ['resolved', 'closed'])) {
-                $ticket->update([
-                    'resolved_at' => now(),
-                    'resolved_by' => Auth::id(),
-                ]);
-            }
-
-            session()->flash('success', 'Status tiket dikemaskini / Ticket status updated');
-            $this->loadStats();
-        } catch (\Exception $e) {
-            logger('Ticket status update error: ' . $e->getMessage());
-            session()->flash('error', 'Ralat mengemaskini status / Error updating status');
-        }
-    }
-
     private function loadStats(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $baseQuery = HelpdeskTicket::query();
 
-        if (!$isAdmin && $this->myTicketsOnly) {
+        if (! $isAdmin && $this->myTicketsOnly) {
             $baseQuery->where('user_id', $user->id);
         }
 
         $this->stats = [
             'total' => $baseQuery->count(),
-            'open' => $baseQuery->whereHas('status', fn($q) => $q->where('code', 'new'))->count(),
-            'in_progress' => $baseQuery->whereHas('status', fn($q) => $q->where('code', 'in_progress'))->count(),
-            'resolved' => $baseQuery->whereHas('status', fn($q) => $q->where('code', 'resolved'))->count(),
+            'open' => $baseQuery->whereHas('status', fn ($q) => $q->where('code', 'new'))->count(),
+            'in_progress' => $baseQuery->whereHas('status', fn ($q) => $q->where('code', 'in_progress'))->count(),
+            'resolved' => $baseQuery->whereHas('status', fn ($q) => $q->where('code', 'resolved'))->count(),
             'overdue' => $baseQuery->where('due_at', '<', now())
-                                  ->whereHas('status', fn($q) => $q->where('is_final', false))->count(),
+                ->whereHas('status', fn ($q) => $q->where('is_final', false))->count(),
         ];
     }
 
     private function getTicketsQuery()
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $query = HelpdeskTicket::with(['category', 'status', 'user', 'assignedToUser', 'equipmentItem'])
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
                     $q->where('title', 'like', '%' . $this->search . '%')
-                      ->orWhere('description', 'like', '%' . $this->search . '%')
-                      ->orWhere('ticket_number', 'like', '%' . $this->search . '%')
-                      ->orWhereHas('user', function ($userQuery) {
-                          $userQuery->where('name', 'like', '%' . $this->search . '%');
-                      });
+                        ->orWhere('description', 'like', '%' . $this->search . '%')
+                        ->orWhere('ticket_number', 'like', '%' . $this->search . '%')
+                        ->orWhereHas('user', function ($userQuery) {
+                            $userQuery->where('name', 'like', '%' . $this->search . '%');
+                        });
                 });
             })
             ->when($this->statusFilter !== 'all', function ($query) {
@@ -329,7 +345,7 @@ class IndexEnhanced extends Component
                         break;
                     case 'overdue':
                         $query->where('due_at', '<', now())
-                              ->whereHas('status', fn($q) => $q->where('is_final', false));
+                            ->whereHas('status', fn ($q) => $q->where('is_final', false));
                         break;
                 }
             })
@@ -338,26 +354,10 @@ class IndexEnhanced extends Component
             });
 
         // Apply user restrictions
-        if (!$isAdmin && $this->myTicketsOnly) {
+        if (! $isAdmin && $this->myTicketsOnly) {
             $query->where('user_id', $user->id);
         }
 
         return $query->orderBy($this->sortBy, $this->sortDirection);
-    }
-
-    public function render()
-    {
-        $tickets = $this->getTicketsQuery()->paginate($this->perPage);
-
-        $categories = TicketCategory::active()->ordered()->get();
-        $statuses = TicketStatus::ordered()->get();
-        $technicians = User::whereIn('role', ['technician', 'ict_admin'])->get();
-
-        return view('livewire.helpdesk.index-enhanced', compact(
-            'tickets',
-            'categories',
-            'statuses',
-            'technicians'
-        ));
     }
 }

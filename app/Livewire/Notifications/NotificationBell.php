@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Livewire\Notifications;
 
 use App\Models\Notification;
-use Livewire\Component;
 use Livewire\Attributes\Computed;
+use Livewire\Component;
 
 class NotificationBell extends Component
 {
@@ -49,7 +49,7 @@ class NotificationBell extends Component
 
     public function toggleDropdown(): void
     {
-        $this->showDropdown = !$this->showDropdown;
+        $this->showDropdown = ! $this->showDropdown;
     }
 
     public function closeDropdown(): void

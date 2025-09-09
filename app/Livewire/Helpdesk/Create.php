@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Livewire\Helpdesk;
 
+use App\Models\EquipmentItem;
+use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
-use App\Models\HelpdeskTicket;
-use App\Models\EquipmentItem;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Layout('layouts.iserve')]
@@ -52,8 +52,8 @@ class Create extends Component
     {
         $this->loadTicketCategories();
         $this->loadEquipmentItems();
-        $this->contact_phone = Auth::user()->phone ?? '';
-        $this->location = Auth::user()->division ?? '';
+        $this->contact_phone = auth()->user()->phone ?? '';
+        $this->location = auth()->user()->division ?? '';
     }
 
     public function loadTicketCategories(): void
@@ -63,7 +63,7 @@ class Create extends Component
                 ->ordered()
                 ->get()
                 ->toArray();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->ticketCategories = [];
         }
     }
@@ -77,7 +77,7 @@ class Create extends Component
                 ->orderBy('model')
                 ->get()
                 ->toArray();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->equipmentItems = [];
         }
     }
@@ -89,10 +89,10 @@ class Create extends Component
         $this->showEquipmentSelector = $category && in_array($category->name, [
             'Hardware Issues',
             'Equipment Damage',
-            'Printer Issues'
+            'Printer Issues',
         ]);
 
-        if (!$this->showEquipmentSelector) {
+        if (! $this->showEquipmentSelector) {
             $this->equipment_item_id = null;
         }
     }
@@ -101,7 +101,7 @@ class Create extends Component
     {
         try {
             $this->validate();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             // Log validation errors for debugging
             logger('Validation error in helpdesk create: ' . $e->getMessage());
             $this->addError('submit', 'Validation error: ' . $e->getMessage());
@@ -113,13 +113,13 @@ class Create extends Component
                 // Get initial status (new)
                 $newStatus = TicketStatus::where('code', 'new')->first();
 
-                if (!$newStatus) {
-                    throw new \Exception('Initial ticket status not found');
+                if (! $newStatus) {
+                    throw new Exception('Initial ticket status not found');
                 }
 
                 // Create the helpdesk ticket
                 $ticket = HelpdeskTicket::create([
-                    'user_id' => Auth::id(),
+                    'user_id' => auth()->id(),
                     'category_id' => $this->category_id,
                     'status_id' => $newStatus->id,
                     'title' => $this->title,
@@ -131,14 +131,14 @@ class Create extends Component
                     'attachments' => $this->attachments,
                 ]);
 
-                session()->flash('success',
-                    'Tiket bantuan telah berjaya diwujudkan. / Helpdesk ticket has been successfully created. ' .
-                    'Nombor tiket / Ticket number: ' . $ticket->ticket_number
+                session()->flash(
+                    'success',
+                    'Tiket bantuan telah berjaya diwujudkan. / Helpdesk ticket has been successfully created. Nombor tiket / Ticket number: ' . $ticket->ticket_number
                 );
             });
 
             return redirect()->route('helpdesk.index');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             logger('Helpdesk ticket creation error: ' . $e->getMessage());
             $this->addError('submit', 'Ralat semasa mewujudkan tiket: ' . $e->getMessage() . ' / Error creating ticket: ' . $e->getMessage());
             return null;

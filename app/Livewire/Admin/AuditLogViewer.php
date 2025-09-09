@@ -6,10 +6,9 @@ namespace App\Livewire\Admin;
 
 use App\Models\AuditLog;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 
 class AuditLogViewer extends Component
 {
@@ -40,16 +39,16 @@ class AuditLogViewer extends Component
         'view_mode' => ['except' => 'detailed'],
     ];
 
+    public function __invoke()
+    {
+        return $this->render();
+    }
+
     public function mount(): void
     {
         // Set default date range to last 30 days
         $this->date_from = now()->subDays(30)->format('Y-m-d');
         $this->date_to = now()->format('Y-m-d');
-    }
-
-    public function __invoke()
-    {
-        return $this->render();
     }
 
     public function render()
@@ -72,110 +71,6 @@ class AuditLogViewer extends Component
         ]);
     }
 
-    private function getAuditLogs()
-    {
-        $query = AuditLog::with(['user', 'auditable'])
-            ->orderBy('created_at', 'desc');
-
-        // Apply filters
-        if ($this->search) {
-            $query->where(function (Builder $q) {
-                $q->where('action', 'like', "%{$this->search}%")
-                  ->orWhere('notes', 'like', "%{$this->search}%")
-                  ->orWhereHas('user', function (Builder $userQuery) {
-                      $userQuery->where('name', 'like', "%{$this->search}%")
-                               ->orWhere('email', 'like', "%{$this->search}%");
-                  });
-            });
-        }
-
-        if ($this->action !== 'all') {
-            $query->where('action', $this->action);
-        }
-
-        if ($this->auditable_type !== 'all') {
-            $query->where('auditable_type', $this->auditable_type);
-        }
-
-        if ($this->user_id !== 'all') {
-            $query->where('user_id', $this->user_id);
-        }
-
-        if ($this->date_from) {
-            $query->whereDate('created_at', '>=', $this->date_from);
-        }
-
-        if ($this->date_to) {
-            $query->whereDate('created_at', '<=', $this->date_to);
-        }
-
-        return $query->paginate($this->per_page);
-    }
-
-    private function getAuditStats(): array
-    {
-        $baseQuery = AuditLog::query();
-
-        // Apply same filters as main query for consistency
-        if ($this->date_from) {
-            $baseQuery->whereDate('created_at', '>=', $this->date_from);
-        }
-
-        if ($this->date_to) {
-            $baseQuery->whereDate('created_at', '<=', $this->date_to);
-        }
-
-        return [
-            'total_logs' => (clone $baseQuery)->count(),
-            'unique_users' => (clone $baseQuery)->distinct('user_id')->count('user_id'),
-            'recent_24h' => (clone $baseQuery)->where('created_at', '>=', now()->subDay())->count(),
-            'top_actions' => (clone $baseQuery)
-                ->selectRaw('action, COUNT(*) as count')
-                ->groupBy('action')
-                ->orderByDesc('count')
-                ->limit(5)
-                ->pluck('count', 'action')
-                ->toArray(),
-            'activity_by_hour' => (clone $baseQuery)
-                ->selectRaw('HOUR(created_at) as hour, COUNT(*) as count')
-                ->groupBy('hour')
-                ->orderBy('hour')
-                ->pluck('count', 'hour')
-                ->toArray(),
-        ];
-    }
-
-    private function getUsers()
-    {
-        return User::select('id', 'name', 'email')
-            ->whereHas('auditLogs')
-            ->orderBy('name')
-            ->get();
-    }
-
-    private function getActions(): array
-    {
-        return AuditLog::select('action')
-            ->distinct()
-            ->orderBy('action')
-            ->pluck('action')
-            ->toArray();
-    }
-
-    private function getAuditableTypes(): array
-    {
-        return AuditLog::select('auditable_type')
-            ->distinct()
-            ->orderBy('auditable_type')
-            ->pluck('auditable_type')
-            ->map(function ($type) {
-                return class_basename($type);
-            })
-            ->unique()
-            ->values()
-            ->toArray();
-    }
-
     public function resetFilters(): void
     {
         $this->search = '';
@@ -189,7 +84,7 @@ class AuditLogViewer extends Component
 
     public function toggleFilters(): void
     {
-        $this->show_filters = !$this->show_filters;
+        $this->show_filters = ! $this->show_filters;
     }
 
     public function updatedSearch(): void
@@ -282,5 +177,109 @@ class AuditLogViewer extends Component
     {
         // This would typically generate a CSV or Excel file
         session()->flash('message', 'Export functionality will be implemented in the next phase.');
+    }
+
+    private function getAuditLogs()
+    {
+        $query = AuditLog::with(['user', 'auditable'])
+            ->orderBy('created_at', 'desc');
+
+        // Apply filters
+        if ($this->search) {
+            $query->where(function (Builder $q) {
+                $q->where('action', 'like', "%{$this->search}%")
+                    ->orWhere('notes', 'like', "%{$this->search}%")
+                    ->orWhereHas('user', function (Builder $userQuery) {
+                        $userQuery->where('name', 'like', "%{$this->search}%")
+                            ->orWhere('email', 'like', "%{$this->search}%");
+                    });
+            });
+        }
+
+        if ($this->action !== 'all') {
+            $query->where('action', $this->action);
+        }
+
+        if ($this->auditable_type !== 'all') {
+            $query->where('auditable_type', $this->auditable_type);
+        }
+
+        if ($this->user_id !== 'all') {
+            $query->where('user_id', $this->user_id);
+        }
+
+        if ($this->date_from) {
+            $query->whereDate('created_at', '>=', $this->date_from);
+        }
+
+        if ($this->date_to) {
+            $query->whereDate('created_at', '<=', $this->date_to);
+        }
+
+        return $query->paginate($this->per_page);
+    }
+
+    private function getAuditStats(): array
+    {
+        $baseQuery = AuditLog::query();
+
+        // Apply same filters as main query for consistency
+        if ($this->date_from) {
+            $baseQuery->whereDate('created_at', '>=', $this->date_from);
+        }
+
+        if ($this->date_to) {
+            $baseQuery->whereDate('created_at', '<=', $this->date_to);
+        }
+
+        return [
+            'total_logs' => (clone $baseQuery)->count(),
+            'unique_users' => (clone $baseQuery)->distinct('user_id')->count('user_id'),
+            'recent_24h' => (clone $baseQuery)->where('created_at', '>=', now()->subDay())->count(),
+            'top_actions' => (clone $baseQuery)
+                ->selectRaw('action, COUNT(*) as count')
+                ->groupBy('action')
+                ->orderByDesc('count')
+                ->limit(5)
+                ->pluck('count', 'action')
+                ->toArray(),
+            'activity_by_hour' => (clone $baseQuery)
+                ->selectRaw('HOUR(created_at) as hour, COUNT(*) as count')
+                ->groupBy('hour')
+                ->orderBy('hour')
+                ->pluck('count', 'hour')
+                ->toArray(),
+        ];
+    }
+
+    private function getUsers()
+    {
+        return User::select('id', 'name', 'email')
+            ->whereHas('auditLogs')
+            ->orderBy('name')
+            ->get();
+    }
+
+    private function getActions(): array
+    {
+        return AuditLog::select('action')
+            ->distinct()
+            ->orderBy('action')
+            ->pluck('action')
+            ->toArray();
+    }
+
+    private function getAuditableTypes(): array
+    {
+        return AuditLog::select('auditable_type')
+            ->distinct()
+            ->orderBy('auditable_type')
+            ->pluck('auditable_type')
+            ->map(function ($type) {
+                return class_basename($type);
+            })
+            ->unique()
+            ->values()
+            ->toArray();
     }
 }
