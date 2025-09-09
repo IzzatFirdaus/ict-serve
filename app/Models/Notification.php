@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Carbon\Carbon;
 
 class Notification extends Model
 {
@@ -74,7 +73,7 @@ class Notification extends Model
     {
         return $query->where(function ($q) {
             $q->whereNull('expires_at')
-              ->orWhere('expires_at', '>', now());
+                ->orWhere('expires_at', '>', now());
         });
     }
 
@@ -86,7 +85,7 @@ class Notification extends Model
     // Methods
     public function markAsRead(): void
     {
-        if (!$this->is_read) {
+        if (! $this->is_read) {
             $this->update([
                 'is_read' => true,
                 'read_at' => now(),
@@ -148,7 +147,6 @@ class Notification extends Model
             'urgent' => 'red',
             'high' => 'orange',
             'medium' => 'blue',
-            'low' => 'gray',
             default => match ($this->category) {
                 'ticket' => 'blue',
                 'loan' => 'green',
@@ -165,13 +163,15 @@ class Notification extends Model
         if ($diffInMinutes < 1) {
             return 'Baru sahaja / Just now';
         } elseif ($diffInMinutes < 60) {
-            return $diffInMinutes . ' minit lalu / minutes ago';
+            return $diffInMinutes.' minit lalu / minutes ago';
         } elseif ($diffInMinutes < 1440) { // Less than 24 hours
             $hours = floor($diffInMinutes / 60);
-            return $hours . ' jam lalu / hours ago';
+
+            return $hours.' jam lalu / hours ago';
         } elseif ($diffInMinutes < 10080) { // Less than 7 days
             $days = floor($diffInMinutes / 1440);
-            return $days . ' hari lalu / days ago';
+
+            return $days.' hari lalu / days ago';
         } else {
             return $this->created_at->format('d/m/Y');
         }
@@ -195,7 +195,7 @@ class Notification extends Model
         ]);
     }
 
-    public static function createTicketNotification(int $userId, string $type, HelpdeskTicket $ticket, string $message = null): self
+    public static function createTicketNotification(int $userId, string $type, HelpdeskTicket $ticket, ?string $message = null): self
     {
         $titles = [
             'ticket_created' => 'Tiket Baharu Dicipta / New Ticket Created',
@@ -225,7 +225,7 @@ class Notification extends Model
         ]);
     }
 
-    public static function createLoanNotification(int $userId, string $type, LoanRequest $loan, string $message = null): self
+    public static function createLoanNotification(int $userId, string $type, LoanRequest $loan, ?string $message = null): self
     {
         $titles = [
             'loan_requested' => 'Permohonan Pinjaman Baharu / New Loan Request',
