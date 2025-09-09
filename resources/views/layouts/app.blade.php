@@ -14,8 +14,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @viteReactRefresh
-    @vite(['resources/css/app.css', 'resources/js/app.jsx'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -74,8 +74,9 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <livewire:example-component />
         </main>
     </div>
+    @livewireScripts
 </body>
 </html>
