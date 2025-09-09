@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Livewire\Helpdesk;
 
+use App\Models\EquipmentItem;
+use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
-use App\Models\HelpdeskTicket;
-use App\Models\EquipmentItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Layout('layouts.iserve')]
@@ -45,7 +45,9 @@ class Create extends Component
     public array $attachments = [];
 
     public array $ticketCategories = [];
+
     public array $equipmentItems = [];
+
     public bool $showEquipmentSelector = false;
 
     public function mount(): void
@@ -89,10 +91,10 @@ class Create extends Component
         $this->showEquipmentSelector = $category && in_array($category->name, [
             'Hardware Issues',
             'Equipment Damage',
-            'Printer Issues'
+            'Printer Issues',
         ]);
 
-        if (!$this->showEquipmentSelector) {
+        if (! $this->showEquipmentSelector) {
             $this->equipment_item_id = null;
         }
     }
@@ -103,8 +105,9 @@ class Create extends Component
             $this->validate();
         } catch (\Exception $e) {
             // Log validation errors for debugging
-            logger('Validation error in helpdesk create: ' . $e->getMessage());
-            $this->addError('submit', 'Validation error: ' . $e->getMessage());
+            logger('Validation error in helpdesk create: '.$e->getMessage());
+            $this->addError('submit', 'Validation error: '.$e->getMessage());
+
             return;
         }
 
@@ -113,7 +116,7 @@ class Create extends Component
                 // Get initial status (new)
                 $newStatus = TicketStatus::where('code', 'new')->first();
 
-                if (!$newStatus) {
+                if (! $newStatus) {
                     throw new \Exception('Initial ticket status not found');
                 }
 
@@ -132,15 +135,16 @@ class Create extends Component
                 ]);
 
                 session()->flash('success',
-                    'Tiket bantuan telah berjaya diwujudkan. / Helpdesk ticket has been successfully created. ' .
-                    'Nombor tiket / Ticket number: ' . $ticket->ticket_number
+                    'Tiket bantuan telah berjaya diwujudkan. / Helpdesk ticket has been successfully created. '.
+                    'Nombor tiket / Ticket number: '.$ticket->ticket_number
                 );
             });
 
             return redirect()->route('helpdesk.index');
         } catch (\Exception $e) {
-            logger('Helpdesk ticket creation error: ' . $e->getMessage());
-            $this->addError('submit', 'Ralat semasa mewujudkan tiket: ' . $e->getMessage() . ' / Error creating ticket: ' . $e->getMessage());
+            logger('Helpdesk ticket creation error: '.$e->getMessage());
+            $this->addError('submit', 'Ralat semasa mewujudkan tiket: '.$e->getMessage().' / Error creating ticket: '.$e->getMessage());
+
             return null;
         }
     }

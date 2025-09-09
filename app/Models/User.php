@@ -11,6 +11,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string|null $staff_id
+ * @property string|null $department
+ * @property string|null $phone
+ * @property string|null $position
+ * @property string|null $profile_picture
+ * @property array|null $preferences
+ * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $loanRequests
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -34,6 +50,8 @@ class User extends Authenticatable
         'supervisor_id',
         'is_active',
         'last_login_at',
+        'profile_picture',
+        'preferences',
     ];
 
     /**
@@ -186,6 +204,7 @@ class User extends Authenticatable
             'password' => 'hashed',
             'is_active' => 'boolean',
             'last_login_at' => 'datetime',
+            'preferences' => 'array',
         ];
     }
 }

@@ -9,10 +9,41 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property-read TicketStatus $status
- * @property-read User|null $assignedTo
- * @property-read EquipmentItem|null $equipmentItem
+ * @property int $id
+ * @property string $ticket_number
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $status_id
+ * @property string $title
+ * @property string $description
+ * @property string $priority
+ * @property string $urgency
+ * @property int|null $assigned_to
+ * @property \Illuminate\Support\Carbon|null $assigned_at
+ * @property int|null $equipment_item_id
+ * @property string|null $location
+ * @property string|null $contact_phone
+ * @property \Illuminate\Support\Carbon|null $due_at
+ * @property \Illuminate\Support\Carbon|null $resolved_at
+ * @property \Illuminate\Support\Carbon|null $closed_at
+ * @property string|null $resolution
+ * @property string|null $resolution_notes
+ * @property int|null $resolved_by
+ * @property int|null $satisfaction_rating
+ * @property string|null $feedback
+ * @property array|null $attachments
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TicketCategory $category
+ * @property-read \App\Models\TicketStatus $status
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\User|null $assignedTo
+ * @property-read \App\Models\User|null $assignedToUser
+ * @property-read \App\Models\User|null $resolvedByUser
+ * @property-read \App\Models\EquipmentItem|null $equipmentItem
  * @property-read mixed $activity_log
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class HelpdeskTicket extends Model
 {
