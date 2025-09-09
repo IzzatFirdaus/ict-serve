@@ -44,7 +44,7 @@ Route::prefix('public')->name('public.')->group(function () {
     })->name('track');
     Route::post('/track', function (\Illuminate\Http\Request $request) {
         $request->validate([
-            'tracking_number' => 'required|string'
+            'tracking_number' => 'required|string',
         ]);
 
         $trackingNumber = $request->tracking_number;
@@ -145,6 +145,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/sla-tracker', [\App\Livewire\Helpdesk\SlaTracker::class, '__invoke'])->name('sla-tracker');
         Route::get('/attachments/{ticket}', [\App\Livewire\Helpdesk\AttachmentManager::class, '__invoke'])->name('attachments');
         Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
+
+        // New MYDS Components
+        Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
     });
 
     // Ticket routes (legacy alias for helpdesk)
@@ -194,9 +197,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () {
             // Reporting Dashboard for administrators
             $equipmentCount = \App\Models\EquipmentItem::count();
-            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn($q) => $q->where('code', 'active'))->count();
-            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'open'))->count();
-            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'resolved'))->count();
+            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'active'))->count();
+            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'open'))->count();
+            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'resolved'))->count();
+
             return view('admin.dashboard', compact('equipmentCount', 'activeLoans', 'openTickets', 'resolvedTickets'));
         })->name('dashboard');
 
@@ -207,6 +211,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/audit-logs', \App\Livewire\Admin\AuditLogViewer::class)->name('audit-logs');
         Route::get('/settings/damage-types', \App\Livewire\Admin\Helpdesk\DropdownManager::class)->name('settings.damage-types');
+
+        // New MYDS Admin Component
+        Route::get('/dropdown-manager', \App\Livewire\Ict\AdminDropdownManager::class)->name('dropdown-manager');
     });
 });
 
