@@ -10,12 +10,35 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $id
+ * @property int $category_id
+ * @property string|null $asset_tag
+ * @property string|null $serial_number
+ * @property string|null $brand
+ * @property string|null $model
+ * @property array|null $specifications
+ * @property string|null $description
+ * @property string $condition
+ * @property string $status
+ * @property float|null $purchase_price
+ * @property \Illuminate\Support\Carbon|null $purchase_date
+ * @property \Illuminate\Support\Carbon|null $warranty_expiry
+ * @property string|null $location
+ * @property string|null $notes
+ * @property bool $is_active
+ * @property string $name
+ * @property-read \App\Models\EquipmentCategory $category
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class EquipmentItem extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'category_id',
+        'name',
         'asset_tag',
         'serial_number',
         'brand',

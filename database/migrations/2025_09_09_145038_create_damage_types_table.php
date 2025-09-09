@@ -13,9 +13,17 @@ return new class extends Migration
     {
         Schema::create('damage_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
+            // English display name (legacy key: name)
+            $table->string('name');
+            // Bahasa Melayu display name
             $table->string('name_bm');
+            // Optional longer descriptions
+            $table->text('description')->nullable();
+            $table->text('description_bm')->nullable();
+            // Severity: low, medium, high
+            $table->string('severity')->default('medium');
             $table->boolean('is_active')->default(true);
+            $table->integer('sort_order')->default(0);
             $table->timestamps();
         });
     }

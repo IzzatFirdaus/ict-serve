@@ -10,6 +10,7 @@ use Livewire\Component;
 class Login extends Component
 {
     public string $email = '';
+
     public string $password = '';
 
     public function login(): void

@@ -14,8 +14,11 @@ class NotificationCenter extends Component
     use WithPagination;
 
     public string $filter = 'all';
+
     public string $category = 'all';
+
     public string $priority = 'all';
+
     public bool $showDropdown = false;
 
     protected $listeners = [
@@ -122,7 +125,7 @@ class NotificationCenter extends Component
 
     public function toggleDropdown(): void
     {
-        $this->showDropdown = !$this->showDropdown;
+        $this->showDropdown = ! $this->showDropdown;
     }
 
     public function markNotificationAsRead(int $notificationId): void

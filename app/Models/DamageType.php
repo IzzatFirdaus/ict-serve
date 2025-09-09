@@ -67,6 +67,14 @@ class DamageType extends Model
     }
 
     /**
+     * Scope to filter by severity
+     */
+    public function scopeBySeverity($query, string $severity)
+    {
+        return $query->where('severity', $severity);
+    }
+
+    /**
      * Get display name based on locale
      */
     public function getDisplayName(?string $locale = null): string
@@ -88,6 +96,12 @@ class DamageType extends Model
         return $locale === 'ms' || $locale === 'bm'
             ? ($this->description_bm ?? $this->description ?? '')
             : ($this->description ?? $this->description_bm ?? '');
+    }
+
+    // Alias used by some tests or legacy code
+    public function getDisplayDescriptionText(?string $locale = null): string
+    {
+        return $this->getDisplayDescription($locale);
     }
 
     /**

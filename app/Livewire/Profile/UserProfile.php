@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
-use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Layout('layouts.iserve')]
 class UserProfile extends Component
@@ -21,32 +21,46 @@ class UserProfile extends Component
 
     // User Profile Data
     public string $name = '';
+
     public string $email = '';
+
     public string $staff_id = '';
+
     public string $department = '';
+
     public string $phone = '';
+
     public string $position = '';
 
     // Password Change
     public string $current_password = '';
+
     public string $new_password = '';
+
     public string $new_password_confirmation = '';
 
     // Preferences
     public string $preferred_language = 'ms';
+
     public string $theme_preference = 'system';
+
     public bool $email_notifications = true;
+
     public bool $sms_notifications = false;
+
     public bool $browser_notifications = true;
+
     public array $notification_types = [];
 
     // Profile Picture
     #[Validate(['image', 'max:2048'])] // 2MB Max
     public $profile_picture;
+
     public ?string $current_profile_picture = null;
 
     // Activity and Statistics
     public array $userStats = [];
+
     public array $recentActivity = [];
 
     protected function rules(): array
@@ -57,13 +71,13 @@ class UserProfile extends Component
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('users')->ignore(Auth::id())
+                Rule::unique('users')->ignore(Auth::id()),
             ],
             'staff_id' => [
                 'required',
                 'string',
                 'max:20',
-                Rule::unique('users')->ignore(Auth::id())
+                Rule::unique('users')->ignore(Auth::id()),
             ],
             'department' => 'required|string|max:255',
             'phone' => 'nullable|string|max:20',
@@ -137,13 +151,13 @@ class UserProfile extends Component
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('users')->ignore(Auth::id())
+                Rule::unique('users')->ignore(Auth::id()),
             ],
             'staff_id' => [
                 'required',
                 'string',
                 'max:20',
-                Rule::unique('users')->ignore(Auth::id())
+                Rule::unique('users')->ignore(Auth::id()),
             ],
             'department' => 'required|string|max:255',
             'phone' => 'nullable|string|max:20',
@@ -164,7 +178,7 @@ class UserProfile extends Component
 
             session()->flash('success', 'Profil berjaya dikemaskini / Profile updated successfully');
         } catch (\Exception $e) {
-            logger('Profile update error: ' . $e->getMessage());
+            logger('Profile update error: '.$e->getMessage());
             session()->flash('error', 'Ralat mengemaskini profil / Error updating profile');
         }
     }
@@ -188,7 +202,7 @@ class UserProfile extends Component
 
             session()->flash('success', 'Kata laluan berjaya dikemaskini / Password updated successfully');
         } catch (\Exception $e) {
-            logger('Password update error: ' . $e->getMessage());
+            logger('Password update error: '.$e->getMessage());
             session()->flash('error', 'Ralat mengemaskini kata laluan / Error updating password');
         }
     }
@@ -217,7 +231,7 @@ class UserProfile extends Component
 
             session()->flash('success', 'Keutamaan berjaya dikemaskini / Preferences updated successfully');
         } catch (\Exception $e) {
-            logger('Preferences update error: ' . $e->getMessage());
+            logger('Preferences update error: '.$e->getMessage());
             session()->flash('error', 'Ralat mengemaskini keutamaan / Error updating preferences');
         }
     }
@@ -246,7 +260,7 @@ class UserProfile extends Component
 
             session()->flash('success', 'Gambar profil berjaya dikemaskini / Profile picture updated successfully');
         } catch (\Exception $e) {
-            logger('Profile picture update error: ' . $e->getMessage());
+            logger('Profile picture update error: '.$e->getMessage());
             session()->flash('error', 'Ralat mengemaskini gambar profil / Error updating profile picture');
         }
     }
@@ -264,7 +278,7 @@ class UserProfile extends Component
                 session()->flash('success', 'Gambar profil berjaya dipadam / Profile picture deleted successfully');
             }
         } catch (\Exception $e) {
-            logger('Profile picture deletion error: ' . $e->getMessage());
+            logger('Profile picture deletion error: '.$e->getMessage());
             session()->flash('error', 'Ralat memadam gambar profil / Error deleting profile picture');
         }
     }
@@ -277,7 +291,7 @@ class UserProfile extends Component
         $this->userStats = [
             'total_tickets' => $user->helpdeskTickets()->count(),
             'resolved_tickets' => $user->helpdeskTickets()
-                ->whereHas('status', fn($q) => $q->where('is_final', true))
+                ->whereHas('status', fn ($q) => $q->where('is_final', true))
                 ->count(),
             'active_loans' => $user->loanRequests()
                 ->whereIn('status', ['approved', 'active'])
@@ -301,38 +315,42 @@ class UserProfile extends Component
         $user = Auth::user();
 
         // Recent tickets
-        $recentTickets = $user->helpdeskTickets()
+        $recentTicketsCollection = $user->helpdeskTickets()
             ->with(['category', 'status'])
             ->orderBy('created_at', 'desc')
             ->limit(5)
-            ->get()
-            ->map(function ($ticket) {
-                return [
-                    'type' => 'ticket',
-                    'title' => $ticket->title,
-                    'description' => 'Tiket ' . $ticket->ticket_number . ' - ' . $ticket->category->name,
-                    'status' => $ticket->status->name,
-                    'created_at' => $ticket->created_at,
-                    'url' => route('helpdesk.index-enhanced'),
-                ];
-            });
+            ->get();
+
+        // @phpstan-ignore-next-line
+        $recentTickets = $recentTicketsCollection->map(function (\App\Models\HelpdeskTicket $ticket) {
+            return [
+                'type' => 'ticket',
+                'title' => $ticket->title,
+                'description' => 'Tiket '.$ticket->ticket_number.' - '.$ticket->category->name,
+                'status' => $ticket->status->name,
+                'created_at' => $ticket->created_at,
+                'url' => route('helpdesk.index-enhanced'),
+            ];
+        });
 
         // Recent loans
-        $recentLoans = $user->loanRequests()
+        $recentLoansCollection = $user->loanRequests()
             ->with(['equipmentItem'])
             ->orderBy('created_at', 'desc')
             ->limit(5)
-            ->get()
-            ->map(function ($loan) {
-                return [
-                    'type' => 'loan',
-                    'title' => 'Pinjaman Peralatan',
-                    'description' => $loan->equipmentItem->name ?? 'Equipment Loan',
-                    'status' => ucfirst($loan->status),
-                    'created_at' => $loan->created_at,
-                    'url' => route('loan.index'),
-                ];
-            });
+            ->get();
+
+        // @phpstan-ignore-next-line
+        $recentLoans = $recentLoansCollection->map(function (\App\Models\LoanRequest $loan) {
+            return [
+                'type' => 'loan',
+                'title' => 'Pinjaman Peralatan',
+                'description' => $loan->equipmentItem->name ?? 'Equipment Loan',
+                'status' => ucfirst($loan->status->label),
+                'created_at' => $loan->created_at,
+                'url' => route('loan.index'),
+            ];
+        });
 
         // Combine and sort by date
         $this->recentActivity = $recentTickets->merge($recentLoans)

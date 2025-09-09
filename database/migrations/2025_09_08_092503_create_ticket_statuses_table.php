@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique(); // new, assigned, in_progress, resolved, closed, cancelled
             $table->string('name');
-            $table->string('name_bm');
+            // Allow nullable for backward compatibility with older seeders/tests that may not provide BM name
+            $table->string('name_bm')->nullable();
             $table->text('description')->nullable();
             $table->text('description_bm')->nullable();
             $table->string('color', 7)->default('#6b7280'); // Hex color for UI
