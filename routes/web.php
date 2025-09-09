@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/assign/{ticket}', [\App\Livewire\Helpdesk\Assignment::class, '__invoke'])->name('assign');
         Route::get('/sla-tracker', [\App\Livewire\Helpdesk\SlaTracker::class, '__invoke'])->name('sla-tracker');
         Route::get('/attachments/{ticket}', [\App\Livewire\Helpdesk\AttachmentManager::class, '__invoke'])->name('attachments');
+        Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
     });
 
     // Ticket routes (legacy alias for helpdesk)
@@ -129,6 +130,7 @@ Route::middleware('auth')->group(function () {
         })->name('reports.index');
 
         Route::get('/audit-logs', \App\Livewire\Admin\AuditLogViewer::class)->name('audit-logs');
+        Route::get('/damage-types', \App\Livewire\Admin\DropdownManager::class)->name('damage-types');
     });
 });
 
