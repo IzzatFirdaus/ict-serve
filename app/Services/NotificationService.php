@@ -6,12 +6,31 @@ namespace App\Services;
 
 use App\Models\HelpdeskTicket;
 use App\Models\LoanRequest;
+use App\Models\LoanStatus;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
 class NotificationService
 {
+    /**
+     * Create a ticket assigned notification.
+     *
+     * @return void
+     */
+    public static function createTicketAssignedNotification(HelpdeskTicket $ticket, User $assignedUser)
+    {
+        Notification::create([
+            'user_id' => $assignedUser->id,
+            'type' => 'ticket_assigned',
+            'title' => 'New Ticket Assigned',
+            'message' => "You have been assigned a new ticket: #{$ticket->ticket_number} - {$ticket->title}",
+            'related_model' => HelpdeskTicket::class,
+            'related_id' => $ticket->id,
+            'action_url' => route('helpdesk.tickets.show', $ticket),
+        ]);
+    }
+
     /**
      * Create a ticket notification for relevant users
      */
@@ -20,13 +39,11 @@ class NotificationService
         $usersToNotify = collect();
 
         // Always notify ticket creator
-        if ($ticket->user_id) {
-            $usersToNotify->push($ticket->user_id);
-        }
+        $usersToNotify->push($ticket->user);
 
         // Notify assigned user if different
-        if ($ticket->assigned_to && $ticket->assigned_to !== $ticket->user_id) {
-            $usersToNotify->push($ticket->assigned_to);
+        if ($ticket->assignedToUser && $ticket->assignedToUser->id !== $ticket->user->id) {
+            $usersToNotify->push($ticket->assignedToUser);
         }
 
         // For assignment events, also notify ICT admins
@@ -36,10 +53,10 @@ class NotificationService
         }
 
         // Remove duplicates
-        $usersToNotify = $usersToNotify->unique();
+        $usersToNotify = $usersToNotify->unique('id');
 
-        foreach ($usersToNotify as $userId) {
-            Notification::createTicketNotification($userId, $event, $ticket, $customMessage);
+        foreach ($usersToNotify as $user) {
+            Notification::createTicketNotification($user->id, $event, $ticket, $customMessage);
         }
     }
 
@@ -51,32 +68,30 @@ class NotificationService
         $usersToNotify = collect();
 
         // Always notify loan requester
-        if ($loan->user_id) {
-            $usersToNotify->push($loan->user_id);
-        }
+        $usersToNotify->push($loan->user);
 
         // Notify supervisor if different
-        if ($loan->supervisor_id && $loan->supervisor_id !== $loan->user_id) {
-            $usersToNotify->push($loan->supervisor_id);
+        if ($loan->supervisor && $loan->supervisor->id !== $loan->user->id) {
+            $usersToNotify->push($loan->supervisor);
         }
 
         // Notify ICT admin if assigned
-        if ($loan->ict_admin_id && $loan->ict_admin_id !== $loan->user_id) {
-            $usersToNotify->push($loan->ict_admin_id);
+        if ($loan->ictAdmin && $loan->ictAdmin->id !== $loan->user->id) {
+            $usersToNotify->push($loan->ictAdmin);
         }
 
         // For overdue equipment, also notify supervisors and ICT admins
         if (in_array($event, ['equipment_overdue', 'equipment_due'])) {
-            $ictAdmins = User::where('role', 'ict_admin')->pluck('id');
-            $supervisors = User::where('role', 'supervisor')->pluck('id');
+            $ictAdmins = User::where('role', 'ict_admin')->get();
+            $supervisors = User::where('role', 'supervisor')->get();
             $usersToNotify = $usersToNotify->merge($ictAdmins)->merge($supervisors);
         }
 
         // Remove duplicates
-        $usersToNotify = $usersToNotify->unique();
+        $usersToNotify = $usersToNotify->unique('id');
 
-        foreach ($usersToNotify as $userId) {
-            Notification::createLoanNotification($userId, $event, $loan, $customMessage);
+        foreach ($usersToNotify as $user) {
+            Notification::createLoanNotification($user->id, $event, $loan, $customMessage);
         }
     }
 
@@ -118,26 +133,26 @@ class NotificationService
 
         // If specific users are targeted
         if (! empty($targetUsers)) {
-            $usersToNotify = collect($targetUsers);
+            $usersToNotify = User::whereIn('id', $targetUsers)->get();
         }
 
         // If roles are targeted
         if (! empty($targetRoles)) {
             if (in_array('all', $targetRoles)) {
-                $roleUsers = User::where('is_active', true)->pluck('id');
+                $roleUsers = User::where('is_active', true)->get();
             } else {
                 $roleUsers = User::whereIn('role', $targetRoles)
                     ->where('is_active', true)
-                    ->pluck('id');
+                    ->get();
             }
             $usersToNotify = $usersToNotify->merge($roleUsers);
         }
 
         // Remove duplicates
-        $usersToNotify = $usersToNotify->unique();
+        $usersToNotify = $usersToNotify->unique('id');
 
-        foreach ($usersToNotify as $userId) {
-            Notification::createSystemNotification($userId, $title, $message, [
+        foreach ($usersToNotify as $user) {
+            Notification::createSystemNotification($user->id, $title, $message, [
                 'priority' => $priority,
                 'expires_at' => $expiresAt,
                 'type' => $options['type'] ?? 'system_announcement',
@@ -153,28 +168,28 @@ class NotificationService
      */
     public function notifyEquipmentDue(): void
     {
-        $dueItems = LoanRequest::where('status', 'approved')
-            ->whereHas('equipmentItem')
-            ->where('expected_return_date', '>', now())
-            ->where('expected_return_date', '<=', now()->addDays(3))
-            ->with(['user', 'equipmentItem'])
+        $dueItems = LoanRequest::where('status_id', LoanStatus::where('code', 'approved')->first()->id)
+            ->whereHas('loanItems.equipmentItem')
+            ->where('requested_to', '>', now())
+            ->where('requested_to', '<=', now()->addDays(3))
+            ->with(['user', 'loanItems.equipmentItem'])
             ->get();
 
         foreach ($dueItems as $loan) {
             $this->notifyLoanEvent($loan, 'equipment_due',
-                "Peralatan {$loan->equipmentItem->name} akan tamat tempoh dalam 3 hari."
+                "Peralatan {$loan->loanItems->first()->equipmentItem->name} akan tamat tempoh dalam 3 hari."
             );
         }
 
-        $overdueItems = LoanRequest::where('status', 'approved')
-            ->whereHas('equipmentItem')
-            ->where('expected_return_date', '<', now())
-            ->with(['user', 'equipmentItem'])
+        $overdueItems = LoanRequest::where('status_id', LoanStatus::where('code', 'approved')->first()->id)
+            ->whereHas('loanItems.equipmentItem')
+            ->where('requested_to', '<', now())
+            ->with(['user', 'loanItems.equipmentItem'])
             ->get();
 
         foreach ($overdueItems as $loan) {
             $this->notifyLoanEvent($loan, 'equipment_overdue',
-                "Peralatan {$loan->equipmentItem->name} telah lewat tempoh!"
+                "Peralatan {$loan->loanItems->first()->equipmentItem->name} telah lewat tempoh!"
             );
         }
     }

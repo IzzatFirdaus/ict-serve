@@ -44,6 +44,8 @@ Thumbs.db
 # Documentation generators / tooling
 /.phpdoc/cache/
 /.phpactor.json
+/.phpdoc/build/
+/.phpdoc/build/classes/
 
 # Misc
 /composer.phar
