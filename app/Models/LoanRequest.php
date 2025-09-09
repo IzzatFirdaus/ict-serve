@@ -140,13 +140,10 @@ class LoanRequest extends Model
 
     /**
      * Accessor for single equipment item (for legacy code)
-     */
-    /**
-     * Accessor for single equipment item (for legacy code)
      *
      * @return \App\Models\EquipmentItem|null
      */
-    public function getEquipmentItemAttribute()
+    public function getEquipmentItemAttribute(): ?EquipmentItem
     {
         /** @var \App\Models\EquipmentItem|null $item */
         $item = $this->equipmentItems()->first();

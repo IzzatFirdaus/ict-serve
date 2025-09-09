@@ -1,794 +1,996 @@
-Search.appendIndex(
-    [
-                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\ConfirmPasswordController",
-            "name": "ConfirmPasswordController",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-Auth-ConfirmPasswordController.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\ConfirmPasswordController\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020controller\u0020instance.",
-            "url": "classes/App-Http-Controllers-Auth-ConfirmPasswordController.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\ConfirmPasswordController\u003A\u003A\u0024redirectTo",
-            "name": "redirectTo",
-            "summary": "Where\u0020to\u0020redirect\u0020users\u0020when\u0020the\u0020intended\u0020url\u0020fails.",
-            "url": "classes/App-Http-Controllers-Auth-ConfirmPasswordController.html#property_redirectTo"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\ForgotPasswordController",
-            "name": "ForgotPasswordController",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-Auth-ForgotPasswordController.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\LoginController",
-            "name": "LoginController",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-Auth-LoginController.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\LoginController\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020controller\u0020instance.",
-            "url": "classes/App-Http-Controllers-Auth-LoginController.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\LoginController\u003A\u003A\u0024redirectTo",
-            "name": "redirectTo",
-            "summary": "Where\u0020to\u0020redirect\u0020users\u0020after\u0020login.",
-            "url": "classes/App-Http-Controllers-Auth-LoginController.html#property_redirectTo"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\RegisterController",
-            "name": "RegisterController",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-Auth-RegisterController.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\RegisterController\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020controller\u0020instance.",
-            "url": "classes/App-Http-Controllers-Auth-RegisterController.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\RegisterController\u003A\u003Avalidator\u0028\u0029",
-            "name": "validator",
-            "summary": "Get\u0020a\u0020validator\u0020for\u0020an\u0020incoming\u0020registration\u0020request.",
-            "url": "classes/App-Http-Controllers-Auth-RegisterController.html#method_validator"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\RegisterController\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Create\u0020a\u0020new\u0020user\u0020instance\u0020after\u0020a\u0020valid\u0020registration.",
-            "url": "classes/App-Http-Controllers-Auth-RegisterController.html#method_create"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\RegisterController\u003A\u003A\u0024redirectTo",
-            "name": "redirectTo",
-            "summary": "Where\u0020to\u0020redirect\u0020users\u0020after\u0020registration.",
-            "url": "classes/App-Http-Controllers-Auth-RegisterController.html#property_redirectTo"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\ResetPasswordController",
-            "name": "ResetPasswordController",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-Auth-ResetPasswordController.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\ResetPasswordController\u003A\u003A\u0024redirectTo",
-            "name": "redirectTo",
-            "summary": "Where\u0020to\u0020redirect\u0020users\u0020after\u0020resetting\u0020their\u0020password.",
-            "url": "classes/App-Http-Controllers-Auth-ResetPasswordController.html#property_redirectTo"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\VerificationController",
-            "name": "VerificationController",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-Auth-VerificationController.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\VerificationController\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020controller\u0020instance.",
-            "url": "classes/App-Http-Controllers-Auth-VerificationController.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth\\VerificationController\u003A\u003A\u0024redirectTo",
-            "name": "redirectTo",
-            "summary": "Where\u0020to\u0020redirect\u0020users\u0020after\u0020verification.",
-            "url": "classes/App-Http-Controllers-Auth-VerificationController.html#property_redirectTo"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Controller",
-            "name": "Controller",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-Controller.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\HomeController",
-            "name": "HomeController",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-HomeController.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\HomeController\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020controller\u0020instance.",
-            "url": "classes/App-Http-Controllers-HomeController.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\HomeController\u003A\u003Aindex\u0028\u0029",
-            "name": "index",
-            "summary": "Show\u0020the\u0020application\u0020dashboard.",
-            "url": "classes/App-Http-Controllers-HomeController.html#method_index"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\InventoryController",
-            "name": "InventoryController",
-            "summary": "",
-            "url": "classes/App-Http-Controllers-InventoryController.html"
-        },                {
-            "fqsen": "\\App\\Http\\Requests\\CreateLoanRequestRequest",
-            "name": "CreateLoanRequestRequest",
-            "summary": "",
-            "url": "classes/App-Http-Requests-CreateLoanRequestRequest.html"
-        },                {
-            "fqsen": "\\App\\Http\\Requests\\CreateLoanRequestRequest\u003A\u003Aauthorize\u0028\u0029",
-            "name": "authorize",
-            "summary": "Determine\u0020if\u0020the\u0020user\u0020is\u0020authorized\u0020to\u0020make\u0020this\u0020request.",
-            "url": "classes/App-Http-Requests-CreateLoanRequestRequest.html#method_authorize"
-        },                {
-            "fqsen": "\\App\\Http\\Requests\\CreateLoanRequestRequest\u003A\u003Arules\u0028\u0029",
-            "name": "rules",
-            "summary": "Get\u0020the\u0020validation\u0020rules\u0020that\u0020apply\u0020to\u0020the\u0020request.",
-            "url": "classes/App-Http-Requests-CreateLoanRequestRequest.html#method_rules"
-        },                {
-            "fqsen": "\\App\\Livewire\\Counter",
-            "name": "Counter",
-            "summary": "",
-            "url": "classes/App-Livewire-Counter.html"
-        },                {
-            "fqsen": "\\App\\Livewire\\Counter\u003A\u003Aincrement\u0028\u0029",
-            "name": "increment",
-            "summary": "",
-            "url": "classes/App-Livewire-Counter.html#method_increment"
-        },                {
-            "fqsen": "\\App\\Livewire\\Counter\u003A\u003Adecrement\u0028\u0029",
-            "name": "decrement",
-            "summary": "",
-            "url": "classes/App-Livewire-Counter.html#method_decrement"
-        },                {
-            "fqsen": "\\App\\Livewire\\Counter\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/App-Livewire-Counter.html#method_render"
-        },                {
-            "fqsen": "\\App\\Livewire\\Counter\u003A\u003A\u0024count",
-            "name": "count",
-            "summary": "",
-            "url": "classes/App-Livewire-Counter.html#property_count"
-        },                {
-            "fqsen": "\\App\\Livewire\\Login",
-            "name": "Login",
-            "summary": "",
-            "url": "classes/App-Livewire-Login.html"
-        },                {
-            "fqsen": "\\App\\Livewire\\Login\u003A\u003Alogin\u0028\u0029",
-            "name": "login",
-            "summary": "",
-            "url": "classes/App-Livewire-Login.html#method_login"
-        },                {
-            "fqsen": "\\App\\Livewire\\Login\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/App-Livewire-Login.html#method_render"
-        },                {
-            "fqsen": "\\App\\Livewire\\Login\u003A\u003A\u0024email",
-            "name": "email",
-            "summary": "",
-            "url": "classes/App-Livewire-Login.html#property_email"
-        },                {
-            "fqsen": "\\App\\Livewire\\Login\u003A\u003A\u0024password",
-            "name": "password",
-            "summary": "",
-            "url": "classes/App-Livewire-Login.html#property_password"
-        },                {
-            "fqsen": "\\App\\Livewire\\Register",
-            "name": "Register",
-            "summary": "",
-            "url": "classes/App-Livewire-Register.html"
-        },                {
-            "fqsen": "\\App\\Livewire\\Register\u003A\u003Aregister\u0028\u0029",
-            "name": "register",
-            "summary": "",
-            "url": "classes/App-Livewire-Register.html#method_register"
-        },                {
-            "fqsen": "\\App\\Livewire\\Register\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/App-Livewire-Register.html#method_render"
-        },                {
-            "fqsen": "\\App\\Livewire\\Register\u003A\u003A\u0024name",
-            "name": "name",
-            "summary": "",
-            "url": "classes/App-Livewire-Register.html#property_name"
-        },                {
-            "fqsen": "\\App\\Livewire\\Register\u003A\u003A\u0024email",
-            "name": "email",
-            "summary": "",
-            "url": "classes/App-Livewire-Register.html#property_email"
-        },                {
-            "fqsen": "\\App\\Livewire\\Register\u003A\u003A\u0024password",
-            "name": "password",
-            "summary": "",
-            "url": "classes/App-Livewire-Register.html#property_password"
-        },                {
-            "fqsen": "\\App\\Models\\AuditLog",
-            "name": "AuditLog",
-            "summary": "",
-            "url": "classes/App-Models-AuditLog.html"
-        },                {
-            "fqsen": "\\App\\Models\\AuditLog\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-AuditLog.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\AuditLog\u003A\u003Auser\u0028\u0029",
-            "name": "user",
-            "summary": "Get\u0020the\u0020user\u0020who\u0020performed\u0020the\u0020action",
-            "url": "classes/App-Models-AuditLog.html#method_user"
-        },                {
-            "fqsen": "\\App\\Models\\AuditLog\u003A\u003Aauditable\u0028\u0029",
-            "name": "auditable",
-            "summary": "Get\u0020the\u0020auditable\u0020model",
-            "url": "classes/App-Models-AuditLog.html#method_auditable"
-        },                {
-            "fqsen": "\\App\\Models\\AuditLog\u003A\u003AlogAction\u0028\u0029",
-            "name": "logAction",
-            "summary": "Create\u0020an\u0020audit\u0020log\u0020entry",
-            "url": "classes/App-Models-AuditLog.html#method_logAction"
-        },                {
-            "fqsen": "\\App\\Models\\AuditLog\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-AuditLog.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentCategory",
-            "name": "EquipmentCategory",
-            "summary": "",
-            "url": "classes/App-Models-EquipmentCategory.html"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentCategory\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-EquipmentCategory.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentCategory\u003A\u003AequipmentItems\u0028\u0029",
-            "name": "equipmentItems",
-            "summary": "Get\u0020all\u0020equipment\u0020items\u0020in\u0020this\u0020category",
-            "url": "classes/App-Models-EquipmentCategory.html#method_equipmentItems"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentCategory\u003A\u003AactiveEquipmentItems\u0028\u0029",
-            "name": "activeEquipmentItems",
-            "summary": "Get\u0020active\u0020equipment\u0020items\u0020in\u0020this\u0020category",
-            "url": "classes/App-Models-EquipmentCategory.html#method_activeEquipmentItems"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentCategory\u003A\u003AavailableEquipmentItems\u0028\u0029",
-            "name": "availableEquipmentItems",
-            "summary": "Get\u0020available\u0020equipment\u0020items\u0020for\u0020loan",
-            "url": "classes/App-Models-EquipmentCategory.html#method_availableEquipmentItems"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentCategory\u003A\u003AscopeActive\u0028\u0029",
-            "name": "scopeActive",
-            "summary": "Scope\u0020for\u0020active\u0020categories\u0020only",
-            "url": "classes/App-Models-EquipmentCategory.html#method_scopeActive"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentCategory\u003A\u003AscopeOrdered\u0028\u0029",
-            "name": "scopeOrdered",
-            "summary": "Scope\u0020to\u0020order\u0020by\u0020sort_order",
-            "url": "classes/App-Models-EquipmentCategory.html#method_scopeOrdered"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentCategory\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-EquipmentCategory.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem",
-            "name": "EquipmentItem",
-            "summary": "",
-            "url": "classes/App-Models-EquipmentItem.html"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-EquipmentItem.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003Acategory\u0028\u0029",
-            "name": "category",
-            "summary": "Get\u0020the\u0020category\u0020this\u0020equipment\u0020belongs\u0020to",
-            "url": "classes/App-Models-EquipmentItem.html#method_category"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AloanRequests\u0028\u0029",
-            "name": "loanRequests",
-            "summary": "Get\u0020loan\u0020requests\u0020that\u0020include\u0020this\u0020equipment",
-            "url": "classes/App-Models-EquipmentItem.html#method_loanRequests"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AloanItems\u0028\u0029",
-            "name": "loanItems",
-            "summary": "Get\u0020loan\u0020items\u0020for\u0020this\u0020equipment",
-            "url": "classes/App-Models-EquipmentItem.html#method_loanItems"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AhelpdeskTickets\u0028\u0029",
-            "name": "helpdeskTickets",
-            "summary": "Get\u0020helpdesk\u0020tickets\u0020related\u0020to\u0020this\u0020equipment",
-            "url": "classes/App-Models-EquipmentItem.html#method_helpdeskTickets"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AscopeActive\u0028\u0029",
-            "name": "scopeActive",
-            "summary": "Scope\u0020for\u0020active\u0020equipment\u0020only",
-            "url": "classes/App-Models-EquipmentItem.html#method_scopeActive"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AscopeAvailable\u0028\u0029",
-            "name": "scopeAvailable",
-            "summary": "Scope\u0020for\u0020available\u0020equipment",
-            "url": "classes/App-Models-EquipmentItem.html#method_scopeAvailable"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AscopeOnLoan\u0028\u0029",
-            "name": "scopeOnLoan",
-            "summary": "Scope\u0020for\u0020equipment\u0020on\u0020loan",
-            "url": "classes/App-Models-EquipmentItem.html#method_scopeOnLoan"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AisAvailable\u0028\u0029",
-            "name": "isAvailable",
-            "summary": "Check\u0020if\u0020equipment\u0020is\u0020currently\u0020available\u0020for\u0020loan",
-            "url": "classes/App-Models-EquipmentItem.html#method_isAvailable"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AisOnLoan\u0028\u0029",
-            "name": "isOnLoan",
-            "summary": "Check\u0020if\u0020equipment\u0020is\u0020currently\u0020on\u0020loan",
-            "url": "classes/App-Models-EquipmentItem.html#method_isOnLoan"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003AcurrentLoan\u0028\u0029",
-            "name": "currentLoan",
-            "summary": "Get\u0020the\u0020current\u0020active\u0020loan\u0020for\u0020this\u0020equipment",
-            "url": "classes/App-Models-EquipmentItem.html#method_currentLoan"
-        },                {
-            "fqsen": "\\App\\Models\\EquipmentItem\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-EquipmentItem.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket",
-            "name": "HelpdeskTicket",
-            "summary": "",
-            "url": "classes/App-Models-HelpdeskTicket.html"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003Auser\u0028\u0029",
-            "name": "user",
-            "summary": "Get\u0020the\u0020user\u0020who\u0020created\u0020this\u0020ticket",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_user"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003Acategory\u0028\u0029",
-            "name": "category",
-            "summary": "Get\u0020the\u0020category\u0020of\u0020this\u0020ticket",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_category"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003Astatus\u0028\u0029",
-            "name": "status",
-            "summary": "Get\u0020the\u0020current\u0020status\u0020of\u0020this\u0020ticket",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_status"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AassignedToUser\u0028\u0029",
-            "name": "assignedToUser",
-            "summary": "Get\u0020the\u0020user\u0020assigned\u0020to\u0020this\u0020ticket",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_assignedToUser"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AresolvedByUser\u0028\u0029",
-            "name": "resolvedByUser",
-            "summary": "Get\u0020the\u0020user\u0020who\u0020resolved\u0020this\u0020ticket",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_resolvedByUser"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AequipmentItem\u0028\u0029",
-            "name": "equipmentItem",
-            "summary": "Get\u0020the\u0020related\u0020equipment\u0020item",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_equipmentItem"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003Aboot\u0028\u0029",
-            "name": "boot",
-            "summary": "Generate\u0020unique\u0020ticket\u0020number",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_boot"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AgenerateTicketNumber\u0028\u0029",
-            "name": "generateTicketNumber",
-            "summary": "Generate\u0020ticket\u0020number\u0020in\u0020format\u003A\u0020HD\u002DYYYY\u002DMMDD\u002DXXX",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_generateTicketNumber"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AisOverdue\u0028\u0029",
-            "name": "isOverdue",
-            "summary": "Check\u0020if\u0020ticket\u0020is\u0020overdue",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_isOverdue"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AisNew\u0028\u0029",
-            "name": "isNew",
-            "summary": "Check\u0020if\u0020ticket\u0020is\u0020new",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_isNew"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AisAssigned\u0028\u0029",
-            "name": "isAssigned",
-            "summary": "Check\u0020if\u0020ticket\u0020is\u0020assigned",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_isAssigned"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AisResolved\u0028\u0029",
-            "name": "isResolved",
-            "summary": "Check\u0020if\u0020ticket\u0020is\u0020resolved",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_isResolved"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003AisClosed\u0028\u0029",
-            "name": "isClosed",
-            "summary": "Check\u0020if\u0020ticket\u0020is\u0020closed",
-            "url": "classes/App-Models-HelpdeskTicket.html#method_isClosed"
-        },                {
-            "fqsen": "\\App\\Models\\HelpdeskTicket\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-HelpdeskTicket.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\LoanItem",
-            "name": "LoanItem",
-            "summary": "",
-            "url": "classes/App-Models-LoanItem.html"
-        },                {
-            "fqsen": "\\App\\Models\\LoanItem\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-LoanItem.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\LoanItem\u003A\u003AloanRequest\u0028\u0029",
-            "name": "loanRequest",
-            "summary": "Get\u0020the\u0020loan\u0020request\u0020this\u0020item\u0020belongs\u0020to",
-            "url": "classes/App-Models-LoanItem.html#method_loanRequest"
-        },                {
-            "fqsen": "\\App\\Models\\LoanItem\u003A\u003AequipmentItem\u0028\u0029",
-            "name": "equipmentItem",
-            "summary": "Get\u0020the\u0020equipment\u0020item",
-            "url": "classes/App-Models-LoanItem.html#method_equipmentItem"
-        },                {
-            "fqsen": "\\App\\Models\\LoanItem\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-LoanItem.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest",
-            "name": "LoanRequest",
-            "summary": "",
-            "url": "classes/App-Models-LoanRequest.html"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-LoanRequest.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003Auser\u0028\u0029",
-            "name": "user",
-            "summary": "Get\u0020the\u0020user\u0020who\u0020made\u0020this\u0020loan\u0020request",
-            "url": "classes/App-Models-LoanRequest.html#method_user"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003Astatus\u0028\u0029",
-            "name": "status",
-            "summary": "Get\u0020the\u0020current\u0020status\u0020of\u0020this\u0020loan\u0020request",
-            "url": "classes/App-Models-LoanRequest.html#method_status"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003Asupervisor\u0028\u0029",
-            "name": "supervisor",
-            "summary": "Get\u0020the\u0020supervisor\u0020who\u0020approved\u0020this\u0020request",
-            "url": "classes/App-Models-LoanRequest.html#method_supervisor"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AictAdmin\u0028\u0029",
-            "name": "ictAdmin",
-            "summary": "Get\u0020the\u0020ICT\u0020admin\u0020who\u0020approved\u0020this\u0020request",
-            "url": "classes/App-Models-LoanRequest.html#method_ictAdmin"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AissuedBy\u0028\u0029",
-            "name": "issuedBy",
-            "summary": "Get\u0020the\u0020user\u0020who\u0020issued\u0020the\u0020equipment",
-            "url": "classes/App-Models-LoanRequest.html#method_issuedBy"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AreceivedBy\u0028\u0029",
-            "name": "receivedBy",
-            "summary": "Get\u0020the\u0020user\u0020who\u0020received\u0020the\u0020returned\u0020equipment",
-            "url": "classes/App-Models-LoanRequest.html#method_receivedBy"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AequipmentItems\u0028\u0029",
-            "name": "equipmentItems",
-            "summary": "Get\u0020equipment\u0020items\u0020for\u0020this\u0020loan\u0020request",
-            "url": "classes/App-Models-LoanRequest.html#method_equipmentItems"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AloanItems\u0028\u0029",
-            "name": "loanItems",
-            "summary": "Get\u0020loan\u0020items\u0020for\u0020this\u0020request",
-            "url": "classes/App-Models-LoanRequest.html#method_loanItems"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003Aboot\u0028\u0029",
-            "name": "boot",
-            "summary": "Generate\u0020unique\u0020request\u0020number",
-            "url": "classes/App-Models-LoanRequest.html#method_boot"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AgenerateRequestNumber\u0028\u0029",
-            "name": "generateRequestNumber",
-            "summary": "Generate\u0020request\u0020number\u0020in\u0020format\u003A\u0020LR\u002DYYYY\u002DMMDD\u002DXXX",
-            "url": "classes/App-Models-LoanRequest.html#method_generateRequestNumber"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AisPending\u0028\u0029",
-            "name": "isPending",
-            "summary": "Check\u0020if\u0020request\u0020is\u0020pending\u0020approval",
-            "url": "classes/App-Models-LoanRequest.html#method_isPending"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AisSupervisorApproved\u0028\u0029",
-            "name": "isSupervisorApproved",
-            "summary": "Check\u0020if\u0020request\u0020is\u0020approved\u0020by\u0020supervisor",
-            "url": "classes/App-Models-LoanRequest.html#method_isSupervisorApproved"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AisIctApproved\u0028\u0029",
-            "name": "isIctApproved",
-            "summary": "Check\u0020if\u0020request\u0020is\u0020approved\u0020by\u0020ICT",
-            "url": "classes/App-Models-LoanRequest.html#method_isIctApproved"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AisActive\u0028\u0029",
-            "name": "isActive",
-            "summary": "Check\u0020if\u0020loan\u0020is\u0020currently\u0020active",
-            "url": "classes/App-Models-LoanRequest.html#method_isActive"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AisReturned\u0028\u0029",
-            "name": "isReturned",
-            "summary": "Check\u0020if\u0020loan\u0020is\u0020returned",
-            "url": "classes/App-Models-LoanRequest.html#method_isReturned"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003AisOverdue\u0028\u0029",
-            "name": "isOverdue",
-            "summary": "Check\u0020if\u0020loan\u0020is\u0020overdue",
-            "url": "classes/App-Models-LoanRequest.html#method_isOverdue"
-        },                {
-            "fqsen": "\\App\\Models\\LoanRequest\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-LoanRequest.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\LoanStatus",
-            "name": "LoanStatus",
-            "summary": "",
-            "url": "classes/App-Models-LoanStatus.html"
-        },                {
-            "fqsen": "\\App\\Models\\LoanStatus\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-LoanStatus.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\LoanStatus\u003A\u003AloanRequests\u0028\u0029",
-            "name": "loanRequests",
-            "summary": "Get\u0020loan\u0020requests\u0020with\u0020this\u0020status",
-            "url": "classes/App-Models-LoanStatus.html#method_loanRequests"
-        },                {
-            "fqsen": "\\App\\Models\\LoanStatus\u003A\u003AscopeActive\u0028\u0029",
-            "name": "scopeActive",
-            "summary": "Scope\u0020for\u0020active\u0020statuses\u0020only",
-            "url": "classes/App-Models-LoanStatus.html#method_scopeActive"
-        },                {
-            "fqsen": "\\App\\Models\\LoanStatus\u003A\u003AscopeOrdered\u0028\u0029",
-            "name": "scopeOrdered",
-            "summary": "Scope\u0020to\u0020order\u0020by\u0020sort_order",
-            "url": "classes/App-Models-LoanStatus.html#method_scopeOrdered"
-        },                {
-            "fqsen": "\\App\\Models\\LoanStatus\u003A\u003AgetByCode\u0028\u0029",
-            "name": "getByCode",
-            "summary": "Get\u0020status\u0020by\u0020code",
-            "url": "classes/App-Models-LoanStatus.html#method_getByCode"
-        },                {
-            "fqsen": "\\App\\Models\\LoanStatus\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-LoanStatus.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\TicketCategory",
-            "name": "TicketCategory",
-            "summary": "",
-            "url": "classes/App-Models-TicketCategory.html"
-        },                {
-            "fqsen": "\\App\\Models\\TicketCategory\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-TicketCategory.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\TicketCategory\u003A\u003AhelpdeskTickets\u0028\u0029",
-            "name": "helpdeskTickets",
-            "summary": "Get\u0020helpdesk\u0020tickets\u0020in\u0020this\u0020category",
-            "url": "classes/App-Models-TicketCategory.html#method_helpdeskTickets"
-        },                {
-            "fqsen": "\\App\\Models\\TicketCategory\u003A\u003AscopeActive\u0028\u0029",
-            "name": "scopeActive",
-            "summary": "Scope\u0020for\u0020active\u0020categories\u0020only",
-            "url": "classes/App-Models-TicketCategory.html#method_scopeActive"
-        },                {
-            "fqsen": "\\App\\Models\\TicketCategory\u003A\u003AscopeOrdered\u0028\u0029",
-            "name": "scopeOrdered",
-            "summary": "Scope\u0020to\u0020order\u0020by\u0020sort_order",
-            "url": "classes/App-Models-TicketCategory.html#method_scopeOrdered"
-        },                {
-            "fqsen": "\\App\\Models\\TicketCategory\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-TicketCategory.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\TicketStatus",
-            "name": "TicketStatus",
-            "summary": "",
-            "url": "classes/App-Models-TicketStatus.html"
-        },                {
-            "fqsen": "\\App\\Models\\TicketStatus\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "",
-            "url": "classes/App-Models-TicketStatus.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\TicketStatus\u003A\u003AhelpdeskTickets\u0028\u0029",
-            "name": "helpdeskTickets",
-            "summary": "Get\u0020helpdesk\u0020tickets\u0020with\u0020this\u0020status",
-            "url": "classes/App-Models-TicketStatus.html#method_helpdeskTickets"
-        },                {
-            "fqsen": "\\App\\Models\\TicketStatus\u003A\u003AscopeActive\u0028\u0029",
-            "name": "scopeActive",
-            "summary": "Scope\u0020for\u0020active\u0020statuses\u0020only",
-            "url": "classes/App-Models-TicketStatus.html#method_scopeActive"
-        },                {
-            "fqsen": "\\App\\Models\\TicketStatus\u003A\u003AscopeOrdered\u0028\u0029",
-            "name": "scopeOrdered",
-            "summary": "Scope\u0020to\u0020order\u0020by\u0020sort_order",
-            "url": "classes/App-Models-TicketStatus.html#method_scopeOrdered"
-        },                {
-            "fqsen": "\\App\\Models\\TicketStatus\u003A\u003AgetByCode\u0028\u0029",
-            "name": "getByCode",
-            "summary": "Get\u0020status\u0020by\u0020code",
-            "url": "classes/App-Models-TicketStatus.html#method_getByCode"
-        },                {
-            "fqsen": "\\App\\Models\\TicketStatus\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "",
-            "url": "classes/App-Models-TicketStatus.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\User",
-            "name": "User",
-            "summary": "",
-            "url": "classes/App-Models-User.html"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003Acasts\u0028\u0029",
-            "name": "casts",
-            "summary": "Get\u0020the\u0020attributes\u0020that\u0020should\u0020be\u0020cast.",
-            "url": "classes/App-Models-User.html#method_casts"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003Asupervisor\u0028\u0029",
-            "name": "supervisor",
-            "summary": "Get\u0020the\u0020supervisor\u0020of\u0020this\u0020user",
-            "url": "classes/App-Models-User.html#method_supervisor"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003Asubordinates\u0028\u0029",
-            "name": "subordinates",
-            "summary": "Get\u0020users\u0020supervised\u0020by\u0020this\u0020user",
-            "url": "classes/App-Models-User.html#method_subordinates"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AloanRequests\u0028\u0029",
-            "name": "loanRequests",
-            "summary": "Get\u0020loan\u0020requests\u0020made\u0020by\u0020this\u0020user",
-            "url": "classes/App-Models-User.html#method_loanRequests"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AsupervisedLoanRequests\u0028\u0029",
-            "name": "supervisedLoanRequests",
-            "summary": "Get\u0020loan\u0020requests\u0020supervised\u0020by\u0020this\u0020user",
-            "url": "classes/App-Models-User.html#method_supervisedLoanRequests"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AictApprovedLoanRequests\u0028\u0029",
-            "name": "ictApprovedLoanRequests",
-            "summary": "Get\u0020loan\u0020requests\u0020approved\u0020by\u0020this\u0020user\u0020as\u0020ICT\u0020admin",
-            "url": "classes/App-Models-User.html#method_ictApprovedLoanRequests"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AhelpdeskTickets\u0028\u0029",
-            "name": "helpdeskTickets",
-            "summary": "Get\u0020helpdesk\u0020tickets\u0020created\u0020by\u0020this\u0020user",
-            "url": "classes/App-Models-User.html#method_helpdeskTickets"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AassignedTickets\u0028\u0029",
-            "name": "assignedTickets",
-            "summary": "Get\u0020helpdesk\u0020tickets\u0020assigned\u0020to\u0020this\u0020user",
-            "url": "classes/App-Models-User.html#method_assignedTickets"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AauditLogs\u0028\u0029",
-            "name": "auditLogs",
-            "summary": "Get\u0020audit\u0020logs\u0020for\u0020this\u0020user",
-            "url": "classes/App-Models-User.html#method_auditLogs"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AhasRole\u0028\u0029",
-            "name": "hasRole",
-            "summary": "Check\u0020if\u0020user\u0020has\u0020specific\u0020role",
-            "url": "classes/App-Models-User.html#method_hasRole"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AisSupervisor\u0028\u0029",
-            "name": "isSupervisor",
-            "summary": "Check\u0020if\u0020user\u0020is\u0020supervisor",
-            "url": "classes/App-Models-User.html#method_isSupervisor"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AisIctAdmin\u0028\u0029",
-            "name": "isIctAdmin",
-            "summary": "Check\u0020if\u0020user\u0020is\u0020ICT\u0020admin",
-            "url": "classes/App-Models-User.html#method_isIctAdmin"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AisHelpdeskStaff\u0028\u0029",
-            "name": "isHelpdeskStaff",
-            "summary": "Check\u0020if\u0020user\u0020is\u0020helpdesk\u0020staff",
-            "url": "classes/App-Models-User.html#method_isHelpdeskStaff"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AisSuperAdmin\u0028\u0029",
-            "name": "isSuperAdmin",
-            "summary": "Check\u0020if\u0020user\u0020is\u0020super\u0020admin",
-            "url": "classes/App-Models-User.html#method_isSuperAdmin"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003AgetFullNameWithStaffIdAttribute\u0028\u0029",
-            "name": "getFullNameWithStaffIdAttribute",
-            "summary": "Get\u0020full\u0020name\u0020with\u0020staff\u0020ID",
-            "url": "classes/App-Models-User.html#method_getFullNameWithStaffIdAttribute"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003A\u0024fillable",
-            "name": "fillable",
-            "summary": "The\u0020attributes\u0020that\u0020are\u0020mass\u0020assignable.",
-            "url": "classes/App-Models-User.html#property_fillable"
-        },                {
-            "fqsen": "\\App\\Models\\User\u003A\u003A\u0024hidden",
-            "name": "hidden",
-            "summary": "The\u0020attributes\u0020that\u0020should\u0020be\u0020hidden\u0020for\u0020serialization.",
-            "url": "classes/App-Models-User.html#property_hidden"
-        },                {
-            "fqsen": "\\App\\Providers\\AppServiceProvider",
-            "name": "AppServiceProvider",
-            "summary": "",
-            "url": "classes/App-Providers-AppServiceProvider.html"
-        },                {
-            "fqsen": "\\App\\Providers\\AppServiceProvider\u003A\u003Aregister\u0028\u0029",
-            "name": "register",
-            "summary": "Register\u0020any\u0020application\u0020services.",
-            "url": "classes/App-Providers-AppServiceProvider.html#method_register"
-        },                {
-            "fqsen": "\\App\\Providers\\AppServiceProvider\u003A\u003Aboot\u0028\u0029",
-            "name": "boot",
-            "summary": "Bootstrap\u0020any\u0020application\u0020services.",
-            "url": "classes/App-Providers-AppServiceProvider.html#method_boot"
-        },                {
-            "fqsen": "\\",
-            "name": "\\",
-            "summary": "",
-            "url": "namespaces/default.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\Auth",
-            "name": "Auth",
-            "summary": "",
-            "url": "namespaces/app-http-controllers-auth.html"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers",
-            "name": "Controllers",
-            "summary": "",
-            "url": "namespaces/app-http-controllers.html"
-        },                {
-            "fqsen": "\\App\\Http",
-            "name": "Http",
-            "summary": "",
-            "url": "namespaces/app-http.html"
-        },                {
-            "fqsen": "\\App",
-            "name": "App",
-            "summary": "",
-            "url": "namespaces/app.html"
-        },                {
-            "fqsen": "\\App\\Http\\Requests",
-            "name": "Requests",
-            "summary": "",
-            "url": "namespaces/app-http-requests.html"
-        },                {
-            "fqsen": "\\App\\Livewire",
-            "name": "Livewire",
-            "summary": "",
-            "url": "namespaces/app-livewire.html"
-        },                {
-            "fqsen": "\\App\\Models",
-            "name": "Models",
-            "summary": "",
-            "url": "namespaces/app-models.html"
-        },                {
-            "fqsen": "\\App\\Providers",
-            "name": "Providers",
-            "summary": "",
-            "url": "namespaces/app-providers.html"
-        }            ]
-);
+Search.appendIndex([
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\ConfirmPasswordController",
+        name: "ConfirmPasswordController",
+        summary: "",
+        url: "classes/App-Http-Controllers-Auth-ConfirmPasswordController.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\ConfirmPasswordController\u003A\u003A__construct\u0028\u0029",
+        name: "__construct",
+        summary: "Create\u0020a\u0020new\u0020controller\u0020instance.",
+        url: "classes/App-Http-Controllers-Auth-ConfirmPasswordController.html#method___construct",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\ConfirmPasswordController\u003A\u003A\u0024redirectTo",
+        name: "redirectTo",
+        summary:
+            "Where\u0020to\u0020redirect\u0020users\u0020when\u0020the\u0020intended\u0020url\u0020fails.",
+        url: "classes/App-Http-Controllers-Auth-ConfirmPasswordController.html#property_redirectTo",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\ForgotPasswordController",
+        name: "ForgotPasswordController",
+        summary: "",
+        url: "classes/App-Http-Controllers-Auth-ForgotPasswordController.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\LoginController",
+        name: "LoginController",
+        summary: "",
+        url: "classes/App-Http-Controllers-Auth-LoginController.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\LoginController\u003A\u003A__construct\u0028\u0029",
+        name: "__construct",
+        summary: "Create\u0020a\u0020new\u0020controller\u0020instance.",
+        url: "classes/App-Http-Controllers-Auth-LoginController.html#method___construct",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\LoginController\u003A\u003A\u0024redirectTo",
+        name: "redirectTo",
+        summary:
+            "Where\u0020to\u0020redirect\u0020users\u0020after\u0020login.",
+        url: "classes/App-Http-Controllers-Auth-LoginController.html#property_redirectTo",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\RegisterController",
+        name: "RegisterController",
+        summary: "",
+        url: "classes/App-Http-Controllers-Auth-RegisterController.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\RegisterController\u003A\u003A__construct\u0028\u0029",
+        name: "__construct",
+        summary: "Create\u0020a\u0020new\u0020controller\u0020instance.",
+        url: "classes/App-Http-Controllers-Auth-RegisterController.html#method___construct",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\RegisterController\u003A\u003Avalidator\u0028\u0029",
+        name: "validator",
+        summary:
+            "Get\u0020a\u0020validator\u0020for\u0020an\u0020incoming\u0020registration\u0020request.",
+        url: "classes/App-Http-Controllers-Auth-RegisterController.html#method_validator",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\RegisterController\u003A\u003Acreate\u0028\u0029",
+        name: "create",
+        summary:
+            "Create\u0020a\u0020new\u0020user\u0020instance\u0020after\u0020a\u0020valid\u0020registration.",
+        url: "classes/App-Http-Controllers-Auth-RegisterController.html#method_create",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\RegisterController\u003A\u003A\u0024redirectTo",
+        name: "redirectTo",
+        summary:
+            "Where\u0020to\u0020redirect\u0020users\u0020after\u0020registration.",
+        url: "classes/App-Http-Controllers-Auth-RegisterController.html#property_redirectTo",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\ResetPasswordController",
+        name: "ResetPasswordController",
+        summary: "",
+        url: "classes/App-Http-Controllers-Auth-ResetPasswordController.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\ResetPasswordController\u003A\u003A\u0024redirectTo",
+        name: "redirectTo",
+        summary:
+            "Where\u0020to\u0020redirect\u0020users\u0020after\u0020resetting\u0020their\u0020password.",
+        url: "classes/App-Http-Controllers-Auth-ResetPasswordController.html#property_redirectTo",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\VerificationController",
+        name: "VerificationController",
+        summary: "",
+        url: "classes/App-Http-Controllers-Auth-VerificationController.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\VerificationController\u003A\u003A__construct\u0028\u0029",
+        name: "__construct",
+        summary: "Create\u0020a\u0020new\u0020controller\u0020instance.",
+        url: "classes/App-Http-Controllers-Auth-VerificationController.html#method___construct",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth\\VerificationController\u003A\u003A\u0024redirectTo",
+        name: "redirectTo",
+        summary:
+            "Where\u0020to\u0020redirect\u0020users\u0020after\u0020verification.",
+        url: "classes/App-Http-Controllers-Auth-VerificationController.html#property_redirectTo",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Controller",
+        name: "Controller",
+        summary: "",
+        url: "classes/App-Http-Controllers-Controller.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\HomeController",
+        name: "HomeController",
+        summary: "",
+        url: "classes/App-Http-Controllers-HomeController.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\HomeController\u003A\u003A__construct\u0028\u0029",
+        name: "__construct",
+        summary: "Create\u0020a\u0020new\u0020controller\u0020instance.",
+        url: "classes/App-Http-Controllers-HomeController.html#method___construct",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\HomeController\u003A\u003Aindex\u0028\u0029",
+        name: "index",
+        summary: "Show\u0020the\u0020application\u0020dashboard.",
+        url: "classes/App-Http-Controllers-HomeController.html#method_index",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\InventoryController",
+        name: "InventoryController",
+        summary: "",
+        url: "classes/App-Http-Controllers-InventoryController.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Requests\\CreateLoanRequestRequest",
+        name: "CreateLoanRequestRequest",
+        summary: "",
+        url: "classes/App-Http-Requests-CreateLoanRequestRequest.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Requests\\CreateLoanRequestRequest\u003A\u003Aauthorize\u0028\u0029",
+        name: "authorize",
+        summary:
+            "Determine\u0020if\u0020the\u0020user\u0020is\u0020authorized\u0020to\u0020make\u0020this\u0020request.",
+        url: "classes/App-Http-Requests-CreateLoanRequestRequest.html#method_authorize",
+    },
+    {
+        fqsen: "\\App\\Http\\Requests\\CreateLoanRequestRequest\u003A\u003Arules\u0028\u0029",
+        name: "rules",
+        summary:
+            "Get\u0020the\u0020validation\u0020rules\u0020that\u0020apply\u0020to\u0020the\u0020request.",
+        url: "classes/App-Http-Requests-CreateLoanRequestRequest.html#method_rules",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Counter",
+        name: "Counter",
+        summary: "",
+        url: "classes/App-Livewire-Counter.html",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Counter\u003A\u003Aincrement\u0028\u0029",
+        name: "increment",
+        summary: "",
+        url: "classes/App-Livewire-Counter.html#method_increment",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Counter\u003A\u003Adecrement\u0028\u0029",
+        name: "decrement",
+        summary: "",
+        url: "classes/App-Livewire-Counter.html#method_decrement",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Counter\u003A\u003Arender\u0028\u0029",
+        name: "render",
+        summary: "",
+        url: "classes/App-Livewire-Counter.html#method_render",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Counter\u003A\u003A\u0024count",
+        name: "count",
+        summary: "",
+        url: "classes/App-Livewire-Counter.html#property_count",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Login",
+        name: "Login",
+        summary: "",
+        url: "classes/App-Livewire-Login.html",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Login\u003A\u003Alogin\u0028\u0029",
+        name: "login",
+        summary: "",
+        url: "classes/App-Livewire-Login.html#method_login",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Login\u003A\u003Arender\u0028\u0029",
+        name: "render",
+        summary: "",
+        url: "classes/App-Livewire-Login.html#method_render",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Login\u003A\u003A\u0024email",
+        name: "email",
+        summary: "",
+        url: "classes/App-Livewire-Login.html#property_email",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Login\u003A\u003A\u0024password",
+        name: "password",
+        summary: "",
+        url: "classes/App-Livewire-Login.html#property_password",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Register",
+        name: "Register",
+        summary: "",
+        url: "classes/App-Livewire-Register.html",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Register\u003A\u003Aregister\u0028\u0029",
+        name: "register",
+        summary: "",
+        url: "classes/App-Livewire-Register.html#method_register",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Register\u003A\u003Arender\u0028\u0029",
+        name: "render",
+        summary: "",
+        url: "classes/App-Livewire-Register.html#method_render",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Register\u003A\u003A\u0024name",
+        name: "name",
+        summary: "",
+        url: "classes/App-Livewire-Register.html#property_name",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Register\u003A\u003A\u0024email",
+        name: "email",
+        summary: "",
+        url: "classes/App-Livewire-Register.html#property_email",
+    },
+    {
+        fqsen: "\\App\\Livewire\\Register\u003A\u003A\u0024password",
+        name: "password",
+        summary: "",
+        url: "classes/App-Livewire-Register.html#property_password",
+    },
+    {
+        fqsen: "\\App\\Models\\AuditLog",
+        name: "AuditLog",
+        summary: "",
+        url: "classes/App-Models-AuditLog.html",
+    },
+    {
+        fqsen: "\\App\\Models\\AuditLog\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-AuditLog.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\AuditLog\u003A\u003Auser\u0028\u0029",
+        name: "user",
+        summary:
+            "Get\u0020the\u0020user\u0020who\u0020performed\u0020the\u0020action",
+        url: "classes/App-Models-AuditLog.html#method_user",
+    },
+    {
+        fqsen: "\\App\\Models\\AuditLog\u003A\u003Aauditable\u0028\u0029",
+        name: "auditable",
+        summary: "Get\u0020the\u0020auditable\u0020model",
+        url: "classes/App-Models-AuditLog.html#method_auditable",
+    },
+    {
+        fqsen: "\\App\\Models\\AuditLog\u003A\u003AlogAction\u0028\u0029",
+        name: "logAction",
+        summary: "Create\u0020an\u0020audit\u0020log\u0020entry",
+        url: "classes/App-Models-AuditLog.html#method_logAction",
+    },
+    {
+        fqsen: "\\App\\Models\\AuditLog\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-AuditLog.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentCategory",
+        name: "EquipmentCategory",
+        summary: "",
+        url: "classes/App-Models-EquipmentCategory.html",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentCategory\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-EquipmentCategory.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentCategory\u003A\u003AequipmentItems\u0028\u0029",
+        name: "equipmentItems",
+        summary:
+            "Get\u0020all\u0020equipment\u0020items\u0020in\u0020this\u0020category",
+        url: "classes/App-Models-EquipmentCategory.html#method_equipmentItems",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentCategory\u003A\u003AactiveEquipmentItems\u0028\u0029",
+        name: "activeEquipmentItems",
+        summary:
+            "Get\u0020active\u0020equipment\u0020items\u0020in\u0020this\u0020category",
+        url: "classes/App-Models-EquipmentCategory.html#method_activeEquipmentItems",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentCategory\u003A\u003AavailableEquipmentItems\u0028\u0029",
+        name: "availableEquipmentItems",
+        summary:
+            "Get\u0020available\u0020equipment\u0020items\u0020for\u0020loan",
+        url: "classes/App-Models-EquipmentCategory.html#method_availableEquipmentItems",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentCategory\u003A\u003AscopeActive\u0028\u0029",
+        name: "scopeActive",
+        summary: "Scope\u0020for\u0020active\u0020categories\u0020only",
+        url: "classes/App-Models-EquipmentCategory.html#method_scopeActive",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentCategory\u003A\u003AscopeOrdered\u0028\u0029",
+        name: "scopeOrdered",
+        summary: "Scope\u0020to\u0020order\u0020by\u0020sort_order",
+        url: "classes/App-Models-EquipmentCategory.html#method_scopeOrdered",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentCategory\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-EquipmentCategory.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem",
+        name: "EquipmentItem",
+        summary: "",
+        url: "classes/App-Models-EquipmentItem.html",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-EquipmentItem.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003Acategory\u0028\u0029",
+        name: "category",
+        summary:
+            "Get\u0020the\u0020category\u0020this\u0020equipment\u0020belongs\u0020to",
+        url: "classes/App-Models-EquipmentItem.html#method_category",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AloanRequests\u0028\u0029",
+        name: "loanRequests",
+        summary:
+            "Get\u0020loan\u0020requests\u0020that\u0020include\u0020this\u0020equipment",
+        url: "classes/App-Models-EquipmentItem.html#method_loanRequests",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AloanItems\u0028\u0029",
+        name: "loanItems",
+        summary: "Get\u0020loan\u0020items\u0020for\u0020this\u0020equipment",
+        url: "classes/App-Models-EquipmentItem.html#method_loanItems",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AhelpdeskTickets\u0028\u0029",
+        name: "helpdeskTickets",
+        summary:
+            "Get\u0020helpdesk\u0020tickets\u0020related\u0020to\u0020this\u0020equipment",
+        url: "classes/App-Models-EquipmentItem.html#method_helpdeskTickets",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AscopeActive\u0028\u0029",
+        name: "scopeActive",
+        summary: "Scope\u0020for\u0020active\u0020equipment\u0020only",
+        url: "classes/App-Models-EquipmentItem.html#method_scopeActive",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AscopeAvailable\u0028\u0029",
+        name: "scopeAvailable",
+        summary: "Scope\u0020for\u0020available\u0020equipment",
+        url: "classes/App-Models-EquipmentItem.html#method_scopeAvailable",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AscopeOnLoan\u0028\u0029",
+        name: "scopeOnLoan",
+        summary: "Scope\u0020for\u0020equipment\u0020on\u0020loan",
+        url: "classes/App-Models-EquipmentItem.html#method_scopeOnLoan",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AisAvailable\u0028\u0029",
+        name: "isAvailable",
+        summary:
+            "Check\u0020if\u0020equipment\u0020is\u0020currently\u0020available\u0020for\u0020loan",
+        url: "classes/App-Models-EquipmentItem.html#method_isAvailable",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AisOnLoan\u0028\u0029",
+        name: "isOnLoan",
+        summary:
+            "Check\u0020if\u0020equipment\u0020is\u0020currently\u0020on\u0020loan",
+        url: "classes/App-Models-EquipmentItem.html#method_isOnLoan",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003AcurrentLoan\u0028\u0029",
+        name: "currentLoan",
+        summary:
+            "Get\u0020the\u0020current\u0020active\u0020loan\u0020for\u0020this\u0020equipment",
+        url: "classes/App-Models-EquipmentItem.html#method_currentLoan",
+    },
+    {
+        fqsen: "\\App\\Models\\EquipmentItem\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-EquipmentItem.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket",
+        name: "HelpdeskTicket",
+        summary: "",
+        url: "classes/App-Models-HelpdeskTicket.html",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-HelpdeskTicket.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003Auser\u0028\u0029",
+        name: "user",
+        summary:
+            "Get\u0020the\u0020user\u0020who\u0020created\u0020this\u0020ticket",
+        url: "classes/App-Models-HelpdeskTicket.html#method_user",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003Acategory\u0028\u0029",
+        name: "category",
+        summary: "Get\u0020the\u0020category\u0020of\u0020this\u0020ticket",
+        url: "classes/App-Models-HelpdeskTicket.html#method_category",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003Astatus\u0028\u0029",
+        name: "status",
+        summary:
+            "Get\u0020the\u0020current\u0020status\u0020of\u0020this\u0020ticket",
+        url: "classes/App-Models-HelpdeskTicket.html#method_status",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AassignedToUser\u0028\u0029",
+        name: "assignedToUser",
+        summary:
+            "Get\u0020the\u0020user\u0020assigned\u0020to\u0020this\u0020ticket",
+        url: "classes/App-Models-HelpdeskTicket.html#method_assignedToUser",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AresolvedByUser\u0028\u0029",
+        name: "resolvedByUser",
+        summary:
+            "Get\u0020the\u0020user\u0020who\u0020resolved\u0020this\u0020ticket",
+        url: "classes/App-Models-HelpdeskTicket.html#method_resolvedByUser",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AequipmentItem\u0028\u0029",
+        name: "equipmentItem",
+        summary: "Get\u0020the\u0020related\u0020equipment\u0020item",
+        url: "classes/App-Models-HelpdeskTicket.html#method_equipmentItem",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003Aboot\u0028\u0029",
+        name: "boot",
+        summary: "Generate\u0020unique\u0020ticket\u0020number",
+        url: "classes/App-Models-HelpdeskTicket.html#method_boot",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AgenerateTicketNumber\u0028\u0029",
+        name: "generateTicketNumber",
+        summary:
+            "Generate\u0020ticket\u0020number\u0020in\u0020format\u003A\u0020HD\u002DYYYY\u002DMMDD\u002DXXX",
+        url: "classes/App-Models-HelpdeskTicket.html#method_generateTicketNumber",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AisOverdue\u0028\u0029",
+        name: "isOverdue",
+        summary: "Check\u0020if\u0020ticket\u0020is\u0020overdue",
+        url: "classes/App-Models-HelpdeskTicket.html#method_isOverdue",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AisNew\u0028\u0029",
+        name: "isNew",
+        summary: "Check\u0020if\u0020ticket\u0020is\u0020new",
+        url: "classes/App-Models-HelpdeskTicket.html#method_isNew",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AisAssigned\u0028\u0029",
+        name: "isAssigned",
+        summary: "Check\u0020if\u0020ticket\u0020is\u0020assigned",
+        url: "classes/App-Models-HelpdeskTicket.html#method_isAssigned",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AisResolved\u0028\u0029",
+        name: "isResolved",
+        summary: "Check\u0020if\u0020ticket\u0020is\u0020resolved",
+        url: "classes/App-Models-HelpdeskTicket.html#method_isResolved",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003AisClosed\u0028\u0029",
+        name: "isClosed",
+        summary: "Check\u0020if\u0020ticket\u0020is\u0020closed",
+        url: "classes/App-Models-HelpdeskTicket.html#method_isClosed",
+    },
+    {
+        fqsen: "\\App\\Models\\HelpdeskTicket\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-HelpdeskTicket.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanItem",
+        name: "LoanItem",
+        summary: "",
+        url: "classes/App-Models-LoanItem.html",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanItem\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-LoanItem.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanItem\u003A\u003AloanRequest\u0028\u0029",
+        name: "loanRequest",
+        summary:
+            "Get\u0020the\u0020loan\u0020request\u0020this\u0020item\u0020belongs\u0020to",
+        url: "classes/App-Models-LoanItem.html#method_loanRequest",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanItem\u003A\u003AequipmentItem\u0028\u0029",
+        name: "equipmentItem",
+        summary: "Get\u0020the\u0020equipment\u0020item",
+        url: "classes/App-Models-LoanItem.html#method_equipmentItem",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanItem\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-LoanItem.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest",
+        name: "LoanRequest",
+        summary: "",
+        url: "classes/App-Models-LoanRequest.html",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-LoanRequest.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003Auser\u0028\u0029",
+        name: "user",
+        summary:
+            "Get\u0020the\u0020user\u0020who\u0020made\u0020this\u0020loan\u0020request",
+        url: "classes/App-Models-LoanRequest.html#method_user",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003Astatus\u0028\u0029",
+        name: "status",
+        summary:
+            "Get\u0020the\u0020current\u0020status\u0020of\u0020this\u0020loan\u0020request",
+        url: "classes/App-Models-LoanRequest.html#method_status",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003Asupervisor\u0028\u0029",
+        name: "supervisor",
+        summary:
+            "Get\u0020the\u0020supervisor\u0020who\u0020approved\u0020this\u0020request",
+        url: "classes/App-Models-LoanRequest.html#method_supervisor",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AictAdmin\u0028\u0029",
+        name: "ictAdmin",
+        summary:
+            "Get\u0020the\u0020ICT\u0020admin\u0020who\u0020approved\u0020this\u0020request",
+        url: "classes/App-Models-LoanRequest.html#method_ictAdmin",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AissuedBy\u0028\u0029",
+        name: "issuedBy",
+        summary:
+            "Get\u0020the\u0020user\u0020who\u0020issued\u0020the\u0020equipment",
+        url: "classes/App-Models-LoanRequest.html#method_issuedBy",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AreceivedBy\u0028\u0029",
+        name: "receivedBy",
+        summary:
+            "Get\u0020the\u0020user\u0020who\u0020received\u0020the\u0020returned\u0020equipment",
+        url: "classes/App-Models-LoanRequest.html#method_receivedBy",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AequipmentItems\u0028\u0029",
+        name: "equipmentItems",
+        summary:
+            "Get\u0020equipment\u0020items\u0020for\u0020this\u0020loan\u0020request",
+        url: "classes/App-Models-LoanRequest.html#method_equipmentItems",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AloanItems\u0028\u0029",
+        name: "loanItems",
+        summary: "Get\u0020loan\u0020items\u0020for\u0020this\u0020request",
+        url: "classes/App-Models-LoanRequest.html#method_loanItems",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003Aboot\u0028\u0029",
+        name: "boot",
+        summary: "Generate\u0020unique\u0020request\u0020number",
+        url: "classes/App-Models-LoanRequest.html#method_boot",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AgenerateRequestNumber\u0028\u0029",
+        name: "generateRequestNumber",
+        summary:
+            "Generate\u0020request\u0020number\u0020in\u0020format\u003A\u0020LR\u002DYYYY\u002DMMDD\u002DXXX",
+        url: "classes/App-Models-LoanRequest.html#method_generateRequestNumber",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AisPending\u0028\u0029",
+        name: "isPending",
+        summary:
+            "Check\u0020if\u0020request\u0020is\u0020pending\u0020approval",
+        url: "classes/App-Models-LoanRequest.html#method_isPending",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AisSupervisorApproved\u0028\u0029",
+        name: "isSupervisorApproved",
+        summary:
+            "Check\u0020if\u0020request\u0020is\u0020approved\u0020by\u0020supervisor",
+        url: "classes/App-Models-LoanRequest.html#method_isSupervisorApproved",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AisIctApproved\u0028\u0029",
+        name: "isIctApproved",
+        summary:
+            "Check\u0020if\u0020request\u0020is\u0020approved\u0020by\u0020ICT",
+        url: "classes/App-Models-LoanRequest.html#method_isIctApproved",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AisActive\u0028\u0029",
+        name: "isActive",
+        summary: "Check\u0020if\u0020loan\u0020is\u0020currently\u0020active",
+        url: "classes/App-Models-LoanRequest.html#method_isActive",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AisReturned\u0028\u0029",
+        name: "isReturned",
+        summary: "Check\u0020if\u0020loan\u0020is\u0020returned",
+        url: "classes/App-Models-LoanRequest.html#method_isReturned",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003AisOverdue\u0028\u0029",
+        name: "isOverdue",
+        summary: "Check\u0020if\u0020loan\u0020is\u0020overdue",
+        url: "classes/App-Models-LoanRequest.html#method_isOverdue",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanRequest\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-LoanRequest.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanStatus",
+        name: "LoanStatus",
+        summary: "",
+        url: "classes/App-Models-LoanStatus.html",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanStatus\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-LoanStatus.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanStatus\u003A\u003AloanRequests\u0028\u0029",
+        name: "loanRequests",
+        summary: "Get\u0020loan\u0020requests\u0020with\u0020this\u0020status",
+        url: "classes/App-Models-LoanStatus.html#method_loanRequests",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanStatus\u003A\u003AscopeActive\u0028\u0029",
+        name: "scopeActive",
+        summary: "Scope\u0020for\u0020active\u0020statuses\u0020only",
+        url: "classes/App-Models-LoanStatus.html#method_scopeActive",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanStatus\u003A\u003AscopeOrdered\u0028\u0029",
+        name: "scopeOrdered",
+        summary: "Scope\u0020to\u0020order\u0020by\u0020sort_order",
+        url: "classes/App-Models-LoanStatus.html#method_scopeOrdered",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanStatus\u003A\u003AgetByCode\u0028\u0029",
+        name: "getByCode",
+        summary: "Get\u0020status\u0020by\u0020code",
+        url: "classes/App-Models-LoanStatus.html#method_getByCode",
+    },
+    {
+        fqsen: "\\App\\Models\\LoanStatus\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-LoanStatus.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketCategory",
+        name: "TicketCategory",
+        summary: "",
+        url: "classes/App-Models-TicketCategory.html",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketCategory\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-TicketCategory.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketCategory\u003A\u003AhelpdeskTickets\u0028\u0029",
+        name: "helpdeskTickets",
+        summary:
+            "Get\u0020helpdesk\u0020tickets\u0020in\u0020this\u0020category",
+        url: "classes/App-Models-TicketCategory.html#method_helpdeskTickets",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketCategory\u003A\u003AscopeActive\u0028\u0029",
+        name: "scopeActive",
+        summary: "Scope\u0020for\u0020active\u0020categories\u0020only",
+        url: "classes/App-Models-TicketCategory.html#method_scopeActive",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketCategory\u003A\u003AscopeOrdered\u0028\u0029",
+        name: "scopeOrdered",
+        summary: "Scope\u0020to\u0020order\u0020by\u0020sort_order",
+        url: "classes/App-Models-TicketCategory.html#method_scopeOrdered",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketCategory\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-TicketCategory.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketStatus",
+        name: "TicketStatus",
+        summary: "",
+        url: "classes/App-Models-TicketStatus.html",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketStatus\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary: "",
+        url: "classes/App-Models-TicketStatus.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketStatus\u003A\u003AhelpdeskTickets\u0028\u0029",
+        name: "helpdeskTickets",
+        summary:
+            "Get\u0020helpdesk\u0020tickets\u0020with\u0020this\u0020status",
+        url: "classes/App-Models-TicketStatus.html#method_helpdeskTickets",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketStatus\u003A\u003AscopeActive\u0028\u0029",
+        name: "scopeActive",
+        summary: "Scope\u0020for\u0020active\u0020statuses\u0020only",
+        url: "classes/App-Models-TicketStatus.html#method_scopeActive",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketStatus\u003A\u003AscopeOrdered\u0028\u0029",
+        name: "scopeOrdered",
+        summary: "Scope\u0020to\u0020order\u0020by\u0020sort_order",
+        url: "classes/App-Models-TicketStatus.html#method_scopeOrdered",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketStatus\u003A\u003AgetByCode\u0028\u0029",
+        name: "getByCode",
+        summary: "Get\u0020status\u0020by\u0020code",
+        url: "classes/App-Models-TicketStatus.html#method_getByCode",
+    },
+    {
+        fqsen: "\\App\\Models\\TicketStatus\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary: "",
+        url: "classes/App-Models-TicketStatus.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\User",
+        name: "User",
+        summary: "",
+        url: "classes/App-Models-User.html",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003Acasts\u0028\u0029",
+        name: "casts",
+        summary:
+            "Get\u0020the\u0020attributes\u0020that\u0020should\u0020be\u0020cast.",
+        url: "classes/App-Models-User.html#method_casts",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003Asupervisor\u0028\u0029",
+        name: "supervisor",
+        summary: "Get\u0020the\u0020supervisor\u0020of\u0020this\u0020user",
+        url: "classes/App-Models-User.html#method_supervisor",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003Asubordinates\u0028\u0029",
+        name: "subordinates",
+        summary: "Get\u0020users\u0020supervised\u0020by\u0020this\u0020user",
+        url: "classes/App-Models-User.html#method_subordinates",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AloanRequests\u0028\u0029",
+        name: "loanRequests",
+        summary:
+            "Get\u0020loan\u0020requests\u0020made\u0020by\u0020this\u0020user",
+        url: "classes/App-Models-User.html#method_loanRequests",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AsupervisedLoanRequests\u0028\u0029",
+        name: "supervisedLoanRequests",
+        summary:
+            "Get\u0020loan\u0020requests\u0020supervised\u0020by\u0020this\u0020user",
+        url: "classes/App-Models-User.html#method_supervisedLoanRequests",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AictApprovedLoanRequests\u0028\u0029",
+        name: "ictApprovedLoanRequests",
+        summary:
+            "Get\u0020loan\u0020requests\u0020approved\u0020by\u0020this\u0020user\u0020as\u0020ICT\u0020admin",
+        url: "classes/App-Models-User.html#method_ictApprovedLoanRequests",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AhelpdeskTickets\u0028\u0029",
+        name: "helpdeskTickets",
+        summary:
+            "Get\u0020helpdesk\u0020tickets\u0020created\u0020by\u0020this\u0020user",
+        url: "classes/App-Models-User.html#method_helpdeskTickets",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AassignedTickets\u0028\u0029",
+        name: "assignedTickets",
+        summary:
+            "Get\u0020helpdesk\u0020tickets\u0020assigned\u0020to\u0020this\u0020user",
+        url: "classes/App-Models-User.html#method_assignedTickets",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AauditLogs\u0028\u0029",
+        name: "auditLogs",
+        summary: "Get\u0020audit\u0020logs\u0020for\u0020this\u0020user",
+        url: "classes/App-Models-User.html#method_auditLogs",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AhasRole\u0028\u0029",
+        name: "hasRole",
+        summary: "Check\u0020if\u0020user\u0020has\u0020specific\u0020role",
+        url: "classes/App-Models-User.html#method_hasRole",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AisSupervisor\u0028\u0029",
+        name: "isSupervisor",
+        summary: "Check\u0020if\u0020user\u0020is\u0020supervisor",
+        url: "classes/App-Models-User.html#method_isSupervisor",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AisIctAdmin\u0028\u0029",
+        name: "isIctAdmin",
+        summary: "Check\u0020if\u0020user\u0020is\u0020ICT\u0020admin",
+        url: "classes/App-Models-User.html#method_isIctAdmin",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AisHelpdeskStaff\u0028\u0029",
+        name: "isHelpdeskStaff",
+        summary: "Check\u0020if\u0020user\u0020is\u0020helpdesk\u0020staff",
+        url: "classes/App-Models-User.html#method_isHelpdeskStaff",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AisSuperAdmin\u0028\u0029",
+        name: "isSuperAdmin",
+        summary: "Check\u0020if\u0020user\u0020is\u0020super\u0020admin",
+        url: "classes/App-Models-User.html#method_isSuperAdmin",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003AgetFullNameWithStaffIdAttribute\u0028\u0029",
+        name: "getFullNameWithStaffIdAttribute",
+        summary: "Get\u0020full\u0020name\u0020with\u0020staff\u0020ID",
+        url: "classes/App-Models-User.html#method_getFullNameWithStaffIdAttribute",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003A\u0024fillable",
+        name: "fillable",
+        summary:
+            "The\u0020attributes\u0020that\u0020are\u0020mass\u0020assignable.",
+        url: "classes/App-Models-User.html#property_fillable",
+    },
+    {
+        fqsen: "\\App\\Models\\User\u003A\u003A\u0024hidden",
+        name: "hidden",
+        summary:
+            "The\u0020attributes\u0020that\u0020should\u0020be\u0020hidden\u0020for\u0020serialization.",
+        url: "classes/App-Models-User.html#property_hidden",
+    },
+    {
+        fqsen: "\\App\\Providers\\AppServiceProvider",
+        name: "AppServiceProvider",
+        summary: "",
+        url: "classes/App-Providers-AppServiceProvider.html",
+    },
+    {
+        fqsen: "\\App\\Providers\\AppServiceProvider\u003A\u003Aregister\u0028\u0029",
+        name: "register",
+        summary: "Register\u0020any\u0020application\u0020services.",
+        url: "classes/App-Providers-AppServiceProvider.html#method_register",
+    },
+    {
+        fqsen: "\\App\\Providers\\AppServiceProvider\u003A\u003Aboot\u0028\u0029",
+        name: "boot",
+        summary: "Bootstrap\u0020any\u0020application\u0020services.",
+        url: "classes/App-Providers-AppServiceProvider.html#method_boot",
+    },
+    {
+        fqsen: "\\",
+        name: "\\",
+        summary: "",
+        url: "namespaces/default.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers\\Auth",
+        name: "Auth",
+        summary: "",
+        url: "namespaces/app-http-controllers-auth.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Controllers",
+        name: "Controllers",
+        summary: "",
+        url: "namespaces/app-http-controllers.html",
+    },
+    {
+        fqsen: "\\App\\Http",
+        name: "Http",
+        summary: "",
+        url: "namespaces/app-http.html",
+    },
+    {
+        fqsen: "\\App",
+        name: "App",
+        summary: "",
+        url: "namespaces/app.html",
+    },
+    {
+        fqsen: "\\App\\Http\\Requests",
+        name: "Requests",
+        summary: "",
+        url: "namespaces/app-http-requests.html",
+    },
+    {
+        fqsen: "\\App\\Livewire",
+        name: "Livewire",
+        summary: "",
+        url: "namespaces/app-livewire.html",
+    },
+    {
+        fqsen: "\\App\\Models",
+        name: "Models",
+        summary: "",
+        url: "namespaces/app-models.html",
+    },
+    {
+        fqsen: "\\App\\Providers",
+        name: "Providers",
+        summary: "",
+        url: "namespaces/app-providers.html",
+    },
+]);

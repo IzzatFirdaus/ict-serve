@@ -204,6 +204,27 @@ class HelpdeskTicket extends Model
     }
 
     /**
+     * Accessor for assignedTo (legacy property)
+     */
+    public function getAssignedToAttribute(): ?User
+    {
+        $user = $this->assignedToUser;
+
+        return $user instanceof User ? $user : null;
+    }
+
+    /**
+     * Accessor for activity_log (stub for Larastan)
+     *
+     * @return mixed
+     */
+    public function getActivityLogAttribute()
+    {
+        // Return null or actual activity log if implemented
+        return null;
+    }
+
+    /**
      * Generate ticket number in format: HD-YYYY-MMDD-XXX
      */
     protected static function generateTicketNumber(): string
