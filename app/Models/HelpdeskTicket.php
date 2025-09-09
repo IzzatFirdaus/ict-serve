@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property-read TicketStatus $status
+ * @property-read User|null $assignedTo
+ * @property-read EquipmentItem|null $equipmentItem
+ * @property-read mixed $activity_log
  */
 class HelpdeskTicket extends Model
 {
@@ -161,6 +164,27 @@ class HelpdeskTicket extends Model
                 $ticket->due_at = now()->addHours($ticket->category->default_sla_hours);
             }
         });
+    }
+
+    /**
+     * Accessor for assignedTo (legacy property)
+     */
+    public function getAssignedToAttribute(): ?User
+    {
+        $user = $this->assignedToUser;
+
+        return $user instanceof User ? $user : null;
+    }
+
+    /**
+     * Accessor for activity_log (stub for Larastan)
+     *
+     * @return mixed
+     */
+    public function getActivityLogAttribute()
+    {
+        // Return null or actual activity log if implemented
+        return null;
     }
 
     /**

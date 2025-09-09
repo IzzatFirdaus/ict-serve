@@ -60,8 +60,10 @@ This document outlines the successful migration from React to Livewire in the IC
 
 ```html
 <div x-data="{ activeTab: 'catalog' }">
-    <button @click="activeTab = 'catalog'" 
-            :class="activeTab === 'catalog' ? 'active-class' : 'inactive-class'">
+    <button
+        @click="activeTab = 'catalog'"
+        :class="activeTab === 'catalog' ? 'active-class' : 'inactive-class'"
+    >
         Catalog
     </button>
     <div x-show="activeTab === 'catalog'" x-transition>
@@ -74,7 +76,7 @@ This document outlines the successful migration from React to Livewire in the IC
 
 ```html
 <div x-data="{ searchQuery: '', showFilters: false }">
-    <input x-model="searchQuery" placeholder="Search...">
+    <input x-model="searchQuery" placeholder="Search..." />
     <button @click="showFilters = !showFilters">Toggle Filters</button>
     <div x-show="showFilters" x-transition>
         <!-- Filters -->
@@ -118,13 +120,13 @@ class MyComponent extends Component
 {
     public $items = [];
     public $selectedItem = null;
-    
+
     public function selectItem($itemId)
     {
         $this->selectedItem = $itemId;
         // Server-side logic here
     }
-    
+
     public function render()
     {
         return view('livewire.my-component');
@@ -137,11 +139,13 @@ class MyComponent extends Component
 ```html
 <div x-data="{ showModal: false, loading: false }">
     <button @click="showModal = true">Open Modal</button>
-    
+
     <div x-show="showModal" x-transition>
-        <button wire:click="performAction" 
-                @click="loading = true"
-                :disabled="loading">
+        <button
+            wire:click="performAction"
+            @click="loading = true"
+            :disabled="loading"
+        >
             <span x-show="!loading">Save</span>
             <span x-show="loading">Saving...</span>
         </button>
@@ -225,7 +229,7 @@ php artisan optimize:clear
 The migration is complete and ready for production. Consider adding:
 
 1. **Enhanced Error Handling**: Custom error pages and user feedback
-2. **Progressive Web App**: Service worker and offline capabilities  
+2. **Progressive Web App**: Service worker and offline capabilities
 3. **Advanced Filtering**: Database-driven search and filtering
 4. **Real-time Notifications**: WebSocket integration
 5. **Testing Suite**: Feature tests for Livewire components
