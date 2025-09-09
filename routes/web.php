@@ -130,7 +130,7 @@ Route::middleware('auth')->group(function () {
         })->name('reports.index');
 
         Route::get('/audit-logs', \App\Livewire\Admin\AuditLogViewer::class)->name('audit-logs');
-        Route::get('/damage-types', \App\Livewire\Admin\DropdownManager::class)->name('damage-types');
+        Route::get('/settings/damage-types', \App\Livewire\Admin\Helpdesk\DropdownManager::class)->name('settings.damage-types');
     });
 });
 

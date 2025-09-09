@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\DamageType;
 use App\Models\User;
-use App\Models\AuditLog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,10 +14,10 @@ class DamageTypeTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         // Create a test user for authentication
         $this->user = User::factory()->create([
-            'role' => 'ict_admin'
+            'role' => 'ict_admin',
         ]);
     }
 
@@ -151,7 +150,7 @@ class DamageTypeTest extends TestCase
         // Test that required fields throw an exception when missing
         DamageType::create([
             // Missing required 'name' field
-            'name_bm' => 'Test'
+            'name_bm' => 'Test',
         ]);
     }
 }

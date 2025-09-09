@@ -16,10 +16,10 @@ class DropdownManagerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         // Create an admin user
         $this->adminUser = User::factory()->create([
-            'role' => 'ict_admin'
+            'role' => 'ict_admin',
         ]);
     }
 
