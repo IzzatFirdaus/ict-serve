@@ -68,3 +68,5 @@ Thumbs.db
 
 # End of file
 .phpactor.json
+# PHP Insights progress files
+phpinsights-progress*.json
