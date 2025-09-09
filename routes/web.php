@@ -26,6 +26,78 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Public Access Routes (No Authentication Required)
+Route::prefix('public')->name('public.')->group(function () {
+    // Equipment Loan Requests
+    Route::get('/loan-requests/create', [\App\Http\Controllers\Public\PublicLoanController::class, 'create'])->name('loan-requests.create');
+    Route::post('/loan-requests', [\App\Http\Controllers\Public\PublicLoanController::class, 'store'])->name('loan-requests.store');
+    Route::get('/loan-requests/success', [\App\Http\Controllers\Public\PublicLoanController::class, 'success'])->name('loan-requests.success');
+
+    // Helpdesk Tickets
+    Route::get('/helpdesk/create', [\App\Http\Controllers\Public\PublicHelpdeskController::class, 'create'])->name('helpdesk.create');
+    Route::post('/helpdesk', [\App\Http\Controllers\Public\PublicHelpdeskController::class, 'store'])->name('helpdesk.store');
+    Route::get('/helpdesk/success', [\App\Http\Controllers\Public\PublicHelpdeskController::class, 'success'])->name('helpdesk.success');
+
+    // Tracking System
+    Route::get('/track', function () {
+        return view('public.track');
+    })->name('track');
+    Route::post('/track', function (\Illuminate\Http\Request $request) {
+        $request->validate([
+            'tracking_number' => 'required|string'
+        ]);
+
+        $trackingNumber = $request->tracking_number;
+
+        // Check if it's a loan request
+        if (str_starts_with($trackingNumber, 'REQ-')) {
+            $request = \App\Models\LoanRequest::with(['user', 'status', 'loanItems.equipmentItem.category'])
+                ->where('request_number', $trackingNumber)
+                ->first();
+
+            if ($request) {
+                return view('public.track-result', compact('request'));
+            }
+        }
+
+        // Check if it's a helpdesk ticket
+        if (str_starts_with($trackingNumber, 'TKT-')) {
+            $ticket = \App\Models\HelpdeskTicket::with(['user', 'status', 'category', 'equipmentItem'])
+                ->where('ticket_number', $trackingNumber)
+                ->first();
+
+            if ($ticket) {
+                return view('public.track-result', compact('ticket'));
+            }
+        }
+
+        // Try both without prefix for backward compatibility
+        $request = \App\Models\LoanRequest::with(['user', 'status', 'loanItems.equipmentItem.category'])
+            ->where('request_number', $trackingNumber)
+            ->first();
+
+        if ($request) {
+            return view('public.track-result', compact('request'));
+        }
+
+        $ticket = \App\Models\HelpdeskTicket::with(['user', 'status', 'category', 'equipmentItem'])
+            ->where('ticket_number', $trackingNumber)
+            ->first();
+
+        if ($ticket) {
+            return view('public.track-result', compact('ticket'));
+        }
+
+        return back()->with('error', __('Request/Ticket number not found. Please check and try again.'));
+    });
+});
+
+// Email Approval Routes (Public but secured with tokens)
+Route::prefix('approve')->name('approve.')->group(function () {
+    Route::get('/loan-request/{token}', [\App\Http\Controllers\Public\PublicLoanController::class, 'approveViaEmail'])->name('loan-request');
+    Route::get('/loan-request/{token}/reject', [\App\Http\Controllers\Public\PublicLoanController::class, 'rejectViaEmail'])->name('loan-request.reject');
+});
+
 // Main Application Route (Livewire-based)
 Route::middleware('auth')->get('/app', function () {
     return view('app');
@@ -120,8 +192,12 @@ Route::middleware('auth')->group(function () {
     // Admin Routes (for ICT Admin and Super Admin)
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', function () {
-            // Will create AdminDashboard Livewire component
-            return 'Admin Dashboard - Coming Soon';
+            // Reporting Dashboard for administrators
+            $equipmentCount = \App\Models\EquipmentItem::count();
+            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn($q) => $q->where('code', 'active'))->count();
+            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'open'))->count();
+            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'resolved'))->count();
+            return view('admin.dashboard', compact('equipmentCount', 'activeLoans', 'openTickets', 'resolvedTickets'));
         })->name('dashboard');
 
         Route::get('/reports', function () {

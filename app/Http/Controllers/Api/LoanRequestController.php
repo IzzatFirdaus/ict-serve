@@ -35,6 +35,13 @@ class LoanRequestController extends Controller
             ->when($request->status, function ($q, $status) {
                 return $q->whereHas('status', fn ($sq) => $sq->where('name', $status));
             })
+            ->when($request->search, function ($q, $search) {
+                $q->where(function ($sq) use ($search) {
+                    $sq->where('purpose', 'like', "%$search%")
+                        ->orWhere('remarks', 'like', "%$search%")
+                        ->orWhereHas('user', fn ($uq) => $uq->where('name', 'like', "%$search%"));
+                });
+            })
             ->orderBy('created_at', 'desc');
 
         $loanRequests = $query->paginate(20);
@@ -203,5 +210,29 @@ class LoanRequestController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+
+    /**
+     * Bulk approve loan requests.
+     */
+    public function bulkApprove(Request $request): JsonResponse
+    {
+        $ids = $request->input('ids', []);
+        $updated = LoanRequest::whereIn('id', $ids)
+            ->whereHas('status', fn($q) => $q->where('name', 'pending'))
+            ->update(['status_id' => LoanStatus::where('name', 'approved')->first()->id]);
+        return response()->json(['success' => true, 'updated' => $updated]);
+    }
+
+    /**
+     * Bulk reject loan requests.
+     */
+    public function bulkReject(Request $request): JsonResponse
+    {
+        $ids = $request->input('ids', []);
+        $updated = LoanRequest::whereIn('id', $ids)
+            ->whereHas('status', fn($q) => $q->where('name', 'pending'))
+            ->update(['status_id' => LoanStatus::where('name', 'rejected')->first()->id]);
+        return response()->json(['success' => true, 'updated' => $updated]);
     }
 }

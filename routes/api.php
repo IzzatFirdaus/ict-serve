@@ -66,15 +66,21 @@ Route::get('/user', function (Request $request) {
 
 // Protected API routes (requires authentication)
 Route::middleware('auth:sanctum')->group(function () {
+    // Bulk operations for helpdesk tickets
+    Route::post('/helpdesk-tickets/bulk-approve', [HelpdeskTicketController::class, 'bulkApprove'])->middleware('throttle:30,1');
+    Route::post('/helpdesk-tickets/bulk-reject', [HelpdeskTicketController::class, 'bulkReject'])->middleware('throttle:30,1');
+    // Bulk operations for loan requests
+    Route::post('/loan-requests/bulk-approve', [LoanRequestController::class, 'bulkApprove'])->middleware('throttle:30,1');
+    Route::post('/loan-requests/bulk-reject', [LoanRequestController::class, 'bulkReject'])->middleware('throttle:30,1');
 
     // Unified Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('throttle:60,1');
 
     // ICT Loan Module API Routes
-    Route::apiResource('loan-requests', LoanRequestController::class);
+    Route::apiResource('loan-requests', LoanRequestController::class)->middleware('throttle:60,1');
 
     // Helpdesk Module API Routes
-    Route::apiResource('helpdesk-tickets', HelpdeskTicketController::class);
+    Route::apiResource('helpdesk-tickets', HelpdeskTicketController::class)->middleware('throttle:60,1');
 
     // Additional utility routes for frontend
     Route::prefix('utilities')->group(function () {

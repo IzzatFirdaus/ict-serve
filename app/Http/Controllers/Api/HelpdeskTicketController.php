@@ -42,6 +42,13 @@ class HelpdeskTicketController extends Controller
             ->when($request->category, function ($q, $category) {
                 return $q->where('category_id', $category);
             })
+            ->when($request->search, function ($q, $search) {
+                $q->where(function ($sq) use ($search) {
+                    $sq->where('title', 'like', "%$search%")
+                        ->orWhere('description', 'like', "%$search%")
+                        ->orWhereHas('user', fn ($uq) => $uq->where('name', 'like', "%$search%"));
+                });
+            })
             ->orderBy('created_at', 'desc');
 
         $tickets = $query->paginate(20);
@@ -261,5 +268,29 @@ class HelpdeskTicketController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+
+    /**
+     * Bulk approve helpdesk tickets.
+     */
+    public function bulkApprove(Request $request): JsonResponse
+    {
+        $ids = $request->input('ids', []);
+        $updated = HelpdeskTicket::whereIn('id', $ids)
+            ->whereHas('status', fn($q) => $q->where('name', 'new'))
+            ->update(['status_id' => TicketStatus::where('name', 'approved')->first()->id]);
+        return response()->json(['success' => true, 'updated' => $updated]);
+    }
+
+    /**
+     * Bulk reject helpdesk tickets.
+     */
+    public function bulkReject(Request $request): JsonResponse
+    {
+        $ids = $request->input('ids', []);
+        $updated = HelpdeskTicket::whereIn('id', $ids)
+            ->whereHas('status', fn($q) => $q->where('name', 'new'))
+            ->update(['status_id' => TicketStatus::where('name', 'rejected')->first()->id]);
+        return response()->json(['success' => true, 'updated' => $updated]);
     }
 }

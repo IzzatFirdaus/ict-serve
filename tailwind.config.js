@@ -85,14 +85,14 @@ export default defineConfig({
           950: '#09090B',
         },
       },
-      
+
       // MYDS Typography
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'], // Headings
         'inter': ['Inter', 'sans-serif'],     // Body text
         'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
-      
+
       // MYDS Typography Sizes
       fontSize: {
         // Body Text Sizes
@@ -107,7 +107,7 @@ export default defineConfig({
         'body-4xl': ['2.25rem', { lineHeight: '2.75rem' }],    // 36px
         'body-5xl': ['3rem', { lineHeight: '3.75rem' }],       // 48px
         'body-6xl': ['3.75rem', { lineHeight: '4.5rem' }],     // 60px
-        
+
         // Heading Sizes
         'heading-4xs': ['0.875rem', { lineHeight: '1.25rem' }], // 14px
         'heading-3xs': ['1rem', { lineHeight: '1.5rem' }],      // 16px
@@ -118,7 +118,7 @@ export default defineConfig({
         'heading-lg': ['3rem', { lineHeight: '3.75rem' }],      // 48px
         'heading-xl': ['3.75rem', { lineHeight: '4.5rem' }],    // 60px
       },
-      
+
       // MYDS Spacing (12-8-4 Grid System)
       spacing: {
         // Grid gaps
@@ -130,7 +130,7 @@ export default defineConfig({
         'container-tablet': '24px',
         'container-desktop': '24px',
       },
-      
+
       // MYDS Breakpoints for 12-8-4 Grid
       screens: {
         'mobile': '320px',
@@ -138,7 +138,7 @@ export default defineConfig({
         'desktop': '1024px',
         'wide': '1280px',
       },
-      
+
       // MYDS Grid System
       gridTemplateColumns: {
         // Mobile: 4 columns
@@ -148,7 +148,7 @@ export default defineConfig({
         // Desktop: 12 columns
         'desktop-12': 'repeat(12, minmax(0, 1fr))',
       },
-      
+
       // MYDS Shadows
       boxShadow: {
         'myds-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -156,7 +156,7 @@ export default defineConfig({
         'myds-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
         'myds-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
       },
-      
+
       // MYDS Border Radius
       borderRadius: {
         'myds-sm': '0.25rem',   // 4px
@@ -164,7 +164,7 @@ export default defineConfig({
         'myds-lg': '0.5rem',    // 8px
         'myds-xl': '0.75rem',   // 12px
       },
-      
+
       // Animation and Transitions
       transitionDuration: {
         '150': '150ms',
@@ -173,7 +173,7 @@ export default defineConfig({
       },
     },
   },
-  
+
   plugins: [
     // MYDS Grid System Plugin
     function({ addUtilities, theme }) {
@@ -195,7 +195,7 @@ export default defineConfig({
             'padding-right': theme('spacing.container-desktop'),
           },
         },
-        
+
         // MYDS Grid
         '.myds-grid': {
           'display': 'grid',
@@ -210,14 +210,14 @@ export default defineConfig({
             'grid-template-columns': theme('gridTemplateColumns.desktop-12'),
           },
         },
-        
+
         // MYDS Article Container (max 640px for readability)
         '.myds-article': {
           'max-width': '640px',
           'margin-left': 'auto',
           'margin-right': 'auto',
         },
-        
+
         // MYDS Typography Classes
         '.myds-heading': {
           'font-family': theme('fontFamily.poppins').join(', '),
