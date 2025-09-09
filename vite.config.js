@@ -1,28 +1,30 @@
 <<<<<<< HEAD
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
-import react from "@vitejs/plugin-react";
+// React plugin removed
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ["resources/css/app.css", "resources/js/app.jsx"],
+            input: ["resources/css/app.css", "resources/js/app.js"],
             refresh: true,
         }),
-        react(),
+    // React plugin removed
     ],
 =======
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-// React plugin removed
 
 export default defineConfig({
   plugins: [
     laravel({
-      input: ['resources/css/app.css', 'resources/js/app.js'],
+      input: [
+        'resources/css/app.css',
+        'resources/js/app.js',
+        'resources/js/theme.js'
+      ],
       refresh: true,
     }),
-    // React plugin removed
   ],
 >>>>>>> bdd2474 (Finish UI views, Livewire components, API docs, and repo housekeeping for loan module)
 });

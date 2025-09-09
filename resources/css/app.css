@@ -1,5 +1,8 @@
 @import '@govtechmy/myds-style/full.css';
 @import 'tailwindcss';
+@import "./myds-tokens.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -9,6 +12,150 @@
   --font-sans:
     'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* MYDS Complete Color System */
+
+  /* Primary Colors (MYDS Blue) */
+  --color-primary-50: #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #C2D5FF;
+  --color-primary-300: #96B7FF;
+  --color-primary-400: #6394FF;
+  --color-primary-500: #3A75F6;
+  --color-primary-600: #2563EB;
+  --color-primary-700: #1D4ED8;
+  --color-primary-800: #1E40AF;
+  --color-primary-900: #1E3A8A;
+  --color-primary-950: #172554;
+
+  /* Danger Colors */
+  --color-danger-50: #FEF2F2;
+  --color-danger-100: #FEE2E2;
+  --color-danger-200: #FECACA;
+  --color-danger-300: #FCA5A5;
+  --color-danger-400: #F87171;
+  --color-danger-500: #EF4444;
+  --color-danger-600: #DC2626;
+  --color-danger-700: #B91C1C;
+  --color-danger-800: #991B1B;
+  --color-danger-900: #7F1D1D;
+  --color-danger-950: #450A0A;
+
+  /* Success Colors */
+  --color-success-50: #F0FDF4;
+  --color-success-100: #DCFCE7;
+  --color-success-200: #BBF7D0;
+  --color-success-300: #86EFAC;
+  --color-success-400: #4ADE80;
+  --color-success-500: #22C55E;
+  --color-success-600: #16A34A;
+  --color-success-700: #15803D;
+  --color-success-800: #166534;
+  --color-success-900: #14532D;
+  --color-success-950: #052E16;
+
+  /* Warning Colors */
+  --color-warning-50: #FFFBEB;
+  --color-warning-100: #FEF3C7;
+  --color-warning-200: #FDE68A;
+  --color-warning-300: #FCD34D;
+  --color-warning-400: #FBBF24;
+  --color-warning-500: #F59E0B;
+  --color-warning-600: #D97706;
+  --color-warning-700: #B45309;
+  --color-warning-800: #92400E;
+  --color-warning-900: #78350F;
+  --color-warning-950: #451A03;
+
+  /* Gray Colors */
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F4F4F5;
+  --color-gray-200: #E4E4E7;
+  --color-gray-300: #D4D4D8;
+  --color-gray-400: #A1A1AA;
+  --color-gray-500: #71717A;
+  --color-gray-600: #52525B;
+  --color-gray-700: #3F3F46;
+  --color-gray-800: #27272A;
+  --color-gray-850: #1D1D21;
+  --color-gray-900: #18181B;
+  --color-gray-930: #161619;
+  --color-gray-950: #09090B;
+
+  /* MYDS Semantic Tokens */
+  --color-txt-black-900: #18181B;
+  --color-txt-black-700: #3F3F46;
+  --color-txt-black-500: #71717A;
+  --color-txt-black-400: #A1A1AA;
+  --color-txt-black-300: #D4D4D8;
+
+  --color-bg-white-0: #FFFFFF;
+  --color-bg-white-50: #FAFAFA;
+  --color-bg-white-100: #F4F4F5;
+  --color-bg-washed: #F4F4F5;
+
+  --color-otl-gray-200: #E4E4E7;
+  --color-otl-gray-300: #D4D4D8;
+  --color-otl-gray-400: #A1A1AA;
+
+  --color-fr-primary-600: #2563EB;
+  --color-fr-danger-600: #DC2626;
+  --color-fr-success-600: #16A34A;
+  --color-fr-warning-600: #D97706;
+
+  /* MYDS Typography Sizes */
+  --fontSize-body-2xs: 0.625rem;
+  --fontSize-body-xs: 0.75rem;
+  --fontSize-body-sm: 0.875rem;
+  --fontSize-body-base: 1rem;
+  --fontSize-body-lg: 1.125rem;
+  --fontSize-body-xl: 1.25rem;
+  --fontSize-body-2xl: 1.5rem;
+  --fontSize-body-3xl: 1.875rem;
+  --fontSize-body-4xl: 2.25rem;
+  --fontSize-body-5xl: 3rem;
+  --fontSize-body-6xl: 3.75rem;
+
+  --fontSize-heading-4xs: 0.875rem;
+  --fontSize-heading-3xs: 1rem;
+  --fontSize-heading-2xs: 1.25rem;
+  --fontSize-heading-xs: 1.5rem;
+  --fontSize-heading-sm: 1.875rem;
+  --fontSize-heading-md: 2.25rem;
+  --fontSize-heading-lg: 3rem;
+  --fontSize-heading-xl: 3.75rem;
+
+  /* MYDS Shadows */
+  --shadow-button: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+  --shadow-card: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.05);
+  --shadow-context-menu: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10);
+
+  /* MYDS Border Radius */
+  --radius-xs: 4px;
+  --radius-s: 6px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+  --radius-xl: 14px;
+  --radius-full: 9999px;
+
+  /* MYDS Transitions */
+  --transition-short: 200ms cubic-bezier(0, 0, 0.58, 1);
+  --transition-medium: 400ms cubic-bezier(0, 0, 0.58, 1);
+  --transition-long: 600ms cubic-bezier(0, 0, 0.58, 1);
+  --transition-bounce: 200ms cubic-bezier(0.4, 1.4, 0.2, 1);
+
+  /* MYDS Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+>>>>>>> 4240b7c (Refactors UI to fully adopt MYDS design system)
 }
 
 /* Custom ICT Serve (iServe) Styling */
@@ -104,4 +251,98 @@
 
 .priority-urgent {
   @apply bg-red-100 text-red-800;
+}
+
+/* Custom ICT Serve (iServe) Styling */
+
+/* Accessibility improvements */
+.focus\:ring-2:focus {
+    outline: 2px solid var(--color-blue-500);
+    outline-offset: 2px;
+}
+
+/* Skip links for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-blue-600);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* MYDS enhancements */
+.card-hover {
+    transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading states */
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 80%);
+    }
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
+
+/* Status indicators */
+.status-pending {
+    @apply bg-yellow-100 text-yellow-800 border border-yellow-200;
+}
+
+.status-approved {
+    @apply bg-green-100 text-green-800 border border-green-200;
+}
+
+.status-rejected {
+    @apply bg-red-100 text-red-800 border border-red-200;
+}
+
+.status-new {
+    @apply bg-blue-100 text-blue-800 border border-blue-200;
+}
+
+.status-in-progress {
+    @apply bg-yellow-100 text-yellow-800 border border-yellow-200;
+}
+
+.status-resolved {
+    @apply bg-green-100 text-green-800 border border-green-200;
+}
+
+.status-closed {
+    @apply bg-gray-100 text-gray-800 border border-gray-200;
+}
+
+/* Priority indicators */
+.priority-low {
+    @apply bg-green-100 text-green-800;
+}
+
+.priority-medium {
+    @apply bg-yellow-100 text-yellow-800;
+}
+
+.priority-high {
+    @apply bg-orange-100 text-orange-800;
+}
+
+.priority-urgent {
+    @apply bg-red-100 text-red-800;
 }
