@@ -7,6 +7,7 @@ use App\Livewire\Counter;
 use App\Livewire\Dashboard;
 use App\Livewire\Login;
 use App\Livewire\Register;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
@@ -22,6 +23,20 @@ Route::post('/logout', function () {
 
 // Public Routes
 Route::get('/', function () {
+    return view('welcome');
+});
+
+// Main Application Route (Livewire-based)
+Route::middleware('auth')->get('/app', function () {
+    return view('app');
+})->name('app');
+
+// Main Dashboard Route
+Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('app');
+    }
+
     return view('welcome');
 });
 
