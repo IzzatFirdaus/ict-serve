@@ -20,6 +20,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $phone
  * @property string|null $position
  * @property string|null $profile_picture
+ * @property string|null $role
  * @property array|null $preferences
  * @property \Illuminate\Support\Carbon|null $last_login_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
