@@ -23,8 +23,7 @@
         "vite": "^7.0.4"
     },
     "dependencies": {
-        "@govtechmy/myds-react": "^1.0.0",
         "@govtechmy/myds-style": "^1.0.0",
-        "@vitejs/plugin-react": "^5.0.2"
+        "alpinejs": "^3.13.0"
     }
 }
