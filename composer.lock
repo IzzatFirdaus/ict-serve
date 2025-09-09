@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25b86cdee4c06cc82f6ba6e59086a95f",
+    "content-hash": "12acd6fc39168dc4e8255e4f75866dca",
     "packages": [
         {
             "name": "brick/math",
@@ -9087,6 +9087,110 @@
             "time": "2022-02-21T01:04:05+00:00"
         },
         {
+            "name": "phootwork/collection",
+            "version": "v3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phootwork/collection.git",
+                "reference": "46dde20420fba17766c89200bc3ff91d3e58eafa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phootwork/collection/zipball/46dde20420fba17766c89200bc3ff91d3e58eafa",
+                "reference": "46dde20420fba17766c89200bc3ff91d3e58eafa",
+                "shasum": ""
+            },
+            "require": {
+                "phootwork/lang": "^3.0",
+                "php": ">=8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "phootwork\\collection\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Gossmann",
+                    "homepage": "http://gos.si"
+                }
+            ],
+            "description": "The phootwork library fills gaps in the php language and provides better solutions than the existing ones php offers.",
+            "homepage": "https://phootwork.github.io/collection/",
+            "keywords": [
+                "Array object",
+                "Text object",
+                "collection",
+                "collections",
+                "json",
+                "list",
+                "map",
+                "queue",
+                "set",
+                "stack",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://github.com/phootwork/phootwork/issues",
+                "source": "https://github.com/phootwork/collection/tree/v3.2.3"
+            },
+            "time": "2022-08-27T12:51:24+00:00"
+        },
+        {
+            "name": "phootwork/lang",
+            "version": "v3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phootwork/lang.git",
+                "reference": "52ec8cce740ce1c424eef02f43b43d5ddfec7b5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phootwork/lang/zipball/52ec8cce740ce1c424eef02f43b43d5ddfec7b5e",
+                "reference": "52ec8cce740ce1c424eef02f43b43d5ddfec7b5e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "symfony/polyfill-mbstring": "^1.12",
+                "symfony/polyfill-php81": "^1.22"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "phootwork\\lang\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Gossmann",
+                    "homepage": "http://gos.si"
+                }
+            ],
+            "description": "Missing PHP language constructs",
+            "homepage": "https://phootwork.github.io/lang/",
+            "keywords": [
+                "array",
+                "comparator",
+                "comparison",
+                "string"
+            ],
+            "support": {
+                "issues": "https://github.com/phootwork/phootwork/issues",
+                "source": "https://github.com/phootwork/lang/tree/v3.2.3"
+            },
+            "time": "2024-10-03T13:43:19+00:00"
+        },
+        {
             "name": "php-parallel-lint/php-parallel-lint",
             "version": "v1.4.0",
             "source": {
@@ -9357,6 +9461,58 @@
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.10.0"
             },
             "time": "2024-11-09T15:12:26+00:00"
+        },
+        {
+            "name": "phpowermove/docblock",
+            "version": "v4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpowermove/docblock.git",
+                "reference": "a73f6e17b7d4e1b92ca5378c248c952c9fae7826"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpowermove/docblock/zipball/a73f6e17b7d4e1b92ca5378c248c952c9fae7826",
+                "reference": "a73f6e17b7d4e1b92ca5378c248c952c9fae7826",
+                "shasum": ""
+            },
+            "require": {
+                "phootwork/collection": "^3.0",
+                "phootwork/lang": "^3.0",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "phootwork/php-cs-fixer-config": "^0.4",
+                "phpunit/phpunit": "^9.0",
+                "psalm/phar": "^4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "phpowermove\\docblock\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Gossmann",
+                    "homepage": "http://gos.si"
+                }
+            ],
+            "description": "PHP Docblock parser and generator. An API to read and write Docblocks.",
+            "keywords": [
+                "docblock",
+                "generator",
+                "parser"
+            ],
+            "support": {
+                "issues": "https://github.com/phpowermove/docblock/issues",
+                "source": "https://github.com/phpowermove/docblock/tree/v4.0"
+            },
+            "time": "2021-09-22T16:57:06+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -10481,6 +10637,72 @@
                 }
             ],
             "time": "2024-06-11T12:45:25+00:00"
+        },
+        {
+            "name": "romanzipp/laravel-model-doc",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/romanzipp/Laravel-Model-Doc.git",
+                "reference": "046ec6ef45b5e88700067dbd797b286a765d3920"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/romanzipp/Laravel-Model-Doc/zipball/046ec6ef45b5e88700067dbd797b286a765d3920",
+                "reference": "046ec6ef45b5e88700067dbd797b286a765d3920",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": ">=10.0",
+                "illuminate/database": ">=10.0",
+                "illuminate/support": ">=10.0",
+                "php": "^8.2",
+                "phpowermove/docblock": "^4.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^3.0",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "orchestra/testbench": "^8.0|^9.0",
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": ">=9.0",
+                "romanzipp/php-cs-fixer-config": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "romanzipp\\ModelDoc\\Providers\\ModelDocServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "romanzipp\\ModelDoc\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "romanzipp",
+                    "email": "ich@ich.wtf",
+                    "homepage": "https://ich.wtf"
+                }
+            ],
+            "description": "Laravel Model PHPDoc Generator",
+            "support": {
+                "issues": "https://github.com/romanzipp/Laravel-Model-Doc/issues",
+                "source": "https://github.com/romanzipp/Laravel-Model-Doc/tree/3.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/romanzipp",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-06-26T15:42:24+00:00"
         },
         {
             "name": "sebastian/cli-parser",
