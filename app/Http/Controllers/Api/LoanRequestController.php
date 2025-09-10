@@ -9,6 +9,7 @@ use App\Models\LoanStatus;
 use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class LoanRequestController extends Controller
@@ -21,15 +22,25 @@ class LoanRequestController extends Controller
 
     /**
      * Display a listing of loan requests.
+    *
+    * @param \Illuminate\Http\Request $request
      */
     public function index(Request $request): JsonResponse
     {
-        $query = LoanRequest::with(['user', 'loanItems.equipmentItem', 'status'])
-            ->when(! in_array($request->user()->role, ['ict_admin', 'super_admin'], true), function ($q) use ($request) {
-                return $q->where('user_id', $request->user()->id);
+    /** @var \Illuminate\Http\Request $request */
+    $query = LoanRequest::with(['user', 'loanItems.equipmentItem', 'status'])
+            ->when(! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true), function ($q) {
+                return $q->where('user_id', Auth::id());
             })
             ->when($request->status, function ($q, $status) {
                 return $q->whereHas('status', fn ($sq) => $sq->where('name', $status));
+            })
+            ->when($request->search, function ($q, $search) {
+                $q->where(function ($sq) use ($search) {
+                    $sq->where('purpose', 'like', "%$search%")
+                        ->orWhere('remarks', 'like', "%$search%")
+                        ->orWhereHas('user', fn ($uq) => $uq->where('name', 'like', "%$search%"));
+                });
             })
             ->orderBy('created_at', 'desc');
 
@@ -51,7 +62,7 @@ class LoanRequestController extends Controller
 
             // Create loan request
             $loanRequest = LoanRequest::create([
-                'user_id' => $request->user()->id,
+                'user_id' => Auth::id(),
                 'purpose' => $request->validated()['purpose'],
                 'start_date' => $request->validated()['start_date'],
                 'end_date' => $request->validated()['end_date'],
@@ -199,5 +210,29 @@ class LoanRequestController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+
+    /**
+     * Bulk approve loan requests.
+     */
+    public function bulkApprove(Request $request): JsonResponse
+    {
+        $ids = $request->input('ids', []);
+        $updated = LoanRequest::whereIn('id', $ids)
+            ->whereHas('status', fn($q) => $q->where('name', 'pending'))
+            ->update(['status_id' => LoanStatus::where('name', 'approved')->first()->id]);
+        return response()->json(['success' => true, 'updated' => $updated]);
+    }
+
+    /**
+     * Bulk reject loan requests.
+     */
+    public function bulkReject(Request $request): JsonResponse
+    {
+        $ids = $request->input('ids', []);
+        $updated = LoanRequest::whereIn('id', $ids)
+            ->whereHas('status', fn($q) => $q->where('name', 'pending'))
+            ->update(['status_id' => LoanStatus::where('name', 'rejected')->first()->id]);
+        return response()->json(['success' => true, 'updated' => $updated]);
     }
 }

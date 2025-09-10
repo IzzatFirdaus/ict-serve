@@ -9,6 +9,7 @@ use App\Models\TicketStatus;
 use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,12 +23,15 @@ class HelpdeskTicketController extends Controller
 
     /**
      * Display a listing of tickets.
+    *
+    * @param \Illuminate\Http\Request $request
      */
     public function index(Request $request): JsonResponse
     {
+        /** @var \Illuminate\Http\Request $request */
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser'])
-            ->when(! in_array($request->user()->role, ['ict_admin', 'super_admin'], true), function ($q) use ($request) {
-                return $q->where('user_id', $request->user()->id);
+            ->when(! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true), function ($q) {
+                return $q->where('user_id', Auth::id());
             })
             ->when($request->status, function ($q, $status) {
                 return $q->whereHas('status', fn ($sq) => $sq->where('name', $status));
@@ -37,6 +41,13 @@ class HelpdeskTicketController extends Controller
             })
             ->when($request->category, function ($q, $category) {
                 return $q->where('category_id', $category);
+            })
+            ->when($request->search, function ($q, $search) {
+                $q->where(function ($sq) use ($search) {
+                    $sq->where('title', 'like', "%$search%")
+                        ->orWhere('description', 'like', "%$search%")
+                        ->orWhereHas('user', fn ($uq) => $uq->where('name', 'like', "%$search%"));
+                });
             })
             ->orderBy('created_at', 'desc');
 
@@ -50,6 +61,8 @@ class HelpdeskTicketController extends Controller
 
     /**
      * Store a newly created ticket.
+    *
+    * @param \App\Http\Requests\StoreHelpdeskTicketRequest $request
      */
     public function store(StoreHelpdeskTicketRequest $request): JsonResponse
     {
@@ -58,7 +71,7 @@ class HelpdeskTicketController extends Controller
 
             // Create ticket
             $ticket = HelpdeskTicket::create([
-                'user_id' => $request->user()->id,
+                'user_id' => Auth::id(),
                 'category_id' => $request->validated()['category_id'],
                 'title' => $request->validated()['title'],
                 'description' => $request->validated()['description'],
@@ -69,6 +82,7 @@ class HelpdeskTicketController extends Controller
             ]);
 
             // Handle file attachments
+            /** @var \App\Http\Requests\StoreHelpdeskTicketRequest $request */
             if ($request->hasFile('attachments')) {
                 $attachments = [];
                 foreach ($request->file('attachments') as $file) {
@@ -111,7 +125,7 @@ class HelpdeskTicketController extends Controller
     public function show(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
         // Check authorization
-        if (! in_array($request->user()->role, ['ict_admin', 'super_admin'], true) && $ticket->user->id !== $request->user()->id) {
+    if (! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true) && $ticket->user->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -136,7 +150,7 @@ class HelpdeskTicketController extends Controller
     public function update(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
         // Only admins or assigned users can update tickets
-        if (! in_array($request->user()->role, ['ict_admin', 'super_admin'], true) && $ticket->assignedToUser?->id !== $request->user()->id) {
+    if (! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true) && $ticket->assignedToUser?->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -217,7 +231,7 @@ class HelpdeskTicketController extends Controller
     public function destroy(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
         // Check authorization - only ticket creator or admin can delete
-        if ($ticket->user_id !== $request->user()->id && $request->user()->role !== 'admin') {
+    if ($ticket->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan untuk memadam tiket ini.',
@@ -254,5 +268,29 @@ class HelpdeskTicketController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+
+    /**
+     * Bulk approve helpdesk tickets.
+     */
+    public function bulkApprove(Request $request): JsonResponse
+    {
+        $ids = $request->input('ids', []);
+        $updated = HelpdeskTicket::whereIn('id', $ids)
+            ->whereHas('status', fn($q) => $q->where('name', 'new'))
+            ->update(['status_id' => TicketStatus::where('name', 'approved')->first()->id]);
+        return response()->json(['success' => true, 'updated' => $updated]);
+    }
+
+    /**
+     * Bulk reject helpdesk tickets.
+     */
+    public function bulkReject(Request $request): JsonResponse
+    {
+        $ids = $request->input('ids', []);
+        $updated = HelpdeskTicket::whereIn('id', $ids)
+            ->whereHas('status', fn($q) => $q->where('name', 'new'))
+            ->update(['status_id' => TicketStatus::where('name', 'rejected')->first()->id]);
+        return response()->json(['success' => true, 'updated' => $updated]);
     }
 }

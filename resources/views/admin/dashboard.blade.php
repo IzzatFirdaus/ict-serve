@@ -30,7 +30,7 @@
         </div>
         <!-- Export Functionality -->
         <div class="bg-white rounded-lg shadow p-6">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ __('Export Reports') }}</h2>
+            <h2 class="text-xl font-semibent text-gray-800 mb-4">{{ __('Export Reports') }}</h2>
             <livewire:admin.report.export-widget />
         </div>
     </div>

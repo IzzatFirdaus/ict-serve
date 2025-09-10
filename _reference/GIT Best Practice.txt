@@ -1,0 +1,165 @@
+### Git Best Practice
+
+---
+
+**Writing Meaningful Commit Messages**
+
+* Why? Helps track why changes were made.
+
+Guidelines:
+* Present tense ("Fix bug", not "Fixed bug").
+* First line under 50 chars; extra detail in body.
+* Link to related tickets/issues.
+
+Example:
+    Add user authentication middleware
+    - Implement JWT authentication
+    - Restrict access to protected routes
+    - Linked to issue #42
+
+---
+
+**Using .gitignore to Exclude Files**
+
+* Avoid tracking unnecessary files like logs, cache, build outputs.
+
+Example:
+    node_modules/
+    *.log
+    .env
+
+* Apply changes after update:
+    `git rm -r --cached .`
+    `git add .`
+    `git commit -m "Update .gitignore"`
+
+---
+
+**Cleaning Up Commit History**
+
+* Squash commits: `git rebase -i HEAD~3`
+* Remove commits: `git reset $(soft/hard)`.
+* Avoid committing debug or temp code.
+
+---
+
+### Advanced Git Commands
+
+**Undoing Changes**
+
+* Reset:
+    * Soft: keep changes (`git reset --soft HEAD~1`)
+    * Hard: discard changes (`git reset --hard HEAD~1`)
+* Revert: Safe undo (`git revert <commit_id>`)
+* Checkout: Restore files or switch branches.
+
+**Stashing Changes**
+
+* Save work without committing:
+    `git stash`
+    `git stash list`
+    `git stash apply`
+
+**Rebasing vs. Merging**
+
+Merge
+* Keeps merge commits
+* Safe for collaboration
+* `git merge branch`
+
+Rebase
+* Creates linear history
+* Cleaner history but risky if shared
+* `git rebase main`
+
+---
+
+**Hands-on Exercise**
+
+1.  Create a branch, commit changes.
+2.  Undo last commit (reset --soft).
+3.  Revert a commit.
+4.  Stash changes.
+5.  Rebase branch onto main.
+
+---
+
+### Git Collaboration & Workflows
+
+**Pull Requests**
+
+* Used in GitHub/GitLab to propose changes before merging.
+* Allows discussion, code review, and CI checks.
+
+**Code Reviews & Approvals**
+
+* Process:
+    * Developer opens PR/MR
+    * Reviewer checks code quality, functionality, security.
+    * Approvals required before merge.
+
+**Collaborative Workflows**
+
+* Gitflow
+    * Branch types: main, develop, feature/*, release/*, hotfix/*.
+* Feature Branch Workflow:
+    * Each feature developed on its own branch, merged via PR.
+* Command Example:
+    `git checkout -b feature/new-login`
+    `git push origin feature/new-login`
+
+---
+
+**Hands-on Exercise**
+
+Simulate 3 developers:
+1.  Create feature branches.
+2.  Push to remote.
+3.  Open PR/MR.
+4.  Review & approve.
+5.  Merge into develop.
+
+---
+
+### Troubleshooting and Debugging
+
+**Resolving Merge Conflicts**
+
+* Happens when changes overlap.
+* Steps:
+    1.  Identify conflicts in file.
+    2.  Edit to keep correct version.
+    3.  Mark resolved:
+        `git add file`
+        `git commit`
+
+**Fixing Common Git Errors**
+
+* Detached HEAD:
+    `git switch branch_name`
+* Accidentally committed to wrong branch:
+    `git cherry-pick <commit_id>`
+    `git reset --hard HEAD~1`
+
+---
+
+**Handling Repository Corruption**
+
+* Clone fresh copy from remote.
+* Run integrity check:
+    `git fsck`
+* Restore from backup if needed.
+
+**Key Takeaways:**
+
+* Commit messages should tell the "story" of the change.
+* .gitignore keeps repo clean.
+* Merge for safety, rebase for cleaner history.
+* PRs and code reviews are essential in teamwork.
+* Learn to resolve conflicts calmly.
+* Always have a backup or remote copy for recovery.
+
+---
+
+**Thank You**
+Any Enquiries?

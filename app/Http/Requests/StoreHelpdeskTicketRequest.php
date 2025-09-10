@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @method bool hasFile(string $key = null)
+ * @method \Illuminate\Http\UploadedFile|array|null file(string $key = null)
+ */
 class StoreHelpdeskTicketRequest extends FormRequest
 {
     /**

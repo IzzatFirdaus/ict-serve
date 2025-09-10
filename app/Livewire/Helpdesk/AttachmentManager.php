@@ -94,27 +94,21 @@ class AttachmentManager extends Component
             // Merge with existing attachments
             $allAttachments = array_merge($currentAttachments, $uploadedFiles);
 
-            // Update ticket with new attachments
-            $this->ticket->update([
-                'file_attachments' => $allAttachments,
-            ]);
+            // Add activity log entry using attribute access to avoid modifying a readonly/magic property
+            $currentActivityLog = $this->ticket->getAttribute('activity_log') ?? [];
+            $newLogEntry = [
+                'action' => 'files_uploaded',
+                'user_id' => (int) Auth::id(),
+                'user_name' => Auth::user()->name,
+                'timestamp' => now()->toISOString(),
+                'details' => [
+                    'files_count' => count($uploadedFiles),
+                    'files' => array_map(fn ($file) => $file['original_name'], $uploadedFiles),
+                    'description' => $this->attachmentDescription ?: null,
+                ],
+            ];
 
-            // Add activity log entry
-            $this->ticket->activity_log = array_merge(
-                $this->ticket->activity_log ?? [],
-                [[
-                    'action' => 'files_uploaded',
-                    'user_id' => (int) Auth::id(),
-                    'user_name' => Auth::user()->name,
-                    'timestamp' => now()->toISOString(),
-                    'details' => [
-                        'files_count' => count($uploadedFiles),
-                        'files' => array_map(fn ($file) => $file['original_name'], $uploadedFiles),
-                        'description' => $this->attachmentDescription ?: null,
-                    ],
-                ]]
-            );
-
+            $this->ticket->setAttribute('activity_log', array_merge($currentActivityLog, [$newLogEntry]));
             $this->ticket->save();
 
             session()->flash('success',
@@ -195,24 +189,19 @@ class AttachmentManager extends Component
                 ->values()
                 ->toArray();
 
-            $this->ticket->update([
-                'file_attachments' => $updatedAttachments,
-            ]);
+            // Add activity log entry using attribute access to avoid modifying a readonly/magic property
+            $currentActivityLog = $this->ticket->getAttribute('activity_log') ?? [];
+            $newLogEntry = [
+                'action' => 'file_deleted',
+                'user_id' => Auth::id(),
+                'user_name' => Auth::user()->name,
+                'timestamp' => now()->toISOString(),
+                'details' => [
+                    'filename' => $attachment['original_name'],
+                ],
+            ];
 
-            // Add activity log entry
-            $this->ticket->activity_log = array_merge(
-                $this->ticket->activity_log ?? [],
-                [[
-                    'action' => 'file_deleted',
-                    'user_id' => Auth::id(),
-                    'user_name' => Auth::user()->name,
-                    'timestamp' => now()->toISOString(),
-                    'details' => [
-                        'filename' => $attachment['original_name'],
-                    ],
-                ]]
-            );
-
+            $this->ticket->setAttribute('activity_log', array_merge($currentActivityLog, [$newLogEntry]));
             $this->ticket->save();
 
             session()->flash('success', 'Fail berjaya dipadam / File successfully deleted');

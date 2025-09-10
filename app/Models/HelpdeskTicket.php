@@ -32,6 +32,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int|null $satisfaction_rating
  * @property string|null $feedback
  * @property array|null $attachments
+ * @property array|null $file_attachments
+ * @property array|null $activity_log
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\TicketCategory $category
@@ -71,7 +73,9 @@ class HelpdeskTicket extends Model
         'resolved_by',
         'satisfaction_rating',
         'feedback',
-        'attachments',
+    'attachments',
+    'file_attachments',
+    'activity_log',
     ];
 
     /**
@@ -175,6 +179,8 @@ class HelpdeskTicket extends Model
             'closed_at' => 'datetime',
             'satisfaction_rating' => 'integer',
             'attachments' => 'json',
+            'file_attachments' => 'array',
+            'activity_log' => 'array',
         ];
     }
 

@@ -26,9 +26,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Backwards-compatibility route used by external links and tests
-Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('legacy.ict.damage-complaint');
-
 // Public Access Routes (No Authentication Required)
 Route::prefix('public')->name('public.')->group(function () {
     // Equipment Loan Requests
@@ -47,7 +44,7 @@ Route::prefix('public')->name('public.')->group(function () {
     })->name('track');
     Route::post('/track', function (\Illuminate\Http\Request $request) {
         $request->validate([
-            'tracking_number' => 'required|string',
+            'tracking_number' => 'required|string'
         ]);
 
         $trackingNumber = $request->tracking_number;
@@ -213,10 +210,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () {
             // Reporting Dashboard for administrators
             $equipmentCount = \App\Models\EquipmentItem::count();
-            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'active'))->count();
-            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'open'))->count();
-            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'resolved'))->count();
-
+            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn($q) => $q->where('code', 'active'))->count();
+            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'open'))->count();
+            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'resolved'))->count();
             return view('admin.dashboard', compact('equipmentCount', 'activeLoans', 'openTickets', 'resolvedTickets'));
         })->name('dashboard');
 
