@@ -11,6 +11,22 @@ export default defineConfig({
   darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
+      // MYDS 12-8-4 Grid System
+      gridTemplateColumns: {
+        // Desktop (≥1024px): 12-column grid
+        'myds-12': 'repeat(12, minmax(0, 1fr))',
+        // Tablet (768px-1023px): 8-column grid
+        'myds-8': 'repeat(8, minmax(0, 1fr))',
+        // Mobile (≤767px): 4-column grid
+        'myds-4': 'repeat(4, minmax(0, 1fr))',
+      },
+
+      // MYDS Font Families
+      fontFamily: {
+        'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+        'heading': ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+      },
+
       // MYDS Complete Color Token System
       colors: {
         // White

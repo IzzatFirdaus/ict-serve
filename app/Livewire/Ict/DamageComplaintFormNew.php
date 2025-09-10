@@ -8,7 +8,7 @@ use App\Models\HelpdeskTicket;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class DamageComplaintForm extends Component
+class DamageComplaintFormNew extends Component
 {
     // Form Reference
     public string $formReference = 'PK.(S).MOTAC.07.(L1)';

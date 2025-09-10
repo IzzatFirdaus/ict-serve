@@ -167,6 +167,9 @@ Route::middleware('auth')->group(function () {
             // Will create EquipmentIndex Livewire component
             return 'Equipment Index - Coming Soon';
         })->name('index');
+
+        // Equipment Loan Application Form (MYDS-compliant)
+        Route::get('/loan-application', \App\Livewire\Equipment\LoanApplicationForm::class)->name('loan-application');
     });
 
     // Reports Routes (top-level)
