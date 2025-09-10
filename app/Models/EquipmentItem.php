@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,12 +10,35 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $id
+ * @property int $category_id
+ * @property string|null $asset_tag
+ * @property string|null $serial_number
+ * @property string|null $brand
+ * @property string|null $model
+ * @property array|null $specifications
+ * @property string|null $description
+ * @property string $condition
+ * @property string $status
+ * @property float|null $purchase_price
+ * @property \Illuminate\Support\Carbon|null $purchase_date
+ * @property \Illuminate\Support\Carbon|null $warranty_expiry
+ * @property string|null $location
+ * @property string|null $notes
+ * @property bool $is_active
+ * @property string $name
+ * @property-read \App\Models\EquipmentCategory $category
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class EquipmentItem extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'category_id',
+        'name',
         'asset_tag',
         'serial_number',
         'brand',
@@ -29,16 +54,6 @@ class EquipmentItem extends Model
         'notes',
         'is_active',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'purchase_price' => 'decimal:2',
-            'purchase_date' => 'date',
-            'warranty_expiry' => 'date',
-        ];
-    }
 
     /**
      * Get the category this equipment belongs to
@@ -120,14 +135,24 @@ class EquipmentItem extends Model
     public function currentLoan(): ?LoanRequest
     {
         return LoanRequest::query()
-            ->whereHas('equipmentItems', function ($query) {
+            ->whereHas('equipmentItems', function ($query): void {
                 $query->where('equipment_item_id', $this->id);
             })
-            ->whereIn('status_id', function ($query) {
+            ->whereIn('status_id', function ($query): void {
                 $query->select('id')
                     ->from('loan_statuses')
                     ->whereIn('code', ['ict_approved', 'active']);
             })
             ->first();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'purchase_price' => 'decimal:2',
+            'purchase_date' => 'date',
+            'warranty_expiry' => 'date',
+        ];
     }
 }
