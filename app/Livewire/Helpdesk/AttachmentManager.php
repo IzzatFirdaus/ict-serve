@@ -99,22 +99,9 @@ class AttachmentManager extends Component
                 'file_attachments' => $allAttachments,
             ]);
 
-            // Add activity log entry
-            $this->ticket->activity_log = array_merge(
-                $this->ticket->activity_log ?? [],
-                [[
-                    'action' => 'files_uploaded',
-                    'user_id' => (int) Auth::id(),
-                    'user_name' => Auth::user()->name,
-                    'timestamp' => now()->toISOString(),
-                    'details' => [
-                        'files_count' => count($uploadedFiles),
-                        'files' => array_map(fn ($file) => $file['original_name'], $uploadedFiles),
-                        'description' => $this->attachmentDescription ?: null,
-                    ],
-                ]]
-            );
-
+            // TODO: Log activity using a real column or external activity log package
+            // Example: $this->ticket->update(['activity_log' => ...]);
+            // Or use Spatie\Activitylog: activity()->performedOn($this->ticket)->causedBy(Auth::user())->withProperties([...])->log('files_uploaded');
             $this->ticket->save();
 
             session()->flash('success',
@@ -199,20 +186,9 @@ class AttachmentManager extends Component
                 'file_attachments' => $updatedAttachments,
             ]);
 
-            // Add activity log entry
-            $this->ticket->activity_log = array_merge(
-                $this->ticket->activity_log ?? [],
-                [[
-                    'action' => 'file_deleted',
-                    'user_id' => Auth::id(),
-                    'user_name' => Auth::user()->name,
-                    'timestamp' => now()->toISOString(),
-                    'details' => [
-                        'filename' => $attachment['original_name'],
-                    ],
-                ]]
-            );
-
+            // TODO: Log activity using a real column or external activity log package
+            // Example: $this->ticket->update(['activity_log' => ...]);
+            // Or use Spatie\Activitylog: activity()->performedOn($this->ticket)->causedBy(Auth::user())->withProperties([...])->log('file_deleted');
             $this->ticket->save();
 
             session()->flash('success', 'Fail berjaya dipadam / File successfully deleted');
