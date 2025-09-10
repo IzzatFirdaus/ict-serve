@@ -54,6 +54,15 @@ Thumbs.db
 /Homestead.yaml
 /playwright-report/
 
+# Generated API docs
+/docs/api/
+/docs/api/classes/
+/docs/api/files/
+/docs/api/js/
+/docs/api/namespaces/
+/docs/api/packages/
+/docs/api/reports/
+
 # Keep source files and configuration tracked. Do NOT ignore these:
 # - app/
 # - bootstrap/

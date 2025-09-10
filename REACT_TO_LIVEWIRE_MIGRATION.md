@@ -60,15 +60,15 @@ This document outlines the successful migration from React to Livewire in the IC
 
 ```html
 <div x-data="{ activeTab: 'catalog' }">
-    <button
-        @click="activeTab = 'catalog'"
-        :class="activeTab === 'catalog' ? 'active-class' : 'inactive-class'"
-    >
-        Catalog
-    </button>
-    <div x-show="activeTab === 'catalog'" x-transition>
-        <!-- Content -->
-    </div>
+  <button
+    @click="activeTab = 'catalog'"
+    :class="activeTab === 'catalog' ? 'active-class' : 'inactive-class'"
+  >
+    Catalog
+  </button>
+  <div x-show="activeTab === 'catalog'" x-transition>
+    <!-- Content -->
+  </div>
 </div>
 ```
 
@@ -76,11 +76,11 @@ This document outlines the successful migration from React to Livewire in the IC
 
 ```html
 <div x-data="{ searchQuery: '', showFilters: false }">
-    <input x-model="searchQuery" placeholder="Search..." />
-    <button @click="showFilters = !showFilters">Toggle Filters</button>
-    <div x-show="showFilters" x-transition>
-        <!-- Filters -->
-    </div>
+  <input x-model="searchQuery" placeholder="Search..." />
+  <button @click="showFilters = !showFilters">Toggle Filters</button>
+  <div x-show="showFilters" x-transition>
+    <!-- Filters -->
+  </div>
 </div>
 ```
 
@@ -138,18 +138,18 @@ class MyComponent extends Component
 
 ```html
 <div x-data="{ showModal: false, loading: false }">
-    <button @click="showModal = true">Open Modal</button>
+  <button @click="showModal = true">Open Modal</button>
 
-    <div x-show="showModal" x-transition>
-        <button
-            wire:click="performAction"
-            @click="loading = true"
-            :disabled="loading"
-        >
-            <span x-show="!loading">Save</span>
-            <span x-show="loading">Saving...</span>
-        </button>
-    </div>
+  <div x-show="showModal" x-transition>
+    <button
+      wire:click="performAction"
+      @click="loading = true"
+      :disabled="loading"
+    >
+      <span x-show="!loading">Save</span>
+      <span x-show="loading">Saving...</span>
+    </button>
+  </div>
 </div>
 ```
 
