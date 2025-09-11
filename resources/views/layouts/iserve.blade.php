@@ -25,22 +25,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
-    <!-- MYDS Accessibility: Skip Links -->
-    <style>
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: #000;
-            color: #fff;
-            padding: 8px;
-            text-decoration: none;
-            transition: top 0.3s;
-        }
-        .skip-link:focus {
-            top: 6px;
-        }
-    </style>
+    <!-- MYDS Accessibility: Skip link styles now handled by accessibility.css module -->
 
     {{ $head ?? '' }}
 </head>
@@ -65,9 +50,10 @@
                 <!-- Language Switcher and User Menu -->
                 <div class="flex items-center space-x-4">
                     <!-- Language Switcher -->
+                    <!-- Language Switcher -->
                     <div class="relative">
                         <select class="text-sm border border-gray-300 rounded px-2 py-1 bg-white"
-                                onchange="changeLanguage(this.value)"
+                                data-language-select
                                 aria-label="Pilih Bahasa / Select Language">
                             <option value="ms" {{ app()->getLocale() == 'ms' ? 'selected' : '' }}>BM</option>
                             <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>EN</option>
@@ -297,12 +283,7 @@
     <!-- Alpine.js for interactivity -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- MYDS Language Switcher -->
-    <script>
-        function changeLanguage(locale) {
-            window.location.href = "{{ url('language') }}/" + locale;
-        }
-    </script>
+    <!-- MYDS Language Switcher: Now handled by language-switcher.js module -->
 
     {{ $scripts ?? '' }}
 </body>
