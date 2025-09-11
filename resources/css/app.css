@@ -1,8 +1,45 @@
+/**
+ * ICT Serve (iServe) Application Styles  
+ * MYDS and MyGOVEA Compliant Implementation
+ * 
+ * This file serves as the central import point for all application styles
+ * following modular architecture and MYDS design system principles.
+ */
+
+/* =============================================================================
+   External Dependencies and Frameworks
+   ============================================================================= */
+
+/* MYDS Core Styles */
 @import '@govtechmy/myds-style/full.css';
 @import 'tailwindcss';
+
+/* MYDS Design Tokens */
 @import "./myds-tokens.css";
+
+/* Google Fonts - MYDS Typography (Poppins for headings, Inter for body) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* =============================================================================
+   MYDS Modular CSS Imports (Migration Implementation)
+   ============================================================================= */
+
+/* Theme Management - Dark/light mode, color schemes */
+@import "./theme.css";
+
+/* Layout System - Grid, typography, spacing, responsive utilities */
+@import "./layout.css";
+
+/* Component Library - Buttons, forms, cards, navigation, etc. */
+@import "./components.css";
+
+/* Accessibility Features - Skip links, focus indicators, ARIA styling */
+@import "./accessibility.css";
+
+/* =============================================================================
+   Tailwind CSS Configuration
+   ============================================================================= */
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -10,15 +47,13 @@
 @source '../**/*.js';
 
 @theme {
-  /* MYDS Typography - Poppins for headings, Inter for body */
+  /* MYDS Typography Families */
   --font-poppins: 'Poppins', ui-sans-serif, system-ui, sans-serif;
   --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-  /* MYDS Complete Color System */
-
-  /* Primary Colors (MYDS Blue) */
+  /* MYDS Color System - Primary Colors (Malaysian Government Blue) */
   --color-primary-50: #EFF6FF;
   --color-primary-100: #DBEAFE;
   --color-primary-200: #C2D5FF;
@@ -31,7 +66,7 @@
   --color-primary-900: #1E3A8A;
   --color-primary-950: #172554;
 
-  /* Danger Colors */
+  /* MYDS Color System - Danger/Error Colors */
   --color-danger-50: #FEF2F2;
   --color-danger-100: #FEE2E2;
   --color-danger-200: #FECACA;
@@ -44,7 +79,7 @@
   --color-danger-900: #7F1D1D;
   --color-danger-950: #450A0A;
 
-  /* Success Colors */
+  /* MYDS Color System - Success Colors */
   --color-success-50: #F0FDF4;
   --color-success-100: #DCFCE7;
   --color-success-200: #BBF7D0;
@@ -57,7 +92,7 @@
   --color-success-900: #14532D;
   --color-success-950: #052E16;
 
-  /* Warning Colors */
+  /* MYDS Color System - Warning Colors */
   --color-warning-50: #FFFBEB;
   --color-warning-100: #FEF3C7;
   --color-warning-200: #FDE68A;
@@ -70,7 +105,7 @@
   --color-warning-900: #78350F;
   --color-warning-950: #451A03;
 
-  /* Gray Colors */
+  /* MYDS Color System - Neutral/Gray Colors */
   --color-gray-50: #FAFAFA;
   --color-gray-100: #F4F4F5;
   --color-gray-200: #E4E4E7;
@@ -85,7 +120,7 @@
   --color-gray-930: #161619;
   --color-gray-950: #09090B;
 
-  /* MYDS Semantic Tokens */
+  /* MYDS Semantic Color Tokens */
   --color-txt-black-900: #18181B;
   --color-txt-black-700: #3F3F46;
   --color-txt-black-500: #71717A;
@@ -106,7 +141,7 @@
   --color-fr-success-600: #16A34A;
   --color-fr-warning-600: #D97706;
 
-  /* MYDS Typography Sizes */
+  /* MYDS Typography Scale */
   --fontSize-body-2xs: 0.625rem;
   --fontSize-body-xs: 0.75rem;
   --fontSize-body-sm: 0.875rem;
@@ -128,12 +163,12 @@
   --fontSize-heading-lg: 3rem;
   --fontSize-heading-xl: 3.75rem;
 
-  /* MYDS Shadows */
+  /* MYDS Shadow System */
   --shadow-button: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
   --shadow-card: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.05);
   --shadow-context-menu: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10);
 
-  /* MYDS Border Radius */
+  /* MYDS Border Radius System */
   --radius-xs: 4px;
   --radius-s: 6px;
   --radius-m: 8px;
@@ -141,13 +176,13 @@
   --radius-xl: 14px;
   --radius-full: 9999px;
 
-  /* MYDS Transitions */
+  /* MYDS Transition System */
   --transition-short: 200ms cubic-bezier(0, 0, 0.58, 1);
   --transition-medium: 400ms cubic-bezier(0, 0, 0.58, 1);
   --transition-long: 600ms cubic-bezier(0, 0, 0.58, 1);
   --transition-bounce: 200ms cubic-bezier(0.4, 1.4, 0.2, 1);
 
-  /* MYDS Spacing */
+  /* MYDS Spacing System */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -160,41 +195,11 @@
   --space-16: 64px;
 }
 
-/* Custom ICT Serve (iServe) Styling */
+/* =============================================================================
+   ICT Serve Application-Specific Styles
+   ============================================================================= */
 
-/* Accessibility improvements */
-.focus\:ring-2:focus {
-  outline: 2px solid var(--color-blue-500);
-  outline-offset: 2px;
-}
-
-/* Skip links for accessibility */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: var(--color-blue-600);
-  color: white;
-  padding: 8px;
-  text-decoration: none;
-  z-index: 1000;
-}
-
-.skip-link:focus {
-  top: 6px;
-}
-
-/* MYDS enhancements */
-.card-hover {
-  transition: all 0.2s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-}
-
-/* Loading states */
+/* Loading State Animations */
 .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
 }
@@ -203,72 +208,106 @@
   0% {
     background-color: hsl(200deg 20% 80%);
   }
-
   100% {
     background-color: hsl(200deg 20% 95%);
   }
 }
 
-/* Status indicators using MYDS color tokens */
+/* Application Status Indicators (using MYDS color tokens) */
 .status-pending {
-  background-color: #FEF3C7; /* warning-100 */
-  color: #92400E; /* warning-800 */
-  border: 1px solid #FDE68A; /* warning-200 */
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-800);
+  border: 1px solid var(--color-warning-200);
 }
 
 .status-approved {
-  background-color: #DCFCE7; /* success-100 */
-  color: #166534; /* success-800 */
-  border: 1px solid #BBF7D0; /* success-200 */
+  background-color: var(--color-success-100);
+  color: var(--color-success-800);
+  border: 1px solid var(--color-success-200);
 }
 
 .status-rejected {
-  background-color: #FEE2E2; /* danger-100 */
-  color: #991B1B; /* danger-800 */
-  border: 1px solid #FECACA; /* danger-200 */
+  background-color: var(--color-danger-100);
+  color: var(--color-danger-800);
+  border: 1px solid var(--color-danger-200);
 }
 
 .status-new {
-  background-color: #DBEAFE; /* primary-100 */
-  color: #1E40AF; /* primary-800 */
-  border: 1px solid #C2D5FF; /* primary-200 */
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-800);
+  border: 1px solid var(--color-primary-200);
 }
 
 .status-in-progress {
-  background-color: #FEF3C7; /* warning-100 */
-  color: #92400E; /* warning-800 */
-  border: 1px solid #FDE68A; /* warning-200 */
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-800);
+  border: 1px solid var(--color-warning-200);
 }
 
 .status-resolved {
-  background-color: #DCFCE7; /* success-100 */
-  color: #166534; /* success-800 */
-  border: 1px solid #BBF7D0; /* success-200 */
+  background-color: var(--color-success-100);
+  color: var(--color-success-800);
+  border: 1px solid var(--color-success-200);
 }
 
 .status-closed {
-  background-color: #F4F4F5; /* gray-100 */
-  color: #27272A; /* gray-800 */
-  border: 1px solid #E4E4E7; /* gray-200 */
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  border: 1px solid var(--color-gray-200);
 }
 
-/* Priority indicators using MYDS color tokens */
+/* Priority Level Indicators (using MYDS color tokens) */
 .priority-low {
-  background-color: #DCFCE7; /* success-100 */
-  color: #166534; /* success-800 */
+  background-color: var(--color-success-100);
+  color: var(--color-success-800);
 }
 
 .priority-medium {
-  background-color: #FEF3C7; /* warning-100 */
-  color: #92400E; /* warning-800 */
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-800);
 }
 
 .priority-high {
-  background-color: #FFEDD5; /* orange-100 */
-  color: #9A3412; /* orange-800 */
+  background-color: #FFEDD5; /* orange-100 equivalent */
+  color: #9A3412; /* orange-800 equivalent */
 }
 
 .priority-urgent {
-  background-color: #FEE2E2; /* danger-100 */
-  color: #991B1B; /* danger-800 */
+  background-color: var(--color-danger-100);
+  color: var(--color-danger-800);
 }
+
+/* Interactive Enhancement Classes */
+.card-hover {
+  transition: all var(--transition-short) ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================================================
+   Legacy Support and Backward Compatibility
+   ============================================================================= */
+
+/* Maintain some legacy class names for backward compatibility */
+.focus\:ring-2:focus {
+  outline: 2px solid var(--color-fr-primary-600);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   Development and Debug Utilities (Remove in production)
+   ============================================================================= */
+
+/* Uncomment for debugging layout issues in development */
+/*
+.debug * {
+  outline: 1px solid red;
+}
+
+.debug .myds-grid > * {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+*/
