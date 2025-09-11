@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) }" x-bind:class="{ 'dark': darkMode }">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="myds-html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,17 +31,7 @@
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Dark Mode Script (prevent FOUC) -->
-    <script>
-        // Prevent FOUC for dark mode
-        (function() {
-            const darkMode = localStorage.getItem('darkMode') === 'true' ||
-                (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            if (darkMode) {
-                document.documentElement.classList.add('dark');
-            }
-        })();
-    </script>
+    <!-- MYDS Theme System: FOUC Prevention handled by theme-switch.js module -->
 </head>
 
 <body class="myds-body bg-bg-white-0 text-txt-black-900 antialiased transition-colors duration-200">
@@ -108,16 +98,12 @@
 
                         <!-- Theme Toggle -->
                         <button type="button"
-                                x-on:click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)"
+                                data-theme-toggle
                                 class="myds-btn-secondary myds-btn-sm"
-                                aria-label="Toggle dark mode">
-                            <!-- Sun Icon (Light Mode) -->
-                            <svg x-show="!darkMode" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                aria-label="Toggle theme mode">
+                            <!-- Theme icons will be managed by theme-switch.js module -->
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                            </svg>
-                            <!-- Moon Icon (Dark Mode) -->
-                            <svg x-show="darkMode" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                             </svg>
                         </button>
 
@@ -372,9 +358,9 @@
                         </p>
                         <div class="mt-4 md:mt-0 flex items-center space-x-4">
                             <button type="button"
-                                    x-on:click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)"
+                                    data-theme-toggle
                                     class="text-body-xs text-txt-black-500 hover:text-txt-black-700">
-                                <span x-text="darkMode ? 'Light Mode' : 'Dark Mode'"></span>
+                                <span data-theme-text>Toggle Mode</span>
                             </button>
                         </div>
                     </div>
@@ -383,119 +369,8 @@
         </footer>
     </div>
 
-    <!-- Toast Container (for notifications) -->
-    <div id="toast-container"
-         class="fixed bottom-6 right-6 space-y-3 z-50 pointer-events-none"
-         x-data="toastManager()">
-        <template x-for="toast in toasts" :key="toast.id">
-            <div x-show="toast.visible"
-                 x-transition:enter="toast-enter"
-                 x-transition:leave="toast-exit"
-                 class="pointer-events-auto max-w-sm w-full bg-bg-white-0 border border-otl-gray-200 rounded-lg shadow-context-menu overflow-hidden"
-                 :class="{
-                     'border-l-4 border-l-primary-600': toast.type === 'info',
-                     'border-l-4 border-l-success-600': toast.type === 'success',
-                     'border-l-4 border-l-warning-600': toast.type === 'warning',
-                     'border-l-4 border-l-danger-600': toast.type === 'error'
-                 }">
-                <div class="p-4">
-                    <div class="flex items-start">
-                        <!-- Icon -->
-                        <div class="flex-shrink-0">
-                            <!-- Success Icon -->
-                            <svg x-show="toast.type === 'success'" class="w-5 h-5 text-success-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <!-- Error Icon -->
-                            <svg x-show="toast.type === 'error'" class="w-5 h-5 text-danger-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-                            </svg>
-                            <!-- Warning Icon -->
-                            <svg x-show="toast.type === 'warning'" class="w-5 h-5 text-warning-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            <!-- Info Icon -->
-                            <svg x-show="toast.type === 'info'" class="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="ml-3 flex-1">
-                            <p class="text-body-sm font-medium text-txt-black-900" x-text="toast.title"></p>
-                            <p class="mt-1 text-body-sm text-txt-black-700" x-text="toast.message"></p>
-                        </div>
-
-                        <!-- Close Button -->
-                        <button type="button"
-                                x-on:click="removeToast(toast.id)"
-                                class="ml-4 flex-shrink-0 text-txt-black-400 hover:text-txt-black-600">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Progress Bar -->
-                <div x-show="toast.progress" class="h-1 bg-bg-white-100">
-                    <div class="h-full progress-bar-countdown"
-                         :class="{
-                             'bg-primary-600': toast.type === 'info',
-                             'bg-success-600': toast.type === 'success',
-                             'bg-warning-600': toast.type === 'warning',
-                             'bg-danger-600': toast.type === 'error'
-                         }"></div>
-                </div>
-            </div>
-        </template>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        // Toast Manager
-        function toastManager() {
-            return {
-                toasts: [],
-                addToast(type, title, message, duration = 3000) {
-                    const id = Date.now();
-                    const toast = {
-                        id,
-                        type,
-                        title,
-                        message,
-                        visible: true,
-                        progress: duration > 0
-                    };
-
-                    this.toasts.push(toast);
-
-                    if (duration > 0) {
-                        setTimeout(() => {
-                            this.removeToast(id);
-                        }, duration);
-                    }
-                },
-                removeToast(id) {
-                    const index = this.toasts.findIndex(t => t.id === id);
-                    if (index > -1) {
-                        this.toasts[index].visible = false;
-                        setTimeout(() => {
-                            this.toasts.splice(index, 1);
-                        }, 200);
-                    }
-                }
-            };
-        }
-
-        // Global toast function
-        window.showToast = function(type, title, message, duration = 3000) {
-            const toastContainer = document.querySelector('[x-data*="toastManager"]');
-            if (toastContainer) {
-                toastContainer._x_dataStack[0].addToast(type, title, message, duration);
-            }
-        };
-    </script>
+    <!-- MYDS Toast Container (Managed by toast-manager.js module) -->
+    <!-- This container will be automatically created and managed by the toast-manager module -->
 
     @livewireScripts
 

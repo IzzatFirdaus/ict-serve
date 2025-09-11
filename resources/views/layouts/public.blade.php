@@ -66,7 +66,9 @@
                 <div class="flex items-center space-x-4">
                     <!-- Language Switcher -->
                     <div class="relative">
-                        <select class="text-sm border border-gray-300 rounded-md px-3 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <select class="text-sm border border-gray-300 rounded-md px-3 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                data-language-select
+                                aria-label="Select Language / Pilih Bahasa">
                             <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>EN</option>
                             <option value="ms" {{ app()->getLocale() === 'ms' ? 'selected' : '' }}>MS</option>
                         </select>
@@ -75,9 +77,12 @@
                     <!-- Mobile Menu Button -->
                     <button type="button"
                             class="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
-                            id="mobile-menu-button">
+                            data-mobile-menu-toggle
+                            aria-label="Open main menu"
+                            aria-expanded="false"
+                            aria-haspopup="true">
                         <span class="sr-only">{{ __('Open main menu') }}</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
@@ -85,7 +90,7 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div class="md:hidden hidden" id="mobile-menu">
+            <div class="md:hidden hidden" data-mobile-menu>
                 <div class="px-2 pt-2 pb-3 space-y-1 border-t border-gray-200">
                     <a href="{{ url('/') }}"
                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 {{ request()->is('/') ? 'text-primary-600 bg-primary-50' : '' }}">
@@ -237,20 +242,8 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Language switcher (placeholder - would need proper implementation)
-        document.querySelector('select').addEventListener('change', function() {
-            // Implement language switching logic
-            console.log('Language selected:', this.value);
-        });
-    </script>
+    <!-- Scripts: Now handled by modular JavaScript modules -->
+    <!-- Mobile menu and language switching functionality is handled by modules -->
 
     <!-- Additional scripts -->
     @stack('scripts')
