@@ -2,9 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ICTServeEnhancedTest extends TestCase
 {
@@ -46,21 +45,17 @@ class ICTServeEnhancedTest extends TestCase
     }
 
     /**
-     * Test that signature pad JavaScript library is included.
+     * Test that component files contain signature pad references.
      */
     public function test_signature_pad_library_is_referenced(): void
     {
-        $user = User::factory()->create([
-            'email' => 'test@motac.gov.my',
-            'name' => 'Test User'
-        ]);
+        // Check that signature-pad component exists and contains signature_pad
+        $signaturePadComponent = file_get_contents(resource_path('views/components/signature-pad.blade.php'));
+        $this->assertStringContainsString('signature_pad', $signaturePadComponent);
 
-        // Check the enhanced my-requests page includes signature_pad
-        $response = $this->actingAs($user)->get('/my-requests');
-
-        if ($response->status() === 200) {
-            $response->assertSee('signature_pad');
-        }
+        // Check that package.json contains signature_pad dependency
+        $packageJson = file_get_contents(base_path('package.json'));
+        $this->assertStringContainsString('signature_pad', $packageJson);
     }
 
     /**
@@ -92,7 +87,7 @@ class ICTServeEnhancedTest extends TestCase
     {
         // Check that app.css includes the filters import
         $appCss = file_get_contents(resource_path('css/app.css'));
-        $this->assertStringContains('@import "./components/filters.css";', $appCss);
+        $this->assertStringContainsString('@import "./components/filters.css";', $appCss);
 
         // Check that filters.css exists
         $this->assertFileExists(resource_path('css/components/filters.css'));

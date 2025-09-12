@@ -22,6 +22,7 @@
         "vite": "^6.0.11"
     },
     "dependencies": {
-        "playwright": "^1.55.0"
+        "playwright": "^1.55.0",
+        "signature_pad": "^5.1.0"
     }
 }
