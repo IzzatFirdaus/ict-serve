@@ -1,7 +1,7 @@
 <div>
     <!-- Equipment Selector Component -->
     <div class="bg-white rounded-[var(--radius-xl)] border border-otl-gray-200 shadow-md p-6">
-        
+
         <!-- Header with Search and View Controls -->
         <div class="mb-6">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
@@ -11,7 +11,7 @@
                         Pilih peralatan yang diperlukan untuk permohonan anda. Anda boleh memilih lebih dari satu item.
                     </p>
                 </div>
-                
+
                 <!-- View Mode Toggle -->
                 <div class="flex items-center gap-2">
                     <x-myds.button
@@ -32,7 +32,7 @@
                     </x-myds.button>
                 </div>
             </div>
-            
+
             <!-- Search and Filters -->
             <div class="flex flex-col lg:flex-row gap-4">
                 <!-- Search -->
@@ -44,7 +44,7 @@
                         class="w-full"
                     />
                 </div>
-                
+
                 <!-- Filter Toggle -->
                 <x-myds.button
                     type="button"
@@ -60,7 +60,7 @@
                     @endif
                 </x-myds.button>
             </div>
-            
+
             <!-- Advanced Filters -->
             @if($showFilters)
                 <div class="mt-4 p-4 bg-gray-50 rounded-[var(--radius-m)] border border-otl-gray-200">
@@ -79,7 +79,7 @@
                                 </option>
                             @endforeach
                         </x-myds.form.select>
-                        
+
                         <!-- Availability Filter -->
                         <x-myds.form.select
                             label="Ketersediaan"
@@ -90,7 +90,7 @@
                                 <option value="{{ $value }}">{{ $label }}</option>
                             @endforeach
                         </x-myds.form.select>
-                        
+
                         <!-- Sort Options -->
                         <x-myds.form.select
                             label="Susun mengikut"
@@ -102,7 +102,7 @@
                             @endforeach
                         </x-myds.form.select>
                     </div>
-                    
+
                     <!-- Filter Actions -->
                     <div class="flex justify-end gap-2 mt-4">
                         <x-myds.button
@@ -117,7 +117,7 @@
                 </div>
             @endif
         </div>
-        
+
         <!-- Selected Items Summary -->
         @if(count($selectedItems) > 0)
             <div class="mb-6 p-4 bg-primary-50 border border-otl-primary-200 rounded-[var(--radius-m)]">
@@ -142,7 +142,7 @@
                 </div>
             </div>
         @endif
-        
+
         <!-- Equipment Grid/List -->
         <div class="mb-6">
             @if($equipment->count() > 0)
@@ -151,7 +151,7 @@
                         @foreach($equipment as $item)
                             <div class="border border-otl-gray-200 rounded-[var(--radius-m)] p-4 hover:shadow-md transition-shadow
                                         {{ in_array($item->id, $selectedItems) ? 'ring-2 ring-primary-500 bg-primary-50' : '' }}">
-                                
+
                                 <!-- Equipment Card Header -->
                                 <div class="flex items-start justify-between mb-3">
                                     <div class="flex-1">
@@ -165,7 +165,7 @@
                                             Tag: {{ $item->asset_tag }}
                                         </p>
                                     </div>
-                                    
+
                                     <!-- Selection Checkbox -->
                                     <x-myds.form.checkbox
                                         name="selected_{{ $item->id }}"
@@ -174,7 +174,7 @@
                                         class="ml-2"
                                     />
                                 </div>
-                                
+
                                 <!-- Equipment Details -->
                                 <div class="space-y-2">
                                     <!-- Category -->
@@ -182,25 +182,25 @@
                                         <span class="text-txt-black-500">Kategori:</span>
                                         <span class="ml-1 text-txt-black-700">{{ $item->category->name ?? 'N/A' }}</span>
                                     </div>
-                                    
+
                                     <!-- Status -->
                                     <div class="flex items-center">
                                         <span class="text-xs text-txt-black-500 mr-2">Status:</span>
-                                        <span class="text-xs px-2 py-1 rounded-full 
-                                                   {{ $item->status === 'available' ? 'bg-success-100 text-success-700' : 
-                                                      ($item->status === 'on_loan' ? 'bg-warning-100 text-warning-700' : 
+                                        <span class="text-xs px-2 py-1 rounded-full
+                                                   {{ $item->status === 'available' ? 'bg-success-100 text-success-700' :
+                                                      ($item->status === 'on_loan' ? 'bg-warning-100 text-warning-700' :
                                                        'bg-gray-100 text-gray-700') }}">
                                             {{ ucfirst(str_replace('_', ' ', $item->status)) }}
                                         </span>
                                     </div>
-                                    
+
                                     @if($item->description)
                                         <p class="text-xs text-txt-black-600 mt-2">
                                             {{ Str::limit($item->description, 80) }}
                                         </p>
                                     @endif
                                 </div>
-                                
+
                                 <!-- Selection Controls -->
                                 @if(in_array($item->id, $selectedItems))
                                     <div class="mt-4 pt-3 border-t border-otl-gray-200 space-y-3">
@@ -219,7 +219,7 @@
                                                 class="w-full text-xs"
                                             />
                                         </div>
-                                        
+
                                         <!-- Notes -->
                                         <div>
                                             <label class="block text-xs font-medium text-txt-black-700 mb-1">
@@ -242,7 +242,7 @@
                     <!-- List View -->
                     <div class="space-y-2">
                         @foreach($equipment as $item)
-                            <div class="border border-otl-gray-200 rounded-[var(--radius-s)] p-4 
+                            <div class="border border-otl-gray-200 rounded-[var(--radius-s)] p-4
                                         {{ in_array($item->id, $selectedItems) ? 'ring-2 ring-primary-500 bg-primary-50' : '' }}">
                                 <div class="flex items-center gap-4">
                                     <!-- Selection Checkbox -->
@@ -251,7 +251,7 @@
                                         wire:click="toggleItem({{ $item->id }})"
                                         :checked="in_array($item->id, $selectedItems)"
                                     />
-                                    
+
                                     <!-- Equipment Info -->
                                     <div class="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4">
                                         <div>
@@ -262,7 +262,7 @@
                                                 {{ $item->asset_tag }}
                                             </p>
                                         </div>
-                                        
+
                                         <div>
                                             <p class="text-sm text-txt-black-700">
                                                 {{ $item->brand }} {{ $item->model }}
@@ -271,16 +271,16 @@
                                                 {{ $item->category->name ?? 'N/A' }}
                                             </p>
                                         </div>
-                                        
+
                                         <div>
-                                            <span class="text-xs px-2 py-1 rounded-full 
-                                                       {{ $item->status === 'available' ? 'bg-success-100 text-success-700' : 
-                                                          ($item->status === 'on_loan' ? 'bg-warning-100 text-warning-700' : 
+                                            <span class="text-xs px-2 py-1 rounded-full
+                                                       {{ $item->status === 'available' ? 'bg-success-100 text-success-700' :
+                                                          ($item->status === 'on_loan' ? 'bg-warning-100 text-warning-700' :
                                                            'bg-gray-100 text-gray-700') }}">
                                                 {{ ucfirst(str_replace('_', ' ', $item->status)) }}
                                             </span>
                                         </div>
-                                        
+
                                         @if(in_array($item->id, $selectedItems))
                                             <div class="flex gap-2">
                                                 <x-myds.form.input
@@ -332,7 +332,7 @@
                 </div>
             @endif
         </div>
-        
+
         <!-- Pagination -->
         @if($equipment->hasPages())
             <div class="border-t border-otl-gray-200 pt-4">
@@ -340,12 +340,12 @@
             </div>
         @endif
     </div>
-    
+
     <!-- Selected Equipment Summary (if any selected) -->
     @if(count($selectedEquipmentDetails) > 0)
         <div class="mt-6 bg-white rounded-[var(--radius-xl)] border border-otl-gray-200 shadow-md p-6">
             <h4 class="myds-heading-2xs text-txt-black-900 mb-4">Ringkasan Pilihan</h4>
-            
+
             <div class="space-y-3">
                 @foreach($selectedEquipmentDetails as $detail)
                     <div class="flex items-center justify-between p-3 bg-gray-50 rounded-[var(--radius-s)]">
@@ -354,7 +354,7 @@
                                 {{ $detail['equipment']->name }}
                             </h5>
                             <p class="text-xs text-txt-black-500">
-                                {{ $detail['equipment']->brand }} {{ $detail['equipment']->model }} 
+                                {{ $detail['equipment']->brand }} {{ $detail['equipment']->model }}
                                 • {{ $detail['equipment']->asset_tag }}
                             </p>
                             @if($detail['notes'])
@@ -363,7 +363,7 @@
                                 </p>
                             @endif
                         </div>
-                        
+
                         <div class="text-right ml-4">
                             <span class="text-sm font-semibold text-txt-black-900">
                                 Qty: {{ $detail['quantity'] }}

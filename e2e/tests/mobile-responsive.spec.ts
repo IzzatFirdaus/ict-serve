@@ -29,7 +29,7 @@ test.describe('Mobile Responsive Design', () => {
 
     for (const viewport of viewports) {
       await helpers.page.setViewportSize({ width: viewport.width, height: viewport.height });
-      
+
       for (const pagePath of pages) {
         await helpers.navigateToPage(pagePath);
         await helpers.page.waitForTimeout(500); // Allow layout to settle
@@ -78,7 +78,7 @@ test.describe('Mobile Responsive Design', () => {
             // Check for responsive image attributes
             const srcset = await image.getAttribute('srcset');
             const sizes = await image.getAttribute('sizes');
-            
+
             if (srcset || sizes) {
               // Responsive images should adapt
               expect(srcset || sizes).toBeTruthy();
@@ -107,7 +107,7 @@ test.describe('Mobile Responsive Design', () => {
       if (await mobileMenuButton.first().isVisible()) {
         // Test menu toggle functionality
         const initialExpanded = await mobileMenuButton.first().getAttribute('aria-expanded');
-        
+
         await mobileMenuButton.first().click();
         await helpers.page.waitForTimeout(300);
 
@@ -173,7 +173,7 @@ test.describe('Mobile Responsive Design', () => {
 
     // Check form layout on mobile
     const forms = await helpers.page.locator('form').all();
-    
+
     for (const form of forms) {
       if (await form.isVisible()) {
         const formBoundingBox = await form.boundingBox();
@@ -183,7 +183,7 @@ test.describe('Mobile Responsive Design', () => {
 
         // Check form fields are mobile-optimized
         const inputs = await form.locator('input, select, textarea').all();
-        
+
         for (const input of inputs.slice(0, 10)) {
           if (await input.isVisible()) {
             // Input should have appropriate mobile keyboard
@@ -194,7 +194,7 @@ test.describe('Mobile Responsive Design', () => {
             if (inputType === 'email') {
               expect(inputMode === 'email' || inputType === 'email').toBeTruthy();
             }
-            
+
             if (inputType === 'tel') {
               expect(inputMode === 'tel' || inputType === 'tel').toBeTruthy();
             }
@@ -223,7 +223,7 @@ test.describe('Mobile Responsive Design', () => {
 
         // Check form buttons are touch-friendly
         const buttons = await form.locator('button, input[type="submit"]').all();
-        
+
         for (const button of buttons) {
           if (await button.isVisible()) {
             const buttonBoundingBox = await button.boundingBox();
@@ -246,15 +246,15 @@ test.describe('Mobile Responsive Design', () => {
     await helpers.navigateToPage('/applications');
 
     const tables = await helpers.page.locator('table').all();
-    
+
     for (const table of tables) {
       if (await table.isVisible()) {
         const tableBoundingBox = await table.boundingBox();
-        
+
         if (tableBoundingBox) {
           // Table should not overflow viewport or have horizontal scroll
           const tableContainer = helpers.page.locator('.table-responsive, .overflow-x-auto').filter({ has: table });
-          
+
           if (await tableContainer.count() > 0) {
             // Table is in a responsive container
             const containerBoundingBox = await tableContainer.boundingBox();
@@ -272,7 +272,7 @@ test.describe('Mobile Responsive Design', () => {
         if (tableRows.length > 1) {
           const firstDataRow = tableRows[1];
           const cells = await firstDataRow.locator('td').all();
-          
+
           if (cells.length > 3) {
             // Many columns - should use responsive strategy
             // Check if columns are hidden or stacked
@@ -282,7 +282,7 @@ test.describe('Mobile Responsive Design', () => {
                 visibleCells++;
               }
             }
-            
+
             // Either some columns are hidden or table uses scroll
             expect(visibleCells <= cells.length).toBeTruthy();
           }
@@ -308,17 +308,17 @@ test.describe('Mobile Responsive Design', () => {
 
     // Look for modal triggers
     const modalTriggers = await helpers.page.locator('[data-testid*="modal"], .modal-trigger, .btn-modal').all();
-    
+
     for (const trigger of modalTriggers.slice(0, 2)) {
       if (await trigger.isVisible()) {
         await trigger.tap();
         await helpers.page.waitForTimeout(500);
 
         const modal = helpers.page.locator('[role="dialog"], .modal, .dialog');
-        
+
         if (await modal.first().isVisible()) {
           const modalBoundingBox = await modal.first().boundingBox();
-          
+
           if (modalBoundingBox) {
             // Modal should fit in viewport
             expect(modalBoundingBox.width).toBeLessThanOrEqual(375);
@@ -373,11 +373,11 @@ test.describe('Mobile Responsive Design', () => {
     await helpers.navigateToPage('/equipment');
 
     const images = await helpers.page.locator('img').all();
-    
+
     for (const image of images.slice(0, 10)) {
       if (await image.isVisible()) {
         const imageBoundingBox = await image.boundingBox();
-        
+
         if (imageBoundingBox) {
           // Images should not overflow viewport
           expect(imageBoundingBox.width).toBeLessThanOrEqual(375);
@@ -385,7 +385,7 @@ test.describe('Mobile Responsive Design', () => {
           // Check image loading attributes
           const loading = await image.getAttribute('loading');
           const decoding = await image.getAttribute('decoding');
-          
+
           // Modern performance attributes
           expect(['lazy', 'eager', null]).toContain(loading);
           expect(['async', 'sync', 'auto', null]).toContain(decoding);
@@ -394,7 +394,7 @@ test.describe('Mobile Responsive Design', () => {
         // Check responsive image implementation
         const srcset = await image.getAttribute('srcset');
         const sizes = await image.getAttribute('sizes');
-        
+
         if (srcset) {
           // Should have appropriate breakpoints
           expect(srcset).toContain('w'); // Width descriptors
@@ -426,11 +426,11 @@ test.describe('Mobile Responsive Design', () => {
 
     // Test swipe gestures on card elements
     const cards = await helpers.page.locator('.card, .equipment-card, [class*="card"]').all();
-    
+
     for (const card of cards.slice(0, 3)) {
       if (await card.isVisible()) {
         const cardBoundingBox = await card.boundingBox();
-        
+
         if (cardBoundingBox) {
           // Test tap interaction
           await card.tap();
@@ -459,11 +459,11 @@ test.describe('Mobile Responsive Design', () => {
 
     // Test scroll behavior
     const scrollableElements = await helpers.page.locator('.overflow-scroll, .overflow-y-auto, .scroll-container').all();
-    
+
     for (const element of scrollableElements) {
       if (await element.isVisible()) {
         const elementBoundingBox = await element.boundingBox();
-        
+
         if (elementBoundingBox) {
           // Test touch scroll
           const centerX = elementBoundingBox.x + elementBoundingBox.width / 2;
@@ -483,7 +483,7 @@ test.describe('Mobile Responsive Design', () => {
     const refreshContainer = helpers.page.locator('.pull-to-refresh, [data-refresh]');
     if (await refreshContainer.first().isVisible()) {
       const containerBoundingBox = await refreshContainer.first().boundingBox();
-      
+
       if (containerBoundingBox) {
         const centerX = containerBoundingBox.x + containerBoundingBox.width / 2;
         const startY = containerBoundingBox.y + 50;
@@ -515,7 +515,7 @@ test.describe('Mobile Responsive Design', () => {
       const mainContent = helpers.page.locator('main, .main-content');
       if (await mainContent.first().isVisible()) {
         const contentBoundingBox = await mainContent.first().boundingBox();
-        
+
         if (contentBoundingBox) {
           expect(contentBoundingBox.width).toBeLessThanOrEqual(orientation.width);
           expect(contentBoundingBox.height).toBeLessThanOrEqual(orientation.height);
@@ -526,7 +526,7 @@ test.describe('Mobile Responsive Design', () => {
       const navigation = helpers.page.locator('nav, .navigation');
       if (await navigation.first().isVisible()) {
         const navBoundingBox = await navigation.first().boundingBox();
-        
+
         if (navBoundingBox) {
           if (orientation.width > orientation.height) {
             // Landscape - navigation might be horizontal
@@ -540,12 +540,12 @@ test.describe('Mobile Responsive Design', () => {
 
       // Test form layout in different orientations
       await helpers.navigateToPage('/profile');
-      
+
       const forms = await helpers.page.locator('form').all();
       for (const form of forms.slice(0, 1)) {
         if (await form.isVisible()) {
           const formBoundingBox = await form.boundingBox();
-          
+
           if (formBoundingBox) {
             expect(formBoundingBox.width).toBeLessThanOrEqual(orientation.width);
           }
@@ -568,7 +568,7 @@ test.describe('Mobile Responsive Design', () => {
 
   test('should optimize performance on mobile devices', async () => {
     await helpers.page.setViewportSize({ width: 375, height: 667 });
-    
+
     // Simulate slower mobile connection
     await helpers.page.route('**/*', route => {
       return route.continue();
@@ -584,7 +584,7 @@ test.describe('Mobile Responsive Design', () => {
     // Check for performance optimizations
     const images = await helpers.page.locator('img').all();
     let lazyLoadedImages = 0;
-    
+
     for (const image of images) {
       const loading = await image.getAttribute('loading');
       if (loading === 'lazy') {
@@ -602,7 +602,7 @@ test.describe('Mobile Responsive Design', () => {
     for (const script of scripts.slice(0, 5)) {
       const async = await script.getAttribute('async');
       const defer = await script.getAttribute('defer');
-      
+
       // Scripts should be loaded asynchronously where possible
       expect(async !== null || defer !== null).toBeTruthy();
     }
@@ -610,12 +610,12 @@ test.describe('Mobile Responsive Design', () => {
     // Test scroll performance
     const scrollableElement = helpers.page.locator('body');
     const scrollStartTime = Date.now();
-    
+
     for (let i = 0; i < 5; i++) {
       await helpers.page.keyboard.press('PageDown');
       await helpers.page.waitForTimeout(100);
     }
-    
+
     const scrollTime = Date.now() - scrollStartTime;
     expect(scrollTime).toBeLessThan(2000); // Smooth scrolling
 
@@ -624,7 +624,7 @@ test.describe('Mobile Responsive Design', () => {
     for (const element of animatedElements.slice(0, 3)) {
       if (await element.isVisible()) {
         const transitionDuration = await element.evaluate(el => getComputedStyle(el).transitionDuration);
-        
+
         if (transitionDuration !== '0s') {
           // Animations should be short on mobile for better performance
           const duration = parseFloat(transitionDuration);
@@ -640,13 +640,13 @@ test.describe('Mobile Responsive Design', () => {
 
     // Test file upload on mobile
     const fileInputs = await helpers.page.locator('input[type="file"]').all();
-    
+
     for (const fileInput of fileInputs) {
       if (await fileInput.isVisible()) {
         // File input should accept appropriate formats
         const accept = await fileInput.getAttribute('accept');
         const multiple = await fileInput.getAttribute('multiple');
-        
+
         if (accept) {
           expect(accept).toMatch(/image|document|\.pdf|\.jpg|\.png/);
         }
@@ -664,7 +664,7 @@ test.describe('Mobile Responsive Design', () => {
 
     // Test location services (if implemented)
     const locationElements = await helpers.page.locator('[data-location], .location-picker').all();
-    
+
     for (const element of locationElements) {
       if (await element.isVisible()) {
         await element.tap();
@@ -674,7 +674,7 @@ test.describe('Mobile Responsive Design', () => {
 
     // Test camera integration (if implemented)
     const cameraButtons = await helpers.page.locator('[data-camera], .camera-button, .photo-capture').all();
-    
+
     for (const button of cameraButtons) {
       if (await button.isVisible()) {
         await button.tap();
@@ -686,11 +686,11 @@ test.describe('Mobile Responsive Design', () => {
     const context = helpers.page.context();
     await context.setOffline(true);
     await helpers.page.reload();
-    
+
     // Should show offline message or cached content
     const offlineIndicator = helpers.page.locator('.offline-message, .no-connection, [data-offline]');
     const cachedContent = helpers.page.locator('main, .main-content');
-    
+
     const hasOfflineHandling = await offlineIndicator.isVisible() || await cachedContent.isVisible();
     expect(hasOfflineHandling).toBeTruthy();
 
@@ -703,12 +703,12 @@ test.describe('Mobile Responsive Design', () => {
 
     // Test screen reader announcements on mobile
     const announcements = await helpers.page.locator('[aria-live], [role="status"], [role="alert"]').all();
-    
+
     for (const announcement of announcements) {
       if (await announcement.isVisible()) {
         const ariaLive = await announcement.getAttribute('aria-live');
         const role = await announcement.getAttribute('role');
-        
+
         expect(['polite', 'assertive', null]).toContain(ariaLive);
         expect(['status', 'alert', null]).toContain(role);
       }
@@ -717,10 +717,10 @@ test.describe('Mobile Responsive Design', () => {
     // Test focus management on mobile
     await helpers.page.keyboard.press('Tab');
     const focusedElement = helpers.page.locator(':focus');
-    
+
     if (await focusedElement.count() > 0) {
       const focusedBoundingBox = await focusedElement.boundingBox();
-      
+
       if (focusedBoundingBox) {
         // Focused element should be visible in viewport
         expect(focusedBoundingBox.y).toBeGreaterThan(0);
@@ -730,11 +730,11 @@ test.describe('Mobile Responsive Design', () => {
 
     // Test mobile gesture accessibility
     const interactiveElements = await helpers.page.locator('button, a, [role="button"]').all();
-    
+
     for (const element of interactiveElements.slice(0, 5)) {
       if (await element.isVisible()) {
         const boundingBox = await element.boundingBox();
-        
+
         if (boundingBox) {
           // Touch targets should be at least 44px
           expect(Math.min(boundingBox.width, boundingBox.height)).toBeGreaterThanOrEqual(44);
@@ -762,7 +762,7 @@ test.describe('Mobile Responsive Design', () => {
       // Should allow user scaling unless specifically needed
       const hasUserScalable = !viewport.includes('user-scalable=no');
       const hasMaxScale = viewport.includes('maximum-scale');
-      
+
       if (hasMaxScale) {
         // If max scale is set, should be reasonable
         const maxScaleMatch = viewport.match(/maximum-scale=([0-9.]+)/);

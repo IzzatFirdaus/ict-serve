@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
         ->name('public.loan-request');
     Route::post('/loan-request', [PublicController::class, 'storeLoanRequest'])
         ->name('public.loan-request.store');
-    
+
     // Equipment Loan Wizard
     Route::get('/loan-wizard', LoanApplicationWizard::class)
         ->name('public.loan-wizard');

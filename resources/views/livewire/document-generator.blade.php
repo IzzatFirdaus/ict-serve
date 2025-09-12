@@ -55,12 +55,12 @@
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             @foreach($documentTypes as $type => $config)
                 <div class="relative">
-                    <button wire:click="setDocumentType('{{ $type }}')" 
-                            class="w-full text-left p-4 border-2 rounded-lg transition-all duration-200 
+                    <button wire:click="setDocumentType('{{ $type }}')"
+                            class="w-full text-left p-4 border-2 rounded-lg transition-all duration-200
                                 {{ $documentType === $type ? 'border-primary-500 bg-primary-50' : 'border-gray-200 hover:border-gray-300 bg-white' }}
                                 {{ $this->canGenerateDocument($type) ? '' : 'opacity-50 cursor-not-allowed' }}"
                             @if(!$this->canGenerateDocument($type)) disabled @endif>
-                        
+
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
                                 <h5 class="text-sm font-medium text-gray-900">
@@ -74,7 +74,7 @@
                                 <x-icon name="check-circle" class="h-5 w-5 text-primary-500 ml-2" />
                             @endif
                         </div>
-                        
+
                         @if(!$this->canGenerateDocument($type))
                             <div class="mt-2">
                                 <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
@@ -93,22 +93,22 @@
     @if($loanRequest && $this->canGenerateDocument($documentType))
         <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
             <div class="flex flex-wrap gap-3">
-                <button wire:click="generatePreview" 
+                <button wire:click="generatePreview"
                         class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                     <x-icon name="eye" class="w-4 h-4 mr-2" />
                     Pratonton
                 </button>
-                
-                <button wire:click="generatePDF" 
+
+                <button wire:click="generatePDF"
                         wire:loading.attr="disabled"
                         wire:target="generatePDF"
                         class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed">
-                    
+
                     <div wire:loading.remove wire:target="generatePDF">
                         <x-icon name="download" class="w-4 h-4 mr-2" />
                         Jana & Muat Turun PDF
                     </div>
-                    
+
                     <div wire:loading wire:target="generatePDF" class="flex items-center">
                         <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -178,7 +178,7 @@
                                                 <td class="px-4 py-2 text-sm text-gray-900">{{ $item->name }}</td>
                                                 <td class="px-4 py-2 text-sm text-gray-900">{{ $item->pivot->quantity ?? 1 }}</td>
                                                 <td class="px-4 py-2 text-sm text-gray-900">
-                                                    {{ $loanRequest->loan_start_date?->format('d/m/Y') }} - 
+                                                    {{ $loanRequest->loan_start_date?->format('d/m/Y') }} -
                                                     {{ $loanRequest->loan_end_date?->format('d/m/Y') }}
                                                 </td>
                                             </tr>
@@ -221,12 +221,12 @@
                             <div>
                                 <p class="text-sm font-medium text-gray-900">{{ $document['name'] }}</p>
                                 <p class="text-xs text-gray-500">
-                                    {{ number_format($document['size'] / 1024, 1) }} KB • 
+                                    {{ number_format($document['size'] / 1024, 1) }} KB •
                                     {{ $document['created']->format('d/m/Y H:i') }}
                                 </p>
                             </div>
                         </div>
-                        <button wire:click="downloadExisting('{{ $document['path'] }}')" 
+                        <button wire:click="downloadExisting('{{ $document['path'] }}')"
                                 class="inline-flex items-center px-3 py-1 border border-gray-300 text-xs font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                             <x-icon name="download" class="w-3 h-3 mr-1" />
                             Muat Turun

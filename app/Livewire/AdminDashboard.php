@@ -126,7 +126,7 @@ class AdminDashboard extends Component
         } else {
             $this->selectedRequests[] = $requestId;
         }
-        
+
         $this->selectAll = count($this->selectedRequests) === $this->getLoanRequests()->count();
         $this->updateBulkActionsVisibility();
     }
@@ -183,7 +183,7 @@ class AdminDashboard extends Component
     public function getStatsProperty()
     {
         $period = Carbon::now()->subDays($this->selectedPeriod);
-        
+
         return [
             'total_requests' => LoanRequest::where('created_at', '>=', $period)->count(),
             'pending_requests' => LoanRequest::where('status', 'pending')->count(),

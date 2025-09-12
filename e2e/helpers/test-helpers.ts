@@ -12,11 +12,11 @@ export class ICTServeTestHelpers {
   async login(email: string = 'test@motac.gov.my', password: string = 'password') {
     await this.page.goto('/login');
     await this.page.waitForLoadState('networkidle');
-    
+
     await this.page.fill('input[name="email"]', email);
     await this.page.fill('input[name="password"]', password);
     await this.page.click('button[type="submit"]');
-    
+
     // Wait for login to complete
     await this.page.waitForURL('/dashboard');
   }
@@ -90,10 +90,10 @@ export class ICTServeTestHelpers {
    */
   async checkMYDSButtonCompliance() {
     const buttons = await this.page.locator('button').all();
-    
+
     for (const button of buttons) {
       const classList = await button.getAttribute('class') || '';
-      
+
       // Check if button uses MYDS classes
       if (!classList.includes('myds-btn') && !classList.includes('bg-primary')) {
         console.warn('Button may not be MYDS compliant:', await button.textContent());
@@ -107,7 +107,7 @@ export class ICTServeTestHelpers {
   async checkAccessibility() {
     // Check for proper heading hierarchy
     const headings = await this.page.locator('h1, h2, h3, h4, h5, h6').all();
-    
+
     for (const heading of headings) {
       const text = await heading.textContent();
       if (!text || text.trim() === '') {
@@ -117,11 +117,11 @@ export class ICTServeTestHelpers {
 
     // Check for missing alt text on images
     const images = await this.page.locator('img').all();
-    
+
     for (const img of images) {
       const alt = await img.getAttribute('alt');
       const ariaLabel = await img.getAttribute('aria-label');
-      
+
       if (!alt && !ariaLabel) {
         const src = await img.getAttribute('src');
         console.warn('Image missing alt text:', src);
@@ -130,12 +130,12 @@ export class ICTServeTestHelpers {
 
     // Check for proper form labels
     const inputs = await this.page.locator('input, select, textarea').all();
-    
+
     for (const input of inputs) {
       const id = await input.getAttribute('id');
       const ariaLabel = await input.getAttribute('aria-label');
       const ariaLabelledBy = await input.getAttribute('aria-labelledby');
-      
+
       if (id) {
         const label = await this.page.locator(`label[for="${id}"]`).count();
         if (label === 0 && !ariaLabel && !ariaLabelledBy) {
@@ -158,17 +158,17 @@ export class ICTServeTestHelpers {
     ];
 
     for (const breakpoint of breakpoints) {
-      await this.page.setViewportSize({ 
-        width: breakpoint.width, 
-        height: breakpoint.height 
+      await this.page.setViewportSize({
+        width: breakpoint.width,
+        height: breakpoint.height
       });
-      
+
       await this.page.waitForTimeout(500); // Allow layout to settle
-      
+
       // Check if content is visible and properly arranged
       const content = await this.page.locator('main, .container, [role="main"]').first();
       await expect(content).toBeVisible();
-      
+
       console.log(`✓ Viewport (${breakpoint.width}x${breakpoint.height}) layout verified`);
     }
   }
@@ -179,7 +179,7 @@ export class ICTServeTestHelpers {
   async testFormValidation(formSelector: string, requiredFields: string[]) {
     // Try to submit form without filling required fields
     await this.page.click(`${formSelector} button[type="submit"]`);
-    
+
     // Check if validation errors are displayed
     for (const field of requiredFields) {
       const error = await this.page.locator(`[data-testid="${field}-error"], .error-message`).first();
@@ -195,10 +195,10 @@ export class ICTServeTestHelpers {
   async testLivewireReactivity(trigger: string, target: string) {
     // Get initial state
     const initialContent = await this.page.locator(target).textContent();
-    
+
     // Trigger Livewire action
     await this.page.click(trigger);
-    
+
     // Wait for content to change
     if (initialContent) {
       await this.page.locator(target).filter({ hasText: initialContent }).waitFor({ state: 'detached', timeout: 5000 });
@@ -206,7 +206,7 @@ export class ICTServeTestHelpers {
       // If no initial content, just wait for content to appear
       await this.page.locator(target).waitFor({ state: 'visible', timeout: 5000 });
     }
-    
+
     // Verify content has changed
     const updatedContent = await this.page.locator(target).textContent();
     expect(updatedContent).not.toBe(initialContent);
@@ -217,7 +217,7 @@ export class ICTServeTestHelpers {
    */
   async checkJavaScriptErrors() {
     const errors: string[] = [];
-    
+
     this.page.on('console', (msg) => {
       if (msg.type() === 'error') {
         errors.push(msg.text());
@@ -245,10 +245,10 @@ export class ICTServeTestHelpers {
     const downloadPromise = this.page.waitForEvent('download');
     await this.page.click(buttonSelector);
     const download = await downloadPromise;
-    
+
     // Verify download
     expect(download.suggestedFilename()).toMatch(/\.pdf$/);
-    
+
     return download;
   }
 
@@ -257,10 +257,10 @@ export class ICTServeTestHelpers {
    */
   async testFileUpload(inputSelector: string, filePath: string) {
     await this.page.setInputFiles(inputSelector, filePath);
-    
+
     // Wait for upload to complete
     await this.page.waitForTimeout(1000);
-    
+
     // Verify upload success (this depends on your UI implementation)
     const success = await this.page.locator('.upload-success, .file-uploaded').count();
     expect(success).toBeGreaterThan(0);
@@ -272,11 +272,11 @@ export class ICTServeTestHelpers {
   async testSearch(searchInput: string, searchTerm: string, resultSelector: string) {
     await this.page.fill(searchInput, searchTerm);
     await this.page.waitForTimeout(500); // Debounce delay
-    
+
     // Check if results are filtered
     const results = await this.page.locator(resultSelector).all();
     expect(results.length).toBeGreaterThan(0);
-    
+
     // Verify results contain search term
     for (const result of results) {
       const text = await result.textContent();
@@ -314,11 +314,11 @@ export class ICTServeTestHelpers {
    */
   async checkMYDSCompliance() {
     await this.checkMYDSButtonCompliance();
-    
+
     // Check for MYDS color compliance
     const primaryElements = await this.page.locator('[class*="primary-600"], [class*="bg-primary"]').count();
     expect(primaryElements).toBeGreaterThan(0);
-    
+
     // Check for proper typography (Poppins/Inter fonts)
     const bodyText = await this.page.locator('body').evaluate(el => window.getComputedStyle(el).fontFamily);
     expect(bodyText.toLowerCase()).toMatch(/inter|poppins/);
@@ -331,7 +331,7 @@ export class ICTServeTestHelpers {
     for (const [field, value] of Object.entries(data)) {
       const selector = `[name="${field}"], #${field}, [data-testid="${field}"]`;
       const element = this.page.locator(selector).first();
-      
+
       if (await element.isVisible()) {
         await element.fill(value);
       }
@@ -346,10 +346,10 @@ export class ICTServeTestHelpers {
       // Clear field and set invalid value
       await this.page.fill(`[name="${test.field}"]`, '');
       await this.page.fill(`[name="${test.field}"]`, test.value);
-      
+
       // Trigger validation (usually by clicking submit or moving focus)
       await this.page.click('button[type="submit"]');
-      
+
       // Check for error message
       const errorSelector = `[data-testid="error-${test.field}"], .error-${test.field}, .field-error`;
       await expect(this.page.locator(errorSelector).first()).toBeVisible();

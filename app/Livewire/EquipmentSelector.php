@@ -42,7 +42,7 @@ class EquipmentSelector extends Component
     {
         $this->selectedItems = $selectedItems;
         $this->parentModel = $parentModel;
-        
+
         // Initialize quantities and notes for pre-selected items
         foreach ($this->selectedItems as $itemId) {
             $this->quantities[$itemId] = $this->quantities[$itemId] ?? 1;

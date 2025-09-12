@@ -22,12 +22,12 @@ class UserProfile extends Component
     public string $position = '';
     public string $employee_id = '';
     public string $office_location = '';
-    
+
     // Password Change Properties
     public string $current_password = '';
     public string $new_password = '';
     public string $new_password_confirmation = '';
-    
+
     // Notification Preferences
     public bool $email_notifications = true;
     public bool $sms_notifications = false;
@@ -35,18 +35,18 @@ class UserProfile extends Component
     public bool $approval_notifications = true;
     public bool $system_announcements = true;
     public bool $weekly_digest = false;
-    
+
     // Avatar Upload
     public $avatar;
     public string $avatar_url = '';
-    
+
     // UI State
     public string $activeTab = 'profile';
     public array $notifications = [];
     public bool $showPasswordForm = false;
     public bool $profileSaved = false;
     public bool $passwordChanged = false;
-    
+
     protected array $rules = [
         'name' => ['required', 'string', 'max:255'],
         'phone' => ['nullable', 'string', 'max:20'],
@@ -76,7 +76,7 @@ class UserProfile extends Component
     public function mount(): void
     {
         $user = Auth::user();
-        
+
         $this->name = $user->name;
         $this->email = $user->email;
         $this->phone = $user->phone ?? '';
@@ -85,7 +85,7 @@ class UserProfile extends Component
         $this->employee_id = $user->employee_id ?? '';
         $this->office_location = $user->office_location ?? '';
         $this->avatar_url = $user->avatar_url ?? '';
-        
+
         // Load notification preferences
         $preferences = $user->notification_preferences ?? [];
         $this->email_notifications = $preferences['email_notifications'] ?? true;
@@ -117,7 +117,7 @@ class UserProfile extends Component
         ]);
 
         $user = Auth::user();
-        
+
         $data = [
             'name' => $this->name,
             'phone' => $this->phone,
@@ -135,10 +135,10 @@ class UserProfile extends Component
         }
 
         $user->update($data);
-        
+
         $this->profileSaved = true;
         $this->avatar = null;
-        
+
         $this->dispatch('profile-updated', [
             'message' => 'Profil berjaya dikemaskini!',
             'type' => 'success'
@@ -203,15 +203,15 @@ class UserProfile extends Component
     public function removeAvatar(): void
     {
         $user = Auth::user();
-        
+
         if ($user->avatar_url) {
             // Delete old avatar file
             Storage::disk('public')->delete($user->avatar_url);
             $user->update(['avatar_url' => null]);
         }
-        
+
         $this->avatar_url = '';
-        
+
         $this->dispatch('avatar-removed', [
             'message' => 'Avatar berjaya dipadamkan!',
             'type' => 'success'
@@ -221,7 +221,7 @@ class UserProfile extends Component
     public function getRecentActivity(): array
     {
         $user = Auth::user();
-        
+
         // Get recent loan requests
         $recentLoans = $user->loanRequests()
             ->latest()

@@ -221,7 +221,7 @@ class LoanApplicationWizard extends Component
     public function nextStep()
     {
         $this->validateCurrentStep();
-        
+
         if ($this->currentStep < $this->totalSteps) {
             $this->currentStep++;
             $this->saveProgress();
@@ -333,7 +333,7 @@ class LoanApplicationWizard extends Component
     {
         // Load from session first, then database if needed
         $savedData = session('loan_application_progress');
-        
+
         if ($savedData) {
             foreach ($savedData as $key => $value) {
                 if (property_exists($this, $key)) {

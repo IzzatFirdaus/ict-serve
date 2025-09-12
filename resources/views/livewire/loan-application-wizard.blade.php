@@ -23,12 +23,12 @@
 <div class="myds-container py-12">
     <div class="myds-grid-12">
         <div class="col-span-full lg:col-span-10 lg:col-start-2">
-            
+
             <!-- Progress Indicator -->
             <div class="mb-8">
                 <div class="bg-white rounded-[var(--radius-xl)] border border-otl-gray-200 shadow-md p-6">
                     <h2 class="myds-heading-2xs text-txt-black-900 mb-4">Langkah {{ $currentStep }} daripada {{ $totalSteps }}</h2>
-                    
+
                     <!-- Progress Bar -->
                     <div class="mb-6">
                         <div class="flex justify-between text-xs text-txt-black-500 mb-2">
@@ -36,18 +36,18 @@
                             <span>{{ round(($currentStep / $totalSteps) * 100) }}% selesai</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2">
-                            <div class="bg-primary-600 h-2 rounded-full transition-all duration-300" 
+                            <div class="bg-primary-600 h-2 rounded-full transition-all duration-300"
                                  style="width: {{ ($currentStep / $totalSteps) * 100 }}%"></div>
                         </div>
                     </div>
-                    
+
                     <!-- Step Navigation -->
                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 text-xs">
                         @for($i = 1; $i <= $totalSteps; $i++)
                             <button type="button"
                                     wire:click="goToStep({{ $i }})"
                                     class="p-2 rounded-[var(--radius-s)] text-center transition-colors
-                                           {{ $i == $currentStep ? 'bg-primary-600 text-white' : 
+                                           {{ $i == $currentStep ? 'bg-primary-600 text-white' :
                                               ($i < $currentStep ? 'bg-success-100 text-success-700' : 'bg-gray-100 text-txt-black-500') }}
                                            {{ $i <= $currentStep ? 'cursor-pointer hover:opacity-80' : 'cursor-not-allowed opacity-50' }}"
                                     {{ $i > $currentStep ? 'disabled' : '' }}>
@@ -85,7 +85,7 @@
 
             <!-- Step Content -->
             <div class="bg-white rounded-[var(--radius-xl)] border border-otl-gray-200 shadow-md p-8">
-                
+
                 <!-- Step 1: Applicant Information -->
                 @if($currentStep == 1)
                     <h2 class="myds-heading-xs text-txt-black-900 mb-6 pb-3 border-b border-otl-divider">
@@ -302,10 +302,10 @@
                         <div class="p-4 bg-warning-50 border border-otl-warning-200 rounded-[var(--radius-m)]">
                             <h3 class="text-txt-warning font-semibold mb-2">Pengisytiharan</h3>
                             <p class="text-sm text-txt-warning mb-4">
-                                Saya dengan ini mengesahkan bahawa peralatan yang dipinjam adalah untuk kegunaan rasmi 
+                                Saya dengan ini mengesahkan bahawa peralatan yang dipinjam adalah untuk kegunaan rasmi
                                 dan akan berada di bawah tanggungjawab saya sepanjang tempoh peminjaman.
                             </p>
-                            
+
                             <x-myds.form.checkbox
                                 label="Saya bersetuju dengan pengisytiharan di atas"
                                 name="confirmation_declaration_accepted"
@@ -326,7 +326,7 @@
                             />
 
                             <div>
-                                <x-signature-pad 
+                                <x-signature-pad
                                     wire-model="applicant_signature"
                                     label="Tandatangan Digital"
                                     required
@@ -376,16 +376,16 @@
                                 </label>
                                 <div class="space-y-2">
                                     <label class="flex items-center">
-                                        <input type="radio" 
-                                               wire:model="endorsement_status" 
-                                               value="supported" 
+                                        <input type="radio"
+                                               wire:model="endorsement_status"
+                                               value="supported"
                                                class="mr-2 text-primary-600 focus:ring-primary-500">
                                         <span class="text-txt-success">DISOKONG</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" 
-                                               wire:model="endorsement_status" 
-                                               value="not_supported" 
+                                        <input type="radio"
+                                               wire:model="endorsement_status"
+                                               value="not_supported"
                                                class="mr-2 text-primary-600 focus:ring-primary-500">
                                         <span class="text-txt-danger">TIDAK DISOKONG</span>
                                     </label>
@@ -414,7 +414,7 @@
                         />
 
                         <div>
-                            <x-signature-pad 
+                            <x-signature-pad
                                 wire-model="endorsement_signature"
                                 label="Tandatangan & Cop"
                                 required
@@ -432,7 +432,7 @@
                         <p class="text-txt-black-600 mb-4">
                             Langkah {{ $currentStep }} hingga {{ $totalSteps }} adalah untuk kegunaan kakitangan BPM sahaja.
                         </p>
-                        
+
                         @if($currentStep == 6)
                             <p class="text-sm text-txt-black-500">Proses pengambilan peralatan</p>
                         @elseif($currentStep == 7)

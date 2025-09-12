@@ -24,7 +24,7 @@ test.describe('MYDS Design System Compliance', () => {
 
     for (const pagePath of pages) {
       await helpers.navigateToPage(pagePath);
-      
+
       // Verify primary color usage (MYDS Blue #2563EB)
       const primaryElements = await helpers.page.locator('.bg-primary-600, .text-primary-600, .border-primary-600').all();
       for (const element of primaryElements) {
@@ -32,7 +32,7 @@ test.describe('MYDS Design System Compliance', () => {
           const bgColor = await element.evaluate(el => getComputedStyle(el).backgroundColor);
           const textColor = await element.evaluate(el => getComputedStyle(el).color);
           const borderColor = await element.evaluate(el => getComputedStyle(el).borderColor);
-          
+
           // Check if using correct MYDS primary color
           if (bgColor !== 'rgba(0, 0, 0, 0)') {
             expect(bgColor).toMatch(/rgb\(37, 99, 235\)|rgba\(37, 99, 235|#2563EB/i);
@@ -60,7 +60,7 @@ test.describe('MYDS Design System Compliance', () => {
           if (await element.isVisible()) {
             const computedBg = await element.evaluate(el => getComputedStyle(el).backgroundColor);
             const computedText = await element.evaluate(el => getComputedStyle(el).color);
-            
+
             if (computedBg !== 'rgba(0, 0, 0, 0)' && computedBg.includes('rgb')) {
               expect(computedBg).toContain(colorTest.expectedRgb);
             }
@@ -128,7 +128,7 @@ test.describe('MYDS Design System Compliance', () => {
 
     // Check spacing scale compliance (4, 8, 12, 16, 24, 32, 48, 64px)
     const spacedElements = await helpers.page.locator('[class*="m-"], [class*="p-"], [class*="gap-"]').all();
-    
+
     for (const element of spacedElements.slice(0, 10)) {
       if (await element.isVisible()) {
         const marginTop = await element.evaluate(el => getComputedStyle(el).marginTop);
@@ -137,7 +137,7 @@ test.describe('MYDS Design System Compliance', () => {
         const paddingBottom = await element.evaluate(el => getComputedStyle(el).paddingBottom);
 
         const validSpacing = ['0px', '4px', '8px', '12px', '16px', '24px', '32px', '48px', '64px', '96px', '128px'];
-        
+
         if (marginTop !== '0px') {
           expect(validSpacing).toContain(marginTop);
         }
@@ -159,7 +159,7 @@ test.describe('MYDS Design System Compliance', () => {
       if (await container.isVisible()) {
         const display = await container.evaluate(el => getComputedStyle(el).display);
         const gridTemplateColumns = await container.evaluate(el => getComputedStyle(el).gridTemplateColumns);
-        
+
         if (display === 'grid' && gridTemplateColumns !== 'none') {
           const columnCount = gridTemplateColumns.split(' ').length;
           // Should follow 12-8-4 pattern or be a fraction of 12
@@ -190,7 +190,7 @@ test.describe('MYDS Design System Compliance', () => {
           // Check padding follows MYDS spacing
           const paddingTop = await button.evaluate(el => getComputedStyle(el).paddingTop);
           const paddingLeft = await button.evaluate(el => getComputedStyle(el).paddingLeft);
-          
+
           const validButtonPadding = ['8px', '12px', '16px', '20px', '24px'];
           expect(validButtonPadding).toContain(paddingTop);
           expect(validButtonPadding).toContain(paddingLeft);
@@ -212,7 +212,7 @@ test.describe('MYDS Design System Compliance', () => {
         if (await button.isVisible()) {
           const borderColor = await button.evaluate(el => getComputedStyle(el).borderColor);
           const textColor = await button.evaluate(el => getComputedStyle(el).color);
-          
+
           // Should use primary color for border and text
           if (borderColor !== 'rgba(0, 0, 0, 0)') {
             expect(borderColor).toMatch(/rgb\(37, 99, 235\)|#2563EB/i);
@@ -228,7 +228,7 @@ test.describe('MYDS Design System Compliance', () => {
 
     // Check input field styling
     const inputs = await helpers.page.locator('input[type="text"], input[type="email"], input[type="tel"], textarea, select').all();
-    
+
     for (const input of inputs) {
       if (await input.isVisible()) {
         // Check border styling
@@ -242,7 +242,7 @@ test.describe('MYDS Design System Compliance', () => {
         // Check padding
         const paddingTop = await input.evaluate(el => getComputedStyle(el).paddingTop);
         const paddingLeft = await input.evaluate(el => getComputedStyle(el).paddingLeft);
-        
+
         const validInputPadding = ['8px', '12px', '16px'];
         expect(validInputPadding).toContain(paddingTop);
         expect(validInputPadding).toContain(paddingLeft);
@@ -251,7 +251,7 @@ test.describe('MYDS Design System Compliance', () => {
         await input.focus();
         const focusColor = await input.evaluate(el => getComputedStyle(el).outlineColor);
         const focusWidth = await input.evaluate(el => getComputedStyle(el).outlineWidth);
-        
+
         // Should have visible focus outline
         if (focusColor !== 'rgba(0, 0, 0, 0)') {
           expect(focusWidth).toMatch(/[1-3]px/);
@@ -265,7 +265,7 @@ test.describe('MYDS Design System Compliance', () => {
       if (await label.isVisible()) {
         const fontWeight = await label.evaluate(el => getComputedStyle(el).fontWeight);
         const marginBottom = await label.evaluate(el => getComputedStyle(el).marginBottom);
-        
+
         expect(['500', '600']).toContain(fontWeight);
         expect(['4px', '8px']).toContain(marginBottom);
       }
@@ -277,7 +277,7 @@ test.describe('MYDS Design System Compliance', () => {
 
     // Check card styling
     const cards = await helpers.page.locator('.card, [class*="card"], .bg-white.rounded, .bg-white.shadow').all();
-    
+
     for (const card of cards) {
       if (await card.isVisible()) {
         // Check background color
@@ -298,7 +298,7 @@ test.describe('MYDS Design System Compliance', () => {
         // Check padding
         const paddingTop = await card.evaluate(el => getComputedStyle(el).paddingTop);
         const paddingLeft = await card.evaluate(el => getComputedStyle(el).paddingLeft);
-        
+
         const validCardPadding = ['16px', '20px', '24px', '32px'];
         if (paddingTop !== '0px') {
           expect(validCardPadding).toContain(paddingTop);
@@ -317,7 +317,7 @@ test.describe('MYDS Design System Compliance', () => {
     const navElement = helpers.page.locator('nav, .navigation, .navbar, [role="navigation"]');
     if (await navElement.first().isVisible()) {
       const nav = navElement.first();
-      
+
       // Check navigation background
       const bgColor = await nav.evaluate(el => getComputedStyle(el).backgroundColor);
       expect(bgColor).toMatch(/rgb\(255, 255, 255\)|rgb\(37, 99, 235\)/i);
@@ -359,7 +359,7 @@ test.describe('MYDS Design System Compliance', () => {
 
     // Check table styling
     const tables = await helpers.page.locator('table').all();
-    
+
     for (const table of tables) {
       if (await table.isVisible()) {
         // Check table headers
@@ -368,7 +368,7 @@ test.describe('MYDS Design System Compliance', () => {
           if (await header.isVisible()) {
             const fontWeight = await header.evaluate(el => getComputedStyle(el).fontWeight);
             const padding = await header.evaluate(el => getComputedStyle(el).paddingTop);
-            
+
             expect(['600', '700']).toContain(fontWeight);
             expect(['8px', '12px', '16px']).toContain(padding);
           }
@@ -380,7 +380,7 @@ test.describe('MYDS Design System Compliance', () => {
           if (await cell.isVisible()) {
             const padding = await cell.evaluate(el => getComputedStyle(el).paddingTop);
             const borderColor = await cell.evaluate(el => getComputedStyle(el).borderColor);
-            
+
             expect(['8px', '12px', '16px']).toContain(padding);
             if (borderColor !== 'rgba(0, 0, 0, 0)') {
               expect(borderColor).toMatch(/rgb\(228, 228, 231\)|rgb\(244, 244, 245\)/i);
@@ -407,14 +407,14 @@ test.describe('MYDS Design System Compliance', () => {
   test('should validate MYDS alert and notification components', async () => {
     // Navigate to a page that might have alerts
     await helpers.navigateToPage('/applications/create');
-    
+
     // Try to trigger a validation error to see alert styling
     await helpers.page.fill('[data-testid="equipment_type"]', '');
     await helpers.page.click('[data-testid="next-step"]');
-    
+
     // Check error/alert styling
     const alerts = await helpers.page.locator('.alert, .notification, [role="alert"], .error-message, .success-message').all();
-    
+
     for (const alert of alerts) {
       if (await alert.isVisible()) {
         // Check border radius
@@ -428,7 +428,7 @@ test.describe('MYDS Design System Compliance', () => {
         // Check colors based on alert type
         const bgColor = await alert.evaluate(el => getComputedStyle(el).backgroundColor);
         const className = await alert.getAttribute('class') || '';
-        
+
         if (className.includes('error') || className.includes('danger')) {
           expect(bgColor).toMatch(/rgb\(254, 226, 226\)|rgb\(220, 38, 38\)/i);
         } else if (className.includes('success')) {
@@ -500,7 +500,7 @@ test.describe('MYDS Design System Compliance', () => {
 
     // Check color contrast ratios
     const textElements = await helpers.page.locator('p, h1, h2, h3, span, a, button').all();
-    
+
     for (const element of textElements.slice(0, 10)) {
       if (await element.isVisible()) {
         const textColor = await element.evaluate(el => getComputedStyle(el).color);
@@ -527,18 +527,18 @@ test.describe('MYDS Design System Compliance', () => {
 
     // Check focus indicators
     const focusableElements = await helpers.page.locator('button, a, input, select, textarea').all();
-    
+
     for (const element of focusableElements.slice(0, 5)) {
       if (await element.isVisible()) {
         await element.focus();
-        
+
         const outline = await element.evaluate(el => getComputedStyle(el).outline);
         const outlineColor = await element.evaluate(el => getComputedStyle(el).outlineColor);
         const boxShadow = await element.evaluate(el => getComputedStyle(el).boxShadow);
-        
+
         // Should have visible focus indicator
-        const hasFocusIndicator = outline !== 'none' || 
-                                 outlineColor !== 'rgba(0, 0, 0, 0)' || 
+        const hasFocusIndicator = outline !== 'none' ||
+                                 outlineColor !== 'rgba(0, 0, 0, 0)' ||
                                  boxShadow.includes('rgb');
         expect(hasFocusIndicator).toBeTruthy();
       }
@@ -555,7 +555,7 @@ test.describe('MYDS Design System Compliance', () => {
         const ariaLabel = await button.getAttribute('aria-label');
         const title = await button.getAttribute('title');
         const textContent = await button.textContent();
-        
+
         // Button should have accessible name
         expect(ariaLabel || title || textContent?.trim()).toBeTruthy();
       }
@@ -578,7 +578,7 @@ test.describe('MYDS Design System Compliance', () => {
       if (await header.first().isVisible()) {
         const headerHeight = await header.first().evaluate(el => getComputedStyle(el).height);
         const headerBg = await header.first().evaluate(el => getComputedStyle(el).backgroundColor);
-        
+
         // Header should have consistent height and styling
         expect(headerHeight).toMatch(/[5-8][0-9]px/); // Between 50-89px
         expect(headerBg).toMatch(/rgb\(255, 255, 255\)|rgb\(37, 99, 235\)/i);
@@ -589,7 +589,7 @@ test.describe('MYDS Design System Compliance', () => {
       if (await sidebar.first().isVisible()) {
         const sidebarWidth = await sidebar.first().evaluate(el => getComputedStyle(el).width);
         const sidebarBg = await sidebar.first().evaluate(el => getComputedStyle(el).backgroundColor);
-        
+
         expect(sidebarWidth).toMatch(/[2-3][0-9][0-9]px/); // Between 200-399px
         expect(sidebarBg).toBeDefined();
       }
@@ -599,7 +599,7 @@ test.describe('MYDS Design System Compliance', () => {
       if (await main.first().isVisible()) {
         const mainPadding = await main.first().evaluate(el => getComputedStyle(el).paddingTop);
         const validMainPadding = ['16px', '20px', '24px', '32px'];
-        
+
         if (mainPadding !== '0px') {
           expect(validMainPadding).toContain(mainPadding);
         }

@@ -87,7 +87,7 @@ class ApprovalWorkflow extends Component
         if (!$this->loanRequest) return 0;
 
         $status = $this->loanRequest->status;
-        
+
         switch ($status) {
             case 'pending':
                 return 1; // BPM Review
@@ -170,13 +170,13 @@ class ApprovalWorkflow extends Component
 
             // Update current step
             $this->currentStep = $this->getCurrentStepIndex();
-            
+
             session()->flash('message', $message);
             $this->closeApprovalModal();
-            
+
             // Refresh the loan request data
             $this->loanRequest->refresh();
-            
+
         } catch (\Exception $e) {
             session()->flash('error', 'Terdapat ralat semasa memproses keputusan. Sila cuba lagi.');
         }
@@ -241,7 +241,7 @@ class ApprovalWorkflow extends Component
     public function getStepColor($stepIndex)
     {
         $status = $this->getStepStatus($stepIndex);
-        
+
         switch ($status) {
             case 'completed':
                 return 'success';
@@ -256,27 +256,27 @@ class ApprovalWorkflow extends Component
 
     public function canApprove()
     {
-        return Auth::user()->can('approve', $this->loanRequest) && 
+        return Auth::user()->can('approve', $this->loanRequest) &&
                $this->loanRequest->status === 'pending';
     }
 
     public function canPrepareEquipment()
     {
-        return Auth::user()->can('prepare_equipment', $this->loanRequest) && 
-               $this->loanRequest->status === 'approved' && 
+        return Auth::user()->can('prepare_equipment', $this->loanRequest) &&
+               $this->loanRequest->status === 'approved' &&
                !$this->loanRequest->is_equipment_prepared;
     }
 
     public function canMarkReadyForCollection()
     {
-        return Auth::user()->can('manage_collection', $this->loanRequest) && 
-               $this->loanRequest->status === 'approved' && 
+        return Auth::user()->can('manage_collection', $this->loanRequest) &&
+               $this->loanRequest->status === 'approved' &&
                $this->loanRequest->is_equipment_prepared;
     }
 
     public function canConfirmCollection()
     {
-        return Auth::user()->can('confirm_collection', $this->loanRequest) && 
+        return Auth::user()->can('confirm_collection', $this->loanRequest) &&
                $this->loanRequest->status === 'ready_for_collection';
     }
 

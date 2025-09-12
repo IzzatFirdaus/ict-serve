@@ -14,7 +14,7 @@
                         <option value="90">90 hari lepas</option>
                         <option value="365">1 tahun lepas</option>
                     </select>
-                    <button wire:click="exportRequests" 
+                    <button wire:click="exportRequests"
                             class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                         <x-icon name="download" class="w-4 h-4 mr-2" />
                         Eksport
@@ -49,8 +49,8 @@
                 @foreach($tabs as $tabKey => $tab)
                     <button wire:click="setActiveTab('{{ $tabKey }}')"
                             class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200
-                                {{ $activeTab === $tabKey 
-                                    ? 'bg-primary-100 text-primary-700 border-b-2 border-primary-500' 
+                                {{ $activeTab === $tabKey
+                                    ? 'bg-primary-100 text-primary-700 border-b-2 border-primary-500'
                                     : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100' }}">
                         <x-icon name="{{ $tab['icon'] }}" class="w-5 h-5 mr-2" />
                         {{ $tab['title'] }}
@@ -173,15 +173,15 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-4">
                             <div class="relative">
-                                <input wire:model.live.debounce.300ms="searchTerm" 
-                                       type="text" 
-                                       placeholder="Cari permohonan..." 
+                                <input wire:model.live.debounce.300ms="searchTerm"
+                                       type="text"
+                                       placeholder="Cari permohonan..."
                                        class="block w-64 pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 text-sm">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <x-icon name="search" class="h-5 w-5 text-gray-400" />
                                 </div>
                             </div>
-                            
+
                             <select wire:model.live="statusFilter" class="text-sm border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500">
                                 @foreach($statusOptions as $value => $label)
                                     <option value="{{ $value }}">{{ $label }}</option>
@@ -193,15 +193,15 @@
                         @if($showBulkActions)
                             <div class="flex items-center space-x-2">
                                 <span class="text-sm text-gray-700">{{ count($selectedRequests) }} dipilih</span>
-                                <button wire:click="bulkApprove" 
+                                <button wire:click="bulkApprove"
                                         class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-success-600 hover:bg-success-700">
                                     Luluskan
                                 </button>
-                                <button wire:click="bulkReject" 
+                                <button wire:click="bulkReject"
                                         class="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-danger-600 hover:bg-danger-700">
                                     Tolak
                                 </button>
-                                <button wire:click="resetSelection" 
+                                <button wire:click="resetSelection"
                                         class="inline-flex items-center px-3 py-1 border border-gray-300 text-xs font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                     Batal
                                 </button>
@@ -216,12 +216,12 @@
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-6 py-3 text-left">
-                                    <input type="checkbox" 
-                                           wire:model.live="selectAll" 
+                                    <input type="checkbox"
+                                           wire:model.live="selectAll"
                                            wire:click="toggleSelectAll"
                                            class="rounded border-gray-300 text-primary-600 focus:ring-primary-500">
                                 </th>
-                                <th wire:click="sortBy('reference_number')" 
+                                <th wire:click="sortBy('reference_number')"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100">
                                     No. Rujukan
                                     @if($sortBy === 'reference_number')
@@ -231,7 +231,7 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pemohon</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tujuan</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                <th wire:click="sortBy('created_at')" 
+                                <th wire:click="sortBy('created_at')"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100">
                                     Tarikh
                                     @if($sortBy === 'created_at')
@@ -245,7 +245,7 @@
                             @foreach($loanRequests as $request)
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-6 py-4">
-                                        <input type="checkbox" 
+                                        <input type="checkbox"
                                                wire:click="toggleRequestSelection({{ $request->id }})"
                                                @if(in_array($request->id, $selectedRequests)) checked @endif
                                                class="rounded border-gray-300 text-primary-600 focus:ring-primary-500">
@@ -305,7 +305,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <div class="p-6">
                     <p class="text-gray-500">Senarai peralatan akan dipaparkan di sini.</p>
                 </div>
@@ -324,7 +324,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <div class="p-6">
                     <p class="text-gray-500">Senarai pengguna akan dipaparkan di sini.</p>
                 </div>
@@ -337,7 +337,7 @@
                 <div class="px-4 py-4 border-b border-gray-200">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">Laporan dan Analitik</h3>
                 </div>
-                
+
                 <div class="p-6">
                     <p class="text-gray-500">Laporan dan carta akan dipaparkan di sini.</p>
                 </div>

@@ -69,7 +69,7 @@
                         $status = $this->getStepStatus($index);
                         $color = $this->getStepColor($index);
                     @endphp
-                    
+
                     <div class="flex flex-col items-center group">
                         <div class="relative flex items-center justify-center w-10 h-10 rounded-full border-2 bg-white
                             @if($status === 'completed') border-success-500 bg-success-500
@@ -77,7 +77,7 @@
                             @elseif($status === 'rejected') border-danger-500 bg-danger-500
                             @else border-gray-300 bg-white
                             @endif">
-                            
+
                             @if($status === 'completed')
                                 <x-icon name="check" class="w-5 h-5 text-white" />
                             @elseif($status === 'rejected')
@@ -86,7 +86,7 @@
                                 <x-icon name="{{ $step['icon'] }}" class="w-5 h-5 {{ $status === 'current' ? 'text-white' : 'text-gray-400' }}" />
                             @endif
                         </div>
-                        
+
                         <div class="mt-3 text-center max-w-24">
                             <p class="text-xs font-medium
                                 @if($status === 'completed') text-success-600
@@ -112,19 +112,19 @@
             <div class="flex flex-wrap gap-3">
                 {{-- Approval Actions --}}
                 @if($this->canApprove())
-                    <button wire:click="showApprovalModalAction('approve')" 
+                    <button wire:click="showApprovalModalAction('approve')"
                             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-success-600 hover:bg-success-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-success-500">
                         <x-icon name="check" class="w-4 h-4 mr-2" />
                         Luluskan
                     </button>
-                    
-                    <button wire:click="showApprovalModalAction('reject')" 
+
+                    <button wire:click="showApprovalModalAction('reject')"
                             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-danger-600 hover:bg-danger-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danger-500">
                         <x-icon name="x" class="w-4 h-4 mr-2" />
                         Tolak
                     </button>
-                    
-                    <button wire:click="showApprovalModalAction('return')" 
+
+                    <button wire:click="showApprovalModalAction('return')"
                             class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                         <x-icon name="arrow-left" class="w-4 h-4 mr-2" />
                         Kembalikan
@@ -133,7 +133,7 @@
 
                 {{-- Equipment Preparation --}}
                 @if($this->canPrepareEquipment())
-                    <button wire:click="markEquipmentPrepared" 
+                    <button wire:click="markEquipmentPrepared"
                             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-warning-600 hover:bg-warning-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-warning-500">
                         <x-icon name="cog" class="w-4 h-4 mr-2" />
                         Tandakan Peralatan Disediakan
@@ -142,7 +142,7 @@
 
                 {{-- Ready for Collection --}}
                 @if($this->canMarkReadyForCollection())
-                    <button wire:click="markReadyForCollection" 
+                    <button wire:click="markReadyForCollection"
                             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                         <x-icon name="bell" class="w-4 h-4 mr-2" />
                         Sedia Untuk Dipungut
@@ -151,7 +151,7 @@
 
                 {{-- Confirm Collection --}}
                 @if($this->canConfirmCollection())
-                    <button wire:click="markCollected" 
+                    <button wire:click="markCollected"
                             class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-success-600 hover:bg-success-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-success-500">
                         <x-icon name="check" class="w-4 h-4 mr-2" />
                         Sahkan Dipungut
@@ -172,7 +172,7 @@
                 <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <div class="sm:flex sm:items-start">
-                            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full 
+                            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full
                                 @if($approvalAction === 'approve') bg-success-100
                                 @elseif($approvalAction === 'reject') bg-danger-100
                                 @else bg-warning-100
@@ -194,11 +194,11 @@
                                 </h3>
                                 <div class="mt-2">
                                     <p class="text-sm text-gray-500">
-                                        @if($approvalAction === 'approve') 
+                                        @if($approvalAction === 'approve')
                                             Sila masukkan komen untuk keputusan meluluskan permohonan ini.
-                                        @elseif($approvalAction === 'reject') 
+                                        @elseif($approvalAction === 'reject')
                                             Sila nyatakan sebab penolakan permohonan ini.
-                                        @else 
+                                        @else
                                             Sila nyatakan sebab mengapa permohonan ini perlu dikembalikan untuk pembetulan.
                                         @endif
                                     </p>
@@ -211,20 +211,20 @@
                                 Komen / Sebab
                             </label>
                             <div class="mt-1">
-                                <textarea wire:model.defer="approvalComment" 
-                                         id="approval-comment" 
-                                         rows="4" 
+                                <textarea wire:model.defer="approvalComment"
+                                         id="approval-comment"
+                                         rows="4"
                                          class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                          placeholder="Masukkan komen anda di sini..."></textarea>
                             </div>
-                            @error('approvalComment') 
-                                <p class="mt-2 text-sm text-danger-600">{{ $message }}</p> 
+                            @error('approvalComment')
+                                <p class="mt-2 text-sm text-danger-600">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <button wire:click="processApproval" 
-                                type="button" 
+                        <button wire:click="processApproval"
+                                type="button"
                                 class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm
                                 @if($approvalAction === 'approve') bg-success-600 hover:bg-success-700 focus:ring-success-500
                                 @elseif($approvalAction === 'reject') bg-danger-600 hover:bg-danger-700 focus:ring-danger-500
@@ -235,8 +235,8 @@
                             @else Kembalikan
                             @endif
                         </button>
-                        <button wire:click="closeApprovalModal" 
-                                type="button" 
+                        <button wire:click="closeApprovalModal"
+                                type="button"
                                 class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                             Batal
                         </button>
