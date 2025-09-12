@@ -63,31 +63,31 @@ Key documents include:
 This project includes the following notable packages installed via Composer and npm:
 
 - Composer (production):
-   - `laravel/framework` (^12.0)
-   - `filament/filament` (^4.0)
-   - `livewire/livewire` (^3.6)
-   - `owen-it/laravel-auditing` (^14.0)
-   - `laravel/tinker` (^2.10.1)
+  - `laravel/framework` (^12.0)
+  - `filament/filament` (^4.0)
+  - `livewire/livewire` (^3.6)
+  - `owen-it/laravel-auditing` (^14.0)
+  - `laravel/tinker` (^2.10.1)
 
 - Composer (development):
-   - `laravel/boost` (^1.1)
-   - `laravel/pint` (^1.24)
-   - `laravel/pail` (^1.2.2)
-   - `laravel/sail` (^1.41)
-   - `fakerphp/faker` (^1.23)
-   - `phpunit/phpunit` (^11.5.3)
-   - `nunomaduro/collision` (^8.6)
+  - `laravel/boost` (^1.1)
+  - `laravel/pint` (^1.24)
+  - `laravel/pail` (^1.2.2)
+  - `laravel/sail` (^1.41)
+  - `fakerphp/faker` (^1.23)
+  - `phpunit/phpunit` (^11.5.3)
+  - `nunomaduro/collision` (^8.6)
 
 - NPM (devDependencies):
-   - `vite` (^6.0.11)
-   - `tailwindcss` (^4.1.13)
-   - `laravel-vite-plugin` (^1.2.0)
-   - `prettier` (3.6.2)
-   - `stylelint` (^16.24.0)
-   - `stylelint-config-standard` (^39.0.0)
-   - `concurrently` (^9.0.1)
-   - `axios` (^1.7.4)
-   - `@tailwindcss/vite` (^4.0.0)
+  - `vite` (^6.0.11)
+  - `tailwindcss` (^4.1.13)
+  - `laravel-vite-plugin` (^1.2.0)
+  - `prettier` (3.6.2)
+  - `stylelint` (^16.24.0)
+  - `stylelint-config-standard` (^39.0.0)
+  - `concurrently` (^9.0.1)
+  - `axios` (^1.7.4)
+  - `@tailwindcss/vite` (^4.0.0)
 
 ## Requirements & Quick Links
 
@@ -161,9 +161,9 @@ npx prettier --check "**/*.{js,ts,css,scss,html,vue}"
 
 - Larastan note: Larastan is the Laravel extension for PHPStan (static analysis). Recent Larastan releases require specific Laravel illuminate/* versions. If `composer require --dev larastan/larastan` fails due to compatibility with Laravel 12, you can:
 
-   - Wait for an official Larastan release that lists Laravel 12 support, or
-   - Install `phpstan/phpstan` directly and configure `phpstan.neon` with Laravel-aware extensions, or
-   - Use the project's current `composer.json` constraint recommendations and run `./vendor/bin/phpstan analyse` after configuring `phpstan.neon`.
+  - Wait for an official Larastan release that lists Laravel 12 support, or
+  - Install `phpstan/phpstan` directly and configure `phpstan.neon` with Laravel-aware extensions, or
+  - Use the project's current `composer.json` constraint recommendations and run `./vendor/bin/phpstan analyse` after configuring `phpstan.neon`.
 
 See: <https://github.com/larastan/larastan> for current compatibility notes and instructions.
 
@@ -255,6 +255,7 @@ Which would you prefer me to add to the repo?
 [![Laravel Logo](https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg)](https://laravel.com)
 
 [![Build Status](https://github.com/laravel/framework/workflows/tests/badge.svg)](https://github.com/laravel/framework/actions) [![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/framework) [![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/framework) [![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/framework)
+
 # ICTServe (iServe) – MYDS-Compliant ICT Service Management
 
 An integrated ICT Loan & Helpdesk system for the Ministry of Tourism, Arts, and Culture (MOTAC), Malaysia. This project merges two legacy systems into a unified, modern application built with Laravel 12, following best Git practices and MYDS/MyGOVEA principles for a clean, collaborative, citizen-centric workflow.
@@ -513,9 +514,11 @@ Which would you prefer me to add to the repo?
 
 [![Build Status](https://github.com/laravel/framework/workflows/tests/badge.svg)](https://github.com/laravel/framework/actions) [![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/framework) [![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/framework) [![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/framework)
 =======
+
 # ICT Serve
 
 ## Overview
+>>>>>>>
 >>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 
 ICT Serve is a Laravel 12 application designed for equipment management, helpdesk ticketing, and loan modules. It leverages modern Laravel ecosystem packages and follows strict code quality and architectural conventions.
@@ -558,6 +561,7 @@ Notable dev dependencies:
 Composer scripts (run with `composer run <name>`):
 
 <<<<<<< HEAD
+
 - **[Vehikl](https://vehikl.com/)**
 - **[Tighten Co.](https://tighten.co)**
 - **[WebReinvent](https://webreinvent.com/)**
@@ -574,6 +578,7 @@ Composer scripts (run with `composer run <name>`):
 =======
 - dev — runs the development supervisor which starts artisan serve, queue listener, pail and vite (see `composer.json` scripts).
 - test — clears config and runs `php artisan test`.
+
 >>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 
 NPM scripts (run with `npm run <name>`):
@@ -652,8 +657,11 @@ All guidance must prioritise citizens’ needs and accessibility. Every UI, API,
 - Always frame technical advice by MYDS and MyGovEA design principles: simple, inclusive, and consistent. When suggesting third-party tools, verify compatibility with Laravel 12 and avoid introducing breaking changes without migration guidance.
 
 ## Code of Conduct
+
 =======
+
 ### Database
+>>>>>>>
 >>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 
 - A SQLite database is present at `database/database.sqlite` (the project creates/touches this file during post-create-project composer scripts).

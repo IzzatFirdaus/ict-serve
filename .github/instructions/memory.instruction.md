@@ -7,18 +7,21 @@ This file contains important context and instructions for Assistant Agents when 
 
 ## Project Context
 
-- **Framework**: Laravel 11 application with CRUD functionality
-- **Purpose**: Inventory management system with user authentication and role-based permissions
-- **Design System**: Uses MYDS (Malaysian Government Design System) tokens and components
+- **Framework**: Laravel 12 application for MOTAC ICT service management (ICTServe/iServe)
+- **Purpose**: Integrated platform for ICT equipment loan requests and helpdesk/ticketing (damage complaints) for all MOTAC staff
+- **Design System**: Uses MYDS (Malaysia Government Design System) tokens and components for UI/UX in line with MyGovEA principles
 
 ## Key Architecture Decisions
 
-- Uses soft deletes for inventory items
-- Role-based authorization with Laravel Policies
-- Excel import/export functionality via Maatwebsite/Excel
+- Uses soft deletes for inventory/equipment items
+- Role-based authorization with Laravel Policies (Spatie/Permission)
+- Excel import/export via Maatwebsite/Excel
 - Background job processing with Laravel Queue
-- Audit trail using Laravel Auditing package
+- Audit trail using owen-it/laravel-auditing
 - Multi-language support (English/Malay)
+- Modular structure: Loan, Helpdesk, Notification, Approval, User/Admin, etc.
+- Admin panels and resources built with Filament 4
+- Livewire 3 components for all dynamic forms and key workflows
 
 ## Development Workflow
 
@@ -28,6 +31,7 @@ This file contains important context and instructions for Assistant Agents when 
 - Use `npm run lint:myds` to check MYDS compliance
 - Development server: `php artisan serve`
 - Asset building: `npm run dev` or `npm run build`
+- Use feature-branch Git workflow; all changes via PR, reviewed before merge
 
 ## Important Conventions
 
@@ -35,30 +39,37 @@ This file contains important context and instructions for Assistant Agents when 
 - Use `/resource/{id}/destroy` endpoints for deletion
 - All buttons must use `myds-btn-*` classes (not Bootstrap `.btn`)
 - Controllers follow Resource controller pattern
-- Policies enforce ownership-based permissions
+- Policies enforce ownership-based and role-based permissions
+- All UI elements must use MYDS tokens for color, spacing, and typography
+- Grid/layout must follow 12-8-4 responsive convention
 
 ## Database
 
-- SQLite for testing (in-memory)
-- Soft deletes enabled on Inventory model
-- Many-to-many relationship between Inventory and Vehicle
-- Application model links User to Inventory with metadata
+- Use MySQL for production, SQLite for testing (in-memory)
+- Soft deletes enabled on Equipment model and related resources
+- Many-to-many relationship between Equipment and LoanApplicationItem
+- Application model links User to Equipment with metadata
+- Helpdesk tickets, approvals, notifications modeled as per documentation
 
 ## Testing Strategy
 
-- Feature tests for policies and middleware
-- Unit tests for model behavior
-- Policy visibility tests ensure proper authorization
+- Feature tests for policies, middleware, forms, workflows
+- Unit tests for model behavior, validation, notification logic
+- Policy visibility tests ensure proper authorization for all roles
 - Use factories and seeders for test data
+- Accessibility checks with axe/lighthouse wherever possible
 
 ## Files to Remember
 
 - `CLAUDE.md` - Contains detailed development commands and architecture
-- `composer.json` - Has custom scripts for common tasks
+- `composer.json` - Custom scripts for common tasks
 - Policy files in `app/Policies/` - Authorization logic
 - `routes/web.php` - Custom routing patterns
-- `resources/views/emails/` - Email templates
+- `resources/views/emails/` - Email templates (MYDS-compliant)
 - `app/Jobs/` - Background job classes
+- `resources/views/components/` - MYDS UI components
+- `resources/lang/` - Multi-language content
+- `config/motac.php` - System config, grade limits, accessories
 
 ---
 

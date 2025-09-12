@@ -47,7 +47,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\EquipmentItem> $equipmentItems
  * @property-read \App\Models\EquipmentItem|null $equipmentItem
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanItem> $loanItems
- * @property string $status
+ * @property LoanRequestStatus $status
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -149,10 +149,15 @@ class LoanRequest extends Model
 
     /**
      * Scope a query to only include pending requests.
+     * "Pending" is defined as any status in the approval workflow.
      */
     public function scopePending(Builder $query): void
     {
-        $query->where('status', LoanRequestStatus::PENDING_APPROVAL);
+        $query->whereIn('status', [
+            LoanRequestStatus::PENDING_BPM_REVIEW->value,
+            LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL->value,
+            LoanRequestStatus::PENDING_ICT_APPROVAL->value,
+        ]);
     }
 
     /**
@@ -164,22 +169,28 @@ class LoanRequest extends Model
     }
 
     /**
-     * Check if request is pending approval
+     * Check if request is in an editable state.
+     * Editable if in any "pending" state.
      */
     public function canBeEdited(): bool
     {
-        return $this->status === LoanRequestStatus::DRAFT || $this->status === LoanRequestStatus::PENDING_APPROVAL;
+        return in_array($this->status, [
+            LoanRequestStatus::PENDING_BPM_REVIEW->value,
+            LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL->value,
+            LoanRequestStatus::PENDING_ICT_APPROVAL->value,
+        ]);
     }
 
     /**
      * Check if request can be cancelled.
+     * Not cancellable if already returned, cancelled, or rejected.
      */
     public function canBeCancelled(): bool
     {
-        return in_array($this->status, [
-            LoanRequestStatus::DRAFT,
-            LoanRequestStatus::PENDING_APPROVAL,
-            LoanRequestStatus::APPROVED,
+        return !in_array($this->status, [
+            LoanRequestStatus::RETURNED->value,
+            LoanRequestStatus::CANCELLED->value,
+            LoanRequestStatus::REJECTED->value,
         ]);
     }
 
@@ -188,7 +199,7 @@ class LoanRequest extends Model
      */
     public function isOverdue(): bool
     {
-        return $this->status === LoanRequestStatus::COLLECTED
+        return $this->status === LoanRequestStatus::COLLECTED->value
             && $this->expected_return_date
             && $this->expected_return_date->isPast();
     }
@@ -205,6 +216,9 @@ class LoanRequest extends Model
         return (int) ($this->requested_from->diffInDays($this->requested_to) + 1);
     }
 
+    /**
+     * Attribute casting for Eloquent.
+     */
     protected function casts(): array
     {
         return [

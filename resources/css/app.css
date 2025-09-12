@@ -6,7 +6,8 @@
 
 /* Tailwind v4: automatic content detection in use */
 
-@theme {
+/* Use :root instead of @theme for CSS custom properties */
+:root {
   /* MYDS Typography - Poppins for headings, Inter for body */
   --font-poppins: 'Poppins', ui-sans-serif, system-ui, sans-serif;
   --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
