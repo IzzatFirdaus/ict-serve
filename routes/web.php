@@ -4,10 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Livewire\DamageComplaintForm;
 use App\Livewire\EquipmentLoanForm;
-use App\Livewire\LoanApplicationWizard;
+use App\Livewire\Helpdesk\TicketDetail;
 use App\Livewire\Helpdesk\TicketForm;
 use App\Livewire\Helpdesk\TicketList;
-use App\Livewire\Helpdesk\TicketDetail;
+use App\Livewire\LoanApplicationWizard;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -70,7 +70,15 @@ Route::get('/legacy/equipment-loan', EquipmentLoanForm::class)
     ->name('equipment-loan.create');
 
 require __DIR__.'/auth.php';
+
 // MOTAC Info Page
 Route::get('/motac-info', function () {
     return view('public.motac-info');
 })->name('public.motac-info');
+
+// MYDS Components Test Page (development only)
+if (app()->environment(['local', 'staging'])) {
+    Route::get('/myds-test', function () {
+        return view('myds-test');
+    })->name('myds.test');
+}

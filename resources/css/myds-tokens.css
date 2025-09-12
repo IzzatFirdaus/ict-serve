@@ -1,0 +1,340 @@
+/**
+ * MYDS Design Tokens
+ * Malaysia Government Design System
+ *
+ * This file contains CSS custom properties for all MYDS design tokens
+ * to ensure consistency across all components.
+ */
+
+:root {
+  /* ============================================
+     MYDS Color Tokens
+     ============================================ */
+
+  /* White & Neutral Backgrounds */
+  --myds-bg-white: #ffffff;
+  --myds-bg-white-hover: #fafafa;
+  --myds-bg-white-disabled: #f4f4f5;
+  --myds-bg-washed: #f4f4f5;
+  --myds-bg-washed-active: #f4f4f5;
+  --myds-bg-contrast: #ffffff;
+  --myds-bg-dialog: #ffffff;
+  --myds-bg-dialog-active: #ffffff;
+  --myds-bg-gray-50: #fafafa;
+
+  /* Primary Colors */
+  --myds-primary-50: #eff6ff;
+  --myds-primary-100: #dbeafe;
+  --myds-primary-200: #c2d5ff;
+  --myds-primary-300: #96b7ff;
+  --myds-primary-400: #6394ff;
+  --myds-primary-500: #3a75f6;
+  --myds-primary-600: #2563eb;
+  --myds-primary-700: #1d4ed8;
+  --myds-primary-800: #1e40af;
+  --myds-primary-900: #1e3a8a;
+  --myds-primary-950: #172554;
+
+  /* Danger Colors */
+  --myds-danger-50: #fef2f2;
+  --myds-danger-100: #fee2e2;
+  --myds-danger-200: #fecaca;
+  --myds-danger-300: #fca5a5;
+  --myds-danger-400: #f87171;
+  --myds-danger-500: #ef4444;
+  --myds-danger-600: #dc2626;
+  --myds-danger-700: #b91c1c;
+  --myds-danger-800: #991b1b;
+  --myds-danger-900: #7f1d1d;
+  --myds-danger-950: #450a0a;
+
+  /* Success Colors */
+  --myds-success-50: #f0fdf4;
+  --myds-success-100: #dcfce7;
+  --myds-success-200: #bbf7d0;
+  --myds-success-300: #83daa3;
+  --myds-success-400: #4ade80;
+  --myds-success-500: #22c55e;
+  --myds-success-600: #16a34a;
+  --myds-success-700: #15803d;
+  --myds-success-800: #166534;
+  --myds-success-900: #14532d;
+  --myds-success-950: #052e16;
+
+  /* Warning Colors */
+  --myds-warning-50: #fefce8;
+  --myds-warning-100: #fef9c3;
+  --myds-warning-200: #fef08a;
+  --myds-warning-300: #fde047;
+  --myds-warning-400: #facc15;
+  --myds-warning-500: #eab308;
+  --myds-warning-600: #ca8a04;
+  --myds-warning-700: #a16207;
+  --myds-warning-800: #854d0e;
+  --myds-warning-900: #713f12;
+  --myds-warning-950: #422006;
+
+  /* Gray Scale */
+  --myds-gray-50: #fafafa;
+  --myds-gray-100: #f4f4f5;
+  --myds-gray-200: #e4e4e7;
+  --myds-gray-300: #d4d4d8;
+  --myds-gray-400: #a1a1aa;
+  --myds-gray-500: #71717a;
+  --myds-gray-600: #52525b;
+  --myds-gray-700: #3f3f46;
+  --myds-gray-800: #27272a;
+  --myds-gray-850: #1d1d21;
+  --myds-gray-900: #18181b;
+  --myds-gray-930: #161619;
+  --myds-gray-950: #09090b;
+
+  /* ============================================
+     MYDS Spacing Scale
+     ============================================ */
+  --myds-space-xs: 4px;
+  --myds-space-s: 8px;
+  --myds-space-m: 12px;
+  --myds-space-l: 16px;
+  --myds-space-xl: 24px;
+  --myds-space-2xl: 32px;
+  --myds-space-3xl: 48px;
+  --myds-space-4xl: 64px;
+  --myds-space-5xl: 96px;
+  --myds-space-6xl: 128px;
+
+  /* ============================================
+     MYDS Border Radius
+     ============================================ */
+  --radius-xs: 2px;
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* ============================================
+     MYDS Typography
+     ============================================ */
+
+  /* Font Families */
+  --myds-font-heading: 'Poppins', sans-serif;
+  --myds-font-body: 'Inter', sans-serif;
+
+  /* Font Sizes - Headings */
+  --myds-text-heading-xl: 60px;
+  --myds-text-heading-lg: 48px;
+  --myds-text-heading-md: 36px;
+  --myds-text-heading-sm: 30px;
+  --myds-text-heading-xs: 24px;
+  --myds-text-heading-2xs: 20px;
+  --myds-text-heading-3xs: 16px;
+  --myds-text-heading-4xs: 14px;
+
+  /* Line Heights - Headings */
+  --myds-leading-heading-xl: 72px;
+  --myds-leading-heading-lg: 60px;
+  --myds-leading-heading-md: 44px;
+  --myds-leading-heading-sm: 38px;
+  --myds-leading-heading-xs: 32px;
+  --myds-leading-heading-2xs: 28px;
+  --myds-leading-heading-3xs: 24px;
+  --myds-leading-heading-4xs: 20px;
+
+  /* Font Sizes - Body */
+  --myds-text-body-6xl: 60px;
+  --myds-text-body-5xl: 48px;
+  --myds-text-body-4xl: 36px;
+  --myds-text-body-3xl: 30px;
+  --myds-text-body-2xl: 24px;
+  --myds-text-body-xl: 20px;
+  --myds-text-body-lg: 18px;
+  --myds-text-body-md: 16px;
+  --myds-text-body-sm: 14px;
+  --myds-text-body-xs: 12px;
+  --myds-text-body-2xs: 10px;
+
+  /* Line Heights - Body */
+  --myds-leading-body-6xl: 72px;
+  --myds-leading-body-5xl: 60px;
+  --myds-leading-body-4xl: 44px;
+  --myds-leading-body-3xl: 38px;
+  --myds-leading-body-2xl: 32px;
+  --myds-leading-body-xl: 28px;
+  --myds-leading-body-lg: 26px;
+  --myds-leading-body-md: 24px;
+  --myds-leading-body-sm: 20px;
+  --myds-leading-body-xs: 18px;
+  --myds-leading-body-2xs: 12px;
+
+  /* ============================================
+     MYDS Shadow System
+     ============================================ */
+  --myds-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --myds-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --myds-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --myds-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --myds-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --myds-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* ============================================
+     MYDS Animation/Motion
+     ============================================ */
+  --myds-duration-instant: 0ms;
+  --myds-duration-short: 200ms;
+  --myds-duration-medium: 400ms;
+  --myds-duration-long: 600ms;
+
+  --myds-ease-linear: linear;
+  --myds-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --myds-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================
+   MYDS Dark Mode Support
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode color mappings */
+    --myds-bg-white: var(--myds-gray-900);
+    --myds-bg-white-hover: var(--myds-gray-800);
+    --myds-bg-washed: var(--myds-gray-850);
+    --myds-bg-contrast: var(--myds-gray-930);
+    --myds-bg-dialog: var(--myds-gray-850);
+  }
+}
+
+/* ============================================
+   MYDS Component Classes
+   ============================================ */
+
+/* Container */
+.myds-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Grid System */
+.myds-grid-12 {
+  @apply grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 lg:gap-8;
+}
+
+/* Typography Classes */
+.myds-heading-xl {
+  font-family: var(--myds-font-heading);
+  font-size: var(--myds-text-heading-xl);
+  line-height: var(--myds-leading-heading-xl);
+  font-weight: 600;
+}
+
+.myds-heading-lg {
+  font-family: var(--myds-font-heading);
+  font-size: var(--myds-text-heading-lg);
+  line-height: var(--myds-leading-heading-lg);
+  font-weight: 600;
+}
+
+.myds-heading-md {
+  font-family: var(--myds-font-heading);
+  font-size: var(--myds-text-heading-md);
+  line-height: var(--myds-leading-heading-md);
+  font-weight: 600;
+}
+
+.myds-heading-sm {
+  font-family: var(--myds-font-heading);
+  font-size: var(--myds-text-heading-sm);
+  line-height: var(--myds-leading-heading-sm);
+  font-weight: 600;
+}
+
+.myds-heading-xs {
+  font-family: var(--myds-font-heading);
+  font-size: var(--myds-text-heading-xs);
+  line-height: var(--myds-leading-heading-xs);
+  font-weight: 600;
+}
+
+.myds-heading-2xs {
+  font-family: var(--myds-font-heading);
+  font-size: var(--myds-text-heading-2xs);
+  line-height: var(--myds-leading-heading-2xs);
+  font-weight: 600;
+}
+
+.myds-heading-3xs {
+  font-family: var(--myds-font-heading);
+  font-size: var(--myds-text-heading-3xs);
+  line-height: var(--myds-leading-heading-3xs);
+  font-weight: 500;
+}
+
+.myds-heading-4xs {
+  font-family: var(--myds-font-heading);
+  font-size: var(--myds-text-heading-4xs);
+  line-height: var(--myds-leading-heading-4xs);
+  font-weight: 500;
+}
+
+/* Body Text Classes */
+.myds-body-lg {
+  font-family: var(--myds-font-body);
+  font-size: var(--myds-text-body-lg);
+  line-height: var(--myds-leading-body-lg);
+}
+
+.myds-body-md {
+  font-family: var(--myds-font-body);
+  font-size: var(--myds-text-body-md);
+  line-height: var(--myds-leading-body-md);
+}
+
+.myds-body-sm {
+  font-family: var(--myds-font-body);
+  font-size: var(--myds-text-body-sm);
+  line-height: var(--myds-leading-body-sm);
+}
+
+/* Button Classes */
+.myds-button {
+  @apply inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  font-family: var(--myds-font-body);
+  border-radius: var(--radius-m);
+}
+
+.myds-button-primary {
+  @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-fr-primary;
+}
+
+.myds-button-secondary {
+  @apply bg-white text-txt-black-900 border border-otl-gray-300 hover:bg-gray-50 focus:ring-fr-primary;
+}
+
+.myds-button-danger {
+  @apply bg-danger-600 text-white hover:bg-danger-700 focus:ring-fr-danger;
+}
+
+.myds-button-success {
+  @apply bg-success-600 text-white hover:bg-success-700 focus:ring-fr-success;
+}
+
+/* Form Input Classes */
+.myds-input {
+  @apply block w-full px-3 py-2 border border-otl-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:border-primary-600 transition-colors;
+  font-family: var(--myds-font-body);
+  border-radius: var(--radius-m);
+}
+
+.myds-input:focus {
+  border-color: var(--myds-primary-600);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.myds-input.error {
+  border-color: var(--myds-danger-300);
+}
+
+.myds-input.error:focus {
+  border-color: var(--myds-danger-300);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
