@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\LoanRequest;
-use App\Models\Ticket;
+use App\Models\HelpdeskTicket;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\On;
@@ -160,7 +160,7 @@ class MyRequests extends Component
             : null;
 
         $selectedTicket = $this->selectedTicket
-            ? Ticket::with(['assignedTo', 'category', 'comments.user'])
+            ? HelpdeskTicket::with(['assignedTo', 'category', 'comments.user'])
                 ->find($this->selectedTicket)
             : null;
 

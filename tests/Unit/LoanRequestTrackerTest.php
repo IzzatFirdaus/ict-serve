@@ -15,12 +15,38 @@ class LoanRequestTrackerTest extends TestCase
     use RefreshDatabase;
 
     /**
+     * Creates and returns a single User instance for testing.
+     *
+     * @return \App\Models\User
+     */
+    protected function createTestUser(): User
+    {
+        // Always return a single User instance
+        return User::factory()->create();
+    }
+
+    /**
+     * Creates and returns a single LoanRequest instance for a given user.
+     *
+     * @param \App\Models\User $user
+     * @param array $attributes
+     * @return \App\Models\LoanRequest
+     */
+    protected function createTestLoanRequest(User $user, array $attributes = []): LoanRequest
+    {
+        // Always return a single LoanRequest instance
+        return LoanRequest::factory()->create(array_merge(['user_id' => $user->id], $attributes));
+    }
+
+    /**
      * Test component can mount successfully with a loan request.
      */
     public function test_component_mounts_successfully(): void
     {
-        $user = User::factory()->create();
-        $loanRequest = LoanRequest::factory()->create(['user_id' => $user->id]);
+        /** @var User $user */
+        $user = $this->createTestUser();
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = $this->createTestLoanRequest($user);
 
         $this->actingAs($user);
 
@@ -36,8 +62,10 @@ class LoanRequestTrackerTest extends TestCase
      */
     public function test_can_toggle_detail_view(): void
     {
-        $user = User::factory()->create();
-        $loanRequest = LoanRequest::factory()->create(['user_id' => $user->id]);
+        /** @var User $user */
+        $user = $this->createTestUser();
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = $this->createTestLoanRequest($user);
 
         $this->actingAs($user);
 
@@ -53,8 +81,10 @@ class LoanRequestTrackerTest extends TestCase
      */
     public function test_can_toggle_polling(): void
     {
-        $user = User::factory()->create();
-        $loanRequest = LoanRequest::factory()->create(['user_id' => $user->id]);
+        /** @var User $user */
+        $user = $this->createTestUser();
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = $this->createTestLoanRequest($user);
 
         $this->actingAs($user);
 
@@ -71,8 +101,10 @@ class LoanRequestTrackerTest extends TestCase
      */
     public function test_can_refresh_request_status(): void
     {
-        $user = User::factory()->create();
-        $loanRequest = LoanRequest::factory()->create(['user_id' => $user->id]);
+        /** @var User $user */
+        $user = $this->createTestUser();
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = $this->createTestLoanRequest($user);
 
         $this->actingAs($user);
 
@@ -86,11 +118,12 @@ class LoanRequestTrackerTest extends TestCase
      */
     public function test_can_determine_overdue_status(): void
     {
-        $user = User::factory()->create();
+        /** @var User $user */
+        $user = $this->createTestUser();
 
         // Create an overdue request (requested_to is in the past and status is 'in_use')
-        $overdueLoanRequest = LoanRequest::factory()->create([
-            'user_id' => $user->id,
+        /** @var LoanRequest $overdueLoanRequest */
+        $overdueLoanRequest = $this->createTestLoanRequest($user, [
             'requested_to' => Carbon::yesterday(),
             'status' => 'in_use'
         ]);
@@ -108,9 +141,10 @@ class LoanRequestTrackerTest extends TestCase
      */
     public function test_displays_correct_status_badges(): void
     {
-        $user = User::factory()->create();
-        $loanRequest = LoanRequest::factory()->create([
-            'user_id' => $user->id,
+        /** @var User $user */
+        $user = $this->createTestUser();
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = $this->createTestLoanRequest($user, [
             'status' => 'pending_supervisor'
         ]);
 
@@ -126,9 +160,10 @@ class LoanRequestTrackerTest extends TestCase
      */
     public function test_handles_null_loan_status_gracefully(): void
     {
-        $user = User::factory()->create();
-        $loanRequest = LoanRequest::factory()->create([
-            'user_id' => $user->id,
+        /** @var User $user */
+        $user = $this->createTestUser();
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = $this->createTestLoanRequest($user, [
             'status' => null
         ]);
 
@@ -143,8 +178,10 @@ class LoanRequestTrackerTest extends TestCase
      */
     public function test_shows_equipment_list_when_details_expanded(): void
     {
-        $user = User::factory()->create();
-        $loanRequest = LoanRequest::factory()->create(['user_id' => $user->id]);
+        /** @var User $user */
+        $user = $this->createTestUser();
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = $this->createTestLoanRequest($user);
 
         $this->actingAs($user);
 

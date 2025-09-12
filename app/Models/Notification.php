@@ -9,6 +9,8 @@ class Notification extends Model
 {
     use HasFactory;
 
+    protected $table = 'app_notifications';
+
     protected $fillable = [
         'user_id',
         'type',
@@ -48,6 +50,6 @@ class Notification extends Model
      */
     public function isRead(): bool
     {
-        return !is_null($this->read_at);
+        return ! is_null($this->read_at);
     }
 }

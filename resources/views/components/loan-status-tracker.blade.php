@@ -134,21 +134,21 @@
             @foreach($progressSteps as $index => $step)
                 <div class="flex items-center @if(!$loop->last) flex-1 @endif">
                     <!-- Step Circle -->
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full border-2
-                                @if($step['completed'])
-                                    bg-success-500 border-success-500 text-white
-                                @elseif($index === $currentStep)
-                                    bg-primary-500 border-primary-500 text-white animate-pulse
-                                @else
-                                    bg-gray-200 border-gray-300 text-gray-500
-                                @endif">
-                        @if($step['completed'])
-                            @include('components.icon', ['name' => 'check', 'class' => 'w-4 h-4'])
-                        @elseif($index === $currentStep)
-                            <span class="w-3 h-3 bg-white rounded-full animate-pulse"></span>
-                        @else
-                            <span class="text-xs font-semibold">{{ $index + 1 }}</span>
-                        @endif
+                    @php
+                        if ($step['completed']) {
+                            $circleClass = 'bg-success-500 border-success-500 text-white';
+                            $inner = "@include('components.icon', ['name' => 'check', 'class' => 'w-4 h-4'])";
+                        } elseif ($index === $currentStep) {
+                            $circleClass = 'bg-primary-500 border-primary-500 text-white animate-pulse';
+                            $inner = '<span class="w-3 h-3 bg-white rounded-full animate-pulse"></span>';
+                        } else {
+                            $circleClass = 'bg-gray-200 border-gray-300 text-gray-500';
+                            $inner = "<span class=\"text-xs font-semibold\">".($index + 1)."</span>";
+                        }
+                    @endphp
+
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full border-2 {{ $circleClass }}">
+                        {!! $inner !!}
                     </div>
 
                     <!-- Step Label -->
