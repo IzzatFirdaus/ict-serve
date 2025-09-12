@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Livewire\DamageComplaintForm;
 use App\Livewire\EquipmentLoanForm;
+use App\Livewire\Helpdesk\TicketForm;
+use App\Livewire\Helpdesk\TicketList;
+use App\Livewire\Helpdesk\TicketDetail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,6 +26,14 @@ Route::get('/equipment-loan', EquipmentLoanForm::class)
 
 // Authenticated routes for submitting and viewing personal requests
 Route::middleware('auth')->group(function () {
+    // Helpdesk System
+    Route::get('/helpdesk/create-ticket', TicketForm::class)
+        ->name('helpdesk.create-ticket');
+    Route::get('/helpdesk/my-tickets', TicketList::class)
+        ->name('helpdesk.my-tickets');
+    Route::get('/helpdesk/ticket/{ticketNumber}', TicketDetail::class)
+        ->name('helpdesk.ticket.detail');
+
     // Equipment Loan Requests
     Route::get('/loan-request', [PublicController::class, 'loanRequest'])
         ->name('public.loan-request');
@@ -51,3 +62,7 @@ Route::get('/legacy/equipment-loan', EquipmentLoanForm::class)
     ->name('equipment-loan.create');
 
 require __DIR__.'/auth.php';
+// MOTAC Info Page
+Route::get('/motac-info', function () {
+    return view('public.motac-info');
+})->name('public.motac-info');

@@ -29,6 +29,16 @@ enum TicketUrgency: string
         };
     }
 
+    public function description(): string
+    {
+        return match($this) {
+            self::LOW => 'Can wait for regular processing time',
+            self::MEDIUM => 'Standard processing timeframe expected',
+            self::HIGH => 'Needs faster than normal processing',
+            self::CRITICAL => 'Requires immediate processing',
+        };
+    }
+
     public function sortOrder(): int
     {
         return match($this) {

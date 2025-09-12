@@ -11,9 +11,12 @@ class TicketCategory extends Model
 
     protected $fillable = [
         'name',
+        'name_bm',
         'description',
-        'color',
+        'description_bm',
         'icon',
+        'priority',
+        'default_sla_hours',
         'is_active',
         'sort_order',
     ];
@@ -22,6 +25,8 @@ class TicketCategory extends Model
     {
         return [
             'is_active' => 'boolean',
+            'priority' => 'string',
+            'default_sla_hours' => 'integer',
         ];
     }
 

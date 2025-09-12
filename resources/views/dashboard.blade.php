@@ -19,11 +19,18 @@
                         </svg>
                         Request Equipment Loan
                     </a>
-                    <a href="{{ route('damage-complaint.create') }}" class="inline-flex items-center px-6 py-3 bg-danger-600 text-white rounded-md text-sm font-medium hover:bg-danger-700 transition-colors">
+                    <a href="{{ route('helpdesk.create-ticket') }}" class="inline-flex items-center px-6 py-3 bg-danger-600 text-white rounded-md text-sm font-medium hover:bg-danger-700 transition-colors">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                         </svg>
-                        Report Issues
+                        Create Support Ticket
+                    </a>
+                    <a href="{{ route('helpdesk.my-tickets') }}" class="inline-flex items-center px-6 py-3 bg-success-600 text-white rounded-md text-sm font-medium hover:bg-success-700 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2v1a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clip-rule="evenodd"></path>
+                        </svg>
+                        My Tickets
                     </a>
                 </div>
             </div>
@@ -120,21 +127,21 @@
                     </a>
                 </div>
 
-                <!-- Technical Support -->
+                <!-- Helpdesk System -->
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
                     <div class="w-12 h-12 bg-danger-100 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-danger-600" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Technical Support</h3>
-                    <p class="text-gray-600 mb-4">Report technical issues, damaged equipment, or request IT assistance.</p>
-                    <a href="{{ route('damage-complaint.create') }}" class="text-danger-600 hover:text-danger-700 font-medium">
-                        Report Issue →
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Helpdesk Support</h3>
+                    <p class="text-gray-600 mb-4">Create support tickets, track issues, and get technical assistance.</p>
+                    <a href="{{ route('helpdesk.create-ticket') }}" class="text-danger-600 hover:text-danger-700 font-medium">
+                        Create Ticket →
                     </a>
                 </div>
 
-                <!-- Track Requests -->
+                <!-- My Tickets -->
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
                     <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-success-600" fill="currentColor" viewBox="0 0 20 20">
@@ -142,10 +149,24 @@
                             <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2v1a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Track Requests</h3>
-                    <p class="text-gray-600 mb-4">Monitor the status of your loan requests and support tickets.</p>
-                    <a href="{{ route('public.my-requests') }}" class="text-success-600 hover:text-success-700 font-medium">
-                        View Status →
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">My Support Tickets</h3>
+                    <p class="text-gray-600 mb-4">View and track your support requests and helpdesk tickets.</p>
+                    <a href="{{ route('helpdesk.my-tickets') }}" class="text-success-600 hover:text-success-700 font-medium">
+                        View Tickets →
+                    </a>
+                </div>
+
+                <!-- Track All Requests -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">All My Requests</h3>
+                    <p class="text-gray-600 mb-4">Monitor all loan requests, damage complaints, and tickets in one place.</p>
+                    <a href="{{ route('public.my-requests') }}" class="text-primary-600 hover:text-primary-700 font-medium">
+                        View All →
                     </a>
                 </div>
 

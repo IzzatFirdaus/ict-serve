@@ -40,6 +40,9 @@
                                 <a href="{{ route('filament.admin.pages.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     ⚙️ Admin Panel
                                 </a>
+                                    <x-nav-link :href="route('public.motac-info')" :active="request()->routeIs('public.motac-info')">
+                                        {{ __('MOTAC Info') }}
+                                    </x-nav-link>
                             </div>
                         </div>
                     </div>

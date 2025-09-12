@@ -29,6 +29,16 @@ enum TicketPriority: string
         };
     }
 
+    public function description(): string
+    {
+        return match($this) {
+            self::LOW => 'Minor issues that can be addressed in regular business hours',
+            self::MEDIUM => 'Standard issues requiring normal attention',
+            self::HIGH => 'Important issues that need prompt attention',
+            self::CRITICAL => 'Urgent issues requiring immediate attention',
+        };
+    }
+
     public function sortOrder(): int
     {
         return match($this) {
