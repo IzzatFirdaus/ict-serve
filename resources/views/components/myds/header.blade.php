@@ -42,7 +42,7 @@
                                         Equipment Loan Request
                                     </div>
                                 </a>
-                                <a href="{{ route('public.damage-complaint') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                <a href="{{ route('public.damage-complaint.guest') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                                     <div class="flex items-center">
                                         <svg class="w-4 h-4 mr-3 text-danger-600" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
@@ -112,7 +112,7 @@
             <div class="bg-primary-50 rounded-[var(--radius-m)] p-2 mt-2">
                 <div class="text-sm font-semibold text-txt-primary px-1 py-1">ServiceDesk ICT</div>
                 <a href="{{ route('public.loan-request') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">Equipment Loan Request</a>
-                <a href="{{ route('public.damage-complaint') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">Report Damage/Issues</a>
+                <a href="{{ route('public.damage-complaint.guest') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">Report Damage/Issues</a>
                 <a href="{{ route('public.my-requests') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">My Requests</a>
                 <a href="/admin" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">Admin Panel</a>
             </div>

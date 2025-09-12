@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Laravel\Telescope\Telescope;
 
 class TicketStatusUpdatedNotification extends Notification implements ShouldQueue
 {
@@ -22,6 +23,22 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
         $this->ticket = $ticket;
         $this->oldStatus = $oldStatus;
         $this->newStatus = $newStatus;
+
+        // Load relationships if not already loaded
+        if (!$this->ticket->relationLoaded('category')) {
+            $this->ticket->load('category');
+        }
+
+        // Add Telescope monitoring tags
+        Telescope::tag(function () {
+            $categoryName = $this->ticket->category ? strtolower($this->ticket->category->name) : 'unknown';
+            return [
+                'notification:helpdesk',
+                'ticket:status_updated',
+                'status:' . strtolower($this->newStatus->name),
+                'category:' . $categoryName
+            ];
+        });
     }
 
     /**
