@@ -174,29 +174,214 @@ protected function isAccessible(User $user, ?string $path = null): bool
 ### Models
 - Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
 
+<<<<<<< HEAD
+=======
+=== livewire/core rules ===
 
-=== pint/core rules ===
+## Livewire Core
 
-## Laravel Pint Code Formatter
+- Use the `search-docs` tool to find exact version specific documentation for how to write Livewire & Livewire tests.
+- Use the `php artisan make:livewire [Posts\CreatePost]` artisan command to create new components
+- State should live on the server, with the UI reflecting it.
+- All Livewire requests hit the Laravel backend, they're like regular HTTP requests. Always validate form data, and run authorization checks in Livewire actions.
 
-- You must run `vendor/bin/pint --dirty` before finalizing changes to ensure your code matches the project's expected style.
-- Do not run `vendor/bin/pint --test`, simply run `vendor/bin/pint` to fix any formatting issues.
+## Livewire Best Practices
 
+- Livewire components require a single root element.
+- Use `wire:loading` and `wire:dirty` for delightful loading states.
+- Add `wire:key` in loops:
 
-=== phpunit/core rules ===
+  ```blade
+  @foreach ($items as $item)
+      <div wire:key="item-{{ $item->id }}">
+          {{ $item->name }}
+      </div>
+  @endforeach
+  ```
 
-## PHPUnit Core
+- Prefer lifecycle hooks like `mount()`, `updatedFoo()`) for initialization and reactive side effects:
 
-- This application uses PHPUnit for testing. All tests must be written as PHPUnit classes. Use `php artisan make:test --phpunit <name>` to create a new test.
-- If you see a test using "Pest", convert it to PHPUnit.
-- Every time a test has been updated, run that singular test.
-- When the tests relating to your feature are passing, ask the user if they would like to also run the entire test suite to make sure everything is still passing.
-- Tests should test all of the happy paths, failure paths, and weird paths.
-- You must not remove any tests or test files from the tests directory without approval. These are not temporary or helper files, these are core to the application.
+<code-snippet name="Lifecycle hook examples" lang="php">
+    public function mount(User $user) { $this->user = $user; }
+    public function updatedSearch() { $this->resetPage(); }
+</code-snippet>
 
-### Running Tests
-- Run the minimal number of tests, using an appropriate filter, before finalizing.
-- To run all tests: `php artisan test`.
-- To run all tests in a file: `php artisan test tests/Feature/ExampleTest.php`.
-- To filter on a particular test name: `php artisan test --filter=testName` (recommended after making a change to a related file).
+## Testing Livewire
+
+<code-snippet name="Example Livewire component test" lang="php">
+    Livewire::test(Counter::class)
+        ->assertSet('count', 0)
+        ->call('increment')
+        ->assertSet('count', 1)
+<<<<<<< HEAD
 </laravel-boost-guidelines>
+=======
+
+=== tailwindcss/core rules ===
+
+## Tailwind Core
+
+- Use Tailwind CSS classes to style HTML, check and use existing tailwind conventions within the project before writing your own.
+- Offer to extract repeated patterns into components that match the project's conventions (i.e. Blade, JSX, Vue, etc..)
+- Think through class placement, order, priority, and defaults - remove redundant classes, add classes to parent or child carefully to limit repetition, group elements logically
+- You can use the `search-docs` tool to get exact examples from the official documentation when needed.
+        === livewire/core rules ===
+
+        ## Livewire Core
+
+        - Use the `search-docs` tool to find exact version specific documentation for how to write Livewire & Livewire tests.
+        - Use the `php artisan make:livewire [Posts\CreatePost]` artisan command to create new components
+        - State should live on the server, with the UI reflecting it.
+        - All Livewire requests hit the Laravel backend, they're like regular HTTP requests. Always validate form data, and run authorization checks in Livewire actions.
+
+        ## Livewire Best Practices
+
+        - Livewire components require a single root element.
+        - Use `wire:loading` and `wire:dirty` for delightful loading states.
+        - Add `wire:key` in loops:
+
+          ```blade
+          @foreach ($items as $item)
+              <div wire:key="item-{{ $item->id }}">
+                  {{ $item->name }}
+              </div>
+          @endforeach
+          ```
+
+        - Prefer lifecycle hooks like `mount()`, `updatedFoo()`) for initialization and reactive side effects:
+
+        <code-snippet name="Lifecycle hook examples" lang="php">
+            public function mount(User $user) { $this->user = $user; }
+            public function updatedSearch() { $this->resetPage(); }
+        </code-snippet>
+
+        ## Testing Livewire
+
+        <code-snippet name="Example Livewire component test" lang="php">
+            Livewire::test(Counter::class)
+                ->assertSet('count', 0)
+                ->call('increment')
+                ->assertSet('count', 1)
+                ->assertSee(1)
+                ->assertStatus(200);
+        </code-snippet>
+
+            <code-snippet name="Testing a Livewire component exists within a page" lang="php">
+                $this->get('/posts/create')
+                ->assertSeeLivewire(CreatePost::class);
+            </code-snippet>
+
+        === livewire/v3 rules ===
+
+        ## Livewire 3
+
+        ### Key Changes From Livewire 2
+
+        - These things changed in Livewire 2, but may not have been updated in this application. Verify this application's setup to ensure you conform with application conventions.
+          - Use `wire:model.live` for real-time updates, `wire:model` is now deferred by default.
+          - Components now use the `App\Livewire` namespace (not `App\Http\Livewire`).
+          - Use `$this->dispatch()` to dispatch events (not `emit` or `dispatchBrowserEvent`).
+          - Use the `components.layouts.app` view as the typical layout path (not `layouts.app`).
+
+        ### New Directives
+
+        - `wire:show`, `wire:transition`, `wire:cloak`, `wire:offline`, `wire:target` are available for use. Use the documentation to find usage examples.
+
+        ### Alpine
+
+        - Alpine is now included with Livewire, don't manually include Alpine.js.
+        - Plugins included with Alpine: persist, intersect, collapse, and focus.
+
+        ### Lifecycle Hooks
+
+        - You can listen for `livewire:init` to hook into Livewire initialization, and `fail.status === 419` for the page expiring:
+
+        <code-snippet name="livewire:load example" lang="js">
+
+- When listing items, use gap utilities for spacing, don't use margins.
+
+        <code-snippet name="Valid Flex Gap Spacing Example" lang="html">
+            <div class="flex gap-8">
+                <div>Superior</div>
+                <div>Michigan</div>
+                <div>Erie</div>
+            </div>
+        </code-snippet>
+
+### Dark Mode
+        </code-snippet>
+
+- If existing pages and components support dark mode, new pages and components must support dark mode in a similar way, typically using `dark:`.
+
+=== tailwindcss/v4 rules ===
+
+## Tailwind 4
+
+- Always use Tailwind CSS v4 - do not use the deprecated utilities.
+- `corePlugins` is not supported in Tailwind v4.
+- In Tailwind v4, you import Tailwind using a regular CSS `@import` statement, not using the `@tailwind` directives used in v3:
+
+<code-snippet name="Tailwind v4 Import Tailwind Diff" lang="diff"
+
+- @tailwind base;
+- @tailwind components;
+=== tailwindcss/core rules ===
+
+## Tailwind Core
+
+- Use Tailwind CSS classes to style HTML, check and use existing tailwind conventions within the project before writing your own.
+- Offer to extract repeated patterns into components that match the project's conventions (i.e. Blade, JSX, Vue, etc..)
+- Think through class placement, order, priority, and defaults - remove redundant classes, add classes to parent or child carefully to limit repetition, group elements logically
+- You can use the `search-docs` tool to get exact examples from the official documentation when needed.
+
+### Spacing
+
+- When listing items, use gap utilities for spacing, don't use margins.
+
+                <code-snippet name="Valid Flex Gap Spacing Example" lang="html">
+                        <div class="flex gap-8">
+                                <div>Superior</div>
+                                <div>Michigan</div>
+                                <div>Erie</div>
+                        </div>
+                </code-snippet>
+
+### Dark Mode
+
+- If existing pages and components support dark mode, new pages and components must support dark mode in a similar way, typically using `dark:`.
+
+=== tailwindcss/v4 rules ===
+
+## Tailwind 4
+
+- Always use Tailwind CSS v4 - do not use the deprecated utilities.
+- `corePlugins` is not supported in Tailwind v4.
+- In Tailwind v4, you import Tailwind using a regular CSS `@import` statement, not using the `@tailwind` directives used in v3:
+
+<code-snippet name="Tailwind v4 Import Tailwind Diff" lang="diff"
+
+- @tailwind base;
+- @tailwind components;
+- @tailwind utilities;
+
+* @import "tailwindcss";
+    </code-snippet>
+
+### Replaced Utilities
+
+- Tailwind v4 removed deprecated utilities. Do not use the deprecated option - use the replacement.
+- Opacity values are still numeric.
+
+| Deprecated | Replacement |
+|------------+--------------|
+| bg-opacity-_ | bg-black/_ |
+| text-opacity-_ | text-black/_ |
+| border-opacity-_ | border-black/_ |
+| divide-opacity-_ | divide-black/_ |
+| ring-opacity-_ | ring-black/_ |
+| placeholder-opacity-_ | placeholder-black/_ |
+| flex-shrink-_ | shrink-_ |
+| flex-grow-_ | grow-_ |
+| overflow-ellipsis | text-ellipsis |
+| decoration-slice | box-decoration-slice |
+| decoration-clone | box-decoration-clone |

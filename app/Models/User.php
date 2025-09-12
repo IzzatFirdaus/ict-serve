@@ -1,12 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string|null $staff_id
+ * @property string|null $department
+ * @property string|null $phone
+ * @property string|null $position
+ * @property string|null $profile_picture
+ * @property UserRole $role
+ * @property array|null $preferences
+ * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $loanRequests
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -29,6 +50,7 @@ class User extends Authenticatable
         'phone',
         'supervisor_id',
         'is_active',
+        'last_login_at',
         'profile_picture',
         'preferences',
     ];
@@ -53,9 +75,10 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'role' => \App\Enums\UserRole::class,
+            'role' => UserRole::class,
             'preferences' => 'array',
             'is_active' => 'boolean',
+            'last_login_at' => 'datetime',
         ];
     }
 
@@ -108,11 +131,19 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the notifications for this user.
+     * Get notifications for this user
      */
-    public function notifications()
+    public function notifications(): HasMany
     {
-        return $this->hasMany(Notification::class, 'user_id');
+        return $this->hasMany(Notification::class);
+    }
+
+    /**
+     * Get unread notifications for this user
+     */
+    public function unreadNotifications(): HasMany
+    {
+        return $this->hasMany(Notification::class)->unread()->notExpired();
     }
 
     /**

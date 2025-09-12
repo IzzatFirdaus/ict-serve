@@ -1,47 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<div class="myds-container max-w-md mx-auto py-10">
+    <div class="bg-bg-white-0 border border-otl-gray-200 rounded-radius-l shadow-context-menu p-6">
+        <h1 class="myds-heading text-heading-xs font-semibold text-txt-black-900 mb-1">Reset your password</h1>
+        <p class="text-body-sm text-txt-black-600 mb-6">Enter your email to receive a password reset link</p>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        @if (session('status'))
+            <x-myds.callout variant="success" class="mb-4">{{ session('status') }}</x-myds.callout>
+        @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        @if (Route::has('password.email'))
+        <form method="POST" action="{{ route('password.email') }}" class="space-y-4" novalidate>
+            @csrf
+            <x-myds.input name="email" type="email" label="Email Address" :value="old('email')" required autocomplete="email" />
+            <x-myds.button type="submit" variant="primary" class="w-full">Send reset link</x-myds.button>
+        </form>
+        @else
+            <x-myds.callout variant="warning">Password reset is not available in this environment.</x-myds.callout>
+        @endif
     </div>
 </div>
 @endsection

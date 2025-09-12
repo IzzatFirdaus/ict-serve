@@ -1,24 +1,41 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "build": "vite build",
-        "dev": "vite"
-    },
-    "devDependencies": {
-        "@tailwindcss/forms": "^0.5.2",
-        "@tailwindcss/postcss": "^4.1.13",
-        "@tailwindcss/vite": "^4.0.0",
-        "alpinejs": "^3.4.2",
-        "autoprefixer": "^10.4.2",
-        "axios": "^1.7.4",
-        "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^1.2.0",
-        "postcss": "^8.4.31",
-        "prettier": "3.6.2",
-        "stylelint": "^16.24.0",
-        "stylelint-config-standard": "^39.0.0",
-        "tailwindcss": "^4.1.13",
-        "vite": "^6.0.11"
-    }
+  "$schema": "https://json.schemastore.org/package.json",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,css,scss,json,md,html,vue}\"",
+    "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,json,md,html,vue}\"",
+    "stylelint": "stylelint \"**/*.{css,scss,vue,html}\"",
+    "stylelint:fix": "stylelint --fix \"**/*.{css,scss,vue,html}\""
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@popperjs/core": "^2.11.6",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@tailwindcss/vite": "^4.0.0",
+    "autoprefixer": "^10.4.2",
+    "axios": "^1.11.0",
+    "bootstrap": "^5.2.3",
+    "concurrently": "^9.0.1",
+    "laravel-vite-plugin": "^2.0.0",
+    "postcss": "^8.4.31",
+    "postcss-scss": "^4.0.9",
+    "prettier": "3.6.2",
+    "sass": "^1.56.1",
+    "stylelint": "^16.24.0",
+    "stylelint-config-recommended": "^17.0.0",
+    "stylelint-config-standard": "^39.0.0",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-config-tailwindcss": "^1.0.0",
+    "stylelint-scss": "^6.12.1",
+    "tailwindcss": "^4.1.13",
+    "vite": "^7.0.4"
+  },
+  "dependencies": {
+    "@govtechmy/myds-style": "^1.0.0",
+    "alpinejs": "^3.13.0"
+  }
 }
