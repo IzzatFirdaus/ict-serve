@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Livewire\DamageComplaintForm;
 use App\Livewire\EquipmentLoanForm;
+use App\Livewire\LoanApplicationWizard;
 use App\Livewire\Helpdesk\TicketForm;
 use App\Livewire\Helpdesk\TicketList;
 use App\Livewire\Helpdesk\TicketDetail;
@@ -24,6 +25,9 @@ Route::get('/damage-complaint', DamageComplaintForm::class)
 Route::get('/equipment-loan', EquipmentLoanForm::class)
     ->name('public.loan-request.guest');
 
+Route::get('/equipment-loan-wizard', LoanApplicationWizard::class)
+    ->name('public.loan-wizard.guest');
+
 // Authenticated routes for submitting and viewing personal requests
 Route::middleware('auth')->group(function () {
     // Helpdesk System
@@ -39,6 +43,10 @@ Route::middleware('auth')->group(function () {
         ->name('public.loan-request');
     Route::post('/loan-request', [PublicController::class, 'storeLoanRequest'])
         ->name('public.loan-request.store');
+    
+    // Equipment Loan Wizard
+    Route::get('/loan-wizard', LoanApplicationWizard::class)
+        ->name('public.loan-wizard');
 
     // Damage Complaints (POST only while GET is public)
     Route::post('/damage-complaint', [PublicController::class, 'storeDamageComplaint'])
