@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./components/filters.css";
 
 /* Tailwind v4: automatic content detection in use */
 
