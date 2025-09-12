@@ -2,3 +2,17 @@
 build
 coverage
 node_modules
+/public/build/
+/public/hot
+/storage/framework/
+/storage/logs/
+*.lock
+.env
+/vendor/
+/node_modules/
+
+# Ignore reports
+phpinsights-*.json
+phpstan-report.txt
+code-quality-summary.md
+FINAL-CODE-QUALITY-SUMMARY.md

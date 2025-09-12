@@ -1,10 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $name_bm
+ * @property string|null $description
+ * @property string|null $description_bm
+ * @property string|null $icon
+ * @property string $priority
+ * @property int|null $default_sla_hours
+ * @property bool $is_active
+ * @property int $sort_order
+ * @property int $total
+ * @property int $met_sla
+ * @property int $breached_sla
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class TicketCategory extends Model
 {
     use HasFactory;
@@ -18,6 +37,7 @@ class TicketCategory extends Model
         'sort_order',
     ];
 
+<<<<<<< HEAD
     protected function casts(): array
     {
         return [
@@ -25,6 +45,8 @@ class TicketCategory extends Model
         ];
     }
 
+=======
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     /**
      * Get the tickets in this category.
      */
@@ -32,4 +54,32 @@ class TicketCategory extends Model
     {
         return $this->hasMany(HelpdeskTicket::class, 'category_id');
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Scope for active categories only
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
+    /**
+     * Scope to order by sort_order
+     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'default_sla_hours' => 'integer',
+            'sort_order' => 'integer',
+        ];
+    }
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 }

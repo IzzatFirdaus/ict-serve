@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -7,6 +9,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string|null $staff_id
+ * @property string|null $department
+ * @property string|null $phone
+ * @property string|null $position
+ * @property string|null $profile_picture
+ * @property string|null $role
+ * @property array|null $preferences
+ * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $loanRequests
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -29,6 +48,10 @@ class User extends Authenticatable
         'phone',
         'supervisor_id',
         'is_active',
+<<<<<<< HEAD
+=======
+        'last_login_at',
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
         'profile_picture',
         'preferences',
     ];
@@ -44,6 +67,7 @@ class User extends Authenticatable
     ];
 
     /**
+<<<<<<< HEAD
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -61,6 +85,9 @@ class User extends Authenticatable
 
     /**
      * Get the supervisor that this user reports to.
+=======
+     * Get the supervisor of this user
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
      */
     public function supervisor()
     {
@@ -116,10 +143,46 @@ class User extends Authenticatable
     }
 
     /**
+<<<<<<< HEAD
      * Get the activity logs for this user.
+=======
+     * Get notifications for this user
+     */
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    /**
+     * Get unread notifications for this user
+     */
+    public function unreadNotifications(): HasMany
+    {
+        return $this->hasMany(Notification::class)->unread()->notExpired();
+    }
+
+    /**
+     * Check if user has specific role
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
      */
     public function activityLogs()
     {
         return $this->hasMany(ActivityLog::class, 'user_id');
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'is_active' => 'boolean',
+            'last_login_at' => 'datetime',
+            'preferences' => 'array',
+        ];
     }
 }

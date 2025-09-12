@@ -1,23 +1,86 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
+*.log
+.DS_Store
+.env
+.env*
+/vendor/
+# Laravel & general
+/vendor/
+/node_modules/
+/env
+/env.*
+/composer.phar
+
+# Laravel storage & cache
+/storage/
 /storage/*.key
 /storage/pail
-/vendor
-.env
-.env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/auth.json
+/storage/debugbar
+/bootstrap/cache/
+
+# Build artifacts
+/public/hot
+/public/build
+/public/mix-manifest.json
+/public/storage
+
+# Database
+/database/*.sqlite
+/database/*.sqlite3
+
+# Test results & caches
+/test-results/
+/.phpunit.result.cache
+/.phpunit.cache
+
+# Package managers
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+
+# Editor directories and metadata
 /.fleet
-/.idea
 /.nova
+/.idea
 /.vscode
 /.zed
+.DS_Store
+Thumbs.db
+
+# Documentation generators / tooling
+/.phpdoc/cache/
+/.phpactor.json
+/.phpdoc/build/
+/.phpdoc/build/classes/
+
+# Misc
+/composer.phar
+/auth.json
+/Homestead.json
+/Homestead.yaml
+/playwright-report/
+
+# Generated API docs
+/docs/api/
+/docs/api/classes/
+/docs/api/files/
+/docs/api/js/
+/docs/api/namespaces/
+/docs/api/packages/
+/docs/api/reports/
+
+# Keep source files and configuration tracked. Do NOT ignore these:
+# - app/
+# - bootstrap/
+# - config/
+# - database/migrations (except editor backups, which are safe to ignore)
+# - resources/
+# - routes/
+# - tests/
+# - artisan, README.md, and other project files
+
+# If you have local env backups you want ignored
+.env.backup
+.env.production
+
+# End of file
+.phpactor.json

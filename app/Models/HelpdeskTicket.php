@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\TicketPriority;
@@ -7,6 +9,48 @@ use App\Enums\TicketUrgency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+<<<<<<< HEAD
+=======
+/**
+ * @property int $id
+ * @property string $ticket_number
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $status_id
+ * @property string $title
+ * @property string $description
+ * @property string $priority
+ * @property string $urgency
+ * @property int|null $assigned_to
+ * @property \Illuminate\Support\Carbon|null $assigned_at
+ * @property int|null $equipment_item_id
+ * @property string|null $location
+ * @property string|null $contact_phone
+ * @property \Illuminate\Support\Carbon|null $due_at
+ * @property \Illuminate\Support\Carbon|null $resolved_at
+ * @property \Illuminate\Support\Carbon|null $closed_at
+ * @property string|null $resolution
+ * @property string|null $resolution_notes
+ * @property int|null $resolved_by
+ * @property int|null $satisfaction_rating
+ * @property string|null $feedback
+ * @property array|null $attachments
+ * @property array|null $file_attachments
+ * @property array|null $activity_log
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TicketCategory $category
+ * @property-read \App\Models\TicketStatus $status
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\User|null $assignedTo
+ * @property-read \App\Models\User|null $assignedToUser
+ * @property-read \App\Models\User|null $resolvedByUser
+ * @property-read \App\Models\EquipmentItem|null $equipmentItem
+ * @property-read mixed $activity_log
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 class HelpdeskTicket extends Model
 {
     use HasFactory;
@@ -35,9 +79,12 @@ class HelpdeskTicket extends Model
         'resolved_by',
         'satisfaction_rating',
         'feedback',
-        'attachments',
+    'attachments',
+    'file_attachments',
+    'activity_log',
     ];
 
+<<<<<<< HEAD
     protected function casts(): array
     {
         return [
@@ -52,6 +99,8 @@ class HelpdeskTicket extends Model
         ];
     }
 
+=======
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     /**
      * Get the user who created the ticket.
      */
@@ -101,6 +150,7 @@ class HelpdeskTicket extends Model
     }
 
     /**
+<<<<<<< HEAD
      * Generate unique ticket number.
      */
     public static function generateTicketNumber(): string
@@ -122,6 +172,9 @@ class HelpdeskTicket extends Model
 
     /**
      * Check if ticket is overdue.
+=======
+     * Check if ticket is overdue
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
      */
     public function isOverdue(): bool
     {
@@ -166,5 +219,81 @@ class HelpdeskTicket extends Model
         }
 
         return $this->created_at->diffInHours($this->resolved_at);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'assigned_at' => 'datetime',
+            'due_at' => 'datetime',
+            'resolved_at' => 'datetime',
+            'closed_at' => 'datetime',
+            'satisfaction_rating' => 'integer',
+            'attachments' => 'json',
+            'file_attachments' => 'array',
+            'activity_log' => 'array',
+        ];
+    }
+
+    /**
+     * Generate unique ticket number
+     */
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($ticket): void {
+            if (empty($ticket->ticket_number)) {
+                $ticket->ticket_number = static::generateTicketNumber();
+            }
+
+            // Set due_at based on category SLA if not set
+            if (empty($ticket->due_at) && $ticket->category) {
+                $ticket->due_at = now()->addHours($ticket->category->default_sla_hours);
+            }
+        });
+    }
+
+    /**
+     * Accessor for assignedTo (legacy property)
+     */
+    public function getAssignedToAttribute(): ?User
+    {
+        $user = $this->assignedToUser;
+
+        return $user instanceof User ? $user : null;
+    }
+
+    /**
+     * Accessor for activity_log (stub for Larastan)
+     *
+     * @return mixed
+     */
+    public function getActivityLogAttribute()
+    {
+        // Return null or actual activity log if implemented
+        return null;
+    }
+
+    /**
+     * Generate ticket number in format: HD-YYYY-MMDD-XXX
+     */
+    protected static function generateTicketNumber(): string
+    {
+        $date = now();
+        $prefix = 'HD-'.$date->format('Y-md');
+
+        $lastTicket = static::where('ticket_number', 'like', $prefix.'%')
+            ->orderBy('ticket_number', 'desc')
+            ->first();
+
+        if ($lastTicket) {
+            $lastSequence = intval(substr($lastTicket->ticket_number, -3));
+            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
+        } else {
+            $sequence = '001';
+        }
+
+        return $prefix.'-'.$sequence;
     }
 }

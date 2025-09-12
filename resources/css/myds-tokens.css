@@ -1,0 +1,233 @@
+/* MYDS Color Tokens - Light and Dark Mode Support */
+
+:root {
+  /* Light Mode Color Tokens */
+
+  /* Text Tokens */
+  --txt-black-900: #18181B;
+  --txt-black-700: #3F3F46;
+  --txt-black-500: #71717A;
+  --txt-black-400: #A1A1AA;
+  --txt-black-300: #D4D4D8;
+
+  /* Background Tokens */
+  --bg-white-0: #FFFFFF;
+  --bg-white-50: #FAFAFA;
+  --bg-white-100: #F4F4F5;
+  --bg-washed: #F4F4F5;
+
+  /* Outline Tokens */
+  --otl-gray-200: #E4E4E7;
+  --otl-gray-300: #D4D4D8;
+  --otl-gray-400: #A1A1AA;
+
+  /* Focus Ring Tokens */
+  --fr-primary-600: #2563EB;
+  --fr-danger-600: #DC2626;
+  --fr-success-600: #16A34A;
+  --fr-warning-600: #D97706;
+}
+
+/* Dark Mode Color Tokens */
+.dark {
+  /* Text Tokens - Dark Mode */
+  --txt-black-900: #FAFAFA;
+  --txt-black-700: #D4D4D8;
+  --txt-black-500: #A1A1AA;
+  --txt-black-400: #71717A;
+  --txt-black-300: #52525B;
+
+  /* Background Tokens - Dark Mode */
+  --bg-white-0: #09090B;
+  --bg-white-50: #18181B;
+  --bg-white-100: #27272A;
+  --bg-washed: #27272A;
+
+  /* Outline Tokens - Dark Mode */
+  --otl-gray-200: #3F3F46;
+  --otl-gray-300: #52525B;
+  --otl-gray-400: #71717A;
+
+  /* Focus Ring Tokens remain the same in dark mode */
+  --fr-primary-600: #3A75F6;
+  --fr-danger-600: #EF4444;
+  --fr-success-600: #22C55E;
+  --fr-warning-600: #F59E0B;
+}
+
+/* MYDS Typography Classes */
+.myds-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.myds-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.myds-rtf {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* MYDS Motion Classes */
+.myds-transition-short {
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-medium {
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-long {
+  transition-duration: 600ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-bounce {
+  transition-timing-function: cubic-bezier(0.4, 1.4, 0.2, 1);
+}
+
+/* MYDS Focus Styles */
+.myds-focus-visible:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-white-0), 0 0 0 4px var(--fr-primary-600);
+}
+
+.myds-focus-danger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-white-0), 0 0 0 4px var(--fr-danger-600);
+}
+
+/* MYDS Hover States */
+.myds-hover-underline:hover {
+  text-decoration: underline;
+}
+
+/* MYDS Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 50;
+  background: var(--bg-white-0);
+  color: var(--txt-black-900);
+  border: 1px solid var(--otl-gray-300);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-washed);
+  border-color: var(--otl-gray-400);
+}
+
+/* MYDS Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-white-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--otl-gray-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--otl-gray-400);
+}
+
+/* MYDS Responsive Text Sizes */
+@media (max-width: 767px) {
+  .myds-responsive-heading {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+  }
+
+  .myds-responsive-body {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .myds-responsive-heading {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.375rem; /* 38px */
+  }
+
+  .myds-responsive-body {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .myds-responsive-heading {
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.75rem; /* 44px */
+  }
+
+  .myds-responsive-body {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+  }
+}
+
+/* MYDS Toast Animation Classes */
+@keyframes toast-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-slide-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toast-slide-up 200ms cubic-bezier(0.4, 1.4, 0.2, 1);
+}
+
+.toast-exit {
+  animation: toast-slide-down 200ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+/* MYDS Progress Bar Animation */
+@keyframes progress-countdown {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.progress-bar-countdown {
+  animation: progress-countdown 3000ms linear;
+}

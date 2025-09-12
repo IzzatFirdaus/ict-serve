@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +21,7 @@ class EquipmentCategory extends Model
         'sort_order',
     ];
 
+<<<<<<< HEAD
     protected function casts(): array
     {
         return [
@@ -26,6 +29,8 @@ class EquipmentCategory extends Model
         ];
     }
 
+=======
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     /**
      * Get the equipment items in this category.
      */
@@ -33,4 +38,50 @@ class EquipmentCategory extends Model
     {
         return $this->hasMany(EquipmentItem::class, 'category_id');
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Get active equipment items in this category
+     */
+    public function activeEquipmentItems(): HasMany
+    {
+        return $this->hasMany(EquipmentItem::class, 'category_id')
+            ->where('is_active', true);
+    }
+
+    /**
+     * Get available equipment items for loan
+     */
+    public function availableEquipmentItems(): HasMany
+    {
+        return $this->hasMany(EquipmentItem::class, 'category_id')
+            ->where('is_active', true)
+            ->where('status', 'available');
+    }
+
+    /**
+     * Scope for active categories only
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
+    /**
+     * Scope to order by sort_order
+     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'sort_order' => 'integer',
+        ];
+    }
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 }
