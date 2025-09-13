@@ -50,9 +50,9 @@
                     <p class="myds-body-sm mt-2 text-txt-black-800">
                         {{ __('Your email address is unverified.') }}
 
-                        <button form="send-verification" class="underline myds-body-sm text-txt-primary hover:text-txt-black-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fr-primary">
+                        <x-myds.button form="send-verification" variant="ghost" class="underline text-txt-primary hover:text-txt-black-900 p-0 m-0 align-baseline">
                             {{ __('Click here to re-send the verification email.') }}
-                        </button>
+                        </x-myds.button>
                     </p>
 
                     @if (session('status') === 'verification-link-sent')

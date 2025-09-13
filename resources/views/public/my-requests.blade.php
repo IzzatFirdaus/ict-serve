@@ -7,7 +7,11 @@
     <!-- Header Section -->
     <div class="bg-bg-primary-600 text-txt-white py-8">
         <div class="myds-container">
-            <h1 class="myds-heading-lg mb-2">My Requests</h1>
+                         <x-myds.button type="button" data-close-ticket variant="ghost" class="text-txt-black-500 hover:text-txt-black-700">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </x-myds.button>1 class="myds-heading-lg mb-2">My Requests</h1>
             <p class="myds-body-base text-txt-white opacity-80">Track your equipment loan requests and damage complaints</p>
         </div>
     </div>
@@ -90,9 +94,9 @@
                                             {{ $request->submitted_at?->format('M j, Y') ?? $request->created_at->format('M j, Y') }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap myds-body-sm font-medium">
-                                            <button type="button" onclick="showLoanDetails('{{ $request->id }}')" class="text-txt-primary hover:text-txt-primary">
+                                            <x-myds.button type="button" data-open-loan="{{ $request->id }}" variant="ghost" class="text-txt-primary hover:text-txt-primary">
                                                 View Details
-                                            </button>
+                                            </x-myds.button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -191,9 +195,9 @@
                                             {{ $ticket->created_at->format('M j, Y') }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap myds-body-sm font-medium">
-                                            <button type="button" onclick="showTicketDetails('{{ $ticket->id }}')" class="text-txt-danger-600 hover:text-txt-danger-900">
+                                            <x-myds.button type="button" data-open-ticket="{{ $ticket->id }}" variant="ghost" class="text-txt-danger hover:text-txt-danger">
                                                 View Details
-                                            </button>
+                                            </x-myds.button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -233,11 +237,11 @@
         <div class="mt-3">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-medium text-txt-black-900">Loan Request Details</h3>
-                <button type="button" onclick="closeLoanModal()" class="text-txt-black-500 hover:text-txt-black-700">
+                <x-myds.button type="button" data-close-loan variant="ghost" class="text-txt-black-500 hover:text-txt-black-700">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
-                </button>
+                </x-myds.button>
             </div>
             <div id="loanDetailsContent" class="space-y-4">
                 <!-- Content will be loaded here -->
@@ -252,7 +256,7 @@
         <div class="mt-3">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-medium text-txt-black-900">Ticket Details</h3>
-                <button type="button" onclick="closeTicketModal()" class="text-txt-black-500 hover:text-txt-black-700">
+                <button type="button" data-close-ticket class="text-txt-black-500 hover:text-txt-black-700">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
@@ -264,75 +268,5 @@
         </div>
     </div>
 </div>
-
-<script>
-function showLoanDetails(requestId) {
-    // This would typically fetch data via AJAX
-    // For now, we'll show a placeholder
-    document.getElementById('loanDetailsContent').innerHTML = `
-        <div class="text-center py-4">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-otl-primary-300 mx-auto"></div>
-            <p class="mt-2 text-sm text-gray-500">Loading request details...</p>
-        </div>
-    `;
-    document.getElementById('loanDetailsModal').classList.remove('hidden');
-
-    // Simulate loading
-    setTimeout(() => {
-        document.getElementById('loanDetailsContent').innerHTML = `
-            <div class="space-y-4">
-                <div>
-                    <h4 class="font-medium text-txt-black-900">Request Information</h4>
-                    <p class="text-sm text-txt-black-700">Details would be loaded here via AJAX call to fetch specific request data.</p>
-                </div>
-            </div>
-        `;
-    }, 500);
-}
-
-function showTicketDetails(ticketId) {
-    // This would typically fetch data via AJAX
-    // For now, we'll show a placeholder
-    document.getElementById('ticketDetailsContent').innerHTML = `
-        <div class="text-center py-4">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-danger-600 mx-auto"></div>
-            <p class="mt-2 text-sm text-gray-500">Loading ticket details...</p>
-        </div>
-    `;
-    document.getElementById('ticketDetailsModal').classList.remove('hidden');
-
-    // Simulate loading
-    setTimeout(() => {
-        document.getElementById('ticketDetailsContent').innerHTML = `
-            <div class="space-y-4">
-                <div>
-                    <h4 class="font-medium text-txt-black-900">Ticket Information</h4>
-                    <p class="text-sm text-txt-black-700">Details would be loaded here via AJAX call to fetch specific ticket data.</p>
-                </div>
-            </div>
-        `;
-    }, 500);
-}
-
-function closeLoanModal() {
-    document.getElementById('loanDetailsModal').classList.add('hidden');
-}
-
-function closeTicketModal() {
-    document.getElementById('ticketDetailsModal').classList.add('hidden');
-}
-
-// Close modals when clicking outside
-window.onclick = function(event) {
-    const loanModal = document.getElementById('loanDetailsModal');
-    const ticketModal = document.getElementById('ticketDetailsModal');
-
-    if (event.target === loanModal) {
-        loanModal.classList.add('hidden');
-    }
-    if (event.target === ticketModal) {
-        ticketModal.classList.add('hidden');
-    }
-}
-</script>
+@vite('resources/js/my-requests.js')
 @endsection

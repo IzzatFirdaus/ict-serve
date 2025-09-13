@@ -361,10 +361,9 @@
                 <div class="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                     <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
                         <h3 class="text-lg font-semibold text-gray-900">Loan Request Details</h3>
-                        <button wire:click="closeLoanModal"
-                                class="text-gray-400 hover:text-gray-600">
+                        <x-myds.button wire:click="closeLoanModal" variant="ghost" class="text-txt-black-400 hover:text-txt-black-600">
                             @include('components.icon', ['name' => 'x', 'class' => 'w-6 h-6'])
-                        </button>
+                        </x-myds.button>
                     </div>
 
                     <div class="p-6">
@@ -386,10 +385,9 @@
                 <div class="relative bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
                     <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
                         <h3 class="text-lg font-semibold text-gray-900">Ticket Details</h3>
-                        <button wire:click="closeTicketModal"
-                                class="text-gray-400 hover:text-gray-600">
+                        <x-myds.button wire:click="closeTicketModal" variant="ghost" class="text-txt-black-400 hover:text-txt-black-600">
                             @include('components.icon', ['name' => 'x', 'class' => 'w-6 h-6'])
-                        </button>
+                        </x-myds.button>
                     </div>
 
                     <div class="p-6">

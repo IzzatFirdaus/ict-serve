@@ -3,13 +3,21 @@
 @import "./components/filters.css";
 
 /* Tailwind v4: automatic content detection in use */
+@theme {
+    /* MYDS Primary mapped to standard Tailwind blue scale for Filament compatibility */
+    --color-blue-50: #EFF6FF;
+    --color-blue-100: #DBEAFE;
+    --color-blue-200: #C2D5FF;
+    --color-blue-300: #96B7FF;
+    --color-blue-400: #6394FF;
+    --color-blue-500: #3A75F6;
+    --color-blue-600: #2563EB;  /* MYDS primary blue */
+    --color-blue-700: #1D4ED8;
+    --color-blue-800: #1E40AF;
+    --color-blue-900: #1E3A8A;
+    --color-blue-950: #172554;
 
-:root {
-    /* Typography per MYDS: Poppins (headings), Inter (body) */
-    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    --font-heading: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
-
-    /* MYDS Primary Scale */
+    /* MYDS Primary as semantic colors - these still work for our MYDS components */
     --color-primary-50: #EFF6FF;
     --color-primary-100: #DBEAFE;
     --color-primary-200: #C2D5FF;
@@ -22,20 +30,20 @@
     --color-primary-900: #1E3A8A;
     --color-primary-950: #172554;
 
-    /* MYDS Gray Scale */
-    --color-gray-50: #FAFAFA;
-    --color-gray-100: #F4F4F5;
-    --color-gray-200: #E4E4E7;
-    --color-gray-300: #D4D4D8;
-    --color-gray-400: #A1A1AA;
-    --color-gray-500: #71717A;
-    --color-gray-600: #52525B;
-    --color-gray-700: #3F3F46;
-    --color-gray-800: #27272A;
-    --color-gray-900: #18181B;
-    --color-gray-950: #09090B;
+    /* MYDS Danger mapped to standard red scale for Filament compatibility */
+    --color-red-50: #FEF2F2;
+    --color-red-100: #FEE2E2;
+    --color-red-200: #FECACA;
+    --color-red-300: #FCA5A5;
+    --color-red-400: #F87171;
+    --color-red-500: #EF4444;
+    --color-red-600: #DC2626;
+    --color-red-700: #B91C1C;
+    --color-red-800: #991B1B;
+    --color-red-900: #7F1D1D;
+    --color-red-950: #450A0A;
 
-    /* MYDS Danger Scale */
+    /* MYDS Danger as semantic colors */
     --color-danger-50: #FEF2F2;
     --color-danger-100: #FEE2E2;
     --color-danger-200: #FECACA;
@@ -48,7 +56,20 @@
     --color-danger-900: #7F1D1D;
     --color-danger-950: #450A0A;
 
-    /* MYDS Success Scale */
+    /* MYDS Success mapped to standard green scale for Filament compatibility */
+    --color-green-50: #F0FDF4;
+    --color-green-100: #DCFCE7;
+    --color-green-200: #BBF7D0;
+    --color-green-300: #83DAA3;
+    --color-green-400: #4ADE80;
+    --color-green-500: #22C55E;
+    --color-green-600: #16A34A;
+    --color-green-700: #15803D;
+    --color-green-800: #166534;
+    --color-green-900: #14532D;
+    --color-green-950: #052E16;
+
+    /* MYDS Success as semantic colors */
     --color-success-50: #F0FDF4;
     --color-success-100: #DCFCE7;
     --color-success-200: #BBF7D0;
@@ -61,7 +82,20 @@
     --color-success-900: #14532D;
     --color-success-950: #052E16;
 
-    /* MYDS Warning Scale */
+    /* MYDS Warning mapped to standard yellow scale for Filament compatibility */
+    --color-yellow-50: #FEFCE8;
+    --color-yellow-100: #FEF9C3;
+    --color-yellow-200: #FEF08A;
+    --color-yellow-300: #FDE047;
+    --color-yellow-400: #FACC15;
+    --color-yellow-500: #EAB308;
+    --color-yellow-600: #CA8A04;
+    --color-yellow-700: #A16207;
+    --color-yellow-800: #854D0E;
+    --color-yellow-900: #713F12;
+    --color-yellow-950: #422006;
+
+    /* MYDS Warning as semantic colors */
     --color-warning-50: #FEFCE8;
     --color-warning-100: #FEF9C3;
     --color-warning-200: #FEF08A;
@@ -73,6 +107,38 @@
     --color-warning-800: #854D0E;
     --color-warning-900: #713F12;
     --color-warning-950: #422006;
+
+    /* Standard gray scale for Filament compatibility */
+    --color-gray-50: #FAFAFA;
+    --color-gray-100: #F4F4F5;
+    --color-gray-200: #E4E4E7;
+    --color-gray-300: #D4D4D8;
+    --color-gray-400: #A1A1AA;
+    --color-gray-500: #71717A;
+    --color-gray-600: #52525B;
+    --color-gray-700: #3F3F46;
+    --color-gray-800: #27272A;
+    --color-gray-900: #18181B;
+    --color-gray-950: #09090B;
+
+    /* Standard sky scale for Filament info color */
+    --color-sky-50: #F0F9FF;
+    --color-sky-100: #E0F2FE;
+    --color-sky-200: #BAE6FD;
+    --color-sky-300: #7DD3FC;
+    --color-sky-400: #38BDF8;
+    --color-sky-500: #0EA5E9;
+    --color-sky-600: #0284C7;
+    --color-sky-700: #0369A1;
+    --color-sky-800: #075985;
+    --color-sky-900: #0C4A6E;
+    --color-sky-950: #082F49;
+}
+
+:root {
+    /* Typography per MYDS: Poppins (headings), Inter (body) */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
 
     /* Focus ring tokens */
     --fr-primary: color-mix(in oklab, var(--color-primary-300) 40%, transparent);
@@ -93,15 +159,37 @@
     /* Background tokens */
     --color-bg-white: #FFFFFF;
     --color-bg-gray-50: var(--color-gray-50);
+    --color-bg-gray-100: var(--color-gray-100);
     --color-bg-primary-50: var(--color-primary-50);
+    --color-bg-primary-100: var(--color-primary-100);
+    --color-bg-primary-200: var(--color-primary-200);
+    --color-bg-primary-600: var(--color-primary-600);
+    --color-bg-primary-700: var(--color-primary-700);
     --color-bg-success-50: var(--color-success-50);
+    --color-bg-success-100: var(--color-success-100);
+    --color-bg-success-200: var(--color-success-200);
+    --color-bg-success-600: var(--color-success-600);
+    --color-bg-success-700: var(--color-success-700);
     --color-bg-danger-50: var(--color-danger-50);
+    --color-bg-danger-100: var(--color-danger-100);
+    --color-bg-danger-200: var(--color-danger-200);
+    --color-bg-danger-600: var(--color-danger-600);
+    --color-bg-danger-700: var(--color-danger-700);
     --color-bg-warning-50: var(--color-warning-50);
+    --color-bg-warning-100: var(--color-warning-100);
+    --color-bg-warning-200: var(--color-warning-200);
+    --color-bg-warning-600: var(--color-warning-600);
+    --color-bg-warning-700: var(--color-warning-700);
 
     /* Outline tokens */
     --color-otl-divider: var(--color-gray-100);
     --color-otl-gray-200: var(--color-gray-200);
     --color-otl-primary-200: var(--color-primary-200);
+    --color-otl-primary-300: var(--color-primary-300);
+    --color-otl-gray-300: var(--color-gray-300);
+    --color-otl-success-200: var(--color-success-200);
+    --color-otl-warning-200: var(--color-warning-200);
+    --color-otl-danger-200: var(--color-danger-200);
 }
 
 /* MYDS Typography Classes */
@@ -239,6 +327,26 @@
     max-width: 640px;
 }
 
+/* MYDS Responsive Grid (12-8-4) */
+.myds-grid-12 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .myds-grid-12 {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .myds-grid-12 {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 2rem;
+    }
+}
+
 /* MYDS Accessibility Utilities */
 .sr-only {
     position: absolute;
@@ -298,6 +406,7 @@
 .focus\:ring-fr-warning:focus { outline: 2px solid var(--fr-warning); outline-offset: 2px; }
 
 /* Text utilities */
+.text-txt-white { color: #FFFFFF; }
 .text-txt-primary { color: var(--color-txt-primary); }
 .text-txt-danger { color: var(--color-txt-danger); }
 .text-txt-success { color: var(--color-txt-success); }
@@ -306,20 +415,66 @@
 .text-txt-black-700 { color: var(--color-txt-black-700); }
 .text-txt-black-600 { color: var(--color-txt-black-600); }
 .text-txt-black-500 { color: var(--color-txt-black-500); }
+/* Extended semantic intensity variants used in badges/tables */
+.text-txt-success-800 { color: var(--color-success-800); }
+.text-txt-warning-800 { color: var(--color-warning-800); }
+.text-txt-danger-800 { color: var(--color-danger-800); }
+.text-txt-danger-900 { color: var(--color-danger-900); }
 
 /* Background utilities */
 .bg-bg-white { background-color: var(--color-bg-white); }
 .bg-bg-washed { background-color: var(--color-gray-50); }
 .bg-bg-gray-50 { background-color: var(--color-bg-gray-50); }
+.bg-bg-gray-100 { background-color: var(--color-bg-gray-100); }
 .bg-bg-primary-50 { background-color: var(--color-bg-primary-50); }
+.bg-bg-primary-100 { background-color: var(--color-bg-primary-100); }
+.bg-bg-primary-200 { background-color: var(--color-bg-primary-200); }
+.bg-bg-primary-600 { background-color: var(--color-bg-primary-600); }
+.bg-bg-primary-700 { background-color: var(--color-bg-primary-700); }
 .bg-bg-success-50 { background-color: var(--color-bg-success-50); }
+.bg-bg-success-100 { background-color: var(--color-bg-success-100); }
+.bg-bg-success-200 { background-color: var(--color-bg-success-200); }
+.bg-bg-success-600 { background-color: var(--color-bg-success-600); }
+.bg-bg-success-700 { background-color: var(--color-bg-success-700); }
 .bg-bg-danger-50 { background-color: var(--color-bg-danger-50); }
+.bg-bg-danger-100 { background-color: var(--color-bg-danger-100); }
+.bg-bg-danger-200 { background-color: var(--color-bg-danger-200); }
+.bg-bg-danger-600 { background-color: var(--color-bg-danger-600); }
+.bg-bg-danger-700 { background-color: var(--color-bg-danger-700); }
 .bg-bg-warning-50 { background-color: var(--color-bg-warning-50); }
+.bg-bg-warning-100 { background-color: var(--color-bg-warning-100); }
+.bg-bg-warning-200 { background-color: var(--color-bg-warning-200); }
+.bg-bg-warning-600 { background-color: var(--color-bg-warning-600); }
+.bg-bg-warning-700 { background-color: var(--color-bg-warning-700); }
+
+/* Legacy aliases kept until all views are updated to bg-bg-* */
+.bg-primary-50 { background-color: var(--color-primary-50); }
+.bg-success-50 { background-color: var(--color-success-50); }
+.bg-danger-50 { background-color: var(--color-danger-50); }
+.bg-warning-50 { background-color: var(--color-warning-50); }
 
 /* Border utilities */
 .border-otl-divider { border-color: var(--color-otl-divider); }
 .border-otl-gray-200 { border-color: var(--color-otl-gray-200); }
 .border-otl-primary-200 { border-color: var(--color-otl-primary-200); }
+.border-otl-primary-300 { border-color: var(--color-otl-primary-300); }
+.border-otl-gray-300 { border-color: var(--color-otl-gray-300); }
+/* Hover variants for border otl gray colors */
+.hover\:border-otl-gray-200:hover { border-color: var(--color-otl-gray-200); }
+.hover\:border-otl-gray-300:hover { border-color: var(--color-otl-gray-300); }
+.border-otl-success-200 { border-color: var(--color-otl-success-200); }
+.border-otl-warning-200 { border-color: var(--color-otl-warning-200); }
+.border-otl-danger-200 { border-color: var(--color-otl-danger-200); }
+/* Aliases */
+.border-otl-primary { border-color: var(--color-otl-primary-200); }
+.border-otl-success { border-color: var(--color-otl-success-200); }
+.border-otl-warning { border-color: var(--color-otl-warning-200); }
+.border-otl-danger { border-color: var(--color-otl-danger-200); }
+/* Plain border color helpers used by loaders */
+.border-danger-600 { border-color: var(--color-danger-600); }
+
+/* Divide utility for custom divider color */
+.divide-otl-divider > :not([hidden]) ~ :not([hidden]) { border-color: var(--color-otl-divider); }
 
 /* Alpine x-cloak helper */
 [x-cloak] { display: none !important; }
@@ -327,6 +482,11 @@
 /* Blend mode utilities (for SVG groups, etc.) */
 .mix-blend-hard-light { mix-blend-mode: hard-light; }
 .mix-blend-multiply { mix-blend-mode: multiply; }
+
+/* Gradient utilities */
+.myds-gradient-primary-br {
+    background-image: linear-gradient(to bottom right, var(--color-primary-600), var(--color-primary-700));
+}
 
   /* SVG Color Utilities - Semantic color mapping for SVG elements */
   .svg-stroke-dark {

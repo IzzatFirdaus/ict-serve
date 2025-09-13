@@ -7,7 +7,7 @@
     <span class="sr-only">Borang Aduan Kerosakan ICT</span>
     <span class="sr-only">Borang Permohonan Peminjaman Peralatan ICT</span>
     <!-- Hero Section -->
-        <div class="bg-gradient-to-br from-bg-primary-600 to-bg-primary-700 text-txt-white py-16">
+    <div class="myds-gradient-primary-br text-txt-white py-16">
         <div class="myds-container">
             <div class="text-center">
                 <h1 class="myds-heading-lg mb-4">ICTServe (iServe)</h1>

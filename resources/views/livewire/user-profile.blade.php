@@ -21,43 +21,39 @@
     </div>
 
     <!-- Tab Navigation -->
-    <div class="border-b border-gray-200 dark:border-gray-700 mb-6">
+    <div class="border-b border-otl-divider mb-6">
         <nav class="-mb-px flex space-x-8">
-            <button wire:click="setActiveTab('profile')"
-                    class="py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200
-                           {{ $activeTab === 'profile'
-                               ? 'border-otl-primary-300 text-txt-primary dark:text-txt-primary'
-                               : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300' }}">
+            <x-myds.button 
+                wire:click="setActiveTab('profile')"
+                variant="{{ $activeTab === 'profile' ? 'primary' : 'ghost' }}"
+                class="py-2 px-1 border-b-2 {{ $activeTab === 'profile' ? 'border-otl-primary-300' : 'border-transparent' }}">
                 <x-icon name="user" class="w-4 h-4 inline-block mr-2" />
                 Maklumat Peribadi
-            </button>
+            </x-myds.button>
 
-            <button wire:click="setActiveTab('security')"
-                    class="py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200
-                           {{ $activeTab === 'security'
-                               ? 'border-otl-primary-300 text-txt-primary dark:text-txt-primary'
-                               : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300' }}">
+            <x-myds.button 
+                wire:click="setActiveTab('security')"
+                variant="{{ $activeTab === 'security' ? 'primary' : 'ghost' }}"
+                class="py-2 px-1 border-b-2 {{ $activeTab === 'security' ? 'border-otl-primary-300' : 'border-transparent' }}">
                 <x-icon name="lock-closed" class="w-4 h-4 inline-block mr-2" />
                 Keselamatan
-            </button>
+            </x-myds.button>
 
-            <button wire:click="setActiveTab('notifications')"
-                    class="py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200
-                           {{ $activeTab === 'notifications'
-                               ? 'border-otl-primary-300 text-txt-primary dark:text-txt-primary'
-                               : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300' }}">
+            <x-myds.button 
+                wire:click="setActiveTab('notifications')"
+                variant="{{ $activeTab === 'notifications' ? 'primary' : 'ghost' }}"
+                class="py-2 px-1 border-b-2 {{ $activeTab === 'notifications' ? 'border-otl-primary-300' : 'border-transparent' }}">
                 <x-icon name="bell" class="w-4 h-4 inline-block mr-2" />
                 Notifikasi
-            </button>
+            </x-myds.button>
 
-            <button wire:click="setActiveTab('activity')"
-                    class="py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200
-                           {{ $activeTab === 'activity'
-                               ? 'border-otl-primary-300 text-txt-primary dark:text-txt-primary'
-                               : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300' }}">
+            <x-myds.button 
+                wire:click="setActiveTab('activity')"
+                variant="{{ $activeTab === 'activity' ? 'primary' : 'ghost' }}"
+                class="py-2 px-1 border-b-2 {{ $activeTab === 'activity' ? 'border-otl-primary-300' : 'border-transparent' }}">
                 <x-icon name="clock" class="w-4 h-4 inline-block mr-2" />
                 Aktiviti Terkini
-            </button>
+            </x-myds.button>
         </nav>
     </div>
 
@@ -86,16 +82,15 @@
 
                 <div class="flex flex-col space-y-2">
                     <div class="flex space-x-3">
-                        <label class="cursor-pointer bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                        <x-myds.button variant="primary" class="relative">
                             Pilih Avatar Baharu
-                            <input type="file" wire:model="avatar" accept="image/*" class="hidden">
-                        </label>
+                            <input type="file" wire:model="avatar" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
+                        </x-myds.button>
 
                         @if($avatar_url)
-                        <button type="button" wire:click="removeAvatar"
-                                    class="bg-bg-danger-600 hover:bg-bg-danger-700 text-txt-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                        <x-myds.button type="button" wire:click="removeAvatar" variant="danger">
                             Padam Avatar
-                        </button>
+                        </x-myds.button>
                         @endif
                     </div>
 
@@ -110,124 +105,89 @@
             <!-- Basic Information -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Nama Penuh <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="text"
-                           wire:model="name"
-                           id="name"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Masukkan nama penuh">
-                    @error('name')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
+                    <x-myds.input
+                        type="text"
+                        wire:model="name"
+                        label="Nama Penuh"
+                        name="name"
+                        placeholder="Masukkan nama penuh"
+                        required
+                    />
                 </div>
 
                 <div>
-                    <label for="employee_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        ID Kakitangan <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="text"
-                           wire:model="employee_id"
-                           id="employee_id"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Contoh: EMP001">
-                    @error('employee_id')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
+                    <x-myds.input
+                        type="text"
+                        wire:model="employee_id"
+                        label="ID Kakitangan"
+                        name="employee_id"
+                        placeholder="Contoh: EMP001"
+                        required
+                    />
                 </div>
 
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        E-mel
-                    </label>
-                    <input type="email"
-                           value="{{ $email }}"
-                           disabled
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  bg-gray-50 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed">
-                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">E-mel tidak boleh ditukar. Hubungi pentadbir jika perlu menukar.</p>
+                    <x-myds.input
+                        type="email"
+                        value="{{ $email }}"
+                        label="E-mel"
+                        name="email"
+                        disabled
+                        help-text="E-mel tidak boleh ditukar. Hubungi pentadbir jika perlu menukar."
+                    />
                 </div>
 
                 <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Nombor Telefon
-                    </label>
-                    <input type="text"
-                           wire:model="phone"
-                           id="phone"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Contoh: 03-1234567">
-                    @error('phone')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
+                    <x-myds.input
+                        type="text"
+                        wire:model="phone"
+                        label="Nombor Telefon"
+                        name="phone"
+                        placeholder="Contoh: 03-1234567"
+                    />
                 </div>
 
                 <div>
-                    <label for="department" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Jabatan <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="text"
-                           wire:model="department"
-                           id="department"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Contoh: Jabatan Teknologi Maklumat">
-                    @error('department')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
+                    <x-myds.input
+                        type="text"
+                        wire:model="department"
+                        label="Jabatan"
+                        name="department"
+                        placeholder="Contoh: Jabatan Teknologi Maklumat"
+                        required
+                    />
                 </div>
 
                 <div>
-                    <label for="position" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Jawatan <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="text"
-                           wire:model="position"
-                           id="position"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Contoh: Pegawai Teknologi Maklumat">
-                    @error('position')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
+                    <x-myds.input
+                        type="text"
+                        wire:model="position"
+                        label="Jawatan"
+                        name="position"
+                        placeholder="Contoh: Pegawai Teknologi Maklumat"
+                        required
+                    />
                 </div>
 
                 <div class="md:col-span-2">
-                    <label for="office_location" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Lokasi Pejabat <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="text"
-                           wire:model="office_location"
-                           id="office_location"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Contoh: Tingkat 5, Blok A, Kompleks MOTAC">
-                    @error('office_location')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
+                    <x-myds.input
+                        type="text"
+                        wire:model="office_location"
+                        label="Lokasi Pejabat"
+                        name="office_location"
+                        placeholder="Contoh: Tingkat 5, Blok A, Kompleks MOTAC"
+                        required
+                    />
                 </div>
             </div>
 
             <!-- Submit Button -->
             <div class="flex justify-end pt-4">
-                <button type="submit"
-                        class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
-                               transition-colors duration-200 flex items-center space-x-2"
-                        wire:loading.attr="disabled">
-                    <x-icon name="save" class="w-4 h-4" />
+                <x-myds.button type="submit" variant="primary" wire:loading.attr="disabled">
+                    <x-icon name="save" class="w-4 h-4 mr-2" />
                     <span wire:loading.remove>Simpan Perubahan</span>
                     <span wire:loading>Menyimpan...</span>
-                </button>
+                </x-myds.button>
             </div>
         </form>
     </div>
@@ -251,81 +211,52 @@
                             Kata laluan terakhir dikemaskini: {{ $user->updated_at->format('d/m/Y') }}
                         </p>
                     </div>
-                    <button wire:click="togglePasswordForm"
-                            class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                    <x-myds.button wire:click="togglePasswordForm" variant="primary">
                         {{ $showPasswordForm ? 'Batal' : 'Tukar Kata Laluan' }}
-                    </button>
+                    </x-myds.button>
                 </div>
             </div>
 
             <!-- Password Change Form -->
             @if ($showPasswordForm)
             <form wire:submit="changePassword" class="space-y-6">
-                <div>
-                    <label for="current_password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Kata Laluan Semasa <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="password"
-                           wire:model="current_password"
-                           id="current_password"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Masukkan kata laluan semasa">
-                    @error('current_password')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-myds.input
+                    type="password"
+                    wire:model="current_password"
+                    label="Kata Laluan Semasa"
+                    name="current_password"
+                    placeholder="Masukkan kata laluan semasa"
+                    required
+                />
 
-                <div>
-                    <label for="new_password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Kata Laluan Baharu <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="password"
-                           wire:model="new_password"
-                           id="new_password"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Masukkan kata laluan baharu">
-                    @error('new_password')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
-                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                        Kata laluan mesti sekurang-kurangnya 8 aksara dan mengandungi campuran huruf dan nombor.
-                    </p>
-                </div>
+                <x-myds.input
+                    type="password"
+                    wire:model="new_password"
+                    label="Kata Laluan Baharu"
+                    name="new_password"
+                    placeholder="Masukkan kata laluan baharu"
+                    help-text="Kata laluan mesti sekurang-kurangnya 8 aksara dan mengandungi campuran huruf dan nombor."
+                    required
+                />
 
-                <div>
-                    <label for="new_password_confirmation" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Pengesahan Kata Laluan Baharu <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="password"
-                           wire:model="new_password_confirmation"
-                           id="new_password_confirmation"
-                           class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
-                                  dark:bg-gray-700 dark:text-white"
-                           placeholder="Ulang kata laluan baharu">
-                    @error('new_password_confirmation')
-                        <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-myds.input
+                    type="password"
+                    wire:model="new_password_confirmation"
+                    label="Pengesahan Kata Laluan Baharu"
+                    name="new_password_confirmation"
+                    placeholder="Ulang kata laluan baharu"
+                    required
+                />
 
                 <div class="flex justify-end space-x-3 pt-4">
-                    <button type="button"
-                            wire:click="togglePasswordForm"
-                            class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                    <x-myds.button type="button" wire:click="togglePasswordForm" variant="ghost">
                         Batal
-                    </button>
-                    <button type="submit"
-                            class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
-                                   transition-colors duration-200 flex items-center space-x-2"
-                            wire:loading.attr="disabled">
-                        <x-icon name="lock-closed" class="w-4 h-4" />
+                    </x-myds.button>
+                    <x-myds.button type="submit" variant="primary" wire:loading.attr="disabled">
+                        <x-icon name="lock-closed" class="w-4 h-4 mr-2" />
                         <span wire:loading.remove>Tukar Kata Laluan</span>
                         <span wire:loading>Menukar...</span>
-                    </button>
+                    </x-myds.button>
                 </div>
             </form>
             @endif
@@ -426,15 +357,12 @@
             </div>
 
             <!-- Submit Button -->
-            <div class="flex justify-end pt-6 border-t border-gray-200 dark:border-gray-700 mt-6">
-                <button type="submit"
-                        class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
-                               transition-colors duration-200 flex items-center space-x-2"
-                        wire:loading.attr="disabled">
-                    <x-icon name="bell" class="w-4 h-4" />
+            <div class="flex justify-end pt-6 border-t border-otl-divider mt-6">
+                <x-myds.button type="submit" variant="primary" wire:loading.attr="disabled">
+                    <x-icon name="bell" class="w-4 h-4 mr-2" />
                     <span wire:loading.remove>Simpan Tetapan</span>
                     <span wire:loading>Menyimpan...</span>
-                </button>
+                </x-myds.button>
             </div>
         </form>
     </div>
@@ -458,10 +386,10 @@
                                 <x-icon name="{{ $activity['icon'] }}" class="w-4 h-4 {{ $activity['color'] }}" />
                             </div>
                         </div>
-                                <button type="button" wire:click="removeAvatar"
-                                        class="bg-bg-danger-600 hover:bg-bg-danger-700 text-txt-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ $activity['description'] }}</p>
-                            <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">{{ $activity['date'] }}</p>
+                        <div class="flex-1">
+                            <h4 class="text-sm font-medium text-txt-black-900">{{ $activity['title'] }}</h4>
+                            <p class="text-sm text-txt-black-500">{{ $activity['description'] }}</p>
+                            <p class="text-xs text-txt-black-400 mt-1">{{ $activity['date'] }}</p>
                         </div>
                     </div>
                     @endforeach
@@ -478,10 +406,9 @@
                     <x-icon name="clock" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
                     <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Tiada Aktiviti Lagi</h4>
                     <p class="text-gray-500 dark:text-gray-400 mb-4">Anda belum mempunyai sebarang aktiviti atau permohonan.</p>
-                    <a href="{{ route('loan-applications.create') }}"
-                       class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                    <x-myds.button href="{{ route('loan-applications.create') }}" variant="primary">
                         Buat Permohonan Baharu
-                    </a>
+                    </x-myds.button>
                 </div>
             @endif
         </div>

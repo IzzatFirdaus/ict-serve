@@ -33,26 +33,39 @@
                 <h2 class="myds-heading-xs text-txt-black-900 mb-4">Reporter Information</h2>
                 <div class="myds-grid-12">
                     <div class="col-span-full md:col-span-6">
-                        <label class="block myds-body-sm font-medium text-txt-black-700">Name</label>
-                        <input type="text" value="{{ auth()->user()->name }}" readonly class="mt-1 block w-full bg-bg-gray-50 border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2">
+                        <x-myds.input
+                            label="Name"
+                            name="name"
+                            value="{{ auth()->user()->name }}"
+                            readonly
+                        />
                     </div>
                     <div class="col-span-full md:col-span-6">
-                        <label class="block myds-body-sm font-medium text-txt-black-700">Department</label>
-                        <input type="text" value="{{ auth()->user()->department ?? 'N/A' }}" readonly class="mt-1 block w-full bg-bg-gray-50 border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2">
+                        <x-myds.input
+                            label="Department"
+                            name="department"
+                            value="{{ auth()->user()->department ?? 'N/A' }}"
+                            readonly
+                        />
                     </div>
                     <div class="col-span-full md:col-span-6">
-                        <label for="contact_phone" class="block myds-body-sm font-medium text-txt-black-700">Contact Phone <span class="text-txt-danger">*</span></label>
-                        <input type="text" id="contact_phone" name="contact_phone" required value="{{ old('contact_phone', auth()->user()->phone) }}" class="mt-1 block w-full border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2 focus:ring-fr-danger">
-                        @error('contact_phone')
-                            <p class="mt-1 myds-body-sm text-txt-danger">{{ $message }}</p>
-                        @enderror
+                        <x-myds.input
+                            label="Contact Phone"
+                            name="contact_phone"
+                            value="{{ old('contact_phone', auth()->user()->phone) }}"
+                            required
+                            error="{{ $errors->first('contact_phone') }}"
+                        />
                     </div>
                     <div class="col-span-full md:col-span-6">
-                        <label for="location" class="block myds-body-sm font-medium text-txt-black-700">Location <span class="text-txt-danger">*</span></label>
-                        <input type="text" id="location" name="location" required value="{{ old('location') }}" class="mt-1 block w-full border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2 focus:ring-fr-danger" placeholder="Where is the damaged equipment located?">
-                        @error('location')
-                            <p class="mt-1 myds-body-sm text-txt-danger">{{ $message }}</p>
-                        @enderror
+                        <x-myds.input
+                            label="Location"
+                            name="location"
+                            value="{{ old('location') }}"
+                            placeholder="Where is the damaged equipment located?"
+                            required
+                            error="{{ $errors->first('location') }}"
+                        />
                     </div>
                 </div>
             </div>
@@ -61,71 +74,84 @@
             <div class="bg-bg-white border border-otl-gray-200 rounded-[var(--radius-m)] p-6">
                 <h2 class="myds-heading-xs text-txt-black-900 mb-4">Issue Details</h2>
                 <div class="space-y-4">
-                    <div>
-                        <label for="title" class="block myds-body-sm font-medium text-txt-black-700">Issue Title <span class="text-txt-danger">*</span></label>
-                        <input type="text" id="title" name="title" required value="{{ old('title') }}" class="mt-1 block w-full border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2 focus:ring-fr-danger" placeholder="Brief description of the issue">
-                        @error('title')
-                            <p class="mt-1 myds-body-sm text-txt-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-myds.input
+                        label="Issue Title"
+                        name="title"
+                        value="{{ old('title') }}"
+                        placeholder="Brief description of the issue"
+                        required
+                        error="{{ $errors->first('title') }}"
+                    />
 
-                    <div>
-                        <label for="description" class="block myds-body-sm font-medium text-txt-black-700">Detailed Description <span class="text-txt-danger">*</span></label>
-                        <textarea id="description" name="description" rows="5" required class="mt-1 block w-full border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2 focus:ring-fr-danger" placeholder="Describe the damage or issue in detail. Include what happened, when it occurred, and any error messages...">{{ old('description') }}</textarea>
-                        @error('description')
-                            <p class="mt-1 myds-body-sm text-txt-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-myds.textarea
+                        label="Detailed Description"
+                        name="description"
+                        value="{{ old('description') }}"
+                        placeholder="Describe the damage or issue in detail. Include what happened, when it occurred, and any error messages..."
+                        required
+                        rows="5"
+                        error="{{ $errors->first('description') }}"
+                    />
 
                     <div class="myds-grid-12">
                         <div class="col-span-full md:col-span-6">
-                            <label for="equipment_item_id" class="block myds-body-sm font-medium text-txt-black-700">Affected Equipment (if applicable)</label>
-                            <select id="equipment_item_id" name="equipment_item_id" class="mt-1 block w-full border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2 focus:ring-fr-danger">
-                                <option value="">Select equipment (if known)...</option>
-                                @foreach($categories as $category)
-                                    <optgroup label="{{ $category->name }}">
-                                        @foreach($category->equipmentItems as $item)
-                                            <option value="{{ $item->id }}" {{ old('equipment_item_id') == $item->id ? 'selected' : '' }}>
-                                                {{ $item->brand }} {{ $item->model }} ({{ $item->asset_number }})
-                                            </option>
-                                        @endforeach
-                                    </optgroup>
-                                @endforeach
-                            </select>
-                            @error('equipment_item_id')
-                                <p class="mt-1 myds-body-sm text-txt-danger">{{ $message }}</p>
-                            @enderror
+                            @php
+                                $equipmentOptions = ['Select equipment (if known)...'];
+                                foreach($categories as $category) {
+                                    foreach($category->equipmentItems as $item) {
+                                        $equipmentOptions[$item->id] = $item->brand . ' ' . $item->model . ' (' . $item->asset_number . ')';
+                                    }
+                                }
+                            @endphp
+                            <x-myds.select
+                                label="Affected Equipment (if applicable)"
+                                name="equipment_item_id"
+                                :options="$equipmentOptions"
+                                value="{{ old('equipment_item_id') }}"
+                                placeholder="Select equipment (if known)..."
+                                error="{{ $errors->first('equipment_item_id') }}"
+                            />
                         </div>
                         <div class="col-span-full md:col-span-6">
-                            <label for="damage_type" class="block myds-body-sm font-medium text-txt-black-700">Damage Type <span class="text-txt-danger">*</span></label>
-                            <select id="damage_type" name="damage_type" required class="mt-1 block w-full border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2 focus:ring-fr-danger">
-                                <option value="">Select damage type...</option>
-                                <option value="hardware_failure" {{ old('damage_type') == 'hardware_failure' ? 'selected' : '' }}>Hardware Failure</option>
-                                <option value="software_issue" {{ old('damage_type') == 'software_issue' ? 'selected' : '' }}>Software Issue</option>
-                                <option value="physical_damage" {{ old('damage_type') == 'physical_damage' ? 'selected' : '' }}>Physical Damage</option>
-                                <option value="network_connectivity" {{ old('damage_type') == 'network_connectivity' ? 'selected' : '' }}>Network Connectivity</option>
-                                <option value="performance_issue" {{ old('damage_type') == 'performance_issue' ? 'selected' : '' }}>Performance Issue</option>
-                                <option value="other" {{ old('damage_type') == 'other' ? 'selected' : '' }}>Other</option>
-                            </select>
-                            @error('damage_type')
-                                <p class="mt-1 myds-body-sm text-txt-danger">{{ $message }}</p>
-                            @enderror
+                            @php
+                                $damageTypeOptions = [
+                                    'hardware_failure' => 'Hardware Failure',
+                                    'software_issue' => 'Software Issue',
+                                    'physical_damage' => 'Physical Damage',
+                                    'network_connectivity' => 'Network Connectivity',
+                                    'performance_issue' => 'Performance Issue',
+                                    'other' => 'Other'
+                                ];
+                            @endphp
+                            <x-myds.select
+                                label="Damage Type"
+                                name="damage_type"
+                                :options="$damageTypeOptions"
+                                value="{{ old('damage_type') }}"
+                                placeholder="Select damage type..."
+                                required
+                                error="{{ $errors->first('damage_type') }}"
+                            />
                         </div>
                     </div>
 
-                    <div>
-                        <label for="priority" class="block myds-body-sm font-medium text-txt-black-700">Priority Level <span class="text-txt-danger">*</span></label>
-                        <select id="priority" name="priority" required class="mt-1 block w-full border border-otl-gray-200 rounded-[var(--radius-m)] px-3 py-2 focus:ring-fr-danger">
-                            <option value="">Select priority level...</option>
-                            <option value="low" {{ old('priority') == 'low' ? 'selected' : '' }}>Low - Minor issue, no work disruption</option>
-                            <option value="medium" {{ old('priority') == 'medium' ? 'selected' : '' }}>Medium - Some work disruption</option>
-                            <option value="high" {{ old('priority') == 'high' ? 'selected' : '' }}>High - Significant work disruption</option>
-                            <option value="critical" {{ old('priority') == 'critical' ? 'selected' : '' }}>Critical - Complete work stoppage</option>
-                        </select>
-                        @error('priority')
-                            <p class="mt-1 myds-body-sm text-txt-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    @php
+                        $priorityOptions = [
+                            'low' => 'Low - Minor issue, no work disruption',
+                            'medium' => 'Medium - Some work disruption',
+                            'high' => 'High - Significant work disruption',
+                            'critical' => 'Critical - Complete work stoppage'
+                        ];
+                    @endphp
+                    <x-myds.select
+                        label="Priority Level"
+                        name="priority"
+                        :options="$priorityOptions"
+                        value="{{ old('priority') }}"
+                        placeholder="Select priority level..."
+                        required
+                        error="{{ $errors->first('priority') }}"
+                    />
                 </div>
             </div>
 
@@ -160,12 +186,15 @@
 
             <!-- Submit Button -->
             <div class="flex justify-end space-x-4">
-                <a href="{{ route('public.my-requests') }}" class="px-6 py-3 border border-otl-gray-200 rounded-[var(--radius-m)] myds-body-sm font-medium text-txt-black-700 hover:bg-bg-gray-50">
+                <a href="{{ route('public.my-requests') }}" class="myds-button myds-button-secondary px-6 py-3">
                     Cancel
                 </a>
-                    <button type="submit" class="px-6 py-3 bg-bg-danger-600 text-txt-white rounded-[var(--radius-m)] myds-body-sm font-medium hover:bg-bg-danger-700 focus:outline-none focus:ring-fr-danger">
+                <x-myds.button
+                    type="submit"
+                    variant="danger"
+                >
                     Submit Complaint
-                </button>
+                </x-myds.button>
             </div>
         </form>
     </div>
