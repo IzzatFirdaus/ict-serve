@@ -1,18 +1,37 @@
-<div class="max-w-md mx-auto mt-10 p-8 bg-white rounded shadow">
-    <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
+<x-myds.card class="max-w-md mx-auto mt-10">
+    <h2 class="myds-heading-md text-txt-black-900 mb-6 text-center">Register</h2>
     <form wire:submit.prevent="register">
-        <div class="mb-4">
-            <label for="name" class="block text-sm font-medium">Name</label>
-            <input type="text" id="name" wire:model="name" class="w-full border rounded px-3 py-2" required autofocus>
+        <div class="space-y-4">
+            <x-myds.input
+                type="text"
+                label="Name"
+                name="name"
+                wire:model="name"
+                required
+                autofocus
+            />
+            
+            <x-myds.input
+                type="email"
+                label="Email"
+                name="email"
+                wire:model="email"
+                required
+            />
+            
+            <x-myds.input
+                type="password"
+                label="Password"
+                name="password"
+                wire:model="password"
+                required
+            />
         </div>
-        <div class="mb-4">
-            <label for="email" class="block text-sm font-medium">Email</label>
-            <input type="email" id="email" wire:model="email" class="w-full border rounded px-3 py-2" required>
+        
+        <div class="mt-6">
+            <x-myds.button type="submit" variant="success" class="w-full">
+                Register
+            </x-myds.button>
         </div>
-        <div class="mb-6">
-            <label for="password" class="block text-sm font-medium">Password</label>
-            <input type="password" id="password" wire:model="password" class="w-full border rounded px-3 py-2" required>
-        </div>
-        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Register</button>
     </form>
-</div>
+</x-myds.card>

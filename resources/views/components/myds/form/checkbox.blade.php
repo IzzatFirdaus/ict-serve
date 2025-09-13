@@ -24,7 +24,7 @@
                 value="{{ $value }}"
                 {{ $isChecked ? 'checked' : '' }}
                 {{ $required ? 'required' : '' }}
-                class="w-4 h-4 text-primary-600 bg-white border-otl-gray-300 rounded-[var(--radius-s)] focus:ring-fr-primary focus:ring-2 transition-colors"
+                class="w-4 h-4 text-txt-primary bg-bg-white border-otl-gray-200 rounded-[var(--radius-s)] focus:ring-fr-primary focus:ring-2 transition-colors"
                 {{ $attributes }}
                 @if($error) aria-invalid="true" aria-describedby="{{ $inputId }}-error" @endif
                 @if($help) aria-describedby="{{ $inputId }}-help" @endif

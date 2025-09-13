@@ -135,9 +135,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the notifications for this user.
+     * Get the application's custom notifications for this user.
+     * Note: Laravel's built-in database notifications are available via Notifiable::notifications().
      */
-    public function notifications()
+    public function appNotifications()
     {
         return $this->hasMany(Notification::class, 'user_id');
     }

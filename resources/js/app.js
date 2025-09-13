@@ -1,12 +1,4 @@
 import './bootstrap';
-<<<<<<< HEAD
-
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
-=======
 import './theme';
 
 // Import styles
@@ -113,4 +105,3 @@ if (!document.querySelector('#myds-animations')) {
   `;
   document.head.appendChild(style);
 }
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9

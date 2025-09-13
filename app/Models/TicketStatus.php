@@ -27,12 +27,14 @@ class TicketStatus extends Model
     use HasFactory;
 
     protected $fillable = [
+        'code',
         'name',
+        'name_bm',
         'description',
+        'description_bm',
         'color',
         'is_active',
-        'is_default',
-        'is_closed',
+        'is_final',
         'sort_order',
     ];
 
@@ -41,8 +43,7 @@ class TicketStatus extends Model
     {
         return [
             'is_active' => 'boolean',
-            'is_default' => 'boolean',
-            'is_closed' => 'boolean',
+            'is_final' => 'boolean',
         ];
 =======
     public function getLabelAttribute(): string

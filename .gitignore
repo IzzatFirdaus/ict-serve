@@ -1,14 +1,15 @@
 *.log
 .DS_Store
+Thumbs.db
+
+# Environments
 .env
 .env*
-/vendor/
-# Laravel & general
+.phpactor.json
+
+# Vendor & dependencies
 /vendor/
 /node_modules/
-/env
-/env.*
-/composer.phar
 
 # Laravel storage & cache
 /storage/
@@ -43,21 +44,21 @@
 /.idea
 /.vscode
 /.zed
-.DS_Store
-Thumbs.db
+
+# Playwright
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # Documentation generators / tooling
 /.phpdoc/cache/
-/.phpactor.json
 /.phpdoc/build/
 /.phpdoc/build/classes/
 
 # Misc
-/composer.phar
 /auth.json
 /Homestead.json
 /Homestead.yaml
-/playwright-report/
 
 # Generated API docs
 /docs/api/
@@ -67,20 +68,3 @@ Thumbs.db
 /docs/api/namespaces/
 /docs/api/packages/
 /docs/api/reports/
-
-# Keep source files and configuration tracked. Do NOT ignore these:
-# - app/
-# - bootstrap/
-# - config/
-# - database/migrations (except editor backups, which are safe to ignore)
-# - resources/
-# - routes/
-# - tests/
-# - artisan, README.md, and other project files
-
-# If you have local env backups you want ignored
-.env.backup
-.env.production
-
-# End of file
-.phpactor.json

@@ -8,13 +8,13 @@
 ])
 
 @php
-    $baseClasses = 'myds-button inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+    $baseClasses = 'myds-button';
 
     $variantClasses = match($variant) {
         'primary' => 'myds-button-primary',
         'secondary' => 'myds-button-secondary',
-    'danger' => 'bg-danger-600 text-white hover:bg-danger-700 focus:ring-fr-danger',
-    'success' => 'bg-success-600 text-white hover:bg-success-700 focus:ring-fr-success',
+        'danger' => 'myds-button-danger',
+        'success' => 'myds-button-success',
         'outline' => 'border border-otl-gray-300 text-txt-black-900 hover:bg-gray-50 focus:ring-fr-primary',
         default => 'myds-button-primary'
     };
