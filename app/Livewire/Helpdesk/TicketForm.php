@@ -7,8 +7,8 @@ use App\Enums\TicketUrgency;
 use App\Models\EquipmentItem;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
-use App\Models\TicketStatus;
 use App\Notifications\TicketCreatedNotification;
+use App\Services\HelpdeskService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -22,6 +22,8 @@ use Livewire\WithFileUploads;
 class TicketForm extends Component
 {
     use WithFileUploads;
+
+    public HelpdeskService $helpdesk;
 
     // Basic Information
     #[Rule('required|string|max:255')]
@@ -61,8 +63,9 @@ class TicketForm extends Component
 
     protected $listeners = ['categoryChanged' => 'updateCategory'];
 
-    public function mount()
+    public function mount(HelpdeskService $helpdesk)
     {
+        $this->helpdesk = $helpdesk;
         // Pre-fill user information if authenticated
         if (Auth::check()) {
             $user = Auth::user();
@@ -144,24 +147,20 @@ class TicketForm extends Component
         }
 
         try {
-            // Get initial status
-            $initialStatus = TicketStatus::where('code', 'open')->first();
+            $dueAt = $this->calculateDueDate();
 
-            // Create ticket
-            $ticket = HelpdeskTicket::create([
-                'ticket_number' => HelpdeskTicket::generateTicketNumber(),
-                'user_id' => Auth::id(),
+            // Create ticket via service
+            $ticket = $this->helpdesk->createTicket([
                 'category_id' => $this->category_id,
-                'status_id' => $initialStatus->id,
                 'title' => $this->title,
                 'description' => $this->description,
-                'priority' => TicketPriority::from($this->priority),
-                'urgency' => TicketUrgency::from($this->urgency),
+                'priority' => $this->priority,
+                'urgency' => $this->urgency,
                 'equipment_item_id' => $this->equipment_item_id,
                 'location' => $this->location,
                 'contact_phone' => $this->contact_phone,
-                'due_at' => $this->calculateDueDate(),
-            ]);
+                'due_at' => $dueAt,
+            ], Auth::user());
 
             // Handle file attachments
             if (!empty($this->attachments)) {

@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use App\Models\HelpdeskTicket;
+use App\Models\LoanRequest;
+use App\Policies\HelpdeskTicketPolicy;
+use App\Policies\LoanRequestPolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,5 +21,10 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void {}
+    public function boot(): void
+    {
+        // Register model policies
+        Gate::policy(HelpdeskTicket::class, HelpdeskTicketPolicy::class);
+        Gate::policy(LoanRequest::class, LoanRequestPolicy::class);
+    }
 }
