@@ -1,23 +1,22 @@
+<<<<<<< HEAD
 @import "tailwindcss";
+=======
+@import '@govtechmy/myds-style/full.css';
+@import 'tailwindcss';
 @import "./myds-tokens.css";
-@import "./components/filters.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 
 /* Tailwind v4: automatic content detection in use */
-@theme {
-    /* MYDS Primary mapped to standard Tailwind blue scale for Filament compatibility */
-    --color-blue-50: #EFF6FF;
-    --color-blue-100: #DBEAFE;
-    --color-blue-200: #C2D5FF;
-    --color-blue-300: #96B7FF;
-    --color-blue-400: #6394FF;
-    --color-blue-500: #3A75F6;
-    --color-blue-600: #2563EB;  /* MYDS primary blue */
-    --color-blue-700: #1D4ED8;
-    --color-blue-800: #1E40AF;
-    --color-blue-900: #1E3A8A;
-    --color-blue-950: #172554;
 
-    /* MYDS Primary as semantic colors - these still work for our MYDS components */
+<<<<<<< HEAD
+:root {
+    /* Typography per MYDS: Poppins (headings), Inter (body) */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+    /* MYDS Primary Scale */
     --color-primary-50: #EFF6FF;
     --color-primary-100: #DBEAFE;
     --color-primary-200: #C2D5FF;
@@ -30,85 +29,7 @@
     --color-primary-900: #1E3A8A;
     --color-primary-950: #172554;
 
-    /* MYDS Danger mapped to standard red scale for Filament compatibility */
-    --color-red-50: #FEF2F2;
-    --color-red-100: #FEE2E2;
-    --color-red-200: #FECACA;
-    --color-red-300: #FCA5A5;
-    --color-red-400: #F87171;
-    --color-red-500: #EF4444;
-    --color-red-600: #DC2626;
-    --color-red-700: #B91C1C;
-    --color-red-800: #991B1B;
-    --color-red-900: #7F1D1D;
-    --color-red-950: #450A0A;
-
-    /* MYDS Danger as semantic colors */
-    --color-danger-50: #FEF2F2;
-    --color-danger-100: #FEE2E2;
-    --color-danger-200: #FECACA;
-    --color-danger-300: #FCA5A5;
-    --color-danger-400: #F87171;
-    --color-danger-500: #EF4444;
-    --color-danger-600: #DC2626;
-    --color-danger-700: #B91C1C;
-    --color-danger-800: #991B1B;
-    --color-danger-900: #7F1D1D;
-    --color-danger-950: #450A0A;
-
-    /* MYDS Success mapped to standard green scale for Filament compatibility */
-    --color-green-50: #F0FDF4;
-    --color-green-100: #DCFCE7;
-    --color-green-200: #BBF7D0;
-    --color-green-300: #83DAA3;
-    --color-green-400: #4ADE80;
-    --color-green-500: #22C55E;
-    --color-green-600: #16A34A;
-    --color-green-700: #15803D;
-    --color-green-800: #166534;
-    --color-green-900: #14532D;
-    --color-green-950: #052E16;
-
-    /* MYDS Success as semantic colors */
-    --color-success-50: #F0FDF4;
-    --color-success-100: #DCFCE7;
-    --color-success-200: #BBF7D0;
-    --color-success-300: #83DAA3;
-    --color-success-400: #4ADE80;
-    --color-success-500: #22C55E;
-    --color-success-600: #16A34A;
-    --color-success-700: #15803D;
-    --color-success-800: #166534;
-    --color-success-900: #14532D;
-    --color-success-950: #052E16;
-
-    /* MYDS Warning mapped to standard yellow scale for Filament compatibility */
-    --color-yellow-50: #FEFCE8;
-    --color-yellow-100: #FEF9C3;
-    --color-yellow-200: #FEF08A;
-    --color-yellow-300: #FDE047;
-    --color-yellow-400: #FACC15;
-    --color-yellow-500: #EAB308;
-    --color-yellow-600: #CA8A04;
-    --color-yellow-700: #A16207;
-    --color-yellow-800: #854D0E;
-    --color-yellow-900: #713F12;
-    --color-yellow-950: #422006;
-
-    /* MYDS Warning as semantic colors */
-    --color-warning-50: #FEFCE8;
-    --color-warning-100: #FEF9C3;
-    --color-warning-200: #FEF08A;
-    --color-warning-300: #FDE047;
-    --color-warning-400: #FACC15;
-    --color-warning-500: #EAB308;
-    --color-warning-600: #CA8A04;
-    --color-warning-700: #A16207;
-    --color-warning-800: #854D0E;
-    --color-warning-900: #713F12;
-    --color-warning-950: #422006;
-
-    /* Standard gray scale for Filament compatibility */
+    /* MYDS Gray Scale */
     --color-gray-50: #FAFAFA;
     --color-gray-100: #F4F4F5;
     --color-gray-200: #E4E4E7;
@@ -121,24 +42,44 @@
     --color-gray-900: #18181B;
     --color-gray-950: #09090B;
 
-    /* Standard sky scale for Filament info color */
-    --color-sky-50: #F0F9FF;
-    --color-sky-100: #E0F2FE;
-    --color-sky-200: #BAE6FD;
-    --color-sky-300: #7DD3FC;
-    --color-sky-400: #38BDF8;
-    --color-sky-500: #0EA5E9;
-    --color-sky-600: #0284C7;
-    --color-sky-700: #0369A1;
-    --color-sky-800: #075985;
-    --color-sky-900: #0C4A6E;
-    --color-sky-950: #082F49;
-}
+    /* MYDS Danger Scale */
+    --color-danger-50: #FEF2F2;
+    --color-danger-100: #FEE2E2;
+    --color-danger-200: #FECACA;
+    --color-danger-300: #FCA5A5;
+    --color-danger-400: #F87171;
+    --color-danger-500: #EF4444;
+    --color-danger-600: #DC2626;
+    --color-danger-700: #B91C1C;
+    --color-danger-800: #991B1B;
+    --color-danger-900: #7F1D1D;
+    --color-danger-950: #450A0A;
 
-:root {
-    /* Typography per MYDS: Poppins (headings), Inter (body) */
-    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    --font-heading: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    /* MYDS Success Scale */
+    --color-success-50: #F0FDF4;
+    --color-success-100: #DCFCE7;
+    --color-success-200: #BBF7D0;
+    --color-success-300: #83DAA3;
+    --color-success-400: #4ADE80;
+    --color-success-500: #22C55E;
+    --color-success-600: #16A34A;
+    --color-success-700: #15803D;
+    --color-success-800: #166534;
+    --color-success-900: #14532D;
+    --color-success-950: #052E16;
+
+    /* MYDS Warning Scale */
+    --color-warning-50: #FEFCE8;
+    --color-warning-100: #FEF9C3;
+    --color-warning-200: #FEF08A;
+    --color-warning-300: #FDE047;
+    --color-warning-400: #FACC15;
+    --color-warning-500: #EAB308;
+    --color-warning-600: #CA8A04;
+    --color-warning-700: #A16207;
+    --color-warning-800: #854D0E;
+    --color-warning-900: #713F12;
+    --color-warning-950: #422006;
 
     /* Focus ring tokens */
     --fr-primary: color-mix(in oklab, var(--color-primary-300) 40%, transparent);
@@ -159,37 +100,279 @@
     /* Background tokens */
     --color-bg-white: #FFFFFF;
     --color-bg-gray-50: var(--color-gray-50);
-    --color-bg-gray-100: var(--color-gray-100);
     --color-bg-primary-50: var(--color-primary-50);
-    --color-bg-primary-100: var(--color-primary-100);
-    --color-bg-primary-200: var(--color-primary-200);
-    --color-bg-primary-600: var(--color-primary-600);
-    --color-bg-primary-700: var(--color-primary-700);
     --color-bg-success-50: var(--color-success-50);
-    --color-bg-success-100: var(--color-success-100);
-    --color-bg-success-200: var(--color-success-200);
-    --color-bg-success-600: var(--color-success-600);
-    --color-bg-success-700: var(--color-success-700);
     --color-bg-danger-50: var(--color-danger-50);
-    --color-bg-danger-100: var(--color-danger-100);
-    --color-bg-danger-200: var(--color-danger-200);
-    --color-bg-danger-600: var(--color-danger-600);
-    --color-bg-danger-700: var(--color-danger-700);
     --color-bg-warning-50: var(--color-warning-50);
-    --color-bg-warning-100: var(--color-warning-100);
-    --color-bg-warning-200: var(--color-warning-200);
-    --color-bg-warning-600: var(--color-warning-600);
-    --color-bg-warning-700: var(--color-warning-700);
 
     /* Outline tokens */
     --color-otl-divider: var(--color-gray-100);
     --color-otl-gray-200: var(--color-gray-200);
     --color-otl-primary-200: var(--color-primary-200);
-    --color-otl-primary-300: var(--color-primary-300);
-    --color-otl-gray-300: var(--color-gray-300);
-    --color-otl-success-200: var(--color-success-200);
-    --color-otl-warning-200: var(--color-warning-200);
-    --color-otl-danger-200: var(--color-danger-200);
+=======
+@theme {
+  /* MYDS Typography - Poppins for headings, Inter for body */
+  --font-poppins: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* MYDS Complete Color System */
+
+  /* Primary Colors (MYDS Blue) */
+  --color-primary-50: #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #C2D5FF;
+  --color-primary-300: #96B7FF;
+  --color-primary-400: #6394FF;
+  --color-primary-500: #3A75F6;
+  --color-primary-600: #2563EB;
+  --color-primary-700: #1D4ED8;
+  --color-primary-800: #1E40AF;
+  --color-primary-900: #1E3A8A;
+  --color-primary-950: #172554;
+
+  /* Danger Colors */
+  --color-danger-50: #FEF2F2;
+  --color-danger-100: #FEE2E2;
+  --color-danger-200: #FECACA;
+  --color-danger-300: #FCA5A5;
+  --color-danger-400: #F87171;
+  --color-danger-500: #EF4444;
+  --color-danger-600: #DC2626;
+  --color-danger-700: #B91C1C;
+  --color-danger-800: #991B1B;
+  --color-danger-900: #7F1D1D;
+  --color-danger-950: #450A0A;
+
+  /* Success Colors */
+  --color-success-50: #F0FDF4;
+  --color-success-100: #DCFCE7;
+  --color-success-200: #BBF7D0;
+  --color-success-300: #86EFAC;
+  --color-success-400: #4ADE80;
+  --color-success-500: #22C55E;
+  --color-success-600: #16A34A;
+  --color-success-700: #15803D;
+  --color-success-800: #166534;
+  --color-success-900: #14532D;
+  --color-success-950: #052E16;
+
+  /* Warning Colors */
+  --color-warning-50: #FFFBEB;
+  --color-warning-100: #FEF3C7;
+  --color-warning-200: #FDE68A;
+  --color-warning-300: #FCD34D;
+  --color-warning-400: #FBBF24;
+  --color-warning-500: #F59E0B;
+  --color-warning-600: #D97706;
+  --color-warning-700: #B45309;
+  --color-warning-800: #92400E;
+  --color-warning-900: #78350F;
+  --color-warning-950: #451A03;
+
+  /* Gray Colors */
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F4F4F5;
+  --color-gray-200: #E4E4E7;
+  --color-gray-300: #D4D4D8;
+  --color-gray-400: #A1A1AA;
+  --color-gray-500: #71717A;
+  --color-gray-600: #52525B;
+  --color-gray-700: #3F3F46;
+  --color-gray-800: #27272A;
+  --color-gray-850: #1D1D21;
+  --color-gray-900: #18181B;
+  --color-gray-930: #161619;
+  --color-gray-950: #09090B;
+
+  /* MYDS Semantic Tokens */
+  --color-txt-black-900: #18181B;
+  --color-txt-black-700: #3F3F46;
+  --color-txt-black-500: #71717A;
+  --color-txt-black-400: #A1A1AA;
+  --color-txt-black-300: #D4D4D8;
+
+  --color-bg-white-0: #FFFFFF;
+  --color-bg-white-50: #FAFAFA;
+  --color-bg-white-100: #F4F4F5;
+  --color-bg-washed: #F4F4F5;
+
+  --color-otl-gray-200: #E4E4E7;
+  --color-otl-gray-300: #D4D4D8;
+  --color-otl-gray-400: #A1A1AA;
+
+  --color-fr-primary-600: #2563EB;
+  --color-fr-danger-600: #DC2626;
+  --color-fr-success-600: #16A34A;
+  --color-fr-warning-600: #D97706;
+
+  /* MYDS Typography Sizes */
+  --fontSize-body-2xs: 0.625rem;
+  --fontSize-body-xs: 0.75rem;
+  --fontSize-body-sm: 0.875rem;
+  --fontSize-body-base: 1rem;
+  --fontSize-body-lg: 1.125rem;
+  --fontSize-body-xl: 1.25rem;
+  --fontSize-body-2xl: 1.5rem;
+  --fontSize-body-3xl: 1.875rem;
+  --fontSize-body-4xl: 2.25rem;
+  --fontSize-body-5xl: 3rem;
+  --fontSize-body-6xl: 3.75rem;
+
+  --fontSize-heading-4xs: 0.875rem;
+  --fontSize-heading-3xs: 1rem;
+  --fontSize-heading-2xs: 1.25rem;
+  --fontSize-heading-xs: 1.5rem;
+  --fontSize-heading-sm: 1.875rem;
+  --fontSize-heading-md: 2.25rem;
+  --fontSize-heading-lg: 3rem;
+  --fontSize-heading-xl: 3.75rem;
+
+  /* MYDS Shadows */
+  --shadow-button: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+  --shadow-card: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.05);
+  --shadow-context-menu: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10);
+
+  /* MYDS Border Radius */
+  --radius-xs: 4px;
+  --radius-s: 6px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+  --radius-xl: 14px;
+  --radius-full: 9999px;
+
+  /* MYDS Transitions */
+  --transition-short: 200ms cubic-bezier(0, 0, 0.58, 1);
+  --transition-medium: 400ms cubic-bezier(0, 0, 0.58, 1);
+  --transition-long: 600ms cubic-bezier(0, 0, 0.58, 1);
+  --transition-bounce: 200ms cubic-bezier(0.4, 1.4, 0.2, 1);
+
+  /* MYDS Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+}
+
+/* Custom ICT Serve (iServe) Styling */
+
+/* Accessibility improvements */
+.focus\:ring-2:focus {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 2px;
+}
+
+/* Skip links for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-blue-600);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* MYDS enhancements */
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+}
+
+/* Loading states */
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200deg 20% 80%);
+  }
+
+  100% {
+    background-color: hsl(200deg 20% 95%);
+  }
+}
+
+/* Status indicators using MYDS color tokens */
+.status-pending {
+  background-color: #FEF3C7; /* warning-100 */
+  color: #92400E; /* warning-800 */
+  border: 1px solid #FDE68A; /* warning-200 */
+}
+
+.status-approved {
+  background-color: #DCFCE7; /* success-100 */
+  color: #166534; /* success-800 */
+  border: 1px solid #BBF7D0; /* success-200 */
+}
+
+.status-rejected {
+  background-color: #FEE2E2; /* danger-100 */
+  color: #991B1B; /* danger-800 */
+  border: 1px solid #FECACA; /* danger-200 */
+}
+
+.status-new {
+  background-color: #DBEAFE; /* primary-100 */
+  color: #1E40AF; /* primary-800 */
+  border: 1px solid #C2D5FF; /* primary-200 */
+}
+
+.status-in-progress {
+  background-color: #FEF3C7; /* warning-100 */
+  color: #92400E; /* warning-800 */
+  border: 1px solid #FDE68A; /* warning-200 */
+}
+
+.status-resolved {
+  background-color: #DCFCE7; /* success-100 */
+  color: #166534; /* success-800 */
+  border: 1px solid #BBF7D0; /* success-200 */
+}
+
+.status-closed {
+  background-color: #F4F4F5; /* gray-100 */
+  color: #27272A; /* gray-800 */
+  border: 1px solid #E4E4E7; /* gray-200 */
+}
+
+/* Priority indicators using MYDS color tokens */
+.priority-low {
+  background-color: #DCFCE7; /* success-100 */
+  color: #166534; /* success-800 */
+}
+
+.priority-medium {
+  background-color: #FEF3C7; /* warning-100 */
+  color: #92400E; /* warning-800 */
+}
+
+.priority-high {
+  background-color: #FFEDD5; /* orange-100 */
+  color: #9A3412; /* orange-800 */
+}
+
+.priority-urgent {
+  background-color: #FEE2E2; /* danger-100 */
+  color: #991B1B; /* danger-800 */
+>>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 }
 
 /* MYDS Typography Classes */
@@ -199,7 +382,6 @@
 .myds-heading-md { font-family: var(--font-heading); font-size: 1.875rem; line-height: 2.25rem; font-weight: 600; }
 .myds-heading-sm { font-family: var(--font-heading); font-size: 1.5rem; line-height: 2rem; font-weight: 600; }
 .myds-heading-xs { font-family: var(--font-heading); font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; }
-.myds-heading-2xs { font-family: var(--font-heading); font-size: 1.125rem; line-height: 1.625rem; font-weight: 600; }
 
 .myds-body-2xl { font-family: var(--font-sans); font-size: 1.5rem; line-height: 2rem; font-weight: 400; }
 .myds-body-xl { font-family: var(--font-sans); font-size: 1.25rem; line-height: 1.75rem; font-weight: 400; }
@@ -207,90 +389,6 @@
 .myds-body-md { font-family: var(--font-sans); font-size: 1rem; line-height: 1.5rem; font-weight: 400; }
 .myds-body-sm { font-family: var(--font-sans); font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; }
 .myds-body-xs { font-family: var(--font-sans); font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
-
-/* MYDS Button Components */
-.myds-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.375rem;
-    font-weight: 500;
-    transition: all 0.2s;
-    cursor: pointer;
-    text-decoration: none;
-    border: 1px solid transparent;
-    min-height: 2.5rem;
-    min-width: 48px; /* WCAG touch target minimum */
-}
-
-.myds-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.myds-button:focus {
-    outline: 2px solid var(--fr-primary);
-    outline-offset: 2px;
-}
-
-.myds-button-primary {
-    background-color: var(--color-primary-600);
-    color: white;
-    border-color: var(--color-primary-600);
-}
-
-.myds-button-primary:hover:not(:disabled) {
-    background-color: var(--color-primary-700);
-    border-color: var(--color-primary-700);
-}
-
-.myds-button-secondary {
-    background-color: var(--color-bg-white);
-    color: var(--color-txt-black-900);
-    border-color: var(--color-otl-gray-200);
-}
-
-.myds-button-secondary:hover:not(:disabled) {
-    background-color: var(--color-gray-50);
-    border-color: var(--color-otl-gray-200);
-}
-
-.myds-button-danger {
-    background-color: var(--color-danger-600);
-    color: white;
-    border-color: var(--color-danger-600);
-}
-
-.myds-button-danger:hover:not(:disabled) {
-    background-color: var(--color-danger-700);
-    border-color: var(--color-danger-700);
-}
-
-.myds-button-danger:focus {
-    outline: 2px solid var(--fr-danger);
-    outline-offset: 2px;
-}
-
-.myds-button-success {
-    background-color: var(--color-success-600);
-    color: white;
-    border-color: var(--color-success-600);
-}
-
-.myds-button-success:hover:not(:disabled) {
-    background-color: var(--color-success-700);
-    border-color: var(--color-success-700);
-}
-
-.myds-button-success:focus {
-    outline: 2px solid var(--fr-success);
-    outline-offset: 2px;
-}
-
-/* MYDS Form Group */
-.myds-form-group {
-    margin-bottom: 1.5rem;
-}
 
 /* MYDS Component Utilities */
 .myds-container {
@@ -301,102 +399,8 @@
     padding-right: 1.5rem;
 }
 
-/* MYDS Responsive Grid System (12-8-4) */
-@media (min-width: 1024px) {
-    .myds-container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-    .myds-container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .myds-container {
-        padding-left: 1.125rem;
-        padding-right: 1.125rem;
-    }
-}
-
 .myds-article {
     max-width: 640px;
-}
-
-/* MYDS Responsive Grid (12-8-4) */
-.myds-grid-12 {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .myds-grid-12 {
-        grid-template-columns: repeat(8, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1024px) {
-    .myds-grid-12 {
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: 2rem;
-    }
-}
-
-/* MYDS Accessibility Utilities */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    .myds-button {
-        border: 2px solid;
-    }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Focus visible support for better keyboard navigation */
-.myds-button:focus-visible {
-    outline: 2px solid var(--fr-primary);
-    outline-offset: 2px;
-}
-
-/* Skip link for keyboard users */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    z-index: 1000;
-    background: var(--color-primary-600);
-    color: white;
-    padding: 8px;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.skip-link:focus {
-    top: 6px;
 }
 
 /* Focus ring helpers */
@@ -406,7 +410,6 @@
 .focus\:ring-fr-warning:focus { outline: 2px solid var(--fr-warning); outline-offset: 2px; }
 
 /* Text utilities */
-.text-txt-white { color: #FFFFFF; }
 .text-txt-primary { color: var(--color-txt-primary); }
 .text-txt-danger { color: var(--color-txt-danger); }
 .text-txt-success { color: var(--color-txt-success); }
@@ -415,108 +418,16 @@
 .text-txt-black-700 { color: var(--color-txt-black-700); }
 .text-txt-black-600 { color: var(--color-txt-black-600); }
 .text-txt-black-500 { color: var(--color-txt-black-500); }
-/* Extended semantic intensity variants used in badges/tables */
-.text-txt-success-800 { color: var(--color-success-800); }
-.text-txt-warning-800 { color: var(--color-warning-800); }
-.text-txt-danger-800 { color: var(--color-danger-800); }
-.text-txt-danger-900 { color: var(--color-danger-900); }
 
 /* Background utilities */
 .bg-bg-white { background-color: var(--color-bg-white); }
-.bg-bg-washed { background-color: var(--color-gray-50); }
-.bg-bg-gray-50 { background-color: var(--color-bg-gray-50); }
-.bg-bg-gray-100 { background-color: var(--color-bg-gray-100); }
-.bg-bg-primary-50 { background-color: var(--color-bg-primary-50); }
-.bg-bg-primary-100 { background-color: var(--color-bg-primary-100); }
-.bg-bg-primary-200 { background-color: var(--color-bg-primary-200); }
-.bg-bg-primary-600 { background-color: var(--color-bg-primary-600); }
-.bg-bg-primary-700 { background-color: var(--color-bg-primary-700); }
-.bg-bg-success-50 { background-color: var(--color-bg-success-50); }
-.bg-bg-success-100 { background-color: var(--color-bg-success-100); }
-.bg-bg-success-200 { background-color: var(--color-bg-success-200); }
-.bg-bg-success-600 { background-color: var(--color-bg-success-600); }
-.bg-bg-success-700 { background-color: var(--color-bg-success-700); }
-.bg-bg-danger-50 { background-color: var(--color-bg-danger-50); }
-.bg-bg-danger-100 { background-color: var(--color-bg-danger-100); }
-.bg-bg-danger-200 { background-color: var(--color-bg-danger-200); }
-.bg-bg-danger-600 { background-color: var(--color-bg-danger-600); }
-.bg-bg-danger-700 { background-color: var(--color-bg-danger-700); }
-.bg-bg-warning-50 { background-color: var(--color-bg-warning-50); }
-.bg-bg-warning-100 { background-color: var(--color-bg-warning-100); }
-.bg-bg-warning-200 { background-color: var(--color-bg-warning-200); }
-.bg-bg-warning-600 { background-color: var(--color-bg-warning-600); }
-.bg-bg-warning-700 { background-color: var(--color-bg-warning-700); }
-
-/* Legacy aliases kept until all views are updated to bg-bg-* */
-.bg-primary-50 { background-color: var(--color-primary-50); }
-.bg-success-50 { background-color: var(--color-success-50); }
-.bg-danger-50 { background-color: var(--color-danger-50); }
-.bg-warning-50 { background-color: var(--color-warning-50); }
+.bg-gray-50 { background-color: var(--color-bg-gray-50); }
+.bg-primary-50 { background-color: var(--color-bg-primary-50); }
+.bg-success-50 { background-color: var(--color-bg-success-50); }
+.bg-danger-50 { background-color: var(--color-bg-danger-50); }
+.bg-warning-50 { background-color: var(--color-bg-warning-50); }
 
 /* Border utilities */
 .border-otl-divider { border-color: var(--color-otl-divider); }
 .border-otl-gray-200 { border-color: var(--color-otl-gray-200); }
 .border-otl-primary-200 { border-color: var(--color-otl-primary-200); }
-.border-otl-primary-300 { border-color: var(--color-otl-primary-300); }
-.border-otl-gray-300 { border-color: var(--color-otl-gray-300); }
-/* Hover variants for border otl gray colors */
-.hover\:border-otl-gray-200:hover { border-color: var(--color-otl-gray-200); }
-.hover\:border-otl-gray-300:hover { border-color: var(--color-otl-gray-300); }
-.border-otl-success-200 { border-color: var(--color-otl-success-200); }
-.border-otl-warning-200 { border-color: var(--color-otl-warning-200); }
-.border-otl-danger-200 { border-color: var(--color-otl-danger-200); }
-/* Aliases */
-.border-otl-primary { border-color: var(--color-otl-primary-200); }
-.border-otl-success { border-color: var(--color-otl-success-200); }
-.border-otl-warning { border-color: var(--color-otl-warning-200); }
-.border-otl-danger { border-color: var(--color-otl-danger-200); }
-/* Plain border color helpers used by loaders */
-.border-danger-600 { border-color: var(--color-danger-600); }
-
-/* Divide utility for custom divider color */
-.divide-otl-divider > :not([hidden]) ~ :not([hidden]) { border-color: var(--color-otl-divider); }
-
-/* Alpine x-cloak helper */
-[x-cloak] { display: none !important; }
-
-/* Blend mode utilities (for SVG groups, etc.) */
-.mix-blend-hard-light { mix-blend-mode: hard-light; }
-.mix-blend-multiply { mix-blend-mode: multiply; }
-
-/* Gradient utilities */
-.myds-gradient-primary-br {
-    background-image: linear-gradient(to bottom right, var(--color-primary-600), var(--color-primary-700));
-}
-
-  /* SVG Color Utilities - Semantic color mapping for SVG elements */
-  .svg-stroke-dark {
-    stroke: #1B1B18;
-  }
-
-  .svg-stroke-orange {
-    stroke: #FF750F;
-  }
-
-  .svg-fill-warning-bright {
-    fill: #F8B803;
-  }
-
-  .svg-fill-pink-light {
-    fill: #F0ACB8;
-  }
-
-  .svg-fill-pink-medium {
-    fill: #F3BEC7;
-  }
-
-  .svg-fill-brown-dark {
-    fill: #391800;
-  }
-
-  .svg-fill-brown-medium {
-    fill: #733000;
-  }
-
-  .svg-fill-red-dark {
-    fill: #4B0600;
-  }

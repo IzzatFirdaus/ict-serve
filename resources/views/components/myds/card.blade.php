@@ -1,47 +1,38 @@
 @props([
-    'href' => null,
-    'padding' => 'default',
-    'shadow' => 'default',
-    'rounded' => 'default',
+    'title' => null,
+    'variant' => 'default', // default, bordered, elevated
+    'padding' => 'normal' // none, small, normal, large
 ])
 
 @php
-    $tag = $href ? 'a' : 'div';
-
+    $baseClasses = 'myds-card bg-white';
+    
+    // Variant classes
+    $variantClasses = match($variant) {
+        'bordered' => 'border border-gray-200 rounded-lg',
+        'elevated' => 'rounded-lg shadow-md',
+        default => 'rounded-lg shadow-sm border border-gray-100'
+    };
+    
+    // Padding classes
     $paddingClasses = match($padding) {
         'none' => '',
-        'sm' => 'p-4',
-        'default' => 'p-6',
-        'lg' => 'p-8',
-        default => 'p-6'
+        'small' => 'p-4',
+        'large' => 'p-8',
+        default => 'p-6' // normal
     };
-
-    $shadowClasses = match($shadow) {
-        'none' => '',
-        'sm' => 'shadow-sm',
-        'default' => 'shadow-md',
-        'lg' => 'shadow-lg',
-        default => 'shadow-md'
-    };
-
-    $roundedClasses = match($rounded) {
-        'none' => '',
-        'sm' => 'rounded-[var(--radius-m)]',
-        'default' => 'rounded-[var(--radius-l)]',
-        'lg' => 'rounded-[var(--radius-xl)]',
-        default => 'rounded-[var(--radius-l)]'
-    };
-
-    $baseClasses = 'bg-white border border-otl-gray-200';
-    $hoverClasses = $href ? 'hover:shadow-lg hover:border-otl-gray-300 transition-all duration-200' : '';
-
-    $classes = trim($baseClasses . ' ' . $paddingClasses . ' ' . $shadowClasses . ' ' . $roundedClasses . ' ' . $hoverClasses);
+    
+    $classes = trim($baseClasses . ' ' . $variantClasses . ' ' . $paddingClasses);
 @endphp
 
-<{{ $tag }}
-    @if($href) href="{{ $href }}" @endif
-    {{ $attributes->merge(['class' => $classes]) }}
-    @if($href) {{ $attributes->only(['target', 'rel']) }} @endif
->
-    {{ $slot }}
-</{{ $tag }}>
+<div {{ $attributes->merge(['class' => $classes]) }}>
+    @if($title)
+        <div class="myds-card-header mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">{{ $title }}</h3>
+        </div>
+    @endif
+    
+    <div class="myds-card-body">
+        {{ $slot }}
+    </div>
+</div>

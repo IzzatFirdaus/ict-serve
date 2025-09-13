@@ -1,42 +1,28 @@
 @props([
-    'responsive' => true,
-    'container' => true,
-    'maxWidth' => 'full', // xs, sm, md, lg, xl, 2xl, full
-    'padding' => 'default', // none, sm, default, lg
-    'variant' => 'default', // default, narrow, wide
+    'container' => true, // Whether to include MYDS container wrapper
+    'type' => 'content', // content, article, full-width
 ])
 
 @php
-    $responsiveClasses = $responsive ? 'grid-cols-4 md:grid-cols-8 lg:grid-cols-12' : 'grid-cols-12';
+    $containerClasses = $container ? 'myds-container' : '';
 
-    $containerClasses = $container ? 'container mx-auto' : '';
-
-    $maxWidthClasses = match($maxWidth) {
-        'xs' => 'max-w-xs',
-        'sm' => 'max-w-sm',
-        'md' => 'max-w-md',
-        'lg' => 'max-w-lg',
-        'xl' => 'max-w-xl',
-        '2xl' => 'max-w-2xl',
-        'full' => 'max-w-full',
-        default => 'max-w-full'
+    $gridClasses = match($type) {
+        'article' => 'myds-article', // Max 640px for readability
+        'full-width' => 'w-full',
+        default => 'myds-grid' // Standard 12-8-4 grid
     };
 
-    $paddingClasses = match($padding) {
-        'none' => '',
-        'sm' => 'px-4 py-2',
-        'default' => 'px-6 py-4',
-        'lg' => 'px-8 py-6',
-        default => 'px-6 py-4'
-    };
-
-    $variantClasses = match($variant) {
-        'narrow' => 'max-w-4xl',
-        'wide' => 'max-w-full',
-        default => 'max-w-7xl'
-    };
+    $classes = trim($containerClasses . ' ' . $gridClasses);
 @endphp
 
-<div {{ $attributes->merge(['class' => "grid gap-6 {$responsiveClasses} {$containerClasses} {$maxWidthClasses} {$paddingClasses} {$variantClasses}"]) }}>
-    {{ $slot }}
-</div>
+@if($container)
+    <div class="{{ $containerClasses }}">
+        <div {{ $attributes->merge(['class' => $gridClasses]) }}>
+            {{ $slot }}
+        </div>
+    </div>
+@else
+    <div {{ $attributes->merge(['class' => $gridClasses]) }}>
+        {{ $slot }}
+    </div>
+@endif

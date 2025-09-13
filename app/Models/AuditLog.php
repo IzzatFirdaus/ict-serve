@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,14 +24,6 @@ class AuditLog extends Model
         'user_agent',
         'notes',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'old_values' => 'json',
-            'new_values' => 'json',
-        ];
-    }
 
     /**
      * Get the user who performed the action
@@ -61,7 +55,7 @@ class AuditLog extends Model
         return static::create([
             'user_id' => $user?->id,
             'action' => $action,
-            'auditable_type' => get_class($auditable),
+            'auditable_type' => $auditable::class,
             'auditable_id' => $auditable->getKey(),
             'old_values' => $oldValues,
             'new_values' => $newValues,
@@ -69,5 +63,13 @@ class AuditLog extends Model
             'user_agent' => request()->userAgent(),
             'notes' => $notes,
         ]);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'old_values' => 'json',
+            'new_values' => 'json',
+        ];
     }
 }

@@ -26,10 +26,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
                    $entry->isFailedRequest() ||
                    $entry->isFailedJob() ||
                    $entry->isScheduledTask() ||
-                   $entry->hasMonitoredTag() ||
-                   // Always monitor mail and notification events
-                   $entry->type === 'mail' ||
-                   $entry->type === 'notification';
+                   $entry->hasMonitoredTag();
         });
     }
 
@@ -59,14 +56,9 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     protected function gate(): void
     {
         Gate::define('viewTelescope', function ($user) {
-            // Allow admin users and specific email domains to access Telescope
             return in_array($user->email, [
-                'admin@motac.gov.my',
-                'ict@motac.gov.my',
-            ]) ||
-            $user->hasRole('Admin') ||
-            $user->hasRole('ICT Admin') ||
-            str_ends_with($user->email, '@motac.gov.my') && $user->hasRole('Admin');
+                //
+            ]);
         });
     }
 }

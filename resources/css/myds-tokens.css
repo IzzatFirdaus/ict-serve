@@ -1,213 +1,233 @@
-/**
- * MYDS Design Tokens
- * Malaysia Government Design System
- *
- * This file contains CSS custom properties for all MYDS design tokens
- * to ensure consistency across all components.
- */
+/* MYDS Color Tokens - Light and Dark Mode Support */
 
 :root {
-  /* ============================================
-     MYDS Color Tokens
-     ============================================ */
+  /* Light Mode Color Tokens */
 
-  /* White & Neutral Backgrounds */
-  --myds-bg-white: #ffffff;
-  --myds-bg-white-hover: #fafafa;
-  --myds-bg-white-disabled: #f4f4f5;
-  --myds-bg-washed: #f4f4f5;
-  --myds-bg-washed-active: #f4f4f5;
-  --myds-bg-contrast: #ffffff;
-  --myds-bg-dialog: #ffffff;
-  --myds-bg-dialog-active: #ffffff;
-  --myds-bg-gray-50: #fafafa;
+  /* Text Tokens */
+  --txt-black-900: #18181B;
+  --txt-black-700: #3F3F46;
+  --txt-black-500: #71717A;
+  --txt-black-400: #A1A1AA;
+  --txt-black-300: #D4D4D8;
 
-  /* Primary Colors */
-  --myds-primary-50: #eff6ff;
-  --myds-primary-100: #dbeafe;
-  --myds-primary-200: #c2d5ff;
-  --myds-primary-300: #96b7ff;
-  --myds-primary-400: #6394ff;
-  --myds-primary-500: #3a75f6;
-  --myds-primary-600: #2563eb;
-  --myds-primary-700: #1d4ed8;
-  --myds-primary-800: #1e40af;
-  --myds-primary-900: #1e3a8a;
-  --myds-primary-950: #172554;
+  /* Background Tokens */
+  --bg-white-0: #FFFFFF;
+  --bg-white-50: #FAFAFA;
+  --bg-white-100: #F4F4F5;
+  --bg-washed: #F4F4F5;
 
-  /* Danger Colors */
-  --myds-danger-50: #fef2f2;
-  --myds-danger-100: #fee2e2;
-  --myds-danger-200: #fecaca;
-  --myds-danger-300: #fca5a5;
-  --myds-danger-400: #f87171;
-  --myds-danger-500: #ef4444;
-  --myds-danger-600: #dc2626;
-  --myds-danger-700: #b91c1c;
-  --myds-danger-800: #991b1b;
-  --myds-danger-900: #7f1d1d;
-  --myds-danger-950: #450a0a;
+  /* Outline Tokens */
+  --otl-gray-200: #E4E4E7;
+  --otl-gray-300: #D4D4D8;
+  --otl-gray-400: #A1A1AA;
 
-  /* Success Colors */
-  --myds-success-50: #f0fdf4;
-  --myds-success-100: #dcfce7;
-  --myds-success-200: #bbf7d0;
-  --myds-success-300: #83daa3;
-  --myds-success-400: #4ade80;
-  --myds-success-500: #22c55e;
-  --myds-success-600: #16a34a;
-  --myds-success-700: #15803d;
-  --myds-success-800: #166534;
-  --myds-success-900: #14532d;
-  --myds-success-950: #052e16;
-
-  /* Warning Colors */
-  --myds-warning-50: #fefce8;
-  --myds-warning-100: #fef9c3;
-  --myds-warning-200: #fef08a;
-  --myds-warning-300: #fde047;
-  --myds-warning-400: #facc15;
-  --myds-warning-500: #eab308;
-  --myds-warning-600: #ca8a04;
-  --myds-warning-700: #a16207;
-  --myds-warning-800: #854d0e;
-  --myds-warning-900: #713f12;
-  --myds-warning-950: #422006;
-
-  /* Gray Scale */
-  --myds-gray-50: #fafafa;
-  --myds-gray-100: #f4f4f5;
-  --myds-gray-200: #e4e4e7;
-  --myds-gray-300: #d4d4d8;
-  --myds-gray-400: #a1a1aa;
-  --myds-gray-500: #71717a;
-  --myds-gray-600: #52525b;
-  --myds-gray-700: #3f3f46;
-  --myds-gray-800: #27272a;
-  --myds-gray-850: #1d1d21;
-  --myds-gray-900: #18181b;
-  --myds-gray-930: #161619;
-  --myds-gray-950: #09090b;
-
-  /* ============================================
-     MYDS Spacing Scale
-     ============================================ */
-  --myds-space-xs: 4px;
-  --myds-space-s: 8px;
-  --myds-space-m: 12px;
-  --myds-space-l: 16px;
-  --myds-space-xl: 24px;
-  --myds-space-2xl: 32px;
-  --myds-space-3xl: 48px;
-  --myds-space-4xl: 64px;
-  --myds-space-5xl: 96px;
-  --myds-space-6xl: 128px;
-
-  /* ============================================
-     MYDS Border Radius
-     ============================================ */
-  --radius-xs: 2px;
-  --radius-s: 4px;
-  --radius-m: 6px;
-  --radius-l: 8px;
-  --radius-xl: 12px;
-  --radius-2xl: 16px;
-  --radius-full: 9999px;
-
-  /* ============================================
-     MYDS Typography
-     ============================================ */
-
-  /* Font Families */
-  --myds-font-heading: 'Poppins', sans-serif;
-  --myds-font-body: 'Inter', sans-serif;
-
-  /* Font Sizes - Headings */
-  --myds-text-heading-xl: 60px;
-  --myds-text-heading-lg: 48px;
-  --myds-text-heading-md: 36px;
-  --myds-text-heading-sm: 30px;
-  --myds-text-heading-xs: 24px;
-  --myds-text-heading-2xs: 20px;
-  --myds-text-heading-3xs: 16px;
-  --myds-text-heading-4xs: 14px;
-
-  /* Line Heights - Headings */
-  --myds-leading-heading-xl: 72px;
-  --myds-leading-heading-lg: 60px;
-  --myds-leading-heading-md: 44px;
-  --myds-leading-heading-sm: 38px;
-  --myds-leading-heading-xs: 32px;
-  --myds-leading-heading-2xs: 28px;
-  --myds-leading-heading-3xs: 24px;
-  --myds-leading-heading-4xs: 20px;
-
-  /* Font Sizes - Body */
-  --myds-text-body-6xl: 60px;
-  --myds-text-body-5xl: 48px;
-  --myds-text-body-4xl: 36px;
-  --myds-text-body-3xl: 30px;
-  --myds-text-body-2xl: 24px;
-  --myds-text-body-xl: 20px;
-  --myds-text-body-lg: 18px;
-  --myds-text-body-md: 16px;
-  --myds-text-body-sm: 14px;
-  --myds-text-body-xs: 12px;
-  --myds-text-body-2xs: 10px;
-
-  /* Line Heights - Body */
-  --myds-leading-body-6xl: 72px;
-  --myds-leading-body-5xl: 60px;
-  --myds-leading-body-4xl: 44px;
-  --myds-leading-body-3xl: 38px;
-  --myds-leading-body-2xl: 32px;
-  --myds-leading-body-xl: 28px;
-  --myds-leading-body-lg: 26px;
-  --myds-leading-body-md: 24px;
-  --myds-leading-body-sm: 20px;
-  --myds-leading-body-xs: 18px;
-  --myds-leading-body-2xs: 12px;
-
-  /* ============================================
-     MYDS Shadow System
-     ============================================ */
-  --myds-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --myds-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --myds-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --myds-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --myds-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --myds-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-
-  /* ============================================
-     MYDS Animation/Motion
-     ============================================ */
-  --myds-duration-instant: 0ms;
-  --myds-duration-short: 200ms;
-  --myds-duration-medium: 400ms;
-  --myds-duration-long: 600ms;
-
-  --myds-ease-linear: linear;
-  --myds-ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --myds-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Focus Ring Tokens */
+  --fr-primary-600: #2563EB;
+  --fr-danger-600: #DC2626;
+  --fr-success-600: #16A34A;
+  --fr-warning-600: #D97706;
 }
 
-/* ============================================
-   MYDS Dark Mode Support
-   ============================================ */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark mode color mappings */
-    --myds-bg-white: var(--myds-gray-900);
-    --myds-bg-white-hover: var(--myds-gray-800);
-    --myds-bg-washed: var(--myds-gray-850);
-    --myds-bg-contrast: var(--myds-gray-930);
-    --myds-bg-dialog: var(--myds-gray-850);
+/* Dark Mode Color Tokens */
+.dark {
+  /* Text Tokens - Dark Mode */
+  --txt-black-900: #FAFAFA;
+  --txt-black-700: #D4D4D8;
+  --txt-black-500: #A1A1AA;
+  --txt-black-400: #71717A;
+  --txt-black-300: #52525B;
+
+  /* Background Tokens - Dark Mode */
+  --bg-white-0: #09090B;
+  --bg-white-50: #18181B;
+  --bg-white-100: #27272A;
+  --bg-washed: #27272A;
+
+  /* Outline Tokens - Dark Mode */
+  --otl-gray-200: #3F3F46;
+  --otl-gray-300: #52525B;
+  --otl-gray-400: #71717A;
+
+  /* Focus Ring Tokens remain the same in dark mode */
+  --fr-primary-600: #3A75F6;
+  --fr-danger-600: #EF4444;
+  --fr-success-600: #22C55E;
+  --fr-warning-600: #F59E0B;
+}
+
+/* MYDS Typography Classes */
+.myds-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.myds-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.myds-rtf {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* MYDS Motion Classes */
+.myds-transition-short {
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-medium {
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-long {
+  transition-duration: 600ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-bounce {
+  transition-timing-function: cubic-bezier(0.4, 1.4, 0.2, 1);
+}
+
+/* MYDS Focus Styles */
+.myds-focus-visible:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-white-0), 0 0 0 4px var(--fr-primary-600);
+}
+
+.myds-focus-danger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-white-0), 0 0 0 4px var(--fr-danger-600);
+}
+
+/* MYDS Hover States */
+.myds-hover-underline:hover {
+  text-decoration: underline;
+}
+
+/* MYDS Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 50;
+  background: var(--bg-white-0);
+  color: var(--txt-black-900);
+  border: 1px solid var(--otl-gray-300);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-washed);
+  border-color: var(--otl-gray-400);
+}
+
+/* MYDS Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-white-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--otl-gray-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--otl-gray-400);
+}
+
+/* MYDS Responsive Text Sizes */
+@media (max-width: 767px) {
+  .myds-responsive-heading {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+  }
+
+  .myds-responsive-body {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
   }
 }
 
-/* ============================================
-   MYDS Component Classes
-   ============================================ */
-/* Note: Component class implementations live in app.css and
-   resources/css/components/*.css to avoid Tailwind @apply on
-   custom utilities. This file focuses on tokens only. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .myds-responsive-heading {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.375rem; /* 38px */
+  }
+
+  .myds-responsive-body {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .myds-responsive-heading {
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.75rem; /* 44px */
+  }
+
+  .myds-responsive-body {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+  }
+}
+
+/* MYDS Toast Animation Classes */
+@keyframes toast-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-slide-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toast-slide-up 200ms cubic-bezier(0.4, 1.4, 0.2, 1);
+}
+
+.toast-exit {
+  animation: toast-slide-down 200ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+/* MYDS Progress Bar Animation */
+@keyframes progress-countdown {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.progress-bar-countdown {
+  animation: progress-countdown 3000ms linear;
+}

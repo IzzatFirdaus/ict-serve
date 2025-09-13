@@ -1,11 +1,12 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint:myds": "node ./scripts/myds-lint.cjs",
     "dev:full": "concurrently \"npm:dev\" \"php artisan serve\"",
+    "lint:myds": "node ./scripts/myds-lint.cjs",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report",
@@ -15,7 +16,11 @@
     "test:firefox": "playwright test --project=firefox",
     "test:webkit": "playwright test --project=webkit",
     "test:mobile": "playwright test --project=\"Mobile Chrome\" --project=\"Mobile Safari\"",
-    "test:install": "playwright install"
+    "test:install": "playwright install",
+    "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,css,scss,json,md,html,vue}\"",
+    "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,json,md,html,vue}\"",
+    "stylelint": "stylelint \"**/*.{css,scss,vue,html}\"",
+    "stylelint:fix": "stylelint --fix \"**/*.{css,scss,vue,html}\""
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
@@ -23,19 +28,27 @@
     "@tailwindcss/postcss": "^4.1.13",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^24.3.1",
-    "alpinejs": "^3.4.2",
+    "alpinejs": "^3.13.0",
     "autoprefixer": "^10.4.2",
     "axios": "^1.12.0",
+    "bootstrap": "^5.2.3",
     "concurrently": "^9.0.1",
-    "laravel-vite-plugin": "^1.2.0",
+    "laravel-vite-plugin": "^2.0.0",
     "postcss": "^8.4.31",
-    "prettier": "3.6.2",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.6.2",
+    "sass": "^1.56.1",
     "stylelint": "^16.24.0",
+    "stylelint-config-recommended": "^17.0.0",
     "stylelint-config-standard": "^39.0.0",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-config-tailwindcss": "^1.0.0",
+    "stylelint-scss": "^6.12.1",
     "tailwindcss": "^4.1.13",
-    "vite": "^6.0.11"
+    "vite": "^7.0.4"
   },
   "dependencies": {
+    "@govtechmy/myds-style": "^1.0.0",
     "playwright": "^1.55.0",
     "signature_pad": "^5.1.0"
   }
