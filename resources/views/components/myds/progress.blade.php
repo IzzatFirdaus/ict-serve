@@ -11,11 +11,11 @@
     $percentage = min(($value / $max) * 100, 100);
 
     $variantClasses = match($variant) {
-        'primary' => 'bg-primary-600',
-        'success' => 'bg-success-600',
-        'warning' => 'bg-warning-600',
-        'danger' => 'bg-danger-600',
-        default => 'bg-primary-600'
+           'primary' => 'bg-bg-primary-600',
+           'success' => 'bg-bg-success-600',
+           'warning' => 'bg-bg-warning-600',
+           'danger' => 'bg-bg-danger-600',
+           default => 'bg-bg-primary-600'
     };
 
     $sizeClasses = match($size) {
@@ -28,7 +28,7 @@
     $displayLabel = $label ?? ($percentage . '%');
 @endphp
 
-<div {{ $attributes }}>
+<div {{ $attributes }} x-data="{ pct: {{ round($percentage, 2) }} }">
     @if($showLabel)
         <div class="flex justify-between items-center mb-2">
             <span class="text-sm font-medium text-txt-black-900">{{ $displayLabel }}</span>
@@ -38,10 +38,10 @@
         </div>
     @endif
 
-    <div class="w-full bg-gray-200 rounded-full {{ $sizeClasses }}">
+    <div class="w-full bg-black-200 rounded-full {{ $sizeClasses }}">
         <div
             class="{{ $variantClasses }} {{ $sizeClasses }} rounded-full transition-all duration-300 ease-out"
-            style="width: {{ $percentage }}%"
+            :style="{ width: pct + '%' }"
             role="progressbar"
             aria-valuenow="{{ $value }}"
             aria-valuemin="0"

@@ -2,11 +2,11 @@
 
 <div class="loan-detail-view max-w-6xl mx-auto space-y-8">
     <!-- Header Section -->
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="bg-bg-white rounded-lg shadow-sm border border-otl-gray-200 p-6">
         <div class="flex items-start justify-between">
             <div>
-                <h1 class="text-2xl font-bold text-gray-900">{{ $loanRequest->request_number }}</h1>
-                <p class="text-sm text-gray-500 mt-1">
+                <h1 class="text-2xl font-bold text-txt-black-900">{{ $loanRequest->request_number }}</h1>
+                <p class="text-sm text-txt-black-500 mt-1">
                     Submitted on {{ $loanRequest->created_at->format('F j, Y \a\t g:i A') }}
                 </p>
             </div>
@@ -16,16 +16,16 @@
                 @php
                     $statusConfig = match($loanRequest->loanStatus->code ?? 'pending') {
                         'pending_supervisor' => ['bg' => 'bg-warning-100', 'text' => 'text-warning-800', 'icon' => 'clock'],
-                        'approved_supervisor' => ['bg' => 'bg-primary-100', 'text' => 'text-primary-800', 'icon' => 'check-circle'],
+                        'approved_supervisor' => ['bg' => 'bg-primary-100', 'text' => 'text-txt-primary', 'icon' => 'check-circle'],
                         'pending_ict' => ['bg' => 'bg-warning-100', 'text' => 'text-warning-800', 'icon' => 'clock'],
                         'approved_ict' => ['bg' => 'bg-success-100', 'text' => 'text-success-800', 'icon' => 'check-circle'],
-                        'equipment_assigned' => ['bg' => 'bg-primary-100', 'text' => 'text-primary-800', 'icon' => 'clipboard-list'],
+                        'equipment_assigned' => ['bg' => 'bg-primary-100', 'text' => 'text-txt-primary', 'icon' => 'clipboard-list'],
                         'ready_pickup' => ['bg' => 'bg-success-100', 'text' => 'text-success-800', 'icon' => 'cube'],
                         'in_use' => ['bg' => 'bg-success-100', 'text' => 'text-success-800', 'icon' => 'check-circle'],
                         'overdue' => ['bg' => 'bg-danger-100', 'text' => 'text-danger-800', 'icon' => 'exclamation-triangle'],
-                        'returned' => ['bg' => 'bg-gray-100', 'text' => 'text-gray-800', 'icon' => 'check-circle'],
-                        'rejected' => ['bg' => 'bg-danger-100', 'text' => 'text-danger-800', 'icon' => 'x-circle'],
-                        default => ['bg' => 'bg-gray-100', 'text' => 'text-gray-800', 'icon' => 'clock']
+                        'returned' => ['bg' => 'bg-black-100', 'text' => 'text-txt-black-700', 'icon' => 'check-circle'],
+                        'rejected' => ['bg' => 'bg-danger-100', 'text' => 'text-txt-danger', 'icon' => 'x-circle'],
+                        default => ['bg' => 'bg-black-100', 'text' => 'text-txt-black-700', 'icon' => 'clock']
                     };
                 @endphp
 
@@ -41,7 +41,7 @@
                         @include('components.icon', ['name' => 'dots-vertical', 'class' => 'w-4 h-4'])
                     </button>
 
-                    <div x-show="open"
+                <div x-show="open"
                          @click.away="open = false"
                          x-transition:enter="transition ease-out duration-100"
                          x-transition:enter-start="transform opacity-0 scale-95"
@@ -49,29 +49,29 @@
                          x-transition:leave="transition ease-in duration-75"
                          x-transition:leave-start="transform opacity-100 scale-100"
                          x-transition:leave-end="transform opacity-0 scale-95"
-                         class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-10"
-                         style="display: none;">
+                         class="absolute right-0 mt-2 w-48 bg-bg-white rounded-md shadow-lg border border-otl-gray-200 z-10"
+                         x-cloak>
                         <div class="py-1">
                             @if($loanRequest->canBeEdited())
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <a href="#" class="block px-4 py-2 text-sm text-txt-black-700 hover:bg-black-100">
                                     @include('components.icon', ['name' => 'edit', 'class' => 'w-4 h-4 mr-2 inline'])
                                     Edit Request
                                 </a>
                             @endif
 
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <a href="#" class="block px-4 py-2 text-sm text-txt-black-700 hover:bg-black-100">
                                 @include('components.icon', ['name' => 'download', 'class' => 'w-4 h-4 mr-2 inline'])
                                 Download PDF
                             </a>
 
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <a href="#" class="block px-4 py-2 text-sm text-txt-black-700 hover:bg-black-100">
                                 @include('components.icon', ['name' => 'share', 'class' => 'w-4 h-4 mr-2 inline'])
                                 Share
                             </a>
 
                             @if($loanRequest->canBeCancelled())
                                 <hr class="my-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-danger-700 hover:bg-danger-50">
+                                <a href="#" class="block px-4 py-2 text-sm text-txt-danger hover:bg-warning-50">
                                     @include('components.icon', ['name' => 'x-circle', 'class' => 'w-4 h-4 mr-2 inline'])
                                     Cancel Request
                                 </a>
@@ -143,7 +143,7 @@
                     <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                         <div class="flex items-center space-x-4">
                             <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                                @include('components.icon', ['name' => 'desktop-computer', 'class' => 'w-6 h-6 text-primary-600'])
+                                @include('components.icon', ['name' => 'desktop-computer', 'class' => 'w-6 h-6 text-txt-primary'])
                             </div>
                             <div>
                                 <h4 class="text-sm font-medium text-gray-900">{{ $equipment['name'] ?? 'Equipment' }}</h4>
@@ -242,7 +242,7 @@
                 <div class="flex items-center space-x-3 mb-4">
                     <div class="flex-shrink-0">
                         <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                            @include('components.icon', ['name' => 'user', 'class' => 'w-5 h-5 text-primary-600'])
+                            @include('components.icon', ['name' => 'user', 'class' => 'w-5 h-5 text-txt-primary'])
                         </div>
                     </div>
                     <div>

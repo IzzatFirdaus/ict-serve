@@ -7,9 +7,9 @@
 
 @php
 $buttonClasses = match($variant) {
-    'primary' => 'bg-primary-600 text-white border-primary-600 hover:bg-primary-700 focus:ring-fr-primary',
-    'danger' => 'bg-danger-600 text-white border-danger-600 hover:bg-danger-700 focus:ring-fr-danger',
-    default => 'bg-white text-txt-black-700 border-gray-300 hover:bg-gray-50 focus:ring-fr-primary',
+    'primary' => 'bg-bg-primary-600 text-txt-white border-otl-primary-200 hover:bg-bg-primary-700 focus:ring-fr-primary',
+    'danger' => 'bg-bg-danger-600 text-txt-white border-otl-danger-200 hover:bg-bg-danger-700 focus:ring-fr-danger',
+    default => 'bg-bg-white text-txt-black-700 border-otl-gray-200 hover:bg-gray-50 focus:ring-fr-primary',
 };
 
 $sizeClasses = match($size) {
@@ -43,7 +43,7 @@ $sizeClasses = match($size) {
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-otl-divider rounded-md bg-bg-white shadow-lg border border-otl-divider focus:outline-none"
         role="menu">
         <div class="py-1" role="none">
             {{ $slot }}

@@ -36,17 +36,17 @@
     {{ $attributes->whereStartsWith('wire:') }}
 >
     <!-- Background overlay -->
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" {{ $attributes->whereStartsWith('@') }}></div>
+    <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" {{ $attributes->whereStartsWith('@') }}></div>
 
     <!-- Modal panel -->
     <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-        <div class="relative transform overflow-hidden rounded-[var(--radius-xl)] bg-white text-left shadow-xl transition-all sm:my-8 w-full {{ $maxWidthClasses }}">
+    <div class="relative transform overflow-hidden rounded-[var(--radius-xl)] bg-bg-white text-left shadow-xl transition-all sm:my-8 w-full {{ $maxWidthClasses }}">
             <!-- Close button -->
             @if($closeable)
                 <div class="absolute right-0 top-0 pr-4 pt-4">
                     <button
                         type="button"
-                        class="rounded-[var(--radius-s)] bg-white text-txt-black-400 hover:text-txt-black-500 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors"
+                        class="rounded-[var(--radius-s)] bg-bg-white text-txt-black-400 hover:text-txt-black-500 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors"
                         @if($hasAlpineShow)
                             @click="hide()"
                         @else

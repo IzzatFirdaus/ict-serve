@@ -62,7 +62,7 @@
         x-transition:leave-start="opacity-100 transform scale-100"
         x-transition:leave-end="opacity-0 transform scale-95"
         class="absolute z-50 {{ $positionClasses }}"
-        style="display: none;"
+        x-cloak
         role="tooltip"
     >
         <!-- Tooltip Content -->
@@ -71,6 +71,6 @@
         </div>
 
         <!-- Tooltip Arrow -->
-        <div class="absolute w-0 h-0 {{ $arrowClasses }}" style="border-width: 6px;"></div>
+    <div class="absolute w-0 h-0 {{ $arrowClasses }} border-[6px]"></div>
     </div>
 </div>

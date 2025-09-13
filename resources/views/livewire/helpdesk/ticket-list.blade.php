@@ -8,7 +8,7 @@
             </div>
             <div class="mt-4 md:mt-0">
                 <a href="{{ route('helpdesk.create-ticket') }}"
-                   class="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-300 transition-colors">
+                   class="inline-flex items-center px-4 py-2 bg-bg-primary-600 text-white rounded-lg hover:bg-bg-primary-700 focus:ring-2 focus:ring-fr-primary transition-colors">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
@@ -84,7 +84,7 @@
             <div class="lg:col-span-2">
                 <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
                 <input type="text" wire:model.live.debounce.300ms="search" id="search"
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600"
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
                        placeholder="Search by ticket number, title, or description">
             </div>
 
@@ -92,7 +92,7 @@
             <div>
                 <label for="filterStatus" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
                 <select wire:model.live="filterStatus" id="filterStatus"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600 bg-white">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
                     <option value="">All Statuses</option>
                     @foreach($statuses as $status)
                         <option value="{{ $status->id }}">{{ $status->name }}</option>
@@ -104,7 +104,7 @@
             <div>
                 <label for="filterCategory" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
                 <select wire:model.live="filterCategory" id="filterCategory"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600 bg-white">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
                     <option value="">All Categories</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -116,7 +116,7 @@
             <div>
                 <label for="filterPriority" class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
                 <select wire:model.live="filterPriority" id="filterPriority"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600 bg-white">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
                     <option value="">All Priorities</option>
                     @foreach($priorities as $priority)
                         <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
@@ -226,7 +226,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <a href="{{ route('helpdesk.ticket.detail', $ticket->ticket_number) }}"
-                                       class="text-primary-600 hover:text-primary-900">View</a>
+                                       class="text-txt-primary hover:text-txt-primary">View</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -253,7 +253,7 @@
                     @endif
                 </p>
                 <a href="{{ route('helpdesk.create-ticket') }}"
-                   class="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-300 transition-colors">
+                   class="inline-flex items-center px-4 py-2 bg-bg-primary-600 text-white rounded-lg hover:bg-bg-primary-700 focus:ring-2 focus:ring-fr-primary transition-colors">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>

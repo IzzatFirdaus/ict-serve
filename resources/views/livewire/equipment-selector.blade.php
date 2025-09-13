@@ -54,7 +54,7 @@
                     <x-icon name="filter" class="w-4 h-4 mr-2" />
                     Filter
                     @if($selectedCategory || $availabilityFilter !== 'available')
-                        <span class="ml-2 px-2 py-1 bg-primary-100 text-primary-700 rounded-full text-xs">
+                        <span class="ml-2 px-2 py-1 bg-primary-100 text-txt-primary rounded-full text-xs">
                             Aktif
                         </span>
                     @endif
@@ -150,7 +150,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @foreach($equipment as $item)
                             <div class="border border-otl-gray-200 rounded-[var(--radius-m)] p-4 hover:shadow-md transition-shadow
-                                        {{ in_array($item->id, $selectedItems) ? 'ring-2 ring-primary-500 bg-primary-50' : '' }}">
+                                        {{ in_array($item->id, $selectedItems) ? 'ring-2 ring-fr-primary bg-primary-50' : '' }}">
 
                                 <!-- Equipment Card Header -->
                                 <div class="flex items-start justify-between mb-3">
@@ -243,7 +243,7 @@
                     <div class="space-y-2">
                         @foreach($equipment as $item)
                             <div class="border border-otl-gray-200 rounded-[var(--radius-s)] p-4
-                                        {{ in_array($item->id, $selectedItems) ? 'ring-2 ring-primary-500 bg-primary-50' : '' }}">
+                                        {{ in_array($item->id, $selectedItems) ? 'ring-2 ring-fr-primary bg-primary-50' : '' }}">
                                 <div class="flex items-center gap-4">
                                     <!-- Selection Checkbox -->
                                     <x-myds.form.checkbox

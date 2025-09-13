@@ -4,6 +4,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "lint:myds": "node ./scripts/myds-lint.cjs",
+    "dev:full": "concurrently \"npm:dev\" \"php artisan serve\"",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report",

@@ -24,9 +24,9 @@
     $baseClasses = 'rounded border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:ring-offset-2';
 
     $stateClasses = match(true) {
-        $error => 'border-danger-300 text-danger-600 focus:border-danger-500',
-        $disabled => 'border-gray-300 bg-gray-100 text-gray-400 cursor-not-allowed',
-        default => 'border-gray-300 text-primary-600 hover:border-gray-400 focus:border-primary-500'
+        $error => 'border-danger-300 text-txt-danger',
+        $disabled => 'border-otl-gray-200 bg-gray-100 text-txt-black-500 cursor-not-allowed',
+        default => 'border-otl-gray-200 text-txt-primary hover:border-otl-gray-200'
     };
 
     $labelSizeClasses = match($size) {

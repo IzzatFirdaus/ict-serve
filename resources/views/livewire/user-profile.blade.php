@@ -26,7 +26,7 @@
             <button wire:click="setActiveTab('profile')"
                     class="py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200
                            {{ $activeTab === 'profile'
-                               ? 'border-primary-500 text-primary-600 dark:text-primary-400'
+                               ? 'border-otl-primary-300 text-txt-primary dark:text-txt-primary'
                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300' }}">
                 <x-icon name="user" class="w-4 h-4 inline-block mr-2" />
                 Maklumat Peribadi
@@ -35,7 +35,7 @@
             <button wire:click="setActiveTab('security')"
                     class="py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200
                            {{ $activeTab === 'security'
-                               ? 'border-primary-500 text-primary-600 dark:text-primary-400'
+                               ? 'border-otl-primary-300 text-txt-primary dark:text-txt-primary'
                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300' }}">
                 <x-icon name="lock-closed" class="w-4 h-4 inline-block mr-2" />
                 Keselamatan
@@ -44,7 +44,7 @@
             <button wire:click="setActiveTab('notifications')"
                     class="py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200
                            {{ $activeTab === 'notifications'
-                               ? 'border-primary-500 text-primary-600 dark:text-primary-400'
+                               ? 'border-otl-primary-300 text-txt-primary dark:text-txt-primary'
                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300' }}">
                 <x-icon name="bell" class="w-4 h-4 inline-block mr-2" />
                 Notifikasi
@@ -53,7 +53,7 @@
             <button wire:click="setActiveTab('activity')"
                     class="py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200
                            {{ $activeTab === 'activity'
-                               ? 'border-primary-500 text-primary-600 dark:text-primary-400'
+                               ? 'border-otl-primary-300 text-txt-primary dark:text-txt-primary'
                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300' }}">
                 <x-icon name="clock" class="w-4 h-4 inline-block mr-2" />
                 Aktiviti Terkini
@@ -86,14 +86,14 @@
 
                 <div class="flex flex-col space-y-2">
                     <div class="flex space-x-3">
-                        <label class="cursor-pointer bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                        <label class="cursor-pointer bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                             Pilih Avatar Baharu
                             <input type="file" wire:model="avatar" accept="image/*" class="hidden">
                         </label>
 
                         @if($avatar_url)
                         <button type="button" wire:click="removeAvatar"
-                                class="bg-danger-600 hover:bg-danger-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                                    class="bg-bg-danger-600 hover:bg-bg-danger-700 text-txt-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                             Padam Avatar
                         </button>
                         @endif
@@ -117,7 +117,7 @@
                            wire:model="name"
                            id="name"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Masukkan nama penuh">
                     @error('name')
@@ -133,7 +133,7 @@
                            wire:model="employee_id"
                            id="employee_id"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Contoh: EMP001">
                     @error('employee_id')
@@ -161,7 +161,7 @@
                            wire:model="phone"
                            id="phone"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Contoh: 03-1234567">
                     @error('phone')
@@ -177,7 +177,7 @@
                            wire:model="department"
                            id="department"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Contoh: Jabatan Teknologi Maklumat">
                     @error('department')
@@ -193,7 +193,7 @@
                            wire:model="position"
                            id="position"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Contoh: Pegawai Teknologi Maklumat">
                     @error('position')
@@ -209,7 +209,7 @@
                            wire:model="office_location"
                            id="office_location"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Contoh: Tingkat 5, Blok A, Kompleks MOTAC">
                     @error('office_location')
@@ -221,7 +221,7 @@
             <!-- Submit Button -->
             <div class="flex justify-end pt-4">
                 <button type="submit"
-                        class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
+                        class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
                                transition-colors duration-200 flex items-center space-x-2"
                         wire:loading.attr="disabled">
                     <x-icon name="save" class="w-4 h-4" />
@@ -252,7 +252,7 @@
                         </p>
                     </div>
                     <button wire:click="togglePasswordForm"
-                            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                         {{ $showPasswordForm ? 'Batal' : 'Tukar Kata Laluan' }}
                     </button>
                 </div>
@@ -269,7 +269,7 @@
                            wire:model="current_password"
                            id="current_password"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Masukkan kata laluan semasa">
                     @error('current_password')
@@ -285,7 +285,7 @@
                            wire:model="new_password"
                            id="new_password"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Masukkan kata laluan baharu">
                     @error('new_password')
@@ -304,7 +304,7 @@
                            wire:model="new_password_confirmation"
                            id="new_password_confirmation"
                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm
-                                  focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+                                  focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300
                                   dark:bg-gray-700 dark:text-white"
                            placeholder="Ulang kata laluan baharu">
                     @error('new_password_confirmation')
@@ -319,7 +319,7 @@
                         Batal
                     </button>
                     <button type="submit"
-                            class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
+                            class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
                                    transition-colors duration-200 flex items-center space-x-2"
                             wire:loading.attr="disabled">
                         <x-icon name="lock-closed" class="w-4 h-4" />
@@ -360,7 +360,7 @@
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" wire:model="email_notifications" class="sr-only peer">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-fr-primary dark:peer-focus:ring-fr-primary rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-bg-primary-600"></div>
                     </label>
                 </div>
 
@@ -372,7 +372,7 @@
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" wire:model="sms_notifications" class="sr-only peer">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-fr-primary dark:peer-focus:ring-fr-primary rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-bg-primary-600"></div>
                     </label>
                 </div>
 
@@ -384,7 +384,7 @@
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" wire:model="loan_reminders" class="sr-only peer">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-fr-primary dark:peer-focus:ring-fr-primary rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-bg-primary-600"></div>
                     </label>
                 </div>
 
@@ -396,7 +396,7 @@
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" wire:model="approval_notifications" class="sr-only peer">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-fr-primary dark:peer-focus:ring-fr-primary rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-bg-primary-600"></div>
                     </label>
                 </div>
 
@@ -408,7 +408,7 @@
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" wire:model="system_announcements" class="sr-only peer">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-fr-primary dark:peer-focus:ring-fr-primary rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-bg-primary-600"></div>
                     </label>
                 </div>
 
@@ -420,7 +420,7 @@
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" wire:model="weekly_digest" class="sr-only peer">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-fr-primary dark:peer-focus:ring-fr-primary rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-bg-primary-600"></div>
                     </label>
                 </div>
             </div>
@@ -428,7 +428,7 @@
             <!-- Submit Button -->
             <div class="flex justify-end pt-6 border-t border-gray-200 dark:border-gray-700 mt-6">
                 <button type="submit"
-                        class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
+                        class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-6 py-2 rounded-md text-sm font-medium
                                transition-colors duration-200 flex items-center space-x-2"
                         wire:loading.attr="disabled">
                     <x-icon name="bell" class="w-4 h-4" />
@@ -458,8 +458,8 @@
                                 <x-icon name="{{ $activity['icon'] }}" class="w-4 h-4 {{ $activity['color'] }}" />
                             </div>
                         </div>
-                        <div class="flex-1 min-w-0">
-                            <h4 class="text-sm font-medium text-gray-900 dark:text-white">{{ $activity['title'] }}</h4>
+                                <button type="button" wire:click="removeAvatar"
+                                        class="bg-bg-danger-600 hover:bg-bg-danger-700 text-txt-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                             <p class="text-sm text-gray-500 dark:text-gray-400">{{ $activity['description'] }}</p>
                             <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">{{ $activity['date'] }}</p>
                         </div>
@@ -469,7 +469,7 @@
 
                 <div class="mt-6 text-center">
                     <a href="{{ route('loan-applications.index') }}"
-                       class="text-primary-600 hover:text-primary-700 dark:text-primary-400 text-sm font-medium">
+                       class="text-txt-primary hover:text-txt-primary dark:text-txt-primary text-sm font-medium">
                         Lihat Semua Permohonan →
                     </a>
                 </div>
@@ -479,7 +479,7 @@
                     <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Tiada Aktiviti Lagi</h4>
                     <p class="text-gray-500 dark:text-gray-400 mb-4">Anda belum mempunyai sebarang aktiviti atau permohonan.</p>
                     <a href="{{ route('loan-applications.create') }}"
-                       class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                       class="bg-bg-primary-600 hover:bg-bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                         Buat Permohonan Baharu
                     </a>
                 </div>
@@ -488,3 +488,11 @@
     </div>
     @endif
 </div>
+
+
+
+
+
+
+
+

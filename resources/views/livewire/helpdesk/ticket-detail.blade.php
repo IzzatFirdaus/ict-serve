@@ -34,7 +34,7 @@
                 <span class="text-sm text-gray-500">{{ $statusProgress['current'] }} of {{ $statusProgress['total'] }} steps</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
-                <div class="bg-primary-600 h-2 rounded-full transition-all duration-300" style="width: {{ $statusProgress['percentage'] }}%"></div>
+                 <div class="bg-bg-primary-600 h-2 rounded-full transition-all duration-300" x-bind:style="`width: {{ $statusProgress['percentage'] }}%`"></div>
             </div>
             <div class="flex justify-between mt-2 text-xs text-gray-500">
                 <span>Open</span>
@@ -58,14 +58,14 @@
                     @else
                         <p class="text-gray-700 whitespace-pre-wrap">{{ substr($ticket->description, 0, 300) }}...</p>
                         <button wire:click="toggleDescription"
-                                class="mt-2 text-primary-600 hover:text-primary-800 text-sm font-medium">
+                                class="mt-2 text-txt-primary hover:text-txt-primary text-sm font-medium">
                             Show More
                         </button>
                     @endif
 
                     @if($showFullDescription && strlen($ticket->description) > 300)
                         <button wire:click="toggleDescription"
-                                class="mt-2 text-primary-600 hover:text-primary-800 text-sm font-medium">
+                                class="mt-2 text-txt-primary hover:text-txt-primary text-sm font-medium">
                             Show Less
                         </button>
                     @endif
@@ -244,7 +244,7 @@
                     </a>
 
                     <a href="{{ route('helpdesk.create-ticket') }}"
-                       class="w-full inline-flex items-center justify-center px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
+                       class="w-full inline-flex items-center justify-center px-4 py-2 bg-bg-primary-600 text-txt-white rounded-lg text-sm font-medium hover:bg-bg-primary-700 transition-colors">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                         </svg>

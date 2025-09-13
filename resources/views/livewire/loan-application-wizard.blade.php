@@ -2,7 +2,7 @@
 @section('title', 'Borang Permohonan Peminjaman Peralatan ICT - Wizard')
 
 <!-- Content Banner -->
-<div class="bg-primary-50 border-b border-otl-divider">
+<div class="bg-bg-primary-50 border-b border-otl-divider">
     <div class="myds-container py-8">
         <div class="myds-grid-12">
             <div class="col-span-full">
@@ -36,8 +36,8 @@
                             <span>{{ round(($currentStep / $totalSteps) * 100) }}% selesai</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2">
-                            <div class="bg-primary-600 h-2 rounded-full transition-all duration-300"
-                                 style="width: {{ ($currentStep / $totalSteps) * 100 }}%"></div>
+                            <div class="bg-bg-primary-600 h-2 rounded-full transition-all duration-300"
+                                 x-bind:style="'width: ' + {{ ($currentStep / $totalSteps) * 100 }} + '%'"></div>
                         </div>
                     </div>
 
@@ -47,7 +47,7 @@
                             <button type="button"
                                     wire:click="goToStep({{ $i }})"
                                     class="p-2 rounded-[var(--radius-s)] text-center transition-colors
-                                           {{ $i == $currentStep ? 'bg-primary-600 text-white' :
+                                           {{ $i == $currentStep ? 'bg-bg-primary-600 text-white' :
                                               ($i < $currentStep ? 'bg-success-100 text-success-700' : 'bg-gray-100 text-txt-black-500') }}
                                            {{ $i <= $currentStep ? 'cursor-pointer hover:opacity-80' : 'cursor-not-allowed opacity-50' }}"
                                     {{ $i > $currentStep ? 'disabled' : '' }}>
@@ -344,7 +344,7 @@
                     </h2>
 
                     <div class="space-y-6">
-                        <div class="p-4 bg-primary-50 border border-otl-primary-200 rounded-[var(--radius-m)]">
+                        <div class="p-4 bg-bg-primary-50 border border-otl-primary-200 rounded-[var(--radius-m)]">
                             <p class="text-sm text-txt-primary">
                                 <x-icon name="info-circle" class="w-4 h-4 inline mr-2" />
                                 Permohonan ini mesti disokong oleh pegawai Gred 41 ke atas.
@@ -379,14 +379,14 @@
                                         <input type="radio"
                                                wire:model="endorsement_status"
                                                value="supported"
-                                               class="mr-2 text-primary-600 focus:ring-primary-500">
+                                               class="mr-2 text-txt-primary focus:ring-fr-primary">
                                         <span class="text-txt-success">DISOKONG</span>
                                     </label>
                                     <label class="flex items-center">
                                         <input type="radio"
                                                wire:model="endorsement_status"
                                                value="not_supported"
-                                               class="mr-2 text-primary-600 focus:ring-primary-500">
+                                               class="mr-2 text-txt-primary focus:ring-fr-primary">
                                         <span class="text-txt-danger">TIDAK DISOKONG</span>
                                     </label>
                                 </div>
@@ -497,7 +497,7 @@
             </div>
 
             <!-- Save Progress Notice -->
-            <div class="mt-6 p-4 bg-primary-50 border border-otl-primary-200 rounded-[var(--radius-m)]">
+            <div class="mt-6 p-4 bg-bg-primary-50 border border-otl-primary-200 rounded-[var(--radius-m)]">
                 <p class="text-sm text-txt-primary">
                     <x-icon name="save" class="w-4 h-4 inline mr-2" />
                     Kemajuan anda akan disimpan secara automatik apabila anda bergerak ke langkah seterusnya.

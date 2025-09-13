@@ -7,6 +7,23 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+        :root {
+            /* MYDS Colors for PDF */
+            --color-primary-600: var(--color-primary-600);
+            --color-gray-900: #18181B;
+            --color-gray-800: #27272A;
+            --color-gray-700: #3F3F46;
+            --color-gray-600: #52525B;
+            --color-gray-500: #71717A;
+            --color-gray-400: #A1A1AA;
+            --color-gray-300: #D4D4D8;
+            --color-gray-200: #E4E4E7;
+            --color-gray-100: #F4F4F5;
+            --color-gray-50: #FAFAFA;
+            --color-black: var(--color-black)000;
+            --color-white: #FFFFFF;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,14 +34,14 @@
             font-family: 'Inter', Arial, sans-serif;
             font-size: 12px;
             line-height: 1.4;
-            color: #1f2937;
-            background: white;
+            color: var(--color-gray-800);
+            background: var(--color-white);
         }
 
         .header {
             text-align: center;
             margin-bottom: 30px;
-            border-bottom: 2px solid #2563eb;
+            border-bottom: 2px solid var(--color-primary-600);
             padding-bottom: 20px;
         }
 
@@ -35,28 +52,28 @@
         .ministry-name {
             font-size: 16px;
             font-weight: 700;
-            color: #1f2937;
+            color: var(--color-gray-800);
             margin-bottom: 5px;
         }
 
         .department-name {
             font-size: 14px;
             font-weight: 600;
-            color: #4b5563;
+            color: var(--color-gray-600);
             margin-bottom: 10px;
         }
 
         .form-title {
             font-size: 18px;
             font-weight: 700;
-            color: #2563eb;
+            color: var(--color-primary-600);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .form-subtitle {
             font-size: 14px;
-            color: #6b7280;
+            color: var(--color-gray-500);
             margin-top: 5px;
         }
 
@@ -64,7 +81,7 @@
             text-align: right;
             margin-bottom: 20px;
             font-size: 11px;
-            color: #6b7280;
+            color: var(--color-gray-500);
         }
 
         .section {
@@ -75,10 +92,10 @@
         .section-title {
             font-size: 14px;
             font-weight: 600;
-            color: #1f2937;
-            background-color: #f3f4f6;
+            color: var(--color-gray-800);
+            background-color: var(--color-gray-100);
             padding: 8px 12px;
-            border-left: 4px solid #2563eb;
+            border-left: 4px solid var(--color-primary-600);
             margin-bottom: 15px;
         }
 
@@ -90,7 +107,7 @@
 
         .form-label {
             font-weight: 500;
-            color: #374151;
+            color: var(--color-gray-700);
             width: 150px;
             flex-shrink: 0;
             padding-right: 10px;
@@ -98,14 +115,14 @@
 
         .form-value {
             flex: 1;
-            color: #1f2937;
-            border-bottom: 1px dotted #d1d5db;
+            color: var(--color-gray-800);
+            border-bottom: 1px dotted var(--color-gray-300);
             padding-bottom: 2px;
             min-height: 16px;
         }
 
         .form-value.empty {
-            color: #9ca3af;
+            color: var(--color-gray-400);
             font-style: italic;
         }
 
@@ -118,19 +135,19 @@
 
         .equipment-table th,
         .equipment-table td {
-            border: 1px solid #d1d5db;
+            border: 1px solid var(--color-gray-300);
             padding: 8px;
             text-align: left;
         }
 
         .equipment-table th {
-            background-color: #f9fafb;
+            background-color: var(--color-gray-50);
             font-weight: 600;
-            color: #374151;
+            color: var(--color-gray-700);
         }
 
         .equipment-table tbody tr:nth-child(even) {
-            background-color: #f9fafb;
+            background-color: var(--color-gray-50);
         }
 
         .signature-section {
@@ -150,7 +167,7 @@
         }
 
         .signature-line {
-            border-bottom: 1px solid #000;
+            border-bottom: 1px solid var(--color-black);
             height: 60px;
             margin-bottom: 5px;
             position: relative;
@@ -164,30 +181,30 @@
 
         .signature-date {
             font-size: 10px;
-            color: #6b7280;
+            color: var(--color-gray-500);
             margin-top: 3px;
         }
 
         .footer {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--color-gray-200);
             font-size: 10px;
-            color: #6b7280;
+            color: var(--color-gray-500);
             text-align: center;
         }
 
         .checkbox {
             width: 12px;
             height: 12px;
-            border: 1px solid #d1d5db;
+            border: 1px solid var(--color-gray-300);
             display: inline-block;
             margin-right: 5px;
             vertical-align: middle;
         }
 
         .checkbox.checked {
-            background-color: #2563eb;
+            background-color: var(--color-primary-600);
             position: relative;
         }
 
@@ -204,6 +221,16 @@
         .text-right { text-align: right; }
         .text-bold { font-weight: 600; }
         .text-small { font-size: 10px; }
+
+    /* Replacements for previous inline styles */
+    .w-5p { width: 5%; }
+    .w-10p { width: 10%; }
+    .w-15p { width: 15%; }
+    .w-25p { width: 25%; }
+    .w-30p { width: 30%; }
+    .mb-10px { margin-bottom: 10px; }
+    .sig-img { max-height: 50px; margin-top: 5px; }
+    .footer-generated-by { margin-top: 10px; font-size: 9px; }
 
         @media print {
             body { -webkit-print-color-adjust: exact; }
@@ -282,12 +309,12 @@
             <table class="equipment-table">
                 <thead>
                     <tr>
-                        <th style="width: 5%">Bil.</th>
-                        <th style="width: 30%">Nama Peralatan</th>
-                        <th style="width: 15%">Jenama/Model</th>
-                        <th style="width: 10%">Kuantiti</th>
-                        <th style="width: 15%">Tempoh Pinjaman</th>
-                        <th style="width: 25%">Tujuan Penggunaan</th>
+                        <th class="w-5p">Bil.</th>
+                        <th class="w-30p">Nama Peralatan</th>
+                        <th class="w-15p">Jenama/Model</th>
+                        <th class="w-10p">Kuantiti</th>
+                        <th class="w-15p">Tempoh Pinjaman</th>
+                        <th class="w-25p">Tujuan Penggunaan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -351,17 +378,17 @@
     <div class="section">
         <div class="section-title">BAHAGIAN D: TERMA DAN SYARAT</div>
 
-        <div style="margin-bottom: 10px;">
+        <div class="mb-10px">
             <span class="checkbox {{ $loanRequest->terms_accepted ? 'checked' : '' }}"></span>
             Saya bersetuju untuk mematuhi semua terma dan syarat yang ditetapkan oleh BPM
         </div>
 
-        <div style="margin-bottom: 10px;">
+        <div class="mb-10px">
             <span class="checkbox {{ $loanRequest->responsibility_accepted ? 'checked' : '' }}"></span>
             Saya bertanggungjawab sepenuhnya terhadap peralatan yang dipinjam
         </div>
 
-        <div style="margin-bottom: 10px;">
+        <div class="mb-10px">
             <span class="checkbox {{ $loanRequest->return_commitment ? 'checked' : '' }}"></span>
             Saya berjanji untuk memulangkan peralatan dalam keadaan baik pada tarikh yang ditetapkan
         </div>
@@ -375,7 +402,7 @@
             <div class="signature-block">
                 <div class="signature-line">
                     @if($loanRequest->applicant_signature)
-                        <img src="{{ $loanRequest->applicant_signature }}" style="max-height: 50px; margin-top: 5px;" alt="Tandatangan Pemohon">
+                        <img src="{{ $loanRequest->applicant_signature }}" class="sig-img" alt="Tandatangan Pemohon">
                     @endif
                 </div>
                 <div class="signature-label">TANDATANGAN PEMOHON</div>
@@ -388,7 +415,7 @@
             <div class="signature-block">
                 <div class="signature-line">
                     @if($loanRequest->receiving_bpm_officer_signature)
-                        <img src="{{ $loanRequest->receiving_bpm_officer_signature }}" style="max-height: 50px; margin-top: 5px;" alt="Tandatangan Pegawai BPM">
+                        <img src="{{ $loanRequest->receiving_bpm_officer_signature }}" class="sig-img" alt="Tandatangan Pegawai BPM">
                     @endif
                 </div>
                 <div class="signature-label">PEGAWAI PENERIMA BPM</div>
@@ -406,10 +433,21 @@
         <p>Untuk sebarang pertanyaan, sila hubungi Bahagian Pengurusan Maklumat (BPM)</p>
 
         @if($generatedBy)
-            <p style="margin-top: 10px; font-size: 9px;">
+            <p class="footer-generated-by">
                 Dijana oleh: {{ $generatedBy->name }} | {{ $generatedBy->email }}
             </p>
         @endif
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

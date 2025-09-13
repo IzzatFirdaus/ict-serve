@@ -2,18 +2,18 @@
      @if($autoRefresh) wire:poll.10s="refreshRequests" @endif>
 
     <!-- Header Section -->
-    <div class="bg-primary-600 text-white py-8">
+    <div class="bg-bg-primary-600 text-white py-8">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-3xl font-bold mb-2">My Requests</h1>
-                    <p class="text-primary-100">Track your equipment loan requests and support tickets</p>
+                    <p class="text-bg-primary-100">Track your equipment loan requests and support tickets</p>
                 </div>
 
                 <!-- Auto-refresh Toggle -->
                 <div class="flex items-center space-x-4">
                     @if($autoRefresh)
-                        <div class="flex items-center space-x-2 text-primary-100">
+                        <div class="flex items-center space-x-2 text-bg-primary-100">
                             <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
                             <span class="text-sm">Auto-refreshing</span>
                         </div>
@@ -65,13 +65,13 @@
                 <button wire:click="setActiveTab('loans')"
                         class="pb-2 text-sm font-medium border-b-2 transition-colors
                                @if($activeTab === 'loans')
-                                   border-primary-500 text-primary-600
+                                   border-otl-primary-300 text-txt-primary
                                @else
                                    border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300
                                @endif">
                     Equipment Loans
                     <span class="ml-1 px-2 py-0.5 text-xs rounded-full
-                                @if($activeTab === 'loans') bg-primary-100 text-primary-700
+                                @if($activeTab === 'loans') bg-bg-primary-100 text-txt-primary
                                 @else bg-gray-100 text-gray-600 @endif">
                         {{ $loanRequests->total() }}
                     </span>
@@ -80,13 +80,13 @@
                 <button wire:click="setActiveTab('tickets')"
                         class="pb-2 text-sm font-medium border-b-2 transition-colors
                                @if($activeTab === 'tickets')
-                                   border-primary-500 text-primary-600
+                                   border-otl-primary-300 text-txt-primary
                                @else
                                    border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300
                                @endif">
                     Support Tickets
                     <span class="ml-1 px-2 py-0.5 text-xs rounded-full
-                                @if($activeTab === 'tickets') bg-primary-100 text-primary-700
+                                @if($activeTab === 'tickets') bg-bg-primary-100 text-txt-primary
                                 @else bg-gray-100 text-gray-600 @endif">
                         {{ $tickets->total() }}
                     </span>
@@ -172,14 +172,14 @@
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
                                     <div class="flex items-center space-x-3 mb-2">
-                                        <h3 class="text-lg font-semibold text-primary-600">
+                                        <h3 class="text-lg font-semibold text-txt-primary">
                                             {{ $request->request_number }}
                                         </h3>
 
                                         @php
                                             $statusConfig = match($request->loanStatus->code ?? 'pending') {
                                                 'pending_supervisor' => ['bg' => 'bg-warning-100', 'text' => 'text-warning-800', 'pulse' => true],
-                                                'approved_supervisor' => ['bg' => 'bg-primary-100', 'text' => 'text-primary-800', 'pulse' => false],
+                                                'approved_supervisor' => ['bg' => 'bg-bg-primary-100', 'text' => 'text-txt-primary', 'pulse' => false],
                                                 'pending_ict' => ['bg' => 'bg-warning-100', 'text' => 'text-warning-800', 'pulse' => true],
                                                 'approved_ict' => ['bg' => 'bg-success-100', 'text' => 'text-success-800', 'pulse' => false],
                                                 'ready_pickup' => ['bg' => 'bg-success-100', 'text' => 'text-success-800', 'pulse' => true],
@@ -276,7 +276,7 @@
                                         @php
                                             $ticketStatusConfig = match($ticket->status) {
                                                 'pending' => ['bg' => 'bg-warning-100', 'text' => 'text-warning-800'],
-                                                'in_progress' => ['bg' => 'bg-primary-100', 'text' => 'text-primary-800'],
+                                                'in_progress' => ['bg' => 'bg-bg-primary-100', 'text' => 'text-txt-primary'],
                                                 'resolved' => ['bg' => 'bg-success-100', 'text' => 'text-success-800'],
                                                 'closed' => ['bg' => 'bg-gray-100', 'text' => 'text-gray-800'],
                                                 default => ['bg' => 'bg-gray-100', 'text' => 'text-gray-800']
@@ -450,14 +450,13 @@
              x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="opacity-100 transform translate-y-0 scale-100"
              x-transition:leave-end="opacity-0 transform translate-y-2 scale-95"
-             class="fixed bottom-4 right-4 z-50"
-             style="display: none;">
+             class="fixed bottom-4 right-4 z-50">
             <div :class="{
-                'bg-success-600': type === 'success',
-                'bg-primary-600': type === 'info',
-                'bg-danger-600': type === 'error'
+                 'bg-bg-success-600': type === 'success',
+                'bg-bg-primary-600': type === 'info',
+                 'bg-bg-danger-600': type === 'error'
             }"
-            class="text-white px-4 py-3 rounded-lg shadow-lg max-w-sm">
+              class="text-txt-white px-4 py-3 rounded-lg shadow-lg max-w-sm">
                 <p class="text-sm font-medium" x-text="message"></p>
             </div>
         </div>

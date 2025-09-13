@@ -80,18 +80,18 @@
         @endif
 
         <!-- Canvas Container -->
-        <div class="relative border-2 border-gray-300 border-dashed rounded-lg bg-white"
-             style="height: {{ $height }};">
+        <div class="relative border-2 border-otl-gray-300 border-dashed rounded-lg bg-bg-white"
+             x-bind:style="{ height: '{{ $height }}' }">
             <canvas
                 x-ref="canvas"
                 class="w-full h-full cursor-crosshair touch-none"
-                style="width: {{ $width }}; height: {{ $height }};">
+                x-bind:style="{ width: '{{ $width }}', height: '{{ $height }}' }">
             </canvas>
 
             <!-- Empty State Message -->
             <div x-show="isEmpty"
                  class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div class="text-center text-gray-400">
+                <div class="text-center text-txt-black-500">
                     <svg class="mx-auto h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -128,8 +128,8 @@
                     Signed
                 </span>
 
-                <span x-show="isEmpty"
-                      class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+            <span x-show="isEmpty"
+                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-black-100 text-txt-black-700">
                     <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                               d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -164,10 +164,10 @@
                  x-transition:leave-end="opacity-0 transform translate-y-2"
                  :class="{
                      'bg-success-50 border-success-200 text-success-700': type === 'success',
-                     'bg-primary-50 border-primary-200 text-primary-700': type === 'info'
+                     'bg-primary-50 border-otl-primary-300 text-txt-primary': type === 'info'
                  }"
                  class="mt-2 border rounded-md p-2 text-sm font-medium"
-                 style="display: none;">
+                 x-cloak>
                 <span x-text="message"></span>
             </div>
         </div>

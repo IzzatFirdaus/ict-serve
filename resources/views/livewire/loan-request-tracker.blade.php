@@ -79,8 +79,7 @@
              x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="opacity-100 transform translate-y-0"
              x-transition:leave-end="opacity-0 transform translate-y-2"
-             class="fixed bottom-4 right-4 bg-primary-600 text-white px-4 py-2 rounded-lg shadow-lg z-50"
-             style="display: none;">
+             class="fixed bottom-4 right-4 bg-bg-primary-600 text-white px-4 py-2 rounded-lg shadow-lg z-50">
             <p class="text-sm font-medium" x-text="message"></p>
         </div>
     </div>

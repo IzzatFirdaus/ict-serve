@@ -1,5 +1,5 @@
 <!-- MYDS Header Navigation -->
-<header class="bg-white border-b border-otl-divider shadow-sm">
+<header class="bg-bg-white border-b border-otl-divider shadow-sm">
     <div class="myds-container">
         <div class="flex items-center justify-between h-16">
             <!-- Logo and Navigation -->
@@ -26,23 +26,23 @@
 
                     <!-- ServiceDesk ICT Dropdown -->
                     <div class="relative group">
-                        <button class="text-txt-primary font-semibold px-3 py-2 text-sm transition-colors border-b-2 border-primary-600 flex items-center">
+                        <button class="text-txt-primary font-semibold px-3 py-2 text-sm transition-colors border-b-2 border-otl-primary-200 flex items-center">
                             ServiceDesk ICT
                             <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
                         </button>
-                        <div class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="absolute left-0 mt-2 w-64 bg-bg-white rounded-md shadow-lg border border-otl-divider opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                             <div class="py-2">
-                                <a href="{{ route('public.loan-request') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                <a href="{{ route('public.loan-request') }}" class="block px-4 py-2 text-sm text-txt-black-700 hover:bg-gray-50">
                                     <div class="flex items-center">
-                                        <svg class="w-4 h-4 mr-3 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <svg class="w-4 h-4 mr-3 text-txt-primary" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                                         </svg>
                                         Equipment Loan Request
                                     </div>
                                 </a>
-                                <a href="{{ route('public.damage-complaint.guest') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                <a href="{{ route('public.damage-complaint.guest') }}" class="block px-4 py-2 text-sm text-txt-black-700 hover:bg-gray-50">
                                     <div class="flex items-center">
                                         <svg class="w-4 h-4 mr-3 text-danger-600" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
@@ -50,7 +50,7 @@
                                         Report Damage/Issues
                                     </div>
                                 </a>
-                                <a href="{{ route('public.my-requests') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                <a href="{{ route('public.my-requests') }}" class="block px-4 py-2 text-sm text-txt-black-700 hover:bg-gray-50">
                                     <div class="flex items-center">
                                         <svg class="w-4 h-4 mr-3 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
@@ -59,8 +59,8 @@
                                         My Requests
                                     </div>
                                 </a>
-                                <div class="border-t border-gray-100 my-2"></div>
-                                <a href="/admin" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                <div class="border-t border-otl-divider my-2"></div>
+                                <a href="/admin" class="block px-4 py-2 text-sm text-txt-black-700 hover:bg-gray-50">
                                     <div class="flex items-center">
                                         <svg class="w-4 h-4 mr-3 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
@@ -101,24 +101,24 @@
     </div>
 
     <!-- Mobile Navigation Menu (hidden by default) -->
-    <div class="md:hidden border-t border-otl-divider bg-gray-50" style="display: none;">
+    <div class="md:hidden border-t border-otl-divider bg-gray-50" x-cloak>
         <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="/" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-m)] transition-colors">Utama</a>
-            <a href="/informasi" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-m)] transition-colors">Informasi</a>
-            <a href="/muat-turun" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-m)] transition-colors">Muat Turun</a>
-            <a href="/direktori" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-m)] transition-colors">Direktori</a>
+            <a href="/" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Utama</a>
+            <a href="/informasi" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Informasi</a>
+            <a href="/muat-turun" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Muat Turun</a>
+            <a href="/direktori" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Direktori</a>
 
             <!-- ServiceDesk ICT Section -->
             <div class="bg-primary-50 rounded-[var(--radius-m)] p-2 mt-2">
                 <div class="text-sm font-semibold text-txt-primary px-1 py-1">ServiceDesk ICT</div>
-                <a href="{{ route('public.loan-request') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">Equipment Loan Request</a>
-                <a href="{{ route('public.damage-complaint.guest') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">Report Damage/Issues</a>
-                <a href="{{ route('public.my-requests') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">My Requests</a>
-                <a href="/admin" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-s)] transition-colors">Admin Panel</a>
+                <a href="{{ route('public.loan-request') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-s)] transition-colors">Equipment Loan Request</a>
+                <a href="{{ route('public.damage-complaint.guest') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-s)] transition-colors">Report Damage/Issues</a>
+                <a href="{{ route('public.my-requests') }}" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-s)] transition-colors">My Requests</a>
+                <a href="/admin" class="block px-3 py-2 text-sm text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-s)] transition-colors">Admin Panel</a>
             </div>
 
-            <a href="/webmail" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-m)] transition-colors">Webmail MyGovUC 3.0</a>
-            <a href="/my-integriti" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-white rounded-[var(--radius-m)] transition-colors">MY Integriti</a>
+            <a href="/webmail" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Webmail MyGovUC 3.0</a>
+            <a href="/my-integriti" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">MY Integriti</a>
         </div>
     </div>
 </header>

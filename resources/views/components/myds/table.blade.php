@@ -27,7 +27,7 @@
                 </thead>
             @endif
 
-            <tbody class="bg-white {{ $tbodyClasses }}">
+            <tbody class="bg-bg-white {{ $tbodyClasses }}">
                 @if(count($rows) > 0)
                     @foreach($rows as $rowIndex => $row)
                         <tr class="{{ $striped && $rowIndex % 2 === 1 ? 'bg-gray-50' : '' }} {{ $hover ? 'hover:bg-gray-100 transition-colors' : '' }}">

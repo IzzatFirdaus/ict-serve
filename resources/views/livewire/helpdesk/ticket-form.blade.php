@@ -25,7 +25,7 @@
                 Category <span class="text-danger-500">*</span>
             </label>
             <select wire:model.live="category_id" id="category_id"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600 bg-white">
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
                 <option value="">Select a category</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -42,7 +42,7 @@
                 Issue Title <span class="text-danger-500">*</span>
             </label>
             <input type="text" wire:model="title" id="title"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
                    placeholder="Brief description of the issue">
             @error('title')
                 <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
@@ -55,7 +55,7 @@
                 Detailed Description <span class="text-danger-500">*</span>
             </label>
             <textarea wire:model="description" id="description" rows="4"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
                       placeholder="Please provide detailed information about the issue"></textarea>
             @error('description')
                 <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
@@ -70,7 +70,7 @@
                     Priority <span class="text-danger-500">*</span>
                 </label>
                 <select wire:model.live="priority" id="priority"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600 bg-white">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
                     <option value="">Select priority</option>
                     @foreach(\App\Enums\TicketPriority::cases() as $priorityOption)
                         <option value="{{ $priorityOption->value }}">
@@ -94,7 +94,7 @@
                     Urgency <span class="text-danger-500">*</span>
                 </label>
                 <select wire:model.live="urgency" id="urgency"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600 bg-white">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
                     <option value="">Select urgency</option>
                     @foreach(\App\Enums\TicketUrgency::cases() as $urgencyOption)
                         <option value="{{ $urgencyOption->value }}">
@@ -120,7 +120,7 @@
                     Related Equipment (Optional)
                 </label>
                 <select wire:model="equipment_item_id" id="equipment_item_id"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600 bg-white">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
                     <option value="">No specific equipment</option>
                     @foreach($equipmentItems as $equipment)
                         <option value="{{ $equipment->id }}">
@@ -140,7 +140,7 @@
                 Location <span class="text-danger-500">*</span>
             </label>
             <input type="text" wire:model="location" id="location"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
                    placeholder="Building, floor, room number">
             @error('location')
                 <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
@@ -153,7 +153,7 @@
                 Contact Phone <span class="text-danger-500">*</span>
             </label>
             <input type="tel" wire:model="contact_phone" id="contact_phone"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-primary-600"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
                    placeholder="Your contact phone number">
             @error('contact_phone')
                 <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
@@ -165,7 +165,7 @@
             <label for="attachments" class="block text-sm font-medium text-gray-700 mb-2">
                 Attachments (Optional)
             </label>
-            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors">
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-otl-primary-300 transition-colors">
                 <input type="file" wire:model="attachments" id="attachments" multiple
                        accept="image/*,.pdf,.doc,.docx,.txt"
                        class="hidden">
@@ -217,7 +217,7 @@
                 Cancel
             </button>
             <button type="submit"
-                    class="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    class="px-6 py-2 bg-bg-primary-600 text-white rounded-lg hover:bg-bg-primary-700 focus:ring-2 focus:ring-fr-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     wire:loading.attr="disabled">
                 <span wire:loading.remove>Submit Ticket</span>
                 <span wire:loading class="flex items-center">
@@ -236,7 +236,7 @@
          class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
             <div class="flex items-center space-x-3">
-                <svg class="animate-spin h-5 w-5 text-primary-600" fill="none" viewBox="0 0 24 24">
+                <svg class="animate-spin h-5 w-5 text-txt-primary" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>

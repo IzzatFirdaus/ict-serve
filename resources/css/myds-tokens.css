@@ -303,7 +303,7 @@
 }
 
 .myds-button-primary {
-  @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-fr-primary;
+  @apply bg-bg-primary-600 text-txt-white hover:bg-bg-primary-700 focus:ring-fr-primary;
 }
 
 .myds-button-secondary {
@@ -311,16 +311,16 @@
 }
 
 .myds-button-danger {
-  @apply bg-danger-600 text-white hover:bg-danger-700 focus:ring-fr-danger;
+  @apply bg-bg-danger-600 text-txt-white hover:bg-bg-danger-700 focus:ring-fr-danger;
 }
 
 .myds-button-success {
-  @apply bg-success-600 text-white hover:bg-success-700 focus:ring-fr-success;
+  @apply bg-bg-success-600 text-txt-white hover:bg-bg-success-700 focus:ring-fr-success;
 }
 
 /* Form Input Classes */
 .myds-input {
-  @apply block w-full px-3 py-2 border border-otl-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:border-primary-600 transition-colors;
+  @apply block w-full px-3 py-2 border border-otl-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:border-bg-primary-600 transition-colors;
   font-family: var(--myds-font-body);
   border-radius: var(--radius-m);
 }

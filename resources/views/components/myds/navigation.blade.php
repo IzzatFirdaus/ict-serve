@@ -29,7 +29,7 @@
                        (isset($item['url']) && request()->url() === $item['url']);
 
             $itemClasses = $isActive
-                ? 'bg-primary-100 text-txt-primary border-primary-300'
+                ? 'bg-primary-100 text-txt-primary border-otl-primary-200'
                 : 'text-txt-black-700 hover:text-txt-black-900 hover:bg-gray-50 border-transparent';
         @endphp
 
@@ -60,8 +60,8 @@
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="absolute top-full left-0 mt-1 min-w-48 bg-white border border-otl-divider rounded-md shadow-lg z-50"
-                    style="display: none;"
+                    class="absolute top-full left-0 mt-1 min-w-48 bg-bg-white border border-otl-divider rounded-md shadow-lg z-50"
+                    x-cloak
                 >
                     @foreach($item['children'] as $child)
                         <a

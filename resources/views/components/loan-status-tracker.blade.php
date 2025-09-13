@@ -6,14 +6,14 @@
     'pollInterval' => '5s'
 ])
 
-<div class="loan-status-tracker bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+<div class="loan-status-tracker bg-bg-white rounded-lg shadow-sm border border-otl-gray-200 p-6"
      @if($polling) wire:poll.{{ $pollInterval }}="refreshStatus" @endif>
 
     <!-- Status Header -->
     <div class="flex items-center justify-between mb-6">
         <div>
-            <h3 class="text-lg font-semibold text-gray-900">Request Status</h3>
-            <p class="text-sm text-gray-500">{{ $loanRequest->request_number }}</p>
+            <h3 class="text-lg font-semibold text-txt-black-900">Request Status</h3>
+            <p class="text-sm text-txt-black-500">{{ $loanRequest->request_number }}</p>
         </div>
 
         <div class="flex items-center space-x-3">
@@ -28,7 +28,7 @@
                     ],
                     'approved_supervisor' => [
                         'bg' => 'bg-primary-100',
-                        'text' => 'text-primary-800',
+                        'text' => 'text-txt-primary',
                         'icon' => 'check-circle',
                         'pulse' => false
                     ],
@@ -46,7 +46,7 @@
                     ],
                     'equipment_assigned' => [
                         'bg' => 'bg-primary-100',
-                        'text' => 'text-primary-800',
+                        'text' => 'text-txt-primary',
                         'icon' => 'clipboard-list',
                         'pulse' => false
                     ],
@@ -139,10 +139,10 @@
                             $circleClass = 'bg-success-500 border-success-500 text-white';
                             $inner = "@include('components.icon', ['name' => 'check', 'class' => 'w-4 h-4'])";
                         } elseif ($index === $currentStep) {
-                            $circleClass = 'bg-primary-500 border-primary-500 text-white animate-pulse';
+                            $circleClass = 'bg-primary-500 border-otl-primary-300 text-white animate-pulse';
                             $inner = '<span class="w-3 h-3 bg-white rounded-full animate-pulse"></span>';
                         } else {
-                            $circleClass = 'bg-gray-200 border-gray-300 text-gray-500';
+                            $circleClass = 'bg-black-200 border-otl-gray-300 text-txt-black-500';
                             $inner = "<span class=\"text-xs font-semibold\">".($index + 1)."</span>";
                         }
                     @endphp
@@ -154,8 +154,8 @@
                     <!-- Step Label -->
                     <span class="ml-2 text-sm font-medium
                                 @if($step['completed']) text-success-600
-                                @elseif($index === $currentStep) text-primary-600
-                                @else text-gray-500 @endif">
+                                @elseif($index === $currentStep) text-txt-primary
+                                @else text-txt-black-500 @endif">
                         {{ $step['label'] }}
                     </span>
 
@@ -174,7 +174,7 @@
     @if($showTimeline)
     <!-- Timeline -->
     <div class="space-y-4">
-        <h4 class="text-sm font-semibold text-gray-900 uppercase tracking-wide">Activity Timeline</h4>
+    <h4 class="text-sm font-semibold text-txt-black-900 uppercase tracking-wide">Activity Timeline</h4>
 
         <div class="flow-root">
             <ul class="-mb-8">
@@ -182,15 +182,15 @@
                 <li class="relative pb-8">
                     <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></div>
                     <div class="relative flex space-x-3">
-                        <div class="h-8 w-8 rounded-full bg-success-500 flex items-center justify-center ring-8 ring-white">
+                        <div class="h-8 w-8 rounded-full bg-success-500 flex items-center justify-center ring-8 ring-bg-white">
                             @include('components.icon', ['name' => 'plus', 'class' => 'w-4 h-4 text-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
-                                <p class="text-sm text-gray-900">Request submitted by <span class="font-medium">{{ $loanRequest->user->name }}</span></p>
-                                <p class="text-xs text-gray-500">{{ $loanRequest->purpose }}</p>
+                                <p class="text-sm text-txt-black-900">Request submitted by <span class="font-medium">{{ $loanRequest->user->name }}</span></p>
+                                <p class="text-xs text-txt-black-500">{{ $loanRequest->purpose }}</p>
                             </div>
-                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                            <div class="text-right text-sm whitespace-nowrap text-txt-black-500">
                                 {{ $loanRequest->created_at->format('M j, Y') }}
                                 <br>
                                 <span class="text-xs">{{ $loanRequest->created_at->format('g:i A') }}</span>
@@ -204,17 +204,17 @@
                 <li class="relative pb-8">
                     <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></div>
                     <div class="relative flex space-x-3">
-                        <div class="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-white">
+                        <div class="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-bg-white">
                             @include('components.icon', ['name' => 'check', 'class' => 'w-4 h-4 text-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
-                                <p class="text-sm text-gray-900">Approved by supervisor <span class="font-medium">{{ $loanRequest->supervisor->name ?? 'N/A' }}</span></p>
+                                <p class="text-sm text-txt-black-900">Approved by supervisor <span class="font-medium">{{ $loanRequest->supervisor->name ?? 'N/A' }}</span></p>
                                 @if($loanRequest->supervisor_notes)
-                                    <p class="text-xs text-gray-500">{{ $loanRequest->supervisor_notes }}</p>
+                                    <p class="text-xs text-txt-black-500">{{ $loanRequest->supervisor_notes }}</p>
                                 @endif
                             </div>
-                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                            <div class="text-right text-sm whitespace-nowrap text-txt-black-500">
                                 {{ $loanRequest->supervisor_approved_at->format('M j, Y') }}
                                 <br>
                                 <span class="text-xs">{{ $loanRequest->supervisor_approved_at->format('g:i A') }}</span>
@@ -229,17 +229,17 @@
                 <li class="relative pb-8">
                     <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></div>
                     <div class="relative flex space-x-3">
-                        <div class="h-8 w-8 rounded-full bg-success-500 flex items-center justify-center ring-8 ring-white">
+                        <div class="h-8 w-8 rounded-full bg-success-500 flex items-center justify-center ring-8 ring-bg-white">
                             @include('components.icon', ['name' => 'check-circle', 'class' => 'w-4 h-4 text-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
-                                <p class="text-sm text-gray-900">Approved by ICT admin <span class="font-medium">{{ $loanRequest->ictAdmin->name ?? 'N/A' }}</span></p>
+                                <p class="text-sm text-txt-black-900">Approved by ICT admin <span class="font-medium">{{ $loanRequest->ictAdmin->name ?? 'N/A' }}</span></p>
                                 @if($loanRequest->ict_notes)
-                                    <p class="text-xs text-gray-500">{{ $loanRequest->ict_notes }}</p>
+                                    <p class="text-xs text-txt-black-500">{{ $loanRequest->ict_notes }}</p>
                                 @endif
                             </div>
-                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                            <div class="text-right text-sm whitespace-nowrap text-txt-black-500">
                                 {{ $loanRequest->ict_approved_at->format('M j, Y') }}
                                 <br>
                                 <span class="text-xs">{{ $loanRequest->ict_approved_at->format('g:i A') }}</span>
@@ -254,7 +254,7 @@
                 <li class="relative pb-8">
                     <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></div>
                     <div class="relative flex space-x-3">
-                        <div class="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-white">
+                        <div class="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-bg-white">
                             @include('components.icon', ['name' => 'cube', 'class' => 'w-4 h-4 text-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
@@ -352,14 +352,14 @@
 
     @if(!empty($nextActions))
     <div class="mt-6 pt-6 border-t border-gray-200">
-        <h4 class="text-sm font-semibold text-gray-900 mb-3">Next Steps</h4>
+    <h4 class="text-sm font-semibold text-txt-black-900 mb-3">Next Steps</h4>
         <div class="space-y-2">
             @foreach($nextActions as $action)
                 @php
                     $actionClasses = match($action['type']) {
                         'success' => 'bg-success-50 border-success-200 text-success-700',
                         'danger' => 'bg-danger-50 border-danger-200 text-danger-700',
-                        'info' => 'bg-primary-50 border-primary-200 text-primary-700',
+                        'info' => 'bg-primary-50 border-otl-primary-300 text-txt-primary',
                         default => 'bg-gray-50 border-gray-200 text-gray-700'
                     };
                 @endphp

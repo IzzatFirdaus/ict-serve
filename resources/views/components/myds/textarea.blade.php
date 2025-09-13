@@ -26,10 +26,10 @@
     $baseClasses = 'block w-full rounded-md border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:ring-offset-2 resize-vertical';
 
     $stateClasses = match(true) {
-        $error => 'border-danger-300 text-txt-danger bg-white focus:border-danger-500',
-        $disabled => 'border-gray-300 bg-gray-100 text-txt-black-disabled cursor-not-allowed',
-        $readonly => 'border-gray-300 bg-gray-50 text-txt-black-700',
-        default => 'border-gray-300 bg-white text-txt-black-900 hover:border-gray-400 focus:border-primary-500'
+        $error => 'border-danger-300 text-txt-danger bg-bg-white',
+    $disabled => 'border-otl-gray-200 bg-gray-100 text-txt-black-500 cursor-not-allowed',
+        $readonly => 'border-otl-gray-200 bg-gray-50 text-txt-black-700',
+        default => 'border-otl-gray-200 bg-bg-white text-txt-black-900 hover:border-otl-gray-200'
     };
 @endphp
 

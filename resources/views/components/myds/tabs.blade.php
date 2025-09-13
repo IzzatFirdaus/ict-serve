@@ -40,17 +40,17 @@
                 @click="activeTab = '{{ $tab['key'] }}'"
                 :class="{
                     @if($variant === 'underline')
-                        'border-b-2 border-primary-600 text-txt-primary': activeTab === '{{ $tab['key'] }}',
-                        'border-b-2 border-transparent text-txt-black-500 hover:text-txt-black-700 hover:border-gray-300': activeTab !== '{{ $tab['key'] }}'
+                        'border-b-2 border-otl-primary-200 text-txt-primary': activeTab === '{{ $tab['key'] }}',
+                        'border-b-2 border-transparent text-txt-black-500 hover:text-txt-black-700 hover:border-otl-gray-200': activeTab !== '{{ $tab['key'] }}'
                     @elseif($variant === 'pills')
-                        'bg-primary-600 text-white': activeTab === '{{ $tab['key'] }}',
+                        'bg-bg-primary-600 text-txt-white': activeTab === '{{ $tab['key'] }}',
                         'text-txt-black-500 hover:text-txt-black-700 hover:bg-gray-100': activeTab !== '{{ $tab['key'] }}'
                     @elseif($variant === 'cards')
-                        'bg-white text-txt-primary shadow-sm': activeTab === '{{ $tab['key'] }}',
+                        'bg-bg-white text-txt-primary shadow-sm': activeTab === '{{ $tab['key'] }}',
                         'text-txt-black-500 hover:text-txt-black-700': activeTab !== '{{ $tab['key'] }}'
                     @else
-                        'border-b-2 border-primary-600 text-txt-primary': activeTab === '{{ $tab['key'] }}',
-                        'border-b-2 border-transparent text-txt-black-500 hover:text-txt-black-700 hover:border-gray-300': activeTab !== '{{ $tab['key'] }}'
+                        'border-b-2 border-otl-primary-200 text-txt-primary': activeTab === '{{ $tab['key'] }}',
+                        'border-b-2 border-transparent text-txt-black-500 hover:text-txt-black-700 hover:border-otl-gray-200': activeTab !== '{{ $tab['key'] }}'
                     @endif
                 }"
                 class="{{ $sizeClasses }} {{ $tabClasses }} font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:ring-offset-2"

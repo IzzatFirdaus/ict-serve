@@ -6,7 +6,7 @@
 
 @php
     $tag = $href && !$disabled ? 'a' : 'button';
-    $classes = 'block w-full text-left px-4 py-2 text-sm text-txt-black-700 hover:bg-gray-100 hover:text-txt-black-900 focus:outline-none focus:bg-gray-100 focus:text-txt-black-900 transition-colors';
+    $classes = 'block w-full text-left px-4 py-2 text-sm text-txt-black-700 hover:bg-bg-gray-50 hover:text-txt-primary focus:outline-none focus:bg-bg-gray-50 focus:text-txt-primary transition-colors duration-150';
 
     if ($disabled) {
         $classes .= ' opacity-50 cursor-not-allowed pointer-events-none';
