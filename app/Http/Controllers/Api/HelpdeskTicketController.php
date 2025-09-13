@@ -18,13 +18,11 @@ class HelpdeskTicketController extends Controller
     public function __construct(
         private NotificationService $notificationService
     ) {
-        $this->middleware('auth:sanctum');
+        // Middleware is handled in routes/api.php
     }
 
     /**
      * Display a listing of tickets.
-    *
-    * @param \Illuminate\Http\Request $request
      */
     public function index(Request $request): JsonResponse
     {
@@ -61,8 +59,6 @@ class HelpdeskTicketController extends Controller
 
     /**
      * Store a newly created ticket.
-    *
-    * @param \App\Http\Requests\StoreHelpdeskTicketRequest $request
      */
     public function store(StoreHelpdeskTicketRequest $request): JsonResponse
     {
@@ -125,7 +121,7 @@ class HelpdeskTicketController extends Controller
     public function show(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
         // Check authorization
-    if (! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true) && $ticket->user->id !== Auth::id()) {
+        if (! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true) && $ticket->user->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -150,7 +146,7 @@ class HelpdeskTicketController extends Controller
     public function update(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
         // Only admins or assigned users can update tickets
-    if (! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true) && $ticket->assignedToUser?->id !== Auth::id()) {
+        if (! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true) && $ticket->assignedToUser?->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -231,7 +227,7 @@ class HelpdeskTicketController extends Controller
     public function destroy(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
         // Check authorization - only ticket creator or admin can delete
-    if ($ticket->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
+        if ($ticket->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan untuk memadam tiket ini.',
@@ -277,8 +273,9 @@ class HelpdeskTicketController extends Controller
     {
         $ids = $request->input('ids', []);
         $updated = HelpdeskTicket::whereIn('id', $ids)
-            ->whereHas('status', fn($q) => $q->where('name', 'new'))
+            ->whereHas('status', fn ($q) => $q->where('name', 'new'))
             ->update(['status_id' => TicketStatus::where('name', 'approved')->first()->id]);
+
         return response()->json(['success' => true, 'updated' => $updated]);
     }
 
@@ -289,8 +286,9 @@ class HelpdeskTicketController extends Controller
     {
         $ids = $request->input('ids', []);
         $updated = HelpdeskTicket::whereIn('id', $ids)
-            ->whereHas('status', fn($q) => $q->where('name', 'new'))
+            ->whereHas('status', fn ($q) => $q->where('name', 'new'))
             ->update(['status_id' => TicketStatus::where('name', 'rejected')->first()->id]);
+
         return response()->json(['success' => true, 'updated' => $updated]);
     }
 }

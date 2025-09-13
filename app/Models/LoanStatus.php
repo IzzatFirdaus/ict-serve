@@ -7,8 +7,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-<<<<<<< HEAD
-=======
 /**
  * @property int $id
  * @property string $code
@@ -23,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 class LoanStatus extends Model
 {
     use HasFactory;
@@ -60,5 +57,21 @@ class LoanStatus extends Model
     public function loanRequests()
     {
         return $this->hasMany(LoanRequest::class, 'status_id');
+    }
+
+    /**
+     * Check if loan requests with this status can be edited.
+     */
+    public function canBeEdited(): bool
+    {
+        return in_array($this->code, ['draft', 'pending', 'supervisor_approved']);
+    }
+
+    /**
+     * Check if loan requests with this status can be cancelled.
+     */
+    public function canBeCancelled(): bool
+    {
+        return in_array($this->code, ['draft', 'pending', 'supervisor_approved']);
     }
 }

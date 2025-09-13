@@ -6,6 +6,28 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $id
+ * @property string $asset_number
+ * @property string|null $serial_number
+ * @property string $category
+ * @property string $brand
+ * @property string $model
+ * @property string|null $description
+ * @property \Carbon\Carbon|null $purchase_date
+ * @property \Carbon\Carbon|null $warranty_expiry
+ * @property float|null $purchase_value
+ * @property string $status
+ * @property string $condition
+ * @property string|null $location
+ * @property int|null $assigned_to
+ * @property \Carbon\Carbon|null $assigned_date
+ * @property string|null $notes
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, DamageComplaint> $damageComplaints
+ * @property-read string $formatted_purchase_value
+ */
 class Asset extends Model
 {
     use HasFactory;
@@ -48,7 +70,7 @@ class Asset extends Model
      */
     public function getFormattedPurchaseValueAttribute(): string
     {
-        return 'RM ' . number_format((float) $this->purchase_value, 2);
+        return 'RM '.number_format((float) $this->purchase_value, 2);
     }
 
     /**

@@ -1,5 +1,4 @@
 @props([
-<<<<<<< HEAD
     'variant' => 'primary',
     'size' => 'default',
     'type' => 'button',
@@ -27,7 +26,6 @@
     };
 
     $classes = $baseClasses . ' ' . $variantClasses . ' ' . $sizeClasses;
-=======
     'variant' => 'primary', // primary, secondary, secondary-colour, tertiary, tertiary-colour, danger-primary, danger-secondary, danger-tertiary
     'size' => 'medium', // small, medium, large
     'type' => 'button', // button, submit, reset
@@ -41,14 +39,14 @@
 
 @php
     $baseClasses = 'myds-button relative inline-flex items-center justify-center font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2';
-    
+
     // Size classes
     $sizeClasses = match($size) {
         'small' => 'px-3 py-1.5 text-sm gap-1.5',
         'large' => 'px-6 py-3 text-lg gap-3',
         default => 'px-4 py-2 text-base gap-2' // medium
     };
-    
+
     // Icon-only sizing
     if ($iconOnly) {
         $sizeClasses = match($size) {
@@ -57,7 +55,7 @@
             default => 'p-2'
         };
     }
-    
+
     // Variant classes based on MYDS specifications
     $variantClasses = match($variant) {
         'primary' => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5',
@@ -70,14 +68,13 @@
         'danger-tertiary' => 'bg-transparent text-red-600 border-0 hover:bg-red-50 focus:ring-red-500 active:translate-y-0.5',
         default => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5'
     };
-    
+
     // Disabled state
     if ($disabled || $loading) {
         $variantClasses = 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed active:translate-y-0';
     }
-    
+
     $classes = trim($baseClasses . ' ' . $sizeClasses . ' ' . $variantClasses);
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 @endphp
 
 <button
@@ -86,7 +83,6 @@
     {{ $attributes->merge(['class' => $classes]) }}
 >
     @if($loading)
-<<<<<<< HEAD
         <svg class="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -94,7 +90,6 @@
     @endif
 
     {{ $slot }}
-=======
         <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-current" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -104,21 +99,20 @@
             {!! $iconLeading !!}
         </span>
     @endif
-    
+
     @unless($iconOnly)
         <span class="myds-button-text">{{ $slot }}</span>
     @endunless
-    
+
     @if($counter)
         <span class="myds-button-counter ml-1 px-1.5 py-0.5 text-xs bg-white/20 rounded-full">
             {{ $counter }}
         </span>
     @endif
-    
+
     @if($iconTrailing && !$loading)
         <span class="myds-button-icon-trailing">
             {!! $iconTrailing !!}
         </span>
     @endif
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 </button>

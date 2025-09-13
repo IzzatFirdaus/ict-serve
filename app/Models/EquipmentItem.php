@@ -8,28 +8,34 @@ use App\Enums\EquipmentCondition;
 use App\Enums\EquipmentStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
  * @property int $category_id
- * @property string|null $asset_tag
+ * @property string $asset_tag
  * @property string|null $serial_number
- * @property string|null $brand
- * @property string|null $model
- * @property array|null $specifications
+ * @property string $brand
+ * @property string $model
+ * @property string|null $specifications
  * @property string|null $description
- * @property string $condition
- * @property string $status
+ * @property EquipmentCondition $condition
+ * @property EquipmentStatus $status
  * @property float|null $purchase_price
- * @property \Illuminate\Support\Carbon|null $purchase_date
- * @property \Illuminate\Support\Carbon|null $warranty_expiry
+ * @property \Carbon\Carbon|null $purchase_date
+ * @property \Carbon\Carbon|null $warranty_expiry
  * @property string|null $location
  * @property string|null $notes
  * @property bool $is_active
- * @property string $name
- * @property-read \App\Models\EquipmentCategory $category
- *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read EquipmentCategory $category
+ * @property-read LoanItem|null $currentLoan
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, LoanItem> $loanItems
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, HelpdeskTicket> $tickets
+ * @property-read string $warranty_status
+ * @property-read string $name
  */
 class EquipmentItem extends Model
 {
@@ -37,7 +43,6 @@ class EquipmentItem extends Model
 
     protected $fillable = [
         'category_id',
-        'name',
         'asset_tag',
         'serial_number',
         'brand',
@@ -54,7 +59,6 @@ class EquipmentItem extends Model
         'is_active',
     ];
 
-<<<<<<< HEAD
     protected function casts(): array
     {
         return [
@@ -67,40 +71,28 @@ class EquipmentItem extends Model
         ];
     }
 
-=======
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     /**
      * Get the category this equipment belongs to.
      */
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(EquipmentCategory::class, 'category_id');
     }
 
     /**
-     * Get the loan requests for this equipment.
+     * Get the loan items for this equipment.
      */
-    public function loanRequests()
+    public function loanItems(): HasMany
     {
-        return $this->hasMany(LoanRequest::class, 'equipment_id');
-    }
-
-    /**
-     * Get the current active loan for this equipment.
-     */
-    public function currentLoan()
-    {
-        return $this->hasOne(LoanRequest::class, 'equipment_id')
-            ->whereIn('status', ['approved', 'collected'])
-            ->latest();
+        return $this->hasMany(LoanItem::class, 'equipment_item_id');
     }
 
     /**
      * Get the helpdesk tickets related to this equipment.
      */
-    public function tickets()
+    public function tickets(): HasMany
     {
-        return $this->hasMany(HelpdeskTicket::class, 'equipment_id');
+        return $this->hasMany(HelpdeskTicket::class, 'equipment_item_id');
     }
 
     /**
@@ -118,42 +110,22 @@ class EquipmentItem extends Model
      */
     public function getWarrantyStatusAttribute(): string
     {
-        if (!$this->warranty_expiry) {
+        if (! $this->warranty_expiry) {
             return 'Unknown';
         }
 
-<<<<<<< HEAD
         if ($this->warranty_expiry > now()) {
             return 'Under Warranty';
         }
 
         return 'Warranty Expired';
-=======
-    /**
-     * Get the current active loan for this equipment
-     */
-    public function currentLoan(): ?LoanRequest
-    {
-        return LoanRequest::query()
-            ->whereHas('equipmentItems', function ($query): void {
-                $query->where('equipment_item_id', $this->id);
-            })
-            ->whereIn('status_id', function ($query): void {
-                $query->select('id')
-                    ->from('loan_statuses')
-                    ->whereIn('code', ['ict_approved', 'active']);
-            })
-            ->first();
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     }
 
-    protected function casts(): array
+    /**
+     * Get the equipment name (brand + model).
+     */
+    public function getNameAttribute(): string
     {
-        return [
-            'is_active' => 'boolean',
-            'purchase_price' => 'decimal:2',
-            'purchase_date' => 'date',
-            'warranty_expiry' => 'date',
-        ];
+        return trim($this->brand.' '.$this->model);
     }
 }

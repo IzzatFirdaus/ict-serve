@@ -27,15 +27,15 @@ class HelpdeskTicketSubmitted extends Notification implements ShouldQueue
 
     public function toMail(object $notifiable): MailMessage
     {
-        $ticketUrl = url('/admin/helpdesk/tickets/' . $this->ticket->id);
+        $ticketUrl = url('/admin/helpdesk/tickets/'.$this->ticket->id);
 
         return (new MailMessage)
             ->subject("New Helpdesk Ticket: {$this->ticket->ticket_number}")
             ->greeting('New Helpdesk Ticket Submitted')
-            ->line("A new helpdesk ticket has been submitted and requires attention.")
+            ->line('A new helpdesk ticket has been submitted and requires attention.')
             ->line("**Ticket Number:** {$this->ticket->ticket_number}")
             ->line("**Title:** {$this->ticket->title}")
-            ->line("**Priority:** " . Str::title($this->ticket->priority))
+            ->line('**Priority:** '.Str::title($this->ticket->priority->value))
             ->line("**Category:** {$this->ticket->category->name}")
             ->line("**Reporter:** {$this->ticket->user->name} ({$this->ticket->user->email})")
             ->line("**Department:** {$this->ticket->user->department}")
@@ -43,7 +43,7 @@ class HelpdeskTicketSubmitted extends Notification implements ShouldQueue
             ->when($this->ticket->equipmentItem, function ($message) {
                 $message->line("**Equipment:** {$this->ticket->equipmentItem->category->name} - {$this->ticket->equipmentItem->brand} {$this->ticket->equipmentItem->model}");
             })
-            ->line("**Description:**")
+            ->line('**Description:**')
             ->line($this->ticket->description)
             ->action('View Ticket', $ticketUrl)
             ->line('Please review and assign this ticket to the appropriate technician.')
@@ -54,9 +54,9 @@ class HelpdeskTicketSubmitted extends Notification implements ShouldQueue
     {
         return new DatabaseMessage([
             'title' => "New Helpdesk Ticket: {$this->ticket->ticket_number}",
-            'message' => "New {$this->ticket->priority} priority ticket from {$this->ticket->user->name} in {$this->ticket->user->department}",
+            'message' => "New {$this->ticket->priority->value} priority ticket from {$this->ticket->user->name} in {$this->ticket->user->department}",
             'action_text' => 'View Ticket',
-            'action_url' => url('/admin/helpdesk/tickets/' . $this->ticket->id),
+            'action_url' => url('/admin/helpdesk/tickets/'.$this->ticket->id),
             'ticket_id' => $this->ticket->id,
             'ticket_number' => $this->ticket->ticket_number,
             'priority' => $this->ticket->priority,

@@ -1,18 +1,14 @@
 <?php
-<<<<<<< HEAD
-
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PublicController;
-use App\Livewire\DamageComplaintForm;
-use App\Livewire\EquipmentLoanForm;
-use Illuminate\Support\Facades\Route;
-=======
 
 declare(strict_types=1);
 
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicController;
 use App\Livewire\Counter;
+use App\Livewire\DamageComplaintForm;
 use App\Livewire\Dashboard;
+use App\Livewire\EquipmentLoanForm;
 use App\Livewire\Login;
 use App\Livewire\Register;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +21,6 @@ Route::post('/logout', function () {
     auth()->guard()->logout();
     session()->invalidate();
     session()->regenerateToken();
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 
     return redirect()->route('login');
 })->name('logout');
@@ -68,16 +63,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-<<<<<<< HEAD
-// Legacy Livewire Routes (kept for compatibility with tests and bookmarks)
-Route::get('/legacy/damage-complaint', DamageComplaintForm::class)
-    ->name('damage-complaint.create');
-
-Route::get('/legacy/equipment-loan', EquipmentLoanForm::class)
-    ->name('equipment-loan.create');
-
-require __DIR__.'/auth.php';
-=======
 // Public Access Routes (No Authentication Required)
 Route::prefix('public')->name('public.')->group(function () {
     // Equipment Loan Requests
@@ -96,7 +81,7 @@ Route::prefix('public')->name('public.')->group(function () {
     })->name('track');
     Route::post('/track', function (\Illuminate\Http\Request $request) {
         $request->validate([
-            'tracking_number' => 'required|string'
+            'tracking_number' => 'required|string',
         ]);
 
         $trackingNumber = $request->tracking_number;
@@ -261,10 +246,11 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', function () {
             // Reporting Dashboard for administrators
-            $equipmentCount = \App\Models\EquipmentItem::count();
-            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn($q) => $q->where('code', 'active'))->count();
-            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'open'))->count();
-            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'resolved'))->count();
+            $equipmentCount = \App\Models\EquipmentItem::count('*');
+            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'active'))->count('*');
+            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'open'))->count('*');
+            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'resolved'))->count('*');
+
             return view('admin.dashboard', compact('equipmentCount', 'activeLoans', 'openTickets', 'resolvedTickets'));
         })->name('dashboard');
 
@@ -301,5 +287,3 @@ Route::get('/language/{locale}', function ($locale) {
 
     return redirect()->back();
 })->name('language.switch');
-
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9

@@ -34,6 +34,6 @@ class ConfirmPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // Middleware should be handled in routes
     }
 }

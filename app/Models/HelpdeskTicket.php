@@ -8,9 +8,9 @@ use App\Enums\TicketPriority;
 use App\Enums\TicketUrgency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-<<<<<<< HEAD
-=======
 /**
  * @property int $id
  * @property string $ticket_number
@@ -19,38 +19,35 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status_id
  * @property string $title
  * @property string $description
- * @property string $priority
- * @property string $urgency
+ * @property TicketPriority $priority
+ * @property TicketUrgency $urgency
  * @property int|null $assigned_to
- * @property \Illuminate\Support\Carbon|null $assigned_at
+ * @property \Carbon\Carbon|null $assigned_at
  * @property int|null $equipment_item_id
  * @property string|null $location
  * @property string|null $contact_phone
- * @property \Illuminate\Support\Carbon|null $due_at
- * @property \Illuminate\Support\Carbon|null $resolved_at
- * @property \Illuminate\Support\Carbon|null $closed_at
+ * @property \Carbon\Carbon|null $due_at
+ * @property \Carbon\Carbon|null $resolved_at
+ * @property \Carbon\Carbon|null $closed_at
  * @property string|null $resolution
  * @property string|null $resolution_notes
  * @property int|null $resolved_by
  * @property int|null $satisfaction_rating
  * @property string|null $feedback
  * @property array|null $attachments
- * @property array|null $file_attachments
- * @property array|null $activity_log
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\TicketCategory $category
- * @property-read \App\Models\TicketStatus $status
- * @property-read \App\Models\User $user
- * @property-read \App\Models\User|null $assignedTo
- * @property-read \App\Models\User|null $assignedToUser
- * @property-read \App\Models\User|null $resolvedByUser
- * @property-read \App\Models\EquipmentItem|null $equipmentItem
- * @property-read mixed $activity_log
- *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read User $user
+ * @property-read TicketCategory $category
+ * @property-read TicketStatus $status
+ * @property-read User|null $assignedToUser
+ * @property-read User|null $resolvedByUser
+ * @property-read EquipmentItem|null $equipmentItem
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, TicketComment> $comments
+ * @property-read float|null $response_time
+ * @property-read float|null $resolution_time
+ * @property-read string $reference_code
  */
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 class HelpdeskTicket extends Model
 {
     use HasFactory;
@@ -62,8 +59,6 @@ class HelpdeskTicket extends Model
         'status_id',
         'title',
         'description',
-        'damage_type',
-        'status',
         'priority',
         'urgency',
         'assigned_to',
@@ -79,12 +74,9 @@ class HelpdeskTicket extends Model
         'resolved_by',
         'satisfaction_rating',
         'feedback',
-    'attachments',
-    'file_attachments',
-    'activity_log',
+        'attachments',
     ];
 
-<<<<<<< HEAD
     protected function casts(): array
     {
         return [
@@ -99,12 +91,10 @@ class HelpdeskTicket extends Model
         ];
     }
 
-=======
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     /**
      * Get the user who created the ticket.
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -112,7 +102,7 @@ class HelpdeskTicket extends Model
     /**
      * Get the ticket category.
      */
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(TicketCategory::class, 'category_id');
     }
@@ -120,15 +110,15 @@ class HelpdeskTicket extends Model
     /**
      * Get the ticket status.
      */
-    public function ticketStatus()
+    public function status(): BelongsTo
     {
         return $this->belongsTo(TicketStatus::class, 'status_id');
     }
 
     /**
-     * Get the assigned staff member.
+     * Get the user assigned to this ticket.
      */
-    public function assignedTo()
+    public function assignedToUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }
@@ -136,7 +126,7 @@ class HelpdeskTicket extends Model
     /**
      * Get the staff who resolved the ticket.
      */
-    public function resolvedBy()
+    public function resolvedByUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'resolved_by');
     }
@@ -144,41 +134,49 @@ class HelpdeskTicket extends Model
     /**
      * Get the equipment item related to this ticket.
      */
-    public function equipmentItem()
+    public function equipmentItem(): BelongsTo
     {
         return $this->belongsTo(EquipmentItem::class, 'equipment_item_id');
     }
 
     /**
-<<<<<<< HEAD
-     * Generate unique ticket number.
+     * Alias for assignedToUser relationship.
      */
-    public static function generateTicketNumber(): string
+    public function assignedTo(): BelongsTo
     {
-        $prefix = 'TK' . date('Y');
-        $lastTicket = static::where('ticket_number', 'like', $prefix . '%')
-            ->orderBy('ticket_number', 'desc')
-            ->first();
+        return $this->assignedToUser();
+    }
 
-        if ($lastTicket) {
-            $lastNumber = (int) substr($lastTicket->ticket_number, -4);
-            $newNumber = $lastNumber + 1;
-        } else {
-            $newNumber = 1;
-        }
+    /**
+     * Alias for resolvedByUser relationship.
+     */
+    public function resolvedBy(): BelongsTo
+    {
+        return $this->resolvedByUser();
+    }
 
-        return $prefix . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
+    /**
+     * Alias for status relationship.
+     */
+    public function ticketStatus(): BelongsTo
+    {
+        return $this->status();
+    }
+
+    /**
+     * Get ticket comments relationship.
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(TicketComment::class, 'ticket_id');
     }
 
     /**
      * Check if ticket is overdue.
-=======
-     * Check if ticket is overdue
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
      */
     public function isOverdue(): bool
     {
-        return $this->due_at && $this->due_at < now() && !$this->resolved_at;
+        return $this->due_at && $this->due_at < now() && ! $this->resolved_at;
     }
 
     /**
@@ -186,7 +184,7 @@ class HelpdeskTicket extends Model
      */
     public function isResolved(): bool
     {
-        return !is_null($this->resolved_at);
+        return ! is_null($this->resolved_at);
     }
 
     /**
@@ -194,7 +192,7 @@ class HelpdeskTicket extends Model
      */
     public function isClosed(): bool
     {
-        return !is_null($this->closed_at);
+        return ! is_null($this->closed_at);
     }
 
     /**
@@ -202,7 +200,7 @@ class HelpdeskTicket extends Model
      */
     public function getResponseTimeAttribute(): ?float
     {
-        if (!$this->assigned_at) {
+        if (! $this->assigned_at) {
             return null;
         }
 
@@ -214,25 +212,33 @@ class HelpdeskTicket extends Model
      */
     public function getResolutionTimeAttribute(): ?float
     {
-        if (!$this->resolved_at) {
+        if (! $this->resolved_at) {
             return null;
         }
 
         return $this->created_at->diffInHours($this->resolved_at);
     }
 
-    protected function casts(): array
+    /**
+     * Generate ticket number in format: HD-YYYY-MMDD-XXX
+     */
+    public static function generateTicketNumber(): string
     {
-        return [
-            'assigned_at' => 'datetime',
-            'due_at' => 'datetime',
-            'resolved_at' => 'datetime',
-            'closed_at' => 'datetime',
-            'satisfaction_rating' => 'integer',
-            'attachments' => 'json',
-            'file_attachments' => 'array',
-            'activity_log' => 'array',
-        ];
+        $date = now();
+        $prefix = 'HD-'.$date->format('Y-md');
+
+        $lastTicket = static::where('ticket_number', 'like', $prefix.'%')
+            ->orderBy('ticket_number', 'desc')
+            ->first();
+
+        if ($lastTicket) {
+            $lastSequence = intval(substr($lastTicket->ticket_number, -3));
+            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
+        } else {
+            $sequence = '001';
+        }
+
+        return $prefix.'-'.$sequence;
     }
 
     /**
@@ -255,45 +261,10 @@ class HelpdeskTicket extends Model
     }
 
     /**
-     * Accessor for assignedTo (legacy property)
+     * Get the reference code (alias for ticket_number).
      */
-    public function getAssignedToAttribute(): ?User
+    public function getReferenceCodeAttribute(): string
     {
-        $user = $this->assignedToUser;
-
-        return $user instanceof User ? $user : null;
-    }
-
-    /**
-     * Accessor for activity_log (stub for Larastan)
-     *
-     * @return mixed
-     */
-    public function getActivityLogAttribute()
-    {
-        // Return null or actual activity log if implemented
-        return null;
-    }
-
-    /**
-     * Generate ticket number in format: HD-YYYY-MMDD-XXX
-     */
-    protected static function generateTicketNumber(): string
-    {
-        $date = now();
-        $prefix = 'HD-'.$date->format('Y-md');
-
-        $lastTicket = static::where('ticket_number', 'like', $prefix.'%')
-            ->orderBy('ticket_number', 'desc')
-            ->first();
-
-        if ($lastTicket) {
-            $lastSequence = intval(substr($lastTicket->ticket_number, -3));
-            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
-        } else {
-            $sequence = '001';
-        }
-
-        return $prefix.'-'.$sequence;
+        return $this->ticket_number;
     }
 }

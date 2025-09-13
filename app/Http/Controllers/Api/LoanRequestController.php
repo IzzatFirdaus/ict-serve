@@ -17,18 +17,16 @@ class LoanRequestController extends Controller
     public function __construct(
         private NotificationService $notificationService
     ) {
-        $this->middleware('auth:sanctum');
+        // Middleware is handled in routes/api.php
     }
 
     /**
      * Display a listing of loan requests.
-    *
-    * @param \Illuminate\Http\Request $request
      */
     public function index(Request $request): JsonResponse
     {
-    /** @var \Illuminate\Http\Request $request */
-    $query = LoanRequest::with(['user', 'loanItems.equipmentItem', 'status'])
+        /** @var \Illuminate\Http\Request $request */
+        $query = LoanRequest::with(['user', 'loanItems.equipmentItem', 'status'])
             ->when(! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true), function ($q) {
                 return $q->where('user_id', Auth::id());
             })
@@ -219,8 +217,9 @@ class LoanRequestController extends Controller
     {
         $ids = $request->input('ids', []);
         $updated = LoanRequest::whereIn('id', $ids)
-            ->whereHas('status', fn($q) => $q->where('name', 'pending'))
+            ->whereHas('status', fn ($q) => $q->where('name', 'pending'))
             ->update(['status_id' => LoanStatus::where('name', 'approved')->first()->id]);
+
         return response()->json(['success' => true, 'updated' => $updated]);
     }
 
@@ -231,8 +230,9 @@ class LoanRequestController extends Controller
     {
         $ids = $request->input('ids', []);
         $updated = LoanRequest::whereIn('id', $ids)
-            ->whereHas('status', fn($q) => $q->where('name', 'pending'))
+            ->whereHas('status', fn ($q) => $q->where('name', 'pending'))
             ->update(['status_id' => LoanStatus::where('name', 'rejected')->first()->id]);
+
         return response()->json(['success' => true, 'updated' => $updated]);
     }
 }

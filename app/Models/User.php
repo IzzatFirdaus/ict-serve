@@ -6,6 +6,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -18,9 +19,10 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $phone
  * @property string|null $position
  * @property string|null $profile_picture
- * @property string|null $role
+ * @property \App\Enums\UserRole|null $role
  * @property array|null $preferences
  * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property-read string|null $avatar_url
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $loanRequests
  *
@@ -48,10 +50,7 @@ class User extends Authenticatable
         'phone',
         'supervisor_id',
         'is_active',
-<<<<<<< HEAD
-=======
         'last_login_at',
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
         'profile_picture',
         'preferences',
     ];
@@ -67,7 +66,6 @@ class User extends Authenticatable
     ];
 
     /**
-<<<<<<< HEAD
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -85,9 +83,6 @@ class User extends Authenticatable
 
     /**
      * Get the supervisor that this user reports to.
-=======
-     * Get the supervisor of this user
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
      */
     public function supervisor()
     {
@@ -121,17 +116,53 @@ class User extends Authenticatable
     /**
      * Get the helpdesk tickets created by this user.
      */
-    public function tickets()
+    public function helpdeskTickets(): HasMany
     {
         return $this->hasMany(HelpdeskTicket::class, 'user_id');
     }
 
     /**
+     * Get the helpdesk tickets created by this user (alias).
+     */
+    public function tickets(): HasMany
+    {
+        return $this->helpdeskTickets();
+    }
+
+    /**
      * Get the helpdesk tickets assigned to this user.
      */
-    public function assignedTickets()
+    public function assignedTickets(): HasMany
     {
         return $this->hasMany(HelpdeskTicket::class, 'assigned_to');
+    }
+
+    /**
+     * Check if user has a specific role.
+     */
+    public function hasRole(string|array $role): bool
+    {
+        if (is_array($role)) {
+            return in_array($this->getCurrentRole(), $role);
+        }
+
+        return $this->getCurrentRole() === $role;
+    }
+
+    /**
+     * Get the current role value as string.
+     */
+    private function getCurrentRole(): string
+    {
+        return $this->role?->value ?? '';
+    }
+
+    /**
+     * Get audit logs for this user.
+     */
+    public function auditLogs(): HasMany
+    {
+        return $this->hasMany(\OwenIt\Auditing\Models\Audit::class, 'user_id');
     }
 
     /**
@@ -144,9 +175,6 @@ class User extends Authenticatable
     }
 
     /**
-<<<<<<< HEAD
-     * Get the activity logs for this user.
-=======
      * Get notifications for this user
      */
     public function notifications(): HasMany
@@ -164,7 +192,6 @@ class User extends Authenticatable
 
     /**
      * Check if user has specific role
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
      */
     public function activityLogs()
     {
@@ -176,14 +203,18 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    // ...existing code...
+
+    /**
+     * Get the user's avatar URL.
+     */
+    public function getAvatarUrlAttribute(): ?string
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'is_active' => 'boolean',
-            'last_login_at' => 'datetime',
-            'preferences' => 'array',
-        ];
+        if ($this->profile_picture) {
+            return asset('storage/'.$this->profile_picture);
+        }
+
+        // Return gravatar or default avatar
+        return 'https://www.gravatar.com/avatar/'.md5(strtolower($this->email)).'?d=mp&s=80';
     }
 }
