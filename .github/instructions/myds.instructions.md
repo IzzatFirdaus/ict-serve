@@ -12,6 +12,7 @@ _Last updated: August 2025_
 	- Design Guidelines: https://design.digital.gov.my/en/docs/design
 	- Development Docs: https://design.digital.gov.my/en/docs/develop
 	- Colour guidance: https://design.digital.gov.my/en/docs/design/color
+	- Icon guidance: https://design.digital.gov.my/en/docs/design/icon
 
 ## About This File
 
@@ -82,13 +83,16 @@ Key points:
 - Body: Inter for paragraphs and long-form content.
 - Follow the size/weight/line-height scale defined in the design assets for headings and body text.
 
-### Icon, Motion, Radius, Shadow, and Spacing Systems (summary)
+### Motion, Radius, Shadow, and Spacing Systems (summary)
 
-- Icons: Designed on a 20×20 grid; stroke and filled variants are available. Keep stroke widths consistent when exporting SVGs.
 - Motion: Use motion tokens (instant, linear, easeout, easeoutback) and recommended durations (short 200ms, medium 400ms, long 600ms).
 - Radius: Standard radius scale (xs, s, m, l, xl, full) for consistent corner rounding.
 - Shadow: Use system shadow tokens for buttons, cards, and overlays to provide depth without excessive contrast.
 - Spacing: Use the spacing scale (4, 8, 12, 16, 24, 32, etc.) and prefer gap utilities for lists and flex layouts.
+
+### MYDS Icon System
+
+The MYDS Icon System provides a comprehensive set of visual symbols for Malaysian government digital services, ensuring consistency, accessibility, and clear communication across all platforms. See the dedicated [Icon System](#icon-system) section below for complete guidelines, implementation details, and the full icon reference.
 
 ### Component Guidance (high-level)
 
@@ -96,6 +100,8 @@ The design overview contains detailed component examples; agents should referenc
 
 - Prefer MYDS components (`@govtechmy/myds-react`) when available.
 - Keep components accessible: keyboard focus, ARIA attributes, and colour contrast.
+- Use official MYDS icons from the [Icon System](#icon-system) section - never use generic or non-standard icons.
+- Ensure proper icon accessibility with ARIA labels and text alternatives.
 - Reuse tokens and avoid hard-coded hex values unless implementing a new primitive that must be added to the token list.
 
 ### Notes
@@ -133,6 +139,7 @@ This section provides implementation-focused guidance for developers working wit
 
 - Preferred package: `@govtechmy/myds-react` (import components from the package or local wrappers).
 - Component composition: follow the official component anatomy (for example: `AlertDialog` must use `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`).
+- Icon usage: Always use official MYDS icons from the comprehensive [Icon System](#icon-system) reference with proper accessibility attributes.
 - Accessibility: provide `aria-*` attributes, keyboard handlers, and focus management exactly as in the docs.
 
 ### 3. Implementation Patterns
@@ -144,7 +151,8 @@ This section provides implementation-focused guidance for developers working wit
 ### 4. Component Examples & Props (summary)
 
 - AlertDialog: `variant`, `open`, `defaultOpen`, `onOpenChange`, `dismissible`.
-- Button: `variant`, `size`, `iconOnly`, `className`.
+- Button: `variant`, `size`, `iconOnly`, `iconLeading`, `iconTrailing`, `className`.
+- Icon: `name`, `size`, `variant` (outline/filled), `className`, proper ARIA attributes.
 - DataTable: `columns`, `data`, `nest`, `pin`, and features like sorting, selection, and expandable rows.
 - DatePicker/DateField: support controlled/uncontrolled modes; provide `disabled` matchers for date constraints.
 
@@ -153,6 +161,7 @@ This section provides implementation-focused guidance for developers working wit
 - Keyboard navigation: ensure all interactive elements are reachable and operable via keyboard.
 - ARIA: use role, aria-label, aria-describedby and other attributes where appropriate and follow component docs for required attributes.
 - Color: do not rely on colour alone; use icons, text, and ARIA to indicate state.
+- Icons: Follow comprehensive accessibility guidelines in the [Icon System](#icon-system) section - ensure proper ARIA labels, contrast ratios, and text alternatives for all icons.
 
 ### 6. Design Patterns & Best Practices
 
@@ -183,6 +192,7 @@ The MyGovEA design principles were moved to a standalone file for clarity and re
 You are an expert AI assistant specializing in the Malaysia Government Design System (MYDS). Your primary goal is to build digital services that are accessible, consistent, and user-centric, strictly following the MYDS guidelines.
 
 - Do not use generic UI/UX patterns. All design and development choices must be justified by the official MYDS documentation.
+- Use only official MYDS icons from the comprehensive [Icon System](#icon-system) reference - never use external icon libraries or custom icons.
 - Align designs to the MyGovEA Design Principles, especially "Berpaksikan Rakyat" (Citizen-Centric).
 - Always fetch and reference the official docs for component anatomy, tokens, and accessibility rules rather than relying on memory.
 
@@ -240,6 +250,491 @@ You are an expert AI assistant specializing in the Malaysia Government Design Sy
 ## Summary
 
 For all UI/UX work, strictly adhere to the Malaysia Government Design System (MYDS): components, tokens, colors, fonts, and layouts must match the official documentation to ensure accessibility, consistency, and citizen-centric design.
+
+## Icon System
+
+The MYDS Icon System is a fundamental component that provides visual consistency and clear communication across all Malaysian government digital services. Icons are designed to be accessible, scalable, and meaningful to all citizens.
+
+### Icon System Principles
+
+Icons in MYDS follow these core principles:
+- **Clarity**: Icons communicate meaning quickly and effectively
+- **Consistency**: Uniform visual treatment across all icons
+- **Accessibility**: Designed to meet WCAG guidelines with proper contrast and screen reader support
+- **Scalability**: Work effectively at multiple sizes while maintaining visual integrity
+- **Cultural Relevance**: Appropriate for Malaysian government context and citizen expectations
+
+### Icon Types and Groups
+
+MYDS provides five main icon categories:
+
+#### 1. Generic Icons
+Universal icons for common interface functions and actions:
+- Navigation: home, back, forward, menu, close
+- Actions: add, edit, remove, search, filter, sort
+- Status: success, warning, error, info, loading
+- Utilities: settings, help, download, upload, print
+
+#### 2. WYSIWYG Icons
+Text editor and formatting tools for content management:
+- Text formatting: bold, italic, underline, strikethrough
+- Alignment: left, center, right, justify
+- Lists: bullets, numbers, indent, outdent
+- Media: image, video, link, table
+
+#### 3. Social Media Icons
+Platform-specific icons for external linking:
+- Major platforms: Facebook, Twitter, Instagram, LinkedIn
+- Malaysian platforms: TikTok, YouTube, WhatsApp
+- Usage: typically in footers, contact sections, or sharing features
+
+#### 4. Media Icons
+File type indicators for document and media management:
+- Documents: PDF, DOCX, XLSX, PPTX, TXT
+- Images: JPG, PNG, GIF, SVG
+- Media: MP4, MP3, AVI
+- Archives: ZIP, RAR
+
+#### 5. Agency/Legacy Icons
+Government-specific icons for Malaysian administrative functions:
+- Ministry and agency symbols
+- Government services: e-filing, MyKad, MySejahtera
+- Legacy system indicators
+- Specialized government processes
+
+### Design Guidelines
+
+#### Grid and Sizing
+
+**Base Grid**: All icons are designed on a 20×20 pixel grid
+**Standard Sizes**:
+| Size (px) | Usage Context | Stroke Width |
+|-----------|---------------|--------------|
+| 16×16 | Small buttons, inline text | 1.2px |
+| 20×20 | Standard buttons, form fields | 1.5px |
+| 24×24 | Large buttons, navigation | 1.8px |
+| 32×32 | Alert dialogs, prominent actions | 2.4px |
+| 42×42 | Hero sections, major alerts | 3.15px |
+
+#### Stroke and Style
+
+- **Standard stroke width**: 1.5px at 20×20 size
+- **Stroke scaling**: Proportional adjustment for all sizes
+- **Style variants**:
+  - **Outline**: Primary style with stroke outlining the glyph
+  - **Filled**: Solid fill style for emphasis or active states
+- **Consistency**: Maintain stroke width ratios when exporting SVGs
+
+#### Visual Characteristics
+
+- **Corner radius**: 2px radius for rounded elements within icons
+- **Line caps**: Rounded caps for all stroke endings
+- **Optical alignment**: Icons optically centered within their bounding box
+- **Negative space**: Adequate spacing between elements for clarity
+
+### Accessibility Guidelines
+
+#### Color Contrast
+- Ensure minimum contrast ratio of 4.5:1 against background
+- Icons should work in both light and dark themes
+- Never rely on color alone to convey meaning
+
+#### ARIA and Screen Reader Support
+```html
+<!-- Decorative icons -->
+<svg aria-hidden="true" role="presentation">...</svg>
+
+<!-- Functional icons with meaning -->
+<svg role="img" aria-label="Search">
+  <title>Search</title>
+  ...
+</svg>
+
+<!-- Icons with text labels -->
+<button>
+  <svg aria-hidden="true">...</svg>
+  <span>Submit Form</span>
+</button>
+```
+
+#### Keyboard Navigation
+- Ensure all interactive icons are keyboard accessible
+- Provide clear focus indicators
+- Include tooltips for icon-only buttons
+- Support standard keyboard shortcuts where applicable
+
+#### Text Pairing
+- Always pair icons with text labels in critical interfaces
+- Use tooltips for icon-only buttons
+- Provide alternative text for informational icons
+- Consider cultural differences in icon interpretation
+
+### Usage Examples
+
+#### In Buttons
+```html
+<!-- Primary button with leading icon -->
+<button class="btn btn-primary">
+  <svg aria-hidden="true"><!-- download icon --></svg>
+  Download Report
+</button>
+
+<!-- Icon-only button with accessible label -->
+<button class="btn btn-icon" aria-label="Close dialog">
+  <svg aria-hidden="true"><!-- close icon --></svg>
+</button>
+```
+
+#### In Forms
+```html
+<!-- Input field with trailing icon -->
+<div class="input-group">
+  <input type="search" placeholder="Search...">
+  <svg class="input-icon" aria-hidden="true"><!-- search icon --></svg>
+</div>
+
+<!-- Status indicator with icon -->
+<div class="form-message form-message--success">
+  <svg aria-hidden="true"><!-- check-circle icon --></svg>
+  Form submitted successfully
+</div>
+```
+
+#### In Navigation
+```html
+<!-- Navigation with icons -->
+<nav>
+  <a href="/dashboard">
+    <svg aria-hidden="true"><!-- dashboard icon --></svg>
+    Dashboard
+  </a>
+  <a href="/profile">
+    <svg aria-hidden="true"><!-- user icon --></svg>
+    Profile
+  </a>
+</nav>
+```
+
+#### In Alerts and Notifications
+```html
+<!-- Alert with status icon -->
+<div class="alert alert--warning" role="alert">
+  <svg aria-hidden="true"><!-- warning-triangle icon --></svg>
+  <div>
+    <h4>Session Expiring</h4>
+    <p>Your session will expire in 5 minutes.</p>
+  </div>
+</div>
+```
+
+### Integration and Implementation
+
+#### React/MYDS Components
+```jsx
+// Using MYDS React icon components
+import { Icon } from '@govtechmy/myds-react';
+
+// Standard icon usage
+<Icon name="search" size={20} />
+
+// Icon with custom props
+<Icon 
+  name="download" 
+  size={24} 
+  variant="filled" 
+  className="text-primary-600" 
+/>
+
+// Icon in button component
+<Button variant="primary" iconLeading="download">
+  Download Report
+</Button>
+```
+
+#### SVG Direct Usage
+```html
+<!-- Inline SVG with proper accessibility -->
+<svg width="20" height="20" viewBox="0 0 20 20" role="img" aria-label="Search">
+  <title>Search</title>
+  <path d="..." stroke="currentColor" stroke-width="1.5" fill="none"/>
+</svg>
+```
+
+#### CSS Custom Properties
+```css
+/* Icon sizing variables */
+:root {
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --icon-size-xl: 32px;
+  --icon-size-2xl: 42px;
+  
+  --icon-stroke-width: 1.5px;
+}
+
+/* Responsive icon sizing */
+.icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  stroke-width: var(--icon-stroke-width);
+}
+```
+
+#### Figma Kit Integration
+- Access the official MYDS Figma icon library
+- Use the icon components directly in prototypes
+- Maintain consistency with development implementation
+- Export icons as SVG when creating custom components
+
+### Performance Considerations
+
+#### Optimization
+- Use SVG sprites for frequently used icons
+- Implement icon lazy loading for large sets
+- Minimize SVG file sizes through proper optimization
+- Consider icon fonts for simple implementations
+
+#### Caching
+- Implement proper caching strategies for icon assets
+- Use CDN for icon delivery when appropriate
+- Version icon assets to enable cache busting
+
+### Contribution Guidelines
+
+#### Requesting New Icons
+1. **Assessment**: Verify the icon doesn't already exist in current sets
+2. **Justification**: Provide clear use case and context for the new icon
+3. **Specification**: Include desired meaning, context, and references
+4. **Review**: Submit request through official MYDS channels
+
+#### Icon Submission Process
+1. **Design**: Follow established grid, stroke, and style guidelines
+2. **Variants**: Provide both outline and filled versions
+3. **Documentation**: Include usage guidelines and accessibility notes
+4. **Testing**: Verify icon works across required sizes and contexts
+5. **Review**: Submit for official design system review and approval
+
+#### Quality Standards
+- Maintain visual consistency with existing icon library
+- Ensure accessibility compliance (contrast, screen reader support)
+- Follow naming conventions and organizational structure
+- Provide comprehensive documentation for usage
+
+### Official Resources
+
+- **Icon Guidelines**: https://design.digital.gov.my/en/docs/design/icon
+- **Icon Gallery**: https://design.digital.gov.my/en/icon
+- **Figma Kit**: Official MYDS design files with complete icon library
+- **Developer Docs**: https://design.digital.gov.my/en/docs/develop
+
+## MYDS Icon Reference
+
+This section provides a comprehensive reference of all official MYDS icons organized by category. Each icon is available in both outline and filled variants at standard sizes.
+
+### Generic Icons
+
+Essential interface and action icons for common functionality:
+
+| Icon Name | Description | Usage Context | ARIA Label Example |
+|-----------|-------------|---------------|-------------------|
+| **Navigation** | | | |
+| `home` | Home/main page | Navigation, breadcrumbs | "Go to home page" |
+| `arrow-left` | Back/previous | Back buttons, pagination | "Go back" |
+| `arrow-right` | Forward/next | Next buttons, progression | "Continue" |
+| `arrow-up` | Up direction | Scroll to top, move up | "Scroll to top" |
+| `arrow-down` | Down direction | Dropdown menus, move down | "Expand menu" |
+| `chevron-left` | Left navigation | Carousel controls, collapse | "Previous" |
+| `chevron-right` | Right navigation | Carousel controls, expand | "Next" |
+| `chevron-up` | Up chevron | Collapse sections | "Collapse" |
+| `chevron-down` | Down chevron | Expand sections | "Expand" |
+| `menu` | Hamburger menu | Mobile navigation toggle | "Open menu" |
+| `close` | Close/dismiss | Modal dialogs, alerts | "Close" |
+| **Actions** | | | |
+| `plus` | Add/create | Add buttons, new items | "Add new item" |
+| `minus` | Remove/subtract | Remove items, decrease | "Remove item" |
+| `edit` | Edit/modify | Edit buttons, modify content | "Edit item" |
+| `trash` | Delete/remove | Delete buttons, remove items | "Delete item" |
+| `search` | Search/find | Search inputs, find functionality | "Search" |
+| `filter` | Filter/sort | Filter controls, refine results | "Filter results" |
+| `refresh` | Reload/update | Refresh buttons, sync | "Refresh page" |
+| `save` | Save/store | Save buttons, store data | "Save changes" |
+| `copy` | Copy/duplicate | Copy buttons, duplicate content | "Copy to clipboard" |
+| `share` | Share/send | Share buttons, social sharing | "Share content" |
+| **Status & Feedback** | | | |
+| `check` | Success/confirm | Success states, confirmations | "Success" |
+| `check-circle` | Completed/verified | Completed tasks, verification | "Completed" |
+| `x-circle` | Error/failed | Error states, failed actions | "Error" |
+| `alert-triangle` | Warning/caution | Warning states, important notices | "Warning" |
+| `info` | Information | Info states, help content | "Information" |
+| `help` | Help/support | Help buttons, support links | "Get help" |
+| `question` | Question/unknown | FAQ, unclear states | "More information" |
+| `exclamation` | Alert/urgent | Urgent alerts, critical notices | "Important alert" |
+| **Utilities** | | | |
+| `settings` | Settings/preferences | Settings pages, configuration | "Open settings" |
+| `gear` | Configuration | System settings, admin tools | "Configure" |
+| `download` | Download/get | Download buttons, file retrieval | "Download file" |
+| `upload` | Upload/send | Upload buttons, file submission | "Upload file" |
+| `print` | Print/output | Print buttons, document output | "Print document" |
+| `mail` | Email/message | Contact forms, messaging | "Send email" |
+| `phone` | Phone/call | Contact information, calling | "Make phone call" |
+| `external-link` | External link | Links to external sites | "Open in new window" |
+| `calendar` | Date/time | Date pickers, event scheduling | "Select date" |
+| `clock` | Time/duration | Time inputs, scheduling | "Select time" |
+| `eye` | View/show | Show password, view details | "Show content" |
+| `eye-off` | Hide/conceal | Hide password, conceal content | "Hide content" |
+| `star` | Favorite/rating | Bookmarks, ratings, favorites | "Add to favorites" |
+| `heart` | Like/favorite | Social interactions, preferences | "Like item" |
+| `thumbs-up` | Approve/positive | Approval actions, positive feedback | "Approve" |
+| `thumbs-down` | Disapprove/negative | Rejection actions, negative feedback | "Disapprove" |
+
+### WYSIWYG Icons
+
+Text editor and content formatting tools:
+
+| Icon Name | Description | Usage Context | ARIA Label Example |
+|-----------|-------------|---------------|-------------------|
+| **Text Formatting** | | | |
+| `bold` | Bold text | Text editors, formatting toolbar | "Make text bold" |
+| `italic` | Italic text | Text editors, formatting toolbar | "Make text italic" |
+| `underline` | Underlined text | Text editors, formatting toolbar | "Underline text" |
+| `strikethrough` | Strikethrough text | Text editors, formatting toolbar | "Strikethrough text" |
+| `subscript` | Subscript text | Text editors, scientific notation | "Make text subscript" |
+| `superscript` | Superscript text | Text editors, mathematical notation | "Make text superscript" |
+| **Alignment** | | | |
+| `align-left` | Left align | Text editors, alignment controls | "Align text left" |
+| `align-center` | Center align | Text editors, alignment controls | "Center text" |
+| `align-right` | Right align | Text editors, alignment controls | "Align text right" |
+| `align-justify` | Justify text | Text editors, alignment controls | "Justify text" |
+| **Lists & Structure** | | | |
+| `list-bullet` | Bullet points | Text editors, list formatting | "Create bullet list" |
+| `list-numbered` | Numbered list | Text editors, ordered lists | "Create numbered list" |
+| `indent` | Increase indent | Text editors, list nesting | "Increase indent" |
+| `outdent` | Decrease indent | Text editors, list nesting | "Decrease indent" |
+| `quote` | Quote/blockquote | Text editors, quotations | "Add quote" |
+| **Media & Links** | | | |
+| `image` | Insert image | Text editors, media insertion | "Insert image" |
+| `video` | Insert video | Text editors, media insertion | "Insert video" |
+| `link` | Insert link | Text editors, hyperlink creation | "Insert link" |
+| `unlink` | Remove link | Text editors, hyperlink removal | "Remove link" |
+| `table` | Insert table | Text editors, table creation | "Insert table" |
+| `code` | Code block | Text editors, code formatting | "Format as code" |
+
+### Social Media Icons
+
+Platform-specific icons for external connections:
+
+| Icon Name | Description | Usage Context | ARIA Label Example |
+|-----------|-------------|---------------|-------------------|
+| **Major Platforms** | | | |
+| `facebook` | Facebook | Social media links, sharing | "Share on Facebook" |
+| `twitter` | Twitter/X | Social media links, sharing | "Share on Twitter" |
+| `instagram` | Instagram | Social media links, sharing | "Follow on Instagram" |
+| `linkedin` | LinkedIn | Professional networking, sharing | "Share on LinkedIn" |
+| `youtube` | YouTube | Video sharing, channel links | "Watch on YouTube" |
+| `tiktok` | TikTok | Short video sharing | "Follow on TikTok" |
+| **Messaging** | | | |
+| `whatsapp` | WhatsApp | Instant messaging, contact | "Contact via WhatsApp" |
+| `telegram` | Telegram | Secure messaging | "Contact via Telegram" |
+| `wechat` | WeChat | Messaging platform | "Connect on WeChat" |
+| **Professional** | | | |
+| `github` | GitHub | Code repository, development | "View on GitHub" |
+| `stackoverflow` | Stack Overflow | Developer community | "View on Stack Overflow" |
+
+### Media Icons
+
+File type and document format indicators:
+
+| Icon Name | Description | Usage Context | ARIA Label Example |
+|-----------|-------------|---------------|-------------------|
+| **Documents** | | | |
+| `file-pdf` | PDF document | File upload, document links | "PDF document" |
+| `file-doc` | Word document | File upload, document links | "Word document" |
+| `file-docx` | Word document (modern) | File upload, document links | "Word document" |
+| `file-xls` | Excel spreadsheet | File upload, data files | "Excel spreadsheet" |
+| `file-xlsx` | Excel spreadsheet (modern) | File upload, data files | "Excel spreadsheet" |
+| `file-ppt` | PowerPoint presentation | File upload, presentation files | "PowerPoint presentation" |
+| `file-pptx` | PowerPoint presentation (modern) | File upload, presentation files | "PowerPoint presentation" |
+| `file-txt` | Text file | File upload, plain text | "Text file" |
+| `file-rtf` | Rich text format | File upload, formatted text | "Rich text document" |
+| **Images** | | | |
+| `file-jpg` | JPEG image | File upload, image files | "JPEG image" |
+| `file-png` | PNG image | File upload, image files | "PNG image" |
+| `file-gif` | GIF image | File upload, animated images | "GIF image" |
+| `file-svg` | SVG vector image | File upload, scalable graphics | "SVG image" |
+| `file-webp` | WebP image | File upload, web-optimized images | "WebP image" |
+| **Audio & Video** | | | |
+| `file-mp3` | MP3 audio | File upload, audio files | "MP3 audio" |
+| `file-wav` | WAV audio | File upload, audio files | "WAV audio" |
+| `file-mp4` | MP4 video | File upload, video files | "MP4 video" |
+| `file-avi` | AVI video | File upload, video files | "AVI video" |
+| `file-mov` | QuickTime video | File upload, video files | "QuickTime video" |
+| **Archives** | | | |
+| `file-zip` | ZIP archive | File upload, compressed files | "ZIP archive" |
+| `file-rar` | RAR archive | File upload, compressed files | "RAR archive" |
+| `file-7z` | 7-Zip archive | File upload, compressed files | "7-Zip archive" |
+| **Generic** | | | |
+| `file` | Generic file | Unknown file types, general files | "File" |
+| `folder` | Folder/directory | File organization, navigation | "Folder" |
+| `folder-open` | Open folder | Active folder, current directory | "Open folder" |
+
+### Agency/Legacy Icons
+
+Government-specific and Malaysian administrative icons:
+
+| Icon Name | Description | Usage Context | ARIA Label Example |
+|-----------|-------------|---------------|-------------------|
+| **Malaysian Government** | | | |
+| `coat-of-arms` | Malaysian coat of arms | Official documents, headers | "Malaysian coat of arms" |
+| `flag-malaysia` | Malaysian flag | National identity, official pages | "Malaysian flag" |
+| `parliament` | Parliament building | Legislative information | "Parliament" |
+| `government` | Government building | Administrative services | "Government services" |
+| **Digital Services** | | | |
+| `mykad` | MyKad identity card | Identity verification, registration | "MyKad" |
+| `mysejahtera` | MySejahtera app | Health services, check-in | "MySejahtera" |
+| `e-filing` | Electronic filing | Tax services, submissions | "Electronic filing" |
+| `e-services` | Electronic services | Digital government services | "Electronic services" |
+| `digital-signature` | Digital signature | Document authentication | "Digital signature" |
+| **Ministries & Agencies** | | | |
+| `ministry` | Government ministry | Ministry services, departments | "Ministry" |
+| `agency` | Government agency | Agency services, departments | "Government agency" |
+| `local-council` | Local government | Municipal services, local authority | "Local council" |
+| `state-government` | State government | State-level services | "State government" |
+| **Services** | | | |
+| `license` | License/permit | Licensing services, permits | "License application" |
+| `tax` | Taxation | Tax services, revenue | "Tax services" |
+| `healthcare` | Healthcare services | Medical services, health ministry | "Healthcare services" |
+| `education` | Education services | Educational resources, schools | "Education services" |
+| `immigration` | Immigration services | Border control, visas | "Immigration services" |
+| `police` | Police services | Law enforcement, safety | "Police services" |
+| `fire-department` | Fire and rescue | Emergency services, safety | "Fire and rescue" |
+| `court` | Judicial services | Legal system, courts | "Court services" |
+| **Legacy Systems** | | | |
+| `legacy-system` | Legacy system indicator | Old system integration | "Legacy system" |
+| `migration` | System migration | Data transfer, upgrades | "System migration" |
+| `compatibility` | Compatibility mode | Backward compatibility | "Compatibility mode" |
+
+### Usage Notes
+
+#### Accessibility Requirements
+- All icons must include appropriate `aria-label` or `aria-labelledby` attributes when conveying meaning
+- Use `aria-hidden="true"` for purely decorative icons
+- Provide text alternatives for critical information
+- Ensure minimum 4.5:1 contrast ratio against backgrounds
+
+#### Implementation Standards
+- Always use semantic naming conventions
+- Maintain consistent sizing across similar contexts
+- Test icons at multiple screen resolutions
+- Verify compatibility with assistive technologies
+
+#### Customization Guidelines
+- Icons can be styled using CSS `currentColor` for theme consistency
+- Stroke width should scale proportionally with icon size
+- Maintain visual hierarchy through appropriate sizing
+- Consider cultural context when selecting icons for Malaysian users
+
+For the most up-to-date icon library and additional icons, always reference the official MYDS documentation and Figma design kit.
 
 ## Colour Reference
 
