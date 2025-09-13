@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\TicketPriority;
-use App\Models\HelpdeskTicket;
-use App\Models\LoanRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

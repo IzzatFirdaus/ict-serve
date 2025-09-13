@@ -59,7 +59,9 @@ class HelpdeskTicketSubmitted extends Notification implements ShouldQueue
             'action_url' => url('/admin/helpdesk/tickets/'.$this->ticket->id),
             'ticket_id' => $this->ticket->id,
             'ticket_number' => $this->ticket->ticket_number,
-            'priority' => $this->ticket->priority,
+            'priority' => $this->ticket->priority instanceof \App\Enums\TicketPriority
+                ? $this->ticket->priority->value
+                : (string) $this->ticket->priority,
             'category' => $this->ticket->category->name,
             'reporter' => $this->ticket->user->name,
             'department' => $this->ticket->user->department,

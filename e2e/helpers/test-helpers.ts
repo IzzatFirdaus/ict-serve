@@ -355,4 +355,286 @@ export class ICTServeTestHelpers {
       await expect(this.page.locator(errorSelector).first()).toBeVisible();
     }
   }
+
+  /**
+   * Test data table functionality
+   */
+  async testDataTable(tableSelector: string = '.data-table') {
+    const table = this.page.locator(tableSelector);
+    await expect(table).toBeVisible();
+
+    // Test search functionality
+    const searchInput = table.locator('input[placeholder*="Cari"]');
+    if (await searchInput.count() > 0) {
+      await searchInput.fill('test');
+      await this.page.waitForTimeout(500);
+      await searchInput.fill('');
+    }
+
+    // Test sorting
+    const sortableHeaders = table.locator('th.sortable');
+    const headerCount = await sortableHeaders.count();
+    if (headerCount > 0) {
+      await sortableHeaders.first().click();
+      await this.page.waitForTimeout(500);
+    }
+
+    // Test pagination
+    const nextButton = table.locator('.pagination .next-page');
+    if (await nextButton.isVisible()) {
+      await nextButton.click();
+      await this.page.waitForTimeout(500);
+    }
+
+    return {
+      hasSearch: await searchInput.count() > 0,
+      hasSorting: headerCount > 0,
+      hasPagination: await nextButton.isVisible()
+    };
+  }
+
+  /**
+   * Test modal functionality
+   */
+  async testModal(triggerSelector: string, modalSelector: string = '.modal-backdrop') {
+    // Open modal
+    await this.page.click(triggerSelector);
+    await expect(this.page.locator(modalSelector)).toBeVisible();
+
+    // Test escape key closing
+    await this.page.keyboard.press('Escape');
+    await expect(this.page.locator(modalSelector)).not.toBeVisible();
+
+    // Reopen modal
+    await this.page.click(triggerSelector);
+    await expect(this.page.locator(modalSelector)).toBeVisible();
+
+    // Test backdrop click closing
+    await this.page.click(modalSelector);
+    await expect(this.page.locator(modalSelector)).not.toBeVisible();
+  }
+
+  /**
+   * Test toast notifications
+   */
+  async testToastNotifications() {
+    // Trigger different types of toasts if available
+    const toastTypes = ['success', 'error', 'warning', 'info'];
+    
+    for (const type of toastTypes) {
+      const triggerButton = this.page.locator(`[data-testid="toast-${type}"]`);
+      if (await triggerButton.count() > 0) {
+        await triggerButton.click();
+        await expect(this.page.locator(`.toast-${type}`)).toBeVisible();
+        
+        // Wait for auto-dismiss or manually close
+        await this.page.waitForTimeout(1000);
+        const closeButton = this.page.locator('.toast .close-button');
+        if (await closeButton.isVisible()) {
+          await closeButton.click();
+        }
+        await expect(this.page.locator(`.toast-${type}`)).not.toBeVisible();
+      }
+    }
+  }
+
+  /**
+   * Test keyboard navigation
+   */
+  async testKeyboardNavigation() {
+    // Tab through focusable elements
+    await this.page.keyboard.press('Tab');
+    const firstFocused = await this.page.locator(':focus').count();
+    expect(firstFocused).toBe(1);
+
+    // Continue tabbing and check focus visibility
+    for (let i = 0; i < 5; i++) {
+      await this.page.keyboard.press('Tab');
+      const focused = this.page.locator(':focus');
+      if (await focused.count() > 0) {
+        await expect(focused).toBeVisible();
+      }
+    }
+  }
+
+  /**
+   * Test component state management
+   */
+  async testComponentState(componentSelector: string, stateTests: Array<{action: string, expectedState: string}>) {
+    const component = this.page.locator(componentSelector);
+    await expect(component).toBeVisible();
+
+    for (const test of stateTests) {
+      // Perform action
+      await this.page.click(`${componentSelector} ${test.action}`);
+      
+      // Check expected state
+      await expect(component).toHaveAttribute('data-state', test.expectedState);
+    }
+  }
+
+  /**
+   * Test file upload with drag and drop
+   */
+  async testFileUploadDragDrop(uploadAreaSelector: string, filePath: string) {
+    const uploadArea = this.page.locator(uploadAreaSelector);
+    await expect(uploadArea).toBeVisible();
+
+    // Simulate drag and drop
+    await uploadArea.setInputFiles(filePath);
+    
+    // Wait for upload processing
+    await this.page.waitForTimeout(1000);
+    
+    // Check for success indicators
+    const successIndicator = this.page.locator('.upload-success, .file-uploaded, .upload-complete');
+    await expect(successIndicator).toBeVisible();
+  }
+
+  /**
+   * Test form wizard navigation
+   */
+  async testFormWizard(wizardSelector: string = '.form-wizard') {
+    const wizard = this.page.locator(wizardSelector);
+    await expect(wizard).toBeVisible();
+
+    // Find all steps
+    const steps = wizard.locator('.step');
+    const stepCount = await steps.count();
+
+    if (stepCount > 1) {
+      // Test next navigation
+      for (let i = 0; i < stepCount - 1; i++) {
+        const nextButton = wizard.locator('button:has-text("Seterusnya"), button:has-text("Next")');
+        if (await nextButton.isVisible()) {
+          await nextButton.click();
+          await this.page.waitForTimeout(500);
+        }
+      }
+
+      // Test previous navigation
+      for (let i = stepCount - 1; i > 0; i--) {
+        const prevButton = wizard.locator('button:has-text("Sebelumnya"), button:has-text("Previous")');
+        if (await prevButton.isVisible()) {
+          await prevButton.click();
+          await this.page.waitForTimeout(500);
+        }
+      }
+    }
+
+    return stepCount;
+  }
+
+  /**
+   * Test status indicators
+   */
+  async testStatusIndicators() {
+    const statusElements = this.page.locator('.status-badge, [data-status], .badge');
+    const count = await statusElements.count();
+
+    for (let i = 0; i < count; i++) {
+      const element = statusElements.nth(i);
+      const status = await element.getAttribute('data-status') || await element.textContent();
+      
+      // Verify status has proper styling
+      const classList = await element.getAttribute('class') || '';
+      expect(classList).toBeTruthy();
+      
+      console.log(`Status indicator ${i + 1}: ${status}`);
+    }
+
+    return count;
+  }
+
+  /**
+   * Test responsive navigation menu
+   */
+  async testResponsiveNavigation() {
+    // Test desktop navigation
+    await this.page.setViewportSize({ width: 1280, height: 720 });
+    const desktopNav = this.page.locator('.desktop-nav, .sidebar');
+    if (await desktopNav.count() > 0) {
+      await expect(desktopNav).toBeVisible();
+    }
+
+    // Test mobile navigation
+    await this.page.setViewportSize({ width: 375, height: 667 });
+    const mobileMenuButton = this.page.locator('.mobile-menu-button, .hamburger-menu');
+    if (await mobileMenuButton.count() > 0) {
+      await mobileMenuButton.click();
+      const mobileNav = this.page.locator('.mobile-nav, .mobile-menu');
+      await expect(mobileNav).toBeVisible();
+      
+      // Close mobile menu
+      await mobileMenuButton.click();
+      await expect(mobileNav).not.toBeVisible();
+    }
+
+    // Reset to desktop
+    await this.page.setViewportSize({ width: 1280, height: 720 });
+  }
+
+  /**
+   * Performance testing helper
+   */
+  async measurePagePerformance() {
+    const startTime = Date.now();
+    await this.page.waitForLoadState('networkidle');
+    const loadTime = Date.now() - startTime;
+
+    // Get performance metrics
+    const performanceMetrics = await this.page.evaluate(() => {
+      const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+      return {
+        domContentLoaded: navigation.domContentLoadedEventEnd - navigation.fetchStart,
+        loadComplete: navigation.loadEventEnd - navigation.fetchStart,
+        firstPaint: performance.getEntriesByType('paint').find(entry => entry.name === 'first-paint')?.startTime || 0,
+        firstContentfulPaint: performance.getEntriesByType('paint').find(entry => entry.name === 'first-contentful-paint')?.startTime || 0
+      };
+    });
+
+    return {
+      loadTime,
+      ...performanceMetrics
+    };
+  }
+
+  /**
+   * Test component loading states
+   */
+  async testLoadingStates(triggerSelector: string, loadingSelector: string = '.loading, .skeleton') {
+    // Trigger action that should show loading state
+    await this.page.click(triggerSelector);
+    
+    // Check if loading state appears
+    const loadingElement = this.page.locator(loadingSelector);
+    if (await loadingElement.count() > 0) {
+      await expect(loadingElement).toBeVisible();
+      
+      // Wait for loading to complete
+      await loadingElement.waitFor({ state: 'detached', timeout: 10000 });
+    }
+  }
+
+  /**
+   * Test error handling
+   */
+  async testErrorHandling() {
+    const errorMessages = this.page.locator('.error-message, .alert-danger, .toast-error');
+    const count = await errorMessages.count();
+
+    for (let i = 0; i < count; i++) {
+      const error = errorMessages.nth(i);
+      await expect(error).toBeVisible();
+      
+      // Check if error can be dismissed
+      const closeButton = error.locator('.close, .dismiss');
+      if (await closeButton.count() > 0) {
+        await closeButton.click();
+        await expect(error).not.toBeVisible();
+      }
+    }
+
+    return count;
+  }
 }

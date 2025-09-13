@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('profile_picture')->nullable()->after('last_login_at');
-            $table->json('preferences')->nullable()->after('profile_picture');
+            // Columns already added in base migration, skip duplicates
         });
     }
 

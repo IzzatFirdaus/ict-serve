@@ -25,6 +25,14 @@ class LoanStatus extends Model
 {
     use HasFactory;
 
+    /**
+     * Public getter for id property.
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
     protected $fillable = [
         'code',
         'name',

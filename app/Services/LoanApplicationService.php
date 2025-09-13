@@ -25,8 +25,8 @@ class LoanApplicationService
 
             $loan = LoanRequest::query()->create([
                 'request_number' => LoanRequest::generateRequestNumber(),
-                'user_id' => $applicant->id,
-                'status_id' => $pending?->id,
+                'user_id' => $applicant->getKey(),
+                'status_id' => $pending?->getId(),
                 'purpose' => (string) ($data['purpose'] ?? ''),
                 'location' => $data['location'] ?? null,
                 'requested_from' => $data['start_date'] ?? $data['requested_from'] ?? null,

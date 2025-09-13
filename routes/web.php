@@ -287,3 +287,70 @@ Route::get('/language/{locale}', function ($locale) {
 
     return redirect()->back();
 })->name('language.switch');
+
+// Demo Routes for Component Testing
+Route::prefix('demo')->name('demo.')->group(function () {
+    // Demo login page (no authentication required)
+    Route::get('/login', function () {
+        return view('demo.login');
+    })->name('login');
+    
+    // Demo login submission (simulate authentication)
+    Route::post('/login', function (\Illuminate\Http\Request $request) {
+        // Always return success for demo purposes
+        return response()->json([
+            'success' => true,
+            'message' => 'Login successful',
+            'redirect' => route('demo.dashboard')
+        ]);
+    })->name('login.submit');
+
+    // Demo dashboard (no authentication required for testing)
+    Route::get('/dashboard', function () {
+        return view('demo.dashboard');
+    })->name('dashboard');
+    
+    // Demo API endpoints for testing
+    Route::get('/api/stats', function () {
+        return response()->json([
+            'equipment_total' => 156,
+            'equipment_available' => 89,
+            'equipment_on_loan' => 67,
+            'loans_pending' => 12,
+            'loans_active' => 34,
+            'loans_overdue' => 3,
+            'tickets_open' => 8,
+            'tickets_in_progress' => 15,
+            'tickets_resolved' => 142
+        ]);
+    })->name('api.stats');
+    
+    Route::get('/api/activities', function () {
+        return response()->json([
+            [
+                'id' => 1,
+                'type' => 'loan_request',
+                'title' => 'Permohonan Pinjaman Laptop Dell',
+                'user' => 'Ahmad Rahman',
+                'time' => '2 jam yang lalu',
+                'status' => 'pending'
+            ],
+            [
+                'id' => 2,
+                'type' => 'ticket_created',
+                'title' => 'Masalah Printer Rosak',
+                'user' => 'Siti Nurhaliza',
+                'time' => '4 jam yang lalu',
+                'status' => 'open'
+            ],
+            [
+                'id' => 3,
+                'type' => 'loan_approved',
+                'title' => 'Pinjaman Projector Diluluskan',
+                'user' => 'Muhammad Ali',
+                'time' => '1 hari yang lalu',
+                'status' => 'approved'
+            ]
+        ]);
+    })->name('api.activities');
+});

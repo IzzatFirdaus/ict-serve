@@ -11,7 +11,7 @@
   --txt-black-300: #D4D4D8;
 
   /* Background Tokens */
-  --bg-white-0: #FFFFFF;
+  --bg-white-0: #FFF;
   --bg-white-50: #FAFAFA;
   --bg-white-100: #F4F4F5;
   --bg-washed: #F4F4F5;
@@ -57,17 +57,17 @@
 
 /* MYDS Typography Classes */
 .myds-heading {
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
 }
 
 .myds-body {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 400;
 }
 
 .myds-rtf {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 400;
 }
 
@@ -151,7 +151,7 @@
 }
 
 /* MYDS Responsive Text Sizes */
-@media (max-width: 767px) {
+@media (width <= 767px) {
   .myds-responsive-heading {
     font-size: 1.5rem; /* 24px */
     line-height: 2rem; /* 32px */
@@ -163,7 +163,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (768px <= width <= 1023px) {
   .myds-responsive-heading {
     font-size: 1.875rem; /* 30px */
     line-height: 2.375rem; /* 38px */
@@ -175,7 +175,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   .myds-responsive-heading {
     font-size: 2.25rem; /* 36px */
     line-height: 2.75rem; /* 44px */
@@ -193,6 +193,7 @@
     transform: translateY(100%);
     opacity: 0;
   }
+  
   to {
     transform: translateY(0);
     opacity: 1;
@@ -204,6 +205,7 @@
     transform: translateY(0);
     opacity: 1;
   }
+
   to {
     transform: translateY(100%);
     opacity: 0;
@@ -223,6 +225,7 @@
   from {
     width: 100%;
   }
+
   to {
     width: 0%;
   }
