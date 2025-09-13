@@ -40,7 +40,6 @@ class TicketCategory extends Model
         'sort_order',
     ];
 
-<<<<<<< HEAD
     protected function casts(): array
     {
         return [
@@ -50,8 +49,6 @@ class TicketCategory extends Model
         ];
     }
 
-=======
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     /**
      * Get the tickets in this category.
      */
@@ -59,8 +56,6 @@ class TicketCategory extends Model
     {
         return $this->hasMany(HelpdeskTicket::class, 'category_id');
     }
-<<<<<<< HEAD
-=======
 
     /**
      * Scope for active categories only
@@ -77,14 +72,4 @@ class TicketCategory extends Model
     {
         return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
     }
-
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'default_sla_hours' => 'integer',
-            'sort_order' => 'integer',
-        ];
-    }
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 }

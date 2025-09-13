@@ -6,6 +6,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property int $id
+ * @property string|null $asset_number
+ * @property string $complainant_name
+ * @property string $complainant_division
+ * @property string|null $complainant_position
+ * @property string $contact_number
+ * @property string $email
+ * @property string $damage_type
+ * @property string $damage_description
+ * @property \Carbon\Carbon|null $incident_date
+ * @property string|null $incident_time
+ * @property string|null $location
+ * @property string $priority
+ * @property string $status
+ * @property int|null $technician_assigned
+ * @property \Carbon\Carbon|null $assigned_at
+ * @property \Carbon\Carbon|null $resolved_at
+ * @property string|null $resolution_notes
+ * @property float|null $estimated_cost
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read Asset|null $asset
+ * @property-read User|null $technician
+ */
 class DamageComplaint extends Model
 {
     use HasFactory;
@@ -55,7 +80,7 @@ class DamageComplaint extends Model
      */
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'submitted' => 'warning',
             'in_progress' => 'primary',
             'resolved' => 'success',
@@ -69,7 +94,7 @@ class DamageComplaint extends Model
      */
     public function getPriorityColorAttribute(): string
     {
-        return match($this->priority) {
+        return match ($this->priority) {
             'low' => 'success',
             'medium' => 'warning',
             'high' => 'danger',

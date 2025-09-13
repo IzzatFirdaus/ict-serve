@@ -114,7 +114,7 @@ class LoanApplicationForm extends Component
         }
 
         // Generate form reference
-        $this->formReference = 'BPM/ICT/LOAN/'.now()->format('Y').'/'.str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
+        $this->formReference = 'BPM/ICT/LOAN/'.now()->format('Y').'/'.str_pad((string) rand(1, 9999), 4, '0', STR_PAD_LEFT);
 
         // Load departments
         $this->departments = [

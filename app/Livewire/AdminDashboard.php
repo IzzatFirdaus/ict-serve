@@ -2,54 +2,64 @@
 
 namespace App\Livewire;
 
+use App\Models\EquipmentItem;
+use App\Models\LoanRequest;
+use App\Models\User;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\LoanRequest;
-use App\Models\EquipmentItem;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Carbon;
 
 class AdminDashboard extends Component
 {
     use WithPagination;
 
     public $activeTab = 'overview';
+
     public $selectedPeriod = '30'; // days
+
     public $searchTerm = '';
+
     public $statusFilter = 'all';
+
     public $sortBy = 'created_at';
+
     public $sortDirection = 'desc';
+
     public $selectedRequests = [];
+
     public $selectAll = false;
+
     public $showBulkActions = false;
+
+    public $stats = [];
 
     public $tabs = [
         'overview' => [
             'title' => 'Ringkasan',
             'icon' => 'chart-pie',
-            'description' => 'Statistik dan metrik utama'
+            'description' => 'Statistik dan metrik utama',
         ],
         'requests' => [
             'title' => 'Permohonan',
             'icon' => 'document-text',
-            'description' => 'Semua permohonan pinjaman'
+            'description' => 'Semua permohonan pinjaman',
         ],
         'equipment' => [
             'title' => 'Peralatan',
             'icon' => 'desktop-computer',
-            'description' => 'Pengurusan peralatan ICT'
+            'description' => 'Pengurusan peralatan ICT',
         ],
         'users' => [
             'title' => 'Pengguna',
             'icon' => 'users',
-            'description' => 'Pengurusan pengguna sistem'
+            'description' => 'Pengurusan pengguna sistem',
         ],
         'reports' => [
             'title' => 'Laporan',
             'icon' => 'chart-bar',
-            'description' => 'Laporan dan analitik'
-        ]
+            'description' => 'Laporan dan analitik',
+        ],
     ];
 
     public $statusOptions = [
@@ -59,7 +69,7 @@ class AdminDashboard extends Component
         'rejected' => 'Ditolak',
         'ready_for_collection' => 'Sedia Dipungut',
         'collected' => 'Dipungut',
-        'returned' => 'Dipulangkan'
+        'returned' => 'Dipulangkan',
     ];
 
     protected $queryString = [
@@ -67,13 +77,13 @@ class AdminDashboard extends Component
         'searchTerm' => ['except' => ''],
         'statusFilter' => ['except' => 'all'],
         'sortBy' => ['except' => 'created_at'],
-        'sortDirection' => ['except' => 'desc']
+        'sortDirection' => ['except' => 'desc'],
     ];
 
     public function mount()
     {
         // Check if user has admin access
-        if (!Auth::user()->hasRole(['admin', 'bpm_officer'])) {
+        if (! Auth::user()->hasRole(['admin', 'bpm_officer'])) {
             abort(403, 'Akses tidak dibenarkan.');
         }
     }
@@ -147,7 +157,7 @@ class AdminDashboard extends Component
             ->update([
                 'status' => 'approved',
                 'approved_at' => now(),
-                'approved_by' => Auth::id()
+                'approved_by' => Auth::id(),
             ]);
 
         session()->flash('message', "{$count} permohonan telah diluluskan.");
@@ -166,7 +176,7 @@ class AdminDashboard extends Component
                 'status' => 'rejected',
                 'rejected_at' => now(),
                 'rejected_by' => Auth::id(),
-                'rejection_reason' => 'Bulk rejection by admin'
+                'rejection_reason' => 'Bulk rejection by admin',
             ]);
 
         session()->flash('message', "{$count} permohonan telah ditolak.");
@@ -192,7 +202,7 @@ class AdminDashboard extends Component
             'available_equipment' => EquipmentItem::where('status', 'available')->count(),
             'total_equipment' => EquipmentItem::count(),
             'total_users' => User::count(),
-            'recent_requests' => LoanRequest::latest()->limit(5)->with('user')->get()
+            'recent_requests' => LoanRequest::latest()->limit(5)->with('user')->get(),
         ];
     }
 
@@ -201,13 +211,13 @@ class AdminDashboard extends Component
         $query = LoanRequest::with(['user', 'equipmentItems'])
             ->when($this->searchTerm, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('reference_number', 'like', '%' . $this->searchTerm . '%')
-                      ->orWhere('applicant_name', 'like', '%' . $this->searchTerm . '%')
-                      ->orWhere('purpose', 'like', '%' . $this->searchTerm . '%')
-                      ->orWhereHas('user', function ($userQuery) {
-                          $userQuery->where('name', 'like', '%' . $this->searchTerm . '%')
-                                   ->orWhere('email', 'like', '%' . $this->searchTerm . '%');
-                      });
+                    $q->where('reference_number', 'like', '%'.$this->searchTerm.'%')
+                        ->orWhere('applicant_name', 'like', '%'.$this->searchTerm.'%')
+                        ->orWhere('purpose', 'like', '%'.$this->searchTerm.'%')
+                        ->orWhereHas('user', function ($userQuery) {
+                            $userQuery->where('name', 'like', '%'.$this->searchTerm.'%')
+                                ->orWhere('email', 'like', '%'.$this->searchTerm.'%');
+                        });
                 });
             })
             ->when($this->statusFilter !== 'all', function ($query) {
@@ -223,10 +233,10 @@ class AdminDashboard extends Component
         return EquipmentItem::with('category')
             ->when($this->searchTerm, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('name', 'like', '%' . $this->searchTerm . '%')
-                      ->orWhere('asset_tag', 'like', '%' . $this->searchTerm . '%')
-                      ->orWhere('brand', 'like', '%' . $this->searchTerm . '%')
-                      ->orWhere('model', 'like', '%' . $this->searchTerm . '%');
+                    $q->where('name', 'like', '%'.$this->searchTerm.'%')
+                        ->orWhere('asset_tag', 'like', '%'.$this->searchTerm.'%')
+                        ->orWhere('brand', 'like', '%'.$this->searchTerm.'%')
+                        ->orWhere('model', 'like', '%'.$this->searchTerm.'%');
                 });
             })
             ->orderBy($this->sortBy, $this->sortDirection)
@@ -236,11 +246,11 @@ class AdminDashboard extends Component
     public function getUsers()
     {
         return User::when($this->searchTerm, function ($query) {
-                $query->where(function ($q) {
-                    $q->where('name', 'like', '%' . $this->searchTerm . '%')
-                      ->orWhere('email', 'like', '%' . $this->searchTerm . '%');
-                });
-            })
+            $query->where(function ($q) {
+                $q->where('name', 'like', '%'.$this->searchTerm.'%')
+                    ->orWhere('email', 'like', '%'.$this->searchTerm.'%');
+            });
+        })
             ->orderBy($this->sortBy, $this->sortDirection)
             ->paginate(10);
     }
@@ -258,7 +268,7 @@ class AdminDashboard extends Component
                     'title' => "Permohonan baru dari {$request->user->name}",
                     'description' => $request->purpose ?? 'Tiada tujuan dinyatakan',
                     'time' => $request->created_at,
-                    'status' => $request->status
+                    'status' => $request->status,
                 ];
             });
     }
@@ -273,7 +283,7 @@ class AdminDashboard extends Component
     {
         $data = [
             'stats' => $this->stats,
-            'recentActivity' => $this->getRecentActivity()
+            'recentActivity' => $this->getRecentActivity(),
         ];
 
         // Load tab-specific data

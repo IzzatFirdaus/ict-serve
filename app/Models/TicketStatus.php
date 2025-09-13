@@ -38,18 +38,18 @@ class TicketStatus extends Model
         'sort_order',
     ];
 
-<<<<<<< HEAD
     protected function casts(): array
     {
         return [
             'is_active' => 'boolean',
             'is_final' => 'boolean',
+            'sort_order' => 'integer',
         ];
-=======
+    }
+
     public function getLabelAttribute(): string
     {
         return app()->getLocale() === 'ms' ? $this->name_bm : $this->name;
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     }
 
     /**
@@ -59,8 +59,6 @@ class TicketStatus extends Model
     {
         return $this->hasMany(HelpdeskTicket::class, 'status_id');
     }
-<<<<<<< HEAD
-=======
 
     /**
      * Scope for active statuses only
@@ -86,13 +84,5 @@ class TicketStatus extends Model
         return static::where('code', $code)->first();
     }
 
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'is_final' => 'boolean',
-            'sort_order' => 'integer',
-        ];
-    }
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
+    // ...existing code...
 }

@@ -1,47 +1,40 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 namespace App\Models;
 
+use App\Enums\TicketPriority;
+use App\Models\HelpdeskTicket;
+use App\Models\LoanRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
-=======
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
 
+/**
+ * @property int $id
+ * @property string $type
+ * @property int $user_id
+ * @property string $title
+ * @property string $message
+ * @property array|null $data
+ * @property string|null $category
+ * @property string|null $priority
+ * @property bool $is_read
+ * @property \Carbon\Carbon|null $read_at
+ * @property string|null $action_url
+ * @property string|null $icon
+ * @property string|null $color
+ * @property \Carbon\Carbon|null $expires_at
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read User $user
+ */
 class Notification extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-<<<<<<< HEAD
-        'user_id',
-        'type',
-        'title',
-        'message',
-        'action_url',
-        'read_at',
-        'data',
-    ];
-
-    protected function casts(): array
-    {
-        return [
-            'data' => 'array',
-            'read_at' => 'datetime',
-        ];
-    }
-
-    /**
-     * Get the user this notification belongs to.
-     */
-    public function user()
-=======
         'type',
         'user_id',
         'title',
@@ -68,27 +61,10 @@ class Notification extends Model
 
     // Relationships
     public function user(): BelongsTo
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     {
         return $this->belongsTo(User::class);
     }
 
-<<<<<<< HEAD
-    /**
-     * Mark notification as read.
-     */
-    public function markAsRead(): void
-    {
-        $this->update(['read_at' => now()]);
-    }
-
-    /**
-     * Check if notification is read.
-     */
-    public function isRead(): bool
-    {
-        return !is_null($this->read_at);
-=======
     // Scopes
     public function scopeUnread($query)
     {
@@ -256,10 +232,10 @@ class Notification extends Model
             'message' => $message ?: "Tiket #{$ticket->ticket_number} - {$ticket->title}",
             'category' => 'ticket',
             'priority' => match ($ticket->priority) {
-                'critical' => 'urgent',
-                'high' => 'high',
-                'medium' => 'medium',
-                'low' => 'low',
+                TicketPriority::CRITICAL => 'urgent',
+                TicketPriority::HIGH => 'high',
+                TicketPriority::MEDIUM => 'medium',
+                TicketPriority::LOW => 'low',
                 default => 'medium'
             },
             'action_url' => route('helpdesk.index-enhanced'),
@@ -306,6 +282,5 @@ class Notification extends Model
             'category' => 'system',
             'priority' => 'medium',
         ], $options));
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9
     }
 }

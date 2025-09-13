@@ -1,206 +1,94 @@
-<?php
 
-declare(strict_types=1);
 
-namespace App\Models;
-
-use App\Enums\LoanRequestStatus;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property string $purpose
+ * @property string $location
+ * @property \Carbon\Carbon $start_date
+ * @property \Carbon\Carbon $end_date
+ * @property string $status
+ * @property array $equipment_items
+ * @property array $accessories_checklist_on_issue
+ * @property array $accessories_checklist_on_return
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, EquipmentItem> $equipmentItems
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, LoanTransaction> $transactions
+ */
 class LoanRequest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'reference_number',
-        'request_number',
         'user_id',
-        'applicant_name',
-        'applicant_position',
-        'applicant_department',
-        'applicant_phone',
-        'status_id',
         'purpose',
         'location',
-        'requested_from',
-        'loan_start_date',
-        'expected_return_date',
-        'responsible_officer_name',
-        'responsible_officer_position',
-        'responsible_officer_phone',
-        'same_as_applicant',
-        'equipment_requests',
-        'endorsing_officer_name',
-        'endorsing_officer_position',
-        'endorsement_status',
-        'endorsement_comments',
+        'start_date',
+        'end_date',
         'status',
-        'submitted_at',
-        'requested_to',
-        'actual_from',
-        'actual_to',
-        'notes',
-        'rejection_reason',
-        'supervisor_id',
-        'supervisor_approved_at',
-        'supervisor_notes',
-        'ict_admin_id',
-        'ict_approved_at',
-        'ict_notes',
-        'issued_by',
-        'issued_at',
-        'pickup_signature_path',
-        'received_by',
-        'returned_at',
-        'return_signature_path',
-        'return_condition_notes',
+        'equipment_items',
+        'accessories_checklist_on_issue',
+        'accessories_checklist_on_return',
     ];
 
     protected function casts(): array
     {
         return [
-            'status' => LoanRequestStatus::class,
-            'equipment_requests' => 'array',
-            'same_as_applicant' => 'boolean',
-            'requested_from' => 'datetime',
-            'requested_to' => 'datetime',
-            'loan_start_date' => 'datetime',
-            'expected_return_date' => 'datetime',
-            'actual_from' => 'datetime',
-            'actual_to' => 'datetime',
-            'submitted_at' => 'datetime',
-            'supervisor_approved_at' => 'datetime',
-            'ict_approved_at' => 'datetime',
-            'issued_at' => 'datetime',
-            'returned_at' => 'datetime',
+            'start_date' => 'datetime',
+            'end_date' => 'datetime',
+            'equipment_items' => 'array',
+            'accessories_checklist_on_issue' => 'array',
+            'accessories_checklist_on_return' => 'array',
         ];
     }
+
     /**
-     * Get the user who made the request.
+     * Get the user who made the loan request.
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     /**
-     * Get the supervisor who needs to approve.
+     * Get the equipment items associated with the loan request.
      */
-    public function supervisor()
+    public function equipmentItems(): BelongsToMany
     {
-        return $this->belongsTo(User::class, 'supervisor_id');
+        return $this->belongsToMany(EquipmentItem::class, 'loan_request_equipment', 'loan_request_id', 'equipment_item_id');
     }
 
     /**
-     * Get the ICT admin who approved.
+     * Get the transactions for the loan request.
      */
-    public function ictAdmin()
+    public function transactions(): HasMany
     {
-        return $this->belongsTo(User::class, 'ict_admin_id');
+        return $this->hasMany(LoanTransaction::class, 'loan_request_id');
     }
 
     /**
-     * Get the staff who issued the equipment.
+     * Check if the loan request is active.
      */
-    public function issuedBy()
+    public function isActive(): bool
     {
-        return $this->belongsTo(User::class, 'issued_by');
+        return $this->status === 'active';
     }
 
     /**
-     * Get the person who received the equipment.
+     * Check if the loan request is completed.
      */
-    public function receivedBy()
+    public function isCompleted(): bool
     {
-        return $this->belongsTo(User::class, 'received_by');
+        return $this->status === 'completed';
     }
 
     /**
-     * Get the loan status.
-     */
-    public function loanStatus()
-    {
-        return $this->belongsTo(LoanStatus::class, 'status_id');
-    }
-
-    /**
-     * Get loan items for this request
-     */
-    public function loanItems()
-    {
-        return $this->hasMany(LoanItem::class);
-    }
-
-    /**
-     * Check if request can be edited.
-     */
-    public function canBeEdited(): bool
-    {
-        return $this->status->canBeEdited();
-    }
-
-    /**
-     * Check if request can be cancelled.
-     */
-    public function canBeCancelled(): bool
-    {
-        return $this->status->canBeCancelled();
-    }
-
-    /**
-     * Check if request is overdue.
+     * Check if the loan request is overdue.
      */
     public function isOverdue(): bool
     {
-        return $this->status === LoanRequestStatus::COLLECTED
-            && $this->expected_return_date
-            && $this->expected_return_date < now();
-    }
-
-    /**
-     * Get loan duration in days.
-     */
-    public function getLoanDurationAttribute(): ?int
-    {
-        if (!$this->requested_from || !$this->requested_to) {
-            return null;
-        }
-
-        return $this->requested_from->diffInDays($this->requested_to) + 1;
-    }
-
-    /**
-     * Generate unique request number
-     */
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::creating(function ($loanRequest): void {
-            if (empty($loanRequest->request_number)) {
-                $loanRequest->request_number = static::generateRequestNumber();
-            }
-        });
-    }
-
-    /**
-     * Generate unique request number.
-     */
-    protected static function generateRequestNumber(): string
-    {
-        $prefix = 'LR' . date('Y');
-        $lastRequest = static::where('request_number', 'like', $prefix . '%')
-            ->orderBy('request_number', 'desc')
-            ->first();
-
-        if ($lastRequest) {
-            $lastNumber = (int) substr($lastRequest->request_number, -4);
-            $newNumber = $lastNumber + 1;
-        } else {
-            $newNumber = 1;
-        }
-
-        return $prefix . str_pad((string) $newNumber, 4, '0', STR_PAD_LEFT);
+        return $this->end_date < now() && $this->status !== 'completed';
     }
 }

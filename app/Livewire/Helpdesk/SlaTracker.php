@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Helpdesk;
 
+use App\Enums\TicketPriority;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
@@ -339,10 +340,10 @@ class SlaTracker extends Component
 
             // Increase priority
             $newPriority = match ($ticket->priority) {
-                'low' => 'medium',
-                'medium' => 'high',
-                'high' => 'critical',
-                default => 'critical', // Already max or other
+                TicketPriority::LOW => TicketPriority::MEDIUM,
+                TicketPriority::MEDIUM => TicketPriority::HIGH,
+                TicketPriority::HIGH => TicketPriority::CRITICAL,
+                default => TicketPriority::CRITICAL, // Already max or other
             };
 
             $ticket->update(['priority' => $newPriority]);

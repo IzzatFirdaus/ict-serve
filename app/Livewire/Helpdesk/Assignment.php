@@ -87,15 +87,15 @@ class Assignment extends Component
         $this->loadComments();
 
         // Set current values
-        $this->assigned_to = $this->ticket->getOriginal('assigned_to');
-        $this->priority = $this->ticket->priority;
-        $this->due_date = $this->ticket->due_at?->format('Y-m-d\TH:i');
+    $this->assigned_to = $this->ticket->getOriginal('assigned_to');
+    $this->priority = $this->ticket->priority instanceof \App\Enums\TicketPriority ? $this->ticket->priority->value : (string) $this->ticket->priority;
+    $this->due_date = $this->ticket->due_at?->format('Y-m-d\TH:i');
     }
 
     public function loadTechnicians(): void
     {
-        $this->technicians = User::whereIn('role', ['technician', 'ict_admin', 'supervisor'])
-            ->where('is_active', true)
+        $this->technicians = User::whereIn('role', ['technician', 'ict_admin', 'supervisor'], 'and', true)
+            ->where('is_active', '=', true, 'and')
             ->orderBy('name')
             ->get(['id', 'name', 'role', 'department'])
             ->toArray();
@@ -127,13 +127,13 @@ class Assignment extends Component
                 'assigned_to' => $this->assigned_to,
                 'due_at' => $this->due_date ? Carbon::parse($this->due_date) : null,
                 'assigned_at' => now(),
-                'status_id' => TicketStatus::where('code', 'assigned')->firstOrFail()->id,
+                'status_id' => TicketStatus::where('code', '=', 'assigned', 'and')->firstOrFail()->id,
             ]);
 
             // Notify assigned user
             NotificationService::createTicketAssignedNotification(
                 $this->ticket,
-                User::find($this->assigned_to)
+                User::find($this->assigned_to, ['*'])
             );
 
             session()->flash('success', 'Ticket assigned successfully.');
@@ -164,18 +164,21 @@ class Assignment extends Component
                 ]);
 
                 // Update status
-                $escalatedStatus = TicketStatus::where('code', 'escalated')->first();
+                $escalatedStatus = TicketStatus::where('code', '=', 'escalated', 'and')->first();
                 if ($escalatedStatus) {
                     $this->ticket->update(['status_id' => $escalatedStatus->id]);
                 }
 
                 // Log escalation
-                $this->logActivity('escalated', 'Ticket escalated to '.User::find($this->escalateTo)->name.'. Reason: '.$this->escalationReason);
+                $escalatedUser = User::find($this->escalateTo, ['*']);
+                $this->logActivity('escalated', 'Ticket escalated to '.($escalatedUser?->name ?? 'Unknown').'. Reason: '.$this->escalationReason);
             });
 
+            $escalatedUser = User::find($this->escalateTo, ['*']);
+            $name = $escalatedUser?->name ?? 'Unknown';
             session()->flash('success',
-                'Tiket berjaya dieskalasi kepada '.User::find($this->escalateTo)->name.
-                ' / Ticket successfully escalated to '.User::find($this->escalateTo)->name
+                'Tiket berjaya dieskalasi kepada '.$name.
+                ' / Ticket successfully escalated to '.$name
             );
 
             // Reset form
@@ -200,7 +203,7 @@ class Assignment extends Component
         }
 
         try {
-            $status = TicketStatus::where('code', $this->statusUpdate)->first();
+            $status = TicketStatus::where('code', '=', $this->statusUpdate, 'and')->first();
             if (! $status) {
                 session()->flash('error', 'Status tidak sah / Invalid status');
 
@@ -282,12 +285,12 @@ class Assignment extends Component
     {
         // In a real implementation, this would save to an audit_logs or ticket_activities table
         // For now, we'll just log it
-        logger("Ticket {$this->ticket->ticket_number}: {$action} by ".Auth::user()->name." - {$description}");
+    logger("Ticket {$this->ticket->ticket_number}: {$action} by ".Auth::user()->name." - {$description}");
     }
 
     public function render()
     {
-        $user = $this->ticket->assignedTo;
+        $user = $this->ticket->assignedToUser;
         $assignedUser = null;
         if ($user) {
             $assignedUser = [
