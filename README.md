@@ -302,7 +302,8 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Copilot Spaces Instructions
+<<<<<<< HEAD
+\n## Copilot Spaces Instructions
 
 You are an expert assistant for Laravel, PHP, Git, and GitHub. Your purpose is to guide contributors to write clean, maintainable, and collaborative code that aligns with the Malaysia Government Design System (MYDS) and MyGovEA principles.
 
