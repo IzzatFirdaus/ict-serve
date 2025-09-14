@@ -154,7 +154,7 @@ class User extends Authenticatable
      */
     private function getCurrentRole(): string
     {
-        return $this->role?->value ?? '';
+        return $this->role->value ?? '';
     }
 
     /**

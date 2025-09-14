@@ -55,13 +55,13 @@ class ApplicationForm extends Component
     {
         // Load available equipment items
         $this->available_equipment_items = EquipmentItem::where('status', 'available')
-            ->with('equipment')
+            ->with('category')
             ->get()
             ->map(function ($item) {
                 return [
                     'id' => $item->id,
-                    'name' => $item->equipment->name . ' (' . $item->serial_number . ')',
-                    'type' => $item->equipment->type,
+                    'name' => $item->name . ' (' . $item->serial_number . ')',
+                    'type' => $item->category->name,
                 ];
             })
             ->toArray();

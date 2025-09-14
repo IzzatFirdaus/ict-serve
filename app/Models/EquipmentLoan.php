@@ -64,7 +64,7 @@ class EquipmentLoan extends Model
      */
     public function getLoanDurationAttribute(): int
     {
-        return Carbon::parse($this->loan_start_date)->diffInDays(Carbon::parse($this->loan_end_date)) + 1;
+        return (int) (Carbon::parse($this->loan_start_date)->diffInDays(Carbon::parse($this->loan_end_date)) + 1);
     }
 
     /**

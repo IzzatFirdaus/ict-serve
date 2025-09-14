@@ -60,8 +60,8 @@ class LoanApplicationService
             if ($approved) {
                 $status = LoanStatus::where('code', 'approved')->first();
                 $loan->forceFill([
-                    'status_id' => $status?->id ?? $loan->status_id,
-                    'supervisor_id' => $supporter?->id,
+                    'status_id' => $status->id ?? $loan->status_id,
+                    'supervisor_id' => $supporter->id,
                     'supervisor_approved_at' => now(),
                     'supervisor_notes' => $comments,
                 ])->save();
@@ -70,9 +70,9 @@ class LoanApplicationService
             } else {
                 $status = LoanStatus::where('code', 'rejected')->first();
                 $loan->forceFill([
-                    'status_id' => $status?->id ?? $loan->status_id,
+                    'status_id' => $status->id ?? $loan->status_id,
                     'rejection_reason' => $comments,
-                    'supervisor_id' => $supporter?->id,
+                    'supervisor_id' => $supporter->id,
                     'supervisor_approved_at' => now(),
                 ])->save();
 
@@ -103,7 +103,7 @@ class LoanApplicationService
 
             $issuedStatus = LoanStatus::where('code', 'issued')->first();
             $loan->forceFill([
-                'status_id' => $issuedStatus?->id ?? $loan->status_id,
+                'status_id' => $issuedStatus->id ?? $loan->status_id,
                 'issued_by' => $bpmStaff->id,
                 'issued_at' => now(),
             ])->save();
@@ -133,7 +133,7 @@ class LoanApplicationService
 
             $completed = LoanStatus::where('code', 'completed')->first();
             $loan->forceFill([
-                'status_id' => $completed?->id ?? $loan->status_id,
+                'status_id' => $completed->id ?? $loan->status_id,
                 'received_by' => $bpmStaff->id,
                 'returned_at' => now(),
                 'return_condition_notes' => $conditionNotes,

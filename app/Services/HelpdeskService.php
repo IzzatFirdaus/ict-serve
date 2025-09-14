@@ -47,13 +47,13 @@ class HelpdeskService
      */
     public function assignTicket(HelpdeskTicket $ticket, User $agent, ?User $actor = null): HelpdeskTicket
     {
-        return DB::transaction(function () use ($ticket, $agent, $actor): HelpdeskTicket {
+        return DB::transaction(function () use ($ticket, $agent): HelpdeskTicket {
             $inProgress = TicketStatus::where('code', 'in_progress')->first();
 
             $ticket->forceFill([
                 'assigned_to' => $agent->id,
                 'assigned_at' => now(),
-                'status_id' => $inProgress?->id ?? $ticket->status_id,
+                'status_id' => $inProgress->id ?? $ticket->status_id,
             ])->save();
 
             $this->notifications->notifyTicketEvent($ticket, 'ticket_assigned');
@@ -71,7 +71,7 @@ class HelpdeskService
             $status = TicketStatus::where('code', $statusCode)->first();
 
             $attributes = [
-                'status_id' => $status?->id ?? $ticket->status_id,
+                'status_id' => $status->id ?? $ticket->status_id,
             ];
 
             if ($statusCode === 'resolved') {
