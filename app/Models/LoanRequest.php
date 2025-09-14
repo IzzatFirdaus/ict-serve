@@ -39,7 +39,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read User $user
- * @property-read LoanStatus $status
+ * @property-read LoanStatus|null $loanStatus
  * @property-read User|null $supervisor
  * @property-read User|null $ictAdmin
  * @property-read User|null $issuedBy

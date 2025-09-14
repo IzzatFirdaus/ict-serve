@@ -108,7 +108,7 @@ class NotificationService
      */
     public function notifyLoanStatusUpdate(LoanRequest $loanRequest): void
     {
-        $status = $loanRequest->status->name;
+        $status = $loanRequest->loanStatus->code ?? 'unknown';
         $messages = [
             'approved' => 'Permohonan peminjaman anda telah diluluskan',
             'rejected' => 'Permohonan peminjaman anda telah ditolak',

@@ -84,7 +84,7 @@ class DamageType extends Model
             return $this->name;
         }
 
-        $locale = $locale ?? app()->getLocale();
+        // $locale is guaranteed to be non-null at this point
 
         return $locale === 'ms' || $locale === 'bm'
             ? $this->name_bm

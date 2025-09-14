@@ -345,7 +345,7 @@ class UserProfile extends Component
                 'type' => 'loan',
                 'title' => 'Pinjaman Peralatan',
                 'description' => $loan->equipmentItem->name ?? 'Equipment Loan',
-                'status' => ucfirst($loan->status->label),
+                'status' => ucfirst($loan->loanStatus->label ?? 'Unknown'),
                 'created_at' => $loan->created_at,
                 'url' => route('loan.index'),
             ];
