@@ -229,7 +229,7 @@ class Notification extends Model
             'title' => $titles[$type] ?? 'Kemaskini Tiket / Ticket Update',
             'message' => $message ?: "Tiket #{$ticket->ticket_number} - {$ticket->title}",
             'category' => 'ticket',
-            'priority' => match ($ticket->priority) {
+            'priority' => match ($ticket->priority) { // @phpstan-ignore-next-line match.alwaysTrue
                 TicketPriority::CRITICAL => 'urgent',
                 TicketPriority::HIGH => 'high',
                 TicketPriority::MEDIUM => 'medium',
