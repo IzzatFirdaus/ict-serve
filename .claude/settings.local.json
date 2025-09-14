@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php artisan make:migration:*)",
+      "Bash(php artisan make:model:*)",
+      "Bash(php artisan make:livewire:*)",
+      "Bash(php artisan make:test:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

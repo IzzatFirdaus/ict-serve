@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Rule;
+use Livewire\Component;
 
 #[Layout('layouts.app')]
 class EquipmentLoanForm extends Component
@@ -48,6 +48,11 @@ class EquipmentLoanForm extends Component
 
     // Part 3: Equipment Information
     public $equipment_items = [];
+
+    /**
+     * Dynamic validation rules
+     */
+    public array $rules = [];
 
     public function mount()
     {
@@ -100,7 +105,7 @@ class EquipmentLoanForm extends Component
         $this->equipment_items[] = [
             'type' => '',
             'quantity' => 1,
-            'notes' => ''
+            'notes' => '',
         ];
     }
 
@@ -115,7 +120,7 @@ class EquipmentLoanForm extends Component
     public function submit()
     {
         // Add conditional validation for responsible officer
-        if (!$this->is_same_person) {
+        if (! $this->is_same_person) {
             $this->rules['responsible_name'] = 'required|string|max:255';
             $this->rules['responsible_position'] = 'required|string|max:255';
             $this->rules['responsible_phone'] = 'required|string|max:20';
@@ -131,7 +136,7 @@ class EquipmentLoanForm extends Component
 
         // Here you would typically save to database
         // For now, we'll just show a success message
-        session()->flash('success', 'Permohonan peminjaman peralatan ICT anda telah berjaya dihantar. Nombor rujukan: LOAN-' . now()->format('YmdHis'));
+        session()->flash('success', 'Permohonan peminjaman peralatan ICT anda telah berjaya dihantar. Nombor rujukan: LOAN-'.now()->format('YmdHis'));
 
         $this->reset();
         $this->mount(); // Re-initialize with one equipment item

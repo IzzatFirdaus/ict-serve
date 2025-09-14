@@ -165,18 +165,7 @@ class PublicController extends Controller
      */
     public function myRequests()
     {
-        $user = Auth::user();
-
-        $loanRequests = LoanRequest::where('user_id', $user->id)
-            ->with(['loanStatus'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(10, ['*'], 'loans');
-
-        $tickets = HelpdeskTicket::where('user_id', $user->id)
-            ->with(['category', 'ticketStatus', 'assignedTo'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(10, ['*'], 'tickets');
-
-        return view('public.my-requests', compact('loanRequests', 'tickets'));
+        // Return the enhanced Livewire component view
+        return view('public.my-requests-enhanced');
     }
 }

@@ -1,49 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+<div class="myds-container max-w-md mx-auto py-10">
+    <div class="bg-bg-white-0 border border-otl-gray-200 rounded-radius-l shadow-context-menu p-6">
+        <h1 class="myds-heading text-heading-xs font-semibold text-txt-black-900 mb-2">Confirm your password</h1>
+        <p class="text-body-sm text-txt-black-600 mb-6">Please confirm your password before continuing.</p>
 
-                <div class="card-body">
-                    {{ __('Please confirm your password before continuing.') }}
+        @if (Route::has('password.confirm'))
+            <form method="POST" action="{{ route('password.confirm') }}" class="space-y-4">
+                @csrf
 
-                    <form method="POST" action="{{ route('password.confirm') }}">
-                        @csrf
+                <x-myds.input
+                    id="password"
+                    name="password"
+                    type="password"
+                    label="Password"
+                    autocomplete="current-password"
+                    required
+                />
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                <x-myds.button type="submit" variant="primary" class="w-full">Confirm</x-myds.button>
+            </form>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Confirm Password') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+            @if (Route::has('password.request'))
+                <p class="text-body-sm text-txt-black-600 mt-4 text-center">
+                    <a class="text-primary-600 hover:text-primary-700 myds-hover-underline" href="{{ route('password.request') }}">
+                        Forgot your password?
+                    </a>
+                </p>
+            @endif
+        @else
+            <x-myds.callout variant="warning">
+                Password confirmation is not available in this environment. Please contact the administrator if you need access.
+            </x-myds.callout>
+        @endif
     </div>
 </div>
 @endsection

@@ -6,63 +6,47 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('helpdesk_tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('ticket_number')->unique(); // Auto-generated: HD-YYYY-MMDD-XXX
-            $table->foreignId('user_id')->constrained('users'); // Ticket requester
+            $table->string('ticket_number')->unique();
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('category_id')->constrained('ticket_categories');
             $table->foreignId('status_id')->constrained('ticket_statuses');
             $table->string('title');
-            $table->text('description');
-            $table->enum('priority', ['low', 'medium', 'high', 'critical'])->default('medium');
-            $table->enum('urgency', ['low', 'medium', 'high', 'critical'])->default('medium');
+            $table->text('description')->nullable();
 
-            // Assignment fields
+            // Merged from add_status_column migration
+            $table->string('status')->default('pending');
+
+            $table->string('priority')->default('medium');
+            $table->string('urgency')->default('medium');
             $table->foreignId('assigned_to')->nullable()->constrained('users');
             $table->timestamp('assigned_at')->nullable();
 
-            // Equipment relation (if ticket is about specific equipment)
+            // This version links to equipment_items. Keep this if your helpdesk uses equipment_items.
+            // If you standardize on 'assets', switch to ->constrained('assets') instead.
             $table->foreignId('equipment_item_id')->nullable()->constrained('equipment_items');
 
-            // Location and contact info
-            $table->string('location')->nullable(); // Where the issue is
+            $table->string('location')->nullable();
             $table->string('contact_phone')->nullable();
-
-            // SLA tracking
-            $table->timestamp('due_at')->nullable(); // Based on SLA
+            $table->timestamp('due_at')->nullable();
             $table->timestamp('resolved_at')->nullable();
             $table->timestamp('closed_at')->nullable();
-
-            // Resolution details
             $table->text('resolution')->nullable();
             $table->text('resolution_notes')->nullable();
             $table->foreignId('resolved_by')->nullable()->constrained('users');
-
-            // Feedback
-            $table->integer('satisfaction_rating')->nullable(); // 1-5 scale
+            $table->integer('satisfaction_rating')->nullable();
             $table->text('feedback')->nullable();
-
-            // Attachments
-            $table->json('attachments')->nullable(); // File paths
-
+            $table->json('attachments')->nullable();
             $table->timestamps();
 
-            $table->index(['user_id', 'status_id']);
-            $table->index('ticket_number');
-            $table->index(['category_id', 'priority']);
-            $table->index('assigned_to');
-            $table->index('due_at');
+            // Merged add_*: created_at index
+            $table->index('created_at', 'helpdesk_tickets_created_at_index');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('helpdesk_tickets');

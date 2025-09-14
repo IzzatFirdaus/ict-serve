@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Rule;
+use Livewire\Component;
 
 #[Layout('layouts.app')]
 class DamageComplaintForm extends Component
@@ -35,6 +35,16 @@ class DamageComplaintForm extends Component
 
     #[Rule('required|accepted')]
     public $declaration = false;
+
+    /**
+     * Whether to show asset number field
+     */
+    public bool $show_asset_number = false;
+
+    /**
+     * Dynamic validation rules
+     */
+    public array $rules = [];
 
     public function getDivisionOptions()
     {
@@ -75,7 +85,7 @@ class DamageComplaintForm extends Component
 
     public function updatedDamageType()
     {
-        if (!$this->show_asset_number) {
+        if (! $this->show_asset_number) {
             $this->asset_number = '';
         }
     }
@@ -96,7 +106,7 @@ class DamageComplaintForm extends Component
 
         // Here you would typically save to database
         // For now, we'll just show a success message
-        session()->flash('success', 'Aduan kerosakan ICT anda telah berjaya dihantar. Nombor rujukan: ICT-' . now()->format('YmdHis'));
+        session()->flash('success', 'Aduan kerosakan ICT anda telah berjaya dihantar. Nombor rujukan: ICT-'.now()->format('YmdHis'));
 
         $this->reset();
     }
