@@ -29,7 +29,7 @@ class PublicLoanController extends Controller
             ->get()
             ->groupBy('category.name');
 
-        return view('public.loan.create', compact('availableEquipment'));
+        return view('public.loan.create', compact('availableEquipment')); // @phpstan-ignore-line
     }
 
     public function store(Request $request)
@@ -144,7 +144,7 @@ class PublicLoanController extends Controller
             return redirect()->route('public.loan.create');
         }
 
-        return view('public.loan.success');
+        return view('public.loan.success'); // @phpstan-ignore-line
     }
 
     public function track()

@@ -3,6 +3,7 @@
 namespace App\Livewire\ResourceManagement\Admin\BPM;
 
 use App\Models\LoanRequest;
+use App\Models\LoanItem;
 use App\Models\EquipmentItem;
 use App\Services\LoanApplicationService;
 use Livewire\Component;
@@ -53,6 +54,7 @@ class ProcessReturn extends Component
             })
             ->get();
 
+        /** @var \App\Models\LoanItem $item */
         foreach ($issuedItems as $item) {
             if ($item->equipmentItem) {
                 $this->returnedEquipment[] = $item->equipmentItem->id;

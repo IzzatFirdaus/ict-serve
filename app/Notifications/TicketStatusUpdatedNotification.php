@@ -68,6 +68,7 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
             case 'assigned':
                 $message->line('Your ticket has been assigned to our support team member.');
                 if ($this->ticket->assignedTo) {
+                    // @phpstan-ignore-next-line property.notFound
                     $message->line("**Assigned to:** {$this->ticket->assignedTo->name}");
                 }
                 break;
