@@ -166,6 +166,10 @@ class ApprovalWorkflow extends Component
                     ]);
                     $message = 'Permohonan telah dikembalikan untuk pembetulan.';
                     break;
+
+                default:
+                    $message = 'Tindakan kelulusan tidak sah.';
+                    break;
             }
 
             // Update current step

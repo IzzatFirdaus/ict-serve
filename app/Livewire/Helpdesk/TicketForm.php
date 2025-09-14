@@ -180,6 +180,7 @@ class TicketForm extends Component
             }
 
             // Send notification to helpdesk team
+            // @phpstan-ignore-next-line method.resultUnused
             $this->notifyHelpdeskTeam($ticket);
 
             // Send notification to user

@@ -340,7 +340,6 @@ class UserProfile extends Component
             ->limit(5)
             ->get();
 
-        // @phpstan-ignore-next-line
         $recentLoans = $recentLoansCollection->map(function (\App\Models\LoanRequest $loan) {
             return [
                 'type' => 'loan',

@@ -48,7 +48,7 @@ class LoanRequestSubmittedNotification extends Notification implements ShouldQue
                     ->line("Your equipment loan request has been successfully submitted.")
                     ->line("**Request Number:** {$this->loanRequest->request_number}")
                     ->line("**Purpose:** {$this->loanRequest->purpose}")
-                    ->line("**Requested Period:** {$this->loanRequest->loan_start_date->format('M j, Y')} to {$this->loanRequest->expected_return_date->format('M j, Y')}")
+                    ->line("**Requested Period:** {$this->loanRequest->requested_from->format('M j, Y')} to {$this->loanRequest->requested_to->format('M j, Y')}")
                     ->line("**Location:** {$this->loanRequest->location}")
                     ->line('Your request will be reviewed by your supervisor and the ICT department.')
                     ->action('View Request Details', route('dashboard'))
@@ -67,7 +67,7 @@ Ministry of Tourism, Arts and Culture (MOTAC)');
             'loan_request_id' => $this->loanRequest->id,
             'request_number' => $this->loanRequest->request_number,
             'purpose' => $this->loanRequest->purpose,
-            'status' => $this->loanRequest->status->value,
+            'status' => $this->loanRequest->status->name,
             'message' => "Your loan request {$this->loanRequest->request_number} has been submitted successfully.",
             'action_url' => route('dashboard'),
         ];

@@ -272,9 +272,11 @@ class TicketManagement extends Component
 
     public function getAgentsProperty()
     {
-        return User::whereHas('roles', function ($query) {
-            $query->whereIn('name', ['it-admin', 'it-technician', 'helpdesk-agent']);
-        })
+        return User::whereIn('role', [
+            \App\Enums\UserRole::ICT_ADMIN,
+            \App\Enums\UserRole::HELPDESK_STAFF,
+            \App\Enums\UserRole::SUPER_ADMIN,
+        ])
         ->orderBy('name')
         ->get();
     }
