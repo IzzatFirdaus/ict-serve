@@ -1,0 +1,1 @@
+<a href="#utama" class="myds-skip-link" aria-label="Langkau ke kandungan utama">Langkau ke kandungan utama</a>
