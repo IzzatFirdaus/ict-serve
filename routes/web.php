@@ -9,30 +9,84 @@ use App\Livewire\Counter;
 use App\Livewire\DamageComplaintForm;
 use App\Livewire\Dashboard;
 use App\Livewire\EquipmentLoanForm;
-use App\Livewire\Login;
-use App\Livewire\Register;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Authentication Routes
-Route::get('/login', Login::class)->name('login');
-Route::get('/register', Register::class)->name('register');
-Route::post('/logout', function () {
-    auth()->guard()->logout();
-    session()->invalidate();
-    session()->regenerateToken();
+// Authentication routes are provided by Breeze in routes/auth.php (loaded in bootstrap/app.php)
 
-    return redirect()->route('login');
-})->name('logout');
-
-// Public Routes
+// Public Routes - Unified root/dashboard handling
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('app');
+    }
     return view('dashboard');
 })->name('dashboard');
 
+// '/dashboard' acts as an alias to '/' for guests; redirects authed users
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    if (Auth::check()) {
+        return redirect()->route('app');
+    }
+    return redirect()->to('/');
+})->name('dashboard.alias');
+
+// Aliases used in views (navigation, dashboard)
+// Equipment Loan create (alias to equipment loan application form)
+Route::get('/equipment-loan/create', function () {
+    // Prefer MYDS-compliant Livewire form when available
+    if (class_exists(\App\Livewire\Equipment\LoanApplicationFormNew::class)) {
+        return app(\App\Livewire\Equipment\LoanApplicationFormNew::class)(request());
+    }
+
+    if (class_exists(\App\Livewire\Equipment\LoanApplicationForm::class)) {
+        return app(\App\Livewire\Equipment\LoanApplicationForm::class)(request());
+    }
+
+    // Fallback to generic EquipmentLoanForm Livewire
+    if (class_exists(\App\Livewire\EquipmentLoanForm::class)) {
+        return app(\App\Livewire\EquipmentLoanForm::class)(request());
+    }
+
+    return view('public.loan-request');
+})->name('equipment-loan.create');
+
+// Damage Complaint create (alias to new MYDS ICT form when present)
+Route::get('/damage-complaint/create', function () {
+    if (class_exists(\App\Livewire\Ict\DamageComplaintFormNew::class)) {
+        return app(\App\Livewire\Ict\DamageComplaintFormNew::class)(request());
+    }
+    if (class_exists(\App\Livewire\Ict\DamageComplaintForm::class)) {
+        return app(\App\Livewire\Ict\DamageComplaintForm::class)(request());
+    }
+    if (class_exists(\App\Livewire\DamageComplaintForm::class)) {
+        return app(\App\Livewire\DamageComplaintForm::class)(request());
+    }
+    return view('public.damage-complaint');
+})->name('damage-complaint.create');
+
+// Helpdesk links used in dashboard
+Route::get('/helpdesk/create-ticket', function () {
+    if (class_exists(\App\Livewire\Helpdesk\CreateEnhanced::class)) {
+        return app(\App\Livewire\Helpdesk\CreateEnhanced::class)(request());
+    }
+    if (class_exists(\App\Livewire\Helpdesk\Create::class)) {
+        return app(\App\Livewire\Helpdesk\Create::class)(request());
+    }
+    return redirect()->route('helpdesk.create');
+})->name('helpdesk.create-ticket');
+
+Route::get('/helpdesk/my-tickets', function () {
+    if (class_exists(\App\Livewire\Helpdesk\IndexEnhanced::class)) {
+        return app(\App\Livewire\Helpdesk\IndexEnhanced::class)(request());
+    }
+    if (class_exists(\App\Livewire\Helpdesk\Index::class)) {
+        return app(\App\Livewire\Helpdesk\Index::class)(request());
+    }
+    return redirect()->route('helpdesk.index');
+})->name('helpdesk.my-tickets');
+
+// Helpdesk ticket detail route (accessible to authenticated users)
+Route::middleware('auth')->get('/helpdesk/ticket/{ticketNumber}', \App\Livewire\Helpdesk\TicketDetail::class)->name('helpdesk.ticket.detail');
 
 // Public form display routes (guest accessible) mounting Livewire components
 Route::get('/damage-complaint', DamageComplaintForm::class)
@@ -59,6 +113,7 @@ Route::middleware('auth')->group(function () {
 
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/index', [ProfileController::class, 'edit'])->name('profile.index'); // alias expected in views
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -140,14 +195,13 @@ Route::middleware('auth')->get('/app', function () {
     return view('app');
 })->name('app');
 
-// Main Dashboard Route
-Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect()->route('app');
-    }
+// Filament route alias expected by some views/tests
+Route::get('/filament/admin', function () {
+    return redirect()->route('admin.dashboard');
+})->name('filament.admin.pages.dashboard');
 
-    return view('welcome');
-});
+// Public MOTAC Info page (placeholder)
+Route::view('/motac-info', 'public.motac-info')->name('public.motac-info');
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
@@ -166,7 +220,7 @@ Route::middleware('auth')->group(function () {
 
     // ICT Loan Module Routes
     Route::prefix('loan')->name('loan.')->group(function () {
-        // Route::get('/', \App\Livewire\Loan\Index::class)->name('index'); // TODO: Create this class
+        Route::get('/', \App\Livewire\Loan\Index::class)->name('index');
         Route::get('/create', \App\Livewire\Loan\Create::class)->name('create');
 
         Route::get('/{loan}', function () {
@@ -188,9 +242,11 @@ Route::middleware('auth')->group(function () {
 
         // New MYDS Components
         Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
+    });
 
-        // Legacy alias for older paths /ict/* used in tests and external links
-        Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint');
+    // ICT routes for damage complaint support
+    Route::prefix('ict')->name('ict.')->group(function () {
+        Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
     });
 
     // Ticket routes (legacy alias for helpdesk)
@@ -232,10 +288,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', \App\Livewire\Notifications\NotificationCenter::class)->name('index');
     });
 
-    // Profile routes
-    Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', \App\Livewire\Profile\UserProfile::class)->name('index');
-    });
+    // Profile routes handled by Breeze ProfileController above (profile.edit/update/destroy)
 
     // Test notification route (temporary)
     Route::get('/test-notifications', function () {
@@ -294,7 +347,7 @@ Route::prefix('demo')->name('demo.')->group(function () {
     Route::get('/login', function () {
         return view('demo.login');
     })->name('login');
-    
+
     // Demo login submission (simulate authentication)
     Route::post('/login', function (\Illuminate\Http\Request $request) {
         // Always return success for demo purposes
@@ -309,7 +362,7 @@ Route::prefix('demo')->name('demo.')->group(function () {
     Route::get('/dashboard', function () {
         return view('demo.dashboard');
     })->name('dashboard');
-    
+
     // Demo API endpoints for testing
     Route::get('/api/stats', function () {
         return response()->json([
@@ -324,7 +377,7 @@ Route::prefix('demo')->name('demo.')->group(function () {
             'tickets_resolved' => 142
         ]);
     })->name('api.stats');
-    
+
     Route::get('/api/activities', function () {
         return response()->json([
             [

@@ -47,7 +47,6 @@ class LoanRequestFactory extends Factory
                 'endorsing_officer_position' => $this->faker->jobTitle(),
                 'endorsement_status' => 'pending',
                 'endorsement_comments' => $this->faker->sentence(),
-                'status' => $statusCode,
                 'submitted_at' => $this->faker->dateTimeBetween('-2 weeks', 'now'),
                 'requested_to' => $this->faker->dateTimeBetween('now', '+2 weeks'),
                 'actual_from' => null,

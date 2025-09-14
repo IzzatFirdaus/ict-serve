@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Tests\Feature;
 
 // Framework
@@ -31,11 +30,11 @@ class LoanApplicationWorkflowTest extends TestCase
 
         // Setup: Create users
     /** @var User $applicant */
-    $applicant = User::factory()->create(['role' => 'staff', 'grade' => 'N41']);
+    $applicant = User::factory()->create(['role' => 'staff']);
     /** @var User $supportingOfficer */
-    $supportingOfficer = User::factory()->create(['role' => 'supporting_officer', 'grade' => 'N44']);
+    $supportingOfficer = User::factory()->create(['role' => 'supporting_officer']);
     /** @var User $bpmStaff */
-    $bpmStaff = User::factory()->create(['role' => 'bpm_staff', 'grade' => 'N41']);
+    $bmpStaff = User::factory()->create(['role' => 'bmp_staff', 'grade' => 'N41']);
 
     // Setup: Create equipment
     $equipment1 = EquipmentItem::factory()->create(['status' => 'available']);

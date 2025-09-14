@@ -205,17 +205,17 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get notifications for this user
+     * Get custom app notifications for this user
      */
-    public function notifications(): HasMany
+    public function customNotifications(): HasMany
     {
         return $this->hasMany(Notification::class);
     }
 
     /**
-     * Get unread notifications for this user
+     * Get unread custom app notifications for this user
      */
-    public function unreadNotifications(): HasMany
+    public function unreadCustomNotifications(): HasMany
     {
         return $this->hasMany(Notification::class)->unread()->notExpired();
     }

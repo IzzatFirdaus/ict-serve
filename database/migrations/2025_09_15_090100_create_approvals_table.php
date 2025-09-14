@@ -21,7 +21,6 @@ return new class extends Migration
             $table->json('metadata')->nullable();
             $table->timestamps();
 
-            $table->index(['approvable_type', 'approvable_id']);
             $table->index(['decided_at']);
         });
     }

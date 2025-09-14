@@ -37,7 +37,7 @@
                                     📊 My Requests
                                 </a>
                                 <div class="border-t border-otl-divider"></div>
-                                <a href="{{ route('filament.admin.pages.dashboard') }}" class="block px-4 py-2 myds-body-sm text-txt-black-700 hover:bg-bg-gray-50">
+                                <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 myds-body-sm text-txt-black-700 hover:bg-bg-gray-50">
                                     ⚙️ Admin Panel
                                 </a>
                                     <x-nav-link :href="route('public.motac-info')" :active="request()->routeIs('public.motac-info')">
@@ -124,7 +124,7 @@
             <x-responsive-nav-link :href="route('public.my-requests')">
                 📊 My Requests
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('filament.admin.pages.dashboard')">
+            <x-responsive-nav-link :href="route('admin.dashboard')">
                 ⚙️ Admin Panel
             </x-responsive-nav-link>
         </div>

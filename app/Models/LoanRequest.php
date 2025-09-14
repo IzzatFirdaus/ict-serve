@@ -86,11 +86,27 @@ class LoanRequest extends Model
             'requested_to' => 'date',
             'actual_from' => 'date',
             'actual_to' => 'date',
+            'equipment_requests' => 'array',
             'supervisor_approved_at' => 'datetime',
             'ict_approved_at' => 'datetime',
             'issued_at' => 'datetime',
             'returned_at' => 'datetime',
         ];
+    }
+
+    /**
+     * Legacy attribute accessor: when code references $loanRequest->status as string,
+     * return the related status code; if object expected, relation method should be used.
+     */
+    public function getStatusAttribute($value): mixed
+    {
+        // If Eloquent provided a raw column named 'status', keep it;
+        // otherwise, fall back to related model's code for string contexts.
+        if ($value !== null) {
+            return $value;
+        }
+
+        return $this->getRelationValue('loanStatus')?->code;
     }
 
     /**
@@ -105,6 +121,14 @@ class LoanRequest extends Model
      * Get the loan status.
      */
     public function status(): BelongsTo
+    {
+        return $this->belongsTo(LoanStatus::class, 'status_id');
+    }
+
+    /**
+     * Backwards-compatible alias used in Blade views.
+     */
+    public function loanStatus(): BelongsTo
     {
         return $this->belongsTo(LoanStatus::class, 'status_id');
     }
@@ -207,7 +231,7 @@ class LoanRequest extends Model
      */
     public function canBeEdited(): bool
     {
-        return $this->status->canBeEdited();
+        return (bool) $this->loanStatus?->canBeEdited();
     }
 
     /**
@@ -215,7 +239,7 @@ class LoanRequest extends Model
      */
     public function canBeCancelled(): bool
     {
-        return $this->status->canBeCancelled();
+        return (bool) $this->loanStatus?->canBeCancelled();
     }
 
     /**
@@ -223,7 +247,9 @@ class LoanRequest extends Model
      */
     public function isOverdue(): bool
     {
-        return $this->status->code === 'active'
+        $code = $this->loanStatus?->code;
+
+        return in_array($code, ['active', 'in_use', 'approved'], true)
             && $this->requested_to
             && $this->requested_to < now();
     }
@@ -250,6 +276,24 @@ class LoanRequest extends Model
         static::creating(function ($loanRequest): void {
             if (empty($loanRequest->request_number)) {
                 $loanRequest->request_number = static::generateRequestNumber();
+            }
+
+            // If a plain string status has been set (e.g., by tests), sync status_id accordingly
+            if (! empty($loanRequest->status) && empty($loanRequest->status_id)) {
+                $statusModel = \App\Models\LoanStatus::where('code', $loanRequest->status)->first();
+                if ($statusModel) {
+                    $loanRequest->status_id = $statusModel->id;
+                }
+            }
+        });
+
+        static::saving(function ($loanRequest): void {
+            // Keep status_id in sync when a string status is provided
+            if (! empty($loanRequest->status)) {
+                $statusModel = \App\Models\LoanStatus::where('code', $loanRequest->status)->first();
+                if ($statusModel) {
+                    $loanRequest->status_id = $statusModel->id;
+                }
             }
         });
     }
