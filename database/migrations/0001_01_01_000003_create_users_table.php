@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('identification_number')->nullable();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('mobile_number')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('staff_id')->nullable();
@@ -24,12 +26,29 @@ return new class extends Migration
             $table->string('position')->nullable();
             $table->string('phone')->nullable();
             $table->unsignedBigInteger('supervisor_id')->nullable();
+            $table->string('status')->default('active');
+            $table->unsignedBigInteger('department_id')->nullable();
+            $table->unsignedBigInteger('grade_id')->nullable();
+            $table->unsignedBigInteger('position_id')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamp('last_login_at')->nullable();
             $table->string('profile_picture')->nullable();
             $table->json('preferences')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+
+            // Foreign keys
+            $table->foreign('department_id')->references('id')->on('departments')->nullOnDelete();
+            $table->foreign('grade_id')->references('id')->on('grades')->nullOnDelete();
+            $table->foreign('position_id')->references('id')->on('positions')->nullOnDelete();
+            $table->foreign('created_by')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('deleted_by')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('supervisor_id')->references('id')->on('users')->nullOnDelete();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

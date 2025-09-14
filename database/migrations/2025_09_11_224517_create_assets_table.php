@@ -14,19 +14,19 @@ return new class extends Migration
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
             $table->string('asset_number')->unique()->index();
-            $table->string('name');
-            $table->string('category'); // PC, Laptop, Printer, Scanner, Projektor, iPad
-            $table->string('brand')->nullable();
-            $table->string('model')->nullable();
             $table->string('serial_number')->nullable()->unique();
+            $table->string('category');
+            $table->string('brand');
+            $table->string('model');
+            $table->text('description')->nullable();
             $table->date('purchase_date')->nullable();
             $table->date('warranty_expiry')->nullable();
-            $table->enum('status', ['available', 'assigned', 'maintenance', 'damaged', 'disposed'])->default('available');
-            $table->string('location')->nullable(); // Physical location
-            $table->string('division')->nullable(); // Assigned division
-            $table->string('assigned_to')->nullable(); // Staff name or ID
-            $table->decimal('purchase_price', 10, 2)->nullable();
-            $table->text('description')->nullable();
+            $table->decimal('purchase_value', 10, 2)->nullable();
+            $table->string('status');
+            $table->string('condition');
+            $table->string('location')->nullable();
+            $table->foreignId('assigned_to')->nullable()->constrained('users');
+            $table->date('assigned_date')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });

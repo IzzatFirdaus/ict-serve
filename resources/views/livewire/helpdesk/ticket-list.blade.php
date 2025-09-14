@@ -1,265 +1,305 @@
-<div class="myds-container mx-auto px-4 py-8">
-    {{-- Header --}}
-    <div class="mb-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-                <h1 class="text-2xl font-bold text-gray-900 mb-2">My Support Tickets</h1>
-                <p class="text-gray-600">View and manage your ICT support requests</p>
-            </div>
-            <div class="mt-4 md:mt-0">
-                <a href="{{ route('helpdesk.create-ticket') }}"
-                   class="inline-flex items-center px-4 py-2 bg-bg-primary-600 text-white rounded-lg hover:bg-bg-primary-700 focus:ring-2 focus:ring-fr-primary transition-colors">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                    Create New Ticket
-                </a>
-            </div>
-        </div>
-    </div>
-
-    {{-- Stats Cards --}}
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <div class="flex items-center">
-                <div class="p-2 bg-blue-100 rounded-lg">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
+<div class="bg-background-light dark:bg-background-dark min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <x-myds.header>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h1 class="font-poppins text-2xl font-semibold text-black-900 dark:text-white">
+                        Senarai Tiket Sokongan Saya
+                    </h1>
+                    <p class="font-inter text-sm text-black-500 dark:text-black-400 mt-2">
+                        Lihat dan urus permintaan sokongan ICT anda
+                    </p>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500">Total</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $counts['total'] }}</p>
+                <div class="mt-4 md:mt-0">
+                    <x-myds.button variant="primary" class="w-full md:w-auto">
+                        <x-myds.icon name="plus" size="16" class="mr-2" />
+                        Cipta Aduan Baru
+                    </x-myds.button>
                 </div>
             </div>
-        </div>
+        </x-myds.header>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <div class="flex items-center">
-                <div class="p-2 bg-yellow-100 rounded-lg">
-                    <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500">Open</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $counts['open'] }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <div class="flex items-center">
-                <div class="p-2 bg-green-100 rounded-lg">
-                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500">Closed</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $counts['closed'] }}</p>
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <!-- Total Tickets -->
+            <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-4">
+                <div class="flex items-center">
+                    <div class="p-2 bg-primary-100 dark:bg-primary-900 rounded-lg">
+                        <x-myds.icon name="document" size="24" class="text-primary-600 dark:text-primary-400" />
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-inter text-xs font-medium text-black-500 dark:text-black-400">Jumlah</p>
+                        <p class="font-poppins text-xl font-semibold text-black-900 dark:text-white">{{ $counts['total'] }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <div class="flex items-center">
-                <div class="p-2 bg-red-100 rounded-lg">
-                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
-                    </svg>
+            <!-- Open Tickets -->
+            <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-4">
+                <div class="flex items-center">
+                    <div class="p-2 bg-warning-100 dark:bg-warning-900 rounded-lg">
+                        <x-myds.icon name="clock" size="24" class="text-warning-600 dark:text-warning-400" />
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-inter text-xs font-medium text-black-500 dark:text-black-400">Terbuka</p>
+                        <p class="font-poppins text-xl font-semibold text-black-900 dark:text-white">{{ $counts['open'] }}</p>
+                    </div>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500">Overdue</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $counts['overdue'] }}</p>
+            </div>
+
+            <!-- Closed Tickets -->
+            <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-4">
+                <div class="flex items-center">
+                    <div class="p-2 bg-success-100 dark:bg-success-900 rounded-lg">
+                        <x-myds.icon name="check-circle" size="24" class="text-success-600 dark:text-success-400" />
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-inter text-xs font-medium text-black-500 dark:text-black-400">Selesai</p>
+                        <p class="font-poppins text-xl font-semibold text-black-900 dark:text-white">{{ $counts['closed'] }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    {{-- Filters --}}
-    <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            {{-- Search --}}
-            <div class="lg:col-span-2">
-                <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                <input type="text" wire:model.live.debounce.300ms="search" id="search"
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
-                       placeholder="Search by ticket number, title, or description">
-            </div>
-
-            {{-- Status Filter --}}
-            <div>
-                <label for="filterStatus" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                <select wire:model.live="filterStatus" id="filterStatus"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
-                    <option value="">All Statuses</option>
-                    @foreach($statuses as $status)
-                        <option value="{{ $status->id }}">{{ $status->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            {{-- Category Filter --}}
-            <div>
-                <label for="filterCategory" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                <select wire:model.live="filterCategory" id="filterCategory"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
-                    <option value="">All Categories</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            {{-- Priority Filter --}}
-            <div>
-                <label for="filterPriority" class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
-                <select wire:model.live="filterPriority" id="filterPriority"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
-                    <option value="">All Priorities</option>
-                    @foreach($priorities as $priority)
-                        <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
-                    @endforeach
-                </select>
+            <!-- Overdue Tickets -->
+            <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-4">
+                <div class="flex items-center">
+                    <div class="p-2 bg-danger-100 dark:bg-danger-900 rounded-lg">
+                        <x-myds.icon name="warning-triangle" size="24" class="text-danger-600 dark:text-danger-400" />
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-inter text-xs font-medium text-black-500 dark:text-black-400">Tertunggak</p>
+                        <p class="font-poppins text-xl font-semibold text-black-900 dark:text-white">{{ $counts['overdue'] }}</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        {{-- Clear Filters --}}
-        @if($search || $filterStatus || $filterCategory || $filterPriority)
-            <div class="mt-4">
-                <button wire:click="clearFilters"
-                        class="px-4 py-2 text-sm text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                    Clear All Filters
-                </button>
-            </div>
-        @endif
-    </div>
+        <!-- Filters -->
+        <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                <!-- Search -->
+                <div class="lg:col-span-2">
+                    <label for="search" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                        Carian
+                    </label>
+                    <x-myds.input
+                        type="text"
+                        id="search"
+                        wire:model.live.debounce.300ms="search"
+                        placeholder="Cari menggunakan nombor tiket, tajuk, atau huraian"
+                        class="w-full"
+                    />
+                </div>
 
-    {{-- Tickets Table --}}
-    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
-        @if($tickets->count() > 0)
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <button wire:click="sortBy('ticket_number')" class="flex items-center space-x-1 hover:text-gray-700">
-                                    <span>Ticket #</span>
-                                    @if($sortField === 'ticket_number')
-                                        @if($sortDirection === 'asc')
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path>
-                                            </svg>
-                                        @else
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                            </svg>
-                                        @endif
-                                    @endif
-                                </button>
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <button wire:click="sortBy('title')" class="flex items-center space-x-1 hover:text-gray-700">
-                                    <span>Title</span>
-                                    @if($sortField === 'title')
-                                        @if($sortDirection === 'asc')
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path>
-                                            </svg>
-                                        @else
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                            </svg>
-                                        @endif
-                                    @endif
-                                </button>
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priority</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <button wire:click="sortBy('created_at')" class="flex items-center space-x-1 hover:text-gray-700">
-                                    <span>Created</span>
-                                    @if($sortField === 'created_at')
-                                        @if($sortDirection === 'asc')
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path>
-                                            </svg>
-                                        @else
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                            </svg>
-                                        @endif
-                                    @endif
-                                </button>
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach($tickets as $ticket)
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900">{{ $ticket->ticket_number }}</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm font-medium text-gray-900">{{ $ticket->title }}</div>
-                                    <div class="text-sm text-gray-500 truncate max-w-xs">{{ $ticket->description }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{ $ticket->category->name ?? 'N/A' }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $ticket->priority->color() }}">
-                                        {{ $ticket->priority->label() }}
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ $ticket->ticketStatus->color ?? 'gray' }}-100 text-{{ $ticket->ticketStatus->color ?? 'gray' }}-800">
-                                        {{ $ticket->ticketStatus->name ?? 'Unknown' }}
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <div>{{ $ticket->created_at->format('M j, Y') }}</div>
-                                    <div class="text-xs">{{ $ticket->created_at->format('g:i A') }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <a href="{{ route('helpdesk.ticket.detail', $ticket->ticket_number) }}"
-                                       class="text-txt-primary hover:text-txt-primary">View</a>
-                                </td>
-                            </tr>
+                <!-- Status Filter -->
+                <div>
+                    <label for="filterStatus" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                        Status
+                    </label>
+                    <x-myds.select wire:model.live="filterStatus" id="filterStatus">
+                        <option value="">Semua Status</option>
+                        @foreach($statuses as $status)
+                            <option value="{{ $status->id }}">{{ $status->name }}</option>
                         @endforeach
-                    </tbody>
-                </table>
+                    </x-myds.select>
+                </div>
+
+                <!-- Category Filter -->
+                <div>
+                    <label for="filterCategory" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                        Kategori
+                    </label>
+                    <x-myds.select wire:model.live="filterCategory" id="filterCategory">
+                        <option value="">Semua Kategori</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </x-myds.select>
+                </div>
+
+                <!-- Priority Filter -->
+                <div>
+                    <label for="filterPriority" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                        Keutamaan
+                    </label>
+                    <x-myds.select wire:model.live="filterPriority" id="filterPriority">
+                        <option value="">Semua Keutamaan</option>
+                        @foreach($priorities as $priority)
+                            <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
+                        @endforeach
+                    </x-myds.select>
+                </div>
             </div>
 
-            {{-- Pagination --}}
-            <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
-                {{ $tickets->links() }}
-            </div>
-        @else
-            {{-- Empty State --}}
-            <div class="text-center py-12">
-                <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                <h3 class="text-lg font-medium text-gray-900 mb-2">No tickets found</h3>
-                <p class="text-gray-500 mb-4">
-                    @if($search || $filterStatus || $filterCategory || $filterPriority)
-                        Try adjusting your filters or search terms.
-                    @else
-                        You haven't created any support tickets yet.
-                    @endif
-                </p>
-                <a href="{{ route('helpdesk.create-ticket') }}"
-                   class="inline-flex items-center px-4 py-2 bg-bg-primary-600 text-white rounded-lg hover:bg-bg-primary-700 focus:ring-2 focus:ring-fr-primary transition-colors">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                    Create Your First Ticket
-                </a>
-            </div>
-        @endif
+            <!-- Clear Filters -->
+            @if($search || $filterStatus || $filterCategory || $filterPriority)
+                <div class="mt-4">
+                    <x-myds.button variant="secondary" size="small" wire:click="clearFilters">
+                        <x-myds.icon name="cross" size="14" class="mr-2" />
+                        Kosongkan Penapis
+                    </x-myds.button>
+                </div>
+            @endif
+        </div>
+
+        <!-- Tickets Table -->
+        <div class="bg-white dark:bg-dialog border border-divider rounded-lg overflow-hidden">
+            @if($tickets->count() > 0)
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-divider">
+                        <thead class="bg-washed dark:bg-black-100">
+                            <tr>
+                                <th class="px-6 py-3 text-left">
+                                    <button wire:click="sortBy('ticket_number')" class="flex items-center space-x-1 hover:text-primary-600 dark:hover:text-primary-400">
+                                        <span class="font-inter text-xs font-medium text-black-700 dark:text-black-300 uppercase tracking-wider">
+                                            No. Tiket
+                                        </span>
+                                        @if($sortField === 'ticket_number')
+                                            <x-myds.icon
+                                                name="{{ $sortDirection === 'asc' ? 'chevron-up' : 'chevron-down' }}"
+                                                size="14"
+                                                class="text-primary-600 dark:text-primary-400"
+                                            />
+                                        @endif
+                                    </button>
+                                </th>
+                                <th class="px-6 py-3 text-left">
+                                    <button wire:click="sortBy('title')" class="flex items-center space-x-1 hover:text-primary-600 dark:hover:text-primary-400">
+                                        <span class="font-inter text-xs font-medium text-black-700 dark:text-black-300 uppercase tracking-wider">
+                                            Tajuk
+                                        </span>
+                                        @if($sortField === 'title')
+                                            <x-myds.icon
+                                                name="{{ $sortDirection === 'asc' ? 'chevron-up' : 'chevron-down' }}"
+                                                size="14"
+                                                class="text-primary-600 dark:text-primary-400"
+                                            />
+                                        @endif
+                                    </button>
+                                </th>
+                                <th class="px-6 py-3 text-left font-inter text-xs font-medium text-black-700 dark:text-black-300 uppercase tracking-wider">
+                                    Kategori
+                                </th>
+                                <th class="px-6 py-3 text-left font-inter text-xs font-medium text-black-700 dark:text-black-300 uppercase tracking-wider">
+                                    Keutamaan
+                                </th>
+                                <th class="px-6 py-3 text-left font-inter text-xs font-medium text-black-700 dark:text-black-300 uppercase tracking-wider">
+                                    Status
+                                </th>
+                                <th class="px-6 py-3 text-left">
+                                    <button wire:click="sortBy('created_at')" class="flex items-center space-x-1 hover:text-primary-600 dark:hover:text-primary-400">
+                                        <span class="font-inter text-xs font-medium text-black-700 dark:text-black-300 uppercase tracking-wider">
+                                            Dicipta
+                                        </span>
+                                        @if($sortField === 'created_at')
+                                            <x-myds.icon
+                                                name="{{ $sortDirection === 'asc' ? 'chevron-up' : 'chevron-down' }}"
+                                                size="14"
+                                                class="text-primary-600 dark:text-primary-400"
+                                            />
+                                        @endif
+                                    </button>
+                                </th>
+                                <th class="px-6 py-3 text-left font-inter text-xs font-medium text-black-700 dark:text-black-300 uppercase tracking-wider">
+                                    Tindakan
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white dark:bg-dialog divide-y divide-divider">
+                            @foreach($tickets as $ticket)
+                                <tr class="hover:bg-washed dark:hover:bg-black-100">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="font-inter text-sm font-medium text-black-900 dark:text-white">
+                                            {{ $ticket->ticket_number }}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="font-inter text-sm font-medium text-black-900 dark:text-white">
+                                            {{ $ticket->title }}
+                                        </div>
+                                        <div class="font-inter text-sm text-black-500 dark:text-black-400 truncate max-w-xs">
+                                            {{ $ticket->description }}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="font-inter text-sm text-black-900 dark:text-white">
+                                            {{ $ticket->category->name ?? 'N/A' }}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @php
+                                            $priorityColors = [
+                                                'low' => 'bg-success-100 text-success-700 dark:bg-success-900 dark:text-success-300',
+                                                'medium' => 'bg-warning-100 text-warning-700 dark:bg-warning-900 dark:text-warning-300',
+                                                'high' => 'bg-danger-100 text-danger-700 dark:bg-danger-900 dark:text-danger-300',
+                                                'critical' => 'bg-danger-200 text-danger-800 dark:bg-danger-800 dark:text-danger-200'
+                                            ];
+                                            $colorClass = $priorityColors[$ticket->priority->value] ?? 'bg-black-100 text-black-700 dark:bg-black-800 dark:text-black-300';
+                                        @endphp
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-inter text-xs font-medium {{ $colorClass }}">
+                                            {{ $ticket->priority->label() }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @php
+                                            $statusColor = $ticket->ticketStatus->color ?? 'gray';
+                                            $statusColorClass = match($statusColor) {
+                                                'blue' => 'bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300',
+                                                'yellow' => 'bg-warning-100 text-warning-700 dark:bg-warning-900 dark:text-warning-300',
+                                                'green' => 'bg-success-100 text-success-700 dark:bg-success-900 dark:text-success-300',
+                                                'red' => 'bg-danger-100 text-danger-700 dark:bg-danger-900 dark:text-danger-300',
+                                                default => 'bg-black-100 text-black-700 dark:bg-black-800 dark:text-black-300'
+                                            };
+                                        @endphp
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-inter text-xs font-medium {{ $statusColorClass }}">
+                                            {{ $ticket->ticketStatus->name ?? 'Unknown' }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-inter text-sm text-black-500 dark:text-black-400">
+                                        <div>{{ $ticket->created_at->format('j M Y') }}</div>
+                                        <div class="text-xs">{{ $ticket->created_at->format('g:i A') }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-inter text-sm font-medium">
+                                        <x-myds.button
+                                            variant="secondary"
+                                            size="small"
+                                            onclick="window.location.href='{{ route('helpdesk.ticket.detail', $ticket->ticket_number) }}'"
+                                        >
+                                            <x-myds.icon name="eye-show" size="14" class="mr-1" />
+                                            Lihat
+                                        </x-myds.button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="px-6 py-4 bg-washed dark:bg-black-100 border-t border-divider">
+                    {{ $tickets->links() }}
+                </div>
+            @else
+                <!-- Empty State -->
+                <div class="text-center py-12">
+                    <x-myds.icon name="document" size="48" class="text-black-400 mx-auto mb-4" />
+                    <h3 class="font-poppins text-lg font-medium text-black-900 dark:text-white mb-2">
+                        Tiada tiket dijumpai
+                    </h3>
+                    <p class="font-inter text-sm text-black-500 dark:text-black-400 mb-4">
+                        @if($search || $filterStatus || $filterCategory || $filterPriority)
+                            Cuba laraskan penapis atau istilah carian anda.
+                        @else
+                            Anda belum mencipta sebarang tiket sokongan lagi.
+                        @endif
+                    </p>
+                    <x-myds.button variant="primary">
+                        <x-myds.icon name="plus" size="16" class="mr-2" />
+                        Cipta Tiket Pertama Anda
+                    </x-myds.button>
+                </div>
+            @endif
+        </div>
     </div>
 </div>

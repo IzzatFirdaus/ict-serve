@@ -51,6 +51,8 @@ return new class extends Migration
             $table->index('division');
             $table->index(['loan_start_date', 'loan_end_date']);
         });
+            // Merge: add_equipment_loan_fields
+            // Already present: applicant_name, division, position_grade, email, phone_number, equipment_requested, loan_start_date, loan_end_date, purpose, event_location, responsible_officer_name, responsible_officer_position, responsible_officer_phone, status, approved_by, approved_at, approval_notes, rejection_reason, collected_at, returned_at, return_condition_notes
     }
 
     /**

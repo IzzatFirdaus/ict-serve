@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Enums\UserRole;
 use App\Models\HelpdeskTicket;
 use App\Models\User;
 
@@ -19,7 +20,7 @@ class HelpdeskTicketPolicy
             return true;
         }
 
-        return in_array($user->role, ['ict_admin', 'helpdesk_manager'], true);
+        return in_array($user->role, [UserRole::ICT_ADMIN, UserRole::HELPDESK_STAFF], true);
     }
 
     public function update(User $user, HelpdeskTicket $ticket): bool
@@ -28,11 +29,11 @@ class HelpdeskTicketPolicy
               return true;
         }
 
-        return in_array($user->role, ['ict_admin', 'helpdesk_manager'], true);
+        return in_array($user->role, [UserRole::ICT_ADMIN, UserRole::HELPDESK_STAFF], true);
     }
 
     public function delete(User $user, HelpdeskTicket $ticket): bool
     {
-        return in_array($user->role, ['ict_admin'], true);
+        return in_array($user->role, [UserRole::ICT_ADMIN], true);
     }
 }

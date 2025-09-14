@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Enums\UserRole;
 use App\Models\LoanRequest;
 use App\Models\User;
 
@@ -19,7 +20,7 @@ class LoanRequestPolicy
             return true;
         }
 
-        return in_array($user->role, ['ict_admin', 'bpm_admin'], true);
+        return in_array($user->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true);
     }
 
     public function update(User $user, LoanRequest $loan): bool
@@ -32,11 +33,11 @@ class LoanRequestPolicy
             return true;
         }
 
-        return in_array($user->role, ['ict_admin', 'bpm_admin'], true);
+        return in_array($user->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true);
     }
 
     public function delete(User $user, LoanRequest $loan): bool
     {
-        return in_array($user->role, ['ict_admin'], true);
+        return in_array($user->role, [UserRole::ICT_ADMIN], true);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLoanRequestRequest;
 use App\Models\LoanRequest;
@@ -27,7 +28,7 @@ class LoanRequestController extends Controller
     {
         /** @var \Illuminate\Http\Request $request */
         $query = LoanRequest::with(['user', 'loanItems.equipmentItem', 'status'])
-            ->when(! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true), function ($q) {
+            ->when(! in_array(Auth::user()->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true), function ($q) {
                 return $q->where('user_id', Auth::id());
             })
             ->when($request->status, function ($q, $status) {
@@ -104,7 +105,7 @@ class LoanRequestController extends Controller
     public function show(Request $request, LoanRequest $loanRequest): JsonResponse
     {
         // Check authorization
-        if (! in_array($request->user()->role, ['ict_admin', 'super_admin'], true) && $loanRequest->user->id !== $request->user()->id) {
+        if (! in_array($request->user()->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true) && $loanRequest->user->id !== $request->user()->id) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -127,7 +128,7 @@ class LoanRequestController extends Controller
     public function update(Request $request, LoanRequest $loanRequest): JsonResponse
     {
         // Only admins can update loan request status
-        if (! in_array($request->user()->role, ['ict_admin', 'super_admin'], true)) {
+        if (! in_array($request->user()->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',

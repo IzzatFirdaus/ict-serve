@@ -1,247 +1,296 @@
-<div class="myds-container mx-auto px-4 py-8 max-w-2xl">
-    {{-- Header --}}
-    <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-900 mb-2">Create Support Ticket</h1>
-        <p class="text-gray-600">Submit a request for ICT support and assistance</p>
-    </div>
+<div class="bg-background-light dark:bg-background-dark min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <x-myds.header>
+            <h1 class="font-poppins text-2xl font-semibold text-black-900 dark:text-white">
+                Borang Aduan Helpdesk ICT
+            </h1>
+            <p class="font-inter text-sm text-black-500 dark:text-black-400 mt-2">
+                Hantar permintaan untuk sokongan dan bantuan ICT
+            </p>
+        </x-myds.header>
 
-    {{-- Success Message --}}
-    @if (session()->has('success'))
-        <div class="mb-6 bg-success-50 border border-success-200 rounded-lg p-4">
-            <div class="flex items-center">
-                <svg class="w-5 h-5 text-success-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-success-800 font-medium">{{ session('success') }}</span>
-            </div>
-        </div>
-    @endif
-
-    {{-- Form --}}
-    <form wire:submit="submit" class="space-y-6">
-        {{-- Category Selection --}}
-        <div>
-            <label for="category_id" class="block text-sm font-medium text-gray-700 mb-2">
-                Category <span class="text-danger-500">*</span>
-            </label>
-            <select wire:model.live="category_id" id="category_id"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
-                <option value="">Select a category</option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-            @error('category_id')
-                <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        {{-- Title --}}
-        <div>
-            <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
-                Issue Title <span class="text-danger-500">*</span>
-            </label>
-            <input type="text" wire:model="title" id="title"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
-                   placeholder="Brief description of the issue">
-            @error('title')
-                <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        {{-- Description --}}
-        <div>
-            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
-                Detailed Description <span class="text-danger-500">*</span>
-            </label>
-            <textarea wire:model="description" id="description" rows="4"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
-                      placeholder="Please provide detailed information about the issue"></textarea>
-            @error('description')
-                <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        {{-- Priority and Urgency Row --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {{-- Priority --}}
-            <div>
-                <label for="priority" class="block text-sm font-medium text-gray-700 mb-2">
-                    Priority <span class="text-danger-500">*</span>
-                </label>
-                <select wire:model.live="priority" id="priority"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
-                    <option value="">Select priority</option>
-                    @foreach(\App\Enums\TicketPriority::cases() as $priorityOption)
-                        <option value="{{ $priorityOption->value }}">
-                            {{ $priorityOption->label() }}
-                        </option>
-                    @endforeach
-                </select>
-                @if($priority)
-                    <p class="mt-1 text-xs text-gray-500">
-                        {{ \App\Enums\TicketPriority::from($priority)->description() }}
-                    </p>
-                @endif
-                @error('priority')
-                    <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-                @enderror
-            </div>
-
-            {{-- Urgency --}}
-            <div>
-                <label for="urgency" class="block text-sm font-medium text-gray-700 mb-2">
-                    Urgency <span class="text-danger-500">*</span>
-                </label>
-                <select wire:model.live="urgency" id="urgency"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
-                    <option value="">Select urgency</option>
-                    @foreach(\App\Enums\TicketUrgency::cases() as $urgencyOption)
-                        <option value="{{ $urgencyOption->value }}">
-                            {{ $urgencyOption->label() }}
-                        </option>
-                    @endforeach
-                </select>
-                @if($urgency)
-                    <p class="mt-1 text-xs text-gray-500">
-                        {{ \App\Enums\TicketUrgency::from($urgency)->description() }}
-                    </p>
-                @endif
-                @error('urgency')
-                    <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-                @enderror
-            </div>
-        </div>
-
-        {{-- Equipment Selection --}}
-        @if(!empty($equipmentItems))
-            <div>
-                <label for="equipment_item_id" class="block text-sm font-medium text-gray-700 mb-2">
-                    Related Equipment (Optional)
-                </label>
-                <select wire:model="equipment_item_id" id="equipment_item_id"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300 bg-white">
-                    <option value="">No specific equipment</option>
-                    @foreach($equipmentItems as $equipment)
-                        <option value="{{ $equipment->id }}">
-                            {{ $equipment->name }} ({{ $equipment->serial_number }})
-                        </option>
-                    @endforeach
-                </select>
-                @error('equipment_item_id')
-                    <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-                @enderror
-            </div>
-        @endif
-
-        {{-- Location --}}
-        <div>
-            <label for="location" class="block text-sm font-medium text-gray-700 mb-2">
-                Location <span class="text-danger-500">*</span>
-            </label>
-            <input type="text" wire:model="location" id="location"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
-                   placeholder="Building, floor, room number">
-            @error('location')
-                <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        {{-- Contact Phone --}}
-        <div>
-            <label for="contact_phone" class="block text-sm font-medium text-gray-700 mb-2">
-                Contact Phone <span class="text-danger-500">*</span>
-            </label>
-            <input type="tel" wire:model="contact_phone" id="contact_phone"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fr-primary focus:border-otl-primary-300"
-                   placeholder="Your contact phone number">
-            @error('contact_phone')
-                <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        {{-- File Attachments --}}
-        <div>
-            <label for="attachments" class="block text-sm font-medium text-gray-700 mb-2">
-                Attachments (Optional)
-            </label>
-            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-otl-primary-300 transition-colors">
-                <input type="file" wire:model="attachments" id="attachments" multiple
-                       accept="image/*,.pdf,.doc,.docx,.txt"
-                       class="hidden">
-                <label for="attachments" class="cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                    </svg>
-                    <span class="text-gray-600">Click to upload files or drag and drop</span>
-                    <p class="text-xs text-gray-500 mt-1">PNG, JPG, PDF, DOC up to 10MB each</p>
-                </label>
-            </div>
-
-            {{-- Show selected files --}}
-            @if($attachments)
-                <div class="mt-2 space-y-2">
-                    @foreach($attachments as $index => $attachment)
-                        <div class="flex items-center justify-between bg-gray-50 p-2 rounded">
-                            <span class="text-sm text-gray-700">{{ $attachment->getClientOriginalName() }}</span>
-                            <button type="button" wire:click="removeAttachment({{ $index }})"
-                                    class="text-danger-500 hover:text-danger-700">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    @endforeach
-                </div>
+        <div class="max-w-4xl mx-auto">
+            <!-- Success Message -->
+            @if(session('success'))
+                <x-myds.callout variant="success" class="mb-6">
+                    <x-myds.icon name="check-circle" size="20" class="flex-shrink-0" />
+                    <div>
+                        <h4 class="font-inter text-sm font-medium text-success-700 dark:text-success-500">
+                            Aduan Berjaya Dihantar
+                        </h4>
+                        <p class="font-inter text-sm text-success-700 dark:text-success-500 mt-1">
+                            {{ session('success') }}
+                        </p>
+                    </div>
+                </x-myds.callout>
             @endif
 
-            @error('attachments.*')
-                <p class="mt-1 text-sm text-danger-600">{{ $message }}</p>
-            @enderror
-        </div>
+            <!-- Error Message -->
+            @if(session('error'))
+                <x-myds.callout variant="danger" class="mb-6">
+                    <x-myds.icon name="warning-circle" size="20" class="flex-shrink-0" />
+                    <div>
+                        <h4 class="font-inter text-sm font-medium text-danger-700 dark:text-danger-400">
+                            Ralat Berlaku
+                        </h4>
+                        <p class="font-inter text-sm text-danger-700 dark:text-danger-400 mt-1">
+                            {{ session('error') }}
+                        </p>
+                    </div>
+                </x-myds.callout>
+            @endif
 
-        {{-- SLA Information --}}
-        @if($priority && $urgency)
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 class="font-medium text-blue-900 mb-2">Service Level Agreement</h4>
-                <p class="text-sm text-blue-800">
-                    Based on your selected priority and urgency, this ticket will be resolved within
-                    <strong>{{ $this->getSlaHours() }} hours</strong> during business hours.
-                </p>
-            </div>
-        @endif
+            <!-- Ticket Form -->
+            <form wire:submit="submit" class="bg-white dark:bg-dialog-active rounded-lg shadow-sm border border-divider">
+                <!-- Form Header -->
+                <div class="px-6 py-4 border-b border-divider">
+                    <h2 class="font-poppins text-lg font-medium text-black-900 dark:text-white">
+                        Maklumat Aduan
+                    </h2>
+                </div>
 
-        {{-- Submit Button --}}
-        <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200">
-            <button type="button" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
-                Cancel
-            </button>
-            <button type="submit"
-                    class="px-6 py-2 bg-bg-primary-600 text-white rounded-lg hover:bg-bg-primary-700 focus:ring-2 focus:ring-fr-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    wire:loading.attr="disabled">
-                <span wire:loading.remove>Submit Ticket</span>
-                <span wire:loading class="flex items-center">
-                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Submitting...
-                </span>
-            </button>
-        </div>
-    </form>
+                <div class="px-6 py-6 space-y-6">
+                    <!-- Category Selection -->
+                    <div>
+                        <label for="category_id" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                            Kategori <span class="text-danger-600">*</span>
+                        </label>
+                        <x-myds.select wire:model.live="category_id" id="category_id">
+                            <option value="">Pilih kategori</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </x-myds.select>
+                        @error('category_id')
+                            <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-    {{-- Loading Overlay --}}
-    <div wire:loading.flex wire:target="submitTicket"
-         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
-            <div class="flex items-center space-x-3">
-                <svg class="animate-spin h-5 w-5 text-txt-primary" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span class="text-gray-900">Creating your ticket...</span>
-            </div>
+                    <!-- Title -->
+                    <div>
+                        <label for="title" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                            Tajuk Masalah <span class="text-danger-600">*</span>
+                        </label>
+                        <x-myds.input
+                            type="text"
+                            id="title"
+                            wire:model.live="title"
+                            placeholder="Huraian ringkas mengenai masalah"
+                            class="w-full"
+                        />
+                        @error('title')
+                            <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <label for="description" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                            Huraian Terperinci <span class="text-danger-600">*</span>
+                        </label>
+                        <textarea
+                            id="description"
+                            wire:model.live="description"
+                            rows="4"
+                            placeholder="Sila berikan maklumat terperinci mengenai masalah yang dihadapi"
+                            class="font-inter text-sm w-full px-3 py-2 border border-divider rounded-lg bg-white dark:bg-dialog focus:ring focus:ring-primary-300 dark:focus:ring-primary-700 focus:border-primary-600 dark:focus:border-primary-400 resize-none"
+                        ></textarea>
+                        @error('description')
+                            <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Priority and Urgency Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Priority -->
+                        <div>
+                            <label for="priority" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                                Keutamaan <span class="text-danger-600">*</span>
+                            </label>
+                            <x-myds.select wire:model.live="priority" id="priority">
+                                <option value="">Pilih keutamaan</option>
+                                @foreach(\App\Enums\TicketPriority::cases() as $priorityOption)
+                                    <option value="{{ $priorityOption->value }}">
+                                        {{ $priorityOption->label() }}
+                                    </option>
+                                @endforeach
+                            </x-myds.select>
+                            @if($priority)
+                                <p class="font-inter text-xs text-black-500 dark:text-black-400 mt-1">
+                                    {{ \App\Enums\TicketPriority::from($priority)->description() }}
+                                </p>
+                            @endif
+                            @error('priority')
+                                <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- Urgency -->
+                        <div>
+                            <label for="urgency" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                                Kecemasan <span class="text-danger-600">*</span>
+                            </label>
+                            <x-myds.select wire:model.live="urgency" id="urgency">
+                                <option value="">Pilih tahap kecemasan</option>
+                                @foreach(\App\Enums\TicketUrgency::cases() as $urgencyOption)
+                                    <option value="{{ $urgencyOption->value }}">
+                                        {{ $urgencyOption->label() }}
+                                    </option>
+                                @endforeach
+                            </x-myds.select>
+                            @if($urgency)
+                                <p class="font-inter text-xs text-black-500 dark:text-black-400 mt-1">
+                                    {{ \App\Enums\TicketUrgency::from($urgency)->description() }}
+                                </p>
+                            @endif
+                            @error('urgency')
+                                <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Equipment Selection -->
+                    @if(!empty($equipmentItems))
+                        <div>
+                            <label for="equipment_item_id" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                                Peralatan Berkaitan (Pilihan)
+                            </label>
+                            <x-myds.select wire:model.live="equipment_item_id" id="equipment_item_id">
+                                <option value="">Tiada peralatan khusus</option>
+                                @foreach($equipmentItems as $equipment)
+                                    <option value="{{ $equipment->id }}">
+                                        {{ $equipment->name }} ({{ $equipment->serial_number ?? $equipment->asset_tag }})
+                                    </option>
+                                @endforeach
+                            </x-myds.select>
+                            @error('equipment_item_id')
+                                <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    @endif
+
+                    <!-- Location and Contact -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Location -->
+                        <div>
+                            <label for="location" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                                Lokasi <span class="text-danger-600">*</span>
+                            </label>
+                            <x-myds.input
+                                type="text"
+                                id="location"
+                                wire:model.live="location"
+                                placeholder="Bangunan, tingkat, nombor bilik"
+                                class="w-full"
+                            />
+                            @error('location')
+                                <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- Contact Phone -->
+                        <div>
+                            <label for="contact_phone" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                                Nombor Telefon <span class="text-danger-600">*</span>
+                            </label>
+                            <x-myds.input
+                                type="tel"
+                                id="contact_phone"
+                                wire:model.live="contact_phone"
+                                placeholder="Nombor telefon untuk dihubungi"
+                                class="w-full"
+                            />
+                            @error('contact_phone')
+                                <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- File Attachments -->
+                    <div>
+                        <label for="attachments" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
+                            Lampiran (Pilihan)
+                        </label>
+                        <div class="border-2 border-dashed border-divider rounded-lg p-6 text-center hover:border-primary-300 transition-colors">
+                            <input type="file" wire:model="attachments" id="attachments" multiple
+                                   accept="image/*,.pdf,.doc,.docx,.txt"
+                                   class="hidden">
+                            <label for="attachments" class="cursor-pointer">
+                                <x-myds.icon name="upload" size="32" class="text-black-400 mx-auto mb-2" />
+                                <span class="font-inter text-sm text-black-600 dark:text-black-400 block">
+                                    Klik untuk muat naik fail atau seret dan lepas
+                                </span>
+                                <p class="font-inter text-xs text-black-500 dark:text-black-400 mt-1">
+                                    PNG, JPG, PDF, DOC sehingga 10MB setiap satu
+                                </p>
+                            </label>
+                        </div>
+
+                        <!-- Show selected files -->
+                        @if($attachments)
+                            <div class="mt-4 space-y-2">
+                                @foreach($attachments as $index => $attachment)
+                                    <div class="flex items-center justify-between bg-washed dark:bg-black-100 p-3 rounded-lg">
+                                        <div class="flex items-center space-x-3">
+                                            <x-myds.icon name="attachment" size="16" class="text-black-500" />
+                                            <span class="font-inter text-sm text-black-700 dark:text-black-300">
+                                                {{ $attachment->getClientOriginalName() }}
+                                            </span>
+                                        </div>
+                                        <x-myds.button
+                                            variant="danger"
+                                            size="small"
+                                            wire:click="removeAttachment({{ $index }})"
+                                        >
+                                            <x-myds.icon name="cross" size="14" />
+                                        </x-myds.button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @error('attachments.*')
+                            <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- SLA Information -->
+                    @if($priority && $urgency && method_exists($this, 'getSlaHours'))
+                        <x-myds.callout variant="info">
+                            <x-myds.icon name="info" size="20" class="flex-shrink-0" />
+                            <div>
+                                <h4 class="font-inter text-sm font-medium text-primary-700 dark:text-primary-400">
+                                    Perjanjian Tahap Perkhidmatan
+                                </h4>
+                                <p class="font-inter text-sm text-primary-700 dark:text-primary-400 mt-1">
+                                    Berdasarkan keutamaan dan kecemasan yang dipilih, aduan ini akan diselesaikan dalam
+                                    <strong>{{ $this->getSlaHours() }} jam</strong> semasa waktu perniagaan.
+                                </p>
+                            </div>
+                        </x-myds.callout>
+                    @endif
+                </div>
+
+                <!-- Form Actions -->
+                <div class="px-6 py-4 border-t border-divider bg-washed dark:bg-black-100 rounded-b-lg flex justify-end space-x-4">
+                    <x-myds.button variant="secondary" type="button" onclick="window.history.back()">
+                        <x-myds.icon name="arrow-left" size="16" class="mr-2" />
+                        Batal
+                    </x-myds.button>
+
+                    <x-myds.button
+                        variant="primary"
+                        type="submit"
+                        wire:loading.attr="disabled"
+                    >
+                        <x-myds.icon name="plus" size="16" class="mr-2" wire:loading.remove />
+                        <x-myds.icon name="refresh" size="16" class="mr-2 animate-spin" wire:loading />
+                        <span wire:loading.remove>Hantar Aduan</span>
+                        <span wire:loading>Menghantar...</span>
+                    </x-myds.button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
