@@ -16,6 +16,13 @@ use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 
+/**
+ * @property \Illuminate\Contracts\Pagination\LengthAwarePaginator $tickets
+ * @property \Illuminate\Database\Eloquent\Collection $categories
+ * @property \Illuminate\Database\Eloquent\Collection $statuses
+ * @property array $priorities
+ * @property \Illuminate\Database\Eloquent\Collection $agents
+ */
 #[Layout('layouts.app')]
 #[Title('Pengurusan Tiket - Admin ICTServe')]
 class TicketManagement extends Component

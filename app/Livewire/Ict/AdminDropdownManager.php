@@ -4,6 +4,7 @@ namespace App\Livewire\Ict;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -394,8 +395,8 @@ class AdminDropdownManager extends Component
         $config = $this->categories_config[$category];
         $tableName = $config['table'];
 
-        if (! DB::schema()->hasTable($tableName)) {
-            DB::schema()->create($tableName, function ($table) {
+        if (! Schema::hasTable($tableName)) {
+            Schema::create($tableName, function ($table) {
                 $table->id();
                 $table->string('name');
                 $table->text('description')->nullable();

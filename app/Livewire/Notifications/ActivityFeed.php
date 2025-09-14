@@ -7,6 +7,9 @@ use Livewire\WithPagination;
 use Livewire\Attributes\On;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @property \Illuminate\Contracts\Pagination\LengthAwarePaginator $activities
+ */
 class ActivityFeed extends Component
 {
     use WithPagination;

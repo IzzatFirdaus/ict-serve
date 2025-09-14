@@ -150,6 +150,36 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if user has any of the given roles.
+     */
+    public function hasAnyRole(array|string $roles): bool
+    {
+        if (is_string($roles)) {
+            $roles = [$roles];
+        }
+
+        return in_array($this->getCurrentRole(), $roles);
+    }
+
+    /**
+     * Get activities for this user - alias for audit logs.
+     */
+    public function activities()
+    {
+        return $this->auditLogs();
+    }
+
+    /**
+     * Get roles relationship - for compatibility.
+     * In this system, role is stored as an enum field, not a relationship.
+     */
+    public function roles()
+    {
+        // Return a collection containing the current role
+        return collect([$this->role]);
+    }
+
+    /**
      * Get the current role value as string.
      */
     private function getCurrentRole(): string

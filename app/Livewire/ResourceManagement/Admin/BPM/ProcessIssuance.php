@@ -44,7 +44,7 @@ class ProcessIssuance extends Component
 
         // Initialize equipment selection based on loan items
         foreach ($this->selectedLoan->loanItems as $item) {
-            if ($item->equipmentItem && $item->equipmentItem->status === 'available') {
+            if ($item->equipmentItem && $item->equipmentItem->status === \App\Enums\EquipmentStatus::AVAILABLE) {
                 $this->selectedEquipment[] = $item->equipmentItem->id;
             }
         }

@@ -9,6 +9,9 @@ use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 
+/**
+ * @property array $statusProgress
+ */
 #[Layout('layouts.app')]
 class TicketDetail extends Component
 {

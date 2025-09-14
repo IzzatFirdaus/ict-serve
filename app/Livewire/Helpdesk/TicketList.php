@@ -13,6 +13,12 @@ use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 
+/**
+ * @property \Illuminate\Contracts\Pagination\LengthAwarePaginator $tickets
+ * @property \Illuminate\Database\Eloquent\Collection $categories
+ * @property \Illuminate\Database\Eloquent\Collection $statuses
+ * @property array $priorities
+ */
 #[Layout('layouts.app')]
 #[Title('My Support Tickets - ICTServe')]
 class TicketList extends Component
