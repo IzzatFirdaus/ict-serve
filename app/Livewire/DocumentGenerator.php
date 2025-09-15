@@ -2,19 +2,21 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\LoanRequest;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Component;
 
 class DocumentGenerator extends Component
 {
     public $loanRequest;
+
     public $documentType = 'loan_application'; // loan_application, approval_letter, collection_receipt
+
     public $showPreview = false;
+
     public $isGenerating = false;
 
     public $documentTypes = [
@@ -23,29 +25,29 @@ class DocumentGenerator extends Component
             'title_en' => 'ICT Equipment Loan Application Form',
             'description' => 'Dokumen rasmi permohonan pinjaman peralatan ICT',
             'template' => 'documents.loan-application',
-            'filename' => 'Permohonan_Pinjaman_ICT'
+            'filename' => 'Permohonan_Pinjaman_ICT',
         ],
         'approval_letter' => [
             'title' => 'Surat Kelulusan Pinjaman',
             'title_en' => 'Loan Approval Letter',
             'description' => 'Surat rasmi kelulusan permohonan pinjaman',
             'template' => 'documents.approval-letter',
-            'filename' => 'Surat_Kelulusan'
+            'filename' => 'Surat_Kelulusan',
         ],
         'collection_receipt' => [
             'title' => 'Resit Pengambilan Peralatan',
             'title_en' => 'Equipment Collection Receipt',
             'description' => 'Resit pengambilan peralatan yang diluluskan',
             'template' => 'documents.collection-receipt',
-            'filename' => 'Resit_Pengambilan'
+            'filename' => 'Resit_Pengambilan',
         ],
         'return_receipt' => [
             'title' => 'Resit Pemulangan Peralatan',
             'title_en' => 'Equipment Return Receipt',
             'description' => 'Resit pemulangan peralatan yang dipinjam',
             'template' => 'documents.return-receipt',
-            'filename' => 'Resit_Pemulangan'
-        ]
+            'filename' => 'Resit_Pemulangan',
+        ],
     ];
 
     public function mount($loanRequestId = null)
@@ -54,7 +56,7 @@ class DocumentGenerator extends Component
             $this->loanRequest = LoanRequest::with([
                 'user',
                 'equipmentItems',
-                'approvals.approver'
+                'approvals.approver',
             ])->findOrFail($loanRequestId);
         }
     }
@@ -69,8 +71,9 @@ class DocumentGenerator extends Component
 
     public function generatePreview()
     {
-        if (!$this->loanRequest) {
+        if (! $this->loanRequest) {
             session()->flash('error', 'Tiada permohonan dipilih untuk dijana.');
+
             return;
         }
 
@@ -79,8 +82,9 @@ class DocumentGenerator extends Component
 
     public function generatePDF()
     {
-        if (!$this->loanRequest) {
+        if (! $this->loanRequest) {
             session()->flash('error', 'Tiada permohonan dipilih untuk dijana.');
+
             return;
         }
 
@@ -107,7 +111,7 @@ class DocumentGenerator extends Component
             Storage::disk('public')->put($filePath, $pdfContent);
 
             // Update loan request with document path if it's the main application
-            if ($this->documentType === 'loan_application' && !$this->loanRequest->document_path) {
+            if ($this->documentType === 'loan_application' && ! $this->loanRequest->document_path) {
                 $this->loanRequest->update(['document_path' => $filePath]);
             }
 
@@ -121,7 +125,7 @@ class DocumentGenerator extends Component
             );
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Terdapat ralat semasa menjana dokumen: ' . $e->getMessage());
+            session()->flash('error', 'Terdapat ralat semasa menjana dokumen: '.$e->getMessage());
         } finally {
             $this->isGenerating = false;
         }
@@ -129,12 +133,14 @@ class DocumentGenerator extends Component
 
     public function downloadExisting($documentPath)
     {
-        if (!Storage::disk('public')->exists($documentPath)) {
+        if (! Storage::disk('public')->exists($documentPath)) {
             session()->flash('error', 'Dokumen tidak dijumpai.');
+
             return;
         }
 
         $filename = basename($documentPath);
+
         return response()->download(
             Storage::disk('public')->path($documentPath),
             $filename,
@@ -158,7 +164,7 @@ class DocumentGenerator extends Component
                 return array_merge($baseData, [
                     'title' => 'BORANG PERMOHONAN PINJAMAN PERALATAN ICT',
                     'ministry' => 'KEMENTERIAN PELANCONGAN, SENI DAN BUDAYA MALAYSIA',
-                    'department' => 'BAHAGIAN PENGURUSAN MAKLUMAT'
+                    'department' => 'BAHAGIAN PENGURUSAN MAKLUMAT',
                 ]);
 
             case 'approval_letter':
@@ -212,7 +218,9 @@ class DocumentGenerator extends Component
 
     public function getAvailableDocuments()
     {
-        if (!$this->loanRequest) return collect();
+        if (! $this->loanRequest) {
+            return collect();
+        }
 
         $documents = collect();
 
@@ -225,7 +233,7 @@ class DocumentGenerator extends Component
                     'name' => basename($file),
                     'path' => $file,
                     'size' => Storage::disk('public')->size($file),
-                    'created' => Carbon::createFromTimestamp(Storage::disk('public')->lastModified($file))
+                    'created' => Carbon::createFromTimestamp(Storage::disk('public')->lastModified($file)),
                 ]);
             }
         }
@@ -235,7 +243,9 @@ class DocumentGenerator extends Component
 
     public function canGenerateDocument($type)
     {
-        if (!$this->loanRequest) return false;
+        if (! $this->loanRequest) {
+            return false;
+        }
 
         switch ($type) {
             case 'loan_application':
@@ -258,7 +268,7 @@ class DocumentGenerator extends Component
     public function render()
     {
         return view('livewire.document-generator', [
-            'availableDocuments' => $this->getAvailableDocuments()
+            'availableDocuments' => $this->getAvailableDocuments(),
         ]);
     }
 }

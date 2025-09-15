@@ -13,6 +13,7 @@ class TicketStatusFactory extends Factory
     public function definition(): array
     {
         $code = strtoupper(Str::slug($this->faker->unique()->words(2, true), '_'));
+
         return [
             'code' => $code,
             'name' => ucwords(str_replace('_', ' ', strtolower($code))),

@@ -2,12 +2,11 @@
 
 namespace App\Livewire\ResourceManagement\Admin\BPM;
 
-use App\Models\LoanRequest;
-use App\Models\LoanItem;
 use App\Models\EquipmentItem;
+use App\Models\LoanRequest;
 use App\Services\LoanApplicationService;
-use Livewire\Component;
 use Livewire\Attributes\Title;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 #[Title('Proses Pemulangan Peralatan')]
@@ -16,15 +15,22 @@ class ProcessReturn extends Component
     use WithPagination;
 
     public string $search = '';
+
     public int $perPage = 10;
 
     // Return form properties
     public ?LoanRequest $selectedLoan = null;
+
     public array $returnedEquipment = [];
+
     public array $equipmentConditions = [];
+
     public array $equipmentNotes = [];
+
     public array $accessoriesChecklist = [];
+
     public string $returnNotes = '';
+
     public bool $processing = false;
 
     public function mount()
@@ -69,7 +75,7 @@ class ProcessReturn extends Component
         $this->processing = true;
 
         try {
-            if (!$this->selectedLoan) {
+            if (! $this->selectedLoan) {
                 throw new \Exception('Tiada permohonan dipilih.');
             }
 
@@ -84,21 +90,21 @@ class ProcessReturn extends Component
                     return [
                         'equipment_id' => $equipmentId,
                         'condition' => $this->equipmentConditions[$equipmentId] ?? 'good',
-                        'notes' => $this->equipmentNotes[$equipmentId] ?? null
+                        'notes' => $this->equipmentNotes[$equipmentId] ?? null,
                     ];
                 })->toArray(),
                 'accessories_checklist' => $this->accessoriesChecklist,
-                'notes' => $this->returnNotes
+                'notes' => $this->returnNotes,
             ];
 
             $loanApplicationService->completeReturn($this->selectedLoan, $this->returnedEquipment, \Illuminate\Support\Facades\Auth::user(), $this->returnNotes);
 
-            session()->flash('success', 'Peralatan telah berjaya dipulangkan untuk permohonan ' . $this->selectedLoan->request_number);
+            session()->flash('success', 'Peralatan telah berjaya dipulangkan untuk permohonan '.$this->selectedLoan->request_number);
 
             $this->reset(['selectedLoan', 'returnedEquipment', 'equipmentConditions', 'equipmentNotes', 'accessoriesChecklist', 'returnNotes']);
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Ralat semasa memproses pemulangan: ' . $e->getMessage());
+            session()->flash('error', 'Ralat semasa memproses pemulangan: '.$e->getMessage());
         } finally {
             $this->processing = false;
         }
@@ -117,18 +123,18 @@ class ProcessReturn extends Component
             })
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('request_number', 'like', '%' . $this->search . '%')
-                      ->orWhere('purpose', 'like', '%' . $this->search . '%')
-                      ->orWhereHas('user', function ($userQuery) {
-                          $userQuery->where('name', 'like', '%' . $this->search . '%');
-                      });
+                    $q->where('request_number', 'like', '%'.$this->search.'%')
+                        ->orWhere('purpose', 'like', '%'.$this->search.'%')
+                        ->orWhereHas('user', function ($userQuery) {
+                            $userQuery->where('name', 'like', '%'.$this->search.'%');
+                        });
                 });
             })
             ->orderBy('requested_to', 'asc') // Sort by return date
             ->paginate($this->perPage);
 
         return view('livewire.resource-management.admin.bpm.process-return', [
-            'issuedLoans' => $issuedLoans
+            'issuedLoans' => $issuedLoans,
         ]);
     }
 }

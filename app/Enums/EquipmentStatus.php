@@ -11,7 +11,7 @@ enum EquipmentStatus: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::AVAILABLE => 'Available',
             self::ON_LOAN => 'On Loan',
             self::MAINTENANCE => 'Under Maintenance',
@@ -21,7 +21,7 @@ enum EquipmentStatus: string
 
     public function color(): string
     {
-        return match($this) {
+        return match ($this) {
             self::AVAILABLE => 'success',
             self::ON_LOAN => 'warning',
             self::MAINTENANCE => 'primary',

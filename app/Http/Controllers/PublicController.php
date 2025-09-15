@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\EquipmentCategory;
-use App\Models\EquipmentItem;
-use App\Models\LoanRequest;
 use App\Models\HelpdeskTicket;
+use App\Models\LoanRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

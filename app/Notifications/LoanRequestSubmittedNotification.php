@@ -24,7 +24,7 @@ class LoanRequestSubmittedNotification extends Notification implements ShouldQue
             return [
                 'notification:loan',
                 'loan:submitted',
-                'request:' . $this->loanRequest->request_number
+                'request:'.$this->loanRequest->request_number,
             ];
         });
     }
@@ -43,17 +43,17 @@ class LoanRequestSubmittedNotification extends Notification implements ShouldQue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject("Loan Request Submitted - {$this->loanRequest->request_number}")
-                    ->greeting("Hello {$this->loanRequest->applicant_name},")
-                    ->line("Your equipment loan request has been successfully submitted.")
-                    ->line("**Request Number:** {$this->loanRequest->request_number}")
-                    ->line("**Purpose:** {$this->loanRequest->purpose}")
-                    ->line("**Requested Period:** {$this->loanRequest->requested_from->format('M j, Y')} to {$this->loanRequest->requested_to->format('M j, Y')}")
-                    ->line("**Location:** {$this->loanRequest->location}")
-                    ->line('Your request will be reviewed by your supervisor and the ICT department.')
-                    ->action('View Request Details', route('dashboard'))
-                    ->line('Thank you for using ICTServe!')
-                    ->salutation('Best regards,
+            ->subject("Loan Request Submitted - {$this->loanRequest->request_number}")
+            ->greeting("Hello {$this->loanRequest->applicant_name},")
+            ->line('Your equipment loan request has been successfully submitted.')
+            ->line("**Request Number:** {$this->loanRequest->request_number}")
+            ->line("**Purpose:** {$this->loanRequest->purpose}")
+            ->line("**Requested Period:** {$this->loanRequest->requested_from->format('M j, Y')} to {$this->loanRequest->requested_to->format('M j, Y')}")
+            ->line("**Location:** {$this->loanRequest->location}")
+            ->line('Your request will be reviewed by your supervisor and the ICT department.')
+            ->action('View Request Details', route('dashboard'))
+            ->line('Thank you for using ICTServe!')
+            ->salutation('Best regards,
 ICT Department
 Ministry of Tourism, Arts and Culture (MOTAC)');
     }

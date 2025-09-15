@@ -17,15 +17,15 @@ class NotificationWidget extends Component
                 'title' => 'Permohonan Diluluskan',
                 'message' => 'Permohonan pinjaman laptop telah diluluskan.',
                 'time' => '2 jam yang lalu',
-                'type' => 'success'
+                'type' => 'success',
             ],
             [
                 'id' => 2,
                 'title' => 'Tiket Baharu',
                 'message' => 'Tiket helpdesk #HD-001 telah diterima.',
                 'time' => '1 hari yang lalu',
-                'type' => 'info'
-            ]
+                'type' => 'info',
+            ],
         ];
     }
 

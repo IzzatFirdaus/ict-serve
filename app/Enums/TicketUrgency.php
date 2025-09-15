@@ -11,7 +11,7 @@ enum TicketUrgency: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::LOW => 'Low',
             self::MEDIUM => 'Medium',
             self::HIGH => 'High',
@@ -21,7 +21,7 @@ enum TicketUrgency: string
 
     public function color(): string
     {
-        return match($this) {
+        return match ($this) {
             self::LOW => 'gray',
             self::MEDIUM => 'primary',
             self::HIGH => 'warning',
@@ -31,7 +31,7 @@ enum TicketUrgency: string
 
     public function description(): string
     {
-        return match($this) {
+        return match ($this) {
             self::LOW => 'Can wait for regular processing time',
             self::MEDIUM => 'Standard processing timeframe expected',
             self::HIGH => 'Needs faster than normal processing',
@@ -41,7 +41,7 @@ enum TicketUrgency: string
 
     public function sortOrder(): int
     {
-        return match($this) {
+        return match ($this) {
             self::LOW => 1,
             self::MEDIUM => 2,
             self::HIGH => 3,

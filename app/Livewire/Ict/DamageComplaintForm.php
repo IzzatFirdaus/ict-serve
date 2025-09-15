@@ -18,23 +18,38 @@ class DamageComplaintForm extends Component
 
     // Form fields with validation - removed #[Validate] attributes, using rules() method instead
     public $reporter_name = '';
+
     public $reporter_email = '';
+
     public $reporter_phone = '';
+
     public $department = '';
+
     public $equipment_id = '';
+
     public $damage_type = '';
+
     public $description = '';
+
     public $photos = [];
+
     public $priority = 'medium';
+
     public $preferred_repair_date = '';
 
     // Test compatibility properties (aliases for testing)
     public $damageTypeId = '';
+
     public $damageDescription = '';
+
     public $locationDetails = '';
+
     public $contactPhone = '';
+
     public $contactEmail = '';
+
     public $urgencyLevel = 'medium';
+
     public $additionalInfo = '';
 
     // Combined validation rules for both main properties and alias properties
@@ -180,16 +195,16 @@ class DamageComplaintForm extends Component
     public function submitComplaint()
     {
         // Set defaults for required fields if using alias properties
-        if (!$this->reporter_name && Auth::check()) {
+        if (! $this->reporter_name && Auth::check()) {
             $this->reporter_name = Auth::user()->name;
         }
-        if (!$this->reporter_email && $this->contactEmail) {
+        if (! $this->reporter_email && $this->contactEmail) {
             $this->reporter_email = $this->contactEmail;
         }
-        if (!$this->department && Auth::check()) {
+        if (! $this->department && Auth::check()) {
             $this->department = Auth::user()->department ?? 'IT'; // Default department
         }
-        if (!$this->equipment_id && $this->equipmentItems && count($this->equipmentItems) > 0) {
+        if (! $this->equipment_id && $this->equipmentItems && count($this->equipmentItems) > 0) {
             $this->equipment_id = $this->equipmentItems[0]['id']; // Use first equipment as default
         }
 

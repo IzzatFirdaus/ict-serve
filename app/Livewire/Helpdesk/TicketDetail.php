@@ -5,9 +5,9 @@ namespace App\Livewire\Helpdesk;
 use App\Models\HelpdeskTicket;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Component;
 
 /**
  * @property array $statusProgress
@@ -16,6 +16,7 @@ use Livewire\Attributes\Title;
 class TicketDetail extends Component
 {
     public HelpdeskTicket $ticket;
+
     public $showFullDescription = false;
 
     public function mount($ticketNumber)
@@ -26,18 +27,18 @@ class TicketDetail extends Component
             'ticketStatus',
             'equipmentItem',
             'assignedTo',
-            'resolvedBy'
+            'resolvedBy',
         ])
-        ->where('ticket_number', $ticketNumber)
-        ->where('user_id', Auth::id())
-        ->firstOrFail();
+            ->where('ticket_number', $ticketNumber)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
 
         // Page title will be set in the view template
     }
 
     public function toggleDescription()
     {
-        $this->showFullDescription = !$this->showFullDescription;
+        $this->showFullDescription = ! $this->showFullDescription;
     }
 
     public function downloadAttachment($filename)
@@ -58,7 +59,7 @@ class TicketDetail extends Component
             'assigned' => 2,
             'in_progress' => 3,
             'resolved' => 4,
-            'closed' => 5
+            'closed' => 5,
         ];
 
         $currentStatus = strtolower($this->ticket->ticketStatus->name ?? 'open');
@@ -67,7 +68,7 @@ class TicketDetail extends Component
         return [
             'current' => $currentStep,
             'total' => 5,
-            'percentage' => ($currentStep / 5) * 100
+            'percentage' => ($currentStep / 5) * 100,
         ];
     }
 

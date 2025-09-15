@@ -4,8 +4,8 @@ namespace App\Livewire\ResourceManagement\Approval;
 
 use App\Models\LoanRequest;
 use App\Services\LoanApplicationService;
-use Livewire\Component;
 use Livewire\Attributes\Title;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 #[Title('Dashboard Kelulusan Pinjaman')]
@@ -14,7 +14,9 @@ class Dashboard extends Component
     use WithPagination;
 
     public string $status_filter = 'pending_support';
+
     public string $search = '';
+
     public int $perPage = 10;
 
     public function mount()
@@ -46,7 +48,7 @@ class Dashboard extends Component
             session()->flash('success', 'Permohonan pinjaman telah diluluskan.');
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Ralat semasa meluluskan permohonan: ' . $e->getMessage());
+            session()->flash('error', 'Ralat semasa meluluskan permohonan: '.$e->getMessage());
         }
     }
 
@@ -67,7 +69,7 @@ class Dashboard extends Component
             session()->flash('success', 'Permohonan pinjaman telah ditolak.');
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Ralat semasa menolak permohonan: ' . $e->getMessage());
+            session()->flash('error', 'Ralat semasa menolak permohonan: '.$e->getMessage());
         }
     }
 
@@ -79,27 +81,27 @@ class Dashboard extends Component
             })
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('request_number', 'like', '%' . $this->search . '%')
-                      ->orWhere('purpose', 'like', '%' . $this->search . '%')
-                      ->orWhereHas('user', function ($userQuery) {
-                          $userQuery->where('name', 'like', '%' . $this->search . '%');
-                      });
+                    $q->where('request_number', 'like', '%'.$this->search.'%')
+                        ->orWhere('purpose', 'like', '%'.$this->search.'%')
+                        ->orWhereHas('user', function ($userQuery) {
+                            $userQuery->where('name', 'like', '%'.$this->search.'%');
+                        });
                 });
             })
             ->orderBy('created_at', 'desc')
             ->paginate($this->perPage);
 
         $statusCounts = [
-            'pending_support' => LoanRequest::whereHas('status', fn($q) => $q->where('code', 'pending_support'))->count(),
-            'approved' => LoanRequest::whereHas('status', fn($q) => $q->where('code', 'approved'))->count(),
-            'rejected' => LoanRequest::whereHas('status', fn($q) => $q->where('code', 'rejected'))->count(),
-            'issued' => LoanRequest::whereHas('status', fn($q) => $q->where('code', 'issued'))->count(),
-            'completed' => LoanRequest::whereHas('status', fn($q) => $q->where('code', 'completed'))->count(),
+            'pending_support' => LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'pending_support'))->count(),
+            'approved' => LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'approved'))->count(),
+            'rejected' => LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'rejected'))->count(),
+            'issued' => LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'issued'))->count(),
+            'completed' => LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'completed'))->count(),
         ];
 
         return view('livewire.resource-management.approval.dashboard', [
             'loans' => $loans,
-            'statusCounts' => $statusCounts
+            'statusCounts' => $statusCounts,
         ]);
     }
 }
