@@ -12,7 +12,7 @@ enum EquipmentCondition: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::EXCELLENT => 'Excellent',
             self::GOOD => 'Good',
             self::FAIR => 'Fair',
@@ -23,7 +23,7 @@ enum EquipmentCondition: string
 
     public function color(): string
     {
-        return match($this) {
+        return match ($this) {
             self::EXCELLENT => 'success',
             self::GOOD => 'primary',
             self::FAIR => 'warning',

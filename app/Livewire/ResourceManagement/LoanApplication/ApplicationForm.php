@@ -3,11 +3,10 @@
 namespace App\Livewire\ResourceManagement\LoanApplication;
 
 use App\Models\EquipmentItem;
-use App\Models\LoanRequest;
 use App\Services\LoanApplicationService;
-use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
 
 #[Title('Borang Permohonan Pinjaman Peralatan ICT')]
 class ApplicationForm extends Component
@@ -43,12 +42,15 @@ class ApplicationForm extends Component
         'speaker' => 'Pembesar Suara',
         'webcam' => 'Kamera Web',
         'tablet' => 'Tablet',
-        'other' => 'Lain-lain'
+        'other' => 'Lain-lain',
     ];
 
     public bool $terms_accepted = false;
+
     public bool $submitting = false;
+
     public string $success_message = '';
+
     public string $error_message = '';
 
     public function mount()
@@ -60,7 +62,7 @@ class ApplicationForm extends Component
             ->map(function ($item) {
                 return [
                     'id' => $item->id,
-                    'name' => $item->name . ' (' . $item->serial_number . ')',
+                    'name' => $item->name.' ('.$item->serial_number.')',
                     'type' => $item->category->name,
                 ];
             })
@@ -85,7 +87,7 @@ class ApplicationForm extends Component
         try {
             $this->validate();
 
-            if (!$this->terms_accepted) {
+            if (! $this->terms_accepted) {
                 throw new \Exception('Anda mesti menerima terma dan syarat.');
             }
 
@@ -97,12 +99,12 @@ class ApplicationForm extends Component
                 'start_date' => $this->start_date,
                 'end_date' => $this->end_date,
                 'remarks' => $this->notes,
-                'equipment_items' => $this->equipment_items
+                'equipment_items' => $this->equipment_items,
             ];
 
             $application = $loanApplicationService->submit($data, \Illuminate\Support\Facades\Auth::user());
 
-            $this->success_message = 'Permohonan pinjaman anda telah dihantar berjaya. Nombor rujukan: ' . $application->request_number;
+            $this->success_message = 'Permohonan pinjaman anda telah dihantar berjaya. Nombor rujukan: '.$application->request_number;
             $this->reset(['purpose', 'location', 'start_date', 'end_date', 'notes', 'equipment_items', 'terms_accepted']);
 
         } catch (\Illuminate\Validation\ValidationException $e) {

@@ -19,6 +19,7 @@ Route::get('/', function () {
     if (Auth::check()) {
         return redirect()->route('app');
     }
+
     return view('dashboard');
 })->name('dashboard');
 
@@ -27,6 +28,7 @@ Route::get('/dashboard', function () {
     if (Auth::check()) {
         return redirect()->route('app');
     }
+
     return redirect()->to('/');
 })->name('dashboard.alias');
 
@@ -61,6 +63,7 @@ Route::get('/damage-complaint/create', function () {
     if (class_exists(\App\Livewire\DamageComplaintForm::class)) {
         return app(\App\Livewire\DamageComplaintForm::class)(request());
     }
+
     return view('public.damage-complaint');
 })->name('damage-complaint.create');
 
@@ -72,6 +75,7 @@ Route::get('/helpdesk/create-ticket', function () {
     if (class_exists(\App\Livewire\Helpdesk\Create::class)) {
         return app(\App\Livewire\Helpdesk\Create::class)(request());
     }
+
     return redirect()->route('helpdesk.create');
 })->name('helpdesk.create-ticket');
 
@@ -82,6 +86,7 @@ Route::get('/helpdesk/my-tickets', function () {
     if (class_exists(\App\Livewire\Helpdesk\Index::class)) {
         return app(\App\Livewire\Helpdesk\Index::class)(request());
     }
+
     return redirect()->route('helpdesk.index');
 })->name('helpdesk.my-tickets');
 
@@ -354,7 +359,7 @@ Route::prefix('demo')->name('demo.')->group(function () {
         return response()->json([
             'success' => true,
             'message' => 'Login successful',
-            'redirect' => route('demo.dashboard')
+            'redirect' => route('demo.dashboard'),
         ]);
     })->name('login.submit');
 
@@ -374,7 +379,7 @@ Route::prefix('demo')->name('demo.')->group(function () {
             'loans_overdue' => 3,
             'tickets_open' => 8,
             'tickets_in_progress' => 15,
-            'tickets_resolved' => 142
+            'tickets_resolved' => 142,
         ]);
     })->name('api.stats');
 
@@ -386,7 +391,7 @@ Route::prefix('demo')->name('demo.')->group(function () {
                 'title' => 'Permohonan Pinjaman Laptop Dell',
                 'user' => 'Ahmad Rahman',
                 'time' => '2 jam yang lalu',
-                'status' => 'pending'
+                'status' => 'pending',
             ],
             [
                 'id' => 2,
@@ -394,7 +399,7 @@ Route::prefix('demo')->name('demo.')->group(function () {
                 'title' => 'Masalah Printer Rosak',
                 'user' => 'Siti Nurhaliza',
                 'time' => '4 jam yang lalu',
-                'status' => 'open'
+                'status' => 'open',
             ],
             [
                 'id' => 3,
@@ -402,8 +407,8 @@ Route::prefix('demo')->name('demo.')->group(function () {
                 'title' => 'Pinjaman Projector Diluluskan',
                 'user' => 'Muhammad Ali',
                 'time' => '1 hari yang lalu',
-                'status' => 'approved'
-            ]
+                'status' => 'approved',
+            ],
         ]);
     })->name('api.activities');
 });

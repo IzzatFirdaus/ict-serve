@@ -1,16 +1,16 @@
 <?php
 
 // Test script to trigger actual notification emails via SMTP (Papercut)
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
-$app = require_once __DIR__ . '/../bootstrap/app.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
 $kernel->bootstrap();
 
-use App\Models\User;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
+use App\Models\User;
 use App\Notifications\TicketCreatedNotification;
 use Illuminate\Support\Facades\Notification;
 
@@ -58,6 +58,6 @@ try {
     echo "✓ Check database notifications table for stored notification\n";
 
 } catch (Exception $e) {
-    echo "❌ Error: " . $e->getMessage() . "\n";
-    echo "Stack trace: " . $e->getTraceAsString() . "\n";
+    echo '❌ Error: '.$e->getMessage()."\n";
+    echo 'Stack trace: '.$e->getTraceAsString()."\n";
 }

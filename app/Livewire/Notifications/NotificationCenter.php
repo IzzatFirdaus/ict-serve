@@ -6,11 +6,11 @@ namespace App\Livewire\Notifications;
 
 use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
-use Livewire\Attributes\On;
 
 #[Layout('layouts.app')]
 #[Title('Pusat Notifikasi - ICTServe')]
@@ -19,9 +19,13 @@ class NotificationCenter extends Component
     use WithPagination;
 
     public string $filter = 'all';
+
     public string $category = 'all';
+
     public string $priority = 'all';
+
     public bool $showDropdown = false;
+
     public bool $showMarkAllModal = false;
 
     protected $listeners = [
@@ -92,9 +96,9 @@ class NotificationCenter extends Component
 
     private function getNotifications()
     {
-    $userId = $this->currentUserId();
+        $userId = $this->currentUserId();
 
-    $query = Notification::where('user_id', $userId ?? 0)
+        $query = Notification::where('user_id', $userId ?? 0)
             ->with('user')
             ->notExpired()
             ->recent();
@@ -129,10 +133,10 @@ class NotificationCenter extends Component
 
     private function getNotificationStats(): array
     {
-    /** @var \App\Models\User|null $user */
-    $user = Auth::user();
+        /** @var \App\Models\User|null $user */
+        $user = Auth::user();
 
-    $userId = $user?->id;
+        $userId = $user?->id;
 
         return [
             'total' => Notification::where('user_id', $userId ?? 0)->notExpired()->count(),

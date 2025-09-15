@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Notifications;
 
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Attributes\On;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * @property \Illuminate\Contracts\Pagination\LengthAwarePaginator $activities
@@ -15,9 +15,13 @@ class ActivityFeed extends Component
     use WithPagination;
 
     public $perPage = 10;
+
     public $showFilters = false;
+
     public $selectedTypes = [];
+
     public $dateFrom = null;
+
     public $dateTo = null;
 
     protected $paginationTheme = 'tailwind';
@@ -35,13 +39,13 @@ class ActivityFeed extends Component
         $this->dispatch('toast', [
             'type' => 'info',
             'title' => 'Aktiviti Baru',
-            'message' => 'Aktiviti baru telah direkodkan.'
+            'message' => 'Aktiviti baru telah direkodkan.',
         ]);
     }
 
     public function toggleFilters()
     {
-        $this->showFilters = !$this->showFilters;
+        $this->showFilters = ! $this->showFilters;
     }
 
     public function resetFilters()
@@ -84,13 +88,13 @@ class ActivityFeed extends Component
             'ticket_assigned',
             'ticket_resolved',
             'system_login',
-            'profile_updated'
+            'profile_updated',
         ];
     }
 
     protected function getActivityTypeLabel($type)
     {
-        return match($type) {
+        return match ($type) {
             'loan_application' => 'Permohonan Pinjaman',
             'loan_approval' => 'Kelulusan Pinjaman',
             'equipment_issued' => 'Peralatan Dikeluarkan',
@@ -106,7 +110,7 @@ class ActivityFeed extends Component
 
     protected function getActivityIcon($type)
     {
-        return match($type) {
+        return match ($type) {
             'loan_application' => 'document-add',
             'loan_approval' => 'check-circle',
             'equipment_issued' => 'download',
@@ -122,7 +126,7 @@ class ActivityFeed extends Component
 
     protected function getActivityColor($type)
     {
-        return match($type) {
+        return match ($type) {
             'loan_application' => 'primary',
             'loan_approval' => 'success',
             'equipment_issued' => 'warning',
@@ -158,7 +162,7 @@ class ActivityFeed extends Component
     {
         return view('livewire.notifications.activity-feed', [
             'activities' => $this->activities,
-            'activityTypes' => $this->getAllActivityTypes()
+            'activityTypes' => $this->getAllActivityTypes(),
         ]);
     }
 }

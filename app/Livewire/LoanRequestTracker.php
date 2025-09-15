@@ -3,14 +3,17 @@
 namespace App\Livewire;
 
 use App\Models\LoanRequest;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class LoanRequestTracker extends Component
 {
     public LoanRequest $loanRequest;
+
     public bool $showDetails = false;
+
     public bool $polling = false;
+
     public string $pollInterval = '5s';
 
     public function mount(LoanRequest $loanRequest, bool $polling = false, string $pollInterval = '5s')
@@ -29,7 +32,7 @@ class LoanRequestTracker extends Component
 
     public function toggleDetails()
     {
-        $this->showDetails = !$this->showDetails;
+        $this->showDetails = ! $this->showDetails;
     }
 
     public function enablePolling()

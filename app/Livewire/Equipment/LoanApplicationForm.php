@@ -76,6 +76,7 @@ class LoanApplicationForm extends Component
 
     // Data Collections
     public array $departments = [];
+
     public array $divisions = []; // Alias for Blade compatibility
 
     public array $equipmentTypes = [];

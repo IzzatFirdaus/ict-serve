@@ -22,6 +22,7 @@ class LoanStatusFactory extends Factory
             'overdue',
             'cancelled',
         ]);
+
         return [
             'code' => $code,
             'name' => ucfirst(str_replace('_', ' ', $code)),
