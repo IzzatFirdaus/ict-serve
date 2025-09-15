@@ -1,17 +1,35 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        // Stubbed older loan_statuses migration; canonical migration is 2025_09_12_133832_create_loan_statuses_table.php
+        Schema::create('loan_statuses', function (Blueprint $table) {
+            $table->id();
+            $table->string('code')->unique();
+            $table->string('name');
+            $table->string('name_bm')->nullable();
+            $table->text('description')->nullable();
+            $table->text('description_bm')->nullable();
+            $table->string('color')->default('#6B7280');
+            $table->boolean('is_active')->default(true);
+            $table->integer('sort_order')->default(0);
+            $table->timestamps();
+        });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        // No-op
+        Schema::dropIfExists('loan_statuses');
     }
 };

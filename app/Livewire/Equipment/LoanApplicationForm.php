@@ -76,6 +76,7 @@ class LoanApplicationForm extends Component
 
     // Data Collections
     public array $departments = [];
+    public array $divisions = []; // Alias for Blade compatibility
 
     public array $equipmentTypes = [];
 
@@ -116,7 +117,7 @@ class LoanApplicationForm extends Component
         // Generate form reference
         $this->formReference = 'BPM/ICT/LOAN/'.now()->format('Y').'/'.str_pad((string) rand(1, 9999), 4, '0', STR_PAD_LEFT);
 
-        // Load departments
+        // Load departments and divisions (alias for view compatibility)
         $this->departments = [
             'bpm' => 'Bahagian Pengurusan Maklumat (BPM)',
             'bpp' => 'Bahagian Pengurusan Perkhidmatan (BPP)',
@@ -126,6 +127,9 @@ class LoanApplicationForm extends Component
             'bpp_legal' => 'Unit Perundangan',
             'other' => 'Lain-lain (Sila nyatakan dalam catatan)',
         ];
+
+        // Set divisions as alias to departments for Blade compatibility
+        $this->divisions = array_values($this->departments);
 
         // Load equipment types
         $this->equipmentTypes = [
@@ -356,6 +360,12 @@ class LoanApplicationForm extends Component
                 'error' => $e->getMessage(),
             ]);
         }
+    }
+
+    // Computed property for Blade template compatibility
+    public function getEquipmentRequestsProperty()
+    {
+        return $this->equipmentRequests;
     }
 
     public function render()

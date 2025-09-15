@@ -399,14 +399,14 @@
 
                 <!-- Equipment Requests -->
                 <div class="space-y-4">
-                    @foreach($equipment_requests as $index => $request)
+                    @foreach($this->equipmentRequests as $index => $request)
                         <div class="border border-otl-gray-200 rounded-lg p-4"
                              wire:key="equipment-{{ $index }}">
                             <div class="flex items-start justify-between mb-4">
                                 <h4 class="text-body-sm font-medium text-txt-black-900">
                                     Peralatan {{ $index + 1 }}
                                 </h4>
-                                @if(count($equipment_requests) > 1)
+                                @if(count($this->equipmentRequests) > 1)
                                     <button type="button"
                                             wire:click="removeEquipmentRow({{ $index }})"
                                             class="text-danger-600 hover:text-danger-700 p-1">
@@ -427,12 +427,9 @@
                                             class="myds-select @error('equipment_requests.'.$index.'.equipment_id') myds-input-error @enderror"
                                             required>
                                         <option value="">-- Pilih Peralatan --</option>
-                                        @foreach($availableEquipment as $equipment)
-                                            <option value="{{ $equipment['id'] }}">
-                                                {{ $equipment['name'] }}
-                                                @if(isset($equipment['category']['name']))
-                                                    ({{ $equipment['category']['name'] }})
-                                                @endif
+                                        @foreach($equipmentTypes as $key => $equipmentName)
+                                            <option value="{{ $key }}">
+                                                {{ $equipmentName }}
                                             </option>
                                         @endforeach
                                     </select>

@@ -67,7 +67,7 @@ Ministry of Tourism, Arts and Culture (MOTAC)');
             'loan_request_id' => $this->loanRequest->id,
             'request_number' => $this->loanRequest->request_number,
             'purpose' => $this->loanRequest->purpose,
-            'status' => $this->loanRequest->status->name,
+            'status' => $this->loanRequest->loanStatus->name ?? 'Unknown',
             'message' => "Your loan request {$this->loanRequest->request_number} has been submitted successfully.",
             'action_url' => route('dashboard'),
         ];

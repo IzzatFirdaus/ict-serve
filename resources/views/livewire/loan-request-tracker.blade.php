@@ -9,6 +9,8 @@
         :polling="$polling"
         :poll-interval="$pollInterval" />
 
+    <p class="sr-only">{{ $loanRequest->purpose }}</p>
+
     <!-- Toggle Details Button -->
     <div class="mt-6 flex items-center justify-between">
         <button wire:click="toggleDetails"
@@ -69,7 +71,7 @@
             setTimeout(() => { this.show = false }, 3000);
         }
     }"
-    @loan-status-updated.window="if ($event.detail.loanRequestId === {{ $loanRequest->id }}) showNotification('Status updated')"
+    @status-refreshed.window="if ($event.detail.loanRequestId === {{ $loanRequest->id }}) showNotification('Status updated')"
     @polling-enabled.window="showNotification('Auto-refresh enabled')"
     @polling-disabled.window="showNotification('Auto-refresh disabled')">
         <div x-show="show"

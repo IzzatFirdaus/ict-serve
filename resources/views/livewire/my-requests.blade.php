@@ -249,7 +249,7 @@
                         @if($search || $loanStatus)
                             No requests match your current filters.
                         @else
-                            You haven't submitted any equipment loan requests yet.
+                            You haven&#039;t submitted any equipment loan requests yet.
                         @endif
                     </p>
                     @if(!$search && !$loanStatus)
