@@ -185,7 +185,7 @@ class TicketForm extends Component
             // Send notification to user
             Auth::user()->notify(new TicketCreatedNotification($ticket));
 
-            session()->flash('success', 'Aduan helpdesk anda berjaya dihantar. Nombor tiket: '.$ticket->ticket_number);
+            session()->flash('success', 'Your helpdesk ticket has been successfully created. Ticket number: '.$ticket->ticket_number);
 
             // Redirect to ticket view or dashboard
             if (Auth::check()) {
@@ -196,7 +196,7 @@ class TicketForm extends Component
             }
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Ralat berlaku semasa menghantar aduan. Sila cuba lagi.');
+            session()->flash('error', 'An error occurred while creating the ticket. Please try again.');
             Log::error('Ticket creation error: '.$e->getMessage());
         }
     }
