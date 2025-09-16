@@ -1,135 +1,89 @@
-{{--
-  MYDS Button Component for ICTServe (iServe)
-  - MYDS Design, Tokens, Icon, Colour, Motion, Accessible, Citizen-centric.
-  - Props:
-      variant: primary|secondary|tertiary|danger
-      size: sm|md|lg
-      disabled: bool
-      as: button|a
-      href: for <a>
-      type: button|submit|reset
-      iconOnly: bool
-      ariaLabel: string|null
-      counter: int|null (shows numeric badge)
-      leadingIcon: string|null (MYDS icon name)
-      trailingIcon: string|null (MYDS icon name)
-      class: string|null (additional classes)
---}}
 @props([
-  'variant' => 'primary',
-  'size' => 'md',
-  'disabled' => false,
-  'as' => 'button',
-  'href' => null,
-  'type' => 'button',
-  'iconOnly' => false,
-  'ariaLabel' => null,
-  'counter' => null,
-  'leadingIcon' => null,
-  'trailingIcon' => null,
-  'class' => '',
+    'variant' => 'primary', // primary, secondary, secondary-colour, tertiary, tertiary-colour, danger-primary, danger-secondary, danger-tertiary
+    'size' => 'medium', // small, medium, large
+    'type' => 'button', // button, submit, reset
+    'disabled' => false,
+    'loading' => false,
+    'iconLeading' => null,
+    'iconTrailing' => null,
+    'counter' => null,
+    'iconOnly' => false
 ])
 
 @php
-  $base = 'myds-btn focus-ring-primary font-inter transition-all';
-  $vClass = match($variant) {
-    'secondary' => 'btn-secondary',
-    'tertiary' => 'btn-tertiary',
-    'danger' => 'btn-danger',
-    default => 'btn-primary',
-  };
-  $sClass = match($size) {
-    'sm' => 'btn-sm',
-    'lg' => 'btn-lg',
-    default => 'btn-md',
-  };
-  $classes = trim("{$base} {$vClass} {$sClass} {$class}");
+    $baseClasses = 'myds-button relative inline-flex items-center justify-center font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2';
+
+    // Size classes
+    $sizeClasses = match($size) {
+        'small' => 'px-3 py-1.5 text-sm gap-1.5',
+        'large' => 'px-6 py-3 text-lg gap-3',
+        'default' => 'px-4 py-2 text-sm',
+        default => 'px-4 py-2 text-sm' // medium
+    };
+
+    // Icon-only sizing
+    if ($iconOnly) {
+        $sizeClasses = match($size) {
+            'small' => 'p-1.5',
+            'large' => 'p-3',
+            default => 'p-2'
+        };
+    }
+
+    // Variant classes based on MYDS specifications
+    $variantClasses = match($variant) {
+        'primary' => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5',
+        'secondary' => 'bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 hover:border-gray-400 focus:ring-blue-500 active:translate-y-0.5',
+        'secondary-colour' => 'bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 hover:border-blue-300 focus:ring-blue-500 active:translate-y-0.5',
+        'tertiary' => 'bg-transparent text-gray-700 border-0 hover:bg-gray-100 focus:ring-blue-500 active:translate-y-0.5',
+        'tertiary-colour' => 'bg-transparent text-blue-600 border-0 hover:bg-blue-50 focus:ring-blue-500 active:translate-y-0.5',
+        'danger-primary' => 'bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:border-red-700 focus:ring-red-500 active:translate-y-0.5',
+        'danger-secondary' => 'bg-white text-red-700 border border-red-300 hover:bg-red-50 hover:border-red-400 focus:ring-red-500 active:translate-y-0.5',
+        'danger-tertiary' => 'bg-transparent text-red-600 border-0 hover:bg-red-50 focus:ring-red-500 active:translate-y-0.5',
+        'danger' => 'bg-danger-600 text-white hover:bg-danger-700 focus:ring-fr-danger',
+        'success' => 'bg-success-600 text-white hover:bg-success-700 focus:ring-fr-success',
+        'outline' => 'border border-otl-gray-300 text-txt-black-900 hover:bg-gray-50 focus:ring-fr-primary',
+        default => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5'
+    };
+
+    // Disabled state
+    if ($disabled || $loading) {
+        $variantClasses = 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed active:translate-y-0';
+    }
+
+    $classes = trim($baseClasses . ' ' . $sizeClasses . ' ' . $variantClasses);
 @endphp
 
-<x-myds.tokens />
-
-@if ($as === 'a')
-  <a
-    href="{{ $href ?? '#' }}"
-    class="{{ $classes }}"
-    @if($disabled) aria-disabled="true" tabindex="-1" @endif
-    @if($iconOnly && $ariaLabel) aria-label="{{ $ariaLabel }}" @endif
-  >
-    @if($leadingIcon)
-      <x-myds.icons :name="$leadingIcon" class="myds-icon mr-1" />
-    @endif
-    @if(!$iconOnly)
-      {{ $slot }}
-      @if($counter)
-  {{-- Komponen Butang MYDS (BM, Aksesibiliti, Ikon, Token) --}}
-  @props([
-    'type' => 'button',
-    'variant' => 'primary', // primary, secondary, danger, success, warning
-    'size' => 'md', // sm, md, lg
-    'icon' => null,
-    'iconPosition' => 'leading', // leading, trailing
-    'disabled' => false,
-    'block' => false,
-    'ariaLabel' => null,
-  ])
-
-  @php
-    $base = 'inline-flex items-center justify-center font-inter font-medium transition focus:outline-none focus:ring focus:ring-primary-300';
-    $sizes = [
-      'sm' => 'text-xs px-3 py-1.5 rounded',
-      'md' => 'text-sm px-4 py-2 rounded-md',
-      'lg' => 'text-base px-6 py-3 rounded-lg',
-    ];
-    $variants = [
-      'primary' => 'bg-primary-600 text-white hover:bg-primary-700',
-      'secondary' => 'bg-secondary-600 text-white hover:bg-secondary-700',
-      'danger' => 'bg-danger-600 text-white hover:bg-danger-700',
-      'success' => 'bg-success-600 text-white hover:bg-success-700',
-      'warning' => 'bg-warning-500 text-black hover:bg-warning-600',
-    ];
-    $disabledClass = 'opacity-50 cursor-not-allowed';
-    $blockClass = $block ? 'w-full' : '';
-    $iconSize = $size === 'lg' ? 'w-6 h-6' : ($size === 'sm' ? 'w-4 h-4' : 'w-5 h-5');
-  @endphp
-
-  <button
+<button
     type="{{ $type }}"
-    @if($ariaLabel) aria-label="{{ $ariaLabel }}" @endif
-    {{ $disabled ? 'disabled' : '' }}
-    class="{{ $base }} {{ $sizes[$size] }} {{ $variants[$variant] }} {{ $blockClass }} {{ $disabled ? $disabledClass : '' }}"
-  >
-    @if($icon && $iconPosition === 'leading')
-      <span class="mr-2 {{ $iconSize }} flex-shrink-0" aria-hidden="true">{!! $icon !!}</span>
+    {{ $disabled || $loading ? 'disabled' : '' }}
+    {{ $attributes->merge(['class' => $classes]) }}
+>
+    @if($loading)
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-current" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+    @elseif($iconLeading)
+        <span class="myds-button-icon-leading">
+            {!! $iconLeading !!}
+        </span>
     @endif
-    <span>{{ $slot }}</span>
-    @if($icon && $iconPosition === 'trailing')
-      <span class="ml-2 {{ $iconSize }} flex-shrink-0" aria-hidden="true">{!! $icon !!}</span>
+
+    @unless($iconOnly)
+        <span class="myds-button-text">{{ $slot }}</span>
+    @endunless
+
+    @if($counter)
+        <span class="myds-button-counter ml-1 px-1.5 py-0.5 text-xs bg-white/20 rounded-full">
+            {{ $counter }}
+        </span>
     @endif
-  </button>
-      @endif
+
+    @if($iconTrailing && !$loading)
+        <span class="myds-button-icon-trailing">
+            {!! $iconTrailing !!}
+        </span>
     @endif
-    @if($trailingIcon)
-      <x-myds.icons :name="$trailingIcon" class="myds-icon ml-1" />
-    @endif
-  </a>
-@else
-  <button
-    type="{{ $type }}"
-    class="{{ $classes }}"
-    @if($disabled) disabled @endif
-    @if($iconOnly && $ariaLabel) aria-label="{{ $ariaLabel }}" @endif
-  >
-    @if($leadingIcon)
-      <x-myds.icons :name="$leadingIcon" class="myds-icon mr-1" />
-    @endif
-    @if(!$iconOnly)
-      {{ $slot }}
-      @if($counter)
-        <span class="bg-black-100 txt-black-900 radius-full px-2 py-0.5 ml-1 text-xs align-middle">{{ $counter }}</span>
-      @endif
-    @endif
-    @if($trailingIcon)
-      <x-myds.icons :name="$trailingIcon" class="myds-icon ml-1" />
-    @endif
-  </button>
-@endif
+</button>
+

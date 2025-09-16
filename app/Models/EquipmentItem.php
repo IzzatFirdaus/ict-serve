@@ -10,32 +10,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property int $id
  * @property int $category_id
- * @property string $asset_tag
+ * @property string|null $asset_tag
  * @property string|null $serial_number
- * @property string $brand
- * @property string $model
- * @property string|null $specifications
+ * @property string|null $brand
+ * @property string|null $model
+ * @property array|null $specifications
  * @property string|null $description
- * @property EquipmentCondition $condition
- * @property EquipmentStatus $status
+ * @property string $condition
+ * @property string $status
  * @property float|null $purchase_price
- * @property \Carbon\Carbon|null $purchase_date
- * @property \Carbon\Carbon|null $warranty_expiry
+ * @property \Illuminate\Support\Carbon|null $purchase_date
+ * @property \Illuminate\Support\Carbon|null $warranty_expiry
  * @property string|null $location
  * @property string|null $notes
  * @property bool $is_active
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @property-read EquipmentCategory $category
- * @property-read LoanItem|null $currentLoan
- * @property-read \Illuminate\Database\Eloquent\Collection<int, LoanItem> $loanItems
- * @property-read \Illuminate\Database\Eloquent\Collection<int, HelpdeskTicket> $tickets
- * @property-read string $warranty_status
- * @property-read string $name
+ * @property string $name
+ * @property-read \App\Models\EquipmentCategory $category
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class EquipmentItem extends Model
 {
@@ -43,6 +40,7 @@ class EquipmentItem extends Model
 
     protected $fillable = [
         'category_id',
+        'name',
         'asset_tag',
         'serial_number',
         'brand',
@@ -59,18 +57,6 @@ class EquipmentItem extends Model
         'is_active',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'condition' => EquipmentCondition::class,
-            'status' => EquipmentStatus::class,
-            'purchase_price' => 'decimal:2',
-            'purchase_date' => 'date',
-            'warranty_expiry' => 'date',
-            'is_active' => 'boolean',
-        ];
-    }
-
     /**
      * Get the category this equipment belongs to.
      */
@@ -80,11 +66,21 @@ class EquipmentItem extends Model
     }
 
     /**
-     * Get the loan items for this equipment.
+     * Get the loan requests for this equipment.
      */
-    public function loanItems(): HasMany
+    public function loanRequests(): HasMany
     {
-        return $this->hasMany(LoanItem::class, 'equipment_item_id');
+        return $this->hasMany(LoanRequest::class, 'equipment_id');
+    }
+
+    /**
+     * Get the current active loan for this equipment.
+     */
+    public function currentLoan(): HasOne
+    {
+        return $this->hasOne(LoanRequest::class, 'equipment_id')
+            ->whereIn('status', ['approved', 'collected'])
+            ->latest();
     }
 
     /**
@@ -92,7 +88,7 @@ class EquipmentItem extends Model
      */
     public function tickets(): HasMany
     {
-        return $this->hasMany(HelpdeskTicket::class, 'equipment_item_id');
+        return $this->hasMany(HelpdeskTicket::class, 'equipment_id');
     }
 
     /**
@@ -110,7 +106,7 @@ class EquipmentItem extends Model
      */
     public function getWarrantyStatusAttribute(): string
     {
-        if (! $this->warranty_expiry) {
+        if (!$this->warranty_expiry) {
             return 'Unknown';
         }
 
@@ -121,11 +117,16 @@ class EquipmentItem extends Model
         return 'Warranty Expired';
     }
 
-    /**
-     * Get the equipment name (brand + model).
-     */
-    public function getNameAttribute(): string
+    protected function casts(): array
     {
-        return trim($this->brand.' '.$this->model);
+        return [
+            'specifications' => 'array',
+            'condition' => EquipmentCondition::class,
+            'status' => EquipmentStatus::class,
+            'purchase_price' => 'decimal:2',
+            'purchase_date' => 'date',
+            'warranty_expiry' => 'date',
+            'is_active' => 'boolean',
+        ];
     }
 }

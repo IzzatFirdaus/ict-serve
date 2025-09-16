@@ -1,74 +1,51 @@
 <x-guest-layout>
-    <main role="main">
-        <h1 class="myds-heading-md font-semibold text-txt-black-900 mb-2 text-center">Log Masuk ke ICTServe</h1>
-        <p class="myds-body-sm text-txt-black-700 mb-6 text-center">Gunakan akaun MOTAC anda untuk teruskan</p>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="myds-container max-w-md mx-auto py-10">
+        <div class="bg-bg-white-0 border border-otl-gray-200 rounded-radius-l shadow-context-menu p-6">
+            <h1 class="myds-heading text-heading-xs font-semibold text-txt-black-900 mb-1">Sign in to iServe</h1>
+            <p class="text-body-sm text-txt-black-600 mb-6">Use your MOTAC account to continue</p>
 
-        <form method="POST" action="{{ route('login') }}" role="form" aria-labelledby="login-heading">
-            @csrf
+            @if(session('status'))
+                <x-myds.callout variant="success" class="mb-4">{{ session('status') }}</x-myds.callout>
+            @endif
 
-            <!-- Email Address -->
-            <div class="myds-form-group mb-4">
+            <form method="POST" action="{{ route('login') }}" novalidate class="space-y-4">
+                @csrf
+
                 <x-myds.input
-                    id="email"
                     name="email"
                     type="email"
-                    label="Alamat E-mel"
+                    label="Email Address"
                     :value="old('email')"
+                    autocomplete="email"
                     required
-                    autofocus
-                    autocomplete="username"
-                    aria-describedby="email-error"
                 />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" id="email-error" />
-            </div>
 
-            <!-- Password -->
-            <div class="myds-form-group mb-4">
                 <x-myds.input
-                    id="password"
                     name="password"
                     type="password"
-                    label="Kata Laluan"
-                    required
+                    label="Password"
                     autocomplete="current-password"
-                    aria-describedby="password-error"
+                    required
                 />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" id="password-error" />
-            </div>
 
-            <!-- Remember Me -->
-            <div class="block mb-6">
-                <label for="remember_me" class="inline-flex items-center min-h-[44px]">
-                    <input
-                        id="remember_me"
-                        type="checkbox"
-                        class="h-4 w-4 text-primary-600 border-otl-gray-300 rounded focus:ring-2 focus:ring-primary-300"
-                        name="remember"
-                    >
-                    <span class="ms-2 myds-body-sm text-txt-black-700">Ingat saya</span>
+                <label class="inline-flex items-center gap-2">
+                    <input type="checkbox" name="remember" class="h-4 w-4 text-primary-600 border-otl-gray-300 rounded">
+                    <span class="text-body-sm text-txt-black-700">Remember me</span>
                 </label>
-            </div>
 
-            <div class="flex flex-col items-stretch gap-4">
-                <x-myds.button
-                    type="submit"
-                    variant="primary"
-                    class="w-full min-h-[44px]"
-                    aria-label="Log masuk ke ICTServe">
-                    Log Masuk
-                </x-myds.button>
+                <x-myds.button type="submit" variant="primary" class="w-full">Sign in</x-myds.button>
+            </form>
 
-                @if (Route::has('password.request'))
-                    <a
-                        class="min-h-[44px] flex items-center justify-center myds-body-sm text-txt-primary hover:text-txt-primary underline font-medium focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 rounded-md px-2 py-2"
-                        href="{{ route('password.request') }}"
-                    >
-                        Terlupa kata laluan anda?
-                    </a>
-                @endif
-            </div>
-        </form>
-    </main>
+            @if (Route::has('register'))
+                <p class="text-body-sm text-txt-black-600 mt-6 text-center">
+                    No account?
+                    <a href="{{ route('register') }}" class="text-primary-600 hover:text-primary-700 myds-hover-underline">Register</a>
+                </p>
+            @endif
+        </div>
+    </div>
 </x-guest-layout>
+

@@ -19,7 +19,7 @@
     <meta property="twitter:title" content="{{ $title ?? 'iServe' }} - ICT Equipment Management">
     <meta property="twitter:description" content="{{ $metaDescription ?? 'ICT Equipment Management System for Government Agencies' }}">
 
-    <title>{{ $title ?? 'iServe' }} - ICT Equipment Management</title>
+    <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
@@ -48,7 +48,7 @@
     </script>
 </head>
 
-<body class="myds-body bg-bg-white-0 text-txt-black-900 antialiased transition-colors duration-200">
+<body class="font-sans myds-body bg-bg-white-0 text-txt-black-900 antialiased transition-colors duration-200">
     <!-- MYDS Skip Link for Accessibility -->
     <a href="#main-content" class="myds-skip-link myds-focus-visible">
         Skip to main content
@@ -89,7 +89,7 @@
                     <div class="flex items-center space-x-4">
                         <!-- Government Logo -->
                         <div class="flex-shrink-0">
-                            <img src="{{ asset('images/jata-negara.png') }}"
+                            <img src="{{ asset('images/jata-negara.svg') }}"
                                  alt="Jata Negara Malaysia"
                                  class="h-10 w-auto">
                         </div>
@@ -176,61 +176,7 @@
 
                 <!-- Navigation Bar -->
                 @auth
-                    <nav class="border-t border-otl-gray-200 -mx-6 px-6" aria-label="Main navigation">
-                        <div class="flex space-x-1 py-1">
-                            @php
-                                $navigationItems = [
-                                    ['route' => 'dashboard', 'label' => 'Dashboard', 'icon' => 'home', 'pattern' => 'dashboard'],
-                                    ['route' => 'loan.index', 'label' => 'Loan Requests', 'icon' => 'document-text', 'pattern' => 'loan.*'],
-                                    ['route' => 'helpdesk.index', 'label' => 'Helpdesk', 'icon' => 'support', 'pattern' => 'helpdesk.*'],
-                                    ['route' => 'equipment.index', 'label' => 'Equipment', 'icon' => 'computer-desktop', 'pattern' => 'equipment.*'],
-                                ];
-
-                                if(auth()->user()->role === 'admin') {
-                                    $navigationItems[] = ['route' => 'admin.dashboard', 'label' => 'Admin', 'icon' => 'cog-6-tooth'];
-                                }
-                            @endphp
-
-                            @foreach($navigationItems as $item)
-                                <a href="{{ route($item['route']) }}"
-                    class="flex items-center space-x-2 px-4 py-3 text-body-sm font-medium rounded-lg transition-colors
-                        {{ request()->routeIs($item['pattern'] ?? ($item['route'] . '*'))
-                                              ? 'bg-primary-50 text-primary-700 border-b-2 border-primary-600'
-                                              : 'text-txt-black-700 hover:text-txt-black-900 hover:bg-bg-washed' }}">
-                                    <!-- Dynamic Icon -->
-                                    @switch($item['icon'])
-                                        @case('home')
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                                            </svg>
-                                            @break
-                                        @case('document-text')
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                            </svg>
-                                            @break
-                                        @case('support')
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                            </svg>
-                                            @break
-                                        @case('computer-desktop')
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                            </svg>
-                                            @break
-                                        @case('cog-6-tooth')
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                            </svg>
-                                            @break
-                                    @endswitch
-                                    <span>{{ $item['label'] }}</span>
-                                </a>
-                            @endforeach
-                        </div>
-                    </nav>
+                    @include('layouts.navigation')
                 @endauth
             </div>
         </header>
@@ -239,7 +185,7 @@
         <main class="flex-1 bg-bg-white-50" id="main-content">
 
             <!-- Page Header (if provided) -->
-            @if(isset($pageTitle) || isset($breadcrumbs))
+            @if(isset($pageTitle) || isset($breadcrumbs) || isset($header))
                 <div class="bg-bg-white-0 border-b border-otl-gray-200">
                     <div class="myds-container py-6">
 
@@ -289,6 +235,10 @@
                                     </div>
                                 @endif
                             </div>
+                        @elseif(isset($header))
+                            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                                {{ $header }}
+                            </div>
                         @endif
                     </div>
                 </div>
@@ -296,8 +246,11 @@
 
             <!-- Page Content -->
             <div class="myds-container py-6">
-                {{ $slot ?? '' }}
-                @yield('content')
+                @hasSection('content')
+                    @yield('content')
+                @else
+                    {{ $slot ?? '' }}
+                @endif
             </div>
         </main>
 
@@ -308,7 +261,7 @@
                     <!-- Footer Content -->
                     <div class="col-span-4 tablet:col-span-6 desktop:col-span-8">
                         <div class="flex items-center space-x-4 mb-4">
-                            <img src="{{ asset('images/jata-negara.png') }}"
+                            <img src="{{ asset('images/jata-negara.svg') }}"
                                  alt="Jata Negara Malaysia"
                                  class="h-8 w-auto">
                             <div>
@@ -494,5 +447,4 @@
     <!-- Additional Scripts -->
     @stack('scripts')
 </body>
-
 </html>
