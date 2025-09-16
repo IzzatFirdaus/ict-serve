@@ -30,20 +30,21 @@
         };
     }
 
-    // Variant classes based on MYDS specifications
+    // Variant classes based on MYDS specifications using semantic tokens
     $variantClasses = match($variant) {
-        'primary' => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5',
-        'secondary' => 'bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 hover:border-gray-400 focus:ring-blue-500 active:translate-y-0.5',
-        'secondary-colour' => 'bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 hover:border-blue-300 focus:ring-blue-500 active:translate-y-0.5',
-        'tertiary' => 'bg-transparent text-gray-700 border-0 hover:bg-gray-100 focus:ring-blue-500 active:translate-y-0.5',
-        'tertiary-colour' => 'bg-transparent text-blue-600 border-0 hover:bg-blue-50 focus:ring-blue-500 active:translate-y-0.5',
-        'danger-primary' => 'bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:border-red-700 focus:ring-red-500 active:translate-y-0.5',
-        'danger-secondary' => 'bg-white text-red-700 border border-red-300 hover:bg-red-50 hover:border-red-400 focus:ring-red-500 active:translate-y-0.5',
-        'danger-tertiary' => 'bg-transparent text-red-600 border-0 hover:bg-red-50 focus:ring-red-500 active:translate-y-0.5',
-        'danger' => 'bg-danger-600 text-white hover:bg-danger-700 focus:ring-fr-danger',
-        'success' => 'bg-success-600 text-white hover:bg-success-700 focus:ring-fr-success',
-        'outline' => 'border border-otl-gray-300 text-txt-black-900 hover:bg-gray-50 focus:ring-fr-primary',
-        default => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5'
+        'primary' => 'bg-primary-600 text-white border border-primary-600 hover:bg-primary-700 hover:border-primary-700 focus:ring-primary-300 focus:ring-offset-2 active:translate-y-0.5',
+        'secondary' => 'bg-white text-gray-900 border border-otl-gray-300 hover:bg-gray-50 hover:border-otl-gray-400 focus:ring-primary-300 focus:ring-offset-2 active:translate-y-0.5',
+        'secondary-colour' => 'bg-primary-50 text-primary-700 border border-primary-200 hover:bg-primary-100 hover:border-primary-300 focus:ring-primary-300 focus:ring-offset-2 active:translate-y-0.5',
+        'tertiary' => 'bg-transparent text-gray-700 border-0 hover:bg-gray-100 focus:ring-primary-300 focus:ring-offset-2 active:translate-y-0.5',
+        'tertiary-colour' => 'bg-transparent text-primary-600 border-0 hover:bg-primary-50 focus:ring-primary-300 focus:ring-offset-2 active:translate-y-0.5',
+        'danger-primary' => 'bg-danger-600 text-white border border-danger-600 hover:bg-danger-700 hover:border-danger-700 focus:ring-danger-300 focus:ring-offset-2 active:translate-y-0.5',
+        'danger-secondary' => 'bg-white text-danger-700 border border-danger-300 hover:bg-danger-50 hover:border-danger-400 focus:ring-danger-300 focus:ring-offset-2 active:translate-y-0.5',
+        'danger-tertiary' => 'bg-transparent text-danger-600 border-0 hover:bg-danger-50 focus:ring-danger-300 focus:ring-offset-2 active:translate-y-0.5',
+        'danger' => 'bg-danger-600 text-white hover:bg-danger-700 focus:ring-danger-300 focus:ring-offset-2',
+        'success' => 'bg-success-600 text-white hover:bg-success-700 focus:ring-success-300 focus:ring-offset-2',
+        'warning' => 'bg-warning-600 text-white hover:bg-warning-700 focus:ring-warning-300 focus:ring-offset-2',
+        'outline' => 'border border-otl-gray-300 text-gray-900 hover:bg-gray-50 focus:ring-primary-300 focus:ring-offset-2',
+        default => 'bg-primary-600 text-white border border-primary-600 hover:bg-primary-700 hover:border-primary-700 focus:ring-primary-300 focus:ring-offset-2 active:translate-y-0.5'
     };
 
     // Disabled state
