@@ -1,14 +1,31 @@
+{{--
+  MYDS Heading component for ICTServe (iServe)
+  - Conforms to MYDS: typography scale, colour tokens, Poppins font, spacing, icon option
+  - MyGovEA: clear hierarchy, accessibility, minimalis, citizen-centric
+  - Props:
+      level: 1-6 (HTML heading level, required)
+      class: string|null (extra classes)
+      icon: Blade/SVG|null (leading icon)
+      sr: bool (screen-reader only)
+      spacing: 'none'|'tight'|'default'|'loose'|'extra-loose' (vertical margin)
+      variant: 'default'|'primary'|'secondary'|'muted'|'danger'|'success'|'warning'
+      weight: 'light'|'normal'|'medium'|'semibold'|'bold'|'extrabold'
+      size: string|null (override auto sizing)
+--}}
 @props([
-    'level' => 1,
-    'size' => null, // Override automatic sizing
-    'weight' => 'semibold',
-    'variant' => 'default',
-    'spacing' => 'default',
+  'level' => 1,
+  'class' => '',
+  'icon' => null,
+  'sr' => false,
+  'spacing' => 'default',
+  'variant' => 'default',
+  'weight' => 'semibold',
+  'size' => null, // override auto sizing
 ])
 
 @php
-    // Default sizes for heading levels following MYDS typography scale
-    $defaultSize = match($level) {
+    // Default sizes for heading levels (MYDS typography scale)
+    $defaultSize = match((int)$level) {
         1 => 'text-4xl md:text-5xl lg:text-6xl',
         2 => 'text-3xl md:text-4xl lg:text-5xl',
         3 => 'text-2xl md:text-3xl lg:text-4xl',
@@ -31,13 +48,13 @@
     };
 
     $variantClasses = match($variant) {
-        'primary' => 'text-txt-primary',
-        'secondary' => 'text-txt-black-700',
-        'muted' => 'text-txt-black-500',
-        'danger' => 'text-txt-danger',
-        'success' => 'text-txt-success',
-        'warning' => 'text-txt-warning',
-        default => 'text-txt-black-900'
+        'primary' => 'txt-primary',
+        'secondary' => 'txt-black-700',
+        'muted' => 'txt-black-500',
+        'danger' => 'txt-danger',
+        'success' => 'txt-success',
+        'warning' => 'txt-warning',
+        default => 'txt-black-900'
     };
 
     $spacingClasses = match($spacing) {
@@ -50,17 +67,18 @@
     };
 
     $headingTag = "h{$level}";
+    $srClass = $sr ? 'sr-only' : '';
 @endphp
 
-<{{ $headingTag }} {{ $attributes->merge(['class' => "font-poppins {$sizeClasses} {$weightClasses} {$variantClasses} {$spacingClasses} leading-tight tracking-tight"]) }}>
-    {{ $slot }}
+<x-myds.tokens />
+
+<{{ $headingTag }} {{ $attributes->merge(['class' => "font-poppins {$sizeClasses} {$weightClasses} {$variantClasses} {$spacingClasses} {$srClass} {$class} leading-tight tracking-tight"]) }}>
+  @if($icon)
+    <span class="inline-block align-middle mr-2">{!! $icon !!}</span>
+  @endif
+  {{ $slot }}
 </{{ $headingTag }}>
 
-{{-- Add font loading styles if not already included --}}
 @once
-<style>
-    .font-poppins {
-        font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('css/myds/heading.css') }}" />
 @endonce

@@ -2,14 +2,13 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\LoanRequest;
-use App\Models\HelpdeskTicket;
-use App\Livewire\MyRequests;
 use App\Livewire\LoanRequestTracker;
-use Livewire\Livewire;
+use App\Livewire\MyRequests;
+use App\Models\LoanRequest;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class MyRequestsLivewireTest extends TestCase
 {
@@ -24,7 +23,7 @@ class MyRequestsLivewireTest extends TestCase
         // Create a user for testing
         $this->user = User::factory()->create([
             'email' => 'test@motac.gov.my',
-            'name' => 'Test User'
+            'name' => 'Test User',
         ]);
     }
 
@@ -95,12 +94,12 @@ class MyRequestsLivewireTest extends TestCase
         // Create loan requests with different statuses
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'status' => 'pending_supervisor'
+            'status' => 'pending_supervisor',
         ]);
 
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'status' => 'approved_ict'
+            'status' => 'approved_ict',
         ]);
 
         Livewire::test(MyRequests::class)
@@ -117,7 +116,7 @@ class MyRequestsLivewireTest extends TestCase
 
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'purpose' => 'Conference presentation equipment'
+            'purpose' => 'Conference presentation equipment',
         ]);
 
         Livewire::test(MyRequests::class)
@@ -133,7 +132,7 @@ class MyRequestsLivewireTest extends TestCase
         $this->actingAs($this->user);
 
         $loanRequest = LoanRequest::factory()->create([
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
         ]);
 
         Livewire::test(MyRequests::class)
@@ -150,7 +149,7 @@ class MyRequestsLivewireTest extends TestCase
         $this->actingAs($this->user);
 
         $loanRequest = LoanRequest::factory()->create([
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
         ]);
 
         Livewire::test(MyRequests::class)
@@ -171,7 +170,7 @@ class MyRequestsLivewireTest extends TestCase
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
             'status' => 'pending_supervisor',
-            'purpose' => 'Test equipment request'
+            'purpose' => 'Test equipment request',
         ]);
 
         Livewire::test(MyRequests::class)
@@ -213,7 +212,7 @@ class MyRequestsLivewireTest extends TestCase
         $loanRequest = LoanRequest::factory()->create([
             'user_id' => $this->user->id,
             'status' => 'in_use',
-            'purpose' => 'Testing equipment tracking'
+            'purpose' => 'Testing equipment tracking',
         ]);
 
         Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest])

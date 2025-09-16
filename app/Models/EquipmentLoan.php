@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
 class EquipmentLoan extends Model
 {
@@ -48,7 +48,7 @@ class EquipmentLoan extends Model
      */
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'submitted' => 'warning',
             'pending_approval' => 'primary',
             'approved' => 'success',
@@ -107,13 +107,13 @@ class EquipmentLoan extends Model
      */
     public function getFormattedEquipmentAttribute(): string
     {
-        if (!$this->equipment_requested) {
+        if (! $this->equipment_requested) {
             return 'No equipment specified';
         }
 
         return collect($this->equipment_requested)
-            ->map(fn($item) => is_array($item) ?
-                ($item['name'] ?? 'Unknown') . ' (Qty: ' . ($item['quantity'] ?? 1) . ')' :
+            ->map(fn ($item) => is_array($item) ?
+                ($item['name'] ?? 'Unknown').' (Qty: '.($item['quantity'] ?? 1).')' :
                 $item
             )
             ->join(', ');

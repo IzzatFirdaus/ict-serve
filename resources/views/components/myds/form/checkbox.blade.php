@@ -7,11 +7,16 @@
     'name' => null,
     'value' => '1',
     'checked' => false,
+    'indeterminate' => false,
+    'disabled' => false,
 ])
 
 @php
     $inputId = $id ?? $name ?? 'checkbox-' . uniqid();
     $isChecked = old($name, $checked);
+    $ariaDescribedBy = [];
+    if ($error) $ariaDescribedBy[] = $inputId . '-error';
+    if ($help && !$error) $ariaDescribedBy[] = $inputId . '-help';
 @endphp
 
 <div class="space-y-1">
@@ -22,18 +27,23 @@
                 id="{{ $inputId }}"
                 name="{{ $name }}"
                 value="{{ $value }}"
-                {{ $isChecked ? 'checked' : '' }}
-                {{ $required ? 'required' : '' }}
-                class="w-4 h-4 text-txt-primary bg-bg-white border-otl-gray-200 rounded-[var(--radius-s)] focus:ring-fr-primary focus:ring-2 transition-colors"
+                @if($isChecked) checked @endif
+                @if($required) required @endif
+                @if($disabled) disabled @endif
+                @if($indeterminate) x-init="$el.indeterminate = true" @endif
+                class="myds-checkbox w-5 h-5 text-primary-600 bg-bg-white border-otl-gray-200 rounded-[var(--radius-s)]
+                    focus:ring-2 focus:ring-fr-primary focus:ring-offset-0 transition-colors duration-200
+                    {{ $error ? 'border-danger-600 focus:ring-fr-danger' : '' }}
+                    {{ $disabled ? 'opacity-50 cursor-not-allowed' : '' }}"
+                aria-invalid="{{ $error ? 'true' : 'false' }}"
+                @if(count($ariaDescribedBy)) aria-describedby="{{ implode(' ', $ariaDescribedBy) }}" @endif
                 {{ $attributes }}
-                @if($error) aria-invalid="true" aria-describedby="{{ $inputId }}-error" @endif
-                @if($help) aria-describedby="{{ $inputId }}-help" @endif
             />
         </div>
 
         @if($label)
-            <div class="ml-3 text-sm">
-                <label for="{{ $inputId }}" class="font-medium text-txt-black-900">
+            <div class="ml-3 text-sm leading-5 select-none">
+                <label for="{{ $inputId }}" class="font-medium text-txt-black-900 cursor-pointer">
                     {{ $label }}
                     @if($required)
                         <span class="text-txt-danger ml-1" aria-label="required">*</span>
@@ -44,9 +54,11 @@
     </div>
 
     @if($error)
-        <p id="{{ $inputId }}-error" class="text-sm text-txt-danger ml-7" role="alert">
-            <svg class="inline w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+        <p id="{{ $inputId }}-error" class="text-sm text-txt-danger ml-7 flex items-center gap-1" role="alert">
+            {{-- MYDS error icon (20x20, 1.5px stroke) --}}
+            <svg class="inline w-4 h-4 text-txt-danger" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="10" r="8"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6v4m0 4h.01"/>
             </svg>
             {{ $error }}
         </p>

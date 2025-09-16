@@ -2,11 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Models\Asset;
 use App\Models\EquipmentCategory;
 use App\Models\EquipmentItem;
 use Livewire\Component;
-use Livewire\Attributes\Rule;
 use Livewire\WithPagination;
 
 class EquipmentSelector extends Component
@@ -15,19 +13,27 @@ class EquipmentSelector extends Component
 
     // Search and filter properties
     public $search = '';
+
     public $selectedCategory = '';
+
     public $availabilityFilter = 'available';
+
     public $sortBy = 'name';
+
     public $sortDirection = 'asc';
 
     // Selection properties
     public $selectedItems = [];
+
     public $quantities = [];
+
     public $notes = [];
 
     // UI state properties
     public $showFilters = false;
+
     public $viewMode = 'grid'; // grid or list
+
     public $itemsPerPage = 12;
 
     // Parent component communication
@@ -35,7 +41,7 @@ class EquipmentSelector extends Component
 
     protected $listeners = [
         'equipmentSelected' => 'handleEquipmentSelected',
-        'resetSelection' => 'resetSelection'
+        'resetSelection' => 'resetSelection',
     ];
 
     public function mount($selectedItems = [], $parentModel = null)
@@ -87,7 +93,7 @@ class EquipmentSelector extends Component
 
     public function addItem($itemId)
     {
-        if (!in_array($itemId, $this->selectedItems)) {
+        if (! in_array($itemId, $this->selectedItems)) {
             $this->selectedItems[] = $itemId;
             $this->quantities[$itemId] = 1;
             $this->notes[$itemId] = '';
@@ -97,7 +103,7 @@ class EquipmentSelector extends Component
 
     public function removeItem($itemId)
     {
-        $this->selectedItems = array_filter($this->selectedItems, fn($id) => $id != $itemId);
+        $this->selectedItems = array_filter($this->selectedItems, fn ($id) => $id != $itemId);
         unset($this->quantities[$itemId]);
         unset($this->notes[$itemId]);
         $this->emitToParent();
@@ -105,7 +111,7 @@ class EquipmentSelector extends Component
 
     public function updateQuantity($itemId, $quantity)
     {
-        $quantity = max(1, min(10, (int)$quantity)); // Limit between 1-10
+        $quantity = max(1, min(10, (int) $quantity)); // Limit between 1-10
         $this->quantities[$itemId] = $quantity;
         $this->emitToParent();
     }
@@ -141,7 +147,7 @@ class EquipmentSelector extends Component
             $selectedEquipment[] = [
                 'equipment_item_id' => $itemId,
                 'quantity' => $this->quantities[$itemId] ?? 1,
-                'notes' => $this->notes[$itemId] ?? ''
+                'notes' => $this->notes[$itemId] ?? '',
             ];
         }
 
@@ -157,11 +163,11 @@ class EquipmentSelector extends Component
 
         // Apply search filter
         if ($this->search) {
-            $query->where(function($q) {
-                $q->where('name', 'like', '%' . $this->search . '%')
-                  ->orWhere('asset_tag', 'like', '%' . $this->search . '%')
-                  ->orWhere('model', 'like', '%' . $this->search . '%')
-                  ->orWhere('brand', 'like', '%' . $this->search . '%');
+            $query->where(function ($q) {
+                $q->where('name', 'like', '%'.$this->search.'%')
+                    ->orWhere('asset_tag', 'like', '%'.$this->search.'%')
+                    ->orWhere('model', 'like', '%'.$this->search.'%')
+                    ->orWhere('brand', 'like', '%'.$this->search.'%');
             });
         }
 
@@ -192,10 +198,10 @@ class EquipmentSelector extends Component
     public function getCategories()
     {
         return EquipmentCategory::where('is_active', true)
-            ->withCount(['equipmentItems' => function($query) {
+            ->withCount(['equipmentItems' => function ($query) {
                 $query->where('is_active', true)
-                      ->where('status', '!=', 'damaged')
-                      ->where('status', '!=', 'disposed');
+                    ->where('status', '!=', 'damaged')
+                    ->where('status', '!=', 'disposed');
             }])
             ->orderBy('name')
             ->get();
@@ -206,11 +212,11 @@ class EquipmentSelector extends Component
         return EquipmentItem::whereIn('id', $this->selectedItems)
             ->with('category')
             ->get()
-            ->map(function($item) {
+            ->map(function ($item) {
                 return [
                     'equipment' => $item,
                     'quantity' => $this->quantities[$item->id] ?? 1,
-                    'notes' => $this->notes[$item->id] ?? ''
+                    'notes' => $this->notes[$item->id] ?? '',
                 ];
             });
     }
@@ -230,15 +236,15 @@ class EquipmentSelector extends Component
                 'available' => 'Tersedia',
                 'on_loan' => 'Sedang Dipinjam',
                 'maintenance' => 'Dalam Pemeliharaan',
-                'all' => 'Semua Status'
+                'all' => 'Semua Status',
             ],
             'sortOptions' => [
                 'name' => 'Nama',
                 'asset_tag' => 'Tag Aset',
                 'brand' => 'Jenama',
                 'model' => 'Model',
-                'created_at' => 'Tarikh Ditambah'
-            ]
+                'created_at' => 'Tarikh Ditambah',
+            ],
         ]);
     }
 }

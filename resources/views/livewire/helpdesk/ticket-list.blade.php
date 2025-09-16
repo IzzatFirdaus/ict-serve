@@ -1,7 +1,7 @@
 <div class="bg-background-light dark:bg-background-dark min-h-screen">
     <div class="container mx-auto px-4 py-8">
         <!-- Header -->
-        <x-myds.header>
+        <div class="mb-8">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                     <h1 class="font-poppins text-2xl font-semibold text-black-900 dark:text-white">
@@ -13,12 +13,15 @@
                 </div>
                 <div class="mt-4 md:mt-0">
                     <x-myds.button variant="primary" class="w-full md:w-auto">
-                        <x-myds.icon name="plus" size="16" class="mr-2" />
+                        <!-- Plus Icon SVG -->
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
                         Cipta Aduan Baru
                     </x-myds.button>
                 </div>
             </div>
-        </x-myds.header>
+        </div>
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -26,7 +29,10 @@
             <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-4">
                 <div class="flex items-center">
                     <div class="p-2 bg-primary-100 dark:bg-primary-900 rounded-lg">
-                        <x-myds.icon name="document" size="24" class="text-primary-600 dark:text-primary-400" />
+                        <!-- Document Icon SVG -->
+                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
                     </div>
                     <div class="ml-4">
                         <p class="font-inter text-xs font-medium text-black-500 dark:text-black-400">Jumlah</p>
@@ -39,7 +45,10 @@
             <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-4">
                 <div class="flex items-center">
                     <div class="p-2 bg-warning-100 dark:bg-warning-900 rounded-lg">
-                        <x-myds.icon name="clock" size="24" class="text-warning-600 dark:text-warning-400" />
+                        <!-- Clock Icon SVG -->
+                        <svg class="w-6 h-6 text-warning-600 dark:text-warning-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
                     </div>
                     <div class="ml-4">
                         <p class="font-inter text-xs font-medium text-black-500 dark:text-black-400">Terbuka</p>
@@ -52,7 +61,10 @@
             <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-4">
                 <div class="flex items-center">
                     <div class="p-2 bg-success-100 dark:bg-success-900 rounded-lg">
-                        <x-myds.icon name="check-circle" size="24" class="text-success-600 dark:text-success-400" />
+                        <!-- Check Circle Icon SVG -->
+                        <svg class="w-6 h-6 text-success-600 dark:text-success-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
                     </div>
                     <div class="ml-4">
                         <p class="font-inter text-xs font-medium text-black-500 dark:text-black-400">Selesai</p>
@@ -65,7 +77,10 @@
             <div class="bg-white dark:bg-dialog border border-divider rounded-lg p-4">
                 <div class="flex items-center">
                     <div class="p-2 bg-danger-100 dark:bg-danger-900 rounded-lg">
-                        <x-myds.icon name="warning-triangle" size="24" class="text-danger-600 dark:text-danger-400" />
+                        <!-- Warning Triangle Icon SVG -->
+                        <svg class="w-6 h-6 text-danger-600 dark:text-danger-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 18.5c-.77.833.192 2.5 1.732 2.5z"/>
+                        </svg>
                     </div>
                     <div class="ml-4">
                         <p class="font-inter text-xs font-medium text-black-500 dark:text-black-400">Tertunggak</p>
@@ -136,7 +151,10 @@
             @if($search || $filterStatus || $filterCategory || $filterPriority)
                 <div class="mt-4">
                     <x-myds.button variant="secondary" size="small" wire:click="clearFilters">
-                        <x-myds.icon name="cross" size="14" class="mr-2" />
+                        <!-- Cross Icon SVG -->
+                        <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
                         Kosongkan Penapis
                     </x-myds.button>
                 </div>
@@ -156,11 +174,17 @@
                                             No. Tiket
                                         </span>
                                         @if($sortField === 'ticket_number')
-                                            <x-myds.icon
-                                                name="{{ $sortDirection === 'asc' ? 'chevron-up' : 'chevron-down' }}"
-                                                size="14"
-                                                class="text-primary-600 dark:text-primary-400"
-                                            />
+                                            @if($sortDirection === 'asc')
+                                                <!-- Chevron Up SVG -->
+                                                <svg class="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                                                </svg>
+                                            @else
+                                                <!-- Chevron Down SVG -->
+                                                <svg class="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                                </svg>
+                                            @endif
                                         @endif
                                     </button>
                                 </th>
@@ -170,11 +194,17 @@
                                             Tajuk
                                         </span>
                                         @if($sortField === 'title')
-                                            <x-myds.icon
-                                                name="{{ $sortDirection === 'asc' ? 'chevron-up' : 'chevron-down' }}"
-                                                size="14"
-                                                class="text-primary-600 dark:text-primary-400"
-                                            />
+                                            @if($sortDirection === 'asc')
+                                                <!-- Chevron Up SVG -->
+                                                <svg class="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                                                </svg>
+                                            @else
+                                                <!-- Chevron Down SVG -->
+                                                <svg class="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                                </svg>
+                                            @endif
                                         @endif
                                     </button>
                                 </th>
@@ -193,11 +223,17 @@
                                             Dicipta
                                         </span>
                                         @if($sortField === 'created_at')
-                                            <x-myds.icon
-                                                name="{{ $sortDirection === 'asc' ? 'chevron-up' : 'chevron-down' }}"
-                                                size="14"
-                                                class="text-primary-600 dark:text-primary-400"
-                                            />
+                                            @if($sortDirection === 'asc')
+                                                <!-- Chevron Up SVG -->
+                                                <svg class="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                                                </svg>
+                                            @else
+                                                <!-- Chevron Down SVG -->
+                                                <svg class="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                                </svg>
+                                            @endif
                                         @endif
                                     </button>
                                 </th>
@@ -266,7 +302,11 @@
                                             size="small"
                                             onclick="window.location.href='{{ route('helpdesk.ticket.detail', $ticket->ticket_number) }}'"
                                         >
-                                            <x-myds.icon name="eye-show" size="14" class="mr-1" />
+                                            <!-- Eye Show Icon SVG -->
+                                            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                            </svg>
                                             Lihat
                                         </x-myds.button>
                                     </td>
@@ -283,7 +323,10 @@
             @else
                 <!-- Empty State -->
                 <div class="text-center py-12">
-                    <x-myds.icon name="document" size="48" class="text-black-400 mx-auto mb-4" />
+                    <!-- Document Icon SVG -->
+                    <svg class="w-12 h-12 text-black-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
                     <h3 class="font-poppins text-lg font-medium text-black-900 dark:text-white mb-2">
                         Tiada tiket dijumpai
                     </h3>
@@ -295,7 +338,10 @@
                         @endif
                     </p>
                     <x-myds.button variant="primary">
-                        <x-myds.icon name="plus" size="16" class="mr-2" />
+                        <!-- Plus Icon SVG -->
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
                         Cipta Tiket Pertama Anda
                     </x-myds.button>
                 </div>

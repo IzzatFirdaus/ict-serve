@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -51,6 +52,7 @@ class LoanStatus extends Model
     {
         return [
             'is_active' => 'boolean',
+            'sort_order' => 'integer',
         ];
     }
 
@@ -62,7 +64,7 @@ class LoanStatus extends Model
     /**
      * Get the loan requests with this status.
      */
-    public function loanRequests()
+    public function loanRequests(): HasMany
     {
         return $this->hasMany(LoanRequest::class, 'status_id');
     }

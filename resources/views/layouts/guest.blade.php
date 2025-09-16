@@ -16,14 +16,19 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-txt-black-900 antialiased">
+        <!-- Skip to main content link for screen readers -->
+        <a href="#main-content" class="myds-skip-link">
+            Skip to main content
+        </a>
+        
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-bg-black-100">
-            <div>
+            <header role="banner">
                 <a href="/" aria-label="Go to homepage">
                     <x-application-logo class="w-20 h-20 fill-current text-txt-black-500" />
                 </a>
-            </div>
+            </header>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div id="main-content" class="w-full sm:max-w-md mt-6 px-6 py-4 bg-bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>

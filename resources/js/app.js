@@ -4,6 +4,12 @@ import './theme';
 // Import styles
 import '../css/app.css';
 
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
+
 // Initialize any custom JavaScript functionality here
 document.addEventListener('DOMContentLoaded', function () {
   console.log('ICT Serve application initialized with MYDS theme support');
@@ -105,3 +111,4 @@ if (!document.querySelector('#myds-animations')) {
   `;
   document.head.appendChild(style);
 }
+

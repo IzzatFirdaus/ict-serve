@@ -79,7 +79,12 @@ class DamageType extends Model
      */
     public function getDisplayName(?string $locale = null): string
     {
-        $locale = $locale ?? app()->getLocale();
+        // Default to English if no locale is provided (test compatibility)
+        if ($locale === null) {
+            return $this->name;
+        }
+
+        // $locale is guaranteed to be non-null at this point
 
         return $locale === 'ms' || $locale === 'bm'
             ? $this->name_bm

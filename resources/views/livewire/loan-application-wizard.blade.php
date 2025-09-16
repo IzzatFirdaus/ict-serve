@@ -519,11 +519,5 @@
     </div>
 </div>
 
-<script>
-document.addEventListener('livewire:init', () => {
-    Livewire.on('signatureSaved', (data) => {
-        console.log('Signature saved:', data);
-    });
-});
-</script>
+<script src="{{ asset('js/livewire/loan-application-wizard.js') }}" defer></script>
 </div>

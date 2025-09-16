@@ -2,13 +2,13 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Livewire\LoanRequestTracker;
 use App\Models\LoanRequest;
 use App\Models\User;
-use Livewire\Livewire;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class LoanRequestTrackerTest extends TestCase
 {
@@ -16,8 +16,6 @@ class LoanRequestTrackerTest extends TestCase
 
     /**
      * Creates and returns a single User instance for testing.
-     *
-     * @return \App\Models\User
      */
     protected function createTestUser(): User
     {
@@ -27,10 +25,6 @@ class LoanRequestTrackerTest extends TestCase
 
     /**
      * Creates and returns a single LoanRequest instance for a given user.
-     *
-     * @param \App\Models\User $user
-     * @param array $attributes
-     * @return \App\Models\LoanRequest
      */
     protected function createTestLoanRequest(User $user, array $attributes = []): LoanRequest
     {
@@ -125,7 +119,7 @@ class LoanRequestTrackerTest extends TestCase
         /** @var LoanRequest $overdueLoanRequest */
         $overdueLoanRequest = $this->createTestLoanRequest($user, [
             'requested_to' => Carbon::yesterday(),
-            'status' => 'in_use'
+            'status' => 'in_use',
         ]);
 
         $this->actingAs($user);
@@ -145,7 +139,7 @@ class LoanRequestTrackerTest extends TestCase
         $user = $this->createTestUser();
         /** @var LoanRequest $loanRequest */
         $loanRequest = $this->createTestLoanRequest($user, [
-            'status' => 'pending_supervisor'
+            'status' => 'pending_supervisor',
         ]);
 
         $this->actingAs($user);
@@ -164,7 +158,7 @@ class LoanRequestTrackerTest extends TestCase
         $user = $this->createTestUser();
         /** @var LoanRequest $loanRequest */
         $loanRequest = $this->createTestLoanRequest($user, [
-            'status' => null
+            'status' => null,
         ]);
 
         $this->actingAs($user);

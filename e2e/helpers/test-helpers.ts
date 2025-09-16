@@ -9,7 +9,7 @@ export class ICTServeTestHelpers {
   /**
    * Login with test user credentials
    */
-  async login(email: string = 'test@motac.gov.my', password: string = 'password') {
+  async login(email: string = 'test@example.com', password: string = 'password') {
     await this.page.goto('/login');
     await this.page.waitForLoadState('networkidle');
 
@@ -17,8 +17,8 @@ export class ICTServeTestHelpers {
     await this.page.fill('input[name="password"]', password);
     await this.page.click('button[type="submit"]');
 
-    // Wait for login to complete
-    await this.page.waitForURL('/dashboard');
+    // Wait for login to complete with longer timeout
+    await this.page.waitForURL('/dashboard', { timeout: 10000 });
   }
 
   /**

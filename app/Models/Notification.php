@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\TicketPriority;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,18 +14,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $user_id
  * @property string $title
  * @property string $message
- * @property array|null $data
- * @property string|null $category
- * @property string|null $priority
+ * @property ?array $data
+ * @property string $category
+ * @property string $priority
  * @property bool $is_read
- * @property \Carbon\Carbon|null $read_at
- * @property string|null $action_url
- * @property string|null $icon
- * @property string|null $color
- * @property \Carbon\Carbon|null $expires_at
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
+ * @property ?\Illuminate\Support\Carbon $read_at
+ * @property ?string $action_url
+ * @property ?string $icon
+ * @property ?string $color
+ * @property ?\Illuminate\Support\Carbon $expires_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  * @property-read User $user
+ * @property-read string $time_ago
  */
 class Notification extends Model
 {
@@ -48,14 +48,15 @@ class Notification extends Model
         'expires_at',
     ];
 
-    protected $casts = [
-        'data' => 'array',
-        'is_read' => 'boolean',
-        'read_at' => 'datetime',
-        'expires_at' => 'datetime',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'data' => 'array',
+            'is_read' => 'boolean',
+            'read_at' => 'datetime',
+            'expires_at' => 'datetime',
+        ];
+    }
 
     // Relationships
     public function user(): BelongsTo
@@ -230,10 +231,10 @@ class Notification extends Model
             'message' => $message ?: "Tiket #{$ticket->ticket_number} - {$ticket->title}",
             'category' => 'ticket',
             'priority' => match ($ticket->priority) {
-                TicketPriority::CRITICAL => 'urgent',
-                TicketPriority::HIGH => 'high',
-                TicketPriority::MEDIUM => 'medium',
-                TicketPriority::LOW => 'low', // @phpstan-ignore-line match.alwaysTrue
+                'critical' => 'urgent',
+                'high' => 'high',
+                'medium' => 'medium',
+                'low' => 'low',
                 default => 'medium'
             },
             'action_url' => route('helpdesk.index-enhanced'),

@@ -20,6 +20,8 @@ $sizeClasses = [
 ];
 
 $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
+$dialogId = 'dialog-' . \Illuminate\Support\Str::uuid();
+$titleId = $title ? $dialogId . '-title' : null;
 @endphp
 
 <div
@@ -36,10 +38,10 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
         prevFocusable() { return this.focusables()[this.prevFocusableIndex()] || this.lastFocusable() },
         nextFocusableIndex() { return (this.focusables().indexOf(document.activeElement) + 1) % (this.focusables().length + 1) },
         prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) -1 },
-        autofocus() { 
+        autofocus() {
             let focusable = this.$el.querySelector('[autofocus]')
             if (focusable) focusable.focus()
-            else this.firstFocusable().focus()
+            else if (this.firstFocusable()) this.firstFocusable().focus()
         }
     }"
     x-init="
@@ -59,11 +61,15 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
     x-show="show"
     class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
     style="display: none;"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="{{ $titleId }}"
+    id="{{ $dialogId }}"
 >
     {{-- Backdrop --}}
     @if($backdrop)
-        <div 
-            x-show="show" 
+        <div
+            x-show="show"
             x-transition:enter="ease-out duration-300"
             x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100"
@@ -74,21 +80,22 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
             @if(!$persistent)
                 @click="show = false"
             @endif
+            aria-hidden="true"
         >
-            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            <div class="absolute inset-0 bg-gray-600 opacity-50"></div>
         </div>
     @endif
 
     {{-- Modal Container --}}
-    <div 
-        x-show="show" 
+    <div
+        x-show="show"
         x-transition:enter="ease-out duration-300"
         x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        class="mb-6 bg-bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto {{ $modalWidth }}"
+        class="mb-6 bg-bg-white rounded-lg overflow-hidden shadow-context-menu transform transition-all sm:w-full sm:mx-auto {{ $modalWidth }}"
         {{ $attributes }}
     >
         {{-- Modal Header --}}
@@ -96,23 +103,22 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
             <div class="px-6 py-4 border-b border-otl-divider bg-gray-50">
                 <div class="flex items-center justify-between">
                     @if($title)
-                        <h3 class="text-lg font-semibold text-txt-black-900 font-heading">
+                        <h3 class="text-lg font-semibold text-txt-black-900 font-heading" id="{{ $titleId }}">
                             {{ $title }}
                         </h3>
                     @else
                         <div></div>
                     @endif
-                    
+
                     @if($closeable)
-                        <button 
+                        <button
                             type="button"
                             @click="show = false"
-                            class="bg-bg-white rounded-md text-txt-black-400 hover:text-txt-black-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-                            aria-label="Tutup"
+                            class="bg-bg-white rounded-md text-txt-black-400 hover:text-txt-black-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary"
+                            aria-label="Tutup dialog"
                         >
-                            <span class="sr-only">Tutup</span>
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            <svg class="h-6 w-6" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 14l8-8M6 6l8 8"></path>
                             </svg>
                         </button>
                     @endif
@@ -134,7 +140,7 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
                     <div class="flex items-center justify-end space-x-3">
                         @foreach($actions as $action)
                             @if($action['type'] === 'button')
-                                <x-myds.button 
+                                <x-myds.button
                                     type="{{ $action['buttonType'] ?? 'button' }}"
                                     variant="{{ $action['variant'] ?? 'secondary' }}"
                                     size="{{ $action['size'] ?? 'medium' }}"
@@ -153,9 +159,9 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
                                             {{ $action['label'] }}
                                         </span>
                                         <span wire:loading wire:target="{{ $action['target'] }}" class="flex items-center">
-                                            <svg class="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
-                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            <svg class="animate-spin -ml-1 mr-2 h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                                <circle cx="10" cy="10" r="8" class="opacity-25" />
+                                                <path class="opacity-75" stroke-linecap="round" d="M10 2a8 8 0 018 8" />
                                             </svg>
                                             {{ $action['loadingText'] ?? 'Memproses...' }}
                                         </span>
@@ -167,10 +173,10 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
                                     @endif
                                 </x-myds.button>
                             @elseif($action['type'] === 'link')
-                                <a 
+                                <a
                                     href="{{ $action['url'] }}"
-                                    class="text-sm font-medium text-primary-600 hover:text-primary-900"
-                                    @if($action['external'] ?? false) target="_blank" @endif
+                                    class="text-sm font-medium text-txt-primary hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary rounded"
+                                    @if($action['external'] ?? false) target="_blank" rel="noopener" @endif
                                     @if(isset($action['close']) && $action['close']) @click="show = false" @endif
                                 >
                                     @if(isset($action['icon']))
@@ -195,30 +201,33 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
     x-on:keydown.escape.window="show = false"
     class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
     style="display: none;"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="confirm-title"
 >
-    <div x-show="show" class="fixed inset-0 transform transition-all" @click="show = false">
-        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    <div x-show="show" class="fixed inset-0 transform transition-all" @click="show = false" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-600 opacity-50"></div>
     </div>
 
-    <div 
-        x-show="show" 
+    <div
+        x-show="show"
         x-transition:enter="ease-out duration-300"
         x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        class="mb-6 bg-bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto max-w-lg"
+        class="mb-6 bg-bg-white rounded-lg overflow-hidden shadow-context-menu transform transition-all sm:w-full sm:mx-auto max-w-lg"
     >
         <div class="bg-bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="sm:flex sm:items-start">
-                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-danger-100 sm:mx-0 sm:h-10 sm:w-10">
-                    <svg class="h-6 w-6 text-danger-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.268 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-danger-100 sm:mx-0 sm:h-10 sm:w-10" aria-hidden="true">
+                    <svg class="h-6 w-6 text-txt-danger" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 7v4m0 4h.01M3 16h14a2 2 0 001.732-3L11.732 4a2 2 0 00-3.464 0L1.268 13A2 2 0 003 16z"></path>
                     </svg>
                 </div>
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    <h3 class="text-lg leading-6 font-medium text-txt-black-900 font-heading">
+                    <h3 id="confirm-title" class="text-lg leading-6 font-medium text-txt-black-900 font-heading">
                         {{ $title ?? 'Pengesahan Diperlukan' }}
                     </h3>
                     <div class="mt-2">
@@ -230,7 +239,7 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
             </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <x-myds.button 
+            <x-myds.button
                 variant="danger"
                 wire:click="{{ $confirmAction ?? 'confirm' }}"
                 @click="show = false"
@@ -238,7 +247,7 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
             >
                 {{ $confirmText ?? 'Ya, Sahkan' }}
             </x-myds.button>
-            <x-myds.button 
+            <x-myds.button
                 variant="secondary"
                 @click="show = false"
                 class="mt-3 w-full sm:mt-0 sm:w-auto"
@@ -258,59 +267,62 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
     x-on:keydown.escape.window="show = false"
     class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
     style="display: none;"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="alert-title"
 >
-    <div x-show="show" class="fixed inset-0 transform transition-all" @click="show = false">
-        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    <div x-show="show" class="fixed inset-0 transform transition-all" @click="show = false" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-600 opacity-50"></div>
     </div>
 
-    <div 
-        x-show="show" 
+    <div
+        x-show="show"
         x-transition:enter="ease-out duration-300"
         x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        class="mb-6 bg-bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto max-w-md"
+        class="mb-6 bg-bg-white rounded-lg overflow-hidden shadow-context-menu transform transition-all sm:w-full sm:mx-auto max-w-md"
     >
         <div class="bg-bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="sm:flex sm:items-start">
                 @php
                 $alertType = $alertType ?? 'info';
                 $iconStyles = [
-                    'success' => ['bg' => 'bg-success-100', 'text' => 'text-success-600'],
-                    'error' => ['bg' => 'bg-danger-100', 'text' => 'text-danger-600'],
-                    'warning' => ['bg' => 'bg-warning-100', 'text' => 'text-warning-600'],
-                    'info' => ['bg' => 'bg-primary-100', 'text' => 'text-primary-600'],
+                    'success' => ['bg' => 'bg-success-100', 'text' => 'text-txt-success'],
+                    'error' => ['bg' => 'bg-danger-100', 'text' => 'text-txt-danger'],
+                    'warning' => ['bg' => 'bg-warning-100', 'text' => 'text-txt-warning'],
+                    'info' => ['bg' => 'bg-primary-100', 'text' => 'text-txt-primary'],
                 ];
                 $currentIcon = $iconStyles[$alertType] ?? $iconStyles['info'];
                 @endphp
-                
-                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full {{ $currentIcon['bg'] }} sm:mx-0 sm:h-10 sm:w-10">
+
+                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full {{ $currentIcon['bg'] }} sm:mx-0 sm:h-10 sm:w-10" aria-hidden="true">
                     @switch($alertType)
                         @case('success')
-                            <svg class="h-6 w-6 {{ $currentIcon['text'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            <svg class="h-6 w-6 {{ $currentIcon['text'] }}" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l3 3 7-7"></path>
                             </svg>
                             @break
                         @case('error')
-                            <svg class="h-6 w-6 {{ $currentIcon['text'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            <svg class="h-6 w-6 {{ $currentIcon['text'] }}" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l8 8M6 14L14 6"></path>
                             </svg>
                             @break
                         @case('warning')
-                            <svg class="h-6 w-6 {{ $currentIcon['text'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.268 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                            <svg class="h-6 w-6 {{ $currentIcon['text'] }}" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 3l-8 14h16L10 3zM10 8v4m0 3h.01"></path>
                             </svg>
                             @break
                         @default
-                            <svg class="h-6 w-6 {{ $currentIcon['text'] }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <svg class="h-6 w-6 {{ $currentIcon['text'] }}" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 2a8 8 0 100 16 8 8 0 000-16zM10 6v4m0 4h.01"></path>
                             </svg>
                     @endswitch
                 </div>
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    <h3 class="text-lg leading-6 font-medium text-txt-black-900 font-heading">
+                    <h3 id="alert-title" class="text-lg leading-6 font-medium text-txt-black-900 font-heading">
                         {{ $title ?? 'Maklumat' }}
                     </h3>
                     <div class="mt-2">
@@ -322,7 +334,7 @@ $modalWidth = $maxWidth ?: ($sizeClasses[$size] ?? $sizeClasses['medium']);
             </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <x-myds.button 
+            <x-myds.button
                 variant="primary"
                 @click="show = false"
                 class="w-full sm:w-auto"

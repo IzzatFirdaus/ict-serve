@@ -17,6 +17,7 @@
         'success' => 'text-txt-success bg-success-50',
         'warning' => 'text-txt-warning bg-warning-50',
         'danger' => 'text-txt-danger bg-danger-50',
+        'gray' => 'text-txt-black-700 bg-gray-100',
     ];
 
     $badgeVariantClasses = [
@@ -29,8 +30,8 @@
     ];
 
     $component = $href && !$disabled ? 'a' : 'div';
-    $componentClass = 'bg-bg-white overflow-hidden shadow-sm rounded-lg border border-otl-divider transition-all duration-200';
-    
+    $componentClass = 'bg-white dark:bg-dialog overflow-hidden shadow-card rounded-lg border border-otl-divider transition-all duration-200';
+
     if ($href && !$disabled) {
         $componentClass .= ' hover:shadow-md hover:border-primary-200 group cursor-pointer';
     } elseif ($disabled) {
@@ -38,11 +39,13 @@
     }
 @endphp
 
-<{{ $component }} 
+<{{ $component }}
     @if($href && !$disabled) href="{{ $href }}" @endif
     class="{{ $componentClass }}"
     {{ $attributes }}
     @if($disabled) aria-disabled="true" @endif
+    role="{{ $href && !$disabled ? 'link' : 'article' }}"
+    aria-labelledby="service-{{ \Str::slug($title ?? 'service') }}-title"
 >
     <div class="p-6">
         <div class="flex items-start justify-between">
@@ -51,7 +54,7 @@
                 {{-- Icon --}}
                 @if($icon)
                     <div class="flex-shrink-0 mr-4">
-                        <div class="h-12 w-12 rounded-lg flex items-center justify-center {{ $iconColorClasses[$iconColor] ?? $iconColorClasses['primary'] }}">
+                        <div class="h-12 w-12 rounded-lg flex items-center justify-center {{ $iconColorClasses[$iconColor] ?? $iconColorClasses['primary'] }}" aria-hidden="true">
                             {!! $icon !!}
                         </div>
                     </div>
@@ -60,7 +63,7 @@
                 {{-- Text Content --}}
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-semibold text-txt-black-900 {{ $href && !$disabled ? 'group-hover:text-txt-primary' : '' }} font-heading">
+                        <h3 id="service-{{ \Str::slug($title ?? 'service') }}-title" class="text-lg font-poppins font-semibold text-txt-black-900 {{ $href && !$disabled ? 'group-hover:text-txt-primary' : '' }}">
                             {{ $title }}
                         </h3>
 
@@ -74,7 +77,7 @@
 
                     {{-- Description --}}
                     @if($description)
-                        <p class="mt-2 text-sm text-txt-black-600 leading-relaxed">
+                        <p class="mt-2 text-sm text-txt-black-700 leading-relaxed">
                             {{ $description }}
                         </p>
                     @endif
@@ -91,8 +94,8 @@
             {{-- Action Arrow --}}
             @if($href && !$disabled)
                 <div class="flex-shrink-0 ml-4">
-                    <svg class="h-5 w-5 text-txt-black-400 group-hover:text-txt-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    <svg class="h-5 w-5 text-txt-black-400 group-hover:text-txt-primary transition-colors" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 5l6 5-6 5"/>
                     </svg>
                 </div>
             @endif

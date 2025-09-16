@@ -15,7 +15,9 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
     use Queueable;
 
     protected HelpdeskTicket $ticket;
+
     protected TicketStatus $oldStatus;
+
     protected TicketStatus $newStatus;
 
     public function __construct(HelpdeskTicket $ticket, TicketStatus $oldStatus, TicketStatus $newStatus)
@@ -25,18 +27,19 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
         $this->newStatus = $newStatus;
 
         // Load relationships if not already loaded
-        if (!$this->ticket->relationLoaded('category')) {
+        if (! $this->ticket->relationLoaded('category')) {
             $this->ticket->load('category');
         }
 
         // Add Telescope monitoring tags
         Telescope::tag(function () {
             $categoryName = $this->ticket->category ? strtolower($this->ticket->category->name) : 'unknown';
+
             return [
                 'notification:helpdesk',
                 'ticket:status_updated',
-                'status:' . strtolower($this->newStatus->name),
-                'category:' . $categoryName
+                'status:'.strtolower($this->newStatus->name),
+                'category:'.$categoryName,
             ];
         });
     }
@@ -55,13 +58,13 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
     public function toMail(object $notifiable): MailMessage
     {
         $message = (new MailMessage)
-                    ->subject("Ticket Status Update - #{$this->ticket->ticket_number}")
-                    ->greeting("Hello {$notifiable->name},")
-                    ->line("Your support ticket status has been updated.")
-                    ->line("**Ticket Number:** {$this->ticket->ticket_number}")
-                    ->line("**Title:** {$this->ticket->title}")
-                    ->line("**Previous Status:** {$this->oldStatus->name}")
-                    ->line("**New Status:** {$this->newStatus->name}");
+            ->subject("Ticket Status Update - #{$this->ticket->ticket_number}")
+            ->greeting("Hello {$notifiable->name},")
+            ->line('Your support ticket status has been updated.')
+            ->line("**Ticket Number:** {$this->ticket->ticket_number}")
+            ->line("**Title:** {$this->ticket->title}")
+            ->line("**Previous Status:** {$this->oldStatus->name}")
+            ->line("**New Status:** {$this->newStatus->name}");
 
         // Add specific messages based on status
         switch (strtolower($this->newStatus->name)) {
@@ -88,8 +91,8 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
         }
 
         return $message->action('View Ticket Details', route('helpdesk.ticket.detail', $this->ticket->ticket_number))
-                      ->line('Thank you for using ICTServe!')
-                      ->salutation('Best regards,
+            ->line('Thank you for using ICTServe!')
+            ->salutation('Best regards,
 ICT Support Team
 Ministry of Tourism, Arts and Culture (MOTAC)');
     }

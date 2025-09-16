@@ -2,14 +2,17 @@
 
 namespace App\Livewire\Components;
 
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class RealTimeStatus extends Component
 {
     public $title = '';
+
     public $items = [];
+
     public $refreshInterval = 30; // seconds
+
     public $autoRefresh = true;
 
     protected $listeners = [
@@ -59,7 +62,7 @@ class RealTimeStatus extends Component
 
     public function toggleAutoRefresh()
     {
-        $this->autoRefresh = !$this->autoRefresh;
+        $this->autoRefresh = ! $this->autoRefresh;
 
         if ($this->autoRefresh) {
             $this->dispatch('startAutoRefresh', $this->refreshInterval);

@@ -2,16 +2,15 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use Livewire\Attributes\Rule;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Validate;
-use Livewire\WithFileUploads;
 use App\Models\LoanRequest;
 use App\Models\User;
-use App\Models\Asset;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Layout('layouts.app')]
 class LoanApplicationWizard extends Component
@@ -19,7 +18,9 @@ class LoanApplicationWizard extends Component
     use WithFileUploads;
 
     public $currentStep = 1;
+
     public $totalSteps = 8;
+
     public $applicationId = null;
 
     // Step 1: Applicant Information
@@ -64,28 +65,42 @@ class LoanApplicationWizard extends Component
 
     // Step 4: Applicant's Confirmation
     public $applicant_signature = null;
+
     public $confirmation_date = '';
+
     public $confirmation_declaration_accepted = false;
 
     // Step 5: Endorsement
     public $endorsing_officer_name = '';
+
     public $endorsing_officer_position = '';
+
     public $endorsement_status = '';
+
     public $endorsement_comments = '';
+
     public $endorsement_date = '';
+
     public $endorsement_signature = null;
 
     // Step 6: Loan Collection (BPM Use)
     public $issuing_officer_name = '';
+
     public $issuing_officer_signature = null;
+
     public $receiving_officer_signature = null;
+
     public $collection_date = '';
 
     // Step 7: Equipment Return (BPM Use)
     public $returning_officer_name = '';
+
     public $returning_officer_signature = null;
+
     public $receiving_bpm_officer_signature = null;
+
     public $return_date = '';
+
     public $return_condition_notes = '';
 
     // Step 8: Detailed Loan Information (BPM Use)
@@ -93,11 +108,12 @@ class LoanApplicationWizard extends Component
 
     // Form state management
     public $isEditable = true;
+
     public $savedData = [];
 
     protected $listeners = [
         'signatureSaved' => 'handleSignatureSaved',
-        'stepCompleted' => 'handleStepCompleted'
+        'stepCompleted' => 'handleStepCompleted',
     ];
 
     public function mount($applicationId = null)
@@ -186,7 +202,7 @@ class LoanApplicationWizard extends Component
         $this->equipment_requests[] = [
             'type' => '',
             'quantity' => 1,
-            'notes' => ''
+            'notes' => '',
         ];
     }
 
@@ -206,7 +222,7 @@ class LoanApplicationWizard extends Component
             'serial_number' => '',
             'tag_id' => '',
             'accessories' => [],
-            'condition_notes' => ''
+            'condition_notes' => '',
         ];
     }
 
@@ -261,7 +277,7 @@ class LoanApplicationWizard extends Component
                 break;
 
             case 2:
-                if (!$this->same_as_applicant) {
+                if (! $this->same_as_applicant) {
                     $rules = [
                         'responsible_officer_name' => 'required|string|max:255',
                         'responsible_officer_position' => 'required|string|max:255',
@@ -294,7 +310,7 @@ class LoanApplicationWizard extends Component
                 break;
         }
 
-        if (!empty($rules)) {
+        if (! empty($rules)) {
             $this->validate($rules);
         }
     }
@@ -354,8 +370,8 @@ class LoanApplicationWizard extends Component
         try {
             // Create the loan request
             $loanRequest = LoanRequest::create([
-                'reference_number' => 'LR-' . now()->format('YmdHis') . '-' . Str::random(4),
-                'request_number' => 'LOAN-' . now()->format('Ymd') . '-' . sprintf('%04d', LoanRequest::count() + 1),
+                'reference_number' => 'LR-'.now()->format('YmdHis').'-'.Str::random(4),
+                'request_number' => 'LOAN-'.now()->format('Ymd').'-'.sprintf('%04d', LoanRequest::count() + 1),
                 'user_id' => Auth::id(),
                 'applicant_name' => $this->applicant_name,
                 'applicant_position' => $this->applicant_position,
@@ -381,7 +397,7 @@ class LoanApplicationWizard extends Component
             // Clear saved progress
             session()->forget('loan_application_progress');
 
-            session()->flash('success', 'Permohonan peminjaman peralatan ICT anda telah berjaya dihantar. Nombor rujukan: ' . $loanRequest->reference_number);
+            session()->flash('success', 'Permohonan peminjaman peralatan ICT anda telah berjaya dihantar. Nombor rujukan: '.$loanRequest->reference_number);
 
             // Redirect to my requests page
             return redirect()->route('public.my-requests');

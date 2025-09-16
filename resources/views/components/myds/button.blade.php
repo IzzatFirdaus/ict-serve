@@ -1,31 +1,4 @@
 @props([
-    'variant' => 'primary',
-    'size' => 'default',
-    'type' => 'button',
-    'disabled' => false,
-    'loading' => false,
-])
-
-@php
-    $baseClasses = 'myds-button';
-
-    $variantClasses = match($variant) {
-        'primary' => 'myds-button-primary',
-        'secondary' => 'myds-button-secondary',
-        'danger' => 'myds-button-danger',
-        'success' => 'myds-button-success',
-        'outline' => 'border border-otl-gray-300 text-txt-black-900 hover:bg-gray-50 focus:ring-fr-primary',
-        default => 'myds-button-primary'
-    };
-
-    $sizeClasses = match($size) {
-        'sm' => 'px-3 py-1.5 text-xs',
-        'default' => 'px-4 py-2 text-sm',
-        'lg' => 'px-6 py-3 text-base',
-        default => 'px-4 py-2 text-sm'
-    };
-
-    $classes = $baseClasses . ' ' . $variantClasses . ' ' . $sizeClasses;
     'variant' => 'primary', // primary, secondary, secondary-colour, tertiary, tertiary-colour, danger-primary, danger-secondary, danger-tertiary
     'size' => 'medium', // small, medium, large
     'type' => 'button', // button, submit, reset
@@ -44,7 +17,8 @@
     $sizeClasses = match($size) {
         'small' => 'px-3 py-1.5 text-sm gap-1.5',
         'large' => 'px-6 py-3 text-lg gap-3',
-        default => 'px-4 py-2 text-base gap-2' // medium
+        'default' => 'px-4 py-2 text-sm',
+        default => 'px-4 py-2 text-sm' // medium
     };
 
     // Icon-only sizing
@@ -66,6 +40,9 @@
         'danger-primary' => 'bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:border-red-700 focus:ring-red-500 active:translate-y-0.5',
         'danger-secondary' => 'bg-white text-red-700 border border-red-300 hover:bg-red-50 hover:border-red-400 focus:ring-red-500 active:translate-y-0.5',
         'danger-tertiary' => 'bg-transparent text-red-600 border-0 hover:bg-red-50 focus:ring-red-500 active:translate-y-0.5',
+        'danger' => 'bg-danger-600 text-white hover:bg-danger-700 focus:ring-fr-danger',
+        'success' => 'bg-success-600 text-white hover:bg-success-700 focus:ring-fr-success',
+        'outline' => 'border border-otl-gray-300 text-txt-black-900 hover:bg-gray-50 focus:ring-fr-primary',
         default => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5'
     };
 
@@ -83,13 +60,6 @@
     {{ $attributes->merge(['class' => $classes]) }}
 >
     @if($loading)
-        <svg class="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-    @endif
-
-    {{ $slot }}
         <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-current" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -116,3 +86,4 @@
         </span>
     @endif
 </button>
+

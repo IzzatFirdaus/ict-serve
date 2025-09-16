@@ -133,10 +133,10 @@
                 @endif
             </div>
 
-            <!-- Equipment Requested -->
+            <!-- Equipment Details -->
             @if($loanRequest->equipment_requests)
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Equipment Requested</h3>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Equipment Details</h3>
 
                 <div class="space-y-4">
                     @foreach($loanRequest->equipment_requests as $equipment)

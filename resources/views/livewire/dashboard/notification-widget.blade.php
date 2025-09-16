@@ -1,7 +1,9 @@
 {{-- Notification Widget - MYDS Compliant --}}
 <div class="bg-white rounded-lg border border-divider p-6">
     <h3 class="font-poppins text-lg font-medium text-black-900 mb-4 flex items-center gap-2">
-        <x-myds.icon svg='<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>' />
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4 6h16M4 12h16m-7 6h7"/>
+        </svg>
         Notifikasi Terkini
     </h3>
 
@@ -11,9 +13,13 @@
                 <div class="p-3 border border-divider rounded-md {{ $notification['type'] === 'success' ? 'bg-success-50 border-success-200' : 'bg-background-light' }}">
                     <div class="flex items-start gap-3">
                         @if($notification['type'] === 'success')
-                            <x-myds.icon svg='<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,11 12,14 22,4"/></svg>' :size="16" />
+                            <svg class="w-4 h-4 text-success-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
                         @else
-                            <x-myds.icon svg='<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' :size="16" />
+                            <svg class="w-4 h-4 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
                         @endif
                         <div class="flex-1">
                             <h4 class="font-inter text-sm font-medium text-black-900">{{ $notification['title'] }}</h4>
@@ -26,13 +32,18 @@
         </div>
 
         <div class="mt-4">
-            <x-myds.button variant="secondary" class="w-full text-sm" aria-label="Lihat Semua Notifikasi">
+            <button 
+                type="button" 
+                class="w-full inline-flex justify-center items-center px-4 py-2 border border-divider text-sm font-inter font-medium rounded-md text-black-700 dark:text-black-300 bg-white dark:bg-dialog hover:bg-washed dark:hover:bg-black-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
+            >
                 Lihat Semua
-            </x-myds.button>
+            </button>
         </div>
     @else
         <div class="text-center py-6">
-            <x-myds.icon svg='<svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>' :size="24" />
+            <svg class="w-6 h-6 text-black-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4 6h16M4 12h16m-7 6h7"/>
+            </svg>
             <p class="font-inter text-sm text-black-500 mt-2">Tiada notifikasi baharu</p>
         </div>
     @endif

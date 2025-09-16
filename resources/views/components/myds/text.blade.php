@@ -1,3 +1,8 @@
+{{--
+    MYDS Text for ICTServe (iServe)
+    - Props: size (xs|sm|base|lg|xl), variant, weight (light|normal|medium|semibold|bold), spacing (none|tight|default|loose)
+    - Uses Inter font per MYDS body typography
+--}}
 @props([
     'size' => 'base',
     'variant' => 'default',
@@ -9,26 +14,24 @@
     $sizeClasses = match($size) {
         'xs' => 'text-xs',
         'sm' => 'text-sm',
-        'base' => 'text-base',
         'lg' => 'text-lg',
         'xl' => 'text-xl',
         default => 'text-base'
     };
 
     $variantClasses = match($variant) {
-        'primary' => 'text-txt-primary',
-        'secondary' => 'text-txt-black-700',
-        'muted' => 'text-txt-black-500',
-        'danger' => 'text-txt-danger',
-        'success' => 'text-txt-success',
-        'warning' => 'text-txt-warning',
-        'white' => 'text-txt-white',
-        default => 'text-txt-black-900'
+        'primary' => 'txt-primary',
+        'secondary' => 'txt-black-700',
+        'muted' => 'txt-black-500',
+        'danger' => 'txt-danger',
+        'success' => 'txt-success',
+        'warning' => 'txt-warning',
+        'white' => 'txt-white',
+        default => 'txt-black-900'
     };
 
     $weightClasses = match($weight) {
         'light' => 'font-light',
-        'normal' => 'font-normal',
         'medium' => 'font-medium',
         'semibold' => 'font-semibold',
         'bold' => 'font-bold',
@@ -38,7 +41,6 @@
     $spacingClasses = match($spacing) {
         'none' => 'mb-0',
         'tight' => 'mb-2',
-        'default' => 'mb-4',
         'loose' => 'mb-6',
         default => 'mb-4'
     };
@@ -48,11 +50,6 @@
     {{ $slot }}
 </p>
 
-{{-- Add font loading styles if not already included --}}
 @once
-<style>
-    .font-inter {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('css/myds/text.css') }}" />
 @endonce

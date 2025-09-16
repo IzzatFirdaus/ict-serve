@@ -20,6 +20,9 @@
                     <a href="/muat-turun" class="text-txt-black-700 hover:text-txt-primary px-3 py-2 text-sm font-medium transition-colors">
                         Muat Turun
                     </a>
+                    <a href="{{ route('public.motac-info') }}" class="text-txt-black-700 hover:text-txt-primary px-3 py-2 text-sm font-medium transition-colors">
+                        Maklumat MOTAC
+                    </a>
                     <a href="/direktori" class="text-txt-black-700 hover:text-txt-primary px-3 py-2 text-sm font-medium transition-colors">
                         Direktori
                     </a>
@@ -102,11 +105,12 @@
 
     <!-- Mobile Navigation Menu (hidden by default) -->
     <div class="md:hidden border-t border-otl-divider bg-gray-50" x-cloak>
-        <div class="px-2 pt-2 pb-3 space-y-1">
+            <div class="px-2 pt-2 pb-3 space-y-1">
             <a href="/" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Utama</a>
             <a href="/informasi" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Informasi</a>
             <a href="/muat-turun" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Muat Turun</a>
             <a href="/direktori" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Direktori</a>
+                <a href="{{ route('public.motac-info') }}" class="block px-3 py-2 text-sm font-medium text-txt-black-700 hover:text-txt-primary hover:bg-bg-white rounded-[var(--radius-m)] transition-colors">Maklumat MOTAC</a>
 
             <!-- ServiceDesk ICT Section -->
             <div class="bg-primary-50 rounded-[var(--radius-m)] p-2 mt-2">

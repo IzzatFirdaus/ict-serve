@@ -2,15 +2,17 @@
 
 namespace App\Livewire\Notifications;
 
-use Livewire\Component;
 use Livewire\Attributes\On;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class SystemNotificationBar extends Component
 {
     public $notifications = [];
+
     public $isVisible = false;
+
     public $currentNotification = null;
+
     public $autoHideTimeout = 5000; // 5 seconds
 
     public function mount()
@@ -28,7 +30,7 @@ class SystemNotificationBar extends Component
             'message' => $notification['message'],
             'timestamp' => now(),
             'action' => $notification['action'] ?? null,
-            'persistent' => $notification['persistent'] ?? false
+            'persistent' => $notification['persistent'] ?? false,
         ];
 
         $this->showNotification();
@@ -44,8 +46,8 @@ class SystemNotificationBar extends Component
             'persistent' => true,
             'action' => [
                 'label' => 'Maklumat Lanjut',
-                'url' => route('maintenance.info')
-            ]
+                'url' => route('maintenance.info'),
+            ],
         ]);
     }
 
@@ -56,18 +58,18 @@ class SystemNotificationBar extends Component
             'type' => 'danger',
             'title' => 'Amaran Sistem',
             'message' => $data['message'],
-            'persistent' => $data['persistent'] ?? true
+            'persistent' => $data['persistent'] ?? true,
         ]);
     }
 
     public function showNotification()
     {
-        if (!empty($this->notifications)) {
+        if (! empty($this->notifications)) {
             $this->currentNotification = array_shift($this->notifications);
             $this->isVisible = true;
 
             // Auto-hide for non-persistent notifications
-            if (!$this->currentNotification['persistent']) {
+            if (! $this->currentNotification['persistent']) {
                 $this->dispatch('auto-hide-notification', timeout: $this->autoHideTimeout);
             }
         }
@@ -79,7 +81,7 @@ class SystemNotificationBar extends Component
         $this->currentNotification = null;
 
         // Show next notification if any
-        if (!empty($this->notifications)) {
+        if (! empty($this->notifications)) {
             $this->showNotification();
         }
     }
@@ -108,20 +110,20 @@ class SystemNotificationBar extends Component
                 'type' => 'warning',
                 'title' => 'Mod Penyelenggaraan',
                 'message' => 'Sistem sedang dalam mod penyelenggaraan.',
-                'persistent' => true
+                'persistent' => true,
             ]);
         }
 
         $this->notifications = $systemNotifications->toArray();
 
-        if (!empty($this->notifications)) {
+        if (! empty($this->notifications)) {
             $this->showNotification();
         }
     }
 
     protected function getNotificationClasses($type)
     {
-        return match($type) {
+        return match ($type) {
             'warning' => 'bg-warning-50 border border-warning-200',
             'danger' => 'bg-danger-50 border border-danger-200',
             'success' => 'bg-success-50 border border-success-200',
@@ -131,7 +133,7 @@ class SystemNotificationBar extends Component
 
     protected function getTitleColor($type)
     {
-        return match($type) {
+        return match ($type) {
             'warning' => 'text-warning-800',
             'danger' => 'text-danger-800',
             'success' => 'text-success-800',
@@ -141,7 +143,7 @@ class SystemNotificationBar extends Component
 
     protected function getMessageColor($type)
     {
-        return match($type) {
+        return match ($type) {
             'warning' => 'text-warning-700',
             'danger' => 'text-danger-700',
             'success' => 'text-success-700',
@@ -151,7 +153,7 @@ class SystemNotificationBar extends Component
 
     protected function getCloseIconColor($type)
     {
-        return match($type) {
+        return match ($type) {
             'warning' => 'text-warning-600',
             'danger' => 'text-danger-600',
             'success' => 'text-success-600',

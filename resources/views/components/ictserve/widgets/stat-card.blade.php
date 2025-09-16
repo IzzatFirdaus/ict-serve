@@ -26,25 +26,26 @@
     ];
 
     $component = $href ? 'a' : 'div';
-    $componentAttributes = $href ? ['href' => $href] : [];
 @endphp
 
-<{{ $component }} 
+<{{ $component }}
     @if($href) href="{{ $href }}" @endif
-    class="bg-bg-white overflow-hidden shadow-sm rounded-lg border border-otl-divider {{ $href ? 'hover:shadow-md transition-shadow duration-200 hover:border-primary-200' : '' }}"
+    class="bg-white dark:bg-dialog overflow-hidden shadow-card rounded-lg border border-otl-divider {{ $href ? 'hover:shadow-md transition-shadow duration-200 hover:border-primary-200' : '' }}"
     {{ $attributes }}
+    role="{{ $href ? 'link' : 'group' }}"
+    aria-labelledby="stat-{{ \Str::slug($title ?? 'stat') }}-title"
 >
     <div class="p-6">
         {{-- Loading State --}}
         @if($loading)
-            <div class="animate-pulse">
+            <div class="animate-pulse" aria-busy="true" aria-live="polite">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="h-12 w-12 bg-gray-200 rounded-lg"></div>
+                        <div class="h-12 w-12 bg-gray-200 dark:bg-gray-700 rounded-lg" aria-hidden="true"></div>
                     </div>
                     <div class="ml-4 flex-1">
-                        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                        <div class="h-8 bg-gray-200 rounded w-1/2"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2" aria-hidden="true"></div>
+                        <div class="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/2" aria-hidden="true"></div>
                     </div>
                 </div>
             </div>
@@ -53,7 +54,7 @@
                 {{-- Icon --}}
                 @if($icon)
                     <div class="flex-shrink-0">
-                        <div class="h-12 w-12 rounded-lg flex items-center justify-center {{ $iconColorClasses[$iconColor] ?? $iconColorClasses['primary'] }}">
+                        <div class="h-12 w-12 rounded-lg flex items-center justify-center {{ $iconColorClasses[$iconColor] ?? $iconColorClasses['primary'] }}" aria-hidden="true">
                             {!! $icon !!}
                         </div>
                     </div>
@@ -62,7 +63,7 @@
                 {{-- Content --}}
                 <div class="ml-4 flex-1">
                     {{-- Title --}}
-                    <p class="text-sm font-medium text-txt-black-600 truncate">
+                    <p id="stat-{{ \Str::slug($title ?? 'stat') }}-title" class="text-sm font-medium text-txt-black-600 truncate">
                         {{ $title }}
                     </p>
 
@@ -82,22 +83,26 @@
 
                     {{-- Trend --}}
                     @if($trend && $trendDirection)
-                        <div class="flex items-center mt-2">
+                        <div class="flex items-center mt-2" aria-hidden="false" role="status">
                             @if($trendDirection === 'up')
-                                <svg class="h-4 w-4 {{ $trendColorClasses[$trendDirection] }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17l9.2-9.2M17 17V7H7" />
+                                <svg class="h-4 w-4 {{ $trendColorClasses[$trendDirection] }}" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 14l6-8 4 5"/>
                                 </svg>
                             @elseif($trendDirection === 'down')
-                                <svg class="h-4 w-4 {{ $trendColorClasses[$trendDirection] }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 7l-9.2 9.2M7 7v10h10" />
+                                <svg class="h-4 w-4 {{ $trendColorClasses[$trendDirection] }}" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 6l-6 8-4-5"/>
                                 </svg>
                             @else
-                                <svg class="h-4 w-4 {{ $trendColorClasses[$trendDirection] }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                                <svg class="h-4 w-4 {{ $trendColorClasses[$trendDirection] }}" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 10h12"/>
                                 </svg>
                             @endif
-                            <span class="ml-1 text-sm font-medium {{ $trendColorClasses[$trendDirection] }}">
+                            <span class="ml-2 text-sm font-medium {{ $trendColorClasses[$trendDirection] }}">
                                 {{ $trend }}
+                            </span>
+                            {{-- Non-colour accessible label for screen readers --}}
+                            <span class="sr-only">
+                                {{ $trendDirection === 'up' ? 'menaik' : ($trendDirection === 'down' ? 'menurun' : 'stabil') }}
                             </span>
                         </div>
                     @endif
@@ -106,8 +111,8 @@
                 {{-- Arrow for links --}}
                 @if($href)
                     <div class="flex-shrink-0 ml-4">
-                        <svg class="h-5 w-5 text-txt-black-400 group-hover:text-txt-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        <svg class="h-5 w-5 text-txt-black-400 group-hover:text-txt-primary transition-colors" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 5l6 5-6 5"/>
                         </svg>
                     </div>
                 @endif

@@ -1,61 +1,68 @@
+{{--
+  MYDS Textarea Field for ICTServe (iServe)
+  - Standards: MYDS tokens, label, error/hint, a11y, MyGovEA citizen-centric
+  - Props:
+      id: string (required)
+      label: string
+      hint: string|null
+      error: string|null
+      value: string|null
+      required: bool
+      disabled: bool
+      size: 'sm'|'md'|'lg'
+      rows: int
+      placeholder: string|null
+      autocomplete: string|null
+--}}
+
 @props([
-    'label' => null,
-    'name' => null,
-    'id' => null,
-    'value' => '',
-    'required' => false,
-    'disabled' => false,
-    'placeholder' => '',
-    'error' => null,
-    'hint' => null,
-    'rows' => 4
+  'id',
+  'label' => null,
+  'hint' => null,
+  'error' => null,
+  'value' => null,
+  'required' => false,
+  'disabled' => false,
+  'size' => 'md',
+  'rows' => 4,
+  'placeholder' => null,
+  'autocomplete' => null,
 ])
 
 @php
-    $inputId = $id ?? $name ?? uniqid('textarea_');
-    $baseClasses = 'myds-form-textarea block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors duration-150';
-    
-    if ($error) {
-        $baseClasses .= ' border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500';
-    }
-    
-    if ($disabled) {
-        $baseClasses .= ' bg-gray-50 text-gray-500 cursor-not-allowed';
-    }
-    
-    $textareaClasses = $baseClasses . ' text-base px-3 py-2';
+  $sizeClass = match($size) {
+    'sm' => 'myds-textarea-sm',
+    'lg' => 'myds-textarea-lg',
+    default => 'myds-textarea-md',
+  };
+  $invalid = !empty($error);
+  $invalidClass = $invalid ? 'invalid' : '';
+  $hintId = $hint ? $id.'-hint' : null;
+  $errorId = $invalid ? $id.'-error' : null;
 @endphp
 
-<div class="myds-form-field">
-    @if($label)
-        <label for="{{ $inputId }}" class="block text-sm font-medium text-gray-700 mb-1">
-            {{ $label }}
-            @if($required)
-                <span class="text-red-500 ml-1">*</span>
-            @endif
-        </label>
-    @endif
-    
-    @if($hint)
-        <p class="text-sm text-gray-600 mb-2">{{ $hint }}</p>
-    @endif
-    
-    <textarea
-        id="{{ $inputId }}"
-        name="{{ $name }}"
-        rows="{{ $rows }}"
-        placeholder="{{ $placeholder }}"
-        {{ $required ? 'required' : '' }}
-        {{ $disabled ? 'disabled' : '' }}
-        {{ $attributes->merge(['class' => $textareaClasses]) }}
-    >{{ $value }}</textarea>
-    
-    @if($error)
-        <p class="mt-1 text-sm text-red-600 flex items-center">
-            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-            </svg>
-            {{ $error }}
-        </p>
-    @endif
-</div>
+<x-myds.tokens />
+
+@if($label)
+  <label for="{{ $id }}" class="myds-label">
+    {{ $label }} @if($required)<span class="txt-danger">*</span>@endif
+  </label>
+@endif
+
+<textarea
+  id="{{ $id }}"
+  name="{{ $id }}"
+  rows="{{ $rows }}"
+  @class(['myds-textarea', $sizeClass, $invalidClass])
+  placeholder="{{ $placeholder }}"
+  @if($disabled) disabled @endif
+  @if($required) aria-required="true" required @endif
+  @if($invalid) aria-invalid="true" aria-describedby="{{ $errorId }}" @elseif($hint) aria-describedby="{{ $hintId }}" @endif
+  @if($autocomplete) autocomplete="{{ $autocomplete }}" @endif
+>{{ old($id, $value) }}</textarea>
+
+@if($invalid)
+  <p id="{{ $errorId }}" class="myds-hint error mt-1">{{ $error }}</p>
+@elseif($hint)
+  <p id="{{ $hintId }}" class="myds-hint mt-1">{{ $hint }}</p>
+@endif

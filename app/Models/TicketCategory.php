@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -30,12 +31,9 @@ class TicketCategory extends Model
 
     protected $fillable = [
         'name',
-        'name_bm',
         'description',
-        'description_bm',
+        'color',
         'icon',
-        'priority',
-        'default_sla_hours',
         'is_active',
         'sort_order',
     ];
@@ -44,15 +42,15 @@ class TicketCategory extends Model
     {
         return [
             'is_active' => 'boolean',
-            'priority' => 'string',
             'default_sla_hours' => 'integer',
+            'sort_order' => 'integer',
         ];
     }
 
     /**
      * Get the tickets in this category.
      */
-    public function tickets()
+    public function tickets(): HasMany
     {
         return $this->hasMany(HelpdeskTicket::class, 'category_id');
     }

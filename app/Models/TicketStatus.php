@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -55,7 +56,7 @@ class TicketStatus extends Model
     /**
      * Get the tickets with this status.
      */
-    public function tickets()
+    public function tickets(): HasMany
     {
         return $this->hasMany(HelpdeskTicket::class, 'status_id');
     }
@@ -83,6 +84,4 @@ class TicketStatus extends Model
     {
         return static::where('code', $code)->first();
     }
-
-    // ...existing code...
 }

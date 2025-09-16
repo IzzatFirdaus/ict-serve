@@ -13,12 +13,21 @@
 @php
     $inputId = $attributes->get('id', $name . '_' . $value);
 
-    $sizeClasses = match($size) {
+      $sizeClasses = match($size) {
         'sm' => 'h-4 w-4',
-        'default' => 'h-5 w-5',
         'lg' => 'h-6 w-6',
-        default => 'h-5 w-5'
-    };
+        default => 'h-5 w-5',
+      };
+      $labelTextSize = match($size) {
+        'sm' => 'text-sm',
+        'lg' => 'text-lg',
+        default => 'text-base',
+      };
+      $stateClasses = $disabled
+        ? 'border-otl-gray-200 bg-black-100 txt-black-500 cursor-not-allowed'
+        : ($error ? 'border-otl-danger-300 txt-danger' : 'border-otl-gray-200 txt-primary hover:border-otl-gray-200');
+
+      $a11yDescribed = trim(($error ? "{$inputId}-error " : '') . ($help ? "{$inputId}-help" : ''));
 
     $baseClasses = 'rounded-full border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:ring-offset-2';
 

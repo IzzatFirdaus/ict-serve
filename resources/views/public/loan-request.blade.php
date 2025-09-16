@@ -245,14 +245,6 @@
 </div>
 
 @push('scripts')
-<script>
-    // Pass user data to JavaScript
-    window.authUserData = {
-        name: '{{ auth()->user()->name }}',
-        position: '{{ auth()->user()->position ?? "" }}',
-        phone: '{{ auth()->user()->phone ?? "" }}'
-    };
-</script>
-@vite(['resources/js/loan-request.js'])
+@vite(['resources/js/public/loan-request.js'])
 @endpush
 @endsection

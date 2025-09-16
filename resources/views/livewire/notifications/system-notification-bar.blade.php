@@ -22,13 +22,25 @@
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
                                 @if($currentNotification['type'] === 'warning')
-                                    <x-myds.icon name="warning" size="20" class="text-warning-600" />
+                                    <!-- Warning Triangle SVG -->
+                                    <svg class="w-5 h-5 text-warning-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 14.5c-.77.833.192 2.5 1.732 2.5z"/>
+                                    </svg>
                                 @elseif($currentNotification['type'] === 'danger')
-                                    <x-myds.icon name="cross-circle" size="20" class="text-danger-600" />
+                                    <!-- X Circle SVG -->
+                                    <svg class="w-5 h-5 text-danger-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
                                 @elseif($currentNotification['type'] === 'success')
-                                    <x-myds.icon name="check-circle" size="20" class="text-success-600" />
+                                    <!-- Check Circle SVG -->
+                                    <svg class="w-5 h-5 text-success-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
                                 @else
-                                    <x-myds.icon name="info" size="20" class="text-primary-600" />
+                                    <!-- Info Circle SVG -->
+                                    <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
                                 @endif
                             </div>
                             <div class="ml-3">
@@ -43,20 +55,23 @@
 
                         <div class="flex items-center space-x-2">
                             @if(isset($currentNotification['action']))
-                                <x-myds.button
+                                <button
                                     wire:click="executeAction"
-                                    variant="primary"
-                                    size="small"
+                                    class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-inter font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
                                 >
                                     {{ $currentNotification['action']['label'] }}
-                                </x-myds.button>
+                                </button>
                             @endif
 
                             <button
                                 wire:click="dismissNotification"
-                                class="flex-shrink-0 p-1 rounded-md hover:bg-black-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                                class="flex-shrink-0 p-1 rounded-md hover:bg-black-100 dark:hover:bg-black-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
+                                aria-label="{{ __('Tutup notifikasi / Close notification') }}"
                             >
-                                <x-myds.icon name="cross" size="16" class="{{ $this->getCloseIconColor($currentNotification['type']) }}" />
+                                <!-- X Close SVG -->
+                                <svg class="w-4 h-4 {{ $this->getCloseIconColor($currentNotification['type']) }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
                             </button>
                         </div>
                     </div>
@@ -78,19 +93,4 @@
     @endif
 </div>
 
-@script
-<script>
-    // Listen for Livewire events
-    $wire.on('system-notification', (notification) => {
-        // Additional client-side handling if needed
-    });
-
-    $wire.on('maintenance-mode', (data) => {
-        // Handle maintenance mode notifications
-    });
-
-    $wire.on('system-alert', (data) => {
-        // Handle system alerts
-    });
-</script>
-@endscript
+<script src="{{ asset('js/livewire/system-notification-bar.js') }}" defer></script>
