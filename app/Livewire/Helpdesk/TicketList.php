@@ -2,16 +2,15 @@
 
 namespace App\Livewire\Helpdesk;
 
+use App\Enums\TicketPriority;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
-use App\Enums\TicketPriority;
-use App\Enums\TicketUrgency;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
-use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 /**
  * @property \Illuminate\Contracts\Pagination\LengthAwarePaginator $tickets
@@ -26,10 +25,15 @@ class TicketList extends Component
     use WithPagination;
 
     public $search = '';
+
     public $filterStatus = '';
+
     public $filterCategory = '';
+
     public $filterPriority = '';
+
     public $sortField = 'created_at';
+
     public $sortDirection = 'desc';
 
     protected $queryString = [
@@ -96,9 +100,9 @@ class TicketList extends Component
         // Apply search filter
         if ($this->search) {
             $query->where(function ($q) {
-                $q->where('ticket_number', 'like', '%' . $this->search . '%')
-                  ->orWhere('title', 'like', '%' . $this->search . '%')
-                  ->orWhere('description', 'like', '%' . $this->search . '%');
+                $q->where('ticket_number', 'like', '%'.$this->search.'%')
+                    ->orWhere('title', 'like', '%'.$this->search.'%')
+                    ->orWhere('description', 'like', '%'.$this->search.'%');
             });
         }
 

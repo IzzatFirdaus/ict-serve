@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -16,35 +15,53 @@ class UserProfile extends Component
 
     // Profile Form Properties
     public string $name = '';
+
     public string $email = '';
+
     public string $phone = '';
+
     public string $department = '';
+
     public string $position = '';
+
     public string $employee_id = '';
+
     public string $office_location = '';
 
     // Password Change Properties
     public string $current_password = '';
+
     public string $new_password = '';
+
     public string $new_password_confirmation = '';
 
     // Notification Preferences
     public bool $email_notifications = true;
+
     public bool $sms_notifications = false;
+
     public bool $loan_reminders = true;
+
     public bool $approval_notifications = true;
+
     public bool $system_announcements = true;
+
     public bool $weekly_digest = false;
 
     // Avatar Upload
     public $avatar;
+
     public string $avatar_url = '';
 
     // UI State
     public string $activeTab = 'profile';
+
     public array $notifications = [];
+
     public bool $showPasswordForm = false;
+
     public bool $profileSaved = false;
+
     public bool $passwordChanged = false;
 
     protected array $rules = [
@@ -141,7 +158,7 @@ class UserProfile extends Component
 
         $this->dispatch('profile-updated', [
             'message' => 'Profil berjaya dikemaskini!',
-            'type' => 'success'
+            'type' => 'success',
         ]);
     }
 
@@ -155,7 +172,7 @@ class UserProfile extends Component
 
         $user = Auth::user();
         $user->update([
-            'password' => Hash::make($this->new_password)
+            'password' => Hash::make($this->new_password),
         ]);
 
         // Clear password fields
@@ -167,7 +184,7 @@ class UserProfile extends Component
 
         $this->dispatch('password-changed', [
             'message' => 'Kata laluan berjaya ditukar!',
-            'type' => 'success'
+            'type' => 'success',
         ]);
     }
 
@@ -187,13 +204,13 @@ class UserProfile extends Component
 
         $this->dispatch('preferences-updated', [
             'message' => 'Tetapan notifikasi berjaya dikemaskini!',
-            'type' => 'success'
+            'type' => 'success',
         ]);
     }
 
     public function togglePasswordForm(): void
     {
-        $this->showPasswordForm = !$this->showPasswordForm;
+        $this->showPasswordForm = ! $this->showPasswordForm;
         $this->resetErrorBag(['current_password', 'new_password', 'new_password_confirmation']);
         $this->current_password = '';
         $this->new_password = '';
@@ -214,7 +231,7 @@ class UserProfile extends Component
 
         $this->dispatch('avatar-removed', [
             'message' => 'Avatar berjaya dipadamkan!',
-            'type' => 'success'
+            'type' => 'success',
         ]);
     }
 
@@ -231,7 +248,7 @@ class UserProfile extends Component
                 return [
                     'type' => 'loan',
                     'title' => "Permohonan Pinjaman #{$loan->id}",
-                    'description' => "Status: " . ucfirst($loan->status),
+                    'description' => 'Status: '.ucfirst($loan->status),
                     'date' => $loan->created_at->format('d/m/Y H:i'),
                     'icon' => 'clipboard-list',
                     'color' => $this->getStatusColor($loan->status),
@@ -243,7 +260,7 @@ class UserProfile extends Component
 
     private function getStatusColor(string $status): string
     {
-        return match($status) {
+        return match ($status) {
             'approved' => 'text-success-600',
             'rejected' => 'text-danger-600',
             'pending' => 'text-warning-600',

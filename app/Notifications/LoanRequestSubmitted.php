@@ -15,9 +15,7 @@ class LoanRequestSubmitted extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(public LoanRequest $loanRequest)
-    {
-    }
+    public function __construct(public LoanRequest $loanRequest) {}
 
     public function via($notifiable): array
     {
@@ -47,8 +45,8 @@ class LoanRequestSubmitted extends Notification implements ShouldQueue
             'department' => $this->loanRequest->user->department,
             'message' => __('New loan request :ref submitted by :name', [
                 'ref' => $this->loanRequest->request_number,
-                'name' => $this->loanRequest->user->name
-            ])
+                'name' => $this->loanRequest->user->name,
+            ]),
         ];
     }
 }

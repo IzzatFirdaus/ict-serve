@@ -38,6 +38,7 @@ class DropdownManager extends Component
 
     // Filter properties for search functionality
     public string $search = '';
+
     public string $severityFilter = '';
 
     public function mount(): void
@@ -133,7 +134,7 @@ class DropdownManager extends Component
     public function toggleStatus(int $id): void
     {
         $damageType = DamageType::findOrFail($id);
-        $damageType->update(['is_active' => !$damageType->is_active]);
+        $damageType->update(['is_active' => ! $damageType->is_active]);
 
         session()->flash('message', 'Damage type status updated successfully.');
         $this->dispatch('damage-types-updated');
@@ -168,17 +169,17 @@ class DropdownManager extends Component
         $query = DamageType::query();
 
         // Apply search filter
-        if (!empty($this->search)) {
+        if (! empty($this->search)) {
             $query->where(function ($q) {
-                $q->where('name', 'like', '%' . $this->search . '%')
-                  ->orWhere('name_bm', 'like', '%' . $this->search . '%')
-                  ->orWhere('description', 'like', '%' . $this->search . '%')
-                  ->orWhere('description_bm', 'like', '%' . $this->search . '%');
+                $q->where('name', 'like', '%'.$this->search.'%')
+                    ->orWhere('name_bm', 'like', '%'.$this->search.'%')
+                    ->orWhere('description', 'like', '%'.$this->search.'%')
+                    ->orWhere('description_bm', 'like', '%'.$this->search.'%');
             });
         }
 
         // Apply severity filter
-        if (!empty($this->severityFilter)) {
+        if (! empty($this->severityFilter)) {
             $query->where('severity', $this->severityFilter);
         }
 

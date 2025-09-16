@@ -7,7 +7,9 @@ use Livewire\Component;
 class StatusWidget extends Component
 {
     public $pendingLoans = 0;
+
     public $openTickets = 0;
+
     public $notifications = 0;
 
     public function mount()

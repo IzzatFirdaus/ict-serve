@@ -2,19 +2,18 @@
 
 namespace App\Livewire\Helpdesk\Admin;
 
+use App\Enums\TicketPriority;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
 use App\Models\User;
-use App\Enums\TicketPriority;
-use App\Enums\TicketUrgency;
 use App\Services\HelpdeskService;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
-use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 /**
  * @property \Illuminate\Contracts\Pagination\LengthAwarePaginator $tickets
@@ -30,21 +29,31 @@ class TicketManagement extends Component
     use WithPagination;
 
     public $search = '';
+
     public $filterStatus = '';
+
     public $filterCategory = '';
+
     public $filterPriority = '';
+
     public $filterAssignee = '';
+
     public $sortField = 'created_at';
+
     public $sortDirection = 'desc';
 
     // Assignment modal
     public $showAssignmentModal = false;
+
     public $selectedTicketId = null;
+
     public $assignedUserId = '';
 
     // Status update modal
     public $showStatusModal = false;
+
     public $newStatusId = '';
+
     public $resolutionNotes = '';
 
     protected $queryString = [
@@ -65,7 +74,7 @@ class TicketManagement extends Component
     public function mount()
     {
         // Check if user has admin permissions
-        if (!Auth::user()->hasAnyRole(['super-admin', 'it-admin', 'helpdesk-admin'])) {
+        if (! Auth::user()->hasAnyRole(['super-admin', 'it-admin', 'helpdesk-admin'])) {
             abort(403, 'Unauthorized access to helpdesk administration.');
         }
     }
@@ -141,7 +150,7 @@ class TicketManagement extends Component
             $ticket = HelpdeskTicket::findOrFail($this->selectedTicketId);
             $assignedUser = User::findOrFail($this->assignedUserId);
 
-            $notificationService = new NotificationService();
+            $notificationService = new NotificationService;
             $helpdeskService = new HelpdeskService($notificationService);
             $helpdeskService->assignTicket($ticket, $assignedUser, Auth::user());
 
@@ -149,7 +158,7 @@ class TicketManagement extends Component
             $this->closeAssignmentModal();
             $this->dispatch('ticketAssigned');
         } catch (\Exception $e) {
-            session()->flash('error', 'Gagal memberikan tiket: ' . $e->getMessage());
+            session()->flash('error', 'Gagal memberikan tiket: '.$e->getMessage());
         }
     }
 
@@ -180,7 +189,7 @@ class TicketManagement extends Component
             $ticket = HelpdeskTicket::findOrFail($this->selectedTicketId);
             $newStatus = TicketStatus::findOrFail($this->newStatusId);
 
-            $notificationService = new NotificationService();
+            $notificationService = new NotificationService;
             $helpdeskService = new HelpdeskService($notificationService);
             $helpdeskService->updateStatus(
                 $ticket,
@@ -193,7 +202,7 @@ class TicketManagement extends Component
             $this->closeStatusModal();
             $this->dispatch('ticketStatusUpdated');
         } catch (\Exception $e) {
-            session()->flash('error', 'Gagal mengemas kini status tiket: ' . $e->getMessage());
+            session()->flash('error', 'Gagal mengemas kini status tiket: '.$e->getMessage());
         }
     }
 
@@ -211,13 +220,13 @@ class TicketManagement extends Component
         // Apply search filter
         if ($this->search) {
             $query->where(function ($q) {
-                $q->where('ticket_number', 'like', '%' . $this->search . '%')
-                  ->orWhere('title', 'like', '%' . $this->search . '%')
-                  ->orWhere('description', 'like', '%' . $this->search . '%')
-                  ->orWhereHas('user', function ($userQuery) {
-                      $userQuery->where('name', 'like', '%' . $this->search . '%')
-                                ->orWhere('email', 'like', '%' . $this->search . '%');
-                  });
+                $q->where('ticket_number', 'like', '%'.$this->search.'%')
+                    ->orWhere('title', 'like', '%'.$this->search.'%')
+                    ->orWhere('description', 'like', '%'.$this->search.'%')
+                    ->orWhereHas('user', function ($userQuery) {
+                        $userQuery->where('name', 'like', '%'.$this->search.'%')
+                            ->orWhere('email', 'like', '%'.$this->search.'%');
+                    });
             });
         }
 
@@ -277,8 +286,8 @@ class TicketManagement extends Component
             \App\Enums\UserRole::HELPDESK_STAFF,
             \App\Enums\UserRole::SUPER_ADMIN,
         ])
-        ->orderBy('name')
-        ->get();
+            ->orderBy('name')
+            ->get();
     }
 
     public function getTicketCounts()

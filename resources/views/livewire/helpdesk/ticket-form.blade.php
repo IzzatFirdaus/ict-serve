@@ -56,7 +56,7 @@
                         <label for="category_id" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
                             Kategori <span class="text-danger-600">*</span>
                         </label>
-                        <x-myds.select wire:model.live="category_id" id="category_id">
+                        <x-myds.select wire:model.blur="category_id" id="category_id">
                             <option value="">Pilih kategori</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -75,7 +75,7 @@
                         <x-myds.input
                             type="text"
                             id="title"
-                            wire:model.live="title"
+                            wire:model.blur="title"
                             placeholder="Huraian ringkas mengenai masalah"
                             class="w-full"
                         />
@@ -89,13 +89,13 @@
                         <label for="description" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
                             Huraian Terperinci <span class="text-danger-600">*</span>
                         </label>
-                        <textarea
+                        <x-myds.textarea
                             id="description"
-                            wire:model.live="description"
+                            wire:model.blur="description"
                             rows="4"
                             placeholder="Sila berikan maklumat terperinci mengenai masalah yang dihadapi"
-                            class="font-inter text-sm w-full px-3 py-2 border border-divider rounded-lg bg-white dark:bg-dialog focus:ring focus:ring-primary-300 dark:focus:ring-primary-700 focus:border-primary-600 dark:focus:border-primary-400 resize-none"
-                        ></textarea>
+                            class="w-full"
+                        />
                         @error('description')
                             <p class="font-inter text-xs text-danger-600 mt-1">{{ $message }}</p>
                         @enderror
@@ -108,7 +108,7 @@
                             <label for="priority" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
                                 Keutamaan <span class="text-danger-600">*</span>
                             </label>
-                            <x-myds.select wire:model.live="priority" id="priority">
+                            <x-myds.select wire:model.blur="priority" id="priority">
                                 <option value="">Pilih keutamaan</option>
                                 @foreach(\App\Enums\TicketPriority::cases() as $priorityOption)
                                     <option value="{{ $priorityOption->value }}">
@@ -131,7 +131,7 @@
                             <label for="urgency" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
                                 Kecemasan <span class="text-danger-600">*</span>
                             </label>
-                            <x-myds.select wire:model.live="urgency" id="urgency">
+                            <x-myds.select wire:model.blur="urgency" id="urgency">
                                 <option value="">Pilih tahap kecemasan</option>
                                 @foreach(\App\Enums\TicketUrgency::cases() as $urgencyOption)
                                     <option value="{{ $urgencyOption->value }}">
@@ -156,7 +156,7 @@
                             <label for="equipment_item_id" class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
                                 Peralatan Berkaitan (Pilihan)
                             </label>
-                            <x-myds.select wire:model.live="equipment_item_id" id="equipment_item_id">
+                            <x-myds.select wire:model.blur="equipment_item_id" id="equipment_item_id">
                                 <option value="">Tiada peralatan khusus</option>
                                 @foreach($equipmentItems as $equipment)
                                     <option value="{{ $equipment->id }}">
@@ -180,7 +180,7 @@
                             <x-myds.input
                                 type="text"
                                 id="location"
-                                wire:model.live="location"
+                                wire:model.blur="location"
                                 placeholder="Bangunan, tingkat, nombor bilik"
                                 class="w-full"
                             />
@@ -197,7 +197,7 @@
                             <x-myds.input
                                 type="tel"
                                 id="contact_phone"
-                                wire:model.live="contact_phone"
+                                wire:model.blur="contact_phone"
                                 placeholder="Nombor telefon untuk dihubungi"
                                 class="w-full"
                             />

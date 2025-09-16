@@ -16,7 +16,7 @@ enum LoanRequestStatus: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::PENDING_BPM_REVIEW => 'Pending BPM Review',
             self::PENDING_SUPERVISOR_APPROVAL => 'Pending Supervisor Approval',
             self::PENDING_ICT_APPROVAL => 'Pending ICT Approval',
@@ -31,7 +31,7 @@ enum LoanRequestStatus: string
 
     public function color(): string
     {
-        return match($this) {
+        return match ($this) {
             self::PENDING_BPM_REVIEW, self::PENDING_SUPERVISOR_APPROVAL, self::PENDING_ICT_APPROVAL => 'warning',
             self::APPROVED => 'success',
             self::REJECTED, self::CANCELLED => 'danger',
@@ -52,7 +52,7 @@ enum LoanRequestStatus: string
 
     public function canBeCancelled(): bool
     {
-        return !in_array($this, [
+        return ! in_array($this, [
             self::RETURNED,
             self::CANCELLED,
             self::REJECTED,

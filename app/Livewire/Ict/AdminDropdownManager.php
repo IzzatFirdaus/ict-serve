@@ -4,8 +4,8 @@ namespace App\Livewire\Ict;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 

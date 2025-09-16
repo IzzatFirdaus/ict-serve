@@ -18,7 +18,7 @@ enum UserRole: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::USER => 'User',
             self::SUPERVISOR => 'Supervisor',
             self::ICT_ADMIN => 'ICT Admin',
@@ -34,7 +34,7 @@ enum UserRole: string
 
     public function canAccessPanel(): bool
     {
-        return match($this) {
+        return match ($this) {
             self::SUPER_ADMIN, self::ICT_ADMIN, self::HELPDESK_STAFF => true,
             // Legacy/test compatibility - admin roles can access panel
             self::ADMIN, self::SUPPORTING_OFFICER, self::BMP_STAFF => true,

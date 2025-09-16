@@ -11,9 +11,9 @@ class DashboardReportExport implements WithMultipleSheets
     public function sheets(): array
     {
         return [
-            'Loan Requests' => new LoanRequestsExport(),
-            'Helpdesk Tickets' => new HelpdeskTicketsExport(),
-            'Equipment' => new EquipmentExport(),
+            'Loan Requests' => new LoanRequestsExport,
+            'Helpdesk Tickets' => new HelpdeskTicketsExport,
+            'Equipment' => new EquipmentExport,
         ];
     }
 }

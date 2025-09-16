@@ -2,11 +2,11 @@
 
 namespace App\Livewire\ResourceManagement\Admin\BPM;
 
-use App\Models\LoanRequest;
 use App\Models\EquipmentItem;
+use App\Models\LoanRequest;
 use App\Services\LoanApplicationService;
-use Livewire\Component;
 use Livewire\Attributes\Title;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 #[Title('Proses Pengeluaran Peralatan')]
@@ -15,13 +15,18 @@ class ProcessIssuance extends Component
     use WithPagination;
 
     public string $search = '';
+
     public int $perPage = 10;
 
     // Issue form properties
     public ?LoanRequest $selectedLoan = null;
+
     public array $selectedEquipment = [];
+
     public array $accessoriesChecklist = [];
+
     public string $issueNotes = '';
+
     public bool $processing = false;
 
     public function mount()
@@ -55,7 +60,7 @@ class ProcessIssuance extends Component
         $this->processing = true;
 
         try {
-            if (!$this->selectedLoan) {
+            if (! $this->selectedLoan) {
                 throw new \Exception('Tiada permohonan dipilih.');
             }
 
@@ -70,21 +75,21 @@ class ProcessIssuance extends Component
                     return [
                         'equipment_id' => $equipmentId,
                         'condition' => 'good',
-                        'notes' => null
+                        'notes' => null,
                     ];
                 })->toArray(),
                 'accessories_checklist' => $this->accessoriesChecklist,
-                'notes' => $this->issueNotes
+                'notes' => $this->issueNotes,
             ];
 
             $loanApplicationService->issue($this->selectedLoan, $this->selectedEquipment, \Illuminate\Support\Facades\Auth::user());
 
-            session()->flash('success', 'Peralatan telah berjaya dikeluarkan untuk permohonan ' . $this->selectedLoan->request_number);
+            session()->flash('success', 'Peralatan telah berjaya dikeluarkan untuk permohonan '.$this->selectedLoan->request_number);
 
             $this->reset(['selectedLoan', 'selectedEquipment', 'accessoriesChecklist', 'issueNotes']);
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Ralat semasa mengeluarkan peralatan: ' . $e->getMessage());
+            session()->flash('error', 'Ralat semasa mengeluarkan peralatan: '.$e->getMessage());
         } finally {
             $this->processing = false;
         }
@@ -103,18 +108,18 @@ class ProcessIssuance extends Component
             })
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('request_number', 'like', '%' . $this->search . '%')
-                      ->orWhere('purpose', 'like', '%' . $this->search . '%')
-                      ->orWhereHas('user', function ($userQuery) {
-                          $userQuery->where('name', 'like', '%' . $this->search . '%');
-                      });
+                    $q->where('request_number', 'like', '%'.$this->search.'%')
+                        ->orWhere('purpose', 'like', '%'.$this->search.'%')
+                        ->orWhereHas('user', function ($userQuery) {
+                            $userQuery->where('name', 'like', '%'.$this->search.'%');
+                        });
                 });
             })
             ->orderBy('created_at', 'asc')
             ->paginate($this->perPage);
 
         return view('livewire.resource-management.admin.bpm.process-issuance', [
-            'approvedLoans' => $approvedLoans
+            'approvedLoans' => $approvedLoans,
         ]);
     }
 }

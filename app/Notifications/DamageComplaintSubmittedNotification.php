@@ -24,8 +24,8 @@ class DamageComplaintSubmittedNotification extends Notification implements Shoul
             return [
                 'notification:damage',
                 'damage:submitted',
-                'asset:' . $this->damageComplaint->asset_number,
-                'priority:' . $this->damageComplaint->priority
+                'asset:'.$this->damageComplaint->asset_number,
+                'priority:'.$this->damageComplaint->priority,
             ];
         });
     }
@@ -44,18 +44,18 @@ class DamageComplaintSubmittedNotification extends Notification implements Shoul
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject("Damage Complaint Submitted - Asset #{$this->damageComplaint->asset_number}")
-                    ->greeting("Hello {$this->damageComplaint->complainant_name},")
-                    ->line("Your equipment damage complaint has been successfully submitted.")
-                    ->line("**Asset Number:** {$this->damageComplaint->asset_number}")
-                    ->line("**Damage Type:** " . ucfirst($this->damageComplaint->damage_type))
-                    ->line("**Priority:** " . ucfirst($this->damageComplaint->priority))
-                    ->line("**Location:** {$this->damageComplaint->location}")
-                    ->line("**Incident Date:** " . $this->damageComplaint->incident_date)
-                    ->line('Our technical team will review your complaint and contact you soon.')
-                    ->action('View Complaint Details', route('dashboard'))
-                    ->line('Thank you for using ICTServe!')
-                    ->salutation('Best regards,
+            ->subject("Damage Complaint Submitted - Asset #{$this->damageComplaint->asset_number}")
+            ->greeting("Hello {$this->damageComplaint->complainant_name},")
+            ->line('Your equipment damage complaint has been successfully submitted.')
+            ->line("**Asset Number:** {$this->damageComplaint->asset_number}")
+            ->line('**Damage Type:** '.ucfirst($this->damageComplaint->damage_type))
+            ->line('**Priority:** '.ucfirst($this->damageComplaint->priority))
+            ->line("**Location:** {$this->damageComplaint->location}")
+            ->line('**Incident Date:** '.$this->damageComplaint->incident_date)
+            ->line('Our technical team will review your complaint and contact you soon.')
+            ->action('View Complaint Details', route('dashboard'))
+            ->line('Thank you for using ICTServe!')
+            ->salutation('Best regards,
 ICT Support Team
 Ministry of Tourism, Arts and Culture (MOTAC)');
     }
