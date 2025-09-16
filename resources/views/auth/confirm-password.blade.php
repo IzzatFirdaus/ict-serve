@@ -2,10 +2,10 @@
     <form method="POST" action="{{ route('password.confirm') }}" class="space-y-6" role="form" aria-labelledby="confirm-heading">
         @csrf
 
-        <h1 id="confirm-heading" class="myds-heading-md text-txt-black-900 text-center mb-6">Confirm Your Password</h1>
+        <h1 id="confirm-heading" class="myds-heading-md text-txt-black-900 text-center mb-6">Sahkan Kata Laluan Anda</h1>
 
         <div class="mb-4 myds-body-sm text-txt-black-600 text-center">
-            {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+            {{ __('Ini adalah kawasan selamat aplikasi. Sila sahkan kata laluan anda sebelum meneruskan.') }}
         </div>
 
         <!-- Password -->
@@ -14,7 +14,7 @@
                 type="password"
                 id="password"
                 name="password"
-                label="Password"
+                label="Kata Laluan"
                 required
                 autocomplete="current-password"
                 aria-describedby="password-error"
@@ -26,8 +26,8 @@
             <x-myds.button
                 type="submit"
                 variant="primary"
-                aria-label="Confirm password and continue">
-                {{ __('Confirm') }}
+                aria-label="Sahkan kata laluan dan teruskan">
+                {{ __('Sahkan') }}
             </x-myds.button>
         </div>
     </form>

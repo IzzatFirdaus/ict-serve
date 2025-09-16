@@ -24,6 +24,7 @@
     $centeredClasses = $centered ? 'mx-auto' : '';
 @endphp
 
-<div {{ $attributes->merge(['class' => "w-full {$variantClasses} {$paddingClasses} {$centeredClasses}"]) }}>
+{{-- Komponen Container MYDS (Grid 12-8-4, BM, Responsif) --}}
+<div {{ $attributes->merge(['class' => "w-full {$variantClasses} {$paddingClasses} {$centeredClasses} grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-6"]) }}>
     {{ $slot }}
 </div>

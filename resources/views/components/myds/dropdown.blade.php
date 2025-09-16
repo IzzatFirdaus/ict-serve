@@ -1,17 +1,29 @@
+{{--
+  MYDS Dropdown for ICTServe (iServe)
+  - Compliant with MYDS standards (Design, Develop, Icons, Colour) and MyGovEA principles.
+  - Keyboard accessible, ARIA, focus ring, semantic tokens, responsive, citizen-centric.
+  - Usage:
+      <x-myds.dropdown label="Options">
+        <x-myds.dropdown-item href="/profile">Profile</x-myds.dropdown-item>
+        <x-myds.dropdown-item variant="danger">Logout</x-myds.dropdown-item>
+      </x-myds.dropdown>
+--}}
 @props([
-    'label' => 'Options',
+    'label' => 'Pilihan',
     'variant' => 'default', // default, primary, danger
-    'size' => 'default', // sm, default, lg
+    'size' => 'md', // sm, md, lg
     'disabled' => false,
+    'align' => 'end', // start, end, center (menu alignment)
 ])
+
+<x-myds.tokens />
 
 @php
 $buttonClasses = match($variant) {
-    'primary' => 'bg-bg-primary-600 text-txt-white border-otl-primary-200 hover:bg-bg-primary-700 focus:ring-fr-primary',
-    'danger' => 'bg-bg-danger-600 text-txt-white border-otl-danger-200 hover:bg-bg-danger-700 focus:ring-fr-danger',
-    default => 'bg-bg-white text-txt-black-700 border-otl-gray-200 hover:bg-gray-50 focus:ring-fr-primary',
+    'primary' => 'bg-primary-600 txt-white border-otl-primary-200 hover:bg-primary-700 focus-ring-primary',
+    'danger' => 'bg-danger-600 txt-white border-otl-danger-200 hover:bg-danger-700 focus-ring-danger',
+    default => 'bg-white txt-black-700 border-otl-gray-200 hover:bg-gray-50 focus-ring-primary',
 };
-
 $sizeClasses = match($size) {
     'sm' => 'px-3 py-2 text-sm',
     'lg' => 'px-6 py-3 text-lg',
@@ -19,32 +31,36 @@ $sizeClasses = match($size) {
 };
 @endphp
 
-<div class="relative inline-block text-left" x-data="{ open: false }" @click.away="open = false">
-    <!-- Trigger Button -->
+<div class="relative inline-block text-left" x-data="{ open: false }" @keydown.escape.window="open = false" @click.away="open = false">
+    <!-- Trigger Button: Accessible, MYDS tokens, ARIA, visible focus -->
     <button type="button"
             @click="open = !open"
-            @keydown.escape="open = false"
             :aria-expanded="open"
             aria-haspopup="true"
+            aria-controls="dropdown-menu"
             {{ $disabled ? 'disabled' : '' }}
-            class="inline-flex justify-center items-center w-full rounded-md border font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 {{ $buttonClasses }} {{ $sizeClasses }} {{ $disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer' }}">
+            class="inline-flex justify-center items-center w-full radius-m border font-medium transition ease-easeout duration-200 focus:outline-none focus-ring-primary {{ $buttonClasses }} {{ $sizeClasses }} {{ $disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer' }}"
+    >
         {{ $label }}
-        <svg class="ml-2 -mr-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-        </svg>
+        <x-myds.icons.chevron-down class="ml-2 -mr-1 myds-icon" />
     </button>
 
-    <!-- Dropdown Menu -->
+    <!-- Dropdown Menu: Menu role, shadow, semantic tokens, ARIA -->
     <div
         x-show="open"
-        x-transition:enter="transition ease-out duration-100"
+        x-transition:enter="transition ease-easeout duration-100"
         x-transition:enter-start="transform opacity-0 scale-95"
         x-transition:enter-end="transform opacity-100 scale-100"
-        x-transition:leave="transition ease-in duration-75"
+        x-transition:leave="transition ease-easeout duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-    class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-otl-divider rounded-md bg-bg-white shadow-lg border border-otl-divider focus:outline-none"
-        role="menu">
+        class="absolute {{ $align === 'start' ? 'left-0' : ($align === 'center' ? 'left-1/2 -translate-x-1/2' : 'right-0') }} z-10 mt-2 w-56 origin-top-{{ $align }} divide-y divide-otl-divider radius-l bg-white shadow-context-menu border border-otl-divider"
+        style="min-width:12rem;"
+        id="dropdown-menu"
+        role="menu"
+        aria-label="Senarai Pilihan"
+        tabindex="-1"
+    >
         <div class="py-1" role="none">
             {{ $slot }}
         </div>

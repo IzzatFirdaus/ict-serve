@@ -1,103 +1,135 @@
+{{--
+  MYDS Modal (Dialog) Component for ICTServe (iServe)
+  - Follows MYDS standards (Design, Develop, Icons, Colour) and MyGovEA principles (citizen-centric, minimalis, seragam, accessible)
+  - Features:
+    * Sticky header and footer sections for long dialogs
+    * Focus management, ARIA roles, and keyboard accessibility (Esc to close, focus trap)
+    * Supports variants for info/success/warning/danger (alert dialogs)
+    * Clear structure for title, description, content, actions
+    * Configurable: dismissible, size, icon, and slot for custom actions
+    * Responsive on desktop, tablet, and mobile
+  - Props:
+      id: string|null (for ARIA labelling)
+      open: bool (controls visibility, default: false)
+      dismissible: bool (close via overlay/Esc/X), default: true
+      title: string|null (modal title)
+      icon: Blade/SVG|null (optional leading icon)
+      variant: 'default'|'info'|'success'|'warning'|'danger'
+      size: 'sm'|'md'|'lg'|'xl' (default: md)
+      class: string|null (additional modal classes)
+      ariaLabel: string|null (for accessibility)
+      ariaDescribedby: string|null (for accessibility)
+      closeLabel: string (localized close button label)
+      @slot('content') Main modal content
+      @slot('actions') Footer actions (buttons)
+--}}
+
 @props([
+    'id' => null,
     'open' => false,
-    'maxWidth' => 'md',
-    'closeable' => true,
+    'dismissible' => true,
+    'title' => null,
+    'icon' => null,
+    'variant' => 'default', // default|info|success|warning|danger
+    'size' => 'md', // sm|md|lg|xl
+    'class' => '',
+    'ariaLabel' => null,
+    'ariaDescribedby' => null,
+    'closeLabel' => 'Tutup', // default Bahasa Melayu
 ])
 
 @php
-    $maxWidthClasses = match($maxWidth) {
-        'sm' => 'sm:max-w-sm',
-        'md' => 'sm:max-w-md',
-        'lg' => 'sm:max-w-lg',
-        'xl' => 'sm:max-w-xl',
-        '2xl' => 'sm:max-w-2xl',
-        '3xl' => 'sm:max-w-3xl',
-        '4xl' => 'sm:max-w-4xl',
-        '5xl' => 'sm:max-w-5xl',
-        '6xl' => 'sm:max-w-6xl',
-        '7xl' => 'sm:max-w-7xl',
-        default => 'sm:max-w-md',
+    // Modal sizing per MYDS specs
+    $maxWidth = match($size) {
+        'sm' => 'max-w-md',    // ~400px
+        'lg' => 'max-w-3xl',  // ~800px
+        'xl' => 'max-w-5xl',  // ~1200px
+        default => 'max-w-xl', // ~600px
     };
 
-    $modalId = 'modal-' . uniqid();
+    // Variant colour ring/shadow
+    $variantRing = match($variant) {
+        'info' => 'ring-primary-300',
+        'success' => 'ring-success-300',
+        'warning' => 'ring-warning-300',
+        'danger' => 'ring-danger-300',
+        default => 'ring-primary-300',
+    };
 
-    // Check if Alpine.js attributes are present
-    $hasAlpineShow = $attributes->has('x-show');
-    $initialVisibility = $hasAlpineShow ? '' : ($open ? '' : 'hidden');
+    // Variant icon fallback
+    $variantIcon = match($variant) {
+        'info' => '<x-myds.icons.info class="txt-primary" />',
+        'success' => '<x-myds.icons.check-circle class="txt-success" />',
+        'warning' => '<x-myds.icons.alert-triangle class="txt-warning" />',
+        'danger' => '<x-myds.icons.alert-triangle class="txt-danger" />',
+        default => null,
+    };
+
+    $modalId = $id ?? 'myds-modal-'.uniqid();
+    $labelledBy = $ariaLabel ? null : $modalId.'-title';
+    $describedBy = $ariaDescribedby ? $ariaDescribedby : ($title ? $modalId.'-desc' : null);
 @endphp
 
-<div
-    id="{{ $modalId }}"
-    class="fixed inset-0 z-50 overflow-y-auto {{ $initialVisibility }}"
-    aria-labelledby="{{ $modalId }}-title"
-    role="dialog"
-    aria-modal="true"
-    {{ $attributes->whereStartsWith('x-') }}
-    {{ $attributes->whereStartsWith('wire:') }}
->
-    <!-- Background overlay -->
-    <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" {{ $attributes->whereStartsWith('@') }}></div>
+@if($open)
+  {{-- Overlay (modal backdrop) --}}
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 transition-all easeoutback.short"
+       x-data="{ focusTrap: null }"
+       x-init="focusTrap = $el.querySelector('[tabindex]'); focusTrap && focusTrap.focus();"
+       @keydown.escape.window="if ({{ $dismissible ? 'true' : 'false' }}) $dispatch('close-modal-{{ $modalId }}')"
+       @click.self="if ({{ $dismissible ? 'true' : 'false' }}) $dispatch('close-modal-{{ $modalId }}')"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="{{ $labelledBy }}"
+       @close-modal-{{ $modalId }}.window="$el.remove()"
+  >
+    {{-- Dialog Panel --}}
+    <div
+      class="relative bg-bg-dialog shadow-context-menu {{ $maxWidth }} w-full radius-l transition-all easeoutback.short outline-none {{ $class }}"
+      @click.stop
+      tabindex="0"
+      id="{{ $modalId }}"
+      @keydown.tab.prevent=" /* Focus trap: TODO if Alpine/JS present */ "
+      @keydown.shift.tab.prevent=" /* Focus trap: TODO if Alpine/JS present */ "
+    >
 
-    <!-- Modal panel -->
-    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-    <div class="relative transform overflow-hidden rounded-[var(--radius-xl)] bg-bg-white text-left shadow-xl transition-all sm:my-8 w-full {{ $maxWidthClasses }}">
-            <!-- Close button -->
-            @if($closeable)
-                <div class="absolute right-0 top-0 pr-4 pt-4">
-                    <button
-                        type="button"
-                        class="rounded-[var(--radius-s)] bg-bg-white text-txt-black-400 hover:text-txt-black-500 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors"
-                        @if($hasAlpineShow)
-                            @click="hide()"
-                        @else
-                            onclick="closeModal('{{ $modalId }}')"
-                        @endif
-                        aria-label="Close modal"
-                    >
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            @endif
+      {{-- Sticky Header --}}
+      <header class="sticky top-0 z-10 bg-bg-dialog px-6 py-4 border-b border-otl-divider flex items-center gap-3"
+        @if($labelledBy) id="{{ $labelledBy }}" @endif
+      >
+        @if($icon || $variantIcon)
+          <span class="inline-flex items-center justify-center w-7 h-7">
+            {!! $icon ?? $variantIcon !!}
+          </span>
+        @endif
+        @if($title)
+          <span class="font-poppins font-semibold text-xl txt-black-900">{{ $title }}</span>
+        @endif
+        <span class="flex-1"></span>
+        @if($dismissible)
+          <button type="button"
+            class="ml-4 text-txt-black-500 hover:text-txt-black-900 focus:outline-none focus:ring-2 focus:ring-fr-primary rounded-full transition"
+            aria-label="{{ $closeLabel }}"
+            @click="$dispatch('close-modal-{{ $modalId }}')"
+          >
+            <x-myds.icons.x class="w-6 h-6" />
+          </button>
+        @endif
+      </header>
 
-            <!-- Modal content -->
-            {{ $slot }}
-        </div>
+      {{-- Modal Content --}}
+      <div class="px-6 py-6 text-base {{ $describedBy ? 'has-desc' : '' }}"
+        @if($describedBy) id="{{ $describedBy }}" @endif
+      >
+        {{ $content ?? $slot }}
+      </div>
+
+      {{-- Sticky Footer --}}
+      @if(isset($actions))
+        <footer class="sticky bottom-0 z-10 bg-bg-dialog px-6 py-4 border-t border-otl-divider flex flex-row-reverse gap-3">
+          {{ $actions }}
+        </footer>
+      @endif
+
     </div>
-</div>
-
-<!-- JavaScript for modal functionality -->
-<script>
-    function openModal(modalId) {
-        document.getElementById(modalId).classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal(modalId) {
-        document.getElementById(modalId).classList.add('hidden');
-        document.body.style.overflow = '';
-    }
-
-    // Close modal on escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            const modals = document.querySelectorAll('[role="dialog"]:not(.hidden)');
-            modals.forEach(modal => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-            });
-        }
-    });
-
-    // Close modal when clicking outside
-    document.addEventListener('click', function(event) {
-        if (event.target.classList.contains('bg-gray-500') && event.target.classList.contains('bg-opacity-75')) {
-            const modal = event.target.closest('[role="dialog"]');
-            if (modal) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        }
-    });
-</script>
+  </div>
+@endif

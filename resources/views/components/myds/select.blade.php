@@ -13,16 +13,25 @@
 @php
     $selectId = $id ?? $name ?? 'select-' . str()->random(6);
     $hasError = $error || ($name && $errors->has($name));
-    
-    // MYDS select styling
+        $describedByIds = [];
+        if ($helpText) $describedByIds[] = "{$selectId}-help";
+        if ($hasError) $describedByIds[] = "{$selectId}-error";
+        $describedBy = implode(' ', $describedByIds);
+
+        $base = 'block w-full rounded-m border font-inter text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 pr-10';
+        $normal = 'border-otl-gray-300 bg-white txt-black-900 hover:border-otl-gray-300 focus:border-otl-primary-300 focus:ring-fr-primary';
+        $invalid = 'border-otl-danger-300 bg-danger-50 txt-danger focus:border-otl-danger-300 focus:ring-fr-danger';
+        $disabledCls = $disabled ? ' bg-black-100 txt-black-500 cursor-not-allowed' : ' px-3 py-2.5';
+
+        $selectClasses = trim("$base " . ($hasError ? $invalid : $normal) . $disabledCls);
     $selectClasses = 'block w-full rounded-lg border font-inter text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 pr-10';
-    
+
     if ($hasError) {
         $selectClasses .= ' border-danger-300 bg-danger-50 text-danger-900 focus:border-danger-500 focus:ring-danger-300';
     } else {
         $selectClasses .= ' border-gray-300 bg-white text-black-900 hover:border-gray-400 focus:border-primary-500 focus:ring-primary-300';
     }
-    
+
     if ($disabled) {
         $selectClasses .= ' bg-gray-100 text-gray-500 cursor-not-allowed';
     } else {
@@ -51,7 +60,7 @@
             @if($placeholder)
                 <option value="">{{ $placeholder }}</option>
             @endif
-            
+
             @if(is_array($options))
                 @foreach($options as $value => $optionLabel)
                     <option value="{{ $value }}">{{ $optionLabel }}</option>
@@ -60,7 +69,7 @@
                 {{ $slot }}
             @endif
         </select>
-        
+
         <!-- MYDS dropdown arrow -->
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
             <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -81,3 +90,8 @@
         <x-myds.error id="{{ $selectId }}-error" :field="$name" />
     @endif
 </div>
+                <option value="">{{ $placeholder }}</option>
+                @foreach($options as $value => $optionLabel)
+                    <option value="{{ $value }}">{{ $optionLabel }}</option>
+                @endforeach
+                <option value="">{{ $slot }}</option>

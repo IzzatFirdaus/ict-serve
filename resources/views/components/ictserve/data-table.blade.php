@@ -17,27 +17,45 @@
     'selectedIds' => [],
     'actions' => [],
     'compact' => false,
+    'caption' => 'Jadual data', // Accessible table caption (sr-only)
+    'tableLabelledBy' => null, // optional id to label the region
 ])
 
-<div class="bg-bg-white shadow-sm rounded-lg border border-otl-divider overflow-hidden" {{ $attributes }}>
+@php
+    $ariaSort = function($key, $currentSort, $sortDirection) {
+        if ($currentSort === $key) {
+            return $sortDirection === 'asc' ? 'ascending' : 'descending';
+        }
+        return 'none';
+    };
+@endphp
+
+<div
+    class="bg-bg-white shadow-card rounded-lg border border-otl-divider overflow-hidden"
+    {{ $attributes->merge(['role' => 'region']) }}
+    @if($tableLabelledBy) aria-labelledby="{{ $tableLabelledBy }}" @else aria-label="Jadual" @endif
+>
     {{-- Table Header with Search and Actions --}}
     @if($searchable || count($actions) > 0)
         <div class="px-6 py-4 border-b border-otl-divider bg-gray-50">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-4">
                 {{-- Search Bar --}}
                 @if($searchable)
                     <div class="flex-1 max-w-md">
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-txt-black-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                {{-- MYDS 20x20, 1.5 stroke --}}
+                                <svg class="h-5 w-5 text-txt-black-400" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                    <circle cx="9" cy="9" r="6"></circle>
+                                    <path stroke-linecap="round" d="M14 14l4 4"></path>
                                 </svg>
                             </div>
-                            <x-myds.input 
+                            <x-myds.input
                                 type="text"
                                 placeholder="{{ $searchPlaceholder }}"
                                 class="pl-10"
                                 wire:model.live.debounce.300ms="search"
+                                aria-label="Carian jadual"
                             />
                         </div>
                     </div>
@@ -48,7 +66,7 @@
                     <div class="flex items-center space-x-3 {{ $searchable ? 'ml-6' : '' }}">
                         @foreach($actions as $action)
                             @if($action['type'] === 'button')
-                                <x-myds.button 
+                                <x-myds.button
                                     variant="{{ $action['variant'] ?? 'secondary' }}"
                                     size="{{ $action['size'] ?? 'medium' }}"
                                     wire:click="{{ $action['action'] ?? '' }}"
@@ -61,19 +79,21 @@
                                 </x-myds.button>
                             @elseif($action['type'] === 'dropdown')
                                 <div class="relative" x-data="{ open: false }">
-                                    <x-myds.button 
+                                    <x-myds.button
                                         variant="secondary"
                                         @click="open = !open"
                                         class="relative"
+                                        aria-haspopup="menu"
+                                        :aria-expanded="open"
                                     >
                                         {{ $action['label'] }}
-                                        <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 7l5 6 5-6"/>
                                         </svg>
                                     </x-myds.button>
-                                    
-                                    <div 
-                                        x-show="open" 
+
+                                    <div
+                                        x-show="open"
                                         @click.outside="open = false"
                                         x-transition:enter="transition ease-out duration-100"
                                         x-transition:enter-start="transform opacity-0 scale-95"
@@ -81,14 +101,17 @@
                                         x-transition:leave="transition ease-in duration-75"
                                         x-transition:leave-start="transform opacity-100 scale-100"
                                         x-transition:leave-end="transform opacity-0 scale-95"
-                                        class="absolute right-0 z-10 mt-2 w-48 rounded-md shadow-lg bg-bg-white ring-1 ring-otl-divider ring-opacity-5"
+                                        class="absolute right-0 z-10 mt-2 w-48 rounded-lg shadow-context-menu bg-bg-white ring-1 ring-otl-divider"
+                                        role="menu"
+                                        aria-label="Tindakan Jadual"
                                     >
                                         <div class="py-1">
                                             @foreach($action['items'] as $item)
                                                 <button
                                                     wire:click="{{ $item['action'] }}"
                                                     @click="open = false"
-                                                    class="block w-full text-left px-4 py-2 text-sm text-txt-black-700 hover:bg-gray-100 hover:text-txt-black-900"
+                                                    class="block w-full text-left px-4 py-2 text-sm text-txt-black-700 hover:bg-gray-50 hover:text-txt-black-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary"
+                                                    role="menuitem"
                                                 >
                                                     @if(isset($item['icon']))
                                                         <x-myds.icon name="{{ $item['icon'] }}" class="mr-2 h-4 w-4 inline" />
@@ -110,43 +133,51 @@
     {{-- Table Container --}}
     <div class="overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-otl-divider">
-                {{-- Table Head --}}
-                <thead class="bg-gray-50">
-                    <tr>
+            <table class="min-w-full divide-y divide-otl-divider" role="table">
+                <caption class="sr-only">{{ $caption }}</caption>
+
+                {{-- Table Head (sticky) --}}
+                <thead class="bg-gray-50 sticky top-0 z-10" role="rowgroup">
+                    <tr role="row">
                         {{-- Select All Checkbox --}}
                         @if($selectable)
                             <th scope="col" class="relative w-12 px-6 sm:w-16 sm:px-8">
-                                <x-myds.checkbox 
+                                <x-myds.checkbox
                                     wire:model.live="selectAll"
                                     class="absolute left-4 top-1/2 -mt-2 h-4 w-4 sm:left-6"
+                                    aria-label="Pilih semua baris"
                                 />
                             </th>
                         @endif
 
                         {{-- Column Headers --}}
                         @foreach($headers as $key => $header)
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 uppercase tracking-wider {{ $compact ? 'py-2' : 'py-3' }}">
+                            <th
+                                scope="col"
+                                class="px-6 {{ $compact ? 'py-2' : 'py-3' }} text-left text-xs font-medium text-txt-black-500 uppercase tracking-wider"
+                                @if(in_array($key, $sortable)) aria-sort="{{ $ariaSort($key, $currentSort, $sortDirection) }}" @endif
+                            >
                                 @if(in_array($key, $sortable))
-                                    <button 
+                                    <button
                                         wire:click="sortBy('{{ $key }}')"
-                                        class="group inline-flex items-center hover:text-txt-black-700"
+                                        class="group inline-flex items-center hover:text-txt-black-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary rounded"
+                                        aria-label="Isih lajur {{ $header }}"
                                     >
                                         {{ $header }}
-                                        <span class="ml-2 flex-none rounded">
+                                        <span class="ml-2 flex-none rounded" aria-hidden="true">
                                             @if($currentSort === $key)
                                                 @if($sortDirection === 'asc')
-                                                    <svg class="h-4 w-4 text-txt-black-400" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                                    <svg class="h-4 w-4 text-txt-black-400" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M10 7l5 6H5l5-6z" clip-rule="evenodd" />
                                                     </svg>
                                                 @else
-                                                    <svg class="h-4 w-4 text-txt-black-400" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    <svg class="h-4 w-4 text-txt-black-400" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M10 13l-5-6h10l-5 6z" clip-rule="evenodd" />
                                                     </svg>
                                                 @endif
                                             @else
-                                                <svg class="h-4 w-4 text-txt-black-300 group-hover:text-txt-black-400" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                <svg class="h-4 w-4 text-txt-black-300 group-hover:text-txt-black-400" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M10 13l-5-6h10l-5 6z" clip-rule="evenodd" />
                                                 </svg>
                                             @endif
                                         </span>
@@ -158,71 +189,76 @@
                         @endforeach
 
                         {{-- Actions Column --}}
-                        <th scope="col" class="relative px-6 py-3 {{ $compact ? 'py-2' : 'py-3' }}">
+                        <th scope="col" class="relative px-6 {{ $compact ? 'py-2' : 'py-3' }}">
                             <span class="sr-only">Tindakan</span>
                         </th>
                     </tr>
                 </thead>
 
                 {{-- Table Body --}}
-                <tbody class="bg-bg-white divide-y divide-otl-divider">
+                <tbody class="bg-bg-white divide-y divide-otl-divider" role="rowgroup">
                     @if($loading)
-                        {{-- Loading State --}}
+                        {{-- Loading State (skeleton) --}}
                         @for($i = 0; $i < 5; $i++)
-                            <tr>
+                            <tr role="row">
                                 @if($selectable)
                                     <td class="w-12 px-6 sm:w-16 sm:px-8">
-                                        <div class="h-4 w-4 bg-gray-200 rounded animate-pulse"></div>
+                                        <div class="h-4 w-4 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
                                     </td>
                                 @endif
                                 @foreach($headers as $header)
-                                    <td class="px-6 py-4 whitespace-nowrap {{ $compact ? 'py-3' : 'py-4' }}">
-                                        <div class="h-4 bg-gray-200 rounded animate-pulse"></div>
+                                    <td class="px-6 {{ $compact ? 'py-3' : 'py-4' }} whitespace-nowrap">
+                                        <div class="h-4 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
                                     </td>
                                 @endforeach
-                                <td class="px-6 py-4 whitespace-nowrap {{ $compact ? 'py-3' : 'py-4' }}">
-                                    <div class="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
+                                <td class="px-6 {{ $compact ? 'py-3' : 'py-4' }} whitespace-nowrap">
+                                    <div class="h-8 w-20 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
                                 </td>
                             </tr>
                         @endfor
                     @elseif(count($data) > 0)
                         {{-- Data Rows --}}
                         @foreach($data as $index => $row)
-                            <tr class="hover:bg-gray-50 {{ in_array($row['id'] ?? $index, $selectedIds) ? 'bg-primary-50' : '' }}">
+                            <tr
+                                class="hover:bg-gray-50 focus-within:bg-primary-50 {{ in_array($row['id'] ?? $index, $selectedIds) ? 'bg-primary-50' : '' }}"
+                                role="row"
+                            >
                                 {{-- Select Checkbox --}}
                                 @if($selectable)
                                     <td class="relative w-12 px-6 sm:w-16 sm:px-8">
-                                        <x-myds.checkbox 
+                                        <x-myds.checkbox
                                             wire:model.live="selectedIds"
                                             value="{{ $row['id'] ?? $index }}"
                                             class="absolute left-4 top-1/2 -mt-2 h-4 w-4 sm:left-6"
+                                            aria-label="Pilih baris {{ $index + 1 }}"
                                         />
                                     </td>
                                 @endif
 
                                 {{-- Data Cells --}}
                                 @foreach($headers as $key => $header)
-                                    <td class="px-6 py-4 whitespace-nowrap {{ $compact ? 'py-3' : 'py-4' }}">
+                                    <td class="px-6 {{ $compact ? 'py-3' : 'py-4' }} whitespace-nowrap">
                                         @if(isset($row[$key]))
                                             @if(is_array($row[$key]) && isset($row[$key]['type']))
                                                 {{-- Special cell types --}}
                                                 @if($row[$key]['type'] === 'badge')
-                                                    <x-myds.badge 
+                                                    <x-myds.badge
                                                         variant="{{ $row[$key]['variant'] ?? 'gray' }}"
                                                         size="{{ $row[$key]['size'] ?? 'medium' }}"
                                                     >
                                                         {{ $row[$key]['text'] }}
                                                     </x-myds.badge>
                                                 @elseif($row[$key]['type'] === 'link')
-                                                    <a 
+                                                    <a
                                                         href="{{ $row[$key]['url'] }}"
-                                                        class="text-primary-600 hover:text-primary-900 font-medium"
-                                                        @if($row[$key]['external'] ?? false) target="_blank" @endif
+                                                        class="text-txt-primary hover:text-primary-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary rounded"
+                                                        @if($row[$key]['external'] ?? false) target="_blank" rel="noopener" @endif
+                                                        aria-label="Pautan {{ $row[$key]['text'] }}"
                                                     >
                                                         {{ $row[$key]['text'] }}
                                                         @if($row[$key]['external'] ?? false)
-                                                            <svg class="inline h-3 w-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                            <svg class="inline h-3 w-3 ml-1" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 6h6v6M6 14l8-8"/>
                                                             </svg>
                                                         @endif
                                                     </a>
@@ -233,7 +269,7 @@
                                                                 <img class="h-10 w-10 rounded-full" src="{{ $row[$key]['image'] }}" alt="{{ $row[$key]['name'] }}">
                                                             @else
                                                                 <div class="h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center">
-                                                                    <span class="text-sm font-medium text-primary-700">
+                                                                    <span class="text-sm font-medium text-txt-primary">
                                                                         {{ substr($row[$key]['name'], 0, 2) }}
                                                                     </span>
                                                                 </div>
@@ -268,12 +304,12 @@
                                 @endforeach
 
                                 {{-- Actions Column --}}
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium {{ $compact ? 'py-3' : 'py-4' }}">
+                                <td class="px-6 {{ $compact ? 'py-3' : 'py-4' }} whitespace-nowrap text-right text-sm font-medium">
                                     @if(isset($row['actions']) && count($row['actions']) > 0)
                                         <div class="flex items-center justify-end space-x-2">
                                             @foreach($row['actions'] as $action)
                                                 @if($action['type'] === 'button')
-                                                    <x-myds.button 
+                                                    <x-myds.button
                                                         variant="{{ $action['variant'] ?? 'secondary' }}"
                                                         size="small"
                                                         wire:click="{{ $action['action'] }}"
@@ -287,10 +323,10 @@
                                                         @endif
                                                     </x-myds.button>
                                                 @elseif($action['type'] === 'link')
-                                                    <a 
+                                                    <a
                                                         href="{{ $action['url'] }}"
-                                                        class="text-primary-600 hover:text-primary-900 font-medium"
-                                                        @if($action['external'] ?? false) target="_blank" @endif
+                                                        class="text-txt-primary hover:text-primary-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary rounded"
+                                                        @if($action['external'] ?? false) target="_blank" rel="noopener" @endif
                                                     >
                                                         @if(isset($action['icon']))
                                                             <x-myds.icon name="{{ $action['icon'] }}" class="h-4 w-4" />
@@ -306,11 +342,11 @@
                         @endforeach
                     @else
                         {{-- Empty State --}}
-                        <tr>
+                        <tr role="row">
                             <td colspan="{{ count($headers) + ($selectable ? 2 : 1) }}" class="px-6 py-12 text-center">
                                 <div class="flex flex-col items-center">
-                                    <svg class="h-12 w-12 text-txt-black-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    <svg class="h-12 w-12 text-txt-black-300 mb-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 5h6l4 4v6a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z"/>
                                     </svg>
                                     <p class="text-lg font-medium text-txt-black-900 mb-1">{{ $emptyMessage }}</p>
                                     <p class="text-sm text-txt-black-500">Tiada rekod yang sepadan dengan kriteria carian anda.</p>
@@ -326,13 +362,16 @@
     {{-- Pagination and Info --}}
     @if($showPagination && $totalRecords > 0)
         <div class="px-6 py-4 border-t border-otl-divider bg-gray-50">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-4">
                 {{-- Records Info --}}
                 <div class="flex items-center text-sm text-txt-black-700">
                     <span>Menunjukkan</span>
-                    <select 
+                    <label for="perPage" class="sr-only">Rekod per halaman</label>
+                    <select
+                        id="perPage"
                         wire:model.live="perPage"
-                        class="mx-2 border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500"
+                        class="mx-2 border-otl-gray-300 rounded-md text-sm focus-visible:ring-2 focus-visible:ring-fr-primary focus-visible:outline-none"
+                        aria-label="Rekod per halaman"
                     >
                         @foreach($perPageOptions as $option)
                             <option value="{{ $option }}">{{ $option }}</option>
@@ -343,16 +382,16 @@
 
                 {{-- Pagination Controls --}}
                 @if($totalPages > 1)
-                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                    <nav class="relative z-0 inline-flex rounded-md shadow-button -space-x-px" aria-label="Pagination">
                         {{-- Previous Page --}}
-                        <button 
+                        <button
                             wire:click="previousPage"
                             @if($currentPage <= 1) disabled @endif
-                            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-bg-white text-sm font-medium text-txt-black-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-otl-gray-300 bg-bg-white text-sm font-medium text-txt-black-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary"
+                            aria-label="Halaman sebelumnya"
                         >
-                            <span class="sr-only">Sebelumnya</span>
-                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 5l-5 5 5 5"/>
                             </svg>
                         </button>
 
@@ -363,23 +402,26 @@
                         @endphp
 
                         @if($start > 1)
-                            <button 
+                            <button
                                 wire:click="gotoPage(1)"
-                                class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-bg-white text-sm font-medium text-txt-black-700 hover:bg-gray-50"
+                                class="relative inline-flex items-center px-4 py-2 border border-otl-gray-300 bg-bg-white text-sm font-medium text-txt-black-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary"
+                                aria-label="Pergi ke halaman 1"
                             >
                                 1
                             </button>
                             @if($start > 2)
-                                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-bg-white text-sm font-medium text-txt-black-700">
+                                <span class="relative inline-flex items-center px-4 py-2 border border-otl-gray-300 bg-bg-white text-sm font-medium text-txt-black-700" aria-hidden="true">
                                     ...
                                 </span>
                             @endif
                         @endif
 
                         @for($page = $start; $page <= $end; $page++)
-                            <button 
+                            <button
                                 wire:click="gotoPage({{ $page }})"
-                                class="relative inline-flex items-center px-4 py-2 border text-sm font-medium {{ $page === $currentPage ? 'z-10 bg-primary-50 border-primary-500 text-primary-600' : 'border-gray-300 bg-bg-white text-txt-black-700 hover:bg-gray-50' }}"
+                                class="relative inline-flex items-center px-4 py-2 border text-sm font-medium {{ $page === $currentPage ? 'z-10 bg-primary-50 border-otl-primary-300 text-txt-primary' : 'border-otl-gray-300 bg-bg-white text-txt-black-700 hover:bg-gray-50' }} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary"
+                                aria-current="{{ $page === $currentPage ? 'page' : 'false' }}"
+                                aria-label="Pergi ke halaman {{ $page }}"
                             >
                                 {{ $page }}
                             </button>
@@ -387,27 +429,28 @@
 
                         @if($end < $totalPages)
                             @if($end < $totalPages - 1)
-                                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-bg-white text-sm font-medium text-txt-black-700">
+                                <span class="relative inline-flex items-center px-4 py-2 border border-otl-gray-300 bg-bg-white text-sm font-medium text-txt-black-700" aria-hidden="true">
                                     ...
                                 </span>
                             @endif
-                            <button 
+                            <button
                                 wire:click="gotoPage({{ $totalPages }})"
-                                class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-bg-white text-sm font-medium text-txt-black-700 hover:bg-gray-50"
+                                class="relative inline-flex items-center px-4 py-2 border border-otl-gray-300 bg-bg-white text-sm font-medium text-txt-black-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary"
+                                aria-label="Pergi ke halaman terakhir {{ $totalPages }}"
                             >
                                 {{ $totalPages }}
                             </button>
                         @endif
 
                         {{-- Next Page --}}
-                        <button 
+                        <button
                             wire:click="nextPage"
                             @if($currentPage >= $totalPages) disabled @endif
-                            class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-bg-white text-sm font-medium text-txt-black-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-otl-gray-300 bg-bg-white text-sm font-medium text-txt-black-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary"
+                            aria-label="Halaman seterusnya"
                         >
-                            <span class="sr-only">Seterusnya</span>
-                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 5l5 5-5 5"/>
                             </svg>
                         </button>
                     </nav>

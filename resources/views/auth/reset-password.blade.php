@@ -5,7 +5,7 @@
         <!-- Password Reset Token -->
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-        <h1 id="reset-password-heading" class="myds-heading-md text-txt-black-900 text-center mb-6">Set New Password</h1>
+        <h1 id="reset-password-heading" class="myds-heading-md text-txt-black-900 text-center mb-6">Tetapkan Kata Laluan Baharu</h1>
 
         <!-- Email Address -->
         <div class="myds-form-group">
@@ -13,7 +13,7 @@
                 type="email"
                 id="email"
                 name="email"
-                label="Email Address"
+                label="Alamat E-mel"
                 :value="old('email', $request->email)"
                 required
                 autofocus
@@ -30,12 +30,12 @@
                 type="password"
                 id="password"
                 name="password"
-                label="New Password"
+                label="Kata Laluan Baharu"
                 required
                 autocomplete="new-password"
                 aria-describedby="password-error password-help"
             />
-            <p id="password-help" class="myds-body-xs text-txt-black-500 mt-1">Password must be at least 8 characters long</p>
+            <p id="password-help" class="myds-body-xs text-txt-black-500 mt-1">Kata laluan mesti sekurang-kurangnya 8 aksara</p>
             <x-input-error :messages="$errors->get('password')" class="mt-2" id="password-error" />
         </div>
 
@@ -45,7 +45,7 @@
                 type="password"
                 id="password_confirmation"
                 name="password_confirmation"
-                label="Confirm New Password"
+                label="Sahkan Kata Laluan Baharu"
                 required
                 autocomplete="new-password"
                 aria-describedby="password-confirmation-error"
@@ -57,8 +57,8 @@
             <x-myds.button
                 type="submit"
                 variant="primary"
-                aria-label="Reset your password">
-                {{ __('auth.reset_password') }}
+                aria-label="Tetapkan semula kata laluan anda">
+                {{ __('Tetapkan Semula Kata Laluan') }}
             </x-myds.button>
         </div>
     </form>

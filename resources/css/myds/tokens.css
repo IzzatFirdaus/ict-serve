@@ -1,0 +1,13 @@
+/*
+ * MYDS Token Styles for ICTServe (iServe)
+ * Extracted from Blade for modularity and maintainability.
+ * This file is referenced by components/myds/tokens.blade.php
+ */
+
+
+@import "../myds-tokens.css";
+
+/*
+ * This file now imports all MYDS tokens from myds-tokens.css for consistency.
+ * Add any project-specific overrides or additional utility classes below.
+ */

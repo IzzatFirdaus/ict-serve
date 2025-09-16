@@ -1,17 +1,5 @@
 {{-- Dashboard Main Component - MYDS Compliant --}}
 <div class="min-h-screen bg-background-light">
-    {{-- Header --}}
-    <x-myds.header>
-        <a href="{{ route('dashboard') }}" class="text-white hover:text-primary-200 flex items-center gap-2">
-            <x-myds.icon svg='<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7v10a2 2 0 002 2h10a2 2 0 002-2V7"/><path d="M12 3v4h5l-5-4z"/><path d="M7 3v4H2l5-4z"/></svg>' />
-            Dashboard
-        </a>
-        <a href="{{ route('profile') }}" class="text-white hover:text-primary-200 flex items-center gap-2">
-            <x-myds.icon svg='<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' />
-            Profile
-        </a>
-    </x-myds.header>
-
     {{-- Main Content --}}
     <main class="container mx-auto px-6 py-8">
         {{-- Page Title --}}
@@ -38,16 +26,33 @@
             <div class="space-y-4">
                 {{-- Activity items will be populated by Livewire --}}
                 <div class="flex items-center gap-4 p-3 bg-background-light rounded-md">
-                    <x-myds.icon svg='<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,11 12,14 22,4"/></svg>' />
+                    <svg class="w-5 h-5 text-success-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
                     <div class="flex-1">
                         <p class="font-inter text-sm text-black-900">Permohonan pinjaman peralatan telah diluluskan</p>
                         <p class="font-inter text-xs text-black-500">2 jam yang lalu</p>
                     </div>
                 </div>
+                <div class="flex items-center gap-4 p-3 bg-background-light rounded-md">
+                    <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <div class="flex-1">
+                        <p class="font-inter text-sm text-black-900">Tiket helpdesk baharu telah dibuka</p>
+                        <p class="font-inter text-xs text-black-500">4 jam yang lalu</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-3 bg-background-light rounded-md">
+                    <svg class="w-5 h-5 text-warning-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div class="flex-1">
+                        <p class="font-inter text-sm text-black-900">Peralatan perlu dipulangkan dalam 2 hari</p>
+                        <p class="font-inter text-xs text-black-500">1 hari yang lalu</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
-
-    {{-- Footer --}}
-    <x-myds.footer />
 </div>

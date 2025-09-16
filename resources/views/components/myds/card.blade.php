@@ -1,38 +1,53 @@
+{{--
+  MYDS Card Component for ICTServe (iServe)
+  - Props:
+      title?: string
+      subtitle?: string
+      icon?: string (icon name)
+      actions?: slot
+      border?: bool
+      shadow?: bool
+      radius?: string (xs|s|m|l|xl|full)
+      bg?: string (use MYDS tokens)
+--}}
 @props([
-    'title' => null,
-    'variant' => 'default', // default, bordered, elevated
-    'padding' => 'normal' // none, small, normal, large
+  'title' => null,
+  'subtitle' => null,
+  'icon' => null,
+  'actions' => null,
+  'border' => true,
+  'shadow' => true,
+  'radius' => 'l',
+  'bg' => 'bg-white',
 ])
 
-@php
-    $baseClasses = 'myds-card bg-white';
-    
-    // Variant classes
-    $variantClasses = match($variant) {
-        'bordered' => 'border border-gray-200 rounded-lg',
-        'elevated' => 'rounded-lg shadow-md',
-        default => 'rounded-lg shadow-sm border border-gray-100'
-    };
-    
-    // Padding classes
-    $paddingClasses = match($padding) {
-        'none' => '',
-        'small' => 'p-4',
-        'large' => 'p-8',
-        default => 'p-6' // normal
-    };
-    
-    $classes = trim($baseClasses . ' ' . $variantClasses . ' ' . $paddingClasses);
-@endphp
+<x-myds.tokens />
 
-<div {{ $attributes->merge(['class' => $classes]) }}>
-    @if($title)
-        <div class="myds-card-header mb-4">
-            <h3 class="text-lg font-semibold text-gray-900">{{ $title }}</h3>
-        </div>
-    @endif
-    
-    <div class="myds-card-body">
-        {{ $slot }}
+<div @class([
+    $bg,
+    $border ? 'border border-divider' : '',
+    $shadow ? 'shadow-card' : '',
+    "radius-$radius",
+    "p-6",
+    "relative"
+  ])>
+  @if($icon)
+    <div class="mb-3">
+      <x-myds.icons :name="$icon" class="myds-icon txt-primary" />
     </div>
+  @endif
+  @if($title)
+    <h2 class="font-poppins font-semibold text-xl txt-black-900 mb-2">{{ $title }}</h2>
+  @endif
+  @if($subtitle)
+    <p class="text-sm txt-black-500 mb-3">{{ $subtitle }}</p>
+  @endif
+  <div>
+    {{ $slot }}
+  </div>
+  @if($actions)
+    <div class="absolute top-4 right-4 flex gap-2">
+      {{ $actions }}
+    </div>
+  @endif
 </div>

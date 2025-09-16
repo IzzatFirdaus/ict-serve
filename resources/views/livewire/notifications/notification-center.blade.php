@@ -30,10 +30,16 @@
                     {{ $unreadCount }} belum dibaca
                 </span>
                 @if($unreadCount > 0)
-                    <x-myds.button wire:click="openMarkAllModal" variant="primary" size="medium">
-                        <x-myds.icon name="check-circle" size="16" class="mr-2" />
+                    <button
+                        wire:click="openMarkAllModal"
+                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-inter font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
+                    >
+                        <!-- Check Circle SVG -->
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
                         Tandai Semua Dibaca
-                    </x-myds.button>
+                    </button>
                 @endif
             </div>
         </div>
@@ -84,46 +90,47 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             {{-- Status Filter --}}
             <div>
-                <label class="block text-sm font-medium text-black-700 font-inter mb-2">Status</label>
-                <x-myds.select wire:model.live="filter" class="w-full">
+                <label class="block text-sm font-medium text-black-700 dark:text-black-300 font-inter mb-2">Status</label>
+                <select wire:model.live="filter" class="block w-full px-3 py-2 border border-divider rounded-md shadow-sm font-inter text-sm text-black-900 dark:text-white bg-white dark:bg-dialog focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
                     @foreach($this->getFilterOptions() as $value => $label)
                         <option value="{{ $value }}">{{ $label }}</option>
                     @endforeach
-                </x-myds.select>
+                </select>
             </div>
 
             {{-- Category Filter --}}
             <div>
-                <label class="block text-sm font-medium text-black-700 font-inter mb-2">Kategori</label>
-                <x-myds.select wire:model.live="category" class="w-full">
+                <label class="block text-sm font-medium text-black-700 dark:text-black-300 font-inter mb-2">Kategori</label>
+                <select wire:model.live="category" class="block w-full px-3 py-2 border border-divider rounded-md shadow-sm font-inter text-sm text-black-900 dark:text-white bg-white dark:bg-dialog focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
                     @foreach($this->getCategoryOptions() as $value => $label)
                         <option value="{{ $value }}">{{ $label }}</option>
                     @endforeach
-                </x-myds.select>
+                </select>
             </div>
 
             {{-- Priority Filter --}}
             <div>
-                <label class="block text-sm font-medium text-black-700 font-inter mb-2">Keutamaan</label>
-                <x-myds.select wire:model.live="priority" class="w-full">
+                <label class="block text-sm font-medium text-black-700 dark:text-black-300 font-inter mb-2">Keutamaan</label>
+                <select wire:model.live="priority" class="block w-full px-3 py-2 border border-divider rounded-md shadow-sm font-inter text-sm text-black-900 dark:text-white bg-white dark:bg-dialog focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
                     @foreach($this->getPriorityOptions() as $value => $label)
                         <option value="{{ $value }}">{{ $label }}</option>
                     @endforeach
-                </x-myds.select>
+                </select>
             </div>
 
             {{-- Clear Read Notifications --}}
             <div class="flex items-end">
-                <x-myds.button
+                <button
                     wire:click="clearAllRead"
                     wire:confirm="Adakah anda pasti ingin menghapus semua notifikasi yang telah dibaca?"
-                    variant="secondary"
-                    size="medium"
-                    class="w-full"
+                    class="w-full inline-flex items-center justify-center px-4 py-2 border border-divider text-sm font-inter font-medium rounded-md text-black-700 dark:text-black-300 bg-white dark:bg-dialog hover:bg-washed dark:hover:bg-black-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
                 >
-                    <x-myds.icon name="trash" size="16" class="mr-2" />
+                    <!-- Trash SVG -->
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
                     Hapus Yang Dibaca
-                </x-myds.button>
+                </button>
             </div>
         </div>
     </div>
@@ -149,8 +156,38 @@
                                         default => ['icon' => 'info', 'color' => 'secondary']
                                     };
                                 @endphp
-                                <div class="w-10 h-10 rounded-full bg-{{ $iconConfig['color'] }}-100 flex items-center justify-center">
-                                    <x-myds.icon name="{{ $iconConfig['icon'] }}" size="20" class="text-{{ $iconConfig['color'] }}-600" />
+                                <div class="w-10 h-10 rounded-full bg-{{ $iconConfig['color'] }}-100 dark:bg-{{ $iconConfig['color'] }}-900 flex items-center justify-center">
+                                    @switch($iconConfig['icon'])
+                                        @case('warning')
+                                            <!-- Warning Triangle SVG -->
+                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 14.5c-.77.833.192 2.5 1.732 2.5z"/>
+                                            </svg>
+                                            @break
+                                        @case('check-circle')
+                                            <!-- Check Circle SVG -->
+                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            @break
+                                        @case('document')
+                                            <!-- Document SVG -->
+                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                            </svg>
+                                            @break
+                                        @case('clock')
+                                            <!-- Clock SVG -->
+                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            @break
+                                        @default
+                                            <!-- Info Circle SVG -->
+                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                    @endswitch
                                 </div>
                             </div>
 
@@ -203,38 +240,45 @@
                                     <div class="flex items-center space-x-2">
                                         {{-- Action Button --}}
                                         @if($notification->action_url)
-                                            <x-myds.button
-                                                size="small"
-                                                variant="primary"
+                                            <button
                                                 onclick="window.location.href='{{ $notification->action_url }}'; @this.markNotificationAsRead({{ $notification->id }})"
+                                                class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-inter font-medium rounded text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
                                             >
-                                                <x-myds.icon name="eye" size="12" class="mr-1" />
+                                                <!-- Eye SVG -->
+                                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
                                                 Lihat
-                                            </x-myds.button>
+                                            </button>
                                         @endif
 
                                         {{-- Mark as Read/Unread --}}
                                         @if(!$notification->is_read)
-                                            <x-myds.button
-                                                size="small"
-                                                variant="success"
+                                            <button
                                                 wire:click="markNotificationAsRead({{ $notification->id }})"
+                                                class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-inter font-medium rounded text-white bg-success-600 hover:bg-success-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-success-500 transition-colors duration-200"
                                             >
-                                                <x-myds.icon name="check" size="12" class="mr-1" />
+                                                <!-- Check SVG -->
+                                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
                                                 Tandai Dibaca
-                                            </x-myds.button>
+                                            </button>
                                         @endif
 
                                         {{-- Delete --}}
-                                        <x-myds.button
-                                            size="small"
-                                            variant="danger"
+                                        <button
                                             wire:click="deleteNotification({{ $notification->id }})"
                                             wire:confirm="Adakah anda pasti ingin menghapus notifikasi ini?"
+                                            class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-inter font-medium rounded text-white bg-danger-600 hover:bg-danger-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danger-500 transition-colors duration-200"
                                         >
-                                            <x-myds.icon name="trash" size="12" class="mr-1" />
+                                            <!-- Trash SVG -->
+                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                            </svg>
                                             Hapus
-                                        </x-myds.button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -251,9 +295,12 @@
             @endif
         @else
             <div class="px-6 py-12 text-center">
-                <x-myds.icon name="bell" size="48" class="mx-auto text-black-300 mb-4" />
-                <h3 class="text-lg font-medium text-black-900 font-poppins mb-2">Tiada Notifikasi</h3>
-                <p class="text-black-500 font-inter">Anda tidak mempunyai notifikasi mengikut penapis yang dipilih.</p>
+                <!-- Bell SVG -->
+                <svg class="mx-auto h-12 w-12 text-black-300 dark:text-black-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-3-3V9A6 6 0 1 0 6 9v5l-3 3h5a3 3 0 1 0 6 0Z"/>
+                </svg>
+                <h3 class="text-lg font-medium text-black-900 dark:text-white font-poppins mb-2">Tiada Notifikasi</h3>
+                <p class="text-black-500 dark:text-black-400 font-inter">Anda tidak mempunyai notifikasi mengikut penapis yang dipilih.</p>
             </div>
         @endif
     </div>
@@ -266,15 +313,18 @@
 
                 <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                     <div>
-                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-primary-100">
-                            <x-myds.icon name="check-circle" size="24" class="text-primary-600" />
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-primary-100 dark:bg-primary-900">
+                            <!-- Check Circle SVG -->
+                            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
                         </div>
                         <div class="mt-3 text-center sm:mt-5">
-                            <h3 class="text-lg leading-6 font-medium text-black-900 font-poppins">
+                            <h3 class="text-lg leading-6 font-medium text-black-900 dark:text-white font-poppins">
                                 Tandai Semua Sebagai Dibaca
                             </h3>
                             <div class="mt-2">
-                                <p class="text-sm text-black-500 font-inter">
+                                <p class="text-sm text-black-500 dark:text-black-400 font-inter">
                                     Adakah anda pasti ingin menandai semua {{ $unreadCount }} notifikasi sebagai telah dibaca?
                                 </p>
                             </div>
@@ -282,22 +332,20 @@
                     </div>
 
                     <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-                        <x-myds.button
+                        <button
                             type="button"
-                            variant="primary"
-                            class="w-full sm:col-start-2"
                             wire:click="markAllAsRead"
+                            class="w-full inline-flex justify-center px-4 py-2 border border-transparent text-sm font-inter font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:col-start-2 transition-colors duration-200"
                         >
                             Ya, Tandai Semua
-                        </x-myds.button>
-                        <x-myds.button
+                        </button>
+                        <button
                             type="button"
-                            variant="secondary"
-                            class="mt-3 w-full sm:mt-0 sm:col-start-1"
                             wire:click="closeMarkAllModal"
+                            class="mt-3 w-full inline-flex justify-center px-4 py-2 border border-divider text-sm font-inter font-medium rounded-md text-black-700 dark:text-black-300 bg-white dark:bg-dialog hover:bg-washed dark:hover:bg-black-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:col-start-1 transition-colors duration-200"
                         >
                             Batal
-                        </x-myds.button>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -1,32 +1,39 @@
+{{--
+  MYDS Badge for Status/Category (ICTServe)
+  - Props:
+      variant: default|primary|success|danger|warning
+      size: sm|md|lg
+      dot: bool
+      pill: bool
+--}}
 @props([
-    'variant' => 'default',
-    'size' => 'default',
-    'pill' => false,
+  'variant' => 'default',
+  'size' => 'md',
+  'dot' => false,
+  'pill' => true,
 ])
 
 @php
-    $variantClasses = match($variant) {
-        'primary' => 'bg-primary-100 text-txt-primary border-otl-primary-200',
-        'secondary' => 'bg-gray-100 text-txt-black-700 border-otl-gray-200',
-        'success' => 'bg-success-100 text-txt-success border-otl-success-200',
-        'warning' => 'bg-warning-100 text-txt-warning border-otl-warning-200',
-        'danger' => 'bg-danger-100 text-txt-danger border-otl-danger-200',
-        'default' => 'bg-gray-100 text-txt-black-700 border-otl-gray-200',
-        default => 'bg-gray-100 text-txt-black-700 border-otl-gray-200'
-    };
-
-    $sizeClasses = match($size) {
-        'sm' => 'px-2 py-1 text-xs',
-        'default' => 'px-2.5 py-1.5 text-sm',
-        'lg' => 'px-3 py-2 text-base',
-        default => 'px-2.5 py-1.5 text-sm'
-    };
-
-    $shapeClasses = $pill ? 'rounded-full' : 'rounded-[var(--radius-m)]';
-
-    $classes = 'inline-flex items-center font-medium border ' . $variantClasses . ' ' . $sizeClasses . ' ' . $shapeClasses;
+  $vClass = match($variant) {
+    'primary' => 'bg-primary-100 txt-primary',
+    'success' => 'bg-success-100 txt-success',
+    'danger'  => 'bg-danger-100 txt-danger',
+    'warning' => 'bg-warning-100 txt-warning',
+    default   => 'bg-black-100 txt-black-700',
+  };
+  $sClass = match($size) {
+    'sm' => 'text-xs py-1 px-2',
+    'lg' => 'text-base py-2 px-4',
+    default => 'text-sm py-1.5 px-3',
+  };
+  $radius = $pill ? 'radius-full' : 'radius-s';
 @endphp
 
-<span {{ $attributes->merge(['class' => $classes]) }}>
-    {{ $slot }}
+<x-myds.tokens />
+
+<span @class(["inline-flex items-center gap-1 font-medium", $vClass, $sClass, $radius])>
+  @if($dot)
+    <span class="inline-block radius-full" style="width:8px;height:8px;background:currentColor;"></span>
+  @endif
+  {{ $slot }}
 </span>

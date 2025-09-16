@@ -14,16 +14,16 @@
 @php
     $textareaId = $id ?? $name ?? 'textarea-' . str()->random(6);
     $hasError = $error || ($name && $errors->has($name));
-    
+
     // MYDS textarea styling
     $textareaClasses = 'block w-full rounded-lg border font-inter text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 resize-y';
-    
+
     if ($hasError) {
         $textareaClasses .= ' border-danger-300 bg-danger-50 text-danger-900 placeholder-danger-400 focus:border-danger-500 focus:ring-danger-300';
     } else {
         $textareaClasses .= ' border-gray-300 bg-white text-black-900 placeholder-gray-400 hover:border-gray-400 focus:border-primary-500 focus:ring-primary-300';
     }
-    
+
     if ($disabled) {
         $textareaClasses .= ' bg-gray-100 text-gray-500 cursor-not-allowed';
     } else {
@@ -46,8 +46,8 @@
         @if($required) required aria-required="true" @endif
         @if($hasError) aria-invalid="true" aria-describedby="{{ $textareaId }}-error" @endif
         @if($helpText) aria-describedby="{{ $textareaId }}-help" @endif
-        @if($maxlength) 
-            maxlength="{{ $maxlength }}" 
+        @if($maxlength)
+            maxlength="{{ $maxlength }}"
             x-on:input="count = $event.target.value.length"
             aria-describedby="{{ $textareaId }}-counter"
         @endif

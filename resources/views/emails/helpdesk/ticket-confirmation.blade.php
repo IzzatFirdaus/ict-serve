@@ -9,7 +9,10 @@ Thank you for reporting your ICT issue. We have received your support ticket and
 **Ticket Number:** {{ $ticket->ticket_number }}
 **Submitted on:** {{ $ticket->created_at->format('F j, Y \a\t g:i A') }}
 **Status:** {{ $ticket->status->name }}
-**Priority:** {{ ucfirst($ticket->priority) }}
+@php
+	$priority = $priorityString;
+@endphp
+**Priority:** {{ ucfirst($priority) }}
 
 ### Reporter Information
 - **Name:** {{ $ticket->user->name }}
@@ -30,13 +33,13 @@ Thank you for reporting your ICT issue. We have received your support ticket and
 {{ $ticket->description }}
 
 ## Expected Response Time
-Based on your ticket priority ({{ ucfirst($ticket->priority) }}), our expected response times are:
+Based on your ticket priority ({{ ucfirst($priority) }}), our expected response times are:
 
-@if($ticket->priority === 'urgent')
+@if($priority === 'urgent')
 - **Urgent:** Response within 2-4 hours during business hours
-@elseif($ticket->priority === 'high')
+@elseif($priority === 'high')
 - **High:** Response within 8-12 hours during business hours
-@elseif($ticket->priority === 'medium')
+@elseif($priority === 'medium')
 - **Medium:** Response within 1-2 business days
 @else
 - **Low:** Response within 3-5 business days

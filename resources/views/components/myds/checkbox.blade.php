@@ -1,3 +1,5 @@
+
+{{-- Komponen Checkbox MYDS (BM, Aksesibiliti, Token, Ralat) --}}
 @props([
     'label' => '',
     'name' => '',
@@ -14,22 +16,17 @@
 @php
     $checkboxId = $id ?? $name . '_' . str()->slug($value);
     $hasError = $error || ($name && $errors->has($name));
-
     $sizeClasses = match($size) {
         'sm' => 'h-4 w-4',
         'lg' => 'h-6 w-6',
         default => 'h-5 w-5'
     };
-
-    // MYDS checkbox styling
     $baseClasses = 'rounded border-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-300';
-
     $stateClasses = match(true) {
         $hasError => 'border-danger-300 text-danger-600 bg-danger-50',
         $disabled => 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed',
         default => 'border-gray-300 text-primary-600 bg-white hover:border-gray-400 checked:bg-primary-600 checked:border-primary-600'
     };
-
     $labelSizeClasses = match($size) {
         'sm' => 'text-sm',
         'lg' => 'text-lg',

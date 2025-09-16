@@ -52,10 +52,10 @@
                         Senarai Peralatan & Aksesori
                 @endswitch
             </h3>
-            
+
             @if($equipment)
                 <p class="text-sm text-txt-black-600 mt-1">
-                    {{ $equipment['name'] ?? 'Peralatan' }} 
+                    {{ $equipment['name'] ?? 'Peralatan' }}
                     @if(isset($equipment['serial_number']))
                         (S/N: {{ $equipment['serial_number'] }})
                     @endif
@@ -80,14 +80,15 @@
                 $itemId = "checklist_{$key}";
             @endphp
 
-            <div class="flex items-start space-x-3 p-4 rounded-lg border {{ $isChecked ? 'border-success-200 bg-success-50' : 'border-otl-gray-200 bg-gray-50' }} transition-colors">
+            <div class="flex items-start space-x-3 p-4 rounded-lg border {{ $isChecked ? 'border-otl-success-200 bg-success-50' : 'border-otl-gray-200 bg-gray-50' }} transition-colors">
                 {{-- Checkbox --}}
                 <div class="flex items-center h-6">
                     @if($readonly)
-                        <div class="h-5 w-5 rounded flex items-center justify-center {{ $isChecked ? 'bg-success-500' : 'bg-gray-300' }}">
+                        <div class="h-5 w-5 rounded flex items-center justify-center {{ $isChecked ? 'bg-success-500' : 'bg-gray-300' }}" aria-hidden="true">
                             @if($isChecked)
-                                <svg class="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                {{-- MYDS 20x20 icon --}}
+                                <svg class="h-3.5 w-3.5 text-white" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l3 3 7-7" />
                                 </svg>
                             @endif
                         </div>
@@ -98,10 +99,11 @@
                             name="checklist[{{ $key }}][checked]"
                             value="1"
                             {{ $isChecked ? 'checked' : '' }}
-                            class="h-5 w-5 text-primary-600 border-gray-300 rounded focus:ring-fr-primary focus:border-primary-300"
+                            class="h-5 w-5 text-txt-primary border-otl-gray-300 rounded focus-visible:ring-2 focus-visible:ring-fr-primary focus-visible:outline-none"
                             @if($mode !== 'view')
                                 wire:model.live="checklist.{{ $key }}.checked"
                             @endif
+                            aria-describedby="{{ $itemId }}-desc"
                         >
                     @endif
                 </div>
@@ -111,6 +113,7 @@
                     <label for="{{ $itemId }}" class="block text-sm font-medium text-txt-black-900 cursor-pointer">
                         {{ $label }}
                     </label>
+                    <span id="{{ $itemId }}-desc" class="sr-only">Tandakan jika item diterima</span>
 
                     {{-- Condition Selection --}}
                     @if($showCondition && ($isChecked || $readonly))
@@ -120,8 +123,8 @@
                             </label>
                             @if($readonly)
                                 @if($condition)
-                                    <x-myds.badge 
-                                        :variant="$conditionColors[$condition] ?? 'gray'" 
+                                    <x-myds.badge
+                                        :variant="$conditionColors[$condition] ?? 'gray'"
                                         size="sm"
                                     >
                                         {{ $conditionOptions[$condition] ?? 'Tidak Dinyatakan' }}
@@ -132,15 +135,16 @@
                             @else
                                 <select
                                     name="checklist[{{ $key }}][condition]"
-                                    class="mt-1 block w-full sm:w-auto text-sm border-gray-300 rounded-md focus:ring-fr-primary focus:border-primary-300"
+                                    class="mt-1 block w-full sm:w-auto text-sm border-otl-gray-300 rounded-md focus-visible:ring-2 focus-visible:ring-fr-primary focus-visible:outline-none"
                                     @if($mode !== 'view')
                                         wire:model.live="checklist.{{ $key }}.condition"
                                     @endif
+                                    aria-label="Keadaan {{ $label }}"
                                 >
                                     <option value="">Pilih keadaan</option>
-                                    @foreach($conditionOptions as $value => $label)
+                                    @foreach($conditionOptions as $value => $optLabel)
                                         <option value="{{ $value }}" {{ $condition === $value ? 'selected' : '' }}>
-                                            {{ $label }}
+                                            {{ $optLabel }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -165,7 +169,7 @@
                                     name="checklist[{{ $key }}][notes]"
                                     placeholder="Catatan tambahan (jika ada)"
                                     rows="2"
-                                    class="mt-1 block w-full text-sm border-gray-300 rounded-md focus:ring-fr-primary focus:border-primary-300"
+                                    class="mt-1 block w-full text-sm border-otl-gray-300 rounded-md focus-visible:ring-2 focus-visible:ring-fr-primary focus-visible:outline-none"
                                     @if($mode !== 'view')
                                         wire:model.defer="checklist.{{ $key }}.notes"
                                     @endif
@@ -178,15 +182,15 @@
                 {{-- Status Icon --}}
                 <div class="flex-shrink-0">
                     @if($isChecked)
-                        <div class="h-6 w-6 rounded-full bg-success-100 flex items-center justify-center">
-                            <svg class="h-4 w-4 text-txt-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        <div class="h-6 w-6 rounded-full bg-success-100 flex items-center justify-center" aria-hidden="true">
+                            <svg class="h-4 w-4 text-txt-success" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l3 3 7-7" />
                             </svg>
                         </div>
                     @else
-                        <div class="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center">
-                            <svg class="h-4 w-4 text-txt-black-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        <div class="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center" aria-hidden="true">
+                            <svg class="h-4 w-4 text-txt-black-400" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 10h12" />
                             </svg>
                         </div>
                     @endif
@@ -203,19 +207,19 @@
             $completionPercentage = $totalItems > 0 ? round(($checkedItems / $totalItems) * 100) : 0;
         @endphp
 
-        <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+        <div class="mt-6 p-4 bg-gray-50 rounded-lg" role="status" aria-live="polite">
             <div class="flex items-center justify-between mb-2">
                 <span class="text-sm font-medium text-txt-black-700">Status Kelengkapan</span>
                 <span class="text-sm font-bold text-txt-black-900">{{ $checkedItems }}/{{ $totalItems }}</span>
             </div>
-            
-            <div class="w-full bg-gray-200 rounded-full h-2">
-                <div 
+
+            <div class="w-full bg-gray-200 rounded-full h-2" aria-hidden="true">
+                <div
                     class="h-2 rounded-full transition-all duration-300 {{ $completionPercentage === 100 ? 'bg-success-500' : 'bg-primary-500' }}"
                     style="width: {{ $completionPercentage }}%"
                 ></div>
             </div>
-            
+
             <p class="text-xs text-txt-black-500 mt-1">
                 {{ $completionPercentage }}% lengkap
             </p>
@@ -225,18 +229,18 @@
     {{-- Actions --}}
     @if(!$readonly && ($mode === 'issue' || $mode === 'return'))
         <div class="mt-6 pt-6 border-t border-otl-divider">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-4">
                 <div class="text-sm text-txt-black-600">
                     <span class="font-medium">Petugas:</span> {{ Auth::user()->name }}
                 </div>
-                
+
                 <div class="flex space-x-3">
                     <x-myds.button variant="secondary" wire:click="$parent.cancel">
                         Batal
                     </x-myds.button>
-                    
-                    <x-myds.button 
-                        variant="primary" 
+
+                    <x-myds.button
+                        variant="primary"
                         wire:click="$parent.{{ $mode === 'issue' ? 'confirmIssuance' : 'confirmReturn' }}"
                         wire:loading.attr="disabled"
                     >

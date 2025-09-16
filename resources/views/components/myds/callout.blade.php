@@ -7,7 +7,7 @@
 @php
     // MYDS callout styling with proper semantic tokens
     $baseClasses = 'flex gap-3 rounded-lg border-l-4 p-4 font-inter';
-    
+
     $variantClasses = match($variant) {
         'success' => 'bg-success-50 border-l-success-500 text-success-900',
         'warning' => 'bg-warning-50 border-l-warning-500 text-warning-900',
@@ -15,7 +15,7 @@
         'info' => 'bg-primary-50 border-l-primary-500 text-primary-900',
         default => 'bg-primary-50 border-l-primary-500 text-primary-900',
     };
-    
+
     $iconColor = match($variant) {
         'success' => 'text-success-600',
         'warning' => 'text-warning-600',
@@ -65,12 +65,53 @@
     <!-- Dismiss button -->
     @if($dismissible)
         <div class="flex-shrink-0">
-            <button type="button" 
+            <button type="button"
                 class="inline-flex rounded-md p-1.5 transition-colors duration-200 hover:bg-black-900/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                 onclick="this.closest('[role=alert]').remove()"
                 aria-label="Tutup">
                 <svg class="h-5 w-5 {{ $iconColor }}" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+            {{-- Komponen Callout MYDS (BM, Aksesibiliti, Token, Ikon) --}}
+            @props([
+                'variant' => 'info', // info, success, warning, danger
+                'icon' => null,
+                'dismissible' => false,
+                'ariaLabel' => null,
+            ])
+
+            @php
+                $variants = [
+                    'info' => 'bg-primary-50 text-primary-600 border-primary-200',
+                    'success' => 'bg-success-50 text-success-600 border-success-200',
+                    'warning' => 'bg-warning-50 text-warning-700 border-warning-200',
+                    'danger' => 'bg-danger-50 text-danger-600 border-danger-200',
+                ];
+                $icons = [
+                    'info' => '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M10 14v-4M10 7h.01"/></svg>',
+                    'success' => '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M7 10l2 2 4-4"/></svg>',
+                    'warning' => '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M10 7v3m0 4h.01"/></svg>',
+                    'danger' => '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M10 7v3m0 4h.01"/></svg>',
+                ];
+            @endphp
+
+            <div
+                class="relative flex items-start gap-3 p-4 border border-divider rounded-md {{ $variants[$variant] }}"
+                @if($ariaLabel) aria-label="{{ $ariaLabel }}" @endif
+                role="alert"
+            >
+                <span class="flex-shrink-0 mt-0.5" aria-hidden="true">
+                    {!! $icon ?? $icons[$variant] !!}
+                </span>
+                <div class="flex-1">
+                    {{ $slot }}
+                </div>
+                @if($dismissible)
+                    <button type="button" class="absolute top-2 right-2 text-black-400 hover:text-black-900 focus:outline-none focus:ring focus:ring-primary-300 rounded transition" aria-label="Tutup">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" aria-hidden="true">
+                            <path d="M6 6l8 8M6 14L14 6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                @endif
+            </div>
                 </svg>
             </button>
         </div>

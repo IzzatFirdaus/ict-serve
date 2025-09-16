@@ -1,98 +1,145 @@
-@props([
-    'items' => [],
-    'variant' => 'horizontal', // horizontal, vertical, mobile
-    'activeItem' => null,
-    'size' => 'default',
-])
+{{--
+  MYDS Navigation Component for ICTServe (iServe)
+  - Compliant with MYDS (Design, Develop, Icons, Colour) and MyGovEA (citizen-centric, clear menu, minimalis, seragam)
+  - Responsive, accessible, with semantic tokens, ARIA, and visible focus
+  - Usage: Place at the top or side of page for primary navigation
+  - Props:
+      navLinks: Array of ['href' => string, 'label' => string, 'active' => bool] (optional)
+      class: string|null (extra classes)
+  - Supports keyboard navigation, screen readers, and clear visual hierarchy
+--}}
 
+{{--
 @php
-    $navClasses = match($variant) {
-        'horizontal' => 'flex flex-row space-x-1',
-        'vertical' => 'flex flex-col space-y-1',
-        'mobile' => 'flex flex-col space-y-1 md:flex-row md:space-y-0 md:space-x-1',
-        default => 'flex flex-row space-x-1'
-    };
-
-    $itemSizeClasses = match($size) {
-        'sm' => 'px-3 py-2 text-sm',
-        'default' => 'px-4 py-3 text-base',
-        'lg' => 'px-6 py-4 text-lg',
-        default => 'px-4 py-3 text-base'
-    };
+  $navLinks = $navLinks ?? [
+    ['href' => '/', 'label' => 'Utama', 'active' => request()->is('/')],
+    ['href' => '/informasi', 'label' => 'Informasi', 'active' => request()->is('informasi*')],
+    ['href' => '/muat-turun', 'label' => 'Muat Turun', 'active' => request()->is('muat-turun*')],
+    ['href' => '/direktori', 'label' => 'Direktori', 'active' => request()->is('direktori*')],
+    ['href' => '/webmail', 'label' => 'Webmail MyGovUC 3.0', 'active' => request()->is('webmail*')],
+    ['href' => '/my-integriti', 'label' => 'MY Integriti', 'active' => request()->is('my-integriti*')],
+  ];
 @endphp
+--}}
 
-<nav {{ $attributes->merge(['class' => $navClasses]) }} role="navigation">
-    @foreach($items as $item)
-        @php
-            $isActive = $activeItem === $item['key'] ||
-                       (isset($item['route']) && request()->routeIs($item['route'])) ||
-                       (isset($item['url']) && request()->url() === $item['url']);
+<x-myds.tokens />
 
-            $itemClasses = $isActive
-                ? 'bg-primary-100 text-txt-primary border-otl-primary-200'
-                : 'text-txt-black-700 hover:text-txt-black-900 hover:bg-gray-50 border-transparent';
-        @endphp
-
-        @if(isset($item['type']) && $item['type'] === 'dropdown')
-            {{-- Dropdown Navigation Item --}}
-            <div class="relative" x-data="{ open: false }">
-                <button
-                    @click="open = !open"
-                    @click.away="open = false"
-                    class="{{ $itemSizeClasses }} {{ $itemClasses }} font-medium rounded-md border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:ring-offset-2 flex items-center"
-                    :aria-expanded="open"
-                    aria-haspopup="true"
-                >
-                    @if(isset($item['icon']))
-                        <span class="mr-2">{{ $item['icon'] }}</span>
-                    @endif
-                    {{ $item['label'] }}
-                    <svg class="ml-2 h-4 w-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-
-                <div
-                    x-show="open"
-                    x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="opacity-0 transform scale-95"
-                    x-transition:enter-end="opacity-100 transform scale-100"
-                    x-transition:leave="transition ease-in duration-150"
-                    x-transition:leave-start="opacity-100 transform scale-100"
-                    x-transition:leave-end="opacity-0 transform scale-95"
-                    class="absolute top-full left-0 mt-1 min-w-48 bg-bg-white border border-otl-divider rounded-md shadow-lg z-50"
-                    x-cloak
-                >
-                    @foreach($item['children'] as $child)
-                        <a
-                            href="{{ $child['url'] ?? $child['route'] ?? '#' }}"
-                            class="block px-4 py-3 text-sm text-txt-black-700 hover:text-txt-black-900 hover:bg-gray-50 transition-colors duration-200 first:rounded-t-md last:rounded-b-md"
-                        >
-                            @if(isset($child['icon']))
-                                <span class="mr-2">{{ $child['icon'] }}</span>
-                            @endif
-                            {{ $child['label'] }}
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-        @else
-            {{-- Regular Navigation Item --}}
+<nav
+  class="bg-white border-b border-otl-divider shadow-none z-30 relative {{ $class ?? '' }}"
+  aria-label="Navigasi utama ICTServe"
+>
+  <div class="myds-container py-3">
+    <div class="flex items-center gap-x-4">
+      {{-- Logo/Brand --}}
+      <a href="/" class="focus-ring-primary flex items-center gap-2 min-w-0" aria-label="Laman Utama MOTAC">
+        <img src="/images/motac-logo.png" alt="Logo MOTAC" class="h-10 w-auto" loading="lazy" />
+        <span class="font-poppins text-lg txt-primary font-semibold hidden sm:inline-block">ICTServe (iServe)</span>
+      </a>
+      {{-- Desktop Navigation --}}
+      <ul class="hidden md:flex gap-0.5 items-center flex-1 justify-center" role="menubar">
+        @foreach($navLinks as $link)
+          <li role="none">
             <a
-                href="{{ $item['url'] ?? $item['route'] ?? '#' }}"
-                class="{{ $itemSizeClasses }} {{ $itemClasses }} font-medium rounded-md border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-fr-primary focus:ring-offset-2 inline-flex items-center"
-                @if($isActive) aria-current="page" @endif
-            >
-                @if(isset($item['icon']))
-                    <span class="mr-2">{{ $item['icon'] }}</span>
-                @endif
-                {{ $item['label'] }}
-                @if(isset($item['badge']))
-                    <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-txt-black-700">
-                        {{ $item['badge'] }}
-                    </span>
-                @endif
-            </a>
-        @endif
-    @endforeach
+              href="{{ $link['href'] }}"
+              class="px-3 py-2 text-sm font-medium transition-colors rounded-s
+                {{ $link['active'] ? 'txt-primary border-b-2 border-otl-primary-200 font-semibold bg-washed' : 'txt-black-700 hover:txt-primary hover:bg-washed' }}
+                focus:outline-none focus:ring-2 focus:ring-fr-primary"
+              aria-current="{{ $link['active'] ? 'page' : false }}"
+              role="menuitem"
+              tabindex="0"
+            >{{ $link['label'] }}</a>
+          </li>
+        @endforeach
+
+        {{-- ServiceDesk ICT: Dropdown --}}
+        <li class="relative group" role="none">
+          <button type="button"
+            class="txt-primary font-semibold px-3 py-2 text-sm transition-colors border-b-2 border-otl-primary-200 flex items-center rounded-s focus:outline-none focus:ring-2 focus:ring-fr-primary"
+            aria-haspopup="true" aria-expanded="false" aria-controls="ictservicedesk-menu"
+            role="menuitem"
+          >
+            ServiceDesk ICT
+            <x-myds.icons.chevron-down class="ml-1 myds-icon" />
+          </button>
+          <div
+            id="ictservicedesk-menu"
+            class="absolute left-0 mt-2 w-64 bg-white rounded-l shadow-context-menu border border-otl-divider opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+            role="menu"
+            tabindex="-1"
+          >
+            <div class="py-2">
+              <a href="{{ route('public.loan-request') }}"
+                class="flex px-4 py-2 text-sm txt-black-700 hover:bg-gray-50 focus:bg-gray-50 focus:txt-primary items-center gap-2 transition-colors"
+                role="menuitem"
+              >
+                <x-myds.icons.document class="w-4 h-4 txt-primary" />
+                Permohonan Pinjaman Peralatan ICT
+              </a>
+              <a href="{{ route('public.damage-complaint.guest') }}"
+                class="flex px-4 py-2 text-sm txt-black-700 hover:bg-gray-50 focus:bg-gray-50 focus:txt-primary items-center gap-2 transition-colors"
+                role="menuitem"
+              >
+                <x-myds.icons.alert-triangle class="w-4 h-4 txt-danger" />
+                Aduan Kerosakan/Isu ICT
+              </a>
+              <a href="{{ route('public.my-requests') }}"
+                class="flex px-4 py-2 text-sm txt-black-700 hover:bg-gray-50 focus:bg-gray-50 focus:txt-primary items-center gap-2 transition-colors"
+                role="menuitem"
+              >
+                <x-myds.icons.table class="w-4 h-4 txt-black-500" />
+                Permohonan Saya
+              </a>
+              <div class="border-t border-otl-divider my-2"></div>
+              <a href="/admin"
+                class="flex px-4 py-2 text-sm txt-black-700 hover:bg-gray-50 focus:bg-gray-50 focus:txt-primary items-center gap-2 transition-colors"
+                role="menuitem"
+              >
+                <x-myds.icons.info class="w-4 h-4 txt-black-500" />
+                Panel Admin
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      {{-- Search & Mobile Menu Controls --}}
+      <div class="flex items-center gap-x-2 ml-auto">
+        {{-- Search Button --}}
+        <button type="button"
+          class="txt-black-700 hover:txt-primary p-2 rounded-m hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-fr-primary"
+          aria-label="Cari"
+        >
+          <x-myds.icons.search class="w-5 h-5 myds-icon" />
+        </button>
+        {{-- Mobile Menu Button --}}
+        <button type="button"
+          class="md:hidden txt-black-700 hover:txt-primary p-2 rounded-m hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-fr-primary"
+          aria-label="Buka menu utama"
+          @click="openMobileNav = !openMobileNav"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {{-- Mobile Navigation Menu --}}
+  <div class="md:hidden border-t border-otl-divider bg-gray-50" x-show="openMobileNav" x-cloak>
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      @foreach($navLinks as $link)
+        <a href="{{ $link['href'] }}" class="block px-3 py-2 text-sm font-medium txt-black-700 hover:txt-primary hover:bg-white rounded-m transition-colors">
+          {{ $link['label'] }}
+        </a>
+      @endforeach
+      <div class="bg-primary-50 rounded-m p-2 mt-2">
+        <div class="text-sm font-semibold txt-primary px-1 py-1">ServiceDesk ICT</div>
+        <a href="{{ route('public.loan-request') }}" class="block px-3 py-2 text-sm txt-black-700 hover:txt-primary hover:bg-white rounded-s transition-colors">Permohonan Pinjaman Peralatan ICT</a>
+        <a href="{{ route('public.damage-complaint.guest') }}" class="block px-3 py-2 text-sm txt-black-700 hover:txt-primary hover:bg-white rounded-s transition-colors">Aduan Kerosakan/Isu ICT</a>
+        <a href="{{ route('public.my-requests') }}" class="block px-3 py-2 text-sm txt-black-700 hover:txt-primary hover:bg-white rounded-s transition-colors">Permohonan Saya</a>
+        <a href="/admin" class="block px-3 py-2 text-sm txt-black-700 hover:txt-primary hover:bg-white rounded-s transition-colors">Panel Admin</a>
+      </div>
+    </div>
+  </div>
 </nav>

@@ -1,213 +1,236 @@
-/* MYDS Enhanced Button Components for ICTServe */
+/* MYDS Button, Filter, Input, Badge Primitives for ICTServe (iServe) */
 
+/* Filter Button */
 .myds-filter-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.375rem 0.75rem;
-    border: 1px solid var(--color-gray-300);
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: var(--color-gray-700);
-    background-color: white;
-    transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--otl-gray-300);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  color: var(--txt-black-700);
+  background-color: var(--bg-white-0);
+  transition:
+    background 0.2s,
+    border 0.2s,
+    color 0.2s;
 }
 
-.myds-filter-btn:hover {
-    background-color: var(--color-gray-50);
-}
-
-.myds-filter-btn:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--fr-primary);
+.myds-filter-btn:hover,
+.myds-filter-btn:focus-visible {
+  background-color: var(--bg-white-50);
+  outline: 2px solid var(--fr-primary-600);
+  outline-offset: 2px;
 }
 
 .myds-filter-btn-active {
-    border-color: var(--color-primary-300);
-    background-color: var(--color-primary-50);
-    color: var(--color-primary-700);
+  border-color: var(--otl-primary-300);
+  background-color: var(--primary-50);
+  color: var(--primary-700);
 }
 
 .myds-filter-btn-active:hover {
-    background-color: var(--color-primary-100);
+  background-color: var(--primary-100);
 }
 
-/* Enhanced Button Styles */
+/* Button Variants */
 .myds-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    color: white;
-    background-color: var(--color-primary-600);
-    transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  color: #fff;
+  background-color: var(--primary-600);
+  transition: background 0.2s;
 }
 
-.myds-btn-primary:hover {
-    background-color: var(--color-primary-700);
-}
-
-.myds-btn-primary:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--fr-primary);
-}
-
-.myds-btn-outline {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--color-gray-300);
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: var(--color-gray-700);
-    background-color: white;
-    transition: all 0.2s;
-}
-
-.myds-btn-outline:hover {
-    background-color: var(--color-gray-50);
-}
-
-.myds-btn-outline:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--fr-primary);
-}
-
-.myds-btn-outline-white {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid white;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: white;
-    background-color: transparent;
-    transition: all 0.2s;
-}
-
-.myds-btn-outline-white:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.myds-btn-outline-white:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+.myds-btn-primary:hover,
+.myds-btn-primary:focus-visible {
+  background-color: var(--primary-700);
+  outline: 2px solid var(--fr-primary-600);
+  outline-offset: 2px;
 }
 
 .myds-btn-danger {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    color: white;
-    background-color: var(--color-danger-600);
-    transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  color: #fff;
+  background-color: var(--danger-600);
+  transition: background 0.2s;
 }
 
-.myds-btn-danger:hover {
-    background-color: var(--color-danger-700);
+.myds-btn-danger:hover,
+.myds-btn-danger:focus-visible {
+  background-color: var(--danger-700);
+  outline: 2px solid var(--fr-danger-600);
+  outline-offset: 2px;
 }
 
-.myds-btn-danger:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--fr-danger);
+.myds-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--otl-gray-300);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  color: var(--txt-black-700);
+  background-color: var(--bg-white-0);
+  transition:
+    background 0.2s,
+    border 0.2s;
 }
 
-/* Size Variations */
-.myds-btn-sm {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.75rem;
-}
-
-.myds-btn-lg {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+.myds-btn-outline:hover,
+.myds-btn-outline:focus-visible {
+  background-color: var(--bg-white-50);
+  border-color: var(--otl-primary-300);
+  outline: 2px solid var(--fr-primary-600);
+  outline-offset: 2px;
 }
 
 /* Input Styles */
 .myds-input {
-    display: block;
-    width: 100%;
-    border-radius: 0.375rem;
-    border: 1px solid var(--color-gray-300);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    transition: all 0.2s;
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--otl-gray-300);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: var(--txt-black-900);
+  background-color: var(--bg-white-0);
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
 }
 
 .myds-input:focus {
-    border-color: var(--color-primary-500);
-    box-shadow: 0 0 0 2px var(--fr-primary);
+  border-color: var(--primary-500);
+  outline: 2px solid var(--fr-primary-600);
+  outline-offset: 2px;
 }
 
-.myds-input-sm {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
+.myds-select {
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--otl-gray-300);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: var(--txt-black-900);
+  background-color: var(--bg-white-0);
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
 }
 
-/* Status Badge Enhancements */
+.myds-select:focus {
+  border-color: var(--primary-500);
+  outline: 2px solid var(--fr-primary-600);
+  outline-offset: 2px;
+}
+
+.myds-textarea {
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--otl-gray-300);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: var(--txt-black-900);
+  background-color: var(--bg-white-0);
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
+  resize: vertical;
+}
+
+.myds-textarea:focus {
+  border-color: var(--primary-500);
+  outline: 2px solid var(--fr-primary-600);
+  outline-offset: 2px;
+}
+
+/* Badge Enhancements */
 .myds-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.125rem 0.625rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
+/* Status badge colours */
 .myds-badge-pending {
-    background-color: var(--color-warning-100);
-    color: var(--color-warning-800);
+  background-color: var(--warning-100);
+  color: var(--warning-800);
 }
 
 .myds-badge-approved {
-    background-color: var(--color-success-100);
-    color: var(--color-success-800);
+  background-color: var(--success-100);
+  color: var(--success-800);
 }
 
 .myds-badge-rejected {
-    background-color: var(--color-danger-100);
-    color: var(--color-danger-800);
+  background-color: var(--danger-100);
+  color: var(--danger-800);
 }
 
 .myds-badge-in-progress {
-    background-color: var(--color-primary-100);
-    color: var(--color-primary-800);
+  background-color: var(--primary-100);
+  color: var(--primary-800);
 }
 
-/* Loading States */
-.myds-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
+/* Disabled state */
+.myds-btn:disabled,
 .myds-loading {
-    position: relative;
-    overflow: hidden;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Loading shimmer */
+.myds-loading {
+  position: relative;
+  overflow: hidden;
 }
 
 .myds-loading::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    animation: shimmer 1.5s infinite;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 40%),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
+  0% {
+    transform: translateX(-100%);
+  }
+  
+  100% {
+    transform: translateX(100%);
+  }
 }
