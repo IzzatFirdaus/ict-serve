@@ -53,9 +53,9 @@ class NotificationCenter extends Component
 
     private function getNotifications()
     {
-    $userId = $this->currentUserId();
+        $userId = $this->currentUserId();
 
-    $query = Notification::where('user_id', $userId ?? 0)
+        $query = Notification::where('user_id', $userId ?? 0)
             ->with('user')
             ->notExpired()
             ->recent();
@@ -90,10 +90,10 @@ class NotificationCenter extends Component
 
     private function getNotificationStats(): array
     {
-    /** @var \App\Models\User|null $user */
-    $user = Auth::user();
+        /** @var \App\Models\User|null $user */
+        $user = Auth::user();
 
-    $userId = $user?->id;
+        $userId = $user?->id;
 
         return [
             'total' => Notification::where('user_id', $userId ?? 0)->notExpired()->count(),

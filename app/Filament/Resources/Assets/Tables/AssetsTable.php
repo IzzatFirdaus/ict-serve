@@ -53,6 +53,7 @@ class AssetsTable
                         if (strlen($state) <= 30) {
                             return null;
                         }
+
                         return $state;
                     }),
 

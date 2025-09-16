@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PublicHelpdeskController extends Controller
@@ -77,7 +76,7 @@ class PublicHelpdeskController extends Controller
 
         try {
             // Generate ticket number
-            $ticketNumber = 'TKT-' . date('Ymd') . '-' . Str::upper(Str::random(6));
+            $ticketNumber = 'TKT-'.date('Ymd').'-'.Str::upper(Str::random(6));
 
             // Get or create user
             $user = User::firstOrCreate(
@@ -103,7 +102,7 @@ class PublicHelpdeskController extends Controller
             $attachments = [];
             if ($request->hasFile('attachments')) {
                 foreach ($request->file('attachments') as $file) {
-                    $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+                    $filename = time().'_'.Str::random(10).'.'.$file->getClientOriginalExtension();
                     $path = $file->storeAs('helpdesk-attachments', $filename, 'public');
 
                     $attachments[] = [
@@ -145,7 +144,7 @@ class PublicHelpdeskController extends Controller
             DB::rollBack();
             logger()->error('Public helpdesk ticket failed', [
                 'error' => $e->getMessage(),
-                'request' => $request->all()
+                'request' => $request->all(),
             ]);
 
             return back()->withInput()
@@ -155,7 +154,7 @@ class PublicHelpdeskController extends Controller
 
     public function success()
     {
-        if (!session('ticket_number')) {
+        if (! session('ticket_number')) {
             return redirect()->route('public.helpdesk.create');
         }
 
@@ -172,7 +171,7 @@ class PublicHelpdeskController extends Controller
             ->where('ticket_number', $request->ticket_number)
             ->first();
 
-        if (!$ticket) {
+        if (! $ticket) {
             return back()->with('error', __('Ticket number not found. Please check and try again.'));
         }
 
@@ -200,7 +199,7 @@ class PublicHelpdeskController extends Controller
         $slaHours = $category?->default_sla_hours ?? 24;
 
         // Adjust SLA based on priority
-        $priorityMultiplier = match($priority) {
+        $priorityMultiplier = match ($priority) {
             'urgent' => 0.25, // 6 hours for urgent
             'high' => 0.5,    // 12 hours for high
             'medium' => 1.0,   // Standard SLA
@@ -234,7 +233,7 @@ class PublicHelpdeskController extends Controller
         } catch (\Exception $e) {
             logger()->error('Failed to send helpdesk ticket notifications', [
                 'ticket_id' => $ticket->id,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ]);
         }
     }

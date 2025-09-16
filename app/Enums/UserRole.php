@@ -12,7 +12,7 @@ enum UserRole: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::USER => 'User',
             self::SUPERVISOR => 'Supervisor',
             self::ICT_ADMIN => 'ICT Admin',
@@ -23,7 +23,7 @@ enum UserRole: string
 
     public function canAccessPanel(): bool
     {
-        return match($this) {
+        return match ($this) {
             self::SUPER_ADMIN, self::ICT_ADMIN, self::HELPDESK_STAFF => true,
             default => false,
         };
