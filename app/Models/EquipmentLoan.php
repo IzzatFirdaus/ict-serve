@@ -48,15 +48,22 @@ class EquipmentLoan extends Model
      */
     public function getStatusColorAttribute(): string
     {
-        return match ($this->status) {
-            'submitted' => 'warning',
-            'pending_approval' => 'primary',
-            'approved' => 'success',
-            'rejected' => 'danger',
-            'collected' => 'primary',
-            'returned' => 'success',
-            default => 'gray'
-        };
+        switch ($this->status) {
+            case 'submitted':
+                return 'warning';
+            case 'pending_approval':
+                return 'primary';
+            case 'approved':
+                return 'success';
+            case 'rejected':
+                return 'danger';
+            case 'collected':
+                return 'primary';
+            case 'returned':
+                return 'success';
+            default:
+                return 'gray';
+        }
     }
 
     /**
@@ -64,7 +71,8 @@ class EquipmentLoan extends Model
      */
     public function getLoanDurationAttribute(): int
     {
-        return Carbon::parse($this->loan_start_date)->diffInDays(Carbon::parse($this->loan_end_date)) + 1;
+        $days = Carbon::parse($this->loan_start_date)->diffInDays(Carbon::parse($this->loan_end_date)) + 1;
+        return (int) $days;
     }
 
     /**

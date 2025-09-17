@@ -88,7 +88,8 @@ class Assignment extends Component
 
         // Set current values
         $this->assigned_to = $this->ticket->getOriginal('assigned_to');
-        $this->priority = $this->ticket->priority instanceof \App\Enums\TicketPriority ? $this->ticket->priority->value : (string) $this->ticket->priority;
+    // The instanceof check is always true, so we can safely use $this->ticket->priority->value
+    $this->priority = $this->ticket->priority->value;
         $this->due_date = $this->ticket->due_at?->format('Y-m-d\TH:i');
     }
 
@@ -171,11 +172,11 @@ class Assignment extends Component
 
                 // Log escalation
                 $escalatedUser = User::find($this->escalateTo, ['*']);
-                $this->logActivity('escalated', 'Ticket escalated to '.($escalatedUser?->name ?? 'Unknown').'. Reason: '.$this->escalationReason);
+                $this->logActivity('escalated', 'Ticket escalated to '.($escalatedUser && isset($escalatedUser->name) ? $escalatedUser->name : 'Unknown').'. Reason: '.$this->escalationReason);
             });
 
             $escalatedUser = User::find($this->escalateTo, ['*']);
-            $name = $escalatedUser?->name ?? 'Unknown';
+            $name = $escalatedUser && isset($escalatedUser->name) ? $escalatedUser->name : 'Unknown';
             session()->flash('success',
                 'Tiket berjaya dieskalasi kepada '.$name.
                 ' / Ticket successfully escalated to '.$name

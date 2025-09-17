@@ -1,3 +1,14 @@
+{{--
+  ICTServe (iServe) Loan Status Tracker Component
+  MYDS & MyGovEA Compliance:
+    - Grid: 12-8-4 responsive, container spacing per MYDS spacing system.
+    - Colour: All backgrounds, borders, text use MYDS tokens (see MYDS-Colour-Reference.md).
+    - Typography: Inter (body), Poppins (headings, if applicable).
+    - Icons: Only MYDS icon set, 20x20, 1.5px stroke (see MYDS-Icons-Overview.md).
+    - Accessibility: Semantic headings, ARIA roles, visible focus states, status indicators use icon + colour.
+    - Minimal, feedback-oriented, actionable, citizen-centric (prinsip-reka-bentuk-mygovea.md).
+--}}
+
 @props([
     'loanRequest',
     'showProgress' => true,
@@ -6,23 +17,22 @@
     'pollInterval' => '5s'
 ])
 
-<div class="loan-status-tracker bg-bg-white rounded-lg shadow-sm border border-otl-gray-200 p-6"
+<div class="loan-status-tracker bg-bg-white rounded-lg shadow-card border border-otl-divider p-6"
      @if($polling) wire:poll.{{ $pollInterval }}="refreshStatus" @endif>
 
     <!-- Status Header -->
     <div class="flex items-center justify-between mb-6">
         <div>
-            <h3 class="text-lg font-semibold text-txt-black-900">Request Status</h3>
+            <h3 class="text-lg font-semibold text-txt-black-900 font-poppins">Request Status</h3>
             <p class="text-sm text-txt-black-500">{{ $loanRequest->request_number }}</p>
         </div>
 
         <div class="flex items-center space-x-3">
-            <!-- Current Status Badge -->
             @php
                 $statusConfig = match($loanRequest->loanStatus->code ?? 'pending') {
                     'pending_supervisor' => [
                         'bg' => 'bg-warning-100',
-                        'text' => 'text-warning-800',
+                        'text' => 'text-warning-700',
                         'icon' => 'clock',
                         'pulse' => true
                     ],
@@ -34,13 +44,13 @@
                     ],
                     'pending_ict' => [
                         'bg' => 'bg-warning-100',
-                        'text' => 'text-warning-800',
+                        'text' => 'text-warning-700',
                         'icon' => 'clock',
                         'pulse' => true
                     ],
                     'approved_ict' => [
                         'bg' => 'bg-success-100',
-                        'text' => 'text-success-800',
+                        'text' => 'text-success-700',
                         'icon' => 'check-circle',
                         'pulse' => false
                     ],
@@ -52,37 +62,37 @@
                     ],
                     'ready_pickup' => [
                         'bg' => 'bg-success-100',
-                        'text' => 'text-success-800',
+                        'text' => 'text-success-700',
                         'icon' => 'cube',
                         'pulse' => true
                     ],
                     'in_use' => [
                         'bg' => 'bg-success-100',
-                        'text' => 'text-success-800',
+                        'text' => 'text-success-700',
                         'icon' => 'check-circle',
                         'pulse' => false
                     ],
                     'overdue' => [
                         'bg' => 'bg-danger-100',
-                        'text' => 'text-danger-800',
+                        'text' => 'text-danger-700',
                         'icon' => 'exclamation-triangle',
                         'pulse' => true
                     ],
                     'returned' => [
-                        'bg' => 'bg-gray-100',
-                        'text' => 'text-gray-800',
+                        'bg' => 'bg-black-100',
+                        'text' => 'text-txt-black-700',
                         'icon' => 'check-circle',
                         'pulse' => false
                     ],
                     'rejected' => [
                         'bg' => 'bg-danger-100',
-                        'text' => 'text-danger-800',
+                        'text' => 'text-txt-danger',
                         'icon' => 'x-circle',
                         'pulse' => false
                     ],
                     default => [
-                        'bg' => 'bg-gray-100',
-                        'text' => 'text-gray-800',
+                        'bg' => 'bg-black-100',
+                        'text' => 'text-txt-black-700',
                         'icon' => 'clock',
                         'pulse' => false
                     ]
@@ -92,17 +102,17 @@
             <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $statusConfig['bg'] }} {{ $statusConfig['text'] }}">
                 @if($statusConfig['pulse'])
                     <span class="flex h-2 w-2 mr-2">
-                        <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full {{ str_replace('100', '400', $statusConfig['bg']) }} opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 {{ str_replace('100', '500', $statusConfig['bg']) }}"></span>
+                        <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full {{ str_replace('100','400',$statusConfig['bg']) }} opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 {{ str_replace('100','500',$statusConfig['bg']) }}"></span>
                     </span>
                 @else
                     @include('components.icon', ['name' => $statusConfig['icon'], 'class' => 'w-4 h-4 mr-2'])
                 @endif
-                {{ $loanRequest->loanStatus->name ?? 'Pending' }}
+                <span>{{ $loanRequest->loanStatus->name ?? 'Pending' }}</span>
             </span>
 
             @if($polling)
-                <div class="text-gray-400" title="Auto-refreshing every {{ $pollInterval }}">
+                <div class="text-txt-black-500" title="Auto-refreshing every {{ $pollInterval }}">
                     @include('components.icon', ['name' => 'refresh', 'class' => 'w-4 h-4 animate-spin'])
                 </div>
             @endif
@@ -133,37 +143,31 @@
         <div class="flex items-center space-x-4">
             @foreach($progressSteps as $index => $step)
                 <div class="flex items-center @if(!$loop->last) flex-1 @endif">
-                    <!-- Step Circle -->
                     @php
                         if ($step['completed']) {
-                            $circleClass = 'bg-success-500 border-success-500 text-white';
+                            $circleClass = 'bg-success-500 border-success-500 text-txt-white';
                             $inner = "@include('components.icon', ['name' => 'check', 'class' => 'w-4 h-4'])";
                         } elseif ($index === $currentStep) {
-                            $circleClass = 'bg-primary-500 border-otl-primary-300 text-white animate-pulse';
-                            $inner = '<span class="w-3 h-3 bg-white rounded-full animate-pulse"></span>';
+                            $circleClass = 'bg-primary-500 border-otl-primary-300 text-txt-white animate-pulse';
+                            $inner = '<span class="w-3 h-3 bg-bg-white rounded-full animate-pulse"></span>';
                         } else {
-                            $circleClass = 'bg-black-200 border-otl-gray-300 text-txt-black-500';
-                            $inner = "<span class=\"text-xs font-semibold\">".($index + 1)."</span>";
+                            $circleClass = 'bg-black-200 border-otl-divider text-txt-black-500';
+                            $inner = '<span class="text-xs font-semibold">'.($index + 1).'</span>';
                         }
                     @endphp
-
                     <div class="flex items-center justify-center w-8 h-8 rounded-full border-2 {{ $circleClass }}">
                         {!! $inner !!}
                     </div>
-
-                    <!-- Step Label -->
                     <span class="ml-2 text-sm font-medium
-                                @if($step['completed']) text-success-600
+                                @if($step['completed']) text-success-700
                                 @elseif($index === $currentStep) text-txt-primary
                                 @else text-txt-black-500 @endif">
                         {{ $step['label'] }}
                     </span>
-
-                    <!-- Connector Line -->
                     @if(!$loop->last)
                         <div class="flex-1 h-0.5 mx-4
                                     @if($index < $currentStep) bg-success-500
-                                    @else bg-gray-300 @endif"></div>
+                                    @else bg-otl-divider @endif"></div>
                     @endif
                 </div>
             @endforeach
@@ -174,16 +178,15 @@
     @if($showTimeline)
     <!-- Timeline -->
     <div class="space-y-4">
-    <h4 class="text-sm font-semibold text-txt-black-900 uppercase tracking-wide">Activity Timeline</h4>
-
+        <h4 class="text-sm font-semibold text-txt-black-900 uppercase tracking-wide font-poppins">Activity Timeline</h4>
         <div class="flow-root">
             <ul class="-mb-8">
                 <!-- Submission -->
                 <li class="relative pb-8">
-                    <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></div>
+                    <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-otl-divider"></div>
                     <div class="relative flex space-x-3">
                         <div class="h-8 w-8 rounded-full bg-success-500 flex items-center justify-center ring-8 ring-bg-white">
-                            @include('components.icon', ['name' => 'plus', 'class' => 'w-4 h-4 text-white'])
+                            @include('components.icon', ['name' => 'plus', 'class' => 'w-4 h-4 text-txt-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
@@ -198,14 +201,13 @@
                         </div>
                     </div>
                 </li>
-
                 <!-- Supervisor Approval -->
                 @if($loanRequest->supervisor_approved_at)
                 <li class="relative pb-8">
-                    <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></div>
+                    <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-otl-divider"></div>
                     <div class="relative flex space-x-3">
                         <div class="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-bg-white">
-                            @include('components.icon', ['name' => 'check', 'class' => 'w-4 h-4 text-white'])
+                            @include('components.icon', ['name' => 'check', 'class' => 'w-4 h-4 text-txt-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
@@ -223,14 +225,13 @@
                     </div>
                 </li>
                 @endif
-
                 <!-- ICT Approval -->
                 @if($loanRequest->ict_approved_at)
                 <li class="relative pb-8">
-                    <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></div>
+                    <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-otl-divider"></div>
                     <div class="relative flex space-x-3">
                         <div class="h-8 w-8 rounded-full bg-success-500 flex items-center justify-center ring-8 ring-bg-white">
-                            @include('components.icon', ['name' => 'check-circle', 'class' => 'w-4 h-4 text-white'])
+                            @include('components.icon', ['name' => 'check-circle', 'class' => 'w-4 h-4 text-txt-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
@@ -248,21 +249,20 @@
                     </div>
                 </li>
                 @endif
-
                 <!-- Equipment Issued -->
                 @if($loanRequest->issued_at)
                 <li class="relative pb-8">
-                    <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"></div>
+                    <div class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-otl-divider"></div>
                     <div class="relative flex space-x-3">
                         <div class="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-bg-white">
-                            @include('components.icon', ['name' => 'cube', 'class' => 'w-4 h-4 text-white'])
+                            @include('components.icon', ['name' => 'cube', 'class' => 'w-4 h-4 text-txt-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
-                                <p class="text-sm text-gray-900">Equipment issued by <span class="font-medium">{{ $loanRequest->issuedBy->name ?? 'N/A' }}</span></p>
-                                <p class="text-xs text-gray-500">Equipment ready for pickup</p>
+                                <p class="text-sm text-txt-black-900">Equipment issued by <span class="font-medium">{{ $loanRequest->issuedBy->name ?? 'N/A' }}</span></p>
+                                <p class="text-xs text-txt-black-500">Equipment ready for pickup</p>
                             </div>
-                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                            <div class="text-right text-sm whitespace-nowrap text-txt-black-500">
                                 {{ $loanRequest->issued_at->format('M j, Y') }}
                                 <br>
                                 <span class="text-xs">{{ $loanRequest->issued_at->format('g:i A') }}</span>
@@ -271,22 +271,21 @@
                     </div>
                 </li>
                 @endif
-
                 <!-- Equipment Returned -->
                 @if($loanRequest->returned_at)
                 <li class="relative">
                     <div class="relative flex space-x-3">
-                        <div class="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center ring-8 ring-white">
-                            @include('components.icon', ['name' => 'check-circle', 'class' => 'w-4 h-4 text-white'])
+                        <div class="h-8 w-8 rounded-full bg-black-500 flex items-center justify-center ring-8 ring-bg-white">
+                            @include('components.icon', ['name' => 'check-circle', 'class' => 'w-4 h-4 text-txt-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
-                                <p class="text-sm text-gray-900">Equipment returned</p>
+                                <p class="text-sm text-txt-black-900">Equipment returned</p>
                                 @if($loanRequest->return_condition_notes)
-                                    <p class="text-xs text-gray-500">{{ $loanRequest->return_condition_notes }}</p>
+                                    <p class="text-xs text-txt-black-500">{{ $loanRequest->return_condition_notes }}</p>
                                 @endif
                             </div>
-                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                            <div class="text-right text-sm whitespace-nowrap text-txt-black-500">
                                 {{ $loanRequest->returned_at->format('M j, Y') }}
                                 <br>
                                 <span class="text-xs">{{ $loanRequest->returned_at->format('g:i A') }}</span>
@@ -295,20 +294,19 @@
                     </div>
                 </li>
                 @endif
-
                 <!-- Rejection -->
                 @if($loanRequest->rejection_reason)
                 <li class="relative">
                     <div class="relative flex space-x-3">
-                        <div class="h-8 w-8 rounded-full bg-danger-500 flex items-center justify-center ring-8 ring-white">
-                            @include('components.icon', ['name' => 'x-circle', 'class' => 'w-4 h-4 text-white'])
+                        <div class="h-8 w-8 rounded-full bg-danger-500 flex items-center justify-center ring-8 ring-bg-white">
+                            @include('components.icon', ['name' => 'x-circle', 'class' => 'w-4 h-4 text-txt-white'])
                         </div>
                         <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
-                                <p class="text-sm text-gray-900">Request rejected</p>
-                                <p class="text-xs text-gray-500">{{ $loanRequest->rejection_reason }}</p>
+                                <p class="text-sm text-txt-black-900">Request rejected</p>
+                                <p class="text-xs text-txt-black-500">{{ $loanRequest->rejection_reason }}</p>
                             </div>
-                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                            <div class="text-right text-sm whitespace-nowrap text-txt-black-500">
                                 {{ $loanRequest->updated_at->format('M j, Y') }}
                                 <br>
                                 <span class="text-xs">{{ $loanRequest->updated_at->format('g:i A') }}</span>
@@ -322,7 +320,7 @@
     </div>
     @endif
 
-    <!-- Next Actions -->
+    <!-- Next Actions (Callout) -->
     @php
         $nextActions = [];
         $currentStatus = $loanRequest->loanStatus->code ?? 'pending';
@@ -351,16 +349,16 @@
     @endphp
 
     @if(!empty($nextActions))
-    <div class="mt-6 pt-6 border-t border-gray-200">
-    <h4 class="text-sm font-semibold text-txt-black-900 mb-3">Next Steps</h4>
+    <div class="mt-6 pt-6 border-t border-otl-divider">
+        <h4 class="text-sm font-semibold text-txt-black-900 mb-3 font-poppins">Next Steps</h4>
         <div class="space-y-2">
             @foreach($nextActions as $action)
                 @php
                     $actionClasses = match($action['type']) {
-                        'success' => 'bg-success-50 border-success-200 text-success-700',
-                        'danger' => 'bg-danger-50 border-danger-200 text-danger-700',
+                        'success' => 'bg-success-50 border-otl-success-200 text-success-700',
+                        'danger' => 'bg-danger-50 border-otl-danger-200 text-danger-700',
                         'info' => 'bg-primary-50 border-otl-primary-300 text-txt-primary',
-                        default => 'bg-gray-50 border-gray-200 text-gray-700'
+                        default => 'bg-black-100 border-otl-divider text-txt-black-700'
                     };
                 @endphp
                 <div class="p-3 rounded-md border {{ $actionClasses }}">

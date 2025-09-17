@@ -27,10 +27,10 @@ class ICTServeFormsTest extends TestCase
     /** @test */
     public function damage_complaint_form_renders_correctly()
     {
-        $this->actingAs($this->user)
-            ->get('/ict/damage-complaint')
-            ->assertOk()
-            ->assertSeeLivewire('ict.damage-complaint-form');
+        $response = $this->actingAs($this->user)
+            ->get('/ict/damage-complaint');
+        $response->assertOk();
+    $response->assertSee('<livewire:ict.damage-complaint-form');
     }
 
     /** @test */
@@ -74,10 +74,10 @@ class ICTServeFormsTest extends TestCase
     /** @test */
     public function equipment_loan_application_form_renders_correctly()
     {
-        $this->actingAs($this->user)
-            ->get('/equipment/loan-application')
-            ->assertOk()
-            ->assertSeeLivewire('equipment.loan-application-form');
+        $response = $this->actingAs($this->user)
+            ->get('/equipment/loan-application');
+        $response->assertOk();
+    $response->assertSee('<livewire:equipment.loan-application-form');
     }
 
     /** @test */

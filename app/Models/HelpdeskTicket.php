@@ -41,6 +41,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read TicketCategory $category
  * @property-read TicketStatus $status
  * @property-read User|null $assignedToUser
+ * @property-read User|null $assignedTo
  * @property-read User|null $resolvedByUser
  * @property-read EquipmentItem|null $equipmentItem
  * @property-read \Illuminate\Database\Eloquent\Collection<int, TicketComment> $comments

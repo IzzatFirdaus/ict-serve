@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone', 20)->nullable()->after('position');
             $table->enum('role', ['user', 'supervisor', 'ict_admin', 'helpdesk_staff', 'super_admin'])
                 ->default('user')->after('phone');
-            $table->foreignId('supervisor_id')->nullable()->constrained('users')->after('role');
+            $table->foreignId('supervisor_id')->nullable()->after('role')->constrained('users');
             $table->boolean('is_active')->default(true)->after('supervisor_id');
             $table->timestamp('last_login_at')->nullable()->after('is_active');
         });

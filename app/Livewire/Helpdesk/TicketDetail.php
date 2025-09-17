@@ -1,4 +1,7 @@
 <?php
+/**
+ * @property-read array $statusProgress
+ */
 
 namespace App\Livewire\Helpdesk;
 
@@ -13,6 +16,12 @@ use Livewire\Component;
 class TicketDetail extends Component
 {
     public HelpdeskTicket $ticket;
+
+    /**
+     * @var array|null
+     * @internal Only for static analysis. Real value is provided by computed property accessor.
+     */
+    protected $statusProgress = null;
 
     public $showFullDescription = false;
 

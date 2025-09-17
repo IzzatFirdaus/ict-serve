@@ -132,6 +132,7 @@ class ApprovalWorkflow extends Component
         ]);
 
         try {
+            $message = '';
             // Create approval record
             $approval = $this->loanRequest->approvals()->create([
                 'approved_by' => Auth::id(),

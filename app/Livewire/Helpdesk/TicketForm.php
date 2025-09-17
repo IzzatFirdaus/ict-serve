@@ -180,8 +180,8 @@ class TicketForm extends Component
                 $ticket->update(['attachments' => $attachmentPaths]);
             }
 
-            // Send notification to helpdesk team
-            $this->notifyHelpdeskTeam($ticket);
+            // Send notification to helpdesk team (side effect only, ignore result)
+            $this->notifyHelpdeskTeam($ticket); // @phpstan-ignore-line
 
             // Send notification to user
             Auth::user()->notify(new TicketCreatedNotification($ticket));

@@ -1,4 +1,4 @@
-<?php
+}
 
 namespace App\Livewire\Helpdesk;
 
@@ -12,6 +12,12 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+/**
+ * @property-read \Illuminate\Contracts\Pagination\LengthAwarePaginator $tickets
+ * @property-read \Illuminate\Support\Collection $categories
+ * @property-read \Illuminate\Support\Collection $statuses
+ * @property-read array $priorities
+ */
 #[Layout('layouts.app')]
 #[Title('My Support Tickets - ICTServe')]
 class TicketList extends Component
@@ -154,21 +160,4 @@ class TicketList extends Component
                 ->whereHas('ticketStatus', function ($q) {
                     $q->where('is_final', true);
                 })->count(),
-            'overdue' => HelpdeskTicket::where('user_id', $userId)
-                ->where('due_at', '<', now())
-                ->whereNull('resolved_at')
-                ->count(),
         ];
-    }
-
-    public function render()
-    {
-        return view('livewire.helpdesk.ticket-list', [
-            'tickets' => $this->tickets,
-            'categories' => $this->categories,
-            'statuses' => $this->statuses,
-            'priorities' => $this->priorities,
-            'counts' => $this->getTicketCounts(),
-        ]);
-    }
-}

@@ -1,6 +1,6 @@
 
 includes:
-  - vendor/nunomaduro/larastan/extension.neon
+  - vendor/larastan/larastan/extension.neon
 
 parameters:
   level: 5
@@ -9,11 +9,9 @@ parameters:
     - database
     - routes
     - tests
-  autoload_files:
-    - %rootDir%/../vendor/autoload.php
-  ignoreErrors:
-    # Targeted suppressions go here. After the first scan, add precise rules with justification.
-    - message: '#SomeRegexForKnownFalsePositive#'
-      path: %rootDir%/../app/SomeLegacyClass.php
-      count: 1
+  excludePaths:
+    - *.blade.php
+  tmpDir: tmp
+  reportUnmatchedIgnoredErrors: false
+
 

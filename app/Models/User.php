@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,7 +28,7 @@ use Illuminate\Notifications\Notifiable;
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -143,7 +143,7 @@ class User extends Authenticatable
     public function hasRole(string|array $role): bool
     {
         if (is_array($role)) {
-            return in_array($this->getCurrentRole(), $role);
+            return in_array($this->getCurrentRole(), $role, true);
         }
 
         return $this->getCurrentRole() === $role;
@@ -154,7 +154,11 @@ class User extends Authenticatable
      */
     private function getCurrentRole(): string
     {
-        return $this->role?->value ?? '';
+        if ($this->role instanceof \App\Enums\UserRole) {
+            return $this->role->value;
+        }
+
+        return '';
     }
 
     /**
