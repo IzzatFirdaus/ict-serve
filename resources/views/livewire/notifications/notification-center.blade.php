@@ -162,11 +162,11 @@
                                     <div class="flex items-center space-x-2">
                                         {{-- Priority Badge --}}
                                         <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border {{ $this->getPriorityColor($notification->priority) }}">
-                                            {{ ucfirst($notification->priority) }}
+                                            {{ ucfirst(is_object($notification->priority) && method_exists($notification->priority,'value') ? (string)$notification->priority->value : (string)$notification->priority) }}
                                         </span>
                                         {{-- Category Badge --}}
                                         <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border {{ $this->getCategoryColor($notification->category) }}">
-                                            {{ ucfirst($notification->category) }}
+                                            {{ ucfirst(is_object($notification->category) && method_exists($notification->category,'value') ? (string)$notification->category->value : (string)$notification->category) }}
                                         </span>
                                     </div>
                                 </div>

@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
 class EquipmentLoan extends Model
 {
@@ -48,15 +48,22 @@ class EquipmentLoan extends Model
      */
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
-            'submitted' => 'warning',
-            'pending_approval' => 'primary',
-            'approved' => 'success',
-            'rejected' => 'danger',
-            'collected' => 'primary',
-            'returned' => 'success',
-            default => 'gray'
-        };
+        switch ($this->status) {
+            case 'submitted':
+                return 'warning';
+            case 'pending_approval':
+                return 'primary';
+            case 'approved':
+                return 'success';
+            case 'rejected':
+                return 'danger';
+            case 'collected':
+                return 'primary';
+            case 'returned':
+                return 'success';
+            default:
+                return 'gray';
+        }
     }
 
     /**
@@ -64,7 +71,8 @@ class EquipmentLoan extends Model
      */
     public function getLoanDurationAttribute(): int
     {
-        return Carbon::parse($this->loan_start_date)->diffInDays(Carbon::parse($this->loan_end_date)) + 1;
+        $days = Carbon::parse($this->loan_start_date)->diffInDays(Carbon::parse($this->loan_end_date)) + 1;
+        return (int) $days;
     }
 
     /**
@@ -107,13 +115,13 @@ class EquipmentLoan extends Model
      */
     public function getFormattedEquipmentAttribute(): string
     {
-        if (!$this->equipment_requested) {
+        if (! $this->equipment_requested) {
             return 'No equipment specified';
         }
 
         return collect($this->equipment_requested)
-            ->map(fn($item) => is_array($item) ?
-                ($item['name'] ?? 'Unknown') . ' (Qty: ' . ($item['quantity'] ?? 1) . ')' :
+            ->map(fn ($item) => is_array($item) ?
+                ($item['name'] ?? 'Unknown').' (Qty: '.($item['quantity'] ?? 1).')' :
                 $item
             )
             ->join(', ');

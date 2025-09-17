@@ -2,13 +2,13 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Livewire\LoanRequestTracker;
 use App\Models\LoanRequest;
 use App\Models\User;
-use Livewire\Livewire;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class LoanRequestTrackerTest extends TestCase
 {
@@ -16,8 +16,6 @@ class LoanRequestTrackerTest extends TestCase
 
     /**
      * Creates and returns a single User instance for testing.
-     *
-     * @return \App\Models\User
      */
     protected function createTestUser(): User
     {
@@ -27,15 +25,19 @@ class LoanRequestTrackerTest extends TestCase
 
     /**
      * Creates and returns a single LoanRequest instance for a given user.
+     */
+    /**
+     * Creates and returns a single LoanRequest instance for a given user.
      *
-     * @param \App\Models\User $user
-     * @param array $attributes
-     * @return \App\Models\LoanRequest
+     * @return LoanRequest
      */
     protected function createTestLoanRequest(User $user, array $attributes = []): LoanRequest
     {
         // Always return a single LoanRequest instance
-        return LoanRequest::factory()->create(array_merge(['user_id' => $user->id], $attributes));
+        /** @var LoanRequest $created */
+        $created = LoanRequest::factory()->create(array_merge(['user_id' => $user->id], $attributes));
+
+        return $created;
     }
 
     /**
@@ -50,9 +52,9 @@ class LoanRequestTrackerTest extends TestCase
 
         $this->actingAs($user);
 
-        Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest])
-            ->assertStatus(200)
-            ->assertSet('loanRequest.id', $loanRequest->id)
+        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
+        $component->assertStatus(200);
+        $component->assertSet('loanRequest.id', $loanRequest->id)
             ->assertSet('polling', false)
             ->assertSet('showDetails', false);
     }
@@ -69,8 +71,8 @@ class LoanRequestTrackerTest extends TestCase
 
         $this->actingAs($user);
 
-        Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest])
-            ->call('toggleDetails')
+        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
+        $component->call('toggleDetails')
             ->assertSet('showDetails', true)
             ->call('toggleDetails')
             ->assertSet('showDetails', false);
@@ -88,8 +90,8 @@ class LoanRequestTrackerTest extends TestCase
 
         $this->actingAs($user);
 
-        Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest])
-            ->call('togglePolling')
+        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
+        $component->call('togglePolling')
             ->assertSet('polling', true)
             ->assertDispatched('polling-toggled')
             ->call('togglePolling')
@@ -108,8 +110,8 @@ class LoanRequestTrackerTest extends TestCase
 
         $this->actingAs($user);
 
-        Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest])
-            ->call('refreshStatus')
+        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
+        $component->call('refreshStatus')
             ->assertDispatched('status-refreshed');
     }
 
@@ -125,12 +127,13 @@ class LoanRequestTrackerTest extends TestCase
         /** @var LoanRequest $overdueLoanRequest */
         $overdueLoanRequest = $this->createTestLoanRequest($user, [
             'requested_to' => Carbon::yesterday(),
-            'status' => 'in_use'
+            'status' => 'in_use',
         ]);
 
         $this->actingAs($user);
 
-        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $overdueLoanRequest]);
+    /** @var \Livewire\Features\SupportTesting\Testable $component */
+    $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $overdueLoanRequest]);
 
         // Check that the component recognizes the overdue status
         $this->assertTrue($overdueLoanRequest->fresh()->isOverdue());
@@ -145,13 +148,13 @@ class LoanRequestTrackerTest extends TestCase
         $user = $this->createTestUser();
         /** @var LoanRequest $loanRequest */
         $loanRequest = $this->createTestLoanRequest($user, [
-            'status' => 'pending_supervisor'
+            'status' => 'pending_supervisor',
         ]);
 
         $this->actingAs($user);
 
-        Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest])
-            ->assertSee('Pending Supervisor')
+        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
+        $component->assertSee('Pending Supervisor')
             ->assertSeeHtml('bg-warning-100');
     }
 
@@ -164,7 +167,7 @@ class LoanRequestTrackerTest extends TestCase
         $user = $this->createTestUser();
         /** @var LoanRequest $loanRequest */
         $loanRequest = $this->createTestLoanRequest($user, [
-            'status' => null
+            'status' => null,
         ]);
 
         $this->actingAs($user);
@@ -185,8 +188,8 @@ class LoanRequestTrackerTest extends TestCase
 
         $this->actingAs($user);
 
-        Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest])
-            ->set('showDetails', true)
+        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
+        $component->set('showDetails', true)
             ->assertSee('Request Information')
             ->assertSee('Equipment Details');
     }

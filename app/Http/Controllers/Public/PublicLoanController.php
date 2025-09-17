@@ -29,7 +29,9 @@ class PublicLoanController extends Controller
             ->get()
             ->groupBy('category.name');
 
-        return view('public.loan.create', compact('availableEquipment'));
+    /** @var view-string $view */
+    $view = 'public.loan.create';
+    return view($view, compact('availableEquipment'));
     }
 
     public function store(Request $request)
@@ -69,7 +71,7 @@ class PublicLoanController extends Controller
 
         try {
             // Generate reference number
-            $referenceNumber = 'LOAN-' . date('Ymd') . '-' . Str::upper(Str::random(6));
+            $referenceNumber = 'LOAN-'.date('Ymd').'-'.Str::upper(Str::random(6));
 
             // Get or create user
             $user = User::firstOrCreate(
@@ -130,7 +132,7 @@ class PublicLoanController extends Controller
             DB::rollBack();
             logger()->error('Public loan request failed', [
                 'error' => $e->getMessage(),
-                'request' => $request->all()
+                'request' => $request->all(),
             ]);
 
             return back()->withInput()
@@ -140,16 +142,20 @@ class PublicLoanController extends Controller
 
     public function success()
     {
-        if (!session('reference_number')) {
+        if (! session('reference_number')) {
             return redirect()->route('public.loan.create');
         }
 
-        return view('public.loan.success');
+    /** @var view-string $view */
+    $view = 'public.loan.success';
+    return view($view);
     }
 
     public function track()
     {
-        return view('public.track');
+    /** @var view-string $view */
+    $view = 'public.track';
+    return view($view);
     }
 
     public function trackStatus(Request $request)
@@ -162,11 +168,13 @@ class PublicLoanController extends Controller
             ->where('request_number', $request->reference_number)
             ->first();
 
-        if (!$loanRequest) {
+        if (! $loanRequest) {
             return back()->with('error', __('Reference number not found. Please check and try again.'));
         }
 
-        return view('public.track-result', compact('loanRequest'));
+    /** @var view-string $view */
+    $view = 'public.track-result';
+    return view($view, compact('loanRequest'));
     }
 
     private function sendNotifications(LoanRequest $loanRequest, Request $request): void
@@ -184,12 +192,12 @@ class PublicLoanController extends Controller
             // Send email to supervisor (approval request)
             $approvalUrl = route('public.approve', [
                 'token' => $loanRequest->approval_token,
-                'action' => 'approve'
+                'action' => 'approve',
             ]);
 
             $rejectUrl = route('public.approve', [
                 'token' => $loanRequest->approval_token,
-                'action' => 'reject'
+                'action' => 'reject',
             ]);
 
             Mail::send('emails.loan.supervisor-approval', [
@@ -204,7 +212,9 @@ class PublicLoanController extends Controller
             });
 
             // Notify ICT admins
-            $ictAdmins = User::whereIn('role', ['admin', 'superuser_admin'])->get();
+            $ictAdmins = User::query()
+                ->whereIn('role', ['ict_admin', 'super_admin'])
+                ->get();
             if ($ictAdmins->count() > 0) {
                 Notification::send($ictAdmins, new LoanRequestSubmitted($loanRequest));
             }
@@ -212,7 +222,7 @@ class PublicLoanController extends Controller
         } catch (\Exception $e) {
             logger()->error('Failed to send loan request notifications', [
                 'loan_request_id' => $loanRequest->id,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ]);
         }
     }

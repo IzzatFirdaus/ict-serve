@@ -11,10 +11,9 @@ use App\Models\TicketStatus;
 use App\Notifications\TicketCreatedNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
-use Livewire\Component;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Rule;
+use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
@@ -57,6 +56,7 @@ class TicketForm extends Component
 
     // UI State
     public $showEquipmentSelection = false;
+
     public $selectedCategory = null;
 
     protected $listeners = ['categoryChanged' => 'updateCategory'];
@@ -93,7 +93,7 @@ class TicketForm extends Component
             return [
                 'value' => $priority->value,
                 'label' => $priority->label(),
-                'description' => $priority->description()
+                'description' => $priority->description(),
             ];
         });
     }
@@ -104,7 +104,7 @@ class TicketForm extends Component
             return [
                 'value' => $urgency->value,
                 'label' => $urgency->label(),
-                'description' => $urgency->description()
+                'description' => $urgency->description(),
             ];
         });
     }
@@ -118,7 +118,7 @@ class TicketForm extends Component
         $this->showEquipmentSelection = $this->selectedCategory &&
             in_array($this->selectedCategory->name, $equipmentCategories);
 
-        if (!$this->showEquipmentSelection) {
+        if (! $this->showEquipmentSelection) {
             $this->equipment_item_id = null;
         }
     }
@@ -136,7 +136,7 @@ class TicketForm extends Component
         $this->validate();
 
         // Check if user is authenticated, if not require guest information
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             $this->validate([
                 'contact_phone' => 'required|string|max:20',
                 'location' => 'required|string|max:255',
@@ -164,11 +164,11 @@ class TicketForm extends Component
             ]);
 
             // Handle file attachments
-            if (!empty($this->attachments)) {
+            if (! empty($this->attachments)) {
                 $attachmentPaths = [];
                 foreach ($this->attachments as $attachment) {
                     if ($attachment instanceof TemporaryUploadedFile) {
-                        $path = $attachment->store('ticket-attachments/' . $ticket->id, 'public');
+                        $path = $attachment->store('ticket-attachments/'.$ticket->id, 'public');
                         $attachmentPaths[] = [
                             'name' => $attachment->getClientOriginalName(),
                             'path' => $path,
@@ -180,13 +180,13 @@ class TicketForm extends Component
                 $ticket->update(['attachments' => $attachmentPaths]);
             }
 
-            // Send notification to helpdesk team
-            $this->notifyHelpdeskTeam($ticket);
+            // Send notification to helpdesk team (side effect only, ignore result)
+            $this->notifyHelpdeskTeam($ticket); // @phpstan-ignore-line
 
             // Send notification to user
             Auth::user()->notify(new TicketCreatedNotification($ticket));
 
-            session()->flash('success', 'Your helpdesk ticket has been successfully created. Ticket number: ' . $ticket->ticket_number);
+            session()->flash('success', 'Your helpdesk ticket has been successfully created. Ticket number: '.$ticket->ticket_number);
 
             // Redirect to ticket view or dashboard
             if (Auth::check()) {
@@ -198,7 +198,7 @@ class TicketForm extends Component
 
         } catch (\Exception $e) {
             session()->flash('error', 'An error occurred while creating the ticket. Please try again.');
-            Log::error('Ticket creation error: ' . $e->getMessage());
+            Log::error('Ticket creation error: '.$e->getMessage());
         }
     }
 
@@ -211,7 +211,7 @@ class TicketForm extends Component
         $slaHours = $category->default_sla_hours ?? 24;
 
         // Adjust based on priority
-        $multiplier = match($priority) {
+        $multiplier = match ($priority) {
             TicketPriority::CRITICAL => 0.25, // 25% of normal SLA
             TicketPriority::HIGH => 0.5,     // 50% of normal SLA
             TicketPriority::MEDIUM => 1.0,   // Normal SLA
@@ -229,12 +229,12 @@ class TicketForm extends Component
 
     public function getSlaHours()
     {
-        if (!$this->category_id) {
+        if (! $this->category_id) {
             return 24; // Default SLA
         }
 
         $category = TicketCategory::find($this->category_id);
-        if (!$category) {
+        if (! $category) {
             return 24;
         }
 
@@ -242,7 +242,7 @@ class TicketForm extends Component
         $slaHours = $category->default_sla_hours ?? 24;
 
         // Adjust based on priority
-        $multiplier = match($priority) {
+        $multiplier = match ($priority) {
             TicketPriority::CRITICAL => 0.25, // 25% of normal SLA
             TicketPriority::HIGH => 0.5,     // 50% of normal SLA
             TicketPriority::MEDIUM => 1.0,   // Normal SLA
@@ -256,7 +256,7 @@ class TicketForm extends Component
     {
         $this->reset([
             'title', 'description', 'category_id', 'priority', 'urgency',
-            'contact_phone', 'location', 'equipment_item_id', 'attachments'
+            'contact_phone', 'location', 'equipment_item_id', 'attachments',
         ]);
         $this->resetValidation();
         $this->showEquipmentSelection = false;

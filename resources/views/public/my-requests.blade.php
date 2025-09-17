@@ -171,7 +171,7 @@
                                                 };
                                             @endphp
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-[var(--radius-full)] myds-body-xs font-medium {{ $ticketPriorityClasses }}">
-                                                {{ ucfirst($ticket->priority) }}
+                                                {{ ucfirst(is_object($ticket->priority) && method_exists($ticket->priority,'value') ? (string)$ticket->priority->value : (string)$ticket->priority) }}
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">

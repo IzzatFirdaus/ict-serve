@@ -39,7 +39,10 @@ Route::post('/auth/login', function (Request $request) {
         ], 401);
     }
 
-    $token = $user->createToken('auth-token')->plainTextToken;
+    // If Sanctum is installed, you can create a token; otherwise fallback to a simple stub string.
+    $token = method_exists($user, 'createToken')
+        ? $user->createToken('auth-token')->plainTextToken
+        : base64_encode(random_bytes(24));
 
     return response()->json([
         'success' => true,
@@ -55,7 +58,9 @@ Route::post('/auth/login', function (Request $request) {
 });
 
 Route::post('/auth/logout', function (Request $request) {
-    $request->user()->currentAccessToken()->delete();
+    if ($request->user() && method_exists($request->user(), 'currentAccessToken')) {
+        $request->user()->currentAccessToken()?->delete();
+    }
 
     return response()->json(['success' => true]);
 })->middleware('auth:sanctum');

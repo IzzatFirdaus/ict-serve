@@ -292,11 +292,11 @@
                                         @endphp
 
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $ticketStatusConfig['bg'] }} {{ $ticketStatusConfig['text'] }}">
-                                            {{ ucfirst($ticket->status) }}
+                                            {{ ucfirst(is_object($ticket->status) && method_exists($ticket->status,'value') ? (string)$ticket->status->value : (string)$ticket->status) }}
                                         </span>
 
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $priorityConfig['bg'] }} {{ $priorityConfig['text'] }}">
-                                            {{ ucfirst($ticket->priority) }}
+                                            {{ ucfirst(is_object($ticket->priority) && method_exists($ticket->priority,'value') ? (string)$ticket->priority->value : (string)$ticket->priority) }}
                                         </span>
                                     </div>
 
@@ -404,11 +404,11 @@
                             <div class="grid grid-cols-2 gap-4 text-sm">
                                 <div>
                                     <label class="font-medium text-gray-900">Status</label>
-                                    <p class="text-gray-600">{{ ucfirst($selectedTicket->status) }}</p>
+                                    <p class="text-gray-600">{{ ucfirst(is_object($selectedTicket->status) && method_exists($selectedTicket->status,'value') ? (string)$selectedTicket->status->value : (string)$selectedTicket->status) }}</p>
                                 </div>
                                 <div>
                                     <label class="font-medium text-gray-900">Priority</label>
-                                    <p class="text-gray-600">{{ ucfirst($selectedTicket->priority) }}</p>
+                                    <p class="text-gray-600">{{ ucfirst(is_object($selectedTicket->priority) && method_exists($selectedTicket->priority,'value') ? (string)$selectedTicket->priority->value : (string)$selectedTicket->priority) }}</p>
                                 </div>
                                 <div>
                                     <label class="font-medium text-gray-900">Assigned To</label>

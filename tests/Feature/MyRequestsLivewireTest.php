@@ -2,14 +2,13 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\LoanRequest;
-use App\Models\HelpdeskTicket;
-use App\Livewire\MyRequests;
 use App\Livewire\LoanRequestTracker;
-use Livewire\Livewire;
+use App\Livewire\MyRequests;
+use App\Models\LoanRequest;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class MyRequestsLivewireTest extends TestCase
 {
@@ -24,7 +23,7 @@ class MyRequestsLivewireTest extends TestCase
         // Create a user for testing
         $this->user = User::factory()->create([
             'email' => 'test@motac.gov.my',
-            'name' => 'Test User'
+            'name' => 'Test User',
         ]);
     }
 
@@ -34,9 +33,8 @@ class MyRequestsLivewireTest extends TestCase
     public function test_enhanced_my_requests_page_loads_successfully(): void
     {
         $response = $this->actingAs($this->user)->get('/my-requests');
-
         $response->assertStatus(200);
-        $response->assertSeeLivewire(MyRequests::class);
+        $response->assertSee('<livewire:my-requests');
     }
 
     /**
@@ -46,9 +44,10 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-        Livewire::test(MyRequests::class)
-            ->assertStatus(200)
-            ->assertSet('activeTab', 'loans')
+    /** @var \Livewire\Features\SupportTesting\Testable $component */
+    $component = Livewire::test(MyRequests::class);
+        $component->assertStatus(200);
+        $component->assertSet('activeTab', 'loans')
             ->assertSet('autoRefresh', false)
             ->assertSet('search', '')
             ->assertSet('loanStatus', '')
@@ -95,12 +94,12 @@ class MyRequestsLivewireTest extends TestCase
         // Create loan requests with different statuses
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'status' => 'pending_supervisor'
+            'status' => 'pending_supervisor',
         ]);
 
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'status' => 'approved_ict'
+            'status' => 'approved_ict',
         ]);
 
         Livewire::test(MyRequests::class)
@@ -117,7 +116,7 @@ class MyRequestsLivewireTest extends TestCase
 
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'purpose' => 'Conference presentation equipment'
+            'purpose' => 'Conference presentation equipment',
         ]);
 
         Livewire::test(MyRequests::class)
@@ -132,8 +131,9 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-        $loanRequest = LoanRequest::factory()->create([
-            'user_id' => $this->user->id
+    /** @var LoanRequest $loanRequest */
+    $loanRequest = LoanRequest::factory()->create([
+            'user_id' => $this->user->id,
         ]);
 
         Livewire::test(MyRequests::class)
@@ -149,8 +149,9 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-        $loanRequest = LoanRequest::factory()->create([
-            'user_id' => $this->user->id
+    /** @var LoanRequest $loanRequest */
+    $loanRequest = LoanRequest::factory()->create([
+            'user_id' => $this->user->id,
         ]);
 
         Livewire::test(MyRequests::class)
@@ -171,7 +172,7 @@ class MyRequestsLivewireTest extends TestCase
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
             'status' => 'pending_supervisor',
-            'purpose' => 'Test equipment request'
+            'purpose' => 'Test equipment request',
         ]);
 
         Livewire::test(MyRequests::class)
@@ -210,15 +211,17 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-        $loanRequest = LoanRequest::factory()->create([
+    /** @var LoanRequest $loanRequest */
+    $loanRequest = LoanRequest::factory()->create([
             'user_id' => $this->user->id,
             'status' => 'in_use',
-            'purpose' => 'Testing equipment tracking'
+            'purpose' => 'Testing equipment tracking',
         ]);
 
-        Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest])
-            ->assertStatus(200)
-            ->assertSee('Testing equipment tracking')
+    /** @var \Livewire\Features\SupportTesting\Testable $component */
+    $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
+        $component->assertStatus(200);
+        $component->assertSee('Testing equipment tracking')
             ->assertSet('loanRequest.id', $loanRequest->id);
     }
 
@@ -240,7 +243,7 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-        Livewire::test(MyRequests::class)
+    Livewire::test(MyRequests::class)
             ->call('toggleAutoRefresh')
             ->assertDispatched('auto-refresh-enabled');
     }

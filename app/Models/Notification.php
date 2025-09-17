@@ -152,7 +152,7 @@ class Notification extends Model
             'system_announcement' => 'speakerphone',
             'system_maintenance' => 'cog',
             'user_assigned' => 'user-group',
-            default => 'information-circle'
+            default => 'information-circle',
         };
     }
 
@@ -171,8 +171,8 @@ class Notification extends Model
                 'ticket' => 'blue',
                 'loan' => 'green',
                 'system' => 'purple',
-                default => 'gray'
-            }
+                default => 'gray',
+            },
         };
     }
 
@@ -234,7 +234,6 @@ class Notification extends Model
                 TicketPriority::HIGH => 'high',
                 TicketPriority::MEDIUM => 'medium',
                 TicketPriority::LOW => 'low',
-                default => 'medium'
             },
             'action_url' => route('helpdesk.index-enhanced'),
             'data' => [

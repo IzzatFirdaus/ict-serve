@@ -2,13 +2,13 @@
 
 namespace App\Livewire;
 
-use App\Models\LoanRequest;
 use App\Models\HelpdeskTicket;
-use Livewire\Component;
-use Livewire\WithPagination;
+use App\Models\LoanRequest;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class MyRequests extends Component
 {
@@ -27,9 +27,13 @@ class MyRequests extends Component
     public string $search = '';
 
     public int $selectedLoanRequest = 0;
+
     public int $selectedTicket = 0;
+
     public bool $showLoanModal = false;
+
     public bool $showTicketModal = false;
+
     public bool $autoRefresh = false;
 
     protected $paginationTheme = 'tailwind';
@@ -87,7 +91,7 @@ class MyRequests extends Component
 
     public function toggleAutoRefresh()
     {
-        $this->autoRefresh = !$this->autoRefresh;
+        $this->autoRefresh = ! $this->autoRefresh;
         $this->dispatch($this->autoRefresh ? 'auto-refresh-enabled' : 'auto-refresh-disabled');
     }
 
@@ -103,7 +107,7 @@ class MyRequests extends Component
         // Enable auto-refresh if user has pending loan requests or tickets
         $user = Auth::user();
         $hasPendingLoans = $user->loanRequests()
-            ->whereHas('loanStatus', fn($q) => $q->whereIn('code', ['pending_supervisor', 'pending_ict', 'ready_pickup']))
+            ->whereHas('loanStatus', fn ($q) => $q->whereIn('code', ['pending_supervisor', 'pending_ict', 'ready_pickup']))
             ->exists();
 
         $hasPendingTickets = $user->tickets()
@@ -123,14 +127,14 @@ class MyRequests extends Component
             ->latest();
 
         if ($this->search) {
-            $loanRequestsQuery->where(function($query) {
-                $query->where('request_number', 'like', '%' . $this->search . '%')
-                      ->orWhere('purpose', 'like', '%' . $this->search . '%');
+            $loanRequestsQuery->where(function ($query) {
+                $query->where('request_number', 'like', '%'.$this->search.'%')
+                    ->orWhere('purpose', 'like', '%'.$this->search.'%');
             });
         }
 
         if ($this->loanStatus) {
-            $loanRequestsQuery->whereHas('loanStatus', fn($q) => $q->where('code', $this->loanStatus));
+            $loanRequestsQuery->whereHas('loanStatus', fn ($q) => $q->where('code', $this->loanStatus));
         }
 
         $loanRequests = $loanRequestsQuery->paginate(10, ['*'], 'loans');
@@ -141,9 +145,9 @@ class MyRequests extends Component
             ->latest();
 
         if ($this->search) {
-            $ticketsQuery->where(function($query) {
-                $query->where('ticket_number', 'like', '%' . $this->search . '%')
-                      ->orWhere('title', 'like', '%' . $this->search . '%');
+            $ticketsQuery->where(function ($query) {
+                $query->where('ticket_number', 'like', '%'.$this->search.'%')
+                    ->orWhere('title', 'like', '%'.$this->search.'%');
             });
         }
 

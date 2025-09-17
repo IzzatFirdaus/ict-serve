@@ -1,57 +1,78 @@
+{{-- 
+  ICTServe (iServe) Text Input Component
+  MYDS & MyGovEA Compliance:
+    - Uses MYDS input field anatomy: label above, input with semantic tokens, error/disabled states, accessible ARIA.
+    - Colour: bg-white, border-otl-divider, focus-ring-fr-primary, text-txt-black-900 (see MYDS-Colour-Reference.md).
+    - Typography: Inter, text-sm, font-normal (see MYDS-Design-Overview.md, MYDS-Develop-Overview.md).
+    - Radius: 8px (rounded-md), shadow-none (MYDS input).
+    - Icon support: Optional leading/trailing icons, 20x20 as per MYDS-Icons-Overview.md.
+    - Accessibility: role, aria-invalid, aria-describedby, visible focus, full keyboard navigation.
+    - Responsive: Full width by default, 12/8/4 grid compatible.
+    - Minimal, clear, inclusive, error-preventing (prinsip-reka-bentuk-mygovea.md).
+--}}
 
 @props([
-	'label' => null,
-	'required' => false,
-	'error' => null,
-	'help' => null,
-	'type' => 'text',
-	'id' => null,
-	'name' => null,
-	'value' => '',
-	'placeholder' => null,
-	'disabled' => false,
+    'type' => 'text',
+    'name',
+    'id' => null,
+    'value' => null,
+    'placeholder' => '',
+    'required' => false,
+    'disabled' => false,
+    'readonly' => false,
+    'autocomplete' => null,
+    'autofocus' => false,
+    'maxlength' => null,
+    'minlength' => null,
+    'icon' => null,           // Optional: Blade component or SVG for leading icon
+    'iconRight' => null,      // Optional: Blade component or SVG for trailing icon
+    'ariaLabel' => null,
+    'ariaDescribedby' => null,
+    'class' => '',
 ])
 
 @php
-	$inputId = $id ?? $name ?? 'input-' . uniqid();
-	$classes = 'myds-input w-full' . ($error ? ' border-danger-300 focus:border-danger-300 focus:ring-fr-danger' : '');
+    $inputId = $id ?? $name;
+    $hasIcon = !empty($icon);
+    $hasIconRight = !empty($iconRight);
+    $baseClasses = 'block w-full text-sm font-normal font-inter rounded-md bg-white border border-otl-divider text-txt-black-900 px-3 py-2 transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary';
+    $stateClasses = '';
+    if ($disabled) {
+        $stateClasses .= ' bg-white-disabled text-txt-black-disabled border-otl-gray-300 cursor-not-allowed';
+    } elseif ($readonly) {
+        $stateClasses .= ' bg-bg-gray-50 text-txt-black-500 border-otl-gray-300';
+    }
+    // Padding adjustment for icons
+    if ($hasIcon) $stateClasses .= ' pl-10';
+    if ($hasIconRight) $stateClasses .= ' pr-10';
 @endphp
 
-<div class="space-y-1">
-	@if($label)
-		<label for="{{ $inputId }}" class="block text-sm font-medium text-txt-black-900">
-			{{ $label }}
-			@if($required)
-				<span class="text-txt-danger ml-1" aria-label="required">*</span>
-			@endif
-		</label>
-	@endif
-
-	<input
-		type="{{ $type }}"
-		id="{{ $inputId }}"
-		name="{{ $name }}"
-		value="{{ old($name, $value) }}"
-		placeholder="{{ $placeholder }}"
-		{{ $required ? 'required' : '' }}
-		{{ $disabled ? 'disabled' : '' }}
-		{{ $attributes->merge(['class' => $classes]) }}
-		@if($error) aria-invalid="true" aria-describedby="{{ $inputId }}-error" @endif
-		@if($help) aria-describedby="{{ $inputId }}-help" @endif
-	/>
-
-	@if($error)
-		<p id="{{ $inputId }}-error" class="text-sm text-txt-danger" role="alert">
-			<svg class="inline w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-				<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-			</svg>
-			{{ $error }}
-		</p>
-	@endif
-
-	@if($help && !$error)
-		<p id="{{ $inputId }}-help" class="text-sm text-txt-black-500">
-			{{ $help }}
-		</p>
-	@endif
+<div class="relative {{ $class }}">
+    @if($hasIcon)
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-txt-black-500">
+            {!! $icon !!}
+        </span>
+    @endif
+    <input
+        type="{{ $type }}"
+        name="{{ $name }}"
+        id="{{ $inputId }}"
+        @if(!is_null($value)) value="{{ old($name, $value) }}" @endif
+        @if($placeholder) placeholder="{{ $placeholder }}" @endif
+        @if($required) required aria-required="true" @endif
+        @if($disabled) disabled aria-disabled="true" @endif
+        @if($readonly) readonly aria-readonly="true" @endif
+        @if($autocomplete) autocomplete="{{ $autocomplete }}" @endif
+        @if($autofocus) autofocus @endif
+        @if($maxlength) maxlength="{{ $maxlength }}" @endif
+        @if($minlength) minlength="{{ $minlength }}" @endif
+        @if($ariaLabel) aria-label="{{ $ariaLabel }}" @endif
+        @if($ariaDescribedby) aria-describedby="{{ $ariaDescribedby }}" @endif
+        {{ $attributes->merge(['class' => $baseClasses . $stateClasses]) }}
+    />
+    @if($hasIconRight)
+        <span class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-txt-black-500">
+            {!! $iconRight !!}
+        </span>
+    @endif
 </div>

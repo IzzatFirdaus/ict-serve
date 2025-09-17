@@ -302,14 +302,14 @@
                                         @elseif($ticket['risk_level'] === 'high') bg-orange-100 text-orange-800 dark:bg-orange-800 dark:text-orange-200
                                         @elseif($ticket['risk_level'] === 'medium') bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200
                                         @else bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-200 @endif">
-                                        {{ ucfirst($ticket['risk_level']) }}
+                                        {{ ucfirst(is_object($ticket['risk_level']) && method_exists($ticket['risk_level'],'value') ? (string)$ticket['risk_level']->value : (string)$ticket['risk_level']) }}
                                     </span>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
                                         @if($ticket['priority'] === 'critical') bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-200
                                         @elseif($ticket['priority'] === 'high') bg-orange-100 text-orange-800 dark:bg-orange-800 dark:text-orange-200
                                         @elseif($ticket['priority'] === 'medium') bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200
                                         @else bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-200 @endif">
-                                        {{ ucfirst($ticket['priority']) }}
+                                        {{ ucfirst(is_object($ticket['priority']) && method_exists($ticket['priority'],'value') ? (string)$ticket['priority']->value : (string)$ticket['priority']) }}
                                     </span>
                                 </div>
                                 <p class="text-sm text-gray-900 dark:text-white font-medium truncate">
@@ -387,7 +387,7 @@
                                         @elseif($ticket['priority'] === 'high') bg-orange-100 text-orange-800 dark:bg-orange-800 dark:text-orange-200
                                         @elseif($ticket['priority'] === 'medium') bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200
                                         @else bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-200 @endif">
-                                        {{ ucfirst($ticket['priority']) }}
+                                        {{ ucfirst(is_object($ticket['priority']) && method_exists($ticket['priority'],'value') ? (string)$ticket['priority']->value : (string)$ticket['priority']) }}
                                     </span>
                                 </div>
                                 <p class="text-sm text-gray-900 dark:text-white font-medium truncate">

@@ -2,18 +2,20 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\LoanRequest;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Carbon;
+use Livewire\Component;
 
 class ApprovalWorkflow extends Component
 {
     public $loanRequest;
+
     public $currentStep = 0;
+
     public $showApprovalModal = false;
+
     public $approvalComment = '';
+
     public $approvalAction = 'approve'; // approve, reject, return
 
     // Workflow steps configuration
@@ -25,7 +27,7 @@ class ApprovalWorkflow extends Component
             'description' => 'Permohonan telah diserahkan oleh pemohon',
             'description_en' => 'Application has been submitted by applicant',
             'icon' => 'document-text',
-            'color' => 'gray'
+            'color' => 'gray',
         ],
         [
             'id' => 'bpm_review',
@@ -34,7 +36,7 @@ class ApprovalWorkflow extends Component
             'description' => 'Sedang disemak oleh Bahagian Pengurusan Maklumat',
             'description_en' => 'Under review by Information Management Division',
             'icon' => 'eye',
-            'color' => 'primary'
+            'color' => 'primary',
         ],
         [
             'id' => 'bpm_approved',
@@ -43,7 +45,7 @@ class ApprovalWorkflow extends Component
             'description' => 'Diluluskan oleh Pegawai BPM',
             'description_en' => 'Approved by BPM Officer',
             'icon' => 'check-circle',
-            'color' => 'success'
+            'color' => 'success',
         ],
         [
             'id' => 'equipment_prepared',
@@ -52,7 +54,7 @@ class ApprovalWorkflow extends Component
             'description' => 'Peralatan sedang disediakan untuk diserahkan',
             'description_en' => 'Equipment is being prepared for handover',
             'icon' => 'cog',
-            'color' => 'warning'
+            'color' => 'warning',
         ],
         [
             'id' => 'ready_for_collection',
@@ -61,7 +63,7 @@ class ApprovalWorkflow extends Component
             'description' => 'Peralatan sedia untuk dipungut oleh pemohon',
             'description_en' => 'Equipment ready for collection by applicant',
             'icon' => 'bell',
-            'color' => 'success'
+            'color' => 'success',
         ],
         [
             'id' => 'collected',
@@ -70,8 +72,8 @@ class ApprovalWorkflow extends Component
             'description' => 'Peralatan telah dipungut oleh pemohon',
             'description_en' => 'Equipment has been collected by applicant',
             'icon' => 'check',
-            'color' => 'success'
-        ]
+            'color' => 'success',
+        ],
     ];
 
     public function mount($loanRequestId = null)
@@ -84,7 +86,9 @@ class ApprovalWorkflow extends Component
 
     public function getCurrentStepIndex()
     {
-        if (!$this->loanRequest) return 0;
+        if (! $this->loanRequest) {
+            return 0;
+        }
 
         $status = $this->loanRequest->status;
 
@@ -120,20 +124,21 @@ class ApprovalWorkflow extends Component
     public function processApproval()
     {
         $this->validate([
-            'approvalComment' => 'required|string|min:10|max:500'
+            'approvalComment' => 'required|string|min:10|max:500',
         ], [
             'approvalComment.required' => 'Sila masukkan komen untuk keputusan ini.',
             'approvalComment.min' => 'Komen mestilah sekurang-kurangnya 10 aksara.',
-            'approvalComment.max' => 'Komen tidak boleh melebihi 500 aksara.'
+            'approvalComment.max' => 'Komen tidak boleh melebihi 500 aksara.',
         ]);
 
         try {
+            $message = '';
             // Create approval record
             $approval = $this->loanRequest->approvals()->create([
                 'approved_by' => Auth::id(),
                 'status' => $this->approvalAction,
                 'comments' => $this->approvalComment,
-                'approved_at' => now()
+                'approved_at' => now(),
             ]);
 
             // Update loan request status based on action
@@ -142,7 +147,7 @@ class ApprovalWorkflow extends Component
                     $this->loanRequest->update([
                         'status' => 'approved',
                         'approved_at' => now(),
-                        'approved_by' => Auth::id()
+                        'approved_by' => Auth::id(),
                     ]);
                     $message = 'Permohonan telah diluluskan.';
                     break;
@@ -152,7 +157,7 @@ class ApprovalWorkflow extends Component
                         'status' => 'rejected',
                         'rejected_at' => now(),
                         'rejected_by' => Auth::id(),
-                        'rejection_reason' => $this->approvalComment
+                        'rejection_reason' => $this->approvalComment,
                     ]);
                     $message = 'Permohonan telah ditolak.';
                     break;
@@ -162,7 +167,7 @@ class ApprovalWorkflow extends Component
                         'status' => 'returned_for_revision',
                         'returned_at' => now(),
                         'returned_by' => Auth::id(),
-                        'return_reason' => $this->approvalComment
+                        'return_reason' => $this->approvalComment,
                     ]);
                     $message = 'Permohonan telah dikembalikan untuk pembetulan.';
                     break;
@@ -188,7 +193,7 @@ class ApprovalWorkflow extends Component
             $this->loanRequest->update([
                 'is_equipment_prepared' => true,
                 'equipment_prepared_at' => now(),
-                'equipment_prepared_by' => Auth::id()
+                'equipment_prepared_by' => Auth::id(),
             ]);
 
             $this->currentStep = $this->getCurrentStepIndex();
@@ -202,7 +207,7 @@ class ApprovalWorkflow extends Component
             $this->loanRequest->update([
                 'status' => 'ready_for_collection',
                 'ready_for_collection_at' => now(),
-                'ready_by' => Auth::id()
+                'ready_by' => Auth::id(),
             ]);
 
             $this->currentStep = $this->getCurrentStepIndex();
@@ -216,7 +221,7 @@ class ApprovalWorkflow extends Component
             $this->loanRequest->update([
                 'status' => 'collected',
                 'collected_at' => now(),
-                'collected_by' => Auth::id()
+                'collected_by' => Auth::id(),
             ]);
 
             $this->currentStep = $this->getCurrentStepIndex();
@@ -232,6 +237,7 @@ class ApprovalWorkflow extends Component
             if ($this->loanRequest && $this->loanRequest->status === 'rejected') {
                 return 'rejected';
             }
+
             return 'current';
         } else {
             return 'pending';
@@ -264,7 +270,7 @@ class ApprovalWorkflow extends Component
     {
         return Auth::user()->can('prepare_equipment', $this->loanRequest) &&
                $this->loanRequest->status === 'approved' &&
-               !$this->loanRequest->is_equipment_prepared;
+               ! $this->loanRequest->is_equipment_prepared;
     }
 
     public function canMarkReadyForCollection()

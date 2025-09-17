@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
  * @property int $id
@@ -15,8 +16,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $user_id
  * @property int $status_id
  * @property string $purpose
- * @property \Carbon\Carbon $requested_from
- * @property \Carbon\Carbon $requested_to
+ * @property \Carbon\Carbon|null $requested_from
+ * @property \Carbon\Carbon|null $requested_to
  * @property \Carbon\Carbon|null $actual_from
  * @property \Carbon\Carbon|null $actual_to
  * @property string|null $notes
@@ -159,16 +160,25 @@ class LoanRequest extends Model
     /**
      * Get the equipment items for this request (through loan items).
      */
-    // ...existing code...
+    public function equipmentItems(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            EquipmentItem::class,
+            LoanItem::class,
+            'loan_request_id',
+            'id',
+            'id',
+            'equipment_item_id'
+        );
+    }
 
     /**
      * Get the approvals for this request.
-     * Note: LoanApproval model needs to be created
      */
-    // public function approvals()
-    // {
-    //     return $this->hasMany(LoanApproval::class, 'loan_request_id');
-    // }
+    public function approvals(): HasMany
+    {
+        return $this->hasMany(LoanApproval::class, 'loan_request_id');
+    }
 
     /**
      * Accessor for single equipment item (for legacy code)
