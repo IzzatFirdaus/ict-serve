@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
  * @property int $id
@@ -17,8 +18,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $user_id
  * @property int $status_id
  * @property string $purpose
- * @property \Illuminate\Support\Carbon $requested_from
- * @property \Illuminate\Support\Carbon $requested_to
+ * @property \Illuminate\Support\Carbon|null $requested_from
+ * @property \Illuminate\Support\Carbon|null $requested_to
  * @property \Illuminate\Support\Carbon|null $actual_from
  * @property \Illuminate\Support\Carbon|null $actual_to
  * @property string|null $notes
@@ -147,6 +148,7 @@ class LoanRequest extends Model
         return $this->hasMany(LoanItem::class);
     }
 
+
     /**
      * Scope a query to only include pending requests.
      * "Pending" is defined as any status in the approval workflow.
@@ -158,6 +160,37 @@ class LoanRequest extends Model
             LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL->value,
             LoanRequestStatus::PENDING_ICT_APPROVAL->value,
         ]);
+    }
+
+    /**
+     * Get equipment items for this request (via loan items)
+     */
+    public function equipmentItems(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            EquipmentItem::class,
+            LoanItem::class,
+            'loan_request_id',
+            'id',
+            'id',
+            'equipment_item_id'
+        );
+    }
+
+    /**
+     * Get the approvals for this request.
+     */
+    public function approvals(): HasMany
+    {
+        return $this->hasMany(LoanApproval::class, 'loan_request_id');
+    }
+
+    /**
+     * Accessor for single equipment item (for legacy code)
+     */
+    public function getEquipmentItemAttribute(): ?EquipmentItem
+    {
+        return $this->equipmentItems->first();
     }
 
     /**

@@ -21,7 +21,8 @@ class LoanRequestFactory extends Factory
             'overdue',
             'cancelled',
         ]);
-        $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
+    /** @var \App\Models\LoanStatus $loanStatus */
+    $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
 
         return [
             'reference_number' => $this->faker->unique()->numerify('REF-####'),

@@ -33,7 +33,7 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
 
         // Add Telescope monitoring tags
         Telescope::tag(function () {
-            $categoryName = $this->ticket->category ? strtolower($this->ticket->category->name) : 'unknown';
+            $categoryName = strtolower($this->ticket->category->name);
 
             return [
                 'notification:helpdesk',
@@ -70,8 +70,7 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
         switch (strtolower($this->newStatus->name)) {
             case 'assigned':
                 $message->line('Your ticket has been assigned to our support team member.');
-                if ($this->ticket->assignedTo) {
-                    // @phpstan-ignore-next-line property.notFound
+                if ($this->ticket->assignedTo !== null) {
                     $message->line("**Assigned to:** {$this->ticket->assignedTo->name}");
                 }
                 break;
@@ -105,7 +104,6 @@ Ministry of Tourism, Arts and Culture (MOTAC)');
         return [
             'ticket_id' => $this->ticket->id,
             'ticket_number' => $this->ticket->ticket_number,
-            'title' => $this->ticket->title,
             'old_status' => $this->oldStatus->name,
             'new_status' => $this->newStatus->name,
             'message' => "Ticket #{$this->ticket->ticket_number} status updated from '{$this->oldStatus->name}' to '{$this->newStatus->name}'.",

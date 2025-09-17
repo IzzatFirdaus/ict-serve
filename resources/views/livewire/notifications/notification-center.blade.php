@@ -199,31 +199,13 @@
                                     </h3>
                                     <div class="flex items-center space-x-2">
                                         {{-- Priority Badge --}}
-                                        @php
-                                            $priorityColors = [
-                                                'urgent' => 'bg-danger-100 text-danger-700',
-                                                'high' => 'bg-warning-100 text-warning-700',
-                                                'medium' => 'bg-primary-100 text-primary-700',
-                                                'low' => 'bg-success-100 text-success-700',
-                                            ];
-                                            $priorityColor = $priorityColors[$notification->priority] ?? 'bg-black-100 text-black-700';
-                                        @endphp
-                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium {{ $priorityColor }}">
-                                            {{ ucfirst($notification->priority) }}
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border {{ $this->getPriorityColor($notification->priority) }}">
+                                            {{ ucfirst(is_object($notification->priority) && method_exists($notification->priority,'value') ? (string)$notification->priority->value : (string)$notification->priority) }}
                                         </span>
 
                                         {{-- Category Badge --}}
-                                        @php
-                                            $categoryColors = [
-                                                'ticket' => 'bg-warning-100 text-warning-700',
-                                                'loan' => 'bg-success-100 text-success-700',
-                                                'system' => 'bg-secondary-100 text-secondary-700',
-                                                'general' => 'bg-black-100 text-black-700',
-                                            ];
-                                            $categoryColor = $categoryColors[$notification->category] ?? 'bg-black-100 text-black-700';
-                                        @endphp
-                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium {{ $categoryColor }}">
-                                            {{ ucfirst($notification->category) }}
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border {{ $this->getCategoryColor($notification->category) }}">
+                                            {{ ucfirst(is_object($notification->category) && method_exists($notification->category,'value') ? (string)$notification->category->value : (string)$notification->category) }}
                                         </span>
                                     </div>
                                 </div>

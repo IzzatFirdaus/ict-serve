@@ -45,6 +45,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\User|null $assignedToUser
  * @property-read \App\Models\User|null $resolvedByUser
  * @property-read \App\Models\EquipmentItem|null $equipmentItem
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, TicketComment> $comments
+ * @property-read float|null $response_time
+ * @property-read float|null $resolution_time
+ * @property-read string $reference_code
  * @property-read mixed $activity_log
  *
  * @mixin \Illuminate\Database\Eloquent\Builder

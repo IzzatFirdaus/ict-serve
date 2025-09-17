@@ -1,12 +1,41 @@
+{{--
+  ICTServe (iServe) Nav Link Component
+  MYDS & MyGovEA Compliance:
+    - Follows MYDS navigation and link patterns (see MYDS-Design-Overview.md).
+    - Typography: Inter, text-sm, font-medium.
+    - Colour: Uses MYDS text tokens for normal, active, and hover states (see MYDS-Colour-Reference.md).
+    - Focus: Visible focus ring using MYDS focus ring tokens.
+    - Accessibility: role="link", aria-current for active, keyboard accessible.
+    - Icon support: Optional leading icon slot, sized 20x20 as per MYDS-Icons-Overview.md.
+    - Minimal, clear, citizen-centric (prinsip-reka-bentuk-mygovea.md).
+--}}
 
-@props(['active' => false])
+@props([
+    'href',
+    'active' => false,
+    'icon' => null,      // Optional: Blade component or SVG for leading icon
+    'ariaLabel' => null, // Optional: ARIA label for accessibility
+])
 
 @php
-    $classes = ($active ?? false)
-        ? 'inline-flex items-center border-b-2 border-primary-600 text-sm font-inter font-medium text-primary-600 focus:outline-none focus:border-primary-300 transition-colors duration-150'
-        : 'inline-flex items-center border-b-2 border-transparent text-sm font-inter font-medium text-black-500 hover:text-primary-600 hover:border-primary-300 focus:outline-none focus:text-primary-600 focus:border-primary-300 transition-colors duration-150';
+    $baseClasses = 'inline-flex items-center gap-2 px-3 py-2 rounded-md font-medium text-sm transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary';
+    $activeClasses = 'bg-primary-50 text-txt-primary';
+    $inactiveClasses = 'text-txt-black-700 hover:text-txt-primary hover:bg-bg-gray-50';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
-    {{ $slot }}
+<a
+    href="{{ $href }}"
+    role="link"
+    @if($active) aria-current="page" @endif
+    @if($ariaLabel) aria-label="{{ $ariaLabel }}" @endif
+    {{ $attributes->merge([
+        'class' => $baseClasses . ' ' . ($active ? $activeClasses : $inactiveClasses)
+    ]) }}
+>
+    @if($icon)
+        <span class="inline-flex items-center" aria-hidden="true">
+            {!! $icon !!}
+        </span>
+    @endif
+    <span>{{ $slot }}</span>
 </a>

@@ -29,7 +29,7 @@ class HelpdeskTicketController extends Controller
     {
         /** @var \Illuminate\Http\Request $request */
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser'])
-            ->when(! in_array(Auth::user()->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true), function ($q) {
+            ->when(! Auth::user()?->hasRole(['ict_admin', 'super_admin']), function ($q) {
                 return $q->where('user_id', Auth::id());
             })
             ->when($request->status, function ($q, $status) {
@@ -121,8 +121,8 @@ class HelpdeskTicketController extends Controller
      */
     public function show(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-        // Check authorization
-        if (! in_array(Auth::user()->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true) && $ticket->user->id !== Auth::id()) {
+    // Check authorization
+    if (! Auth::user()?->hasRole(['ict_admin', 'super_admin']) && $ticket->user->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -146,8 +146,8 @@ class HelpdeskTicketController extends Controller
      */
     public function update(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-        // Only admins or assigned users can update tickets
-        if (! in_array(Auth::user()->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true) && $ticket->assignedToUser?->id !== Auth::id()) {
+    // Only admins or assigned users can update tickets
+    if (! Auth::user()?->hasRole(['ict_admin', 'super_admin']) && $ticket->assignedToUser?->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -227,8 +227,8 @@ class HelpdeskTicketController extends Controller
      */
     public function destroy(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-        // Check authorization - only ticket creator or admin can delete
-        if ($ticket->user_id !== Auth::id() && Auth::user()->role !== UserRole::SUPER_ADMIN) {
+    // Check authorization - only ticket creator or admin can delete
+    if ($ticket->user_id !== Auth::id() && ! Auth::user()?->hasRole(['ict_admin', 'super_admin'])) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan untuk memadam tiket ini.',

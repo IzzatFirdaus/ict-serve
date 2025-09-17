@@ -77,7 +77,7 @@ class Assignment extends Component
 
         // Check permissions
         $user = Auth::user();
-        if (! in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
+        if (! $user->hasRole(['ict_admin', 'supervisor', 'technician'])) {
             abort(403, 'Unauthorized access');
         }
 
@@ -88,9 +88,9 @@ class Assignment extends Component
 
         // Set current values
         $this->assigned_to = $this->ticket->getOriginal('assigned_to');
-    $this->priority = $this->ticket->priority instanceof \App\Enums\TicketPriority
-        ? $this->ticket->priority->value
-        : (string) $this->ticket->priority;
+        $this->priority = $this->ticket->priority instanceof \App\Enums\TicketPriority
+            ? $this->ticket->priority->value
+            : (string) $this->ticket->priority;
         $this->due_date = $this->ticket->due_at?->format('Y-m-d\TH:i');
     }
 
@@ -173,12 +173,15 @@ class Assignment extends Component
                 }
 
                 // Log escalation
-                $this->logActivity('escalated', 'Ticket escalated to '.User::find($this->escalateTo)->name.'. Reason: '.$this->escalationReason);
+                $escalatedUser = User::find($this->escalateTo);
+                $this->logActivity('escalated', 'Ticket escalated to '.($escalatedUser && isset($escalatedUser->name) ? $escalatedUser->name : 'Unknown').'. Reason: '.$this->escalationReason);
             });
 
+            $escalatedUser = User::find($this->escalateTo);
+            $name = $escalatedUser && isset($escalatedUser->name) ? $escalatedUser->name : 'Unknown';
             session()->flash('success',
-                'Tiket berjaya dieskalasi kepada '.User::find($this->escalateTo)->name.
-                ' / Ticket successfully escalated to '.User::find($this->escalateTo)->name
+                'Tiket berjaya dieskalasi kepada '.$name.
+                ' / Ticket successfully escalated to '.$name
             );
 
             // Reset form
@@ -256,9 +259,8 @@ class Assignment extends Component
     {
         $user = Auth::user();
 
-        if (! in_array($user->role, ['technician', 'ict_admin', 'supervisor'])) {
+        if (! $user->hasRole(['technician', 'ict_admin', 'supervisor'])) {
             session()->flash('error', 'Tiada kebenaran / No permission');
-
             return;
         }
 

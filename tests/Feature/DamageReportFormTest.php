@@ -1,4 +1,4 @@
-<?php
+
 
 namespace Tests\Feature;
 
@@ -14,6 +14,13 @@ use Tests\TestCase;
 class DamageReportFormTest extends TestCase
 {
     use RefreshDatabase;
+
+    /**
+     * The user instance for tests.
+     *
+     * @var User
+     */
+    protected $user;
 
     protected function setUp(): void
     {
