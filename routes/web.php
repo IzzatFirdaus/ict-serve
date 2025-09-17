@@ -38,9 +38,6 @@ Route::get('/dashboard', function () {
 Route::get('/damage-complaint', DamageComplaintForm::class)
     ->name('public.damage-complaint.guest');
 
-Route::get('/equipment-loan', EquipmentLoanForm::class)
-    ->name('public.loan-request.guest');
-
 // Authenticated routes for submitting and viewing personal requests
 Route::middleware('auth')->group(function () {
     // Equipment Loan Requests
@@ -166,13 +163,20 @@ Route::middleware('auth')->group(function () {
 
     // ICT Loan Module Routes
     Route::prefix('loan')->name('loan.')->group(function () {
-        // Route::get('/', \App\Livewire\Loan\Index::class)->name('index'); // TODO: Create this class
+        Route::get('/', function () {
+            return view('loan.index');
+        })->name('index');
         Route::get('/create', \App\Livewire\Loan\Create::class)->name('create');
 
         Route::get('/{loan}', function () {
             // Will create LoanShow Livewire component
             return 'Loan Show - Coming Soon';
         })->name('show');
+    });
+
+    // Loan Request routes for backward compatibility
+    Route::prefix('loan-request')->name('loan-request.')->group(function () {
+        Route::get('/create', \App\Livewire\Loan\Create::class)->name('create');
     });
 
     // Helpdesk routes
@@ -192,6 +196,16 @@ Route::middleware('auth')->group(function () {
         // Legacy alias for older paths /ict/* used in tests and external links
         Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint');
     });
+
+    // Damage complaint create route
+    Route::get('/damage-complaint/create', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint.create');
+
+// Equipment loan routes
+Route::get('/equipment-loan', function () {
+    return view('equipment-loan.index');
+})->name('equipment-loan.index');
+
+Route::get('/equipment-loan/create', \App\Livewire\EquipmentLoanForm::class)->name('equipment-loan.create');
 
     // Ticket routes (legacy alias for helpdesk)
     Route::prefix('tickets')->name('ticket.')->group(function () {

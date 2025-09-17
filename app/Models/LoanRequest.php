@@ -109,6 +109,14 @@ class LoanRequest extends Model
     }
 
     /**
+     * Alias for status() method - for backward compatibility.
+     */
+    public function loanStatus(): BelongsTo
+    {
+        return $this->status();
+    }
+
+    /**
      * Get the supervisor who needs to approve.
      */
     public function supervisor(): BelongsTo

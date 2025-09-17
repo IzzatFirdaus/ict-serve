@@ -87,6 +87,14 @@ class DamageType extends Model
     }
 
     /**
+     * Alias for name column - for backward compatibility.
+     */
+    public function getNameEnAttribute(): string
+    {
+        return $this->name;
+    }
+
+    /**
      * Get display description based on locale
      */
     public function getDisplayDescription(?string $locale = null): string

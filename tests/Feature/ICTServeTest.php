@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Tests\TestCase;
 
 class ICTServeTest extends TestCase
@@ -36,7 +37,9 @@ class ICTServeTest extends TestCase
      */
     public function test_equipment_loan_form_loads_successfully(): void
     {
-        $response = $this->get('/equipment-loan');
+        $user = User::factory()->create();
+        
+        $response = $this->actingAs($user)->get('/equipment-loan');
 
         $response->assertStatus(200);
         $response->assertSee('Borang Permohonan Peminjaman Peralatan ICT');

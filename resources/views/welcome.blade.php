@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>ICTServe - Sistem Pengurusan Perkhidmatan ICT</title>
 
         <!-- MYDS Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,73 +51,41 @@
                 </nav>
             @endif
         </header>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
+        <div class="myds-container flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row" role="main">
                 <div class="myds-body-sm flex-1 p-6 pb-12 lg:p-20 bg-white border border-otl-gray-200 rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-1 myds-heading-lg font-medium">Let's get started</h1>
-                    <p class="mb-2 text-txt-black-500 myds-body-md">Laravel has an incredibly rich ecosystem. <br>We suggest starting with the following.</p>
+                    <h1 class="mb-1 myds-heading-lg font-medium">Selamat Datang ke ServiceDesk ICT</h1>
+                    <p class="mb-2 text-txt-black-500 myds-body-md">Sistem Pengurusan Perkhidmatan ICT Organisasi <br>Akses pantas kepada perkhidmatan utama:</p>
                     <ul class="flex flex-col mb-4 lg:mb-6" role="list">
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-otl-gray-200 before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
                             <span class="relative py-1 bg-white" aria-hidden="true">
                                 <span class="flex items-center justify-center rounded-full bg-white shadow w-3.5 h-3.5 border border-otl-gray-200">
-                                    <span class="rounded-full bg-bg-gray-100 w-1.5 h-1.5"></span>
+                                    <span class="rounded-full bg-bg-primary-600 w-1.5 h-1.5"></span>
                                 </span>
                             </span>
                             <span>
-                                Read the
-                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-txt-danger ml-1" aria-label="Laravel documentation (opens in new tab)">
-                                    <span>Documentation</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
+                                <a href="{{ route('equipment-loan.create') }}" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-txt-danger ml-1" aria-label="Buat permohonan pinjaman peralatan">
+                                    <span>Borang Permohonan Peminjaman Peralatan ICT</span>
                                 </a>
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-otl-gray-200 before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
                             <span class="relative py-1 bg-white" aria-hidden="true">
                                 <span class="flex items-center justify-center rounded-full bg-white shadow w-3.5 h-3.5 border border-otl-gray-200">
-                                    <span class="rounded-full bg-bg-gray-100 w-1.5 h-1.5"></span>
+                                    <span class="rounded-full bg-bg-primary-600 w-1.5 h-1.5"></span>
                                 </span>
                             </span>
                             <span>
-                                Watch video tutorials at
-                                <a href="https://laracasts.com" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-txt-danger ml-1" aria-label="Laracasts video tutorials (opens in new tab)">
-                                    <span>Laracasts</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
+                                <a href="{{ route('damage-complaint.create') }}" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-txt-danger ml-1" aria-label="Buat aduan kerosakan peralatan">
+                                    <span>Borang Aduan Kerosakan ICT</span>
                                 </a>
                             </span>
                         </li>
                     </ul>
                     <ul class="flex gap-3 myds-body-sm leading-normal" role="list">
                         <li>
-                            <a href="https://cloud.laravel.com" target="_blank" class="myds-btn myds-btn-primary" aria-label="Deploy Laravel application now (opens in new tab)">
-                                Deploy now
+                            <a href="{{ url('/dashboard') }}" class="myds-btn myds-btn-primary" aria-label="Pergi ke dashboard utama">
+                                Dashboard
                             </a>
                         </li>
                     </ul>

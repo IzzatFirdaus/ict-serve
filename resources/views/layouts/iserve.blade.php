@@ -1,307 +1,421 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-gray-50">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="themeManager()" x-bind:class="{ 'dark': isDark }" class="h-full">
 <head>
+    {{--
+        ICTServe (iServe) layout — MYDS & MyGovEA compliant
+        - Fonts: Poppins (headings), Inter (body)
+        - Uses semantic token classes (e.g. bg-bg-white-0, text-txt-black-900)
+        - Accessible: skip links, landmarks, ARIA attributes
+        - Theme and FOUC prevention handled via inline script (reads localStorage)
+    --}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="{{ $metaDescription ?? 'ICTServe (iServe) — Sistem Pengurusan Perkhidmatan ICT, MOTAC' }}">
+    <meta name="theme-color" content="#FFFFFF" id="theme-color">
 
-    <!-- MYDS Compliance: Clear, descriptive title -->
-    <title>{{ isset($title) ? $title . ' - ' : '' }}ICT Serve (iServe) - MOTAC</title>
+    <title>{{ ($title ? $title . ' - ' : '') . 'ICTServe (iServe)' }}</title>
 
-    <!-- MYDS Government Site Identity -->
-    <meta name="description" content="ICT Serve (iServe) - Sistem Bersepadu Perkhidmatan ICT MOTAC">
-    <meta name="author" content="Kementerian Pelancongan, Seni dan Budaya Malaysia (MOTAC)">
-
-    <!-- MYDS Favicon and Icons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-    <!-- MYDS Font Support -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- MYDS Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 
-    <!-- MYDS Styles -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Vite assets (Tailwind configured with MYDS tokens) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme.js'])
     @livewireStyles
 
-    <!-- MYDS Accessibility: Skip Links -->
+    <!-- Prevent FOUC: set theme before framework boots -->
+    <script>
+        (function () {
+            try {
+                const saved = localStorage.getItem('theme') || 'system';
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const dark = saved === 'dark' || (saved === 'system' && prefersDark);
+                if (dark) {
+                    document.documentElement.classList.add('dark');
+                    document.getElementById('theme-color')?.setAttribute('content', '#18181B');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    document.getElementById('theme-color')?.setAttribute('content', '#FFFFFF');
+                }
+            } catch (e) {
+                // Fail safely — no blocking
+            }
+        })();
+    </script>
+
     <style>
-        .skip-link {
+        /* Visible only on keyboard focus: MYDS skip link behaviour */
+        .myds-skip-link {
             position: absolute;
+            left: 1rem;
             top: -40px;
-            left: 6px;
-            background: #000;
+            background: var(--myds-primary-600, #2563EB);
             color: #fff;
-            padding: 8px;
-            text-decoration: none;
-            transition: top 0.3s;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            transition: top 160ms ease-in-out;
         }
-        .skip-link:focus {
-            top: 6px;
+        .myds-skip-link:focus {
+            top: 1rem;
         }
     </style>
 
     {{ $head ?? '' }}
 </head>
-<body class="h-full bg-gray-50 font-sans antialiased" x-data="{ sidebarOpen: false }">
-    <!-- MYDS Accessibility: Skip Links -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <a href="#main-navigation" class="skip-link">Skip to navigation</a>
+<body class="min-h-screen bg-bg-washed text-txt-black-900 antialiased">
 
-    <!-- MYDS Header -->
-    <header class="bg-white shadow-sm border-b border-gray-200" role="banner">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo and System Name -->
-                <div class="flex items-center">
-                    <img src="{{ asset('images/jata-negara.png') }}" alt="Jata Negara" class="h-8 w-8 mr-3">
-                    <div>
-                        <h1 class="text-lg font-semibold text-gray-900">ICT Serve (iServe)</h1>
-                        <p class="text-xs text-gray-600">Sistem Perkhidmatan ICT MOTAC</p>
-                    </div>
-                </div>
+    <!-- Skip link: must be first interactive element for keyboard users (MYDS Skip Link) -->
+    <a href="#main-content" class="myds-skip-link myds-focus-visible">Langkau ke kandungan utama / Skip to main content</a>
 
-                <!-- Language Switcher and User Menu -->
-                <div class="flex items-center space-x-4">
-                    <!-- Language Switcher -->
-                    <div class="relative">
-                        <select class="text-sm border border-gray-300 rounded px-2 py-1 bg-white"
-                                onchange="changeLanguage(this.value)"
-                                aria-label="Pilih Bahasa / Select Language">
-                            <option value="ms" {{ app()->getLocale() == 'ms' ? 'selected' : '' }}>BM</option>
-                            <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>EN</option>
-                        </select>
-                    </div>
-
-                    @auth
-                        <!-- User Menu -->
-                        <div class="relative" x-data="{ open: false }">
-                            <button @click="open = !open"
-                                    class="flex items-center text-sm text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                                    aria-expanded="false"
-                                    aria-haspopup="true">
-                                <span class="mr-2">{{ auth()->user()->name }}</span>
-                                <span class="text-xs text-gray-500">({{ auth()->user()->staff_id }})</span>
-                                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-
-                            <div x-show="open"
-                                 @click.away="open = false"
-                                 x-transition:enter="transition ease-out duration-100"
-                                 x-transition:enter-start="transform opacity-0 scale-95"
-                                 x-transition:enter-end="transform opacity-100 scale-100"
-                                 x-transition:leave="transition ease-in duration-75"
-                                 x-transition:leave-start="transform opacity-100 scale-100"
-                                 x-transition:leave-end="transform opacity-0 scale-95"
-                                 class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 z-50"
-                                 role="menu">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                    Profil Saya / My Profile
-                                </a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                    Tetapan / Settings
-                                </a>
-                                <hr class="my-1">
-                                <form method="POST" action="{{ route('logout') }}" class="block">
-                                    @csrf
-                                    <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                        Log Keluar / Logout
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 hover:text-gray-900">
-                            Log Masuk / Login
-                        </a>
-                    @endauth
-                </div>
+    {{-- Phase banner slot (optional) --}}
+    @if(isset($phaseBanner))
+        <div class="bg-primary-50 border-b border-otl-divider">
+            <div class="myds-container py-2 flex items-center gap-3">
+                <span class="inline-flex items-center rounded-md bg-primary-100 text-primary-600 px-3 py-1 text-body-sm font-medium">
+                    {{ $phaseBanner['phase'] ?? 'BETA' }}
+                </span>
+                <p class="text-body-sm text-txt-black-700">
+                    {{ $phaseBanner['description'] ?? 'Perkhidmatan baharu — maklum balas anda amat dihargai.' }}
+                </p>
+                @if(!empty($phaseBanner['feedbackUrl']))
+                    <a href="{{ $phaseBanner['feedbackUrl'] }}" class="ml-auto text-body-sm text-primary-600 hover:text-primary-700 underline">
+                        {{ $phaseBanner['feedbackText'] ?? 'Beri maklum balas / Give feedback' }}
+                    </a>
+                @endif
             </div>
         </div>
-    </header>
+    @endif
 
-    <!-- MYDS Main Layout -->
-    <div class="flex h-screen bg-gray-50">
-        <!-- Sidebar Navigation -->
-        @auth
-        <nav id="main-navigation"
-             class="bg-white w-64 shadow-sm border-r border-gray-200 overflow-y-auto"
-             :class="{ 'hidden': !sidebarOpen, 'block': sidebarOpen }"
-             role="navigation"
-             aria-label="Main navigation">
-            <div class="px-4 py-6">
-                <!-- Dashboard Link -->
-                <div class="mb-6">
-                    <a href="{{ route('dashboard') }}"
-                       class="flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-700 {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700' : '' }}"
-                       aria-current="{{ request()->routeIs('dashboard') ? 'page' : 'false' }}">
-                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5a2 2 0 012-2h4a2 2 0 012 2v6a2 2 0 01-2 2H10a2 2 0 01-2-2V5z"></path>
-                        </svg>
-                        <span>Papan Pemuka / Dashboard</span>
+    <div class="min-h-screen flex flex-col">
+
+        <!-- Masthead / Header -->
+        <header class="bg-bg-white-0 border-b border-otl-divider" role="banner">
+            <div class="myds-container flex items-center justify-between py-4">
+                <div class="flex items-center gap-4">
+                    <a href="{{ url('/') }}" class="flex items-center gap-3" aria-label="Halaman utama ICTServe">
+                        <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="Jata Negara Malaysia" class="h-10 w-auto" />
+                        <div>
+                            <div class="text-heading-3xs font-semibold text-txt-black-900">ICTServe (iServe)</div>
+                            <div class="text-body-xs text-txt-black-500">Sistem Pengurusan Perkhidmatan ICT — MOTAC</div>
+                        </div>
                     </a>
                 </div>
 
-                <!-- ICT Loan Module -->
-                <div class="mb-6">
-                    <h3 class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                        Pinjaman ICT / ICT Loan
-                    </h3>
-                    <div class="space-y-1">
-                        <a href="{{ route('loan.create') }}"
-                           class="flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-green-50 hover:text-green-700 {{ request()->routeIs('loan.create') ? 'bg-green-50 text-green-700 border-r-2 border-green-700' : '' }}">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                            </svg>
-                            <span>Mohon Pinjaman / Request Loan</span>
-                        </a>
-                        <a href="{{ route('loan.index') }}"
-                           class="flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-green-50 hover:text-green-700 {{ request()->routeIs('loan.index') ? 'bg-green-50 text-green-700 border-r-2 border-green-700' : '' }}">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            <span>Senarai Pinjaman / Loan List</span>
-                        </a>
-                        <a href="{{ route('equipment.index') }}"
-                           class="flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-green-50 hover:text-green-700 {{ request()->routeIs('equipment.*') ? 'bg-green-50 text-green-700 border-r-2 border-green-700' : '' }}">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                            </svg>
-                            <span>Katalog Peralatan / Equipment Catalog</span>
-                        </a>
-                    </div>
-                </div>
+                <div class="flex items-center gap-3">
 
-                <!-- Helpdesk Module -->
-                <div class="mb-6">
-                    <h3 class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                        Meja Bantuan / Helpdesk
-                    </h3>
-                    <div class="space-y-1">
-                        <a href="{{ route('helpdesk.create') }}"
-                           class="flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-700 {{ request()->routeIs('helpdesk.create') ? 'bg-red-50 text-red-700 border-r-2 border-red-700' : '' }}">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Lapor Kerosakan / Report Issue</span>
-                        </a>
-                        <a href="{{ route('helpdesk.index') }}"
-                           class="flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-700 {{ request()->routeIs('helpdesk.index') ? 'bg-red-50 text-red-700 border-r-2 border-red-700' : '' }}">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                            </svg>
-                            <span>Tiket Saya / My Tickets</span>
-                        </a>
-                    </div>
-                </div>
+                    {{-- Language selector (accessible) --}}
+                    <label for="locale-select" class="sr-only">Pilih bahasa / Select language</label>
+                    <select id="locale-select" onchange="location.href='{{ url('language') }}/'+this.value"
+                            class="text-body-sm border otl-gray-300 rounded px-2 py-1 bg-bg-white-0"
+                            aria-label="Pilih Bahasa / Select Language">
+                        <option value="ms" {{ app()->getLocale() === 'ms' ? 'selected' : '' }}>BM</option>
+                        <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>EN</option>
+                    </select>
 
-                <!-- Admin Section (if user is admin) -->
-                @if(auth()->user()->isIctAdmin() || auth()->user()->isSuperAdmin())
-                <div class="mb-6">
-                    <h3 class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                        Pentadbiran / Administration
-                    </h3>
-                    <div class="space-y-1">
-                        <a href="{{ route('admin.dashboard') }}"
-                           class="flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-purple-50 hover:text-purple-700 {{ request()->routeIs('admin.*') ? 'bg-purple-50 text-purple-700 border-r-2 border-purple-700' : '' }}">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            <span>Panel Admin / Admin Panel</span>
-                        </a>
-                        <a href="{{ route('admin.reports.index') }}"
-                           class="flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-purple-50 hover:text-purple-700">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                            </svg>
-                            <span>Laporan / Reports</span>
-                        </a>
-                    </div>
+                    {{-- Theme switcher blade component (MYDS wrapper) --}}
+                    <x-myds.theme-switcher aria-label="Tukar tema / Toggle theme" />
+
+                    {{-- Authentication / user menu --}}
+                    @auth
+                        <div class="relative" x-data="{ open: false }">
+                            <button @click="open = !open" @keydown.escape="open = false"
+                                    aria-haspopup="true" :aria-expanded="open.toString()"
+                                    class="flex items-center gap-2 rounded-md p-2 hover:bg-bg-washed focus:outline-none focus:ring-2 focus:ring-fr-primary">
+                                <span class="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white font-medium">
+                                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                                </span>
+                                <span class="hidden md:block text-body-sm text-txt-black-900">{{ auth()->user()->name }}</span>
+                                <svg class="w-4 h-4 text-txt-black-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            {{-- Dropdown --}}
+                            <div x-show="open" x-cloak
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 @click.outside="open = false"
+                                 class="absolute right-0 mt-2 w-56 bg-bg-white-0 border border-otl-divider rounded-md shadow-context-menu z-50"
+                                 role="menu" aria-label="Menu pengguna">
+                                <div class="py-1">
+                                    <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Tetapan Profil / Profile</a>
+                                    <a href="{{ route('helpdesk.index') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Bantuan / Helpdesk</a>
+                                    <hr class="border-otl-divider my-1">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="w-full text-left px-4 py-2 text-body-sm text-danger-600 hover:bg-bg-washed" role="menuitem">Log keluar / Sign out</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="flex items-center gap-2">
+                            <a href="{{ route('login') }}" class="text-body-sm text-primary-600 hover:underline">Log masuk / Sign in</a>
+                            <a href="{{ route('register') }}" class="myds-btn-primary myds-btn-sm">Daftar / Register</a>
+                        </div>
+                    @endauth
                 </div>
-                @endif
             </div>
-        </nav>
-        @endauth
 
-        <!-- Main Content -->
-        <main id="main-content" class="flex-1 overflow-y-auto focus:outline-none" role="main">
-            <div class="p-6">
-                <!-- MYDS Breadcrumb -->
-                @if(isset($breadcrumbs))
-                <nav class="flex mb-6" aria-label="Breadcrumb">
-                    <ol class="flex items-center space-x-4">
-                        @foreach($breadcrumbs as $index => $crumb)
-                            <li class="flex">
-                                @if($index > 0)
-                                    <svg class="flex-shrink-0 w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                @endif
-                                @if(isset($crumb['url']) && !$loop->last)
-                                    <a href="{{ $crumb['url'] }}" class="text-sm font-medium text-gray-500 hover:text-gray-700">
-                                        {{ $crumb['title'] }}
+            {{-- Primary navigation (optional for authenticated users) --}}
+            @auth
+                <nav id="main-navigation" aria-label="Navigasi utama" class="bg-bg-white-0 border-t border-otl-divider">
+                    <div class="myds-container">
+                        <ul class="flex gap-1 py-2" role="menubar" aria-label="Primary">
+                            @php
+                                $navItems = [
+                                    ['route' => 'dashboard', 'label' => __('Utama'), 'icon' => 'home', 'pattern' => 'dashboard'],
+                                    ['route' => 'loan.index',   'label' => __('Pinjaman ICT'), 'icon' => 'document-text', 'pattern' => 'loan.*'],
+                                    ['route' => 'helpdesk.index','label' => __('Aduan ICT'), 'icon' => 'support', 'pattern' => 'helpdesk.*'],
+                                    ['route' => 'equipment.index','label' => __('Peralatan'), 'icon' => 'computer-desktop', 'pattern' => 'equipment.*'],
+                                ];
+                                if(auth()->user()->isIctAdmin() || auth()->user()->isSuperAdmin()){
+                                    $navItems[] = ['route' => 'admin.dashboard', 'label' => __('Pentadbiran'), 'icon' => 'cog-6-tooth', 'pattern' => 'admin.*'];
+                                }
+                            @endphp
+
+                            @foreach($navItems as $item)
+                                @php
+                                    $active = request()->routeIs($item['pattern'] ?? ($item['route'] . '*'));
+                                @endphp
+                                <li role="none">
+                                    <a role="menuitem" href="{{ route($item['route']) }}"
+                                       class="flex items-center gap-2 px-3 py-2 rounded-md text-body-sm font-medium transition-colors
+                                       {{ $active ? 'bg-primary-50 text-primary-700 border-b-2 border-primary-600' : 'text-txt-black-700 hover:bg-bg-washed hover:text-txt-black-900' }}">
+                                        {{-- Inline MYDS-style icons (20x20 grid, 1.5px stroke) --}}
+                                        @switch($item['icon'])
+                                            @case('home')
+                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                                    <path d="M3 9.5L10 3l7 6.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    <path d="M5 10v6a1 1 0 001 1h2m6-7v6a1 1 0 01-1 1h-2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </svg>
+                                                @break
+                                            @case('document-text')
+                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                                    <path d="M7 2h5l5 5v9a1 1 0 01-1 1H5a1 1 0 01-1-1V3a1 1 0 011-1z" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M9 8h6M9 12h6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                @break
+                                            @case('support')
+                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                                    <circle cx="10" cy="10" r="8" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M10 7v4l3 1" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                @break
+                                            @case('computer-desktop')
+                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                                    <rect x="3" y="4" width="14" height="9" rx="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M8 17h4" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                @break
+                                            @case('cog-6-tooth')
+                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                                    <circle cx="10" cy="10" r="3"></circle>
+                                                    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                @break
+                                        @endswitch
+                                        <span>{{ $item['label'] }}</span>
                                     </a>
-                                @else
-                                    <span class="text-sm font-medium text-gray-900" aria-current="page">
-                                        {{ $crumb['title'] }}
-                                    </span>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ol>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </nav>
+            @endauth
+        </header>
+
+        <!-- Main: landmarks and focus management for accessibility -->
+        <main id="main-content" role="main" tabindex="-1" class="flex-1 bg-bg-white-50">
+            <div class="myds-container py-6">
+                {{-- Breadcrumbs + Page header slots --}}
+                @if(isset($breadcrumbs) || isset($pageTitle))
+                    <div class="mb-6">
+                        @if(isset($breadcrumbs))
+                            <nav aria-label="Breadcrumb" class="mb-3">
+                                <ol class="flex items-center text-body-sm space-x-2">
+                                    @foreach($breadcrumbs as $crumb)
+                                        <li>
+                                            @if(!$loop->last)
+                                                <a href="{{ $crumb['url'] ?? '#' }}" class="text-primary-600 hover:text-primary-700">{{ $crumb['title'] }}</a>
+                                                <span class="text-txt-black-400 mx-2">/</span>
+                                            @else
+                                                <span class="text-txt-black-700">{{ $crumb['title'] }}</span>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                </ol>
+                            </nav>
+                        @endif
+
+                        @if(isset($pageTitle))
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h1 class="myds-heading text-heading-md font-semibold text-txt-black-900">{{ $pageTitle }}</h1>
+                                    @if(isset($pageDescription))
+                                        <p class="mt-2 text-body-base text-txt-black-700">{{ $pageDescription }}</p>
+                                    @endif
+                                </div>
+                                @if(isset($pageActions))
+                                    <div class="flex items-center gap-2">
+                                        {!! $pageActions !!}
+                                    </div>
+                                @endif
+                            </div>
+                        @endif
+                    </div>
                 @endif
 
-                <!-- Page Content -->
-                {{ $slot ?? '' }}
-                @yield('content')
+                {{-- Main slot (page body) --}}
+                <div>
+                    {{ $slot ?? '' }}
+                    @yield('content')
+                </div>
             </div>
         </main>
-    </div>
 
-    <!-- MYDS Footer -->
-    <footer class="bg-gray-800 text-white py-6" role="contentinfo">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <img src="{{ asset('images/jata-negara-white.png') }}" alt="Jata Negara" class="h-8 w-8 mr-3">
-                    <div>
-                        <p class="text-sm font-medium">ICT Serve (iServe) - MOTAC</p>
-                        <p class="text-xs text-gray-400">Kementerian Pelancongan, Seni dan Budaya Malaysia</p>
+        <!-- Footer (MYDS Footer pattern) -->
+        <footer class="bg-bg-white-0 border-t border-otl-divider mt-auto" role="contentinfo">
+            <div class="myds-container py-8">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                    <div class="md:col-span-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="Jata Negara Malaysia" class="h-8 w-auto" />
+                            <div>
+                                <div class="text-heading-3xs font-medium text-txt-black-900">ICTServe (iServe)</div>
+                                <div class="text-body-xs text-txt-black-500">Kementerian Pelancongan, Seni dan Budaya Malaysia</div>
+                            </div>
+                        </div>
+                        <p class="text-body-sm text-txt-black-700">
+                            Sistem pengurusan peralatan dan meja bantuan ICT dalaman, dibangunkan mengikut MYDS &amp; MyGovEA.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <h3 class="myds-heading text-heading-4xs font-medium text-txt-black-900 mb-2">Pautan Pantas</h3>
+                        <ul class="space-y-2">
+                            <li><a class="text-body-sm text-txt-black-700 hover:text-primary-600" href="{{ route('dashboard') }}">Utama</a></li>
+                            <li><a class="text-body-sm text-txt-black-700 hover:text-primary-600" href="{{ route('loan.index') }}">Pinjaman ICT</a></li>
+                            <li><a class="text-body-sm text-txt-black-700 hover:text-primary-600" href="{{ route('helpdesk.index') }}">Aduan ICT</a></li>
+                            <li><a class="text-body-sm text-txt-black-700 hover:text-primary-600" href="{{ route('equipment.index') }}">Peralatan</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <h3 class="myds-heading text-heading-4xs font-medium text-txt-black-900 mb-2">Sokongan</h3>
+                        <ul class="space-y-2">
+                            <li class="text-body-sm text-txt-black-700">E-mel: <a href="mailto:ict-support@example.gov.my" class="text-primary-600 hover:underline">ict-support@example.gov.my</a></li>
+                            <li class="text-body-sm text-txt-black-700">Telefon: +60 3-xxxx xxxx</li>
+                            <li class="text-body-sm text-txt-black-700">Talian Kecemasan: +60 3-yyyy yyyy (24/7)</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="text-right">
-                    <p class="text-xs text-gray-400">
-                        &copy; {{ date('Y') }} Kerajaan Malaysia. Hak Cipta Terpelihara.
-                    </p>
-                    <p class="text-xs text-gray-400">
-                        Dibina mengikut MYDS dan MyGOVEA
-                    </p>
+
+                <div class="border-t border-otl-divider mt-6 pt-4">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                        <p class="text-body-xs text-txt-black-500">© {{ date('Y') }} Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.</p>
+                        <p class="text-body-xs text-txt-black-500">
+                            Mematuhi <a href="https://design.digital.gov.my/" class="text-primary-600 hover:underline" target="_blank" rel="noopener">Malaysia Government Design System (MYDS)</a> &amp; prinsip <a href="{{ asset('docs/prinsip-reka-bentuk-mygovea.md') }}" class="text-primary-600 hover:underline">MyGovEA</a>.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-
-    <!-- MYDS Toast Notifications -->
-    <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2" role="alert" aria-live="polite">
-        <!-- Toast messages will be injected here -->
+        </footer>
     </div>
+
+    {{-- Toast container for unobtrusive messages (MYDS Toast) --}}
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 pointer-events-none" aria-live="polite"></div>
 
     @livewireScripts
 
-    <!-- Alpine.js for interactivity -->
+    <!-- Alpine (deferred) for interactivity if not bundled -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- MYDS Language Switcher -->
+    {{-- Simple theme manager for Alpine (used by x-data above). Keep minimal and robust. --}}
     <script>
-        function changeLanguage(locale) {
-            window.location.href = "{{ url('language') }}/" + locale;
+        function themeManager(){
+            return {
+                isDark: document.documentElement.classList.contains('dark'),
+                init() {
+                    // keep reactive state in sync with root class
+                    this.isDark = document.documentElement.classList.contains('dark');
+                },
+                toggle() {
+                    this.isDark = !this.isDark;
+                    if (this.isDark) {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                        document.getElementById('theme-color')?.setAttribute('content', '#18181B');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                        document.getElementById('theme-color')?.setAttribute('content', '#FFFFFF');
+                    }
+                },
+                set(theme) {
+                    if (theme === 'system') {
+                        localStorage.setItem('theme', 'system');
+                        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                        if (prefersDark) document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark');
+                    } else if (theme === 'dark') {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    }
+                    this.isDark = document.documentElement.classList.contains('dark');
+                }
+            };
         }
+
+        // Toast API: small helper to show MYDS-styled toasts from anywhere
+        window.showToast = function(type = 'info', title = '', message = '', duration = 3500) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const id = 'toast-' + Date.now();
+            const toast = document.createElement('div');
+            toast.setAttribute('role','status');
+            toast.className = 'pointer-events-auto max-w-sm w-full bg-bg-white-0 border border-otl-divider rounded-md shadow-context-menu overflow-hidden mb-3';
+            toast.style.display = 'flex';
+            toast.style.alignItems = 'flex-start';
+            toast.style.gap = '0.75rem';
+            toast.innerHTML = `
+                <div style="padding:0.75rem;display:flex;align-items:center;">
+                    ${ type === 'success' ? '<svg class="w-5 h-5 text-success-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>' : '' }
+                    ${ type === 'error' ? '<svg class="w-5 h-5 text-danger-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>' : '' }
+                    ${ type === 'warning' ? '<svg class="w-5 h-5 text-warning-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>' : '' }
+                    ${ type === 'info' ? '<svg class="w-5 h-5 text-primary-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>' : '' }
+                </div>
+                <div style="padding:0.75rem;flex:1;">
+                    <p style="margin:0;font-weight:600;color:var(--txt-black-900,#111)">${title}</p>
+                    <p style="margin:0;margin-top:0.25rem;color:var(--txt-black-700,#333)">${message}</p>
+                </div>
+                <div style="padding:0.5rem;">
+                    <button aria-label="Close toast" style="background:none;border:none;color:var(--txt-black-500,#666);cursor:pointer;font-size:1rem;">✕</button>
+                </div>
+            `;
+            container.appendChild(toast);
+
+            // close on button click
+            toast.querySelector('button')?.addEventListener('click', () => {
+                toast.remove();
+            });
+
+            if (duration > 0) {
+                setTimeout(() => {
+                    toast.remove();
+                }, duration);
+            }
+        };
     </script>
 
     {{ $scripts ?? '' }}
