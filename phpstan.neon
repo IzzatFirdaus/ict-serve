@@ -1,10 +1,20 @@
+
+
 includes:
-    - vendor/larastan/larastan/extension.neon
-    - vendor/nesbot/carbon/extension.neon
+  - vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-    paths:
-        - app/
-    level: 5
-    treatPhpDocTypesAsCertain: false
+  level: 5
+  paths:
+    - app
+    - database
+    - routes
+    - tests
+  autoload_files:
+    - %rootDir%/../vendor/autoload.php
+  ignoreErrors:
+    # Targeted suppressions go here. After the first scan, add precise rules with justification.
+    - message: '#SomeRegexForKnownFalsePositive#'
+      path: %rootDir%/../app/SomeLegacyClass.php
+      count: 1
 

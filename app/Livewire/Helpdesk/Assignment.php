@@ -88,9 +88,9 @@ class Assignment extends Component
 
         // Set current values
         $this->assigned_to = $this->ticket->getOriginal('assigned_to');
-        $this->priority = $this->ticket->priority instanceof \App\Enums\TicketPriority
-            ? $this->ticket->priority->value
-            : (string) $this->ticket->priority;
+    $this->priority = $this->ticket->priority instanceof \App\Enums\TicketPriority
+        ? $this->ticket->priority->value
+        : (string) $this->ticket->priority;
         $this->due_date = $this->ticket->due_at?->format('Y-m-d\TH:i');
     }
 
