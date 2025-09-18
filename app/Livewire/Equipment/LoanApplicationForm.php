@@ -280,7 +280,7 @@ class LoanApplicationForm extends Component
     {
         $prefix = 'ICT-LOAN-';
         $date = now()->format('Ymd');
-        $sequence = str_pad(LoanRequest::whereDate('created_at', today())->count() + 1, 4, '0', STR_PAD_LEFT);
+    $sequence = str_pad((string)(LoanRequest::whereDate('created_at', today())->count() + 1), 4, '0', STR_PAD_LEFT);
 
         return "{$prefix}{$date}-{$sequence}";
     }

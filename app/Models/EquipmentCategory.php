@@ -25,9 +25,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
+
 class EquipmentCategory extends Model
 {
     use HasFactory;
+
+    /**
+     * Accessor for name property (stub for Larastan).
+     */
+    public function getNameAttribute(): ?string
+    {
+        return $this->attributes['name'] ?? null;
+    }
 
     /**
      * Get the equipment items in this category.

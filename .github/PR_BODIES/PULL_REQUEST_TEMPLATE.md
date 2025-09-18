@@ -1,4 +1,3 @@
-
 # Summary
 
 Adds a public MOTAC information page and navigation link.

@@ -34,49 +34,49 @@ class HelpdeskTicketResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'ticket_number' => $this->ticket_number,
-            'title' => $this->title,
-            'description' => $this->description,
+            'id' => $this->resource->id,
+            'ticket_number' => $this->resource->ticket_number,
+            'title' => $this->resource->title,
+            'description' => $this->resource->description,
             'user' => [
-                'id' => $this->user->id,
-                'name' => $this->user->name,
-                'email' => $this->user->email,
-                'division' => $this->user->division,
+                'id' => $this->resource->user->id,
+                'name' => $this->resource->user->name,
+                'email' => $this->resource->user->email,
+                'division' => $this->resource->user->division,
             ],
             'category' => [
-                'id' => $this->category->id,
-                'name' => $this->category->name,
-                'icon' => $this->category->icon,
+                'id' => $this->resource->category->id,
+                'name' => $this->resource->category->name,
+                'icon' => $this->resource->category->icon,
             ],
             'priority' => [
-                'level' => $this->priority,
+                'level' => $this->resource->priority,
                 'label' => $this->getPriorityLabel(),
                 'color' => $this->getPriorityColor(),
             ],
             'status' => [
-                'id' => $this->status->id,
-                'name' => $this->status->name,
-                'label' => $this->status->label,
+                'id' => $this->resource->status->id,
+                'name' => $this->resource->status->name,
+                'label' => $this->resource->status->label,
                 'color' => $this->getStatusColor(),
             ],
-            'location' => $this->location,
+            'location' => $this->resource->location,
             'equipment_item' => $this->whenLoaded('equipmentItem', function () {
                 return [
-                    'id' => $this->equipmentItem->id,
-                    'name' => $this->equipmentItem->name,
-                    'category' => $this->equipmentItem->category->name,
-                    'serial_number' => $this->equipmentItem->serial_number,
+                    'id' => $this->resource->equipmentItem->id,
+                    'name' => $this->resource->equipmentItem->name,
+                    'category' => $this->resource->equipmentItem->category->name,
+                    'serial_number' => $this->resource->equipmentItem->serial_number,
                 ];
             }),
-            'assigned_to' => $this->whenNotNull($this->assignedTo, [
-                'id' => $this->assignedTo?->id,
-                'name' => $this->assignedTo?->name,
+            'assigned_to' => $this->whenNotNull($this->resource->assignedTo, [
+                'id' => $this->resource->assignedTo?->id,
+                'name' => $this->resource->assignedTo?->name,
             ]),
-            'admin_remarks' => $this->admin_remarks,
-            'attachments' => $this->attachments ? $this->formatAttachments() : [],
-            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
-            'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
+            'admin_remarks' => $this->resource->admin_remarks,
+            'attachments' => $this->resource->attachments ? $this->formatAttachments() : [],
+            'created_at' => $this->resource->created_at->format('Y-m-d H:i:s'),
+            'updated_at' => $this->resource->updated_at->format('Y-m-d H:i:s'),
         ];
     }
 
@@ -85,7 +85,7 @@ class HelpdeskTicketResource extends JsonResource
      */
     private function getPriorityLabel(): string
     {
-        return match ($this->priority) {
+        return match ($this->resource->priority) {
             'low' => 'Rendah',
             'medium' => 'Sederhana',
             'high' => 'Tinggi',
@@ -99,7 +99,7 @@ class HelpdeskTicketResource extends JsonResource
      */
     private function getPriorityColor(): string
     {
-        return match ($this->priority) {
+        return match ($this->resource->priority) {
             'low' => 'green',
             'medium' => 'yellow',
             'high' => 'orange',
@@ -113,7 +113,7 @@ class HelpdeskTicketResource extends JsonResource
      */
     private function getStatusColor(): string
     {
-        return match ($this->status->name) {
+        return match ($this->resource->status->name) {
             'new' => 'blue',
             'in_progress' => 'yellow',
             'resolved' => 'green',
@@ -134,7 +134,7 @@ class HelpdeskTicketResource extends JsonResource
                 'mime_type' => $attachment['mime_type'],
                 'download_url' => asset('storage/'.$attachment['path']),
             ];
-        }, $this->attachments);
+        }, $this->resource->attachments);
     }
 
     /**

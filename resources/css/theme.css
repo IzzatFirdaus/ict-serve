@@ -10,36 +10,36 @@
 
 :root {
   /* MYDS Light Theme Colors (Default) */
-  
+
   /* Primary Colors */
   --theme-primary-50: var(--color-primary-50);
   --theme-primary-100: var(--color-primary-100);
   --theme-primary-600: var(--color-primary-600);
   --theme-primary-700: var(--color-primary-700);
-  
+
   /* Background Colors */
   --theme-bg-primary: var(--color-bg-white-0);
   --theme-bg-secondary: var(--color-bg-white-50);
   --theme-bg-tertiary: var(--color-bg-white-100);
   --theme-bg-washed: var(--color-bg-washed);
-  
+
   /* Text Colors */
   --theme-text-primary: var(--color-txt-black-900);
   --theme-text-secondary: var(--color-txt-black-700);
   --theme-text-tertiary: var(--color-txt-black-500);
   --theme-text-muted: var(--color-txt-black-400);
-  
+
   /* Border Colors */
   --theme-border-primary: var(--color-otl-gray-200);
   --theme-border-secondary: var(--color-otl-gray-300);
-  
+
   /* Focus Ring Colors */
   --theme-focus-ring: var(--color-fr-primary-600);
-  
+
   /* Shadow Colors */
-  --theme-shadow-light: rgba(0, 0, 0, 0.05);
-  --theme-shadow-medium: rgba(0, 0, 0, 0.1);
-  --theme-shadow-dark: rgba(0, 0, 0, 0.15);
+  --theme-shadow-light: rgb(0 0 0 / 5%);
+  --theme-shadow-medium: rgb(0 0 0 / 10%);
+  --theme-shadow-dark: rgb(0 0 0 / 15%);
 }
 
 /* Dark Theme Colors */
@@ -48,18 +48,15 @@
   --theme-bg-secondary: var(--color-gray-850);
   --theme-bg-tertiary: var(--color-gray-800);
   --theme-bg-washed: var(--color-gray-800);
-  
   --theme-text-primary: var(--color-gray-50);
   --theme-text-secondary: var(--color-gray-200);
   --theme-text-tertiary: var(--color-gray-300);
   --theme-text-muted: var(--color-gray-400);
-  
   --theme-border-primary: var(--color-gray-700);
   --theme-border-secondary: var(--color-gray-600);
-  
-  --theme-shadow-light: rgba(0, 0, 0, 0.2);
-  --theme-shadow-medium: rgba(0, 0, 0, 0.3);
-  --theme-shadow-dark: rgba(0, 0, 0, 0.4);
+  --theme-shadow-light: rgb(0 0 0 / 20%);
+  --theme-shadow-medium: rgb(0 0 0 / 30%);
+  --theme-shadow-dark: rgb(0 0 0 / 40%);
 }
 
 /* =============================================================================
@@ -124,7 +121,7 @@
 /* Button focus styles */
 button:focus-visible,
 .btn:focus-visible,
-[role="button"]:focus-visible {
+[role='button']:focus-visible {
   outline: 2px solid var(--theme-focus-ring);
   outline-offset: 2px;
   border-radius: var(--radius-s);
@@ -155,9 +152,10 @@ textarea:focus-visible {
 html,
 body,
 *:not(.no-theme-transition) {
-  transition: background-color var(--transition-short), 
-              color var(--transition-short),
-              border-color var(--transition-short);
+  transition:
+    background-color var(--transition-short),
+    color var(--transition-short),
+    border-color var(--transition-short);
 }
 
 /* Prevent transitions on page load */
@@ -209,17 +207,17 @@ body,
 
 @media (prefers-contrast: high) {
   :root {
-    --theme-focus-ring: #0000FF;
-    --theme-border-primary: #000000;
-    --theme-text-primary: #000000;
+    --theme-focus-ring: #00f;
+    --theme-border-primary: #000;
+    --theme-text-primary: #000;
   }
-  
+
   .dark {
-    --theme-focus-ring: #FFFF00;
-    --theme-border-primary: #FFFFFF;
-    --theme-text-primary: #FFFFFF;
+    --theme-focus-ring: #ff0;
+    --theme-border-primary: #fff;
+    --theme-text-primary: #fff;
   }
-  
+
   /* Increase border thickness for high contrast */
   .theme-border,
   input,
@@ -243,7 +241,7 @@ body,
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   [data-theme-toggle] svg {
     transition: none;
   }
@@ -264,7 +262,7 @@ body,
     --theme-text-tertiary: #666;
     --theme-border-primary: #ccc;
   }
-  
+
   /* Hide theme toggle in print */
   [data-theme-toggle] {
     display: none !important;

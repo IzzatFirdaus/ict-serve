@@ -56,6 +56,63 @@ class LoanRequest extends Model
 {
     use HasFactory;
 
+    /**
+     * Accessor for loanStatus property (alias for status relation).
+     */
+    public function getLoanStatusAttribute(): ?\App\Models\LoanStatus
+    {
+        return $this->status;
+    }
+
+    /**
+     * Get the status for this loan request (relation for 'status').
+     */
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(LoanStatus::class, 'status_id');
+    }
+
+    /**
+     * Get the equipment item for this request (for 'equipmentItem' relation).
+     */
+    public function equipmentItem(): BelongsTo
+    {
+        // If you want the first equipment item, you can use a custom accessor instead.
+        return $this->belongsTo(EquipmentItem::class, 'equipment_item_id');
+    }
+
+    /**
+     * Accessor for reference_code (stub for Larastan).
+     */
+    public function getReferenceCodeAttribute(): ?string
+    {
+        return $this->reference_number ?? null;
+    }
+
+    /**
+     * Accessor for approval_token (stub for Larastan).
+     */
+    public function getApprovalTokenAttribute(): ?string
+    {
+        return $this->attributes['approval_token'] ?? null;
+    }
+
+    /**
+     * Accessor for expected_return_date (stub for Larastan).
+     */
+    public function getExpectedReturnDateAttribute(): ?\Illuminate\Support\Carbon
+    {
+        return $this->attributes['expected_return_date'] ?? null;
+    }
+
+    /**
+     * Accessor for reference_number (stub for Larastan).
+     */
+    public function getReferenceNumberAttribute(): ?string
+    {
+        return $this->attributes['reference_number'] ?? null;
+    }
+
     protected $fillable = [
         'request_number',
         'reference_number',
@@ -273,42 +330,44 @@ class LoanRequest extends Model
     }
 
     /**
-     * Generate unique request numbers on creation.
+     * Boot the model and auto-generate request_number and reference_number if not set.
      */
     protected static function boot(): void
     {
         parent::boot();
 
-        static::creating(function ($loanRequest): void {
-            if (empty($loanRequest->request_number)) {
-                $loanRequest->request_number = static::generateRequestNumber();
+        static::creating(function ($loan): void {
+            // Generate request_number if not set
+            if (empty($loan->request_number)) {
+                $date = now();
+                $prefix = 'LR-'.$date->format('Y-md');
+
+                $lastRequest = static::where('request_number', 'like', $prefix.'%')
+                    ->orderBy('request_number', 'desc')
+                    ->first();
+
+                if ($lastRequest) {
+                    $lastSequence = intval(substr($lastRequest->request_number, -3));
+                    $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
+                } else {
+                    $sequence = '001';
+                }
+
+                $loan->request_number = $prefix.'-'.$sequence;
             }
-            if (empty($loanRequest->reference_number)) {
-                $loanRequest->reference_number = static::generateReferenceNumber();
+            // Generate reference_number if not set
+            if (empty($loan->reference_number)) {
+                $year = date('Y');
+                $month = date('m');
+                $type = 'LOAN';
+                $lastRequest = self::whereYear('created_at', $year)
+                    ->whereMonth('created_at', $month)
+                    ->orderBy('id', 'desc')
+                    ->first();
+                $sequence = $lastRequest ? ((int) substr($lastRequest->reference_number, -4)) + 1 : 1;
+                $loan->reference_number = sprintf('%s/%s/%s/%04d', $year, $month, $type, $sequence);
             }
         });
-    }
-
-    /**
-     * Generate request number in format: LR-YYYY-MMDD-XXX
-     */
-    protected static function generateRequestNumber(): string
-    {
-        $date = now();
-        $prefix = 'LR-'.$date->format('Y-md');
-
-        $lastRequest = static::where('request_number', 'like', $prefix.'%')
-            ->orderBy('request_number', 'desc')
-            ->first();
-
-        if ($lastRequest) {
-            $lastSequence = intval(substr($lastRequest->request_number, -3));
-            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
-        } else {
-            $sequence = '001';
-        }
-
-        return $prefix.'-'.$sequence;
     }
 
     /**

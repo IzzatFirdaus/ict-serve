@@ -75,7 +75,7 @@
                     <div class="flex items-center space-x-4">
                         <!-- Government Logo -->
                         <div class="flex-shrink-0">
-                            <img src="{{ asset('images/jata-negara.png') }}"
+                            <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}"
                                  alt="Jata Negara Malaysia"
                                  class="h-10 w-auto">
                         </div>
@@ -302,7 +302,7 @@
                     <!-- Footer Content -->
                     <div class="col-span-4 tablet:col-span-6 desktop:col-span-8">
                         <div class="flex items-center space-x-4 mb-4">
-                            <img src="{{ asset('images/jata-negara.png') }}"
+                            <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}"
                                  alt="Jata Negara Malaysia"
                                  class="h-8 w-auto">
                             <div>

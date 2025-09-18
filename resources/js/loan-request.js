@@ -2,13 +2,13 @@
  * Equipment Loan Request Form Interactions
  * Handles dynamic equipment addition/removal and form validation
  */
-document.addEventListener('DOMContentLoaded', function() {
-    let equipmentCount = 1;
-    const addButton = document.getElementById('add-equipment');
-    const container = document.getElementById('equipment-requests');
+document.addEventListener('DOMContentLoaded', function () {
+  let equipmentCount = 1;
+  const addButton = document.getElementById('add-equipment');
+  const container = document.getElementById('equipment-requests');
 
-    // Equipment template for dynamic addition
-    const equipmentTemplate = `
+  // Equipment template for dynamic addition
+  const equipmentTemplate = `
         <div class="equipment-request border border-otl-gray-200 rounded-[var(--radius-m)] p-4">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="myds-body-lg font-medium">Equipment #__INDEX__</h3>
@@ -38,116 +38,128 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     `;
 
-    // Get equipment options from the first select element
-    function getEquipmentOptions() {
-        const firstSelect = container.querySelector('select[name="equipment_requests[0][equipment_id]"]');
-        return firstSelect ? firstSelect.innerHTML.replace(/equipment_requests\[0\]/, 'equipment_requests[__COUNT__]') : '';
-    }
+  // Get equipment options from the first select element
+  function getEquipmentOptions() {
+    const firstSelect = container.querySelector(
+      'select[name="equipment_requests[0][equipment_id]"]'
+    );
+    return firstSelect
+      ? firstSelect.innerHTML.replace(
+          /equipment_requests\[0\]/,
+          'equipment_requests[__COUNT__]'
+        )
+      : '';
+  }
 
-    // Add equipment handler
-    if (addButton) {
-        addButton.addEventListener('click', function() {
-            equipmentCount++;
-            const newEquipment = equipmentTemplate
-                .replace(/__COUNT__/g, equipmentCount - 1)
-                .replace(/__INDEX__/g, equipmentCount);
+  // Add equipment handler
+  if (addButton) {
+    addButton.addEventListener('click', function () {
+      equipmentCount++;
+      const newEquipment = equipmentTemplate
+        .replace(/__COUNT__/g, equipmentCount - 1)
+        .replace(/__INDEX__/g, equipmentCount);
 
-            container.insertAdjacentHTML('beforeend', newEquipment);
-            updateRemoveButtons();
+      container.insertAdjacentHTML('beforeend', newEquipment);
+      updateRemoveButtons();
+    });
+  }
+
+  // Remove equipment handler
+  if (container) {
+    container.addEventListener('click', function (e) {
+      if (e.target.closest('.remove-equipment')) {
+        e.target.closest('.equipment-request').remove();
+        updateIndexes();
+        updateRemoveButtons();
+      }
+    });
+  }
+
+  // Update remove button visibility
+  function updateRemoveButtons() {
+    const requests = container.querySelectorAll('.equipment-request');
+    requests.forEach((request, index) => {
+      const removeBtn = request.querySelector('.remove-equipment');
+      if (removeBtn) {
+        if (requests.length > 1) {
+          removeBtn.classList.remove('hidden');
+        } else {
+          removeBtn.classList.add('hidden');
+        }
+      }
+    });
+  }
+
+  // Update equipment indexes after removal
+  function updateIndexes() {
+    const requests = container.querySelectorAll('.equipment-request');
+    requests.forEach((request, index) => {
+      const title = request.querySelector('h3');
+      if (title) {
+        title.textContent = `Equipment #${index + 1}`;
+      }
+
+      // Update form field names
+      const fields = request.querySelectorAll('[name^="equipment_requests"]');
+      fields.forEach((field) => {
+        const name = field.getAttribute('name');
+        if (name) {
+          field.setAttribute('name', name.replace(/\[\d+\]/, `[${index}]`));
+        }
+      });
+    });
+  }
+
+  // Same as applicant checkbox functionality
+  const sameAsApplicantCheckbox = document.querySelector(
+    'input[name="same_as_applicant"]'
+  );
+  const responsibleOfficerFields = [
+    document.getElementById('responsible_officer_name'),
+    document.getElementById('responsible_officer_position'),
+    document.getElementById('responsible_officer_phone'),
+  ];
+
+  if (
+    sameAsApplicantCheckbox &&
+    responsibleOfficerFields.every((field) => field)
+  ) {
+    sameAsApplicantCheckbox.addEventListener('change', function () {
+      if (this.checked) {
+        // Get user data from authenticated user (these would be passed from Laravel)
+        const userData = window.authUserData || {};
+
+        responsibleOfficerFields[0].value = userData.name || '';
+        responsibleOfficerFields[1].value = userData.position || '';
+        responsibleOfficerFields[2].value = userData.phone || '';
+
+        responsibleOfficerFields.forEach((field) => {
+          field.readOnly = true;
+          field.classList.add('bg-bg-gray-50');
         });
-    }
-
-    // Remove equipment handler
-    if (container) {
-        container.addEventListener('click', function(e) {
-            if (e.target.closest('.remove-equipment')) {
-                e.target.closest('.equipment-request').remove();
-                updateIndexes();
-                updateRemoveButtons();
-            }
+      } else {
+        responsibleOfficerFields.forEach((field) => {
+          field.value = '';
+          field.readOnly = false;
+          field.classList.remove('bg-bg-gray-50');
         });
-    }
+      }
+    });
+  }
 
-    // Update remove button visibility
-    function updateRemoveButtons() {
-        const requests = container.querySelectorAll('.equipment-request');
-        requests.forEach((request, index) => {
-            const removeBtn = request.querySelector('.remove-equipment');
-            if (removeBtn) {
-                if (requests.length > 1) {
-                    removeBtn.classList.remove('hidden');
-                } else {
-                    removeBtn.classList.add('hidden');
-                }
-            }
-        });
-    }
+  // Date validation
+  const fromDate = document.getElementById('requested_from');
+  const toDate = document.getElementById('requested_to');
 
-    // Update equipment indexes after removal
-    function updateIndexes() {
-        const requests = container.querySelectorAll('.equipment-request');
-        requests.forEach((request, index) => {
-            const title = request.querySelector('h3');
-            if (title) {
-                title.textContent = `Equipment #${index + 1}`;
-            }
+  if (fromDate && toDate) {
+    fromDate.addEventListener('change', function () {
+      toDate.min = this.value;
+      if (toDate.value && toDate.value <= this.value) {
+        toDate.value = '';
+      }
+    });
+  }
 
-            // Update form field names
-            const fields = request.querySelectorAll('[name^="equipment_requests"]');
-            fields.forEach(field => {
-                const name = field.getAttribute('name');
-                if (name) {
-                    field.setAttribute('name', name.replace(/\[\d+\]/, `[${index}]`));
-                }
-            });
-        });
-    }
-
-    // Same as applicant checkbox functionality
-    const sameAsApplicantCheckbox = document.querySelector('input[name="same_as_applicant"]');
-    const responsibleOfficerFields = [
-        document.getElementById('responsible_officer_name'),
-        document.getElementById('responsible_officer_position'),
-        document.getElementById('responsible_officer_phone')
-    ];
-
-    if (sameAsApplicantCheckbox && responsibleOfficerFields.every(field => field)) {
-        sameAsApplicantCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                // Get user data from authenticated user (these would be passed from Laravel)
-                const userData = window.authUserData || {};
-
-                responsibleOfficerFields[0].value = userData.name || '';
-                responsibleOfficerFields[1].value = userData.position || '';
-                responsibleOfficerFields[2].value = userData.phone || '';
-
-                responsibleOfficerFields.forEach(field => {
-                    field.readOnly = true;
-                    field.classList.add('bg-bg-gray-50');
-                });
-            } else {
-                responsibleOfficerFields.forEach(field => {
-                    field.value = '';
-                    field.readOnly = false;
-                    field.classList.remove('bg-bg-gray-50');
-                });
-            }
-        });
-    }
-
-    // Date validation
-    const fromDate = document.getElementById('requested_from');
-    const toDate = document.getElementById('requested_to');
-
-    if (fromDate && toDate) {
-        fromDate.addEventListener('change', function() {
-            toDate.min = this.value;
-            if (toDate.value && toDate.value <= this.value) {
-                toDate.value = '';
-            }
-        });
-    }
-
-    // Initialize
-    updateRemoveButtons();
+  // Initialize
+  updateRemoveButtons();
 });

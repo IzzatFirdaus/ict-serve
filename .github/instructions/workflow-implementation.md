@@ -7,6 +7,7 @@ This document provides detailed implementation guidance for the core business wo
 ### 1. Application Submission (Status: `pending_support`)
 
 #### Livewire Component: `App\Livewire\LoanApplicationForm`
+
 ```php
 <?php
 
@@ -22,29 +23,29 @@ class LoanApplicationForm extends Component
 {
     #[Validate('required|string|max:255')]
     public string $purpose = '';
-    
+
     #[Validate('required|string|max:255')]
     public string $location = '';
-    
+
     #[Validate('required|date|after:today')]
     public string $loan_start_date = '';
-    
+
     #[Validate('required|date|after:loan_start_date')]
     public string $loan_end_date = '';
-    
+
     #[Validate('required|string')]
     public string $equipment_type = '';
-    
+
     #[Validate('required|integer|min:1|max:5')]
     public int $quantity = 1;
-    
+
     #[Validate('accepted')]
     public bool $terms_agreed = false;
 
     public function submit()
     {
         $this->validate();
-        
+
         $application = app(LoanApplicationService::class)->createApplication(
             user: auth()->user(),
             data: [
@@ -57,18 +58,19 @@ class LoanApplicationForm extends Component
                 'status' => 'pending_support',
             ]
         );
-        
+
         // Dispatch notification
         auth()->user()->notify(new ApplicationSubmitted($application));
-        
+
         session()->flash('success', 'Application submitted successfully. You will receive notifications about status updates.');
-        
+
         return redirect()->route('loan.applications.index');
     }
 }
 ```
 
 #### Service Implementation: `App\Services\LoanApplicationService`
+
 ```php
 <?php
 
@@ -96,20 +98,20 @@ class LoanApplicationService
                 'status' => 'pending_support',
                 'submitted_at' => now(),
             ]);
-            
+
             // Create audit trail
             activity()
                 ->performedOn($application)
                 ->causedBy($user)
                 ->log('Application submitted for approval');
-            
+
             // Dispatch event for further processing
             event(new LoanApplicationCreated($application));
-            
+
             return $application;
         });
     }
-    
+
     private function generateApplicationNumber(): string
     {
         $year = date('Y');
@@ -122,6 +124,7 @@ class LoanApplicationService
 ### 2. Approval Process (Status: `approved` | `rejected`)
 
 #### Livewire Component: `App\Livewire\ResourceManagement\Approval\Dashboard`
+
 ```php
 <?php
 
@@ -137,74 +140,74 @@ use Livewire\WithPagination;
 class Dashboard extends Component
 {
     use WithPagination;
-    
+
     public ?LoanApplication $selectedApplication = null;
     public string $approvalNotes = '';
     public int $approvedQuantity = 0;
     public bool $showApprovalModal = false;
-    
+
     public function viewApplication(LoanApplication $application)
     {
         $this->selectedApplication = $application;
         $this->approvedQuantity = $application->quantity;
         $this->showApprovalModal = true;
     }
-    
+
     public function approve()
     {
         $this->validate([
             'approvalNotes' => 'required|string|max:500',
             'approvedQuantity' => 'required|integer|min:1|max:' . $this->selectedApplication->quantity,
         ]);
-        
+
         app(ApprovalService::class)->approve(
             application: $this->selectedApplication,
             approver: auth()->user(),
             notes: $this->approvalNotes,
             approvedQuantity: $this->approvedQuantity
         );
-        
+
         // Send notification to applicant
         $this->selectedApplication->user->notify(
             new ApplicationApproved($this->selectedApplication)
         );
-        
+
         $this->reset(['selectedApplication', 'approvalNotes', 'approvedQuantity', 'showApprovalModal']);
         $this->dispatch('application-approved');
-        
+
         session()->flash('success', 'Application approved successfully.');
     }
-    
+
     public function reject()
     {
         $this->validate([
             'approvalNotes' => 'required|string|max:500',
         ]);
-        
+
         app(ApprovalService::class)->reject(
             application: $this->selectedApplication,
             approver: auth()->user(),
             notes: $this->approvalNotes
         );
-        
+
         // Send notification to applicant
         $this->selectedApplication->user->notify(
             new ApplicationRejected($this->selectedApplication)
         );
-        
+
         $this->reset(['selectedApplication', 'approvalNotes', 'showApprovalModal']);
         $this->dispatch('application-rejected');
-        
+
         session()->flash('success', 'Application rejected.');
     }
-    
+
     public function render()
     {
         $pendingApplications = LoanApplication::where('status', 'pending_support')
             ->with(['user', 'user.department'])
             ->latest()
             ->paginate(10);
-            
+
         return view('livewire.resource-management.approval.dashboard', [
             'pendingApplications' => $pendingApplications,
         ]);
@@ -215,6 +218,7 @@ class Dashboard extends Component
 ### 3. Equipment Issuance (Status: `issued`)
 
 #### Livewire Component: `App\Livewire\ResourceManagement\Admin\BPM\ProcessIssuance`
+
 ```php
 <?php
 
@@ -232,14 +236,14 @@ class ProcessIssuance extends Component
     public array $selectedEquipment = [];
     public array $accessoriesChecklist = [];
     public string $issuanceNotes = '';
-    
+
     public function mount(LoanApplication $application)
     {
         $this->application = $application;
         $this->loadAvailableEquipment();
         $this->initializeAccessoriesChecklist();
     }
-    
+
     public function issue()
     {
         $this->validate([
@@ -248,9 +252,9 @@ class ProcessIssuance extends Component
             'accessoriesChecklist' => 'required|array',
             'issuanceNotes' => 'nullable|string|max:500',
         ]);
-        
+
         $equipment = Equipment::whereIn('id', $this->selectedEquipment)->get();
-        
+
         app(LoanTransactionService::class)->processIssuance(
             application: $this->application,
             equipment: $equipment,
@@ -258,27 +262,27 @@ class ProcessIssuance extends Component
             notes: $this->issuanceNotes,
             issuedBy: auth()->user()
         );
-        
+
         // Send notification to applicant
         $this->application->user->notify(
             new EquipmentIssued($this->application, $equipment)
         );
-        
+
         session()->flash('success', 'Equipment issued successfully.');
-        
+
         return redirect()->route('admin.loan.applications.index');
     }
-    
+
     private function loadAvailableEquipment()
     {
         $availableEquipment = Equipment::where('type', $this->application->equipment_type)
             ->where('status', 'available')
             ->limit($this->application->approved_quantity ?? $this->application->quantity)
             ->get();
-            
+
         $this->selectedEquipment = $availableEquipment->pluck('id')->toArray();
     }
-    
+
     private function initializeAccessoriesChecklist()
     {
         $this->accessoriesChecklist = [
@@ -294,6 +298,7 @@ class ProcessIssuance extends Component
 ### 4. Equipment Return (Status: `completed`)
 
 #### Livewire Component: `App\Livewire\ResourceManagement\Admin\BPM\ProcessReturn`
+
 ```php
 <?php
 
@@ -310,13 +315,13 @@ class ProcessReturn extends Component
     public array $returnedItems = [];
     public array $itemConditions = [];
     public string $returnNotes = '';
-    
+
     public function mount(LoanApplication $application)
     {
         $this->application = $application;
         $this->initializeReturnItems();
     }
-    
+
     public function processReturn()
     {
         $this->validate([
@@ -325,7 +330,7 @@ class ProcessReturn extends Component
             'itemConditions.*' => 'in:good,damaged,missing',
             'returnNotes' => 'nullable|string|max:500',
         ]);
-        
+
         app(LoanTransactionService::class)->processReturn(
             application: $this->application,
             returnedItems: $this->returnedItems,
@@ -333,17 +338,17 @@ class ProcessReturn extends Component
             notes: $this->returnNotes,
             receivedBy: auth()->user()
         );
-        
+
         // Send notification to applicant
         $this->application->user->notify(
             new EquipmentReturned($this->application)
         );
-        
+
         session()->flash('success', 'Equipment return processed successfully.');
-        
+
         return redirect()->route('admin.loan.applications.index');
     }
-    
+
     private function initializeReturnItems()
     {
         foreach ($this->application->equipment as $equipment) {
@@ -359,6 +364,7 @@ class ProcessReturn extends Component
 ### 1. Ticket Creation (Status: `open`)
 
 #### Livewire Component: `App\Livewire\Helpdesk\CreateTicketForm`
+
 ```php
 <?php
 
@@ -375,20 +381,20 @@ class CreateTicketForm extends Component
 {
     #[Validate('required|exists:helpdesk_categories,id')]
     public string $category_id = '';
-    
+
     #[Validate('required|string|max:255')]
     public string $subject = '';
-    
+
     #[Validate('required|string|max:2000')]
     public string $description = '';
-    
+
     #[Validate('required|in:low,medium,high,urgent')]
     public string $priority = 'medium';
-    
+
     public function submit()
     {
         $this->validate();
-        
+
         $ticket = app(HelpdeskService::class)->createTicket(
             user: auth()->user(),
             data: [
@@ -399,21 +405,21 @@ class CreateTicketForm extends Component
                 'status' => 'open',
             ]
         );
-        
+
         // Send notifications
         auth()->user()->notify(new TicketCreated($ticket));
-        
+
         session()->flash('success', 'Support ticket created successfully. You will receive updates via email.');
-        
+
         return redirect()->route('helpdesk.tickets.show', $ticket);
     }
-    
+
     public function render()
     {
         $categories = HelpdeskCategory::where('is_active', true)
             ->orderBy('name')
             ->get();
-            
+
         return view('livewire.helpdesk.create-ticket-form', [
             'categories' => $categories,
         ]);
@@ -424,6 +430,7 @@ class CreateTicketForm extends Component
 ### 2. Ticket Assignment (Status: `in_progress`)
 
 #### Livewire Component: `App\Livewire\Helpdesk\Admin\TicketManagement`
+
 ```php
 <?php
 
@@ -439,51 +446,51 @@ use Livewire\WithPagination;
 class TicketManagement extends Component
 {
     use WithPagination;
-    
+
     public ?HelpdeskTicket $selectedTicket = null;
     public string $assignedToUserId = '';
     public bool $showAssignmentModal = false;
-    
+
     public function assignTicket(HelpdeskTicket $ticket)
     {
         $this->selectedTicket = $ticket;
         $this->assignedToUserId = $ticket->assigned_to_user_id ?? '';
         $this->showAssignmentModal = true;
     }
-    
+
     public function confirmAssignment()
     {
         $this->validate([
             'assignedToUserId' => 'required|exists:users,id',
         ]);
-        
+
         $assignedUser = User::find($this->assignedToUserId);
-        
+
         app(HelpdeskService::class)->assignTicket(
             ticket: $this->selectedTicket,
             assignedTo: $assignedUser,
             assignedBy: auth()->user()
         );
-        
+
         // Send notification to assigned user
         $assignedUser->notify(
             new TicketAssigned($this->selectedTicket)
         );
-        
+
         $this->reset(['selectedTicket', 'assignedToUserId', 'showAssignmentModal']);
-        
+
         session()->flash('success', 'Ticket assigned successfully.');
     }
-    
+
     public function render()
     {
         $tickets = HelpdeskTicket::with(['user', 'category', 'assignedTo'])
             ->where('status', 'open')
             ->latest()
             ->paginate(15);
-            
+
         $availableAgents = User::role('helpdesk_agent')->get();
-        
+
         return view('livewire.helpdesk.admin.ticket-management', [
             'tickets' => $tickets,
             'availableAgents' => $availableAgents,
@@ -495,6 +502,7 @@ class TicketManagement extends Component
 ### 3. Ticket Resolution (Status: `resolved`)
 
 #### Livewire Component: `App\Livewire\Helpdesk\TicketDetails`
+
 ```php
 <?php
 
@@ -513,55 +521,55 @@ class TicketDetails extends Component
     public bool $isInternal = false;
     public string $resolutionNotes = '';
     public bool $showResolutionForm = false;
-    
+
     public function mount(HelpdeskTicket $ticket)
     {
         $this->ticket = $ticket;
         $this->resolutionNotes = $ticket->resolution_notes ?? '';
     }
-    
+
     public function addComment()
     {
         $this->validate([
             'newComment' => 'required|string|max:2000',
         ]);
-        
+
         app(HelpdeskService::class)->addComment(
             ticket: $this->ticket,
             user: auth()->user(),
             content: $this->newComment,
             isInternal: $this->isInternal
         );
-        
+
         $this->reset('newComment', 'isInternal');
         $this->ticket->refresh();
-        
+
         session()->flash('success', 'Comment added successfully.');
     }
-    
+
     public function resolveTicket()
     {
         $this->validate([
             'resolutionNotes' => 'required|string|max:2000',
         ]);
-        
+
         app(HelpdeskService::class)->resolveTicket(
             ticket: $this->ticket,
             resolvedBy: auth()->user(),
             resolutionNotes: $this->resolutionNotes
         );
-        
+
         // Send notification to user
         $this->ticket->user->notify(
             new TicketStatusUpdated($this->ticket)
         );
-        
+
         $this->ticket->refresh();
         $this->showResolutionForm = false;
-        
+
         session()->flash('success', 'Ticket resolved successfully.');
     }
-    
+
     public function render()
     {
         $comments = $this->ticket->comments()
@@ -571,7 +579,7 @@ class TicketDetails extends Component
             })
             ->latest()
             ->get();
-            
+
         return view('livewire.helpdesk.ticket-details', [
             'comments' => $comments,
         ]);
@@ -582,6 +590,7 @@ class TicketDetails extends Component
 ## Service Layer Implementation
 
 ### LoanTransactionService
+
 ```php
 <?php
 
@@ -613,30 +622,30 @@ class LoanTransactionService
                 'accessories_checklist_on_issue' => $accessories,
                 'processed_at' => now(),
             ]);
-            
+
             // Update equipment status
             foreach ($equipment as $item) {
                 $item->update(['status' => 'on_loan']);
-                
+
                 $transaction->items()->create([
                     'equipment_id' => $item->id,
                     'condition_on_issue' => 'good',
                 ]);
             }
-            
+
             // Update application status
             $application->update(['status' => 'issued']);
-            
+
             // Create audit trail
             activity()
                 ->performedOn($application)
                 ->causedBy($issuedBy)
                 ->log('Equipment issued to applicant');
-            
+
             return $transaction;
         });
     }
-    
+
     public function processReturn(
         LoanApplication $application,
         array $returnedItems,
@@ -653,23 +662,23 @@ class LoanTransactionService
                 'notes' => $notes,
                 'processed_at' => now(),
             ]);
-            
+
             $allItemsReturned = true;
-            
+
             foreach ($returnedItems as $equipmentId => $returned) {
                 if ($returned) {
                     $equipment = Equipment::find($equipmentId);
                     $condition = $conditions[$equipmentId] ?? 'good';
-                    
+
                     // Update equipment status based on condition
                     $newStatus = match ($condition) {
                         'damaged' => 'under_maintenance',
                         'missing' => 'missing',
                         default => 'available',
                     };
-                    
+
                     $equipment->update(['status' => $newStatus]);
-                    
+
                     $transaction->items()->create([
                         'equipment_id' => $equipmentId,
                         'condition_on_return' => $condition,
@@ -678,18 +687,18 @@ class LoanTransactionService
                     $allItemsReturned = false;
                 }
             }
-            
+
             // Update application status if all items returned
             if ($allItemsReturned) {
                 $application->update(['status' => 'completed']);
             }
-            
+
             // Create audit trail
             activity()
                 ->performedOn($application)
                 ->causedBy($receivedBy)
                 ->log('Equipment return processed');
-            
+
             return $transaction;
         });
     }

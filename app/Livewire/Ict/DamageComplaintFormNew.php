@@ -166,7 +166,7 @@ class DamageComplaintFormNew extends Component
     {
         $prefix = 'ICT-DMG-';
         $date = now()->format('Ymd');
-        $sequence = str_pad(HelpdeskTicket::whereDate('created_at', today())->count() + 1, 4, '0', STR_PAD_LEFT);
+    $sequence = str_pad((string)(HelpdeskTicket::whereDate('created_at', today())->count() + 1), 4, '0', STR_PAD_LEFT);
 
         return "{$prefix}{$date}-{$sequence}";
     }

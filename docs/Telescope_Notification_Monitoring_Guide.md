@@ -244,7 +244,7 @@ After setup, verify Telescope is working:
 1. **Check Database**: Confirm mail/notification events are being recorded:
 
    ```sql
-   SELECT type, COUNT(*) as count FROM telescope_entries 
+   SELECT type, COUNT(*) as count FROM telescope_entries
    WHERE type IN ('mail', 'notification') GROUP BY type;
    ```
 

@@ -122,10 +122,10 @@ GitHub is an online platform that uses Git technology to store repositories in t
 - **Concept**: All development work happens in dedicated feature branches (e.g., `feature/add-new-button`). The `main` branch is kept stable at all times.
 - **Best For**: Continuous integration and projects that require a simple, clean workflow.
 - **Flow**:
-    1. Create a branch from `main`.
-    2. Develop and commit changes.
-    3. Open a Pull Request to merge back into `main`.
-    4. Review, approve, and merge.
+  1. Create a branch from `main`.
+  2. Develop and commit changes.
+  3. Open a Pull Request to merge back into `main`.
+  4. Review, approve, and merge.
 
 ### B. Gitflow Workflow
 
@@ -145,11 +145,11 @@ GitHub is an online platform that uses Git technology to store repositories in t
 
 - **Cause**: Occurs when Git cannot automatically merge changes because two developers edited the same line in the same file.
 - **Process**:
-    1. Git will stop the merge and mark the conflicting files.
-    2. Open the file and you will see conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`).
-    3. Manually edit the file to keep the correct code, and remove the markers.
-    4. Stage the resolved file with `git add <filename>`.
-    5. Continue the merge by running `git commit`.
+  1. Git will stop the merge and mark the conflicting files.
+  2. Open the file and you will see conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`).
+  3. Manually edit the file to keep the correct code, and remove the markers.
+  4. Stage the resolved file with `git add <filename>`.
+  5. Continue the merge by running `git commit`.
 
 ### Common Errors
 

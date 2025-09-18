@@ -183,7 +183,7 @@ class IndexEnhanced extends Component
 
             // Check permissions
             $user = auth()->user();
-            if (! in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
+            if (! in_array($user->role->value, ['ict_admin', 'supervisor', 'technician'])) {
                 session()->flash('error', 'Tiada kebenaran / No permission');
                 return;
             }
@@ -252,7 +252,7 @@ class IndexEnhanced extends Component
         $user = auth()->user();
         $query = HelpdeskTicket::whereIn('id', $this->selectedTickets);
 
-        if (! in_array($user->role, ['ict_admin', 'supervisor'])) {
+    if (! in_array($user->role->value, ['ict_admin', 'supervisor'])) {
             $query->where('user_id', $user->id);
         }
 
@@ -280,7 +280,7 @@ class IndexEnhanced extends Component
     private function loadStats(): void
     {
         $user = auth()->user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+    $isAdmin = in_array($user->role->value, ['ict_admin', 'supervisor']);
 
         $baseQuery = HelpdeskTicket::query();
 
@@ -301,7 +301,7 @@ class IndexEnhanced extends Component
     private function getTicketsQuery()
     {
         $user = auth()->user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+    $isAdmin = in_array($user->role->value, ['ict_admin', 'supervisor']);
 
         $query = HelpdeskTicket::with(['category', 'status', 'user', 'assignedToUser', 'equipmentItem'])
             ->when($this->search, function ($query) {

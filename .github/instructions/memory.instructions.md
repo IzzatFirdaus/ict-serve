@@ -9,6 +9,7 @@ Only add facts or preferences that should consistently influence Copilot’s beh
 Update this file when a user explicitly asks to “remember” something, or when team conventions change.
 
 Guidelines
+
 - Keep entries concise and factual.
 - Avoid secrets or PII.
 - Prefer present tense (“Use …”, “Prefer …”).

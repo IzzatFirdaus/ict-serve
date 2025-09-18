@@ -11,6 +11,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 
 #[Layout('layouts.iserve')]
 class AttachmentManager extends Component
@@ -84,8 +85,8 @@ class AttachmentManager extends Component
                     'url' => Storage::url($path),
                     'size' => $file->getSize(),
                     'mime_type' => $file->getMimeType(),
-                    'uploaded_by' => auth()->id(),
-                    'uploaded_by_name' => auth()->user()->name,
+                    'uploaded_by' => Auth::id(),
+                    'uploaded_by_name' => Auth::user() ? Auth::user()->name : null,
                     'uploaded_at' => now()->toISOString(),
                     'description' => $this->attachmentDescription ?: null,
                 ];
@@ -100,13 +101,13 @@ class AttachmentManager extends Component
                 'file_attachments' => $allAttachments,
             ]);
 
-            // Add activity log entry
-            $this->ticket->activity_log = array_merge(
+            // Add activity log entry (always use update, never assign directly)
+            $activityLog = array_merge(
                 $this->ticket->activity_log ?? [],
                 [[
                     'action' => 'files_uploaded',
-                    'user_id' => auth()->id(),
-                    'user_name' => auth()->user()->name,
+                    'user_id' => Auth::id(),
+                    'user_name' => Auth::user() ? Auth::user()->name : null,
                     'timestamp' => now()->toISOString(),
                     'details' => [
                         'files_count' => count($uploadedFiles),
@@ -115,8 +116,7 @@ class AttachmentManager extends Component
                     ],
                 ]]
             );
-
-            $this->ticket->save();
+            $this->ticket->update(['activity_log' => $activityLog]);
 
             session()->flash(
                 'success',
@@ -171,10 +171,12 @@ class AttachmentManager extends Component
             }
 
             // Check permissions
-            $user = auth()->user();
-            $canDelete = $user->id === (int) $attachment['uploaded_by'] ||
-                        in_array($user->role, ['ict_admin', 'supervisor']) ||
-                        $user->id === $this->ticket->user_id;
+            $user = Auth::user();
+            $canDelete = $user && (
+                $user->id === (int) $attachment['uploaded_by'] ||
+                (isset($user->role) && isset($user->role->value) && in_array($user->role->value, ['ict_admin', 'supervisor'])) ||
+                $user->id === $this->ticket->user_id
+            );
 
             if (! $canDelete) {
                 session()->flash('error', 'Tiada kebenaran untuk memadam fail / No permission to delete file');
@@ -197,21 +199,20 @@ class AttachmentManager extends Component
                 'file_attachments' => $updatedAttachments,
             ]);
 
-            // Add activity log entry
-            $this->ticket->activity_log = array_merge(
+            // Add activity log entry (always use update, never assign directly)
+            $activityLog = array_merge(
                 $this->ticket->activity_log ?? [],
                 [[
                     'action' => 'file_deleted',
-                    'user_id' => auth()->id(),
-                    'user_name' => auth()->user()->name,
+                    'user_id' => Auth::id(),
+                    'user_name' => Auth::user() ? Auth::user()->name : null,
                     'timestamp' => now()->toISOString(),
                     'details' => [
                         'filename' => $attachment['original_name'],
                     ],
                 ]]
             );
-
-            $this->ticket->save();
+            $this->ticket->update(['activity_log' => $activityLog]);
 
             session()->flash('success', 'Fail berjaya dipadam / File successfully deleted');
             $this->loadAttachments();
@@ -249,10 +250,12 @@ class AttachmentManager extends Component
     public function render()
     {
         // Check if user can upload files
-        $user = auth()->user();
-        $canUpload = $user->id === $this->ticket->user_id ||
-                    $user->id === $this->ticket->assigned_to ||
-                    in_array($user->role, ['ict_admin', 'supervisor']);
+        $user = Auth::user();
+        $canUpload = $user && (
+            $user->id === $this->ticket->user_id ||
+            $user->id === $this->ticket->assigned_to ||
+            (isset($user->role) && isset($user->role->value) && in_array($user->role->value, ['ict_admin', 'supervisor']))
+        );
 
         return view('livewire.helpdesk.attachment-manager', compact('canUpload'));
     }

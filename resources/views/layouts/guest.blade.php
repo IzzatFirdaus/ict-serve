@@ -28,7 +28,7 @@
     <header class="w-full bg-bg-white-0 border-b border-otl-divider shadow-sm">
         <div class="myds-container flex items-center py-6">
             <a href="{{ url('/') }}" aria-label="Halaman utama ICTServe (iServe)">
-                <img src="{{ asset('images/jata-negara.png') }}"
+                <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}"
                      alt="Jata Negara Malaysia"
                      class="h-10 w-auto mr-4" />
             </a>
@@ -63,7 +63,7 @@
     <footer class="bg-bg-white-0 border-t border-otl-divider mt-auto w-full">
         <div class="myds-container py-6 flex flex-col items-center text-center gap-2">
             <div class="flex items-center justify-center gap-3 mb-2">
-                <img src="{{ asset('images/jata-negara.png') }}" alt="Jata Negara Malaysia" class="h-8 w-auto" />
+                <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="Jata Negara Malaysia" class="h-8 w-auto" />
                 <span class="myds-heading text-heading-4xs font-medium text-txt-black-900">
                     ICTServe (iServe)
                 </span>

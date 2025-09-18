@@ -339,26 +339,26 @@ Create view HTML example (`create.blade.php`):
 Create view JavaScript example:
 
 ```js
-document.addEventListener('DOMContentLoaded', function() {
-    const warehouseSelect = document.getElementById('warehouse');
-    const shelfSelect = document.getElementById('shelf');
+document.addEventListener('DOMContentLoaded', function () {
+  const warehouseSelect = document.getElementById('warehouse');
+  const shelfSelect = document.getElementById('shelf');
 
-    warehouseSelect.addEventListener('change', function() {
-        const id = this.value;
-        shelfSelect.innerHTML = '<option>Loading...</option>';
+  warehouseSelect.addEventListener('change', function () {
+    const id = this.value;
+    shelfSelect.innerHTML = '<option>Loading...</option>';
 
-        fetch(`/warehouses/${id}/shelves`)
-            .then(res => res.json())
-            .then(data => {
-                shelfSelect.innerHTML = '<option value="">-- Select Shelf --</option>';
-                data.forEach(s => {
-                    const opt = document.createElement('option');
-                    opt.value = s.id;
-                    opt.text = s.shelf_number;
-                    shelfSelect.appendChild(opt);
-                });
-            });
-    });
+    fetch(`/warehouses/${id}/shelves`)
+      .then((res) => res.json())
+      .then((data) => {
+        shelfSelect.innerHTML = '<option value="">-- Select Shelf --</option>';
+        data.forEach((s) => {
+          const opt = document.createElement('option');
+          opt.value = s.id;
+          opt.text = s.shelf_number;
+          shelfSelect.appendChild(opt);
+        });
+      });
+  });
 });
 ```
 
@@ -366,31 +366,38 @@ Edit view JavaScript example:
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
-    const w = document.getElementById('warehouse_id');
-    const s = document.getElementById('shelf_id');
-    const currentShelf = s?.dataset?.current; // <select ... data-current="{{$inventory->shelf_id}}">
+  const w = document.getElementById('warehouse_id');
+  const s = document.getElementById('shelf_id');
+  const currentShelf = s?.dataset?.current; // <select ... data-current="{{$inventory->shelf_id}}">
 
-    function loadShelves(warehouseId, selected = null) {
-        s.innerHTML = '<option>Loading...</option>';
-        fetch(`/warehouses/${warehouseId}/shelves`)
-            .then(r => r.json())
-            .then(data => {
-                s.innerHTML = '<option value="">-- Select Shelf --</option>';
-                data.forEach(sh => {
-                    const opt = new Option(sh.shelf_number, sh.id);
-                    if (sh.id == selected) opt.selected = true;
-                    s.appendChild(opt);
-                });
-                s.disabled = false;
-            }).catch(() => { s.innerHTML = '<option value="">No shelves</option>'; });
+  function loadShelves(warehouseId, selected = null) {
+    s.innerHTML = '<option>Loading...</option>';
+    fetch(`/warehouses/${warehouseId}/shelves`)
+      .then((r) => r.json())
+      .then((data) => {
+        s.innerHTML = '<option value="">-- Select Shelf --</option>';
+        data.forEach((sh) => {
+          const opt = new Option(sh.shelf_number, sh.id);
+          if (sh.id == selected) opt.selected = true;
+          s.appendChild(opt);
+        });
+        s.disabled = false;
+      })
+      .catch(() => {
+        s.innerHTML = '<option value="">No shelves</option>';
+      });
+  }
+
+  if (w && w.value) loadShelves(w.value, currentShelf);
+
+  w?.addEventListener('change', () => {
+    if (!w.value) {
+      s.innerHTML = '<option value="">-- Select Shelf --</option>';
+      s.disabled = true;
+      return;
     }
-
-    if (w && w.value) loadShelves(w.value, currentShelf);
-
-    w?.addEventListener('change', () => {
-        if (!w.value) { s.innerHTML = '<option value="">-- Select Shelf --</option>'; s.disabled = true; return; }
-        loadShelves(w.value);
-    });
+    loadShelves(w.value);
+  });
 });
 ```
 

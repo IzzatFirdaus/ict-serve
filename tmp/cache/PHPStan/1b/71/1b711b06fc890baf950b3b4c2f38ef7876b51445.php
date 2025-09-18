@@ -497,7 +497,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php' => 
     array (
-      0 => '77f6ae2d04d20bd10f6334b85447cd6f087d0606',
+      0 => '55c9206314ba0f5e1032993a6746510fc1488dcf',
       1 => 
       array (
         0 => 'app\\filament\\resources\\equipmentitemresource',
@@ -1283,7 +1283,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => 
     array (
-      0 => '35038b2a0819a43d44ce64b162cbb8a0b2b2d6fb',
+      0 => '33cb49a52791fc7796894d9243c24f510c3dbb1e',
       1 => 
       array (
         0 => 'app\\http\\controllers\\publiccontroller',
@@ -1403,7 +1403,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => 
     array (
-      0 => '6f609595a365ee16344d381a4e3a61fd2bd2ff08',
+      0 => 'b69c5c3d534c49091f71440b2b83f94bb8b5f13c',
       1 => 
       array (
         0 => 'app\\http\\resources\\helpdeskticketresource',
@@ -2062,7 +2062,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => 
     array (
-      0 => '3327d13a2f6c6f59630148926e2ac31e126dd0e8',
+      0 => '1331e5198f551362ccffc32f2c447e6a7bb9c868',
       1 => 
       array (
         0 => 'app\\livewire\\helpdesk\\attachmentmanager',
@@ -2154,7 +2154,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => 
     array (
-      0 => '5fba736643b11af9cfe77545dee9c43742a50354',
+      0 => 'cbaf44ff37469b6c00e9bcb5527bce3bc6239ced',
       1 => 
       array (
         0 => 'app\\livewire\\helpdesk\\indexenhanced',
@@ -2189,7 +2189,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => 
     array (
-      0 => '82c8a702f598eb56e4639c44ad6602d850b00097',
+      0 => '37ebfc3e1007940324142db0a9576acf9b1cf279',
       1 => 
       array (
         0 => 'app\\livewire\\helpdesk\\slatracker',
@@ -2238,7 +2238,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => 
     array (
-      0 => '394706950babaeda9bbf1ac539f162dd4e34f55a',
+      0 => '61d903a22bc20733013259cf0b8e2966ae286f27',
       1 => 
       array (
         0 => 'app\\livewire\\helpdesk\\ticketform',
@@ -2919,19 +2919,20 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php' => 
     array (
-      0 => '8bf716db4ef6e9aad98a0d6e6f72215628d8f84b',
+      0 => '8784d45f6ea77df63f13000880cf1546f499e16d',
       1 => 
       array (
         0 => 'app\\models\\equipmentcategory',
       ),
       2 => 
       array (
-        0 => 'app\\models\\equipmentitems',
-        1 => 'app\\models\\activeequipmentitems',
-        2 => 'app\\models\\availableequipmentitems',
-        3 => 'app\\models\\scopeactive',
-        4 => 'app\\models\\scopeordered',
-        5 => 'app\\models\\casts',
+        0 => 'app\\models\\getnameattribute',
+        1 => 'app\\models\\equipmentitems',
+        2 => 'app\\models\\activeequipmentitems',
+        3 => 'app\\models\\availableequipmentitems',
+        4 => 'app\\models\\scopeactive',
+        5 => 'app\\models\\scopeordered',
+        6 => 'app\\models\\casts',
       ),
       3 => 
       array (
@@ -2985,29 +2986,33 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => 
     array (
-      0 => 'c0dabf4abcb00b04290f1be20429a36373895c6a',
+      0 => 'b1905d8a3e26d275056c9a41ba4b2943a2b70fa3',
       1 => 
       array (
         0 => 'app\\models\\helpdeskticket',
       ),
       2 => 
       array (
-        0 => 'app\\models\\user',
-        1 => 'app\\models\\category',
-        2 => 'app\\models\\ticketstatus',
-        3 => 'app\\models\\assignedto',
-        4 => 'app\\models\\resolvedby',
-        5 => 'app\\models\\equipmentitem',
-        6 => 'app\\models\\isoverdue',
-        7 => 'app\\models\\isresolved',
-        8 => 'app\\models\\isclosed',
-        9 => 'app\\models\\getresponsetimeattribute',
-        10 => 'app\\models\\getresolutiontimeattribute',
-        11 => 'app\\models\\casts',
-        12 => 'app\\models\\boot',
-        13 => 'app\\models\\getassignedtoattribute',
-        14 => 'app\\models\\getactivitylogattribute',
-        15 => 'app\\models\\generateticketnumber',
+        0 => 'app\\models\\status',
+        1 => 'app\\models\\assignedtouser',
+        2 => 'app\\models\\resolvedbyuser',
+        3 => 'app\\models\\comments',
+        4 => 'app\\models\\getadminremarksattribute',
+        5 => 'app\\models\\user',
+        6 => 'app\\models\\category',
+        7 => 'app\\models\\ticketstatus',
+        8 => 'app\\models\\assignedto',
+        9 => 'app\\models\\resolvedby',
+        10 => 'app\\models\\equipmentitem',
+        11 => 'app\\models\\isoverdue',
+        12 => 'app\\models\\isresolved',
+        13 => 'app\\models\\isclosed',
+        14 => 'app\\models\\getresponsetimeattribute',
+        15 => 'app\\models\\getresolutiontimeattribute',
+        16 => 'app\\models\\casts',
+        17 => 'app\\models\\boot',
+        18 => 'app\\models\\getassignedtoattribute',
+        19 => 'app\\models\\getactivitylogattribute',
       ),
       3 => 
       array (
@@ -3048,32 +3053,38 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => 
     array (
-      0 => 'b2f1779be198a4bd4554aac9c98174ade4c16d6f',
+      0 => 'ab9e69aa3d3e9cb446bb25ba415a1981327f4bf1',
       1 => 
       array (
         0 => 'app\\models\\loanrequest',
       ),
       2 => 
       array (
-        0 => 'app\\models\\user',
-        1 => 'app\\models\\supervisor',
-        2 => 'app\\models\\ictadmin',
-        3 => 'app\\models\\issuedby',
-        4 => 'app\\models\\receivedby',
-        5 => 'app\\models\\loanitems',
-        6 => 'app\\models\\scopepending',
-        7 => 'app\\models\\equipmentitems',
-        8 => 'app\\models\\approvals',
-        9 => 'app\\models\\getequipmentitemattribute',
-        10 => 'app\\models\\scopeforuser',
-        11 => 'app\\models\\canbeedited',
-        12 => 'app\\models\\canbecancelled',
-        13 => 'app\\models\\isoverdue',
-        14 => 'app\\models\\getloandurationattribute',
-        15 => 'app\\models\\casts',
-        16 => 'app\\models\\boot',
-        17 => 'app\\models\\generaterequestnumber',
-        18 => 'app\\models\\generatereferencenumber',
+        0 => 'app\\models\\getloanstatusattribute',
+        1 => 'app\\models\\status',
+        2 => 'app\\models\\equipmentitem',
+        3 => 'app\\models\\getreferencecodeattribute',
+        4 => 'app\\models\\getapprovaltokenattribute',
+        5 => 'app\\models\\getexpectedreturndateattribute',
+        6 => 'app\\models\\getreferencenumberattribute',
+        7 => 'app\\models\\user',
+        8 => 'app\\models\\supervisor',
+        9 => 'app\\models\\ictadmin',
+        10 => 'app\\models\\issuedby',
+        11 => 'app\\models\\receivedby',
+        12 => 'app\\models\\loanitems',
+        13 => 'app\\models\\scopepending',
+        14 => 'app\\models\\equipmentitems',
+        15 => 'app\\models\\approvals',
+        16 => 'app\\models\\getequipmentitemattribute',
+        17 => 'app\\models\\scopeforuser',
+        18 => 'app\\models\\canbeedited',
+        19 => 'app\\models\\canbecancelled',
+        20 => 'app\\models\\isoverdue',
+        21 => 'app\\models\\getloandurationattribute',
+        22 => 'app\\models\\casts',
+        23 => 'app\\models\\boot',
+        24 => 'app\\models\\generatereferencenumber',
       ),
       3 => 
       array (
@@ -3135,17 +3146,20 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php' => 
     array (
-      0 => 'f7abeb70e9137dd3a6696d3e70001ccb84e1e3f9',
+      0 => 'ddcc63c1eca9985916a7d36bc2c63d341d4d6037',
       1 => 
       array (
         0 => 'app\\models\\ticketcategory',
       ),
       2 => 
       array (
-        0 => 'app\\models\\helpdesktickets',
-        1 => 'app\\models\\scopeactive',
-        2 => 'app\\models\\scopeordered',
-        3 => 'app\\models\\casts',
+        0 => 'app\\models\\getpriorityattribute',
+        1 => 'app\\models\\getdefaultslahoursattribute',
+        2 => 'app\\models\\getnameattribute',
+        3 => 'app\\models\\helpdesktickets',
+        4 => 'app\\models\\scopeactive',
+        5 => 'app\\models\\scopeordered',
+        6 => 'app\\models\\casts',
       ),
       3 => 
       array (
@@ -3169,18 +3183,19 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php' => 
     array (
-      0 => 'da53651b445c450e1f66290ec638f99a3c849143',
+      0 => 'fe01e59610ad4dc565f0c954754600387b0accaa',
       1 => 
       array (
         0 => 'app\\models\\ticketstatus',
       ),
       2 => 
       array (
-        0 => 'app\\models\\helpdesktickets',
-        1 => 'app\\models\\scopeactive',
-        2 => 'app\\models\\scopeordered',
-        3 => 'app\\models\\getbycode',
-        4 => 'app\\models\\casts',
+        0 => 'app\\models\\getnameattribute',
+        1 => 'app\\models\\helpdesktickets',
+        2 => 'app\\models\\scopeactive',
+        3 => 'app\\models\\scopeordered',
+        4 => 'app\\models\\getbycode',
+        5 => 'app\\models\\casts',
       ),
       3 => 
       array (
@@ -3188,7 +3203,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php' => 
     array (
-      0 => 'cd8580f7d03a8e073a41f0f5e77f480e71f6f346',
+      0 => '72991ba792587a364c2efe273b855284cde60d82',
       1 => 
       array (
         0 => 'app\\models\\user',
@@ -3205,6 +3220,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         7 => 'app\\models\\notifications',
         8 => 'app\\models\\unreadnotifications',
         9 => 'app\\models\\activitylogs',
+        10 => 'app\\models\\hasrole',
+        11 => 'app\\models\\hasanyrole',
       ),
       3 => 
       array (
@@ -3385,7 +3402,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => 
     array (
-      0 => 'f21db2107ee7772283aeab08493ae59624b26150',
+      0 => '63bfd3e06e59bf89e2325ba7d921cdaa81f59a51',
       1 => 
       array (
         0 => 'app\\services\\helpdeskservice',
@@ -3404,7 +3421,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => 
     array (
-      0 => '81250b8cbda15eac99a54e40f23ed481ea91f8e3',
+      0 => 'b6b6464ad48e8f3703d98380748685fd88ce3477',
       1 => 
       array (
         0 => 'app\\services\\loanapplicationservice',

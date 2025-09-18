@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ isset($title) ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
-    
+
     <!-- MYDS Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    
+
     <!-- Vite Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
@@ -25,19 +25,19 @@
                     <div class="flex items-center justify-between text-sm">
                         <div class="flex items-center gap-4">
                             <span class="flex items-center gap-2">
-                                <img src="{{ asset('images/jata-negara.png') }}" alt="Jata Negara" class="w-4 h-4">
+                                <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="Jata Negara" class="w-4 h-4">
                                 Official Malaysian Government Website
                             </span>
                         </div>
                         <div class="flex items-center gap-4">
                             <!-- Language Switcher -->
                             <div class="flex items-center gap-2">
-                                <a href="{{ route('language.switch', 'en') }}" 
+                                <a href="{{ route('language.switch', 'en') }}"
                                    class="hover:text-blue-300 transition-colors {{ app()->getLocale() === 'en' ? 'text-blue-300' : '' }}">
                                     English
                                 </a>
                                 <span class="text-gray-400">|</span>
-                                <a href="{{ route('language.switch', 'ms') }}" 
+                                <a href="{{ route('language.switch', 'ms') }}"
                                    class="hover:text-blue-300 transition-colors {{ app()->getLocale() === 'ms' ? 'text-blue-300' : '' }}">
                                     Bahasa Malaysia
                                 </a>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Main Navigation -->
             <div class="px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
@@ -60,43 +60,43 @@
                             </div>
                         </a>
                     </div>
-                    
+
                     <!-- Main Navigation Links -->
                     <nav class="hidden md:flex items-center gap-8">
-                        <a href="{{ route('dashboard') }}" 
+                        <a href="{{ route('dashboard') }}"
                            class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('dashboard') ? 'text-blue-600' : '' }}">
                             Dashboard
                         </a>
-                        <a href="{{ route('loan.index') }}" 
+                        <a href="{{ route('loan.index') }}"
                            class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('loan.*') ? 'text-blue-600' : '' }}">
                             ICT Loan
                         </a>
-                        <a href="{{ route('helpdesk.index') }}" 
+                        <a href="{{ route('helpdesk.index') }}"
                            class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('helpdesk.*') ? 'text-blue-600' : '' }}">
                             Helpdesk
                         </a>
-                        <a href="{{ route('equipment.index') }}" 
+                        <a href="{{ route('equipment.index') }}"
                            class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('equipment.*') ? 'text-blue-600' : '' }}">
                             Equipment
                         </a>
                         @auth
                             @if(auth()->user()->isIctAdmin() || auth()->user()->isSuperAdmin())
-                                <a href="{{ route('admin.dashboard') }}" 
+                                <a href="{{ route('admin.dashboard') }}"
                                    class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('admin.*') ? 'text-blue-600' : '' }}">
                                     Admin
                                 </a>
                             @endif
                         @endauth
                     </nav>
-                    
+
                     <!-- User Menu -->
                     <div class="flex items-center gap-4">
                         @auth
                             <!-- Notifications -->
-                            <a href="{{ route('notifications.index') }}" 
+                            <a href="{{ route('notifications.index') }}"
                                class="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M15 17h5l-5-5V9a6 6 0 10-12 0v3l-5 5h5a3 3 0 106 0z"></path>
                                 </svg>
                                 @if(auth()->user()->unreadNotifications->count() > 0)
@@ -105,10 +105,10 @@
                                     </span>
                                 @endif
                             </a>
-                            
+
                             <!-- User Dropdown -->
                             <div class="relative" x-data="{ open: false }">
-                                <button @click="open = !open" 
+                                <button @click="open = !open"
                                         class="flex items-center gap-2 p-2 text-gray-700 hover:text-gray-900 transition-colors">
                                     <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center">
                                         {{ substr(auth()->user()->name, 0, 1) }}
@@ -118,24 +118,24 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </button>
-                                
-                                <div x-show="open" @click.away="open = false" 
+
+                                <div x-show="open" @click.away="open = false"
                                      class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50">
                                     <div class="py-1">
                                         <div class="px-4 py-2 text-sm text-gray-500 border-b border-gray-100">
                                             {{ auth()->user()->position }}
                                         </div>
-                                        <a href="{{ route('profile.index') }}" 
+                                        <a href="{{ route('profile.index') }}"
                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                                             Profile
                                         </a>
-                                        <a href="{{ route('notifications.index') }}" 
+                                        <a href="{{ route('notifications.index') }}"
                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                                             Notifications
                                         </a>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
-                                            <button type="submit" 
+                                            <button type="submit"
                                                     class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                                                 Sign Out
                                             </button>
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                         @else
-                            <a href="{{ route('login') }}" 
+                            <a href="{{ route('login') }}"
                                class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
                                 Sign In
                             </a>
@@ -152,7 +152,7 @@
                                 Get Started
                             </x-myds.button>
                         @endauth
-                        
+
                         <!-- Mobile Menu Button -->
                         <button x-data x-on:click="$dispatch('toggle-mobile-menu')"
                                 class="md:hidden p-2 text-gray-400 hover:text-gray-600 transition-colors">
@@ -176,7 +176,7 @@
                             @foreach($breadcrumbs as $index => $breadcrumb)
                                 <li class="flex">
                                     @if(!$loop->last)
-                                        <a href="{{ $breadcrumb['url'] }}" 
+                                        <a href="{{ $breadcrumb['url'] }}"
                                            class="text-gray-500 hover:text-gray-700 transition-colors">
                                             {{ $breadcrumb['title'] }}
                                         </a>
@@ -195,7 +195,7 @@
                 </div>
             </div>
         @endif
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {{ $slot }}
         </div>
@@ -210,7 +210,7 @@
                     <!-- Logo and Ministry Info -->
                     <div class="col-span-4 lg:col-span-4">
                         <div class="flex items-center gap-3 mb-4">
-                            <img src="{{ asset('images/jata-negara.png') }}" alt="Jata Negara" class="w-8 h-8">
+                            <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="Jata Negara" class="w-8 h-8">
                             <div>
                                 <h3 class="font-semibold">Ministry of Tourism, Arts and Culture</h3>
                             </div>
@@ -224,7 +224,7 @@
                             <p>Phone: +60 3-2161 2008</p>
                         </div>
                     </div>
-                    
+
                     <!-- Quick Links -->
                     <div class="col-span-2 lg:col-span-2">
                         <h4 class="font-semibold mb-4">Quick Links</h4>
@@ -235,7 +235,7 @@
                             <li><a href="#" class="hover:text-white transition-colors">Track Status</a></li>
                         </ul>
                     </div>
-                    
+
                     <!-- Support -->
                     <div class="col-span-2 lg:col-span-3">
                         <h4 class="font-semibold mb-4">Support</h4>
@@ -246,7 +246,7 @@
                             <li><a href="#" class="hover:text-white transition-colors">System Status</a></li>
                         </ul>
                     </div>
-                    
+
                     <!-- Ministry Links -->
                     <div class="col-span-4 lg:col-span-3">
                         <h4 class="font-semibold mb-4">Ministry Resources</h4>
@@ -259,7 +259,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Copyright Bar -->
             <div class="border-t border-gray-800 py-6">
                 <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
@@ -278,10 +278,10 @@
     </footer>
 
     @livewireScripts
-    
+
     <!-- Alpine.js for interactive components -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <!-- Toast Notifications: Now handled by toast-manager.js module -->
     <!-- Session flash messages will be automatically converted to toasts by the module -->
     @if(session()->has('message') || session()->has('error') || session()->has('success') || session()->has('warning'))

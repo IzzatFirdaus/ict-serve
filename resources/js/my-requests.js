@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const ticketContent = document.getElementById('ticketDetailsContent');
 
   function openLoan(id) {
-    if (!loanModal || !loanContent) { return; }
+    if (!loanModal || !loanContent) {
+      return;
+    }
     loanContent.innerHTML = `
       <div class="text-center py-4">
         <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-otl-primary-300 mx-auto"></div>
@@ -27,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openTicket(id) {
-    if (!ticketModal || !ticketContent) { return; }
+    if (!ticketModal || !ticketContent) {
+      return;
+    }
     ticketContent.innerHTML = `
       <div class="text-center py-4">
         <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-danger-600 mx-auto"></div>
@@ -78,7 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Backdrop click closes modal
   window.addEventListener('click', (event) => {
-    if (event.target === loanModal) { loanModal.classList.add('hidden'); }
-    if (event.target === ticketModal) { ticketModal.classList.add('hidden'); }
+    if (event.target === loanModal) {
+      loanModal.classList.add('hidden');
+    }
+    if (event.target === ticketModal) {
+      ticketModal.classList.add('hidden');
+    }
   });
 });

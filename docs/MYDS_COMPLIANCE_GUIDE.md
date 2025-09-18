@@ -6,7 +6,7 @@ This document outlines how the ICTServe project complies with the Malaysia Gover
 
 - **Referenced Files:**
   - `_reference/MYDS-Design-Overview.md` - MYDS design system concepts, structure, and grid
-  - `_reference/MYDS-Develop-Overview.md` - MYDS developer implementation, component usage, and UI accessibility  
+  - `_reference/MYDS-Develop-Overview.md` - MYDS developer implementation, component usage, and UI accessibility
   - `_reference/MYDS-Colour-Reference.md` - Official MYDS color tokens, contrast, and semantic usage
   - `.github/instructions/mygovea.principles.md` - MyGovEA design principles
 
@@ -42,12 +42,14 @@ This document outlines how the ICTServe project complies with the Malaysia Gover
 ## MYDS Compliance Checklist
 
 ### Design System Foundation
+
 - [x] **Color Tokens**: All MYDS semantic tokens implemented in Tailwind config
 - [x] **Typography**: Poppins (headings) and Inter (body) fonts properly loaded
 - [x] **Grid System**: 12-8-4 responsive grid with proper breakpoints
 - [x] **Spacing Scale**: MYDS spacing tokens (4, 8, 12, 16, 24, 32, etc.)
 
 ### Component Library
+
 - [x] **MYDS Components**: Extensive component library in `resources/views/components/myds/`
 - [x] **Button Components**: Primary, secondary, danger variants with proper styling
 - [x] **Form Components**: Input, select, textarea, checkbox, radio with validation
@@ -55,6 +57,7 @@ This document outlines how the ICTServe project complies with the Malaysia Gover
 - [x] **Feedback Components**: Alert, badge, callout, status indicators
 
 ### Accessibility (WCAG 2.1 AA)
+
 - [x] **Keyboard Navigation**: Implemented in interactive components
 - [x] **Focus Management**: Proper focus rings and skip links
 - [x] **Color Contrast**: 4.5:1 minimum ratio maintained in color tokens
@@ -65,26 +68,34 @@ This document outlines how the ICTServe project complies with the Malaysia Gover
 ## MyGovEA Principles Implementation
 
 ### 1. Berpaksikan Rakyat (Citizen-Centric)
+
 **Current Status**: ✅ Well Implemented
+
 - Clear navigation and user flows
 - Consistent UI patterns across the application
 - User feedback through alerts and status indicators
 - Localization support (English/Bahasa Malaysia)
 
 ### 2. Antara Muka Minimalis dan Mudah (Simple Interface)
-**Current Status**: ✅ Well Implemented  
+
+**Current Status**: ✅ Well Implemented
+
 - Clean, uncluttered designs using MYDS components
 - Consistent component usage
 - Clear visual hierarchy with proper typography
 
 ### 3. Seragam (Uniform)
+
 **Current Status**: ✅ Well Implemented
+
 - Centralized MYDS component library
 - Consistent color token usage
 - Standardized spacing and typography
 
 ### 4. Pencegahan Ralat (Error Prevention)
+
 **Current Status**: ✅ Well Implemented
+
 - Form validation with Livewire attributes
 - Inline error messages using MYDS components
 - Clear feedback for user actions
@@ -94,12 +105,14 @@ This document outlines how the ICTServe project complies with the Malaysia Gover
 ### For New Livewire Components
 
 1. **Always use MYDS layout**:
+
    ```php
    #[Layout('layouts.myds')]
    class YourComponent extends Component
    ```
 
 2. **Use MYDS components in Blade templates**:
+
    ```blade
    <x-myds.container>
        <x-myds.grid>
@@ -128,12 +141,20 @@ Always use semantic tokens from the Tailwind config:
 
 ```css
 /* ✅ Correct - Using semantic tokens */
-.primary-button { @apply bg-primary-600 text-white; }
-.danger-text { @apply text-danger-600; }
-.border-color { @apply border-otl-gray-200; }
+.primary-button {
+  @apply bg-primary-600 text-white;
+}
+.danger-text {
+  @apply text-danger-600;
+}
+.border-color {
+  @apply border-otl-gray-200;
+}
 
 /* ❌ Incorrect - Using hard-coded values */
-.button { background-color: #2563EB; }
+.button {
+  background-color: #2563eb;
+}
 ```
 
 ## Testing Checklist
@@ -154,7 +175,7 @@ Always use semantic tokens from the Tailwind config:
 
 3. **Responsive Design**
    - [ ] Desktop (≥ 1024px): 12 columns
-   - [ ] Tablet (768-1023px): 8 columns  
+   - [ ] Tablet (768-1023px): 8 columns
    - [ ] Mobile (≤ 767px): 4 columns
 
 4. **MyGovEA Compliance**

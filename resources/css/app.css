@@ -15,27 +15,27 @@
 @import 'tailwindcss';
 
 /* MYDS Design Tokens */
-@import "./myds-tokens.css";
+@import './myds-tokens.css';
 
 /* Google Fonts - MYDS Typography (Poppins for headings, Inter for body) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
 
 /* =============================================================================
    MYDS Modular CSS Imports (Migration Implementation)
    ============================================================================= */
 
 /* Theme Management - Dark/light mode, color schemes */
-@import "./theme.css";
+@import './theme.css';
 
 /* Layout System - Grid, typography, spacing, responsive utilities */
-@import "./layout.css";
+@import './layout.css';
 
 /* Component Library - Buttons, forms, cards, navigation, etc. */
-@import "./components.css";
+@import './components.css';
 
 /* Accessibility Features - Skip links, focus indicators, ARIA styling */
-@import "./accessibility.css";
+@import './accessibility.css';
 
 /* =============================================================================
    Tailwind CSS Configuration
@@ -50,96 +50,94 @@
   /* MYDS Typography Families */
   --font-poppins: 'Poppins', ui-sans-serif, system-ui, sans-serif;
   --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* MYDS Color System - Primary Colors (Malaysian Government Blue) */
-  --color-primary-50: #EFF6FF;
-  --color-primary-100: #DBEAFE;
-  --color-primary-200: #C2D5FF;
-  --color-primary-300: #96B7FF;
-  --color-primary-400: #6394FF;
-  --color-primary-500: #3A75F6;
-  --color-primary-600: #2563EB;
-  --color-primary-700: #1D4ED8;
-  --color-primary-800: #1E40AF;
-  --color-primary-900: #1E3A8A;
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #c2d5ff;
+  --color-primary-300: #96b7ff;
+  --color-primary-400: #6394ff;
+  --color-primary-500: #3a75f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
   --color-primary-950: #172554;
 
   /* MYDS Color System - Danger/Error Colors */
-  --color-danger-50: #FEF2F2;
-  --color-danger-100: #FEE2E2;
-  --color-danger-200: #FECACA;
-  --color-danger-300: #FCA5A5;
-  --color-danger-400: #F87171;
-  --color-danger-500: #EF4444;
-  --color-danger-600: #DC2626;
-  --color-danger-700: #B91C1C;
-  --color-danger-800: #991B1B;
-  --color-danger-900: #7F1D1D;
-  --color-danger-950: #450A0A;
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-300: #fca5a5;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-danger-800: #991b1b;
+  --color-danger-900: #7f1d1d;
+  --color-danger-950: #450a0a;
 
   /* MYDS Color System - Success Colors */
-  --color-success-50: #F0FDF4;
-  --color-success-100: #DCFCE7;
-  --color-success-200: #BBF7D0;
-  --color-success-300: #86EFAC;
-  --color-success-400: #4ADE80;
-  --color-success-500: #22C55E;
-  --color-success-600: #16A34A;
-  --color-success-700: #15803D;
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
+  --color-success-400: #4ade80;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
   --color-success-800: #166534;
-  --color-success-900: #14532D;
-  --color-success-950: #052E16;
+  --color-success-900: #14532d;
+  --color-success-950: #052e16;
 
   /* MYDS Color System - Warning Colors */
-  --color-warning-50: #FFFBEB;
-  --color-warning-100: #FEF3C7;
-  --color-warning-200: #FDE68A;
-  --color-warning-300: #FCD34D;
-  --color-warning-400: #FBBF24;
-  --color-warning-500: #F59E0B;
-  --color-warning-600: #D97706;
-  --color-warning-700: #B45309;
-  --color-warning-800: #92400E;
-  --color-warning-900: #78350F;
-  --color-warning-950: #451A03;
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
+  --color-warning-950: #451a03;
 
   /* MYDS Color System - Neutral/Gray Colors */
-  --color-gray-50: #FAFAFA;
-  --color-gray-100: #F4F4F5;
-  --color-gray-200: #E4E4E7;
-  --color-gray-300: #D4D4D8;
-  --color-gray-400: #A1A1AA;
-  --color-gray-500: #71717A;
-  --color-gray-600: #52525B;
-  --color-gray-700: #3F3F46;
-  --color-gray-800: #27272A;
-  --color-gray-850: #1D1D21;
-  --color-gray-900: #18181B;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f4f4f5;
+  --color-gray-200: #e4e4e7;
+  --color-gray-300: #d4d4d8;
+  --color-gray-400: #a1a1aa;
+  --color-gray-500: #71717a;
+  --color-gray-600: #52525b;
+  --color-gray-700: #3f3f46;
+  --color-gray-800: #27272a;
+  --color-gray-850: #1d1d21;
+  --color-gray-900: #18181b;
   --color-gray-930: #161619;
-  --color-gray-950: #09090B;
+  --color-gray-950: #09090b;
 
   /* MYDS Semantic Color Tokens */
-  --color-txt-black-900: #18181B;
-  --color-txt-black-700: #3F3F46;
-  --color-txt-black-500: #71717A;
-  --color-txt-black-400: #A1A1AA;
-  --color-txt-black-300: #D4D4D8;
-
-  --color-bg-white-0: #FFFFFF;
-  --color-bg-white-50: #FAFAFA;
-  --color-bg-white-100: #F4F4F5;
-  --color-bg-washed: #F4F4F5;
-
-  --color-otl-gray-200: #E4E4E7;
-  --color-otl-gray-300: #D4D4D8;
-  --color-otl-gray-400: #A1A1AA;
-
-  --color-fr-primary-600: #2563EB;
-  --color-fr-danger-600: #DC2626;
-  --color-fr-success-600: #16A34A;
-  --color-fr-warning-600: #D97706;
+  --color-txt-black-900: #18181b;
+  --color-txt-black-700: #3f3f46;
+  --color-txt-black-500: #71717a;
+  --color-txt-black-400: #a1a1aa;
+  --color-txt-black-300: #d4d4d8;
+  --color-bg-white-0: #fff;
+  --color-bg-white-50: #fafafa;
+  --color-bg-white-100: #f4f4f5;
+  --color-bg-washed: #f4f4f5;
+  --color-otl-gray-200: #e4e4e7;
+  --color-otl-gray-300: #d4d4d8;
+  --color-otl-gray-400: #a1a1aa;
+  --color-fr-primary-600: #2563eb;
+  --color-fr-danger-600: #dc2626;
+  --color-fr-success-600: #16a34a;
+  --color-fr-warning-600: #d97706;
 
   /* MYDS Typography Scale */
   --fontSize-body-2xs: 0.625rem;
@@ -153,7 +151,6 @@
   --fontSize-body-4xl: 2.25rem;
   --fontSize-body-5xl: 3rem;
   --fontSize-body-6xl: 3.75rem;
-
   --fontSize-heading-4xs: 0.875rem;
   --fontSize-heading-3xs: 1rem;
   --fontSize-heading-2xs: 1.25rem;
@@ -164,9 +161,11 @@
   --fontSize-heading-xl: 3.75rem;
 
   /* MYDS Shadow System */
-  --shadow-button: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
-  --shadow-card: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.05);
-  --shadow-context-menu: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10);
+  --shadow-button: 0px 1px 3px 0px rgb(0 0 0 / 7%);
+  --shadow-card:
+    0px 2px 6px 0px rgb(0 0 0 / 5%), 0px 6px 24px 0px rgb(0 0 0 / 5%);
+  --shadow-context-menu:
+    0px 2px 6px 0px rgb(0 0 0 / 5%), 0px 12px 50px 0px rgb(0 0 0 / 10%);
 
   /* MYDS Border Radius System */
   --radius-xs: 4px;
@@ -208,6 +207,7 @@
   0% {
     background-color: hsl(200deg 20% 80%);
   }
+
   100% {
     background-color: hsl(200deg 20% 95%);
   }
@@ -268,8 +268,8 @@
 }
 
 .priority-high {
-  background-color: #FFEDD5; /* orange-100 equivalent */
-  color: #9A3412; /* orange-800 equivalent */
+  background-color: #ffedd5; /* orange-100 equivalent */
+  color: #9a3412; /* orange-800 equivalent */
 }
 
 .priority-urgent {
@@ -284,7 +284,7 @@
 
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 }
 
 /* =============================================================================
@@ -302,6 +302,7 @@
    ============================================================================= */
 
 /* Uncomment for debugging layout issues in development */
+
 /*
 .debug * {
   outline: 1px solid red;

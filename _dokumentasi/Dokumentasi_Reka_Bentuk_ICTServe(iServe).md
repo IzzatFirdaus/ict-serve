@@ -1,6 +1,7 @@
 # ICTServe (iServe) - Sistem Pengurusan Perkhidmatan ICT MOTAC
 
 Dokumentasi Bahasa Reka Bentuk Versi 1.0 | Untuk Bahagian Pengurusan Maklumat (BPM)
+
 <!-- Dokumen ini memetakan keputusan reka bentuk kepada 18 Prinsip MyGOVEA; rujuk bahagian "Pematuhan MyGOVEA" di akhir. -->
 
 ---
@@ -12,7 +13,7 @@ Dokumentasi Bahasa Reka Bentuk Versi 1.0 | Untuk Bahagian Pengurusan Maklumat (B
 - **Akses Pengguna:** Reka bentuk aplikasi menempatkan keperluan dan kehendak pengguna sebagai fokus utama. Paparan antara muka, penggunaan menu, mesej dan komponen dibuat mudah difahami dan relevan.
 - **Bahasa Melayu Utama:** Bahasa utama antara muka ialah Bahasa Melayu, dengan pilihan Inggeris secara kontekstual.
 - **Penglibatan Pengguna:** Pengguna dilibatkan dalam setiap fasa pembangunan untuk memastikan aplikasi memenuhi keperluan mereka.
-- **Memudahkan Pengguna:** Penggunaan navigasi dua klik ke fungsi utama, penandaan medan wajib dengan asterisk merah (*), dan arahan jelas.
+- **Memudahkan Pengguna:** Penggunaan navigasi dua klik ke fungsi utama, penandaan medan wajib dengan asterisk merah (\*), dan arahan jelas.
 
 ### 1.2 Berpacukan Data
 
@@ -107,16 +108,16 @@ Dokumentasi Bahasa Reka Bentuk Versi 1.0 | Untuk Bahagian Pengurusan Maklumat (B
 
 ### 2.1 Palet Warna
 
-| Peranan      | Mod Cerah           | Mod Gelap   | Penggunaan                                          |
-|--------------|---------------------|-------------|-----------------------------------------------------|
-| Utama        | #0055A4 (Biru MOTAC)| #3D8FD1     | Butang utama, keadaan aktif, pautan, tajuk.         |
-| Sekunder     | #6c757d (Kelabu)    | #adb5bd     | Tindakan sekunder, teks tidak aktif, sempadan.      |
-| Aksen        | #E60000 (Merah BPM) | #FF5252     | Ikon grid aplikasi, sorotan, notifikasi segera.     |
-| Latar        | #F8F9FA             | #121826     | Latar kandungan utama.                              |
-| Permukaan    | #FFFFFF             | #1E293B     | Kad, panel borang, modals.                          |
-| Kritikal     | #DC3545             | #F87171     | Ralat, tindakan merosakkan (cth: butang hapus).     |
-| Berjaya      | #28A745             | #4ADE80     | Tindakan selesai, mesej kejayaan.                   |
-| Amaran       | #FFC107             | #FFD60A     | Status tertunda, amaran berhati-hati.               |
+| Peranan   | Mod Cerah            | Mod Gelap | Penggunaan                                      |
+| --------- | -------------------- | --------- | ----------------------------------------------- |
+| Utama     | #0055A4 (Biru MOTAC) | #3D8FD1   | Butang utama, keadaan aktif, pautan, tajuk.     |
+| Sekunder  | #6c757d (Kelabu)     | #adb5bd   | Tindakan sekunder, teks tidak aktif, sempadan.  |
+| Aksen     | #E60000 (Merah BPM)  | #FF5252   | Ikon grid aplikasi, sorotan, notifikasi segera. |
+| Latar     | #F8F9FA              | #121826   | Latar kandungan utama.                          |
+| Permukaan | #FFFFFF              | #1E293B   | Kad, panel borang, modals.                      |
+| Kritikal  | #DC3545              | #F87171   | Ralat, tindakan merosakkan (cth: butang hapus). |
+| Berjaya   | #28A745              | #4ADE80   | Tindakan selesai, mesej kejayaan.               |
+| Amaran    | #FFC107              | #FFD60A   | Status tertunda, amaran berhati-hati.           |
 
 ### 2.2 Tipografi
 
@@ -143,13 +144,13 @@ Dokumentasi Bahasa Reka Bentuk Versi 1.0 | Untuk Bahagian Pengurusan Maklumat (B
 
 ### 3.1 Penggunaan Logo
 
-| Konteks           | Logo               | Format | Spesifikasi                                   |
-|-------------------|--------------------|--------|-----------------------------------------------|
-| Header Intranet   | MOTAC Intranet     | SVG    | Tinggi 40px, termasuk teks "intranet".        |
-| Header Sistem     | ICTServe           | SVG    | Tinggi 40px, dengan teks "iServe".            |
-| Footer            | BPM Rasmi          | SVG    | Tinggi 32px, kotak merah berteks putih.       |
-| Eksport PDF       | MOTAC Rasmi        | Vektor | Lebar 20mm, di header dokumen.                |
-| Templat E-mel     | MOTAC Rasmi        | PNG    | Lebar 120px, dengan alt text yang sesuai.     |
+| Konteks         | Logo           | Format | Spesifikasi                               |
+| --------------- | -------------- | ------ | ----------------------------------------- |
+| Header Intranet | MOTAC Intranet | SVG    | Tinggi 40px, termasuk teks "intranet".    |
+| Header Sistem   | ICTServe       | SVG    | Tinggi 40px, dengan teks "iServe".        |
+| Footer          | BPM Rasmi      | SVG    | Tinggi 32px, kotak merah berteks putih.   |
+| Eksport PDF     | MOTAC Rasmi    | Vektor | Lebar 20mm, di header dokumen.            |
+| Templat E-mel   | MOTAC Rasmi    | PNG    | Lebar 120px, dengan alt text yang sesuai. |
 
 ### 3.2 Templat E-mel
 
@@ -181,12 +182,12 @@ graph LR
 - **Paparan Butiran Tiket:** Ringkasan tiket di bahagian atas, diikuti thread komen kronologi antara pengguna & agen IT.
 - **Penunjuk Status:** Lencana warna dan ikon jelas untuk status tiket (Buka, Dalam Tindakan, Selesai, Ditutup).
 
-| Status      | Ikon                | Warna      | Label         |
-|-------------|---------------------|------------|--------------|
-| Buka        | bi-envelope-open    | $utama     | Buka         |
-| Dalam Tindakan | bi-arrow-repeat  | $amaran    | Dalam Tindakan|
-| Selesai     | bi-check-circle     | $berjaya   | Selesai      |
-| Ditutup     | bi-archive          | $sekunder  | Ditutup      |
+| Status         | Ikon             | Warna     | Label          |
+| -------------- | ---------------- | --------- | -------------- |
+| Buka           | bi-envelope-open | $utama    | Buka           |
+| Dalam Tindakan | bi-arrow-repeat  | $amaran   | Dalam Tindakan |
+| Selesai        | bi-check-circle  | $berjaya  | Selesai        |
+| Ditutup        | bi-archive       | $sekunder | Ditutup        |
 
 ---
 
@@ -241,5 +242,5 @@ Semua keputusan reka bentuk dalam dokumen ini disemak melawan prinsip di atas. R
 
 ---
 
-*Dokumen diselenggara oleh Pejabat Reka Bentuk BPM*  
-*Tarikh dokumen: 13 September 2025*
+_Dokumen diselenggara oleh Pejabat Reka Bentuk BPM_  
+_Tarikh dokumen: 13 September 2025_

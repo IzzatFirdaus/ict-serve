@@ -8,6 +8,7 @@ use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -61,8 +62,9 @@ class SlaTracker extends Component
 
     public function loadSlaMetrics(): void
     {
-        $user = auth()->user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+    /** @var \App\Models\User|null $user */
+    $user = Auth::user();
+        $isAdmin = $user && isset($user->role) && isset($user->role->value) && in_array($user->role->value, ['ict_admin', 'supervisor']);
 
         $query = $this->getBaseQuery($isAdmin);
 
@@ -103,19 +105,22 @@ class SlaTracker extends Component
 
     public function loadCategoryBreakdown(): void
     {
-        $user = auth()->user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+    /** @var \App\Models\User|null $user */
+    $user = Auth::user();
+        $isAdmin = $user && isset($user->role) && isset($user->role->value) && in_array($user->role->value, ['ict_admin', 'supervisor']);
+
+        $userId = $user ? $user->id : null;
 
         $categories = TicketCategory::withCount([
-            'helpdeskTickets as total' => function ($query) use ($isAdmin) {
-                if (! $isAdmin) {
-                    $query->where('user_id', auth()->id());
+            'helpdeskTickets as total' => function ($query) use ($isAdmin, $userId) {
+                if (! $isAdmin && $userId !== null) {
+                    $query->where('user_id', $userId);
                 }
                 $this->applyDateRange($query);
             },
-            'helpdeskTickets as met_sla' => function ($query) use ($isAdmin) {
-                if (! $isAdmin) {
-                    $query->where('user_id', auth()->id());
+            'helpdeskTickets as met_sla' => function ($query) use ($isAdmin, $userId) {
+                if (! $isAdmin && $userId !== null) {
+                    $query->where('user_id', $userId);
                 }
                 $this->applyDateRange($query);
                 $query->where(function ($q) {
@@ -127,9 +132,9 @@ class SlaTracker extends Component
                         });
                 });
             },
-            'helpdeskTickets as breached_sla' => function ($query) use ($isAdmin) {
-                if (! $isAdmin) {
-                    $query->where('user_id', auth()->id());
+            'helpdeskTickets as breached_sla' => function ($query) use ($isAdmin, $userId) {
+                if (! $isAdmin && $userId !== null) {
+                    $query->where('user_id', $userId);
                 }
                 $this->applyDateRange($query);
                 $query->where(function ($q) {
@@ -144,6 +149,10 @@ class SlaTracker extends Component
         ])->get();
 
         $this->categoryBreakdown = $categories->map(function ($category) {
+            /**
+             * @param \App\Models\TicketCategory $category
+             * @return array{name: string, total: int, met_sla: int, breached_sla: int, met_percentage: float|int, default_sla_hours: int|null}
+             */
             $metPercentage = $category->total > 0 ?
                 round(($category->met_sla / $category->total) * 100, 1) : 0;
 
@@ -160,13 +169,16 @@ class SlaTracker extends Component
 
     public function loadRecentBreaches(): void
     {
-        $user = auth()->user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+    /** @var \App\Models\User|null $user */
+    $user = Auth::user();
+        $isAdmin = $user && isset($user->role) && isset($user->role->value) && in_array($user->role->value, ['ict_admin', 'supervisor']);
+
+        $userId = $user ? $user->id : null;
 
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser']);
 
-        if (! $isAdmin) {
-            $query->where('user_id', auth()->id());
+        if (! $isAdmin && $userId !== null) {
+            $query->where('user_id', $userId);
         }
 
         $this->recentBreaches = $query->where(function ($q) {
@@ -200,13 +212,16 @@ class SlaTracker extends Component
 
     public function loadAtRiskTickets(): void
     {
-        $user = auth()->user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+    /** @var \App\Models\User|null $user */
+    $user = Auth::user();
+        $isAdmin = $user && isset($user->role) && isset($user->role->value) && in_array($user->role->value, ['ict_admin', 'supervisor']);
+
+        $userId = $user ? $user->id : null;
 
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser']);
 
-        if (! $isAdmin) {
-            $query->where('user_id', auth()->id());
+        if (! $isAdmin && $userId !== null) {
+            $query->where('user_id', $userId);
         }
 
         $this->atRiskTickets = $query->where('due_at', '>', now())
@@ -238,11 +253,14 @@ class SlaTracker extends Component
             $ticket = HelpdeskTicket::findOrFail($ticketId);
 
             // Increase priority
+
             $newPriority = match ($ticket->priority) {
                 'low' => 'medium',
                 'medium' => 'high',
                 'high' => 'critical',
                 'critical' => 'critical', // Already max
+                null => 'low', // Default if missing
+                default => 'critical', // Fallback for unexpected values
             };
 
             $ticket->update(['priority' => $newPriority]);
@@ -269,10 +287,14 @@ class SlaTracker extends Component
 
     private function getBaseQuery(bool $isAdmin)
     {
+    /** @var \App\Models\User|null $user */
+    $user = Auth::user();
+        $userId = $user ? $user->id : null;
+
         $query = HelpdeskTicket::with(['category', 'status']);
 
-        if (! $isAdmin) {
-            $query->where('user_id', auth()->id());
+        if (! $isAdmin && $userId !== null) {
+            $query->where('user_id', $userId);
         }
 
         if ($this->categoryFilter !== 'all') {

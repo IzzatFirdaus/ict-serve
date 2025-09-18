@@ -8,6 +8,11 @@ use Filament\Schemas\Components\Section;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Actions\ViewAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 use Illuminate\Database\Eloquent\Model;
 
 class EquipmentItemResource extends Resource
@@ -34,24 +39,6 @@ class EquipmentItemResource extends Resource
     {
         return $table
             ->columns([
-                // MYDS-compliant table columns
-                Tables\Columns\TextColumn::make('serial_number')
-                    ->label('Serial Number')
-                    ->searchable()
-                    ->copyable()
-                    ->sortable(),
-
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Equipment Name')
-                    ->searchable()
-                    ->sortable()
-                    ->wrap(),
-
-                Tables\Columns\TextColumn::make('category.name')
-                    ->label('Category')
-                    ->sortable()
-                    ->badge(),
-
                 Tables\Columns\TextColumn::make('status')
                     ->label('Status')
                     ->badge()
@@ -63,22 +50,18 @@ class EquipmentItemResource extends Resource
                         'retired' => 'gray',
                         default => 'gray',
                     }),
-
                 Tables\Columns\TextColumn::make('location')
                     ->label('Location')
                     ->searchable()
                     ->limit(30),
-
                 Tables\Columns\TextColumn::make('assigned_to_name')
                     ->label('Assigned To')
                     ->searchable()
                     ->limit(25),
-
                 Tables\Columns\TextColumn::make('purchase_date')
                     ->label('Purchase Date')
                     ->date('d M Y')
                     ->sortable(),
-
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Added')
                     ->dateTime('d M Y, g:i A')
@@ -94,22 +77,21 @@ class EquipmentItemResource extends Resource
                         'damaged' => 'Damaged',
                         'retired' => 'Retired',
                     ]),
-
                 Tables\Filters\SelectFilter::make('category')
                     ->relationship('category', 'name'),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()
+                ViewAction::make(),
+                EditAction::make(),
+                DeleteAction::make()
                     ->requiresConfirmation()
                     ->modalDescription('Are you sure you want to delete this equipment item? This action cannot be undone.')
                     ->modalIcon('heroicon-o-exclamation-triangle')
                     ->modalIconColor('danger'),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()
+                BulkActionGroup::make([
+                    DeleteBulkAction::make()
                         ->requiresConfirmation()
                         ->modalDescription('Are you sure you want to delete the selected equipment items? This action cannot be undone.'),
                 ]),

@@ -6,11 +6,11 @@ Below you will find the Beast Mode prompt in various versions - starting with th
 
 ## Installation Instructions
 
-* Go to the "agent" dropdown in VS Code chat sidebar and select "Configure Modes".
-* Select "Create new custom chat mode file"
-* Select "User Data Folder"
-* Give it a name (Beast Mode)
-* Paste in the content of beastmode.chatmode.md
+- Go to the "agent" dropdown in VS Code chat sidebar and select "Configure Modes".
+- Select "Create new custom chat mode file"
+- Select "User Data Folder"
+- Give it a name (Beast Mode)
+- Paste in the content of beastmode.chatmode.md
 
 "Beast Mode" will now appear as a mode in your "Agent" dropdown.
 

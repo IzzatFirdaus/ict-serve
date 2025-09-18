@@ -34,7 +34,7 @@ class DashboardController extends Controller
         ];
 
         // Admin gets system-wide stats
-        if (in_array($user->role, ['ict_admin', 'super_admin'], true)) {
+    if (in_array($user->role->value, ['ict_admin', 'super_admin'], true)) {
             $stats['admin_stats'] = $this->getAdminStats();
         }
 
@@ -64,7 +64,7 @@ class DashboardController extends Controller
 
     private function getLoanStats($user): array
     {
-        $query = in_array($user->role, ['ict_admin', 'super_admin'], true)
+        $query = in_array($user->role->value, ['ict_admin', 'super_admin'], true)
             ? LoanRequest::query()
             : $user->loanRequests();
 
@@ -78,7 +78,7 @@ class DashboardController extends Controller
 
     private function getHelpdeskStats($user): array
     {
-        $query = in_array($user->role, ['ict_admin', 'super_admin'], true)
+        $query = in_array($user->role->value, ['ict_admin', 'super_admin'], true)
             ? HelpdeskTicket::query()
             : $user->helpdeskTickets();
 

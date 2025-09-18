@@ -8,9 +8,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
+
 class TicketStatus extends Model
 {
     use HasFactory;
+
+
+    use HasFactory;
+
+    /**
+     * Accessor for code property (stub for Larastan).
+     */
+    public function getCodeAttribute(): ?string
+    {
+        return $this->attributes['code'] ?? null;
+    }
+
+    /**
+     * Accessor for name property (stub for Larastan).
+     */
+    public function getNameAttribute(): ?string
+    {
+        return $this->attributes['name'] ?? null;
+    }
 
 
     /**

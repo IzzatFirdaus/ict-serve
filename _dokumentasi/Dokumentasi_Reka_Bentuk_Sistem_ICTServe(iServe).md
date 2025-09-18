@@ -4,6 +4,7 @@
 **Tarikh Semakan:** 12 September 2025
 **Penulis:** IzzatFirdaus
 **Berdasarkan:** BORANG PINJAMAN PERALATAN ICT 2024 SEWAAN C, BORANG ADUAN KEROSAKAN ICT, keperluan helpdesk dalaman, dan pematuhan MYDS/MyGOVEA.
+
 <!-- Nota: Dokumen ini telah disemak untuk pematuhan kepada MYDS dan 18 Prinsip MyGOVEA. -->
 
 ---

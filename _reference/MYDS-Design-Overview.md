@@ -166,16 +166,16 @@ Note: Not applicable for rich-text content.
 
 #### Typography System Example: Heading Sizes and Weights
 
-| Name                | HTML Tag | Font Size      | Line Height     | Font Weight     |
-|---------------------|----------|----------------|-----------------|-----------------|
-| Heading Extra Large |          | 60px (3.75rem) | 72px (4.5rem)   | 400 / 500 / 600 |
-| Heading Large       |          | 48px (3rem)    | 60px (3.75rem)  | 400 / 500 / 600 |
-| Heading Medium      | `h1`     | 36px (2.25rem) | 44px (2.75rem)  | 400 / 500 / 600 |
-| Heading Small       | `h2`     | 30px (1.875rem)| 38px (2.375rem) | 400 / 500 / 600 |
-| Heading Extra Small | `h3`     | 24px (1.5rem)  | 32px (2rem)     | 400 / 500 / 600 |
-| Heading 2X Small    | `h4`     | 20px (1.25rem) | 28px (1.75rem)  | 400 / 500 / 600 |
-| Heading 3X Small    | `h5`     | 16px (1rem)    | 24px (1.5rem)   | 400 / 500 / 600 |
-| Heading 4X Small    | `h6`     | 14px (0.875rem)| 20px (1.25rem)  | 400 / 500 / 600 |
+| Name                | HTML Tag | Font Size       | Line Height     | Font Weight     |
+| ------------------- | -------- | --------------- | --------------- | --------------- |
+| Heading Extra Large |          | 60px (3.75rem)  | 72px (4.5rem)   | 400 / 500 / 600 |
+| Heading Large       |          | 48px (3rem)     | 60px (3.75rem)  | 400 / 500 / 600 |
+| Heading Medium      | `h1`     | 36px (2.25rem)  | 44px (2.75rem)  | 400 / 500 / 600 |
+| Heading Small       | `h2`     | 30px (1.875rem) | 38px (2.375rem) | 400 / 500 / 600 |
+| Heading Extra Small | `h3`     | 24px (1.5rem)   | 32px (2rem)     | 400 / 500 / 600 |
+| Heading 2X Small    | `h4`     | 20px (1.25rem)  | 28px (1.75rem)  | 400 / 500 / 600 |
+| Heading 3X Small    | `h5`     | 16px (1rem)     | 24px (1.5rem)   | 400 / 500 / 600 |
+| Heading 4X Small    | `h6`     | 14px (0.875rem) | 20px (1.25rem)  | 400 / 500 / 600 |
 
 ### Typography System: Body Text
 
@@ -183,19 +183,19 @@ The Inter font family is used for paragraphs, descriptions, and general content 
 
 #### Typography System Example: Body Text Sizes and Spacing
 
-| Name             | Font Size      | Line Height     | List Spacing    | Paragraph Spacing | Font Weight     |
-|------------------|----------------|-----------------|-----------------|-------------------|-----------------|
-| Body 6X Large    | 60px (3.75rem) | 72px (4.5rem)   | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body 5X Large    | 48px (3rem)    | 60px (3.75rem)  | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body 4X Large    | 36px (2.25rem) | 44px (2.75rem)  | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body 3X Large    | 30px (1.875rem)| 38px (2.375rem) | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body 2X Large    | 24px (1.5rem)  | 32px (2rem)     | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body Extra Large | 20px (1.25rem) | 28px (1.75rem)  | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body Large       | 18px (1.125rem)| 26px (1.625rem) | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body Medium      | 16px (1rem)    | 24px (1.5rem)   | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body Small       | 14px (0.875rem)| 20px (1.25rem)  | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body Extra Small | 12px (0.75rem) | 18px (1.125rem) | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
-| Body 2X Small    | 10px (0.625rem)| 12px (0.75rem)  | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 500 / 600 |
+| Name             | Font Size       | Line Height     | List Spacing   | Paragraph Spacing | Font Weight     |
+| ---------------- | --------------- | --------------- | -------------- | ----------------- | --------------- |
+| Body 6X Large    | 60px (3.75rem)  | 72px (4.5rem)   | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body 5X Large    | 48px (3rem)     | 60px (3.75rem)  | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body 4X Large    | 36px (2.25rem)  | 44px (2.75rem)  | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body 3X Large    | 30px (1.875rem) | 38px (2.375rem) | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body 2X Large    | 24px (1.5rem)   | 32px (2rem)     | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body Extra Large | 20px (1.25rem)  | 28px (1.75rem)  | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body Large       | 18px (1.125rem) | 26px (1.625rem) | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body Medium      | 16px (1rem)     | 24px (1.5rem)   | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body Small       | 14px (0.875rem) | 20px (1.25rem)  | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body Extra Small | 12px (0.75rem)  | 18px (1.125rem) | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
+| Body 2X Small    | 10px (0.625rem) | 12px (0.75rem)  | 6px (0.375rem) | 12px (0.75rem)    | 400 / 500 / 600 |
 
 ### Typography System: Rich Text Format (RTF)
 
@@ -204,15 +204,15 @@ Note: The `h1` tag in RTF differs from the standard Heading Medium `h1` and is u
 
 #### Typography System Example: Rich Text Format Sizes
 
-| Name      | HTML Tag | Font Size      | Line Height     | List Spacing    | Paragraph Spacing | Font Weight |
-|-----------|----------|----------------|-----------------|-----------------|-------------------|-------------|
-| Heading 1 | `h1`     | 30px (1.875rem)| 38px (2.375rem) | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 600   |
-| Heading 2 | `h2`     | 24px (1.5rem)  | 32px (2rem)     | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 600   |
-| Heading 3 | `h3`     | 20px (1.25rem) | 28px (1.75rem)  | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 600   |
-| Heading 4 | `h4`     | 18px (1.125rem)| 26px (1.625rem) | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 600   |
-| Heading 5 | `h5`     | 16px (1rem)    | 24px (1.5rem)   | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 600   |
-| Heading 6 | `h6`     | 14px (0.875rem)| 20px (1.25rem)  | 6px (0.375rem)  | 12px (0.75rem)    | 400 / 600   |
-| Paragraph | `p`      | 16px (1rem)    | 28px (1.75rem)  | 6px (0.375rem)  | 28px (1.75rem)    | 400 / 600   |
+| Name      | HTML Tag | Font Size       | Line Height     | List Spacing   | Paragraph Spacing | Font Weight |
+| --------- | -------- | --------------- | --------------- | -------------- | ----------------- | ----------- |
+| Heading 1 | `h1`     | 30px (1.875rem) | 38px (2.375rem) | 6px (0.375rem) | 12px (0.75rem)    | 400 / 600   |
+| Heading 2 | `h2`     | 24px (1.5rem)   | 32px (2rem)     | 6px (0.375rem) | 12px (0.75rem)    | 400 / 600   |
+| Heading 3 | `h3`     | 20px (1.25rem)  | 28px (1.75rem)  | 6px (0.375rem) | 12px (0.75rem)    | 400 / 600   |
+| Heading 4 | `h4`     | 18px (1.125rem) | 26px (1.625rem) | 6px (0.375rem) | 12px (0.75rem)    | 400 / 600   |
+| Heading 5 | `h5`     | 16px (1rem)     | 24px (1.5rem)   | 6px (0.375rem) | 12px (0.75rem)    | 400 / 600   |
+| Heading 6 | `h6`     | 14px (0.875rem) | 20px (1.25rem)  | 6px (0.375rem) | 12px (0.75rem)    | 400 / 600   |
+| Paragraph | `p`      | 16px (1rem)     | 28px (1.75rem)  | 6px (0.375rem) | 28px (1.75rem)    | 400 / 600   |
 
 ---
 
@@ -246,7 +246,7 @@ MYDS provides four main icon sets:
 Stroke width should adjust proportionally with icon size for visual consistency.
 
 | Size (px) | Recommended Usage |
-|-----------|-------------------|
+| --------- | ----------------- |
 | 16x16     | Small button      |
 | 20x20     | Medium button     |
 | 24x24     | Large button      |
@@ -306,8 +306,8 @@ Motion brings interfaces to life, transforming static elements through purposefu
 
 ### Motion System: Transition Duration
 
-| Token Variable | Duration | Recommended Usage                                  |
-|----------------|----------|---------------------------------------------------|
+| Token Variable | Duration | Recommended Usage                                 |
+| -------------- | -------- | ------------------------------------------------- |
 | short          | 200ms    | Small UI (buttons, dropdowns, micro-interactions) |
 | medium         | 400ms    | Medium UI (callouts, alert dialogs, toast)        |
 | long           | 600ms    | Large UI (page, section transitions)              |
@@ -317,8 +317,8 @@ Motion brings interfaces to life, transforming static elements through purposefu
 Motion tokens are predefined values for managing UI state transitions.
 Token naming follows [motion-type].[transition] format.
 
-| Token Variable     | Example CSS                                                   |
-|--------------------|---------------------------------------------------------------|
+| Token Variable     | Example CSS                                                         |
+| ------------------ | ------------------------------------------------------------------- |
 | easeoutback.short  | .btn:hover { transition: 200ms cubic-bezier(0.4, 1.4, 0.2, 1); }    |
 | easeoutback.medium | .alert-dialog { transition: 400ms cubic-bezier(0.4, 1.4, 0.2, 1); } |
 | easeout.long       | .slides { transition: 600ms cubic-bezier(0, 0, 0.58, 1); }          |
@@ -348,14 +348,14 @@ A unified corner radius creates a smooth, modern aesthetic that enhances user ex
 
 ### Radius System: Specification
 
-| Name        | Size  | Radius      | Recommended Usage                          |
-|-------------|-------|-------------|--------------------------------------------|
-| Extra Small | 4px   | radius-xs   | Context Menu Item                          |
-| Small       | 6px   | radius-s    | Small Button                               |
-| Medium      | 8px   | radius-m    | Button, CTA, Context Menu                  |
-| Large       | 12px  | radius-l    | Content Card                               |
-| Extra Large | 14px  | radius-xl   | Context Menu with Search field             |
-| Full        | 9999px| radius-full | Fully rounded elements (e.g. avatars, chips)|
+| Name        | Size   | Radius      | Recommended Usage                            |
+| ----------- | ------ | ----------- | -------------------------------------------- |
+| Extra Small | 4px    | radius-xs   | Context Menu Item                            |
+| Small       | 6px    | radius-s    | Small Button                                 |
+| Medium      | 8px    | radius-m    | Button, CTA, Context Menu                    |
+| Large       | 12px   | radius-l    | Content Card                                 |
+| Extra Large | 14px   | radius-xl   | Context Menu with Search field               |
+| Full        | 9999px | radius-full | Fully rounded elements (e.g. avatars, chips) |
 
 ---
 
@@ -367,12 +367,12 @@ Shadow adds depth and dimension to UI components, offering a sense of layering a
 
 ### Shadow System: Specification
 
-| Name         | Preview                 | CSS                                                                                         | Recommended Usage |
-|--------------|-------------------------|----------------------------------------------------------------------------------------------|-------------------|
-| None         | shadow-none.png         | -                                                                                            | No shadow         |
-| Button       | shadow-button.png       | box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);                                             | Buttons           |
-| Card         | shadow-card.png         | box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.05);       | Cards             |
-| Context Menu | shadow-context-menu.png | box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10);       | Context Menus     |
+| Name         | Preview                 | CSS                                                                                     | Recommended Usage |
+| ------------ | ----------------------- | --------------------------------------------------------------------------------------- | ----------------- |
+| None         | shadow-none.png         | -                                                                                       | No shadow         |
+| Button       | shadow-button.png       | box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);                                        | Buttons           |
+| Card         | shadow-card.png         | box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.05);  | Cards             |
+| Context Menu | shadow-context-menu.png | box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10); | Context Menus     |
 
 ---
 
@@ -384,18 +384,18 @@ The spacing guidelines define the consistent use of margins and paddings across 
 
 ### Spacing System: Specification
 
-| Size | Preview       | Recommended Usage                         |
-|------|---------------|-------------------------------------------|
-| 4px  | space-4.png   | Micro spacing                             |
-| 8px  | space-8.png   | Gap in button groups, fields, labels      |
-| 12px | space-12.png  | General component spacing                 |
-| 16px | space-16.png  | General component spacing                 |
-| 20px | space-20.png  | General component spacing                 |
-| 24px | space-24.png  | Gap between sub-sections, cards           |
-| 32px | space-32.png  | Gap between main sections                 |
-| 40px | space-40.png  | Large blocks, outer margins               |
-| 48px | space-48.png  | Extra large blocks, outer margins         |
-| 64px | space-64.png  | Page-level or major section separation    |
+| Size | Preview      | Recommended Usage                      |
+| ---- | ------------ | -------------------------------------- |
+| 4px  | space-4.png  | Micro spacing                          |
+| 8px  | space-8.png  | Gap in button groups, fields, labels   |
+| 12px | space-12.png | General component spacing              |
+| 16px | space-16.png | General component spacing              |
+| 20px | space-20.png | General component spacing              |
+| 24px | space-24.png | Gap between sub-sections, cards        |
+| 32px | space-32.png | Gap between main sections              |
+| 40px | space-40.png | Large blocks, outer margins            |
+| 48px | space-48.png | Extra large blocks, outer margins      |
+| 64px | space-64.png | Page-level or major section separation |
 
 ---
 
@@ -564,11 +564,11 @@ MYDS provides several button types for various contexts:
 
 Each button size is designed to fit different forms or actions, optimizing readability and accessibility:
 
-| Size Name | Usage Example                    |
-|-----------|----------------------------------|
+| Size Name | Usage Example                      |
+| --------- | ---------------------------------- |
 | Small     | Compact UI, toolbars, inline forms |
-| Medium    | Standard forms, dialogs, pages   |
-| Large     | Prominent CTAs, hero sections    |
+| Medium    | Standard forms, dialogs, pages     |
+| Large     | Prominent CTAs, hero sections      |
 
 ### Button Component Appearance States
 
@@ -617,8 +617,8 @@ The Callout component notifies users about important information related to thei
 
 ### Callout Component Types
 
-| Type        | Purpose / Example                               |
-|-------------|--------------------------------------------------|
+| Type        | Purpose / Example                                   |
+| ----------- | --------------------------------------------------- |
 | Success     | User action completed successfully (Form submitted) |
 | Warning     | Reminders or important notes (Session will expire)  |
 | Information | Non-critical helpful info (Updates available)       |
@@ -1487,18 +1487,16 @@ Example HTML:
 <body>
   <!-- Cookie banner -->
   <cookie-banner />
-  
+
   <!-- 1. Place skip link here -->
-  <a href="#main-content" class="myds-skip-link">
-    Skip to main content
-  </a>
-  
+  <a href="#main-content" class="myds-skip-link"> Skip to main content </a>
+
   <masthead />
   <nav />
-  
+
   <!-- 2. Main content -->
   <div id="main-content" class="container">
-    <input class="myds-search-bar" tabindex="0">
+    <input class="myds-search-bar" tabindex="0" />
   </div>
 </body>
 ```
@@ -1929,7 +1927,7 @@ Tooltips can appear in different directions relative to the trigger area:
 - **Right**
 
 Always choose the direction that ensures the tooltip remains visible on the screen.  
-*Note: The blue outline in illustrations shows the trigger area. Remove it in the actual UI.*
+_Note: The blue outline in illustrations shows the trigger area. Remove it in the actual UI._
 
 ![tooltip-direction.png](tooltip-direction.png)
 
@@ -1945,7 +1943,7 @@ Tooltip alignment ensures content stays within the visible screen area:
   When the trigger is at the right edge, keeps the tooltip visible.
 
 Always select an alignment that maintains visibility within the screen boundaries.  
-*Note: The blue outline is for demo purposes only.*
+_Note: The blue outline is for demo purposes only._
 
 ![tooltip-alignment.png](tooltip-alignment.png)
 
@@ -1953,7 +1951,7 @@ Always select an alignment that maintains visibility within the screen boundarie
 
 - The tooltip's maximum description length is **250px** to prevent overflow and maintain readability.
 - Always ensure the tooltip remains visible within the screen area.
-- *Note: The blue outline is used to illustrate the trigger area in diagrams only.*
+- _Note: The blue outline is used to illustrate the trigger area in diagrams only._
 
 ![tooltip-description.png](tooltip-description.png)
 

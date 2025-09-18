@@ -13,6 +13,18 @@ use Illuminate\Support\Collection;
 class NotificationService
 {
     /**
+     * Create a ticket assigned notification for a user
+     */
+    public static function createTicketAssignedNotification(\App\Models\HelpdeskTicket $ticket, \App\Models\User $assignedUser): void
+    {
+        \App\Models\Notification::createTicketNotification(
+            $assignedUser->id,
+            'ticket_assigned',
+            $ticket,
+            "Tiket #{$ticket->ticket_number} telah ditugaskan kepada anda."
+        );
+    }
+    /**
      * Create a ticket notification for relevant users
      */
     public function notifyTicketEvent(HelpdeskTicket $ticket, string $event, ?string $customMessage = null): void

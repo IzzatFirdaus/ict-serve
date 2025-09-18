@@ -104,7 +104,7 @@
 
 /* Disabled button state */
 .myds-btn:disabled,
-.myds-btn[aria-disabled="true"] {
+.myds-btn[aria-disabled='true'] {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none !important;
@@ -130,7 +130,7 @@
 }
 
 .myds-label.required::after {
-  content: " *";
+  content: ' *';
   color: var(--color-danger-600);
 }
 
@@ -186,7 +186,7 @@
 
 /* Form validation states */
 .myds-input.invalid,
-.myds-input[aria-invalid="true"] {
+.myds-input[aria-invalid='true'] {
   border-color: var(--color-danger-600);
   background-color: var(--color-danger-50);
 }
@@ -312,7 +312,7 @@
 }
 
 .myds-nav-link.active,
-.myds-nav-link[aria-current="page"] {
+.myds-nav-link[aria-current='page'] {
   color: var(--color-primary-700);
   background-color: var(--color-primary-50);
   font-weight: 600;
@@ -472,7 +472,7 @@
 }
 
 .myds-alert-close:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid currentcolor;
   outline-offset: 2px;
 }
 
@@ -553,6 +553,7 @@
   from {
     width: 100%;
   }
+
   to {
     width: 0%;
   }
@@ -569,12 +570,9 @@
 
 .mobile-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(0 0 0 / 50%);
   opacity: 0;
   visibility: hidden;
   transition: all var(--transition-short);
@@ -626,7 +624,7 @@
 }
 
 .myds-loading::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -649,37 +647,34 @@
    Responsive Component Adjustments
    ============================================================================= */
 
-@media (max-width: 767px) {
+@media (width <= 767px) {
   /* Mobile button adjustments */
   .myds-btn {
     width: 100%;
     justify-content: center;
   }
-  
+
   .myds-btn-group .myds-btn {
     width: auto;
   }
-  
+
   /* Mobile table */
   .myds-table-responsive {
     border-radius: 0;
     border-left: none;
     border-right: none;
   }
-  
+
   /* Mobile dropdown */
   .myds-dropdown-menu {
     position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: auto 0 0;
     min-width: auto;
     border-radius: var(--radius-m) var(--radius-m) 0 0;
   }
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   /* Tablet and up adjustments */
   .myds-btn-group {
     display: flex;

@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 
 return [
-	'lastFullAnalysisTime' => 1758174852,
+	'lastFullAnalysisTime' => 1758176171,
 	'meta' => array (
   'cacheVersion' => 'v12-linesToIgnore',
   'phpstanVersion' => '2.1.22',
@@ -22,7 +22,7 @@ return [
   ),
   'composerLocks' => 
   array (
-    'C:/xampp/htdocs/ict-serve/composer.lock' => 'c5692b46fda4cc8c5a810072b63418390296bf1a',
+    'C:/xampp/htdocs/ict-serve/composer.lock' => 'd00a7a486961058e3466c796fbd35d7821a849a4',
   ),
   'composerInstalled' => 
   array (
@@ -37,6 +37,18 @@ return [
           'reference' => '0934a98866e02b73e38696961a9d7984b834c9d9',
           'type' => 'library',
           'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../anourvalar/eloquent-serialize',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'barryvdh/laravel-dompdf' => 
+        array (
+          'pretty_version' => 'v3.1.1',
+          'version' => '3.1.1.0',
+          'reference' => '8e71b99fc53bb8eb77f316c3c452dd74ab7cb25d',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../barryvdh/laravel-dompdf',
           'aliases' => 
           array (
           ),
@@ -286,6 +298,42 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'dompdf/dompdf' => 
+        array (
+          'pretty_version' => 'v3.1.0',
+          'version' => '3.1.0.0',
+          'reference' => 'a51bd7a063a65499446919286fb18b518177155a',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dompdf/dompdf',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'dompdf/php-font-lib' => 
+        array (
+          'pretty_version' => '1.0.1',
+          'version' => '1.0.1.0',
+          'reference' => '6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dompdf/php-font-lib',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'dompdf/php-svg-lib' => 
+        array (
+          'pretty_version' => '1.0.0',
+          'version' => '1.0.0.0',
+          'reference' => 'eb045e518185298eb6ff8d80d0d0c6b17aecd9af',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dompdf/php-svg-lib',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
         'dragonmantank/cron-expression' => 
         array (
           'pretty_version' => 'v3.4.0',
@@ -317,6 +365,18 @@ return [
           'reference' => '0a16b0d71ab13284339abb99d9d2bd813640efbc',
           'type' => 'library',
           'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../evenement/evenement',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'ezyang/htmlpurifier' => 
+        array (
+          'pretty_version' => 'v4.18.0',
+          'version' => '4.18.0.0',
+          'reference' => 'cb56001e54359df7ae76dc522d08845dc741621b',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../ezyang/htmlpurifier',
           'aliases' => 
           array (
           ),
@@ -1118,6 +1178,18 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'laravel/telescope' => 
+        array (
+          'pretty_version' => 'v5.11.4',
+          'version' => '5.11.4.0',
+          'reference' => '8b7bd77857d6b1b8c9362560cde74911cee68ab8',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/telescope',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
         'laravel/tinker' => 
         array (
           'pretty_version' => 'v2.10.1',
@@ -1274,6 +1346,30 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'maatwebsite/excel' => 
+        array (
+          'pretty_version' => '3.1.67',
+          'version' => '3.1.67.0',
+          'reference' => 'e508e34a502a3acc3329b464dad257378a7edb4d',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../maatwebsite/excel',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'maennchen/zipstream-php' => 
+        array (
+          'pretty_version' => '3.1.2',
+          'version' => '3.1.2.0',
+          'reference' => 'aeadcf5c412332eb426c0f9b4485f6accba2a99f',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../maennchen/zipstream-php',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
         'marc-mabe/php-enum' => 
         array (
           'pretty_version' => 'v4.7.1',
@@ -1281,6 +1377,30 @@ return [
           'reference' => '7159809e5cfa041dca28e61f7f7ae58063aae8ed',
           'type' => 'library',
           'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../marc-mabe/php-enum',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'markbaker/complex' => 
+        array (
+          'pretty_version' => '3.0.2',
+          'version' => '3.0.2.0',
+          'reference' => '95c56caa1cf5c766ad6d65b6344b807c1e8405b9',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../markbaker/complex',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'markbaker/matrix' => 
+        array (
+          'pretty_version' => '3.0.1',
+          'version' => '3.0.1.0',
+          'reference' => '728434227fe21be27ff6d86621a1b13107a2562c',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../markbaker/matrix',
           'aliases' => 
           array (
           ),
@@ -1637,6 +1757,18 @@ return [
           'reference' => '679e3ce485b99e84c775d28e2e96fade9a7fb50a',
           'type' => 'library',
           'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/type-resolver',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'phpoffice/phpspreadsheet' => 
+        array (
+          'pretty_version' => '1.30.0',
+          'version' => '1.30.0.0',
+          'reference' => '2f39286e0136673778b7a142b3f0d141e43d1714',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpoffice/phpspreadsheet',
           'aliases' => 
           array (
           ),
@@ -2127,6 +2259,18 @@ return [
           'reference' => 'bbb1513dfd89eaec87a47fe0c449a7e3d4a1976d',
           'type' => 'library',
           'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../ryangjchandler/blade-capture-directive',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => true,
+        ),
+        'sabberworm/php-css-parser' => 
+        array (
+          'pretty_version' => 'v8.9.0',
+          'version' => '8.9.0.0',
+          'reference' => 'd8e916507b88e389e26d4ab03c904a082aa66bb9',
+          'type' => 'library',
+          'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sabberworm/php-css-parser',
           'aliases' => 
           array (
           ),
@@ -3063,276 +3207,6 @@ return [
 	'projectExtensionFiles' => array (
 ),
 	'errorsCallback' => static function (): array { return array (
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\DashboardReportExport implements unknown interface Maatwebsite\\Excel\\Concerns\\WithMultipleSheets.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php',
-       'line' => 9,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 9,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\EquipmentExport implements unknown interface Maatwebsite\\Excel\\Concerns\\FromCollection.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
-       'line' => 12,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 12,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\EquipmentExport implements unknown interface Maatwebsite\\Excel\\Concerns\\WithHeadings.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
-       'line' => 12,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 12,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\EquipmentExport implements unknown interface Maatwebsite\\Excel\\Concerns\\WithMapping.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
-       'line' => 12,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 12,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\HelpdeskTicketsExport implements unknown interface Maatwebsite\\Excel\\Concerns\\FromCollection.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php',
-       'line' => 13,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 13,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\HelpdeskTicketsExport implements unknown interface Maatwebsite\\Excel\\Concerns\\WithHeadings.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php',
-       'line' => 13,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 13,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\HelpdeskTicketsExport implements unknown interface Maatwebsite\\Excel\\Concerns\\WithMapping.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php',
-       'line' => 13,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 13,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\LoanRequestsExport implements unknown interface Maatwebsite\\Excel\\Concerns\\FromCollection.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-       'line' => 16,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 16,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\LoanRequestsExport implements unknown interface Maatwebsite\\Excel\\Concerns\\WithHeadings.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-       'line' => 16,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 16,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Class App\\Exports\\LoanRequestsExport implements unknown interface Maatwebsite\\Excel\\Concerns\\WithMapping.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-       'line' => 16,
-       'canBeIgnored' => false,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 16,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Class_',
-       'identifier' => 'interface.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method make() on an unknown class Filament\\Tables\\Actions\\ViewAction.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'line' => 102,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 102,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method make() on an unknown class Filament\\Tables\\Actions\\EditAction.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'line' => 103,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 103,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method make() on an unknown class Filament\\Tables\\Actions\\DeleteAction.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'line' => 104,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 104,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method make() on an unknown class Filament\\Tables\\Actions\\BulkActionGroup.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'line' => 111,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 111,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method make() on an unknown class Filament\\Tables\\Actions\\DeleteBulkAction.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'line' => 112,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 112,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php' => 
   array (
     0 => 
@@ -3352,461 +3226,10 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-       'line' => 99,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 99,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-       'line' => 100,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 100,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-       'line' => 112,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 112,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-       'line' => 129,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 129,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 31,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 31,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 31,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 31,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 32,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 32,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 36,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 36,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 125,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 125,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 150,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 150,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 167,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 167,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 231,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 231,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 239,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 239,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    9 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 276,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 276,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    10 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'line' => 289,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 289,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'line' => 31,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 31,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'line' => 35,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 35,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'line' => 108,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 108,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'line' => 131,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 131,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\LoanRequest::$loanStatus.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'line' => 190,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 190,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'line' => 220,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 220,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'line' => 233,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 233,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to protected static method generateRequestNumber() of class App\\Models\\LoanRequest.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-       'line' => 57,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 57,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'staticMethod.protected',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to protected static method generateTicketNumber() of class App\\Models\\HelpdeskTicket.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-       'line' => 139,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 139,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'staticMethod.protected',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => 
   array (
     0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-       'line' => 172,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 172,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$priority.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-       'line' => 192,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 192,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Using nullsafe property access "?->default_sla_hours" on left side of ?? is unnecessary. Use -> instead.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
@@ -3818,613 +3241,6 @@ return [
        'nodeLine' => 203,
        'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Coalesce',
        'identifier' => 'nullsafe.neverNull',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\LoanRequest::$approval_token.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-       'line' => 194,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 194,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\LoanRequest::$approval_token.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-       'line' => 199,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 199,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
-       'line' => 19,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 19,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$id.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 37,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 37,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$ticket_number.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 38,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 38,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$title.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 39,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 39,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$description.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 40,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 40,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$user.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 42,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 42,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$user.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 43,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 43,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$user.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 44,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 44,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$user.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 45,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 45,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$category.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 48,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 48,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    9 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$category.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 49,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 49,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    10 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$category.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 50,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 50,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    11 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$priority.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 53,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 53,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    12 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$status.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 58,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 58,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    13 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$status.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 59,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 59,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    14 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$status.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 60,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 60,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    15 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$location.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 63,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 63,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    16 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$equipmentItem.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 66,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 66,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    17 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$equipmentItem.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 67,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 67,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    18 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$equipmentItem.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 68,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 68,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    19 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$equipmentItem.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 69,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 69,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    20 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$assignedTo.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 72,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 72,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    21 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$assignedTo.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 73,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 73,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    22 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$assignedTo.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 74,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 74,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    23 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$admin_remarks.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 76,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 76,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    24 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$attachments.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 77,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 77,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    25 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$created_at.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 78,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 78,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    26 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$updated_at.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 79,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 79,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    27 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$priority.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 88,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 88,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    28 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$priority.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 102,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 102,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    29 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$status.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 116,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 116,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    30 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Http\\Resources\\HelpdeskTicketResource::$attachments.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'line' => 137,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 137,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-       'line' => 86,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 86,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
        'metadata' => 
       array (
       ),
@@ -4451,449 +3267,9 @@ return [
        'fixedErrorDiff' => NULL,
     )),
   ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method download() on an unknown class Maatwebsite\\Excel\\Facades\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 40,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 40,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method download() on an unknown class Maatwebsite\\Excel\\Facades\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 42,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 42,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method download() on an unknown class Maatwebsite\\Excel\\Facades\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 44,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 44,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method download() on an unknown class Maatwebsite\\Excel\\Facades\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 46,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 46,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to constant CSV on an unknown class Maatwebsite\\Excel\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 54,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 54,
-       'nodeType' => 'PhpParser\\Node\\Expr\\ClassConstFetch',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method download() on an unknown class Maatwebsite\\Excel\\Facades\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 54,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 54,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to constant CSV on an unknown class Maatwebsite\\Excel\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 56,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 56,
-       'nodeType' => 'PhpParser\\Node\\Expr\\ClassConstFetch',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method download() on an unknown class Maatwebsite\\Excel\\Facades\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 56,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 56,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to constant CSV on an unknown class Maatwebsite\\Excel\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 58,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 58,
-       'nodeType' => 'PhpParser\\Node\\Expr\\ClassConstFetch',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    9 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method download() on an unknown class Maatwebsite\\Excel\\Facades\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 58,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 58,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    10 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to constant CSV on an unknown class Maatwebsite\\Excel\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 61,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 61,
-       'nodeType' => 'PhpParser\\Node\\Expr\\ClassConstFetch',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    11 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method download() on an unknown class Maatwebsite\\Excel\\Facades\\Excel.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'line' => 61,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 61,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-       'line' => 18,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 18,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-       'line' => 19,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 19,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-       'line' => 20,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 20,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-       'line' => 21,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 21,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'line' => 20,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 20,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'line' => 21,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 21,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'line' => 22,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 22,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'line' => 23,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 23,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'line' => 24,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 24,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-       'line' => 110,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 110,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method loadView() on an unknown class Barryvdh\\DomPDF\\Facade\\Pdf.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-       'line' => 100,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 100,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php' => 
   array (
     0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\LoanRequest::$reference_code.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-       'line' => 248,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 248,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\LoanRequest::$reference_code.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-       'line' => 255,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 255,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $string of function str_pad expects string, int<1, max> given.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
@@ -4915,23 +3291,6 @@ return [
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasAnyRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-       'line' => 77,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 77,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property App\\Models\\TicketStatus|Illuminate\\Database\\Eloquent\\Collection<int, App\\Models\\TicketStatus>::$code.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
        'line' => 196,
@@ -4952,74 +3311,6 @@ return [
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'line' => 70,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 70,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'resolvedByUser\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'line' => 70,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 70,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'line' => 70,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 70,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'line' => 80,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 80,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Instanceof between string and App\\Enums\\TicketPriority will always evaluate to false.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
        'line' => 91,
@@ -5035,7 +3326,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    5 => 
+    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined static method App\\Services\\NotificationService::createTicketAssignedNotification().',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
@@ -5052,535 +3343,10 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'line' => 226,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 226,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'line' => 262,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 262,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-       'line' => 176,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 176,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-       'line' => 255,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 255,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-       'line' => 89,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 89,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-       'line' => 124,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 124,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-       'line' => 139,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 139,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-       'line' => 141,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 141,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-       'line' => 48,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 48,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-       'line' => 57,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 57,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\', \'technician\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 186,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 186,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Unreachable statement - code above always terminates.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 191,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 191,
-       'nodeType' => 'PHPStan\\Node\\UnreachableStatementNode',
-       'identifier' => 'deadCode.unreachable',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 255,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 255,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 283,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 283,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Negated boolean expression is always true.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 287,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 287,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-       'identifier' => 'booleanNot.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 293,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 293,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 294,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 294,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 295,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 295,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 296,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 296,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    9 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 304,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 304,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    10 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 306,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 306,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    11 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 306,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 306,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    12 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 318,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 318,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    13 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 347,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 347,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    14 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Negated boolean expression is always true.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'line' => 357,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 357,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-       'identifier' => 'booleanNot.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => 
   array (
     0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 65,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 65,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 107,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 107,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Negated boolean expression is always true.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 111,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 111,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-       'identifier' => 'booleanNot.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Negated boolean expression is always true.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 117,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 117,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-       'identifier' => 'booleanNot.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Negated boolean expression is always true.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 131,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 131,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-       'identifier' => 'booleanNot.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $callback of method Illuminate\\Database\\Eloquent\\Collection<int,App\\Models\\TicketCategory>::map() contains unresolvable type.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
@@ -5597,7 +3363,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    6 => 
+    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property App\\Models\\TicketCategory::$total.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
@@ -5614,7 +3380,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    7 => 
+    2 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property App\\Models\\TicketCategory::$met_sla.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
@@ -5631,24 +3397,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 151,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 151,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    9 => 
+    3 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property App\\Models\\TicketCategory::$met_sla.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
@@ -5665,7 +3414,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    10 => 
+    4 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property App\\Models\\TicketCategory::$breached_sla.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
@@ -5682,279 +3431,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    11 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 164,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 164,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    12 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 166,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 166,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    13 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 166,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 166,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    14 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Negated boolean expression is always true.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 168,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 168,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-       'identifier' => 'booleanNot.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    15 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 173,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 173,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    16 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $callback of method Illuminate\\Database\\Eloquent\\Collection<int,App\\Models\\HelpdeskTicket>::map() contains unresolvable type.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 183,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 172,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'argument.unresolvableType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    17 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 188,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 188,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    18 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 189,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 189,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    19 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 204,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 204,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'function.impossibleType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    20 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 206,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 206,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    21 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 206,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 206,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    22 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Negated boolean expression is always true.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 208,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 208,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-       'identifier' => 'booleanNot.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    23 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 212,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 212,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    24 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $callback of method Illuminate\\Database\\Eloquent\\Collection<int,App\\Models\\HelpdeskTicket>::map() contains unresolvable type.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 218,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 212,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'argument.unresolvableType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    25 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 223,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 223,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    26 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 224,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 224,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    27 => 
+    5 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Match expression does not handle remaining value: string',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
@@ -5966,77 +3443,6 @@ return [
        'nodeLine' => 241,
        'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
        'identifier' => 'match.unhandled',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    28 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 272,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 272,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    29 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'line' => 283,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 283,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory|Illuminate\\Database\\Eloquent\\Collection<int, App\\Models\\TicketCategory>::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-       'line' => 119,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 119,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to protected static method generateTicketNumber() of class App\\Models\\HelpdeskTicket.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-       'line' => 152,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 152,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'staticMethod.protected',
        'metadata' => 
       array (
       ),
@@ -6077,26 +3483,6 @@ return [
        'nodeLine' => 169,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\LoanRequest::$reference_number.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-       'line' => 400,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 400,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
        'metadata' => 
       array (
       ),
@@ -6250,23 +3636,6 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-       'line' => 105,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 105,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => 
   array (
@@ -6282,128 +3651,6 @@ return [
        'nodeLine' => 65,
        'nodeType' => 'PhpParser\\Node\\Stmt\\If_',
        'identifier' => 'if.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-       'line' => 120,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 120,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'line' => 78,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 78,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'line' => 95,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 95,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'line' => 96,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 96,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'line' => 97,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 97,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'line' => 98,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 98,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'line' => 99,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 99,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
        'metadata' => 
       array (
       ),
@@ -6436,12 +3683,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Result of && is always false.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-       'line' => 235,
+       'line' => 292,
        'canBeIgnored' => true,
        'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
        'traitFilePath' => NULL,
        'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 235,
+       'nodeLine' => 292,
        'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
        'identifier' => 'booleanAnd.alwaysFalse',
        'metadata' => 
@@ -6453,12 +3700,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Result of && is always false.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-       'line' => 235,
+       'line' => 292,
        'canBeIgnored' => true,
        'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
        'traitFilePath' => NULL,
        'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 235,
+       'nodeLine' => 292,
        'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
        'identifier' => 'booleanAnd.alwaysFalse',
        'metadata' => 
@@ -6470,48 +3717,14 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Strict comparison using === between App\\Models\\LoanStatus and \'collected\' will always evaluate to false.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-       'line' => 235,
+       'line' => 292,
        'canBeIgnored' => true,
        'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
        'traitFilePath' => NULL,
        'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-       'nodeLine' => 235,
+       'nodeLine' => 292,
        'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Identical',
        'identifier' => 'identical.alwaysFalse',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\LoanRequest::$expected_return_date.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-       'line' => 236,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 236,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\LoanRequest::$reference_number.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-       'line' => 330,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 330,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
        'metadata' => 
       array (
       ),
@@ -6589,40 +3802,20 @@ return [
        'fixedErrorDiff' => NULL,
     )),
   ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php' => 
+  'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php' => 
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method tag() on an unknown class Laravel\\Telescope\\Telescope.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php',
-       'line' => 23,
+       'message' => 'Instanceof between App\\Enums\\UserRole and BackedEnum will always evaluate to true.',
+       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+       'line' => 165,
        'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php',
+       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
        'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 23,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-       'line' => 39,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 39,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
+       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
+       'nodeLine' => 165,
+       'nodeType' => 'PhpParser\\Node\\Expr\\Instanceof_',
+       'identifier' => 'instanceof.alwaysTrue',
        'metadata' => 
       array (
       ),
@@ -6630,16 +3823,16 @@ return [
     )),
     1 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-       'line' => 63,
+       'message' => 'Instanceof between App\\Enums\\UserRole and BackedEnum will always evaluate to true.',
+       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+       'line' => 180,
        'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
        'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 63,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
+       'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
+       'nodeLine' => 180,
+       'nodeType' => 'PhpParser\\Node\\Expr\\Instanceof_',
+       'identifier' => 'instanceof.alwaysTrue',
        'metadata' => 
       array (
       ),
@@ -6649,23 +3842,6 @@ return [
   'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => 
   array (
     0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method tag() on an unknown class Laravel\\Telescope\\Telescope.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-       'line' => 23,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 23,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property App\\Models\\LoanRequest::$location.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
@@ -6687,23 +3863,6 @@ return [
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method tag() on an unknown class Laravel\\Telescope\\Telescope.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-       'line' => 28,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 28,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to function is_object() with string will always evaluate to false.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
        'line' => 50,
@@ -6719,7 +3878,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    2 => 
+    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to function method_exists() with *NEVER* and \'label\' will always evaluate to true.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
@@ -6736,7 +3895,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    3 => 
+    2 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Result of && is always false.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
@@ -6753,24 +3912,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-       'line' => 62,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 62,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
+    3 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to function is_object() with string will always evaluate to false.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
@@ -6787,7 +3929,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    6 => 
+    4 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Result of && is always false.',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
@@ -6805,219 +3947,9 @@ return [
        'fixedErrorDiff' => NULL,
     )),
   ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method tag() on an unknown class Laravel\\Telescope\\Telescope.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 35,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 35,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketCategory::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 36,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 36,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 41,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 41,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 66,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 66,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 67,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 67,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 70,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 70,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 107,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 107,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 108,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 108,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 109,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 109,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    9 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Models\\TicketStatus::$name.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'line' => 109,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 109,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to protected static method generateTicketNumber() of class App\\Models\\HelpdeskTicket.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-       'line' => 25,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 25,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'staticMethod.protected',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => 
   array (
     0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to protected static method generateRequestNumber() of class App\\Models\\LoanRequest.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-       'line' => 27,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 27,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'staticMethod.protected',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method App\\Models\\LoanStatus::getId().',
        'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
@@ -7029,77 +3961,6 @@ return [
        'nodeLine' => 29,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'equipmentItem\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-       'line' => 156,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 156,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'equipmentItem\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-       'line' => 156,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 156,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'equipmentItem\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-       'line' => 171,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 171,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'equipmentItem\' is not found in App\\Models\\LoanRequest model.',
-       'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-       'line' => 171,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 171,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
        'metadata' => 
       array (
       ),
@@ -10187,6 +7048,12 @@ return [
       0 => 
       array (
         0 => 'App\\Models\\EquipmentCategory',
+        1 => 'getNameAttribute',
+        2 => 'App\\Models\\EquipmentCategory',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Models\\EquipmentCategory',
         1 => 'casts',
         2 => 'App\\Models\\EquipmentCategory',
       ),
@@ -10262,16 +7129,22 @@ return [
       0 => 
       array (
         0 => 'App\\Models\\HelpdeskTicket',
-        1 => 'casts',
+        1 => 'getAdminRemarksAttribute',
         2 => 'App\\Models\\HelpdeskTicket',
       ),
       1 => 
       array (
         0 => 'App\\Models\\HelpdeskTicket',
-        1 => 'getAssignedToAttribute',
+        1 => 'casts',
         2 => 'App\\Models\\HelpdeskTicket',
       ),
       2 => 
+      array (
+        0 => 'App\\Models\\HelpdeskTicket',
+        1 => 'getAssignedToAttribute',
+        2 => 'App\\Models\\HelpdeskTicket',
+      ),
+      3 => 
       array (
         0 => 'App\\Models\\HelpdeskTicket',
         1 => 'getActivityLogAttribute',
@@ -10329,6 +7202,36 @@ return [
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
     array (
       0 => 
+      array (
+        0 => 'App\\Models\\LoanRequest',
+        1 => 'getLoanStatusAttribute',
+        2 => 'App\\Models\\LoanRequest',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Models\\LoanRequest',
+        1 => 'getReferenceCodeAttribute',
+        2 => 'App\\Models\\LoanRequest',
+      ),
+      2 => 
+      array (
+        0 => 'App\\Models\\LoanRequest',
+        1 => 'getApprovalTokenAttribute',
+        2 => 'App\\Models\\LoanRequest',
+      ),
+      3 => 
+      array (
+        0 => 'App\\Models\\LoanRequest',
+        1 => 'getExpectedReturnDateAttribute',
+        2 => 'App\\Models\\LoanRequest',
+      ),
+      4 => 
+      array (
+        0 => 'App\\Models\\LoanRequest',
+        1 => 'getReferenceNumberAttribute',
+        2 => 'App\\Models\\LoanRequest',
+      ),
+      5 => 
       array (
         0 => 'App\\Models\\LoanRequest',
         1 => 'casts',
@@ -10400,6 +7303,24 @@ return [
       0 => 
       array (
         0 => 'App\\Models\\TicketCategory',
+        1 => 'getPriorityAttribute',
+        2 => 'App\\Models\\TicketCategory',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Models\\TicketCategory',
+        1 => 'getDefaultSlaHoursAttribute',
+        2 => 'App\\Models\\TicketCategory',
+      ),
+      2 => 
+      array (
+        0 => 'App\\Models\\TicketCategory',
+        1 => 'getNameAttribute',
+        2 => 'App\\Models\\TicketCategory',
+      ),
+      3 => 
+      array (
+        0 => 'App\\Models\\TicketCategory',
         1 => 'casts',
         2 => 'App\\Models\\TicketCategory',
       ),
@@ -10429,6 +7350,12 @@ return [
       0 => 
       array (
         0 => 'App\\Models\\TicketStatus',
+        1 => 'getNameAttribute',
+        2 => 'App\\Models\\TicketStatus',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Models\\TicketStatus',
         1 => 'casts',
         2 => 'App\\Models\\TicketStatus',
       ),
@@ -10451,6 +7378,12 @@ return [
         1 => 'casts',
         2 => 'App\\Models\\User',
       ),
+      1 => 
+      array (
+        0 => 'App\\Models\\User',
+        1 => 'hasAnyRole',
+        2 => 'App\\Models\\User',
+      ),
     ),
     'PHPStan\\Rules\\Traits\\TraitUseCollector' => 
     array (
@@ -10470,6 +7403,15 @@ return [
         0 => 'App\\Notifications\\DamageComplaintSubmittedNotification',
         1 => 'via',
         2 => 'App\\Notifications\\DamageComplaintSubmittedNotification',
+      ),
+    ),
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'Laravel\\Telescope\\Telescope',
+        1 => 'tag',
+        2 => 23,
       ),
     ),
     'PHPStan\\Rules\\Traits\\TraitUseCollector' => 
@@ -10537,6 +7479,15 @@ return [
         2 => 'App\\Notifications\\LoanRequestSubmittedNotification',
       ),
     ),
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'Laravel\\Telescope\\Telescope',
+        1 => 'tag',
+        2 => 23,
+      ),
+    ),
     'PHPStan\\Rules\\Traits\\TraitUseCollector' => 
     array (
       0 => 
@@ -10556,6 +7507,15 @@ return [
         2 => 'App\\Notifications\\TicketCreatedNotification',
       ),
     ),
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'Laravel\\Telescope\\Telescope',
+        1 => 'tag',
+        2 => 28,
+      ),
+    ),
     'PHPStan\\Rules\\Traits\\TraitUseCollector' => 
     array (
       0 => 
@@ -10573,6 +7533,15 @@ return [
         0 => 'App\\Notifications\\TicketStatusUpdatedNotification',
         1 => 'via',
         2 => 'App\\Notifications\\TicketStatusUpdatedNotification',
+      ),
+    ),
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'Laravel\\Telescope\\Telescope',
+        1 => 'tag',
+        2 => 35,
       ),
     ),
     'PHPStan\\Rules\\Traits\\TraitUseCollector' => 
@@ -11549,7 +8518,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource.php' => 
   array (
-    'fileHash' => '77f6ae2d04d20bd10f6334b85447cd6f087d0606',
+    'fileHash' => '55c9206314ba0f5e1032993a6746510fc1488dcf',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItemResource\\Pages\\CreateEquipmentItem.php',
@@ -11986,7 +8955,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => 
   array (
-    'fileHash' => '35038b2a0819a43d44ce64b162cbb8a0b2b2d6fb',
+    'fileHash' => '33cb49a52791fc7796894d9243c24f510c3dbb1e',
     'dependentFiles' => 
     array (
     ),
@@ -12053,7 +9022,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => 
   array (
-    'fileHash' => '6f609595a365ee16344d381a4e3a61fd2bd2ff08',
+    'fileHash' => 'b69c5c3d534c49091f71440b2b83f94bb8b5f13c',
     'dependentFiles' => 
     array (
     ),
@@ -12270,7 +9239,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => 
   array (
-    'fileHash' => '3327d13a2f6c6f59630148926e2ac31e126dd0e8',
+    'fileHash' => '1331e5198f551362ccffc32f2c447e6a7bb9c868',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
@@ -12302,7 +9271,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => 
   array (
-    'fileHash' => '5fba736643b11af9cfe77545dee9c43742a50354',
+    'fileHash' => 'cbaf44ff37469b6c00e9bcb5527bce3bc6239ced',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
@@ -12310,7 +9279,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => 
   array (
-    'fileHash' => '82c8a702f598eb56e4639c44ad6602d850b00097',
+    'fileHash' => '37ebfc3e1007940324142db0a9576acf9b1cf279',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
@@ -12325,7 +9294,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => 
   array (
-    'fileHash' => '394706950babaeda9bbf1ac539f162dd4e34f55a',
+    'fileHash' => '61d903a22bc20733013259cf0b8e2966ae286f27',
     'dependentFiles' => 
     array (
     ),
@@ -12582,7 +9551,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php' => 
   array (
-    'fileHash' => '8bf716db4ef6e9aad98a0d6e6f72215628d8f84b',
+    'fileHash' => '8784d45f6ea77df63f13000880cf1546f499e16d',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
@@ -12711,7 +9680,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => 
   array (
-    'fileHash' => 'c0dabf4abcb00b04290f1be20429a36373895c6a',
+    'fileHash' => 'b1905d8a3e26d275056c9a41ba4b2943a2b70fa3',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
@@ -12866,7 +9835,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => 
   array (
-    'fileHash' => 'b2f1779be198a4bd4554aac9c98174ade4c16d6f',
+    'fileHash' => 'ab9e69aa3d3e9cb446bb25ba415a1981327f4bf1',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
@@ -13028,7 +9997,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php' => 
   array (
-    'fileHash' => 'f7abeb70e9137dd3a6696d3e70001ccb84e1e3f9',
+    'fileHash' => 'ddcc63c1eca9985916a7d36bc2c63d341d4d6037',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
@@ -13117,7 +10086,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php' => 
   array (
-    'fileHash' => 'da53651b445c450e1f66290ec638f99a3c849143',
+    'fileHash' => 'fe01e59610ad4dc565f0c954754600387b0accaa',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
@@ -13162,7 +10131,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php' => 
   array (
-    'fileHash' => 'cd8580f7d03a8e073a41f0f5e77f480e71f6f346',
+    'fileHash' => '72991ba792587a364c2efe273b855284cde60d82',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
@@ -13357,7 +10326,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => 
   array (
-    'fileHash' => 'f21db2107ee7772283aeab08493ae59624b26150',
+    'fileHash' => '63bfd3e06e59bf89e2325ba7d921cdaa81f59a51',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
@@ -13365,7 +10334,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => 
   array (
-    'fileHash' => '81250b8cbda15eac99a54e40f23ed481ea91f8e3',
+    'fileHash' => 'b6b6464ad48e8f3703d98380748685fd88ce3477',
     'dependentFiles' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
@@ -13827,7 +10796,7 @@ return [
   ),
   'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php' => 
   array (
-    'fileHash' => 'be906fa829e811f80e5d79ab330aae501f8243cb',
+    'fileHash' => '2235ebf25958d1076b7c361d561f5e40741b3c18',
     'dependentFiles' => 
     array (
     ),
@@ -50692,6 +47661,39 @@ return [
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getNameAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for name property (stub for Larastan).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'equipmentItems',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -50723,7 +47725,7 @@ return [
           array (
           ),
         )),
-        1 => 
+        2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'activeEquipmentItems',
            'phpDoc' => 
@@ -50756,7 +47758,7 @@ return [
           array (
           ),
         )),
-        2 => 
+        3 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'availableEquipmentItems',
            'phpDoc' => 
@@ -50789,7 +47791,7 @@ return [
           array (
           ),
         )),
-        3 => 
+        4 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'scopeActive',
            'phpDoc' => 
@@ -50833,7 +47835,7 @@ return [
           array (
           ),
         )),
-        4 => 
+        5 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'scopeOrdered',
            'phpDoc' => 
@@ -50877,7 +47879,7 @@ return [
           array (
           ),
         )),
-        5 => 
+        6 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'casts',
            'phpDoc' => NULL,
@@ -51752,6 +48754,146 @@ return [
        'statements' => 
       array (
         0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'status',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Get the status for this ticket (relation for \'status\').
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'ticketpriority' => 'App\\Enums\\TicketPriority',
+              'ticketurgency' => 'App\\Enums\\TicketUrgency',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'assignedToUser',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Get the assigned user (for \'assignedToUser\' relation).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'ticketpriority' => 'App\\Enums\\TicketPriority',
+              'ticketurgency' => 'App\\Enums\\TicketUrgency',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'resolvedByUser',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Get the user who resolved the ticket (for \'resolvedByUser\' relation).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'ticketpriority' => 'App\\Enums\\TicketPriority',
+              'ticketurgency' => 'App\\Enums\\TicketUrgency',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'comments',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Get the comments for this ticket.
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'ticketpriority' => 'App\\Enums\\TicketPriority',
+              'ticketurgency' => 'App\\Enums\\TicketUrgency',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
         \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
            'names' => 
           array (
@@ -51776,7 +48918,42 @@ return [
           array (
           ),
         )),
-        1 => 
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getAdminRemarksAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for admin_remarks (stub for Larastan compatibility)
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'ticketpriority' => 'App\\Enums\\TicketPriority',
+              'ticketurgency' => 'App\\Enums\\TicketUrgency',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'user',
            'phpDoc' => 
@@ -51811,7 +48988,7 @@ return [
           array (
           ),
         )),
-        2 => 
+        7 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'category',
            'phpDoc' => 
@@ -51846,7 +49023,7 @@ return [
           array (
           ),
         )),
-        3 => 
+        8 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'ticketStatus',
            'phpDoc' => 
@@ -51881,7 +49058,7 @@ return [
           array (
           ),
         )),
-        4 => 
+        9 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'assignedTo',
            'phpDoc' => 
@@ -51916,7 +49093,7 @@ return [
           array (
           ),
         )),
-        5 => 
+        10 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'resolvedBy',
            'phpDoc' => 
@@ -51951,7 +49128,7 @@ return [
           array (
           ),
         )),
-        6 => 
+        11 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'equipmentItem',
            'phpDoc' => 
@@ -51986,7 +49163,7 @@ return [
           array (
           ),
         )),
-        7 => 
+        12 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'isOverdue',
            'phpDoc' => 
@@ -52021,7 +49198,7 @@ return [
           array (
           ),
         )),
-        8 => 
+        13 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'isResolved',
            'phpDoc' => 
@@ -52056,7 +49233,7 @@ return [
           array (
           ),
         )),
-        9 => 
+        14 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'isClosed',
            'phpDoc' => 
@@ -52091,7 +49268,7 @@ return [
           array (
           ),
         )),
-        10 => 
+        15 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getResponseTimeAttribute',
            'phpDoc' => 
@@ -52126,7 +49303,7 @@ return [
           array (
           ),
         )),
-        11 => 
+        16 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getResolutionTimeAttribute',
            'phpDoc' => 
@@ -52161,7 +49338,7 @@ return [
           array (
           ),
         )),
-        12 => 
+        17 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'casts',
            'phpDoc' => NULL,
@@ -52179,13 +49356,13 @@ return [
           array (
           ),
         )),
-        13 => 
+        18 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'boot',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * Generate unique ticket number
+     * Boot the model and auto-generate ticket_number if not set.
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -52214,27 +49391,10 @@ return [
           array (
           ),
         )),
-        14 => 
+        19 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getAssignedToAttribute',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Accessor for assignedTo (legacy property)
-     */',
-             'namespace' => 'App\\Models',
-             'uses' => 
-            array (
-              'ticketpriority' => 'App\\Enums\\TicketPriority',
-              'ticketurgency' => 'App\\Enums\\TicketUrgency',
-              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-              'model' => 'Illuminate\\Database\\Eloquent\\Model',
-              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
+           'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -52249,7 +49409,7 @@ return [
           array (
           ),
         )),
-        15 => 
+        20 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getActivityLogAttribute',
            'phpDoc' => 
@@ -52279,41 +49439,6 @@ return [
            'final' => false,
            'static' => false,
            'returnType' => NULL,
-           'parameters' => 
-          array (
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
-        16 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'generateTicketNumber',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Generate ticket number in format: HD-YYYY-MMDD-XXX
-     */',
-             'namespace' => 'App\\Models',
-             'uses' => 
-            array (
-              'ticketpriority' => 'App\\Enums\\TicketPriority',
-              'ticketurgency' => 'App\\Enums\\TicketUrgency',
-              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-              'model' => 'Illuminate\\Database\\Eloquent\\Model',
-              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
-           'byRef' => false,
-           'public' => false,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => true,
-           'returnType' => 'string',
            'parameters' => 
           array (
           ),
@@ -52652,6 +49777,265 @@ return [
        'statements' => 
       array (
         0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getLoanStatusAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for loanStatus property (alias for status relation).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+              'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?App\\Models\\LoanStatus',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'status',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Get the status for this loan request (relation for \'status\').
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+              'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'equipmentItem',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Get the equipment item for this request (for \'equipmentItem\' relation).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+              'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getReferenceCodeAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for reference_code (stub for Larastan).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+              'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getApprovalTokenAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for approval_token (stub for Larastan).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+              'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getExpectedReturnDateAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for expected_return_date (stub for Larastan).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+              'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?Illuminate\\Support\\Carbon',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getReferenceNumberAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for reference_number (stub for Larastan).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+              'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
         \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
            'names' => 
           array (
@@ -52676,7 +50060,7 @@ return [
           array (
           ),
         )),
-        1 => 
+        8 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'user',
            'phpDoc' => 
@@ -52713,7 +50097,7 @@ return [
           array (
           ),
         )),
-        2 => 
+        9 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'supervisor',
            'phpDoc' => 
@@ -52750,7 +50134,7 @@ return [
           array (
           ),
         )),
-        3 => 
+        10 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'ictAdmin',
            'phpDoc' => 
@@ -52787,7 +50171,7 @@ return [
           array (
           ),
         )),
-        4 => 
+        11 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'issuedBy',
            'phpDoc' => 
@@ -52824,7 +50208,7 @@ return [
           array (
           ),
         )),
-        5 => 
+        12 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'receivedBy',
            'phpDoc' => 
@@ -52861,7 +50245,7 @@ return [
           array (
           ),
         )),
-        6 => 
+        13 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'loanItems',
            'phpDoc' => 
@@ -52898,7 +50282,7 @@ return [
           array (
           ),
         )),
-        7 => 
+        14 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'scopePending',
            'phpDoc' => 
@@ -52947,7 +50331,7 @@ return [
           array (
           ),
         )),
-        8 => 
+        15 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'equipmentItems',
            'phpDoc' => 
@@ -52984,7 +50368,7 @@ return [
           array (
           ),
         )),
-        9 => 
+        16 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'approvals',
            'phpDoc' => 
@@ -53021,7 +50405,7 @@ return [
           array (
           ),
         )),
-        10 => 
+        17 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getEquipmentItemAttribute',
            'phpDoc' => 
@@ -53058,7 +50442,7 @@ return [
           array (
           ),
         )),
-        11 => 
+        18 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'scopeForUser',
            'phpDoc' => 
@@ -53117,7 +50501,7 @@ return [
           array (
           ),
         )),
-        12 => 
+        19 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'canBeEdited',
            'phpDoc' => 
@@ -53155,7 +50539,7 @@ return [
           array (
           ),
         )),
-        13 => 
+        20 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'canBeCancelled',
            'phpDoc' => 
@@ -53193,7 +50577,7 @@ return [
           array (
           ),
         )),
-        14 => 
+        21 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'isOverdue',
            'phpDoc' => 
@@ -53230,7 +50614,7 @@ return [
           array (
           ),
         )),
-        15 => 
+        22 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getLoanDurationAttribute',
            'phpDoc' => 
@@ -53267,7 +50651,7 @@ return [
           array (
           ),
         )),
-        16 => 
+        23 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'casts',
            'phpDoc' => 
@@ -53304,13 +50688,13 @@ return [
           array (
           ),
         )),
-        17 => 
+        24 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'boot',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * Generate unique request numbers on creation.
+     * Boot the model and auto-generate request_number and reference_number if not set.
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -53341,44 +50725,7 @@ return [
           array (
           ),
         )),
-        18 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'generateRequestNumber',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Generate request number in format: LR-YYYY-MMDD-XXX
-     */',
-             'namespace' => 'App\\Models',
-             'uses' => 
-            array (
-              'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
-              'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
-              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-              'model' => 'Illuminate\\Database\\Eloquent\\Model',
-              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
-              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
-              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
-           'byRef' => false,
-           'public' => false,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => true,
-           'returnType' => 'string',
-           'parameters' => 
-          array (
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
-        19 => 
+        25 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'generateReferenceNumber',
            'phpDoc' => 
@@ -54445,6 +51792,105 @@ return [
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getPriorityAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for priority property (stub for Larastan compatibility)
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getDefaultSlaHoursAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for default_sla_hours property (stub for Larastan compatibility)
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?int',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getNameAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for name property (stub for Larastan).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'helpdeskTickets',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -54476,7 +51922,7 @@ return [
           array (
           ),
         )),
-        1 => 
+        4 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'scopeActive',
            'phpDoc' => 
@@ -54520,7 +51966,7 @@ return [
           array (
           ),
         )),
-        2 => 
+        5 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'scopeOrdered',
            'phpDoc' => 
@@ -54564,7 +52010,7 @@ return [
           array (
           ),
         )),
-        3 => 
+        6 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'casts',
            'phpDoc' => NULL,
@@ -54776,6 +52222,39 @@ return [
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getNameAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Accessor for name property (stub for Larastan).
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => '?string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'helpdeskTickets',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -54807,7 +52286,7 @@ return [
           array (
           ),
         )),
-        1 => 
+        2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'scopeActive',
            'phpDoc' => 
@@ -54851,7 +52330,7 @@ return [
           array (
           ),
         )),
-        2 => 
+        3 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'scopeOrdered',
            'phpDoc' => 
@@ -54895,7 +52374,7 @@ return [
           array (
           ),
         )),
-        3 => 
+        4 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getByCode',
            'phpDoc' => 
@@ -54939,7 +52418,7 @@ return [
           array (
           ),
         )),
-        4 => 
+        5 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'casts',
            'phpDoc' => NULL,
@@ -55465,6 +52944,106 @@ return [
            'returnType' => NULL,
            'parameters' => 
           array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        12 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'hasRole',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Check if user has a specific role or any of the given roles.
+     *
+     * @param string|array $roles
+     * @return bool
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
+              'userrole' => 'App\\Enums\\UserRole',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
+              'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roles',
+               'type' => 'string|array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        13 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'hasAnyRole',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Check if user has any of the given roles.
+     *
+     * @param array $roles
+     * @return bool
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
+              'userrole' => 'App\\Enums\\UserRole',
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
+              'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'roles',
+               'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
           ),
            'attributes' => 
           array (

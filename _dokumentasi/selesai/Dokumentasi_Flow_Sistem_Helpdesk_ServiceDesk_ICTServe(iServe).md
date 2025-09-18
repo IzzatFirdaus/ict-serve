@@ -2,11 +2,11 @@
 
 > **Rujukan Berkaitan:**
 >
-> - [ICT DAMAGE COMPLAINT FORM – DETAILS](./ICT%20DAMAGE%20COMPLAINT%20FORM%20(ServiceDesk%20ICT)%20-%20DETAILED%20BREAKDOWN.md)
-> - [Reka Bentuk ICTServe](./Dokumentasi_Reka_Bentuk_ICTServe(iServe).md)
-> - [Reka Bentuk Sistem ICTServe](./Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md)
-> - [Sistem ICTServe Overview](./Dokumentasi_Sistem_ICTServe(iServe).md)
-> - [Sistem Notifikasi E-mel](./Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md)
+> - [ICT DAMAGE COMPLAINT FORM – DETAILS](<./ICT%20DAMAGE%20COMPLAINT%20FORM%20(ServiceDesk%20ICT)%20-%20DETAILED%20BREAKDOWN.md>)
+> - [Reka Bentuk ICTServe](<./Dokumentasi_Reka_Bentuk_ICTServe(iServe).md>)
+> - [Reka Bentuk Sistem ICTServe](<./Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md>)
+> - [Sistem ICTServe Overview](<./Dokumentasi_Sistem_ICTServe(iServe).md>)
+> - [Sistem Notifikasi E-mel](<./Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md>)
 
 ---
 
@@ -116,26 +116,26 @@ graph TD
 
 ## 6. Senarai Semak Pematuhan Prinsip MyGovEA
 
-| Prinsip                        | Status     | Penjelasan Ringkas                          |
-|-------------------------------|------------|---------------------------------------------|
-| Berpaksikan Rakyat            | ✅         | Borang ringkas, navigasi dua klik, panduan jelas |
-| Berpacukan Data               | ✅         | Audit log dan rekod status yang konsisten   |
-| Kandungan Terancang           | ✅         | Struktur borang dan proses jelas            |
-| Teknologi Bersesuaian         | ✅         | Laravel 12, Livewire 3, Filament 4         |
-| Antara Muka Minimalis dan Mudah | ✅       | UI ringkas, tidak berlebihan                |
-| Seragam                       | ✅         | Token warna & komponen MYDS sahaja          |
-| Paparan/Menu Jelas            | ✅         | Breadcrumb, label jelas, status pill        |
-| Realistik                     | ✅         | Proses mengikut keperluan sebenar BPM       |
-| Kognitif                      | ✅         | Susunan borang kurangkan beban kognitif     |
-| Fleksibel                     | ✅         | Modular, boleh tambah kategori baru         |
-| Komunikasi                    | ✅         | Emel & dashboard notifikasi                 |
-| Struktur Hierarki             | ✅         | Hierarki tiket & kategori jelas             |
-| Komponen UI/UX                | ✅         | Input, dropdown, butang MYDS                |
-| Tipografi                     | ✅         | Poppins/Inter, saiz label ikut MYDS         |
-| Tetapan Lalai                 | ✅         | Auto-isi bahagian, e-mel jika tersedia      |
-| Kawalan Pengguna              | ✅         | Role, policy, akses mengikut peranan        |
-| Pencegahan Ralat              | ✅         | Validasi input, pengesahan sebelum submit   |
-| Panduan & Dokumentasi         | ✅         | Fail ini, README.md, penerangan langkah     |
+| Prinsip                         | Status | Penjelasan Ringkas                               |
+| ------------------------------- | ------ | ------------------------------------------------ |
+| Berpaksikan Rakyat              | ✅     | Borang ringkas, navigasi dua klik, panduan jelas |
+| Berpacukan Data                 | ✅     | Audit log dan rekod status yang konsisten        |
+| Kandungan Terancang             | ✅     | Struktur borang dan proses jelas                 |
+| Teknologi Bersesuaian           | ✅     | Laravel 12, Livewire 3, Filament 4               |
+| Antara Muka Minimalis dan Mudah | ✅     | UI ringkas, tidak berlebihan                     |
+| Seragam                         | ✅     | Token warna & komponen MYDS sahaja               |
+| Paparan/Menu Jelas              | ✅     | Breadcrumb, label jelas, status pill             |
+| Realistik                       | ✅     | Proses mengikut keperluan sebenar BPM            |
+| Kognitif                        | ✅     | Susunan borang kurangkan beban kognitif          |
+| Fleksibel                       | ✅     | Modular, boleh tambah kategori baru              |
+| Komunikasi                      | ✅     | Emel & dashboard notifikasi                      |
+| Struktur Hierarki               | ✅     | Hierarki tiket & kategori jelas                  |
+| Komponen UI/UX                  | ✅     | Input, dropdown, butang MYDS                     |
+| Tipografi                       | ✅     | Poppins/Inter, saiz label ikut MYDS              |
+| Tetapan Lalai                   | ✅     | Auto-isi bahagian, e-mel jika tersedia           |
+| Kawalan Pengguna                | ✅     | Role, policy, akses mengikut peranan             |
+| Pencegahan Ralat                | ✅     | Validasi input, pengesahan sebelum submit        |
+| Panduan & Dokumentasi           | ✅     | Fail ini, README.md, penerangan langkah          |
 
 ---
 
@@ -160,11 +160,11 @@ Sebarang penambahbaikan atau maklum balas boleh disalurkan melalui saluran rasmi
 ## Rujukan
 
 - [MYDS Official Site](https://design.digital.gov.my/)
-- [MYDS Figma Kit](https://www.figma.com/file/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta))
+- [MYDS Figma Kit](<https://www.figma.com/file/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta)>)
 - [MYDS Storybook](https://myds-storybook.vercel.app/)
 - [MYDS Colour Reference](./MYDS-Colour-Reference.md)
 - [MyGovEA Principles](./prinsip-reka-bentuk-mygovea.md)
 - [Laravel Documentation](https://laravel.com/docs)
 - [Filament Documentation](https://filamentphp.com/docs)
 - [Livewire Documentation](https://laravel-livewire.com/docs)
-- [ICT DAMAGE COMPLAINT FORM – DETAILS](./ICT%20DAMAGE%20COMPLAINT%20FORM%20(ServiceDesk%20ICT)%20-%20DETAILED%20BREAKDOWN.md)
+- [ICT DAMAGE COMPLAINT FORM – DETAILS](<./ICT%20DAMAGE%20COMPLAINT%20FORM%20(ServiceDesk%20ICT)%20-%20DETAILED%20BREAKDOWN.md>)

@@ -53,9 +53,42 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
+
 class HelpdeskTicket extends Model
 {
     use HasFactory;
+
+    /**
+     * Get the status for this ticket (relation for 'status').
+     */
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(TicketStatus::class, 'status_id');
+    }
+
+    /**
+     * Get the assigned user (for 'assignedToUser' relation).
+     */
+    public function assignedToUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'assigned_to');
+    }
+
+    /**
+     * Get the user who resolved the ticket (for 'resolvedByUser' relation).
+     */
+    public function resolvedByUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'resolved_by');
+    }
+
+    /**
+     * Get the comments for this ticket.
+     */
+    public function comments()
+    {
+        return $this->hasMany(TicketComment::class, 'ticket_id');
+    }
 
     protected $fillable = [
         'ticket_number',
@@ -84,7 +117,16 @@ class HelpdeskTicket extends Model
         'attachments',
         'file_attachments',
         'activity_log',
+        'admin_remarks',
     ];
+
+    /**
+     * Accessor for admin_remarks (stub for Larastan compatibility)
+     */
+    public function getAdminRemarksAttribute(): ?string
+    {
+        return $this->attributes['admin_remarks'] ?? null;
+    }
 
     /**
      * Get the user who created the ticket.
@@ -199,7 +241,7 @@ class HelpdeskTicket extends Model
     }
 
     /**
-     * Generate unique ticket number
+     * Boot the model and auto-generate ticket_number if not set.
      */
     protected static function boot(): void
     {
@@ -207,7 +249,21 @@ class HelpdeskTicket extends Model
 
         static::creating(function ($ticket): void {
             if (empty($ticket->ticket_number)) {
-                $ticket->ticket_number = static::generateTicketNumber();
+                $date = now();
+                $prefix = 'HD-'.$date->format('Y-md');
+
+                $lastTicket = static::where('ticket_number', 'like', $prefix.'%')
+                    ->orderBy('ticket_number', 'desc')
+                    ->first();
+
+                if ($lastTicket) {
+                    $lastSequence = intval(substr($lastTicket->ticket_number, -3));
+                    $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
+                } else {
+                    $sequence = '001';
+                }
+
+                $ticket->ticket_number = $prefix.'-'.$sequence;
             }
 
             // Set due_at based on category SLA if not set
@@ -216,10 +272,6 @@ class HelpdeskTicket extends Model
             }
         });
     }
-
-    /**
-     * Accessor for assignedTo (legacy property)
-     */
     public function getAssignedToAttribute(): ?User
     {
         $user = $this->assignedToUser;
@@ -238,25 +290,4 @@ class HelpdeskTicket extends Model
         return null;
     }
 
-    /**
-     * Generate ticket number in format: HD-YYYY-MMDD-XXX
-     */
-    protected static function generateTicketNumber(): string
-    {
-        $date = now();
-        $prefix = 'HD-'.$date->format('Y-md');
-
-        $lastTicket = static::where('ticket_number', 'like', $prefix.'%')
-            ->orderBy('ticket_number', 'desc')
-            ->first();
-
-        if ($lastTicket) {
-            $lastSequence = intval(substr($lastTicket->ticket_number, -3));
-            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
-        } else {
-            $sequence = '001';
-        }
-
-        return $prefix.'-'.$sequence;
-    }
 }

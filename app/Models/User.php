@@ -34,6 +34,16 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory, Notifiable;
 
     /**
+     * Get the audit logs for this user.
+     */
+    public function auditLogs(): HasMany
+    {
+        return $this->hasMany(\App\Models\AuditLog::class, 'user_id');
+    }
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
@@ -153,4 +163,37 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(ActivityLog::class, 'user_id');
     }
+
+    /**
+     * Check if user has a specific role or any of the given roles.
+     *
+     * @param string|array $roles
+     * @return bool
+     */
+    public function hasRole(string|array $roles): bool
+    {
+        $userRole = $this->role instanceof \BackedEnum ? $this->role->value : $this->role;
+        if (is_array($roles)) {
+            return in_array($userRole, $roles, true);
+        }
+        return $userRole === $roles;
+    }
+
+    /**
+     * Check if user has any of the given roles.
+     *
+     * @param array $roles
+     * @return bool
+     */
+    public function hasAnyRole(array $roles): bool
+    {
+        $userRole = $this->role instanceof \BackedEnum ? $this->role->value : $this->role;
+        foreach ($roles as $role) {
+            if ($userRole === $role) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

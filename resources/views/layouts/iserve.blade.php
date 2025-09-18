@@ -40,7 +40,7 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo and System Name -->
                 <div class="flex items-center">
-                    <img src="{{ asset('images/jata-negara.png') }}" alt="Jata Negara" class="h-8 w-8 mr-3">
+                    <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="Jata Negara" class="h-8 w-8 mr-3">
                     <div>
                         <h1 class="text-lg font-semibold text-gray-900">ICT Serve (iServe)</h1>
                         <p class="text-xs text-gray-600">Sistem Perkhidmatan ICT MOTAC</p>

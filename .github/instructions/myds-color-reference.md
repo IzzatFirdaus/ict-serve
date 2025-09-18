@@ -5,8 +5,9 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ## Primary Color Tokens
 
 ### Background Tokens
+
 - `bg-primary-50` - Lightest primary background
-- `bg-primary-100` - Very light primary background  
+- `bg-primary-100` - Very light primary background
 - `bg-primary-200` - Light primary background
 - `bg-primary-300` - Medium-light primary background
 - `bg-primary-400` - Medium primary background
@@ -18,6 +19,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-primary-950` - Darkest primary background
 
 ### Text Tokens
+
 - `text-primary-50` - Lightest primary text
 - `text-primary-100` - Very light primary text
 - `text-primary-200` - Light primary text
@@ -31,6 +33,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `text-primary-950` - Darkest primary text
 
 ### Border Tokens
+
 - `border-primary-200` - Light primary border
 - `border-primary-300` - Medium-light primary border
 - `border-primary-600` - **Primary active border** (#2563EB)
@@ -38,6 +41,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ## Danger/Critical Color Tokens
 
 ### Background Tokens
+
 - `bg-danger-50` - Lightest danger background
 - `bg-danger-100` - Very light danger background
 - `bg-danger-200` - Light danger background
@@ -51,6 +55,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-danger-950` - Darkest danger background
 
 ### Text Tokens
+
 - `text-danger-50` - Lightest danger text
 - `text-danger-100` - Very light danger text
 - `text-danger-200` - Light danger text
@@ -66,6 +71,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ## Success Color Tokens
 
 ### Background Tokens
+
 - `bg-success-50` - Lightest success background
 - `bg-success-100` - Very light success background
 - `bg-success-200` - Light success background
@@ -79,6 +85,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-success-950` - Darkest success background
 
 ### Text Tokens
+
 - `text-success-50` - Lightest success text
 - `text-success-100` - Very light success text
 - `text-success-200` - Light success text
@@ -94,6 +101,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ## Warning Color Tokens
 
 ### Background Tokens
+
 - `bg-warning-50` - Lightest warning background
 - `bg-warning-100` - Very light warning background
 - `bg-warning-200` - Light warning background
@@ -107,6 +115,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-warning-950` - Darkest warning background
 
 ### Text Tokens
+
 - `text-warning-50` - Lightest warning text
 - `text-warning-100` - Very light warning text
 - `text-warning-200` - Light warning text
@@ -122,6 +131,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ## Neutral/Gray Color Tokens
 
 ### Background Tokens
+
 - `bg-gray-50` - Lightest gray background (#FAFAFA)
 - `bg-gray-100` - Very light gray background (#F4F4F5)
 - `bg-gray-200` - Light gray background (#E4E4E7)
@@ -134,6 +144,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-gray-900` - Darkest gray background (#18181B)
 
 ### Text Tokens
+
 - `text-gray-50` - Lightest gray text
 - `text-gray-100` - Very light gray text
 - `text-gray-200` - Light gray text
@@ -148,6 +159,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ## Surface and Layout Tokens
 
 ### Background Surfaces
+
 - `bg-white` - White background
 - `bg-background-light` - Light mode page background
 - `bg-background-dark` - Dark mode page background
@@ -155,6 +167,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-surface-elevated` - Elevated surface (modals, dropdowns)
 
 ### Borders and Dividers
+
 - `border-divider` - Standard divider color (#E4E4E7)
 - `border-input` - Input field border
 - `border-focus` - Focused element border
@@ -162,6 +175,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ## Focus Ring Tokens
 
 ### Focus States
+
 - `ring-primary-300` - Primary focus ring
 - `ring-danger-300` - Danger focus ring
 - `ring-success-300` - Success focus ring
@@ -170,6 +184,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ## Usage Guidelines
 
 ### Mandatory Rules
+
 1. **Never use raw hex codes** - Always use semantic tokens
 2. **Primary color only for key actions** - Submit buttons, primary links
 3. **Danger color only for errors/destructive actions** - Delete buttons, error messages
@@ -177,16 +192,18 @@ This document contains the complete MYDS color token reference for the ICTServe 
 5. **Warning color for pending/caution states** - In-progress status, warnings
 
 ### Required Field Indicators
+
 ```html
 <label for="field">Field Name <span class="text-danger-600">*</span></label>
 ```
 
 ### Button Color Usage
+
 ```html
 <!-- Primary Action -->
 <button class="bg-primary-600 text-white">Submit</button>
 
-<!-- Destructive Action -->  
+<!-- Destructive Action -->
 <button class="bg-danger-600 text-white">Delete</button>
 
 <!-- Secondary Action -->
@@ -194,6 +211,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 ```
 
 ### Status Indicators
+
 ```html
 <!-- Success Status -->
 <span class="bg-success-100 text-success-700">Completed</span>
@@ -221,7 +239,9 @@ Combine color tokens with typography classes:
 <h2 class="font-poppins text-xl font-semibold text-gray-800">Section</h2>
 
 <!-- Body Text -->
-<p class="font-inter text-sm font-normal text-gray-700 leading-relaxed">Body text content</p>
+<p class="font-inter text-sm font-normal text-gray-700 leading-relaxed">
+  Body text content
+</p>
 
 <!-- Form Label -->
 <label class="font-inter text-xs font-medium text-gray-600">Field Label</label>

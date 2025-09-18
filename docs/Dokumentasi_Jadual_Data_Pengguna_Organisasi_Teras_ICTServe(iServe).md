@@ -1,6 +1,7 @@
 # Jadual Data Pengguna & Organisasi Teras (v1.0)
 
 Dokumen ini menyediakan gambaran keseluruhan tahap tinggi mengenai jadual pangkalan data teras dalam ICTServe (iServe) v1.0, komponen Laravel yang berkaitan, serta tujuan penggunaannya dalam sistem. Penambahbaikan selaras dengan PRINSIP REKA BENTUK MYGOVEA (18 Prinsip) dan MYDS (Malaysia Government Design System).
+
 <!-- Nota: Pemetaan prinsip MyGOVEA disediakan di bahagian akhir untuk verifikasi pematuhan. -->
 
 ---
@@ -233,11 +234,11 @@ Jadual satu baris untuk menyimpan tetapan global aplikasi.
 
 ## See Also
 
-- [System Design Documentation](Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md)
-- [ICT Equipment Loan Application Flow](Dokumentasi_Flow_Sistem_Permohonan_Pinjaman_Aset_ICT_ICTServe(iServe).md)
-- [Email Notification System](Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md)
-- [General System Documentation](Dokumentasi_Sistem_ICTServe(iServe).md)
-- [UI/UX Design Documentation](Dokumentasi_Reka_Bentuk_ICTServe(iServe).md)
+- [System Design Documentation](<Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md>)
+- [ICT Equipment Loan Application Flow](<Dokumentasi_Flow_Sistem_Permohonan_Pinjaman_Aset_ICT_ICTServe(iServe).md>)
+- [Email Notification System](<Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md>)
+- [General System Documentation](<Dokumentasi_Sistem_ICTServe(iServe).md>)
+- [UI/UX Design Documentation](<Dokumentasi_Reka_Bentuk_ICTServe(iServe).md>)
 
 ---
 

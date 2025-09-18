@@ -4,8 +4,7 @@
  * This file is referenced by components/myds/tokens.blade.php
  */
 
-
-@import "../myds-tokens.css";
+@import '../myds-tokens.css';
 
 /*
  * This file now imports all MYDS tokens from myds-tokens.css for consistency.

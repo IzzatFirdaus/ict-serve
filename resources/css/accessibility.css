@@ -96,9 +96,9 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
-[role="button"]:focus-visible,
-[role="tab"]:focus-visible,
-[role="option"]:focus-visible {
+[role='button']:focus-visible,
+[role='tab']:focus-visible,
+[role='option']:focus-visible {
   outline: 2px solid var(--color-fr-primary-600);
   outline-offset: 2px;
   border-radius: var(--radius-s);
@@ -120,7 +120,7 @@ a:focus-visible {
   outline: 2px solid var(--color-fr-primary-600);
   outline-offset: 2px;
   border-radius: var(--radius-s);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 4px rgb(37 99 235 / 10%);
 }
 
 /* Focus within containers */
@@ -139,33 +139,33 @@ a:focus-visible {
   .myds-focus-visible:focus {
     outline-width: 3px;
     outline-offset: 3px;
-    outline-color: #0000FF;
+    outline-color: #00f;
   }
-  
+
   .dark :focus-visible,
   .dark .myds-focus-visible:focus {
-    outline-color: #FFFF00;
+    outline-color: #ff0;
   }
-  
+
   /* Stronger borders and text */
   button,
   input,
   select,
   textarea {
     border-width: 2px;
-    border-color: currentColor;
+    border-color: currentcolor;
   }
-  
+
   /* Enhanced button visibility */
   button,
-  [role="button"] {
+  [role='button'] {
     background-color: ButtonFace;
     color: ButtonText;
     border: 2px solid ButtonText;
   }
-  
+
   button:hover,
-  [role="button"]:hover {
+  [role='button']:hover {
     background-color: Highlight;
     color: HighlightText;
   }
@@ -176,8 +176,8 @@ a:focus-visible {
    ============================================================================= */
 
 /* Screen reader announcements */
-[aria-live="polite"],
-[aria-live="assertive"] {
+[aria-live='polite'],
+[aria-live='assertive'] {
   position: absolute;
   left: -10000px;
   width: 1px;
@@ -200,7 +200,7 @@ a:focus-visible {
    ============================================================================= */
 
 /* Disabled elements */
-[aria-disabled="true"],
+[aria-disabled='true'],
 :disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -208,16 +208,16 @@ a:focus-visible {
 }
 
 /* Hidden elements */
-[aria-hidden="true"] {
+[aria-hidden='true'] {
   display: none !important;
 }
 
 /* Expanded/Collapsed indicators */
-[aria-expanded="true"] .collapse-icon {
+[aria-expanded='true'] .collapse-icon {
   transform: rotate(180deg);
 }
 
-[aria-expanded="false"] .collapse-icon {
+[aria-expanded='false'] .collapse-icon {
   transform: rotate(0deg);
 }
 
@@ -226,19 +226,19 @@ a:focus-visible {
 }
 
 /* Selected state */
-[aria-selected="true"] {
+[aria-selected='true'] {
   background-color: var(--color-primary-50);
   color: var(--color-primary-700);
   font-weight: 600;
 }
 
 /* Pressed state for toggle buttons */
-[aria-pressed="true"] {
+[aria-pressed='true'] {
   background-color: var(--color-primary-600);
   color: white;
 }
 
-[aria-pressed="false"] {
+[aria-pressed='false'] {
   background-color: var(--theme-bg-secondary);
   color: var(--theme-text-primary);
 }
@@ -248,26 +248,26 @@ a:focus-visible {
    ============================================================================= */
 
 /* Navigation lists */
-[role="tablist"],
-[role="menubar"],
+[role='tablist'],
+[role='menubar'],
 .navigation-list {
   position: relative;
 }
 
 /* Current/Active navigation item */
-[aria-current="page"],
-[aria-current="location"],
-[aria-current="step"] {
+[aria-current='page'],
+[aria-current='location'],
+[aria-current='step'] {
   position: relative;
   background-color: var(--color-primary-50);
   color: var(--color-primary-700);
   font-weight: 600;
 }
 
-[aria-current="page"]::before,
-[aria-current="location"]::before,
-[aria-current="step"]::before {
-  content: "";
+[aria-current='page']::before,
+[aria-current='location']::before,
+[aria-current='step']::before {
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -281,29 +281,29 @@ a:focus-visible {
    ============================================================================= */
 
 /* Required field indicators */
-[aria-required="true"]::after,
+[aria-required='true']::after,
 .required::after {
-  content: " *";
+  content: ' *';
   color: var(--color-danger-600);
   font-weight: bold;
 }
 
 /* Invalid form fields */
-[aria-invalid="true"],
+[aria-invalid='true'],
 .invalid {
   border-color: var(--color-danger-600) !important;
   background-color: var(--color-danger-50);
   color: var(--color-danger-800);
 }
 
-[aria-invalid="true"]:focus,
+[aria-invalid='true']:focus,
 .invalid:focus {
   outline-color: var(--color-danger-600);
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 10%);
 }
 
 /* Valid form fields */
-[aria-invalid="false"].validated,
+[aria-invalid='false'].validated,
 .valid {
   border-color: var(--color-success-600);
   background-color: var(--color-success-50);
@@ -311,7 +311,7 @@ a:focus-visible {
 
 /* Form error messages */
 .error-message,
-[role="alert"] {
+[role='alert'] {
   color: var(--color-danger-700);
   font-size: var(--fontSize-body-sm);
   font-weight: 500;
@@ -322,8 +322,8 @@ a:focus-visible {
 }
 
 .error-message::before,
-[role="alert"]::before {
-  content: "⚠";
+[role='alert']::before {
+  content: '⚠';
   font-size: var(--fontSize-body-base);
 }
 
@@ -339,7 +339,7 @@ a:focus-visible {
 }
 
 .success-message::before {
-  content: "✓";
+  content: '✓';
   font-size: var(--fontSize-body-base);
 }
 
@@ -350,23 +350,20 @@ a:focus-visible {
 /* Modal backdrop */
 .modal-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  inset: 0;
+  background-color: rgb(0 0 0 / 75%);
   z-index: 1000;
 }
 
 /* Modal focus trap */
-[role="dialog"],
-[role="alertdialog"] {
+[role='dialog'],
+[role='alertdialog'] {
   position: relative;
   z-index: 1001;
 }
 
-[role="dialog"]:focus,
-[role="alertdialog"]:focus {
+[role='dialog']:focus,
+[role='alertdialog']:focus {
   outline: none;
 }
 
@@ -382,11 +379,11 @@ a:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .collapse-icon {
     transition: none;
   }
-  
+
   .skip-link,
   .myds-skip-link {
     transition: none;
@@ -408,17 +405,17 @@ a:focus-visible {
     color: black;
     border: 1px solid black;
   }
-  
+
   /* Print URLs for links */
-  a[href]:not([href^="#"])::after {
-    content: " (" attr(href) ")";
+  a[href]:not([href^='#'])::after {
+    content: ' (' attr(href) ')';
     font-size: smaller;
     color: #666;
   }
-  
+
   /* Hide decorative elements */
   .decorative,
-  [aria-hidden="true"] {
+  [aria-hidden='true'] {
     display: none !important;
   }
 }
@@ -428,15 +425,15 @@ a:focus-visible {
    ============================================================================= */
 
 /* Right-to-left language support preparation */
-[dir="rtl"] .skip-link,
-[dir="rtl"] .myds-skip-link {
+[dir='rtl'] .skip-link,
+[dir='rtl'] .myds-skip-link {
   left: auto;
   right: var(--space-2);
 }
 
-[dir="rtl"] [aria-current="page"]::before,
-[dir="rtl"] [aria-current="location"]::before,
-[dir="rtl"] [aria-current="step"]::before {
+[dir='rtl'] [aria-current='page']::before,
+[dir='rtl'] [aria-current='location']::before,
+[dir='rtl'] [aria-current='step']::before {
   left: auto;
   right: 0;
 }
@@ -459,8 +456,8 @@ a:focus-visible {
   margin-bottom: var(--space-3);
 }
 
-.toast[role="alert"],
-.toast[role="status"] {
+.toast[role='alert'],
+.toast[role='status'] {
   border: 2px solid var(--theme-border-primary);
   border-left-width: 4px;
 }
@@ -475,22 +472,22 @@ a:focus-visible {
    Mobile Accessibility Enhancements  
    ============================================================================= */
 
-@media (max-width: 767px) {
+@media (width <= 767px) {
   /* Larger touch targets */
   button,
-  [role="button"],
+  [role='button'],
   a {
     min-height: 44px;
     min-width: 44px;
     padding: var(--space-3) var(--space-4);
   }
-  
+
   /* Enhanced focus indicators for touch */
   :focus-visible {
     outline-width: 3px;
     outline-offset: 3px;
   }
-  
+
   /* Mobile skip links positioning */
   .skip-link,
   .myds-skip-link {

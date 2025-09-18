@@ -47,40 +47,40 @@ Jadual berikut menyenaraikan kejadian utama yang akan mencetuskan notifikasi e-m
 
 ### 3.1 Modul Pinjaman Peralatan ICT
 
-| Kelas Notifikasi                              | Kejadian Pencetus                              | Penerima              |
-|----------------------------------------------- |----------------------------------------------- |-----------------------|
-| `LoanApplicationSubmitted`                    | Pengguna menghantar permohonan pinjaman baru.  | Pemohon               |
-| `LoanApplicationNeedsAction`                  | Permohonan sedia untuk kelulusan.              | Pegawai Penyokong     |
-| `LoanApplicationApproved`                     | Permohonan pinjaman diluluskan.                | Pemohon               |
-| `LoanApplicationRejected`                     | Permohonan pinjaman ditolak.                   | Pemohon               |
-| `LoanApplicationReadyForIssuanceNotification` | Pinjaman diluluskan sedia untuk diproses.      | Staf BPM              |
-| `EquipmentIssuedNotification`                 | Peralatan dikeluarkan kepada pemohon.          | Pemohon               |
-| `EquipmentReturnedNotification`               | Peralatan yang dipinjam telah dipulangkan.     | Pemohon               |
-| `EquipmentReturnReminderNotification`         | Tarikh akhir pemulangan hampir tiba.           | Pemohon               |
-| `EquipmentOverdueNotification`                | Tarikh akhir pemulangan telah melepasi.        | Pemohon, Staf BPM     |
-| `EquipmentIncidentNotification`               | Peralatan dilaporkan hilang/rosak.             | Staf BPM, pegawai berkaitan |
+| Kelas Notifikasi                              | Kejadian Pencetus                             | Penerima                    |
+| --------------------------------------------- | --------------------------------------------- | --------------------------- |
+| `LoanApplicationSubmitted`                    | Pengguna menghantar permohonan pinjaman baru. | Pemohon                     |
+| `LoanApplicationNeedsAction`                  | Permohonan sedia untuk kelulusan.             | Pegawai Penyokong           |
+| `LoanApplicationApproved`                     | Permohonan pinjaman diluluskan.               | Pemohon                     |
+| `LoanApplicationRejected`                     | Permohonan pinjaman ditolak.                  | Pemohon                     |
+| `LoanApplicationReadyForIssuanceNotification` | Pinjaman diluluskan sedia untuk diproses.     | Staf BPM                    |
+| `EquipmentIssuedNotification`                 | Peralatan dikeluarkan kepada pemohon.         | Pemohon                     |
+| `EquipmentReturnedNotification`               | Peralatan yang dipinjam telah dipulangkan.    | Pemohon                     |
+| `EquipmentReturnReminderNotification`         | Tarikh akhir pemulangan hampir tiba.          | Pemohon                     |
+| `EquipmentOverdueNotification`                | Tarikh akhir pemulangan telah melepasi.       | Pemohon, Staf BPM           |
+| `EquipmentIncidentNotification`               | Peralatan dilaporkan hilang/rosak.            | Staf BPM, pegawai berkaitan |
 
 ### 3.2 Modul Aduan Kerosakan ICT
 
-| Kelas Notifikasi                  | Kejadian Pencetus                              | Penerima                |
-|-----------------------------------|----------------------------------------------- |------------------------|
-| `DamageReportSubmittedNotification` | Pengguna menghantar aduan kerosakan baru.      | Pengguna, Pasukan IT   |
-| `DamageReportAssignedNotification`  | Aduan diberikan kepada agen IT.                | Agen IT                |
-| `DamageReportStatusUpdatedNotification` | Status aduan berubah.                      | Pengguna               |
-| `DamageReportCommentAddedNotification`  | Komen baru ditambah pada aduan.             | Pengguna, Agen IT      |
-| `DamageReportResolvedNotification`    | Aduan telah diselesaikan.                   | Pengguna               |
+| Kelas Notifikasi                        | Kejadian Pencetus                         | Penerima             |
+| --------------------------------------- | ----------------------------------------- | -------------------- |
+| `DamageReportSubmittedNotification`     | Pengguna menghantar aduan kerosakan baru. | Pengguna, Pasukan IT |
+| `DamageReportAssignedNotification`      | Aduan diberikan kepada agen IT.           | Agen IT              |
+| `DamageReportStatusUpdatedNotification` | Status aduan berubah.                     | Pengguna             |
+| `DamageReportCommentAddedNotification`  | Komen baru ditambah pada aduan.           | Pengguna, Agen IT    |
+| `DamageReportResolvedNotification`      | Aduan telah diselesaikan.                 | Pengguna             |
 
 ## 4. Pelaksanaan Teknikal
 
 Sistem notifikasi dibina menggunakan ciri standard Laravel dan kelas servis khusus, mematuhi prinsip **Teknologi Bersesuaian**, **Seragam**, dan **Panduan & Dokumentasi**.
 
-| Komponen               | Laluan / Contoh                                    | Tujuan                                                                 |
-|------------------------|----------------------------------------------------|------------------------------------------------------------------------|
-| Notification Service   | `app/Services/NotificationService.php`             | Kelas servis pusat untuk penghantaran semua notifikasi.                |
-| Notification Classes   | `app/Notifications/`                               | Setiap kejadian notifikasi ada kelas sendiri (cth: `App\Notifications\LoanApplicationApproved`) yang menentukan saluran penghantaran (e-mel, pangkalan data) dan format data. |
-| Mailable Classes       | `app/Mail/`                                        | Untuk e-mel kompleks, kelas Mailable (cth: `App\Mail\EquipmentReturnReminder`) digunakan untuk membina kandungan e-mel dan lampiran. |
-| Email Templates        | `resources/views/emails/`                          | Templat Blade yang menentukan struktur HTML dan kandungan e-mel keluar. |
-| Configuration          | `config/mail.php`, `.env`                          | Fail `.env` dan `config/mail.php` digunakan untuk tetapan pemandu e-mel (SMTP, Mailgun) dan kelayakan. Untuk pembangunan, Mailtrap biasanya digunakan. |
+| Komponen             | Laluan / Contoh                        | Tujuan                                                                                                                                                                        |
+| -------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Notification Service | `app/Services/NotificationService.php` | Kelas servis pusat untuk penghantaran semua notifikasi.                                                                                                                       |
+| Notification Classes | `app/Notifications/`                   | Setiap kejadian notifikasi ada kelas sendiri (cth: `App\Notifications\LoanApplicationApproved`) yang menentukan saluran penghantaran (e-mel, pangkalan data) dan format data. |
+| Mailable Classes     | `app/Mail/`                            | Untuk e-mel kompleks, kelas Mailable (cth: `App\Mail\EquipmentReturnReminder`) digunakan untuk membina kandungan e-mel dan lampiran.                                          |
+| Email Templates      | `resources/views/emails/`              | Templat Blade yang menentukan struktur HTML dan kandungan e-mel keluar.                                                                                                       |
+| Configuration        | `config/mail.php`, `.env`              | Fail `.env` dan `config/mail.php` digunakan untuk tetapan pemandu e-mel (SMTP, Mailgun) dan kelayakan. Untuk pembangunan, Mailtrap biasanya digunakan.                        |
 
 ## 5. Pematuhan 18 Prinsip MyGOVEA (Ringkas)
 
