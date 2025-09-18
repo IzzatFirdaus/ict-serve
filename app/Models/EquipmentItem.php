@@ -36,25 +36,6 @@ class EquipmentItem extends Model
 {
     use HasFactory;
 
-    /** @var list<string> */
-    protected array $fillable = [
-        'category_id',
-        'name',
-        'asset_tag',
-        'serial_number',
-        'brand',
-        'model',
-        'specifications',
-        'description',
-        'condition',
-        'status',
-        'purchase_price',
-        'purchase_date',
-        'warranty_expiry',
-        'location',
-        'notes',
-        'is_active',
-    ];
 
     /**
      * Get the category this equipment belongs to
