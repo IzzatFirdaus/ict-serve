@@ -10,21 +10,9 @@ export default defineConfig({
   ],
   darkMode: 'class', // Enable class-based dark mode
   theme: {
-    ringColor: {
-      ...{
-        50: '#EFF6FF',
-        100: '#DBEAFE',
-        200: '#C2D5FF',
-        300: '#96B7FF',
-        400: '#6394FF',
-        500: '#3A75F6',
-        600: '#2563EB',
-        700: '#1D4ED8',
-        800: '#1E40AF',
-        900: '#1E3A8A',
-        950: '#172554',
-      },
-      ...{
+    extend: {
+      // MYDS Ring Color Extensions
+      ringColor: {
         'primary-50': '#EFF6FF',
         'primary-100': '#DBEAFE',
         'primary-200': '#C2D5FF',
@@ -36,8 +24,8 @@ export default defineConfig({
         'primary-800': '#1E40AF',
         'primary-900': '#1E3A8A',
         'primary-950': '#172554',
-      }
-    },
+      },
+
       // MYDS 12-8-4 Grid System
       gridTemplateColumns: {
         // Desktop (≥1024px): 12-column grid
