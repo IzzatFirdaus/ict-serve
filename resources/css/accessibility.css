@@ -76,9 +76,6 @@
   z-index: 9999;
 }
 
-.skip-links .skip-link:not(:focus) + .skip-link {
-  top: -100px;
-}
 
 /* =============================================================================
    Enhanced Focus Indicators (MYDS Compliant)
@@ -213,16 +210,16 @@ a:focus-visible {
 }
 
 /* Expanded/Collapsed indicators */
+.collapse-icon {
+  transition: transform var(--transition-short);
+}
+
 [aria-expanded='true'] .collapse-icon {
   transform: rotate(180deg);
 }
 
 [aria-expanded='false'] .collapse-icon {
   transform: rotate(0deg);
-}
-
-.collapse-icon {
-  transition: transform var(--transition-short);
 }
 
 /* Selected state */
@@ -311,9 +308,9 @@ a:focus-visible {
 
 /* Form error messages */
 .error-message,
-[role='alert'] {
+ [role='alert'] {
   color: var(--color-danger-700);
-  font-size: var(--fontSize-body-sm);
+  font-size: var(--font-size-body-sm);
   font-weight: 500;
   margin-top: var(--space-1);
   display: flex;
@@ -322,15 +319,15 @@ a:focus-visible {
 }
 
 .error-message::before,
-[role='alert']::before {
+ [role='alert']::before {
   content: '⚠';
-  font-size: var(--fontSize-body-base);
+  font-size: var(--font-size-body-base);
 }
 
 /* Form success messages */
 .success-message {
   color: var(--color-success-700);
-  font-size: var(--fontSize-body-sm);
+  font-size: var(--font-size-body-sm);
   font-weight: 500;
   margin-top: var(--space-1);
   display: flex;
@@ -340,7 +337,7 @@ a:focus-visible {
 
 .success-message::before {
   content: '✓';
-  font-size: var(--fontSize-body-base);
+  font-size: var(--font-size-body-base);
 }
 
 /* =============================================================================
@@ -431,6 +428,10 @@ a:focus-visible {
   right: var(--space-2);
 }
 
+.skip-links .skip-link:not(:focus) + .skip-link {
+  top: -100px;
+}
+
 [dir='rtl'] [aria-current='page']::before,
 [dir='rtl'] [aria-current='location']::before,
 [dir='rtl'] [aria-current='step']::before {
@@ -491,7 +492,7 @@ a:focus-visible {
   /* Mobile skip links positioning */
   .skip-link,
   .myds-skip-link {
-    font-size: var(--fontSize-body-base);
+    font-size: var(--font-size-body-base);
     padding: var(--space-4) var(--space-5);
   }
 }

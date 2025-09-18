@@ -13,7 +13,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
 
 /* Remove default margins and paddings */
 * {
@@ -24,15 +23,15 @@
 /* HTML and body setup */
 html {
   line-height: 1.5;
-  text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
 body {
   min-height: 100vh;
   font-family: var(--font-inter);
-  font-size: var(--fontSize-body-base);
+  font-size: var(--font-size-body-base);
   line-height: 1.6;
   color: var(--theme-text-primary);
   background-color: var(--theme-bg-primary);
@@ -47,7 +46,6 @@ ol {
 }
 
 /* Set core body defaults */
-body {
   text-rendering: optimizespeed;
 }
 
@@ -92,88 +90,88 @@ h6,
 
 /* MYDS Heading Sizes */
 .text-heading-xl {
-  font-size: var(--fontSize-heading-xl);
+  font-size: var(--font-size-heading-xl);
   line-height: 1.1;
 }
 
 .text-heading-lg {
-  font-size: var(--fontSize-heading-lg);
+  font-size: var(--font-size-heading-lg);
   line-height: 1.1;
 }
 
 .text-heading-md {
-  font-size: var(--fontSize-heading-md);
+  font-size: var(--font-size-heading-md);
   line-height: 1.2;
 }
 
 .text-heading-sm {
-  font-size: var(--fontSize-heading-sm);
+  font-size: var(--font-size-heading-sm);
   line-height: 1.2;
 }
 
 .text-heading-xs {
-  font-size: var(--fontSize-heading-xs);
+  font-size: var(--font-size-heading-xs);
   line-height: 1.3;
 }
 
 .text-heading-2xs {
-  font-size: var(--fontSize-heading-2xs);
+  font-size: var(--font-size-heading-2xs);
   line-height: 1.3;
 }
 
 .text-heading-3xs {
-  font-size: var(--fontSize-heading-3xs);
+  font-size: var(--font-size-heading-3xs);
   line-height: 1.4;
 }
 
 .text-heading-4xs {
-  font-size: var(--fontSize-heading-4xs);
+  font-size: var(--font-size-heading-4xs);
   line-height: 1.4;
 }
 
 /* Body Typography - Inter */
 .text-body-6xl {
-  font-size: var(--fontSize-body-6xl);
+  font-size: var(--font-size-body-6xl);
 }
 
 .text-body-5xl {
-  font-size: var(--fontSize-body-5xl);
+  font-size: var(--font-size-body-5xl);
 }
 
 .text-body-4xl {
-  font-size: var(--fontSize-body-4xl);
+  font-size: var(--font-size-body-4xl);
 }
 
 .text-body-3xl {
-  font-size: var(--fontSize-body-3xl);
+  font-size: var(--font-size-body-3xl);
 }
 
 .text-body-2xl {
-  font-size: var(--fontSize-body-2xl);
+  font-size: var(--font-size-body-2xl);
 }
 
 .text-body-xl {
-  font-size: var(--fontSize-body-xl);
+  font-size: var(--font-size-body-xl);
 }
 
 .text-body-lg {
-  font-size: var(--fontSize-body-lg);
+  font-size: var(--font-size-body-lg);
 }
 
 .text-body-base {
-  font-size: var(--fontSize-body-base);
+  font-size: var(--font-size-body-base);
 }
 
 .text-body-sm {
-  font-size: var(--fontSize-body-sm);
+  font-size: var(--font-size-body-sm);
 }
 
 .text-body-xs {
-  font-size: var(--fontSize-body-xs);
+  font-size: var(--font-size-body-xs);
 }
 
 .text-body-2xs {
-  font-size: var(--fontSize-body-2xs);
+  font-size: var(--font-size-body-2xs);
 }
 
 /* =============================================================================
