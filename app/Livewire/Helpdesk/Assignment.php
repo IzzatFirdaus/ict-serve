@@ -88,16 +88,15 @@ class Assignment extends Component
 
         // Set current values
         $this->assigned_to = $this->ticket->getOriginal('assigned_to');
-        $this->priority = $this->ticket->priority instanceof \App\Enums\TicketPriority
-            ? $this->ticket->priority->value
-            : (string) $this->ticket->priority;
+    // The instanceof check is always true, so we can safely use $this->ticket->priority->value
+    $this->priority = $this->ticket->priority->value;
         $this->due_date = $this->ticket->due_at?->format('Y-m-d\TH:i');
     }
 
     public function loadTechnicians(): void
     {
-        $this->technicians = User::whereIn('role', ['technician', 'ict_admin', 'supervisor'])
-            ->where('is_active', true)
+        $this->technicians = User::whereIn('role', ['technician', 'ict_admin', 'supervisor'], 'and', true)
+            ->where('is_active', '=', true, 'and')
             ->orderBy('name')
             ->get(['id', 'name', 'role', 'department'])
             ->toArray();
@@ -129,14 +128,13 @@ class Assignment extends Component
                 'assigned_to' => $this->assigned_to,
                 'due_at' => $this->due_date ? Carbon::parse($this->due_date) : null,
                 'assigned_at' => now(),
-                'status_id' => TicketStatus::where('code', 'assigned')->firstOrFail()->id,
-                'priority' => $this->priority,
+                'status_id' => TicketStatus::where('code', '=', 'assigned', 'and')->firstOrFail()->id,
             ]);
 
             // Notify assigned user
             NotificationService::createTicketAssignedNotification(
                 $this->ticket,
-                User::find($this->assigned_to)
+                User::find($this->assigned_to, ['*'])
             );
 
             session()->flash('success', 'Ticket assigned successfully.');
@@ -162,23 +160,26 @@ class Assignment extends Component
                 $this->ticket->update([
                     'assigned_to' => $this->escalateTo,
                     'assigned_at' => now(),
-                    'priority' => $this->priority === \App\Enums\TicketPriority::CRITICAL->value ? \App\Enums\TicketPriority::CRITICAL->value :
-                                 ($this->priority === \App\Enums\TicketPriority::HIGH->value ? \App\Enums\TicketPriority::CRITICAL->value : \App\Enums\TicketPriority::HIGH->value), // Escalate priority
+                    'priority' => $this->priority === 'critical' ? 'critical' :
+                                 ($this->priority === 'high' ? 'critical' : 'high'), // Escalate priority
                 ]);
 
                 // Update status
-                $escalatedStatus = TicketStatus::where('code', 'escalated')->first();
+                $escalatedStatus = TicketStatus::where('code', '=', 'escalated', 'and')->first();
                 if ($escalatedStatus) {
                     $this->ticket->update(['status_id' => $escalatedStatus->id]);
                 }
 
                 // Log escalation
-                $this->logActivity('escalated', 'Ticket escalated to '.User::find($this->escalateTo)->name.'. Reason: '.$this->escalationReason);
+                $escalatedUser = User::find($this->escalateTo, ['*']);
+                $this->logActivity('escalated', 'Ticket escalated to '.($escalatedUser && isset($escalatedUser->name) ? $escalatedUser->name : 'Unknown').'. Reason: '.$this->escalationReason);
             });
 
+            $escalatedUser = User::find($this->escalateTo, ['*']);
+            $name = $escalatedUser && isset($escalatedUser->name) ? $escalatedUser->name : 'Unknown';
             session()->flash('success',
-                'Tiket berjaya dieskalasi kepada '.User::find($this->escalateTo)->name.
-                ' / Ticket successfully escalated to '.User::find($this->escalateTo)->name
+                'Tiket berjaya dieskalasi kepada '.$name.
+                ' / Ticket successfully escalated to '.$name
             );
 
             // Reset form
@@ -203,7 +204,7 @@ class Assignment extends Component
         }
 
         try {
-            $status = TicketStatus::where('code', $this->statusUpdate)->first();
+            $status = TicketStatus::where('code', '=', $this->statusUpdate, 'and')->first();
             if (! $status) {
                 session()->flash('error', 'Status tidak sah / Invalid status');
 

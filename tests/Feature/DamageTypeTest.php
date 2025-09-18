@@ -11,6 +11,13 @@ class DamageTypeTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * The user instance for tests.
+     *
+     * @var User
+     */
+    protected $user;
+
     protected function setUp(): void
     {
         parent::setUp();

@@ -3,7 +3,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicController;
 use App\Livewire\Counter;
+use App\Livewire\DamageComplaintForm;
 use App\Livewire\Dashboard;
 use App\Livewire\Login;
 use App\Livewire\Register;
@@ -11,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
-Route::get('/login', Login::class)->name('login');
-Route::get('/register', Register::class)->name('register');
+// Route::get('/login', Login::class)->name('login');
+// Route::get('/register', Register::class)->name('register');
 Route::post('/logout', function () {
     auth()->guard()->logout();
     session()->invalidate();
@@ -20,6 +23,41 @@ Route::post('/logout', function () {
 
     return redirect()->route('login');
 })->name('logout');
+
+// Public Routes
+Route::get('/', function () {
+    return view('dashboard');
+})->name('home');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Public form display routes (guest accessible) mounting Livewire components
+Route::get('/damage-complaint', DamageComplaintForm::class)
+    ->name('public.damage-complaint.guest');
+
+// Authenticated routes for submitting and viewing personal requests
+Route::middleware('auth')->group(function () {
+    // Equipment Loan Requests
+    Route::get('/loan-request', [PublicController::class, 'loanRequest'])
+        ->name('public.loan-request');
+    Route::post('/loan-request', [PublicController::class, 'storeLoanRequest'])
+        ->name('public.loan-request.store');
+
+    // Damage Complaints (POST only while GET is public)
+    Route::post('/damage-complaint', [PublicController::class, 'storeDamageComplaint'])
+        ->name('public.damage-complaint.store');
+
+    // My Requests
+    Route::get('/my-requests', [PublicController::class, 'myRequests'])
+        ->name('public.my-requests');
+
+    // Profile Routes
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 // Public Access Routes (No Authentication Required)
 Route::prefix('public')->name('public.')->group(function () {
@@ -39,7 +77,7 @@ Route::prefix('public')->name('public.')->group(function () {
     })->name('track');
     Route::post('/track', function (\Illuminate\Http\Request $request) {
         $request->validate([
-            'tracking_number' => 'required|string'
+            'tracking_number' => 'required|string',
         ]);
 
         $trackingNumber = $request->tracking_number;
@@ -101,7 +139,7 @@ Route::middleware('auth')->get('/app', function () {
 // Main Dashboard Route
 Route::get('/', function () {
     if (Auth::check()) {
-        return redirect()->route('dashboard');
+        return redirect()->route('app');
     }
 
     return view('welcome');
@@ -110,14 +148,23 @@ Route::get('/', function () {
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
     // Unified Dashboard
-    Route::get('/dashboard', Dashboard::class)->name('dashboard');
+    // Route::get('/dashboard', Dashboard::class)->name('dashboard'); // Temporarily commented due to rebase
     Route::get('/home', function () {
         return redirect()->route('dashboard');
     })->name('home');
 
     // ICT Loan Module Routes
+    // Route::prefix('loan')->name('loan.')->group(function () {
+    //     Route::get('/', \App\Livewire\Loan\Index::class)->name('index');
+    //     Route::get('/create', \App\Livewire\Loan\Create::class)->name('create');
+    //     Route::get('/{loan}', \App\Livewire\Loan\Show::class)->name('show');
+    // });
+
+    // ICT Loan Module Routes
     Route::prefix('loan')->name('loan.')->group(function () {
-        Route::get('/', \App\Livewire\Loan\Index::class)->name('index');
+        Route::get('/', function () {
+            return view('loan.index');
+        })->name('index');
         Route::get('/create', \App\Livewire\Loan\Create::class)->name('create');
 
         Route::get('/{loan}', function () {
@@ -126,16 +173,24 @@ Route::middleware('auth')->group(function () {
         })->name('show');
     });
 
+    // Loan Request routes for backward compatibility
+    Route::prefix('loan-request')->name('loan-request.')->group(function () {
+        Route::get('/create', \App\Livewire\Loan\Create::class)->name('create');
+    });
+
     // Helpdesk routes
     Route::prefix('helpdesk')->name('helpdesk.')->group(function () {
-        Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
-        Route::get('/enhanced', \App\Livewire\Helpdesk\IndexEnhanced::class)->name('index-enhanced');
-        Route::get('/create', \App\Livewire\Helpdesk\Create::class)->name('create');
-        Route::get('/create-enhanced', \App\Livewire\Helpdesk\CreateEnhanced::class)->name('create-enhanced');
-        Route::get('/assign/{ticket}', \App\Livewire\Helpdesk\Assignment::class)->name('assign');
-        Route::get('/sla-tracker', \App\Livewire\Helpdesk\SlaTracker::class)->name('sla-tracker');
-        Route::get('/attachments/{ticket}', \App\Livewire\Helpdesk\AttachmentManager::class)->name('attachments');
+        Route::get('/', [\App\Livewire\Helpdesk\Index::class, '__invoke'])->name('index');
+        Route::get('/enhanced', [\App\Livewire\Helpdesk\IndexEnhanced::class, '__invoke'])->name('index-enhanced');
+        Route::get('/create', [\App\Livewire\Helpdesk\Create::class, '__invoke'])->name('create');
+        Route::get('/create-enhanced', [\App\Livewire\Helpdesk\CreateEnhanced::class, '__invoke'])->name('create-enhanced');
+        Route::get('/assign/{ticket}', [\App\Livewire\Helpdesk\Assignment::class, '__invoke'])->name('assign');
+        Route::get('/sla-tracker', [\App\Livewire\Helpdesk\SlaTracker::class, '__invoke'])->name('sla-tracker');
+        Route::get('/attachments/{ticket}', [\App\Livewire\Helpdesk\AttachmentManager::class, '__invoke'])->name('attachments');
         Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
+        Route::get('/ticket/{ticket}', function ($ticket) {
+            return view('helpdesk.ticket-detail', compact('ticket'));
+        })->name('ticket.detail');
 
         // New MYDS Components
         Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
@@ -144,15 +199,25 @@ Route::middleware('auth')->group(function () {
         Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint');
     });
 
+    // Damage complaint create route
+    Route::get('/damage-complaint/create', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint.create');
+
+    // Equipment loan routes
+    Route::get('/equipment-loan', function () {
+        return view('equipment-loan.index');
+    })->name('equipment-loan.index');
+
+    Route::get('/equipment-loan/create', \App\Livewire\EquipmentLoanForm::class)->name('equipment-loan.create');
+
     // Ticket routes (legacy alias for helpdesk)
     Route::prefix('tickets')->name('ticket.')->group(function () {
-        Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
-        Route::get('/enhanced', \App\Livewire\Helpdesk\IndexEnhanced::class)->name('index-enhanced');
-        Route::get('/create', \App\Livewire\Helpdesk\Create::class)->name('create');
-        Route::get('/create-enhanced', \App\Livewire\Helpdesk\CreateEnhanced::class)->name('create-enhanced');
-        Route::get('/assign/{ticket}', \App\Livewire\Helpdesk\Assignment::class)->name('assign');
-        Route::get('/sla-tracker', \App\Livewire\Helpdesk\SlaTracker::class)->name('sla-tracker');
-        Route::get('/attachments/{ticket}', \App\Livewire\Helpdesk\AttachmentManager::class)->name('attachments');
+        Route::get('/', [\App\Livewire\Helpdesk\Index::class, '__invoke'])->name('index');
+        Route::get('/enhanced', [\App\Livewire\Helpdesk\IndexEnhanced::class, '__invoke'])->name('index-enhanced');
+        Route::get('/create', [\App\Livewire\Helpdesk\Create::class, '__invoke'])->name('create');
+        Route::get('/create-enhanced', [\App\Livewire\Helpdesk\CreateEnhanced::class, '__invoke'])->name('create-enhanced');
+        Route::get('/assign/{ticket}', [\App\Livewire\Helpdesk\Assignment::class, '__invoke'])->name('assign');
+        Route::get('/sla-tracker', [\App\Livewire\Helpdesk\SlaTracker::class, '__invoke'])->name('sla-tracker');
+        Route::get('/attachments/{ticket}', [\App\Livewire\Helpdesk\AttachmentManager::class, '__invoke'])->name('attachments');
         Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
     });
 
@@ -183,10 +248,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', \App\Livewire\Notifications\NotificationCenter::class)->name('index');
     });
 
-    // Profile routes
-    Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', \App\Livewire\Profile\UserProfile::class)->name('index');
-    });
+    // Profile routes moved to auth middleware group above to avoid conflicts
 
     // Test notification route (temporary)
     Route::get('/test-notifications', function () {
@@ -197,10 +259,11 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', function () {
             // Reporting Dashboard for administrators
-            $equipmentCount = \App\Models\EquipmentItem::count();
-            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn($q) => $q->where('code', 'active'))->count();
-            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'open'))->count();
-            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'resolved'))->count();
+            $equipmentCount = \App\Models\EquipmentItem::count('*');
+            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'active'))->count('*');
+            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'open'))->count('*');
+            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'resolved'))->count('*');
+
             return view('admin.dashboard', compact('equipmentCount', 'activeLoans', 'openTickets', 'resolvedTickets'));
         })->name('dashboard');
 

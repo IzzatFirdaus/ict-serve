@@ -1,364 +1,286 @@
-<div class="container mx-auto px-4 py-6">
-    {{-- Flash Messages --}}
-    @if (session()->has('success'))
+{{--
+    ICTServe (iServe) – Notification Center
+    MYDS & MyGovEA: Accessible, responsive, citizen-centric, and consistent
+--}}
+
+<x-myds.skiplink href="#main-content">
+    <span>Skip to main content</span>
+</x-myds.skiplink>
+
+<x-myds.masthead>
+    <x-myds.masthead-header>
+        <x-myds.masthead-title>
+            <x-myds.icon name="bell" class="w-6 h-6 mr-2" />
+            Pusat Notifikasi / Notification Center
+        </x-myds.masthead-title>
+    </x-myds.masthead-header>
+</x-myds.masthead>
+
+<main id="main-content" tabindex="0" class="myds-container max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    {{-- Flash Message --}}
+    @if (session()->has('message'))
         <x-myds.callout variant="success" class="mb-6">
-            {{ session('success') }}
+            <x-myds.icon name="check-circle" />
+            <span>{{ session('message') }}</span>
         </x-myds.callout>
     @endif
 
-    @if (session()->has('error'))
-        <x-myds.callout variant="danger" class="mb-6">
-            {{ session('error') }}
-        </x-myds.callout>
-    @endif
-
-    @if (session()->has('info'))
-        <x-myds.callout variant="info" class="mb-6">
-            {{ session('info') }}
-        </x-myds.callout>
-    @endif
-
-    {{-- Header --}}
-    <div class="mb-6">
-        <div class="flex items-center justify-between">
-            <div>
-                <h1 class="text-2xl font-semibold font-poppins text-black-900">Pusat Notifikasi</h1>
-                <p class="text-sm text-black-500 font-inter mt-1">Kelola semua notifikasi dan maklumat penting anda</p>
+    {{-- Header & Stats --}}
+    <x-myds.card class="mb-6">
+        <x-myds.card-header>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <span class="text-heading-lg font-semibold text-txt-black-900">
+                        <x-myds.icon name="bell" class="mr-2" />
+                        Pusat Notifikasi / Notification Center
+                    </span>
+                    <div class="text-body-sm text-txt-black-500">
+                        Kelola semua notifikasi anda / Manage all your notifications
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <x-myds.tag variant="primary" size="small" mode="pill">
+                        {{ $unreadCount }} {{ __('belum dibaca / unread') }}
+                    </x-myds.tag>
+                    @if($unreadCount > 0)
+                        <x-myds.button
+                            type="button"
+                            variant="secondary"
+                            size="sm"
+                            wire:click="markAllAsRead"
+                        >
+                            <x-myds.icon name="check" class="w-4 h-4 mr-1" />
+                            {{ __('Tandai Semua Dibaca / Mark All Read') }}
+                        </x-myds.button>
+                    @endif
+                </div>
             </div>
-            <div class="flex items-center space-x-3">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-700">
-                    {{ $unreadCount }} belum dibaca
-                </span>
-                @if($unreadCount > 0)
-                    <button
-                        wire:click="openMarkAllModal"
-                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-inter font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
-                    >
-                        <!-- Check Circle SVG -->
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        Tandai Semua Dibaca
-                    </button>
-                @endif
+        </x-myds.card-header>
+        <x-myds.card-body class="bg-washed">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+                <div class="text-center">
+                    <div class="text-heading-lg font-bold text-txt-black-900">{{ $stats['total'] }}</div>
+                    <div class="text-body-xs text-txt-black-500">Total</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-heading-lg font-bold text-primary-600">{{ $stats['unread'] }}</div>
+                    <div class="text-body-xs text-txt-black-500">Belum Dibaca</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-heading-lg font-bold text-primary-500">{{ $stats['tickets'] }}</div>
+                    <div class="text-body-xs text-txt-black-500">Tiket</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-heading-lg font-bold text-success-600">{{ $stats['loans'] }}</div>
+                    <div class="text-body-xs text-txt-black-500">Pinjaman</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-heading-lg font-bold text-purple-600">{{ $stats['system'] }}</div>
+                    <div class="text-body-xs text-txt-black-500">Sistem</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-heading-lg font-bold text-danger-600">{{ $stats['urgent'] }}</div>
+                    <div class="text-body-xs text-txt-black-500">Segera</div>
+                </div>
             </div>
-        </div>
-    </div>
-
-    {{-- Statistics Cards --}}
-    <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-6">
-        <div class="bg-white border border-divider rounded-lg p-4">
-            <div class="text-center">
-                <div class="text-2xl font-semibold text-black-900 font-poppins">{{ $stats['total'] }}</div>
-                <div class="text-xs text-black-500 font-inter">Jumlah</div>
-            </div>
-        </div>
-        <div class="bg-white border border-divider rounded-lg p-4">
-            <div class="text-center">
-                <div class="text-2xl font-semibold text-primary-600 font-poppins">{{ $stats['unread'] }}</div>
-                <div class="text-xs text-black-500 font-inter">Belum Dibaca</div>
-            </div>
-        </div>
-        <div class="bg-white border border-divider rounded-lg p-4">
-            <div class="text-center">
-                <div class="text-2xl font-semibold text-warning-600 font-poppins">{{ $stats['tickets'] }}</div>
-                <div class="text-xs text-black-500 font-inter">Tiket Helpdesk</div>
-            </div>
-        </div>
-        <div class="bg-white border border-divider rounded-lg p-4">
-            <div class="text-center">
-                <div class="text-2xl font-semibold text-success-600 font-poppins">{{ $stats['loans'] }}</div>
-                <div class="text-xs text-black-500 font-inter">Pinjaman</div>
-            </div>
-        </div>
-        <div class="bg-white border border-divider rounded-lg p-4">
-            <div class="text-center">
-                <div class="text-2xl font-semibold text-secondary-600 font-poppins">{{ $stats['system'] }}</div>
-                <div class="text-xs text-black-500 font-inter">Sistem</div>
-            </div>
-        </div>
-        <div class="bg-white border border-divider rounded-lg p-4">
-            <div class="text-center">
-                <div class="text-2xl font-semibold text-danger-600 font-poppins">{{ $stats['urgent'] }}</div>
-                <div class="text-xs text-black-500 font-inter">Segera</div>
-            </div>
-        </div>
-    </div>
+        </x-myds.card-body>
+    </x-myds.card>
 
     {{-- Filters --}}
-    <div class="bg-white border border-divider rounded-lg p-4 mb-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {{-- Status Filter --}}
-            <div>
-                <label class="block text-sm font-medium text-black-700 dark:text-black-300 font-inter mb-2">Status</label>
-                <select wire:model.live="filter" class="block w-full px-3 py-2 border border-divider rounded-md shadow-sm font-inter text-sm text-black-900 dark:text-white bg-white dark:bg-dialog focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                    @foreach($this->getFilterOptions() as $value => $label)
-                        <option value="{{ $value }}">{{ $label }}</option>
-                    @endforeach
-                </select>
+    <x-myds.card class="mb-6">
+        <x-myds.card-body>
+            <div class="flex flex-wrap items-center gap-4">
+                <x-myds.field>
+                    <x-myds.label size="small">Status:</x-myds.label>
+                    <x-myds.select wire:model.live="filter" size="small">
+                        @foreach($this->getFilterOptions() as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
+                    </x-myds.select>
+                </x-myds.field>
+                <x-myds.field>
+                    <x-myds.label size="small">Kategori:</x-myds.label>
+                    <x-myds.select wire:model.live="category" size="small">
+                        @foreach($this->getCategoryOptions() as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
+                    </x-myds.select>
+                </x-myds.field>
+                <x-myds.field>
+                    <x-myds.label size="small">Prioriti:</x-myds.label>
+                    <x-myds.select wire:model.live="priority" size="small">
+                        @foreach($this->getPriorityOptions() as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
+                    </x-myds.select>
+                </x-myds.field>
+                <div class="ml-auto">
+                    <x-myds.button
+                        type="button"
+                        variant="danger-tertiary"
+                        size="sm"
+                        wire:click="clearAllRead"
+                        onclick="return confirm('Adakah anda pasti ingin menghapus semua notifikasi yang telah dibaca? / Are you sure you want to clear all read notifications?')"
+                    >
+                        <x-myds.icon name="trash" class="w-4 h-4 mr-1" />
+                        {{ __('Hapus Yang Dibaca / Clear Read') }}
+                    </x-myds.button>
+                </div>
             </div>
-
-            {{-- Category Filter --}}
-            <div>
-                <label class="block text-sm font-medium text-black-700 dark:text-black-300 font-inter mb-2">Kategori</label>
-                <select wire:model.live="category" class="block w-full px-3 py-2 border border-divider rounded-md shadow-sm font-inter text-sm text-black-900 dark:text-white bg-white dark:bg-dialog focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                    @foreach($this->getCategoryOptions() as $value => $label)
-                        <option value="{{ $value }}">{{ $label }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            {{-- Priority Filter --}}
-            <div>
-                <label class="block text-sm font-medium text-black-700 dark:text-black-300 font-inter mb-2">Keutamaan</label>
-                <select wire:model.live="priority" class="block w-full px-3 py-2 border border-divider rounded-md shadow-sm font-inter text-sm text-black-900 dark:text-white bg-white dark:bg-dialog focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-                    @foreach($this->getPriorityOptions() as $value => $label)
-                        <option value="{{ $value }}">{{ $label }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            {{-- Clear Read Notifications --}}
-            <div class="flex items-end">
-                <button
-                    wire:click="clearAllRead"
-                    wire:confirm="Adakah anda pasti ingin menghapus semua notifikasi yang telah dibaca?"
-                    class="w-full inline-flex items-center justify-center px-4 py-2 border border-divider text-sm font-inter font-medium rounded-md text-black-700 dark:text-black-300 bg-white dark:bg-dialog hover:bg-washed dark:hover:bg-black-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
-                >
-                    <!-- Trash SVG -->
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                    </svg>
-                    Hapus Yang Dibaca
-                </button>
-            </div>
-        </div>
-    </div>
+        </x-myds.card-body>
+    </x-myds.card>
 
     {{-- Notifications List --}}
-    <div class="bg-white border border-divider rounded-lg overflow-hidden">
+    <x-myds.card>
         @if($notifications->count() > 0)
-            <div class="divide-y divide-divider">
+            <div class="divide-y otl-divider">
                 @foreach($notifications as $notification)
                     <div
-                        class="px-6 py-4 hover:bg-washed transition-colors duration-150 {{ !$notification->is_read ? 'bg-primary-50' : '' }}"
+                        class="px-6 py-4 flex gap-4 items-start hover:bg-washed duration-150 {{ !$notification->is_read ? 'bg-primary-50' : '' }}"
                         wire:key="notification-{{ $notification->id }}"
+                        tabindex="0"
+                        aria-label="{{ $notification->title }}"
                     >
-                        <div class="flex items-start space-x-4">
-                            {{-- Icon --}}
-                            <div class="flex-shrink-0">
-                                @php
-                                    $iconConfig = match($notification->type) {
-                                        'ticket_created', 'ticket_updated' => ['icon' => 'warning', 'color' => 'warning'],
-                                        'ticket_resolved', 'loan_approved' => ['icon' => 'check-circle', 'color' => 'success'],
-                                        'loan_requested' => ['icon' => 'document', 'color' => 'primary'],
-                                        'equipment_due', 'equipment_overdue' => ['icon' => 'clock', 'color' => 'danger'],
-                                        default => ['icon' => 'info', 'color' => 'secondary']
-                                    };
-                                @endphp
-                                <div class="w-10 h-10 rounded-full bg-{{ $iconConfig['color'] }}-100 dark:bg-{{ $iconConfig['color'] }}-900 flex items-center justify-center">
-                                    @switch($iconConfig['icon'])
-                                        @case('warning')
-                                            <!-- Warning Triangle SVG -->
-                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 14.5c-.77.833.192 2.5 1.732 2.5z"/>
-                                            </svg>
-                                            @break
-                                        @case('check-circle')
-                                            <!-- Check Circle SVG -->
-                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                            @break
-                                        @case('document')
-                                            <!-- Document SVG -->
-                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                            </svg>
-                                            @break
-                                        @case('clock')
-                                            <!-- Clock SVG -->
-                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                            @break
-                                        @default
-                                            <!-- Info Circle SVG -->
-                                            <svg class="w-5 h-5 text-{{ $iconConfig['color'] }}-600 dark:text-{{ $iconConfig['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                    @endswitch
+                        {{-- Icon --}}
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center
+                                @if($notification->priority === 'high') bg-warning-100
+                                @elseif($notification->priority === 'critical') bg-danger-100
+                                @else bg-primary-100 @endif">
+                                <x-myds.icon
+                                    :name="match($notification->type) {
+                                        'ticket_created', 'ticket_updated' => 'clipboard-list',
+                                        'ticket_resolved', 'loan_approved' => 'check-circle',
+                                        'loan_requested' => 'document',
+                                        'equipment_due', 'equipment_overdue' => 'clock',
+                                        default => 'information-circle'
+                                    }"
+                                    class="w-5 h-5
+                                        @if($notification->priority === 'critical') text-danger-600
+                                        @elseif($notification->priority === 'high') text-warning-600
+                                        @else text-primary-600 @endif"
+                                />
+                            </div>
+                        </div>
+                        {{-- Content --}}
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-body-md font-semibold text-txt-black-900 truncate">
+                                    {{ $notification->title }}
+                                </h3>
+                                <div class="flex items-center gap-2">
+                                    <x-myds.tag
+                                        :variant="match($notification->priority) {
+                                            'critical' => 'danger',
+                                            'high' => 'warning',
+                                            'medium' => 'primary',
+                                            default => 'default'
+                                        }"
+                                        size="xs"
+                                        mode="pill"
+                                        dot="{{ !$notification->is_read }}"
+                                    >
+                                        {{ ucfirst(is_object($notification->priority) && method_exists($notification->priority,'value') ? (string)$notification->priority->value : (string)$notification->priority) }}
+                                    </x-myds.tag>
+                                    <x-myds.tag
+                                        :variant="match($notification->category) {
+                                            'system' => 'primary',
+                                            'tickets' => 'primary',
+                                            'loans' => 'success',
+                                            'urgent' => 'danger',
+                                            default => 'default'
+                                        }"
+                                        size="xs"
+                                        mode="pill"
+                                    >
+                                        {{ ucfirst(is_object($notification->category) && method_exists($notification->category,'value') ? (string)$notification->category->value : (string)$notification->category) }}
+                                    </x-myds.tag>
                                 </div>
                             </div>
-
-                            {{-- Content --}}
-                            <div class="flex-1 min-w-0">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="text-sm font-medium text-black-900 font-inter truncate">
-                                        {{ $notification->title }}
-                                    </h3>
-                                    <div class="flex items-center space-x-2">
-                                        {{-- Priority Badge --}}
-                                        @php
-                                            $priorityColors = [
-                                                'urgent' => 'bg-danger-100 text-danger-700',
-                                                'high' => 'bg-warning-100 text-warning-700',
-                                                'medium' => 'bg-primary-100 text-primary-700',
-                                                'low' => 'bg-success-100 text-success-700',
-                                            ];
-                                            $priorityColor = $priorityColors[$notification->priority] ?? 'bg-black-100 text-black-700';
-                                        @endphp
-                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium {{ $priorityColor }}">
-                                            {{ ucfirst($notification->priority) }}
-                                        </span>
-
-                                        {{-- Category Badge --}}
-                                        @php
-                                            $categoryColors = [
-                                                'ticket' => 'bg-warning-100 text-warning-700',
-                                                'loan' => 'bg-success-100 text-success-700',
-                                                'system' => 'bg-secondary-100 text-secondary-700',
-                                                'general' => 'bg-black-100 text-black-700',
-                                            ];
-                                            $categoryColor = $categoryColors[$notification->category] ?? 'bg-black-100 text-black-700';
-                                        @endphp
-                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium {{ $categoryColor }}">
-                                            {{ ucfirst($notification->category) }}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <p class="mt-1 text-sm text-black-600 font-inter">
-                                    {{ $notification->message }}
-                                </p>
-
-                                <div class="mt-2 flex items-center justify-between">
-                                    <span class="text-xs text-black-500 font-inter">
-                                        {{ $notification->getTimeAgo() }}
-                                    </span>
-
-                                    <div class="flex items-center space-x-2">
-                                        {{-- Action Button --}}
-                                        @if($notification->action_url)
-                                            <button
-                                                onclick="window.location.href='{{ $notification->action_url }}'; @this.markNotificationAsRead({{ $notification->id }})"
-                                                class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-inter font-medium rounded text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
-                                            >
-                                                <!-- Eye SVG -->
-                                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                                                </svg>
-                                                Lihat
-                                            </button>
-                                        @endif
-
-                                        {{-- Mark as Read/Unread --}}
-                                        @if(!$notification->is_read)
-                                            <button
-                                                wire:click="markNotificationAsRead({{ $notification->id }})"
-                                                class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-inter font-medium rounded text-white bg-success-600 hover:bg-success-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-success-500 transition-colors duration-200"
-                                            >
-                                                <!-- Check SVG -->
-                                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                                </svg>
-                                                Tandai Dibaca
-                                            </button>
-                                        @endif
-
-                                        {{-- Delete --}}
-                                        <button
-                                            wire:click="deleteNotification({{ $notification->id }})"
-                                            wire:confirm="Adakah anda pasti ingin menghapus notifikasi ini?"
-                                            class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-inter font-medium rounded text-white bg-danger-600 hover:bg-danger-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danger-500 transition-colors duration-200"
+                            <div class="text-body-sm text-txt-black-700 mt-1">
+                                {{ $notification->message }}
+                            </div>
+                            <div class="mt-2 flex items-center justify-between">
+                                <span class="text-xs text-txt-black-500">
+                                    {{ $notification->getTimeAgo() }}
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    @if($notification->action_url)
+                                        <x-myds.button
+                                            :href="$notification->action_url"
+                                            variant="primary"
+                                            size="xs"
+                                            onclick="@this.markNotificationAsRead({{ $notification->id }})"
                                         >
-                                            <!-- Trash SVG -->
-                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                                            </svg>
-                                            Hapus
-                                        </button>
-                                    </div>
+                                            {{ __('Lihat / View') }}
+                                        </x-myds.button>
+                                    @endif
+                                    @if(!$notification->is_read)
+                                        <x-myds.button
+                                            type="button"
+                                            variant="secondary"
+                                            size="xs"
+                                            wire:click="markNotificationAsRead({{ $notification->id }})"
+                                        >
+                                            {{ __('Tandai Dibaca / Mark Read') }}
+                                        </x-myds.button>
+                                    @endif
+                                    <x-myds.button
+                                        type="button"
+                                        variant="danger-tertiary"
+                                        size="xs"
+                                        wire:click="deleteNotification({{ $notification->id }})"
+                                        onclick="return confirm('Adakah anda pasti ingin menghapus notifikasi ini? / Are you sure you want to delete this notification?')"
+                                    >
+                                        <x-myds.icon name="trash" />
+                                        <span class="sr-only">Delete</span>
+                                    </x-myds.button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-
             {{-- Pagination --}}
-            @if($notifications->hasPages())
-                <div class="px-6 py-4 border-t border-divider">
-                    {{ $notifications->links() }}
-                </div>
-            @endif
+            <x-myds.card-body class="border-t otl-divider">
+                {{ $notifications->links() }}
+            </x-myds.card-body>
         @else
             <div class="px-6 py-12 text-center">
-                <!-- Bell SVG -->
-                <svg class="mx-auto h-12 w-12 text-black-300 dark:text-black-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-3-3V9A6 6 0 1 0 6 9v5l-3 3h5a3 3 0 1 0 6 0Z"/>
-                </svg>
-                <h3 class="text-lg font-medium text-black-900 dark:text-white font-poppins mb-2">Tiada Notifikasi</h3>
-                <p class="text-black-500 dark:text-black-400 font-inter">Anda tidak mempunyai notifikasi mengikut penapis yang dipilih.</p>
-            </div>
-        @endif
-    </div>
-
-    {{-- Mark All Modal --}}
-    @if($showMarkAllModal)
-        <div class="fixed inset-0 z-50 overflow-y-auto">
-            <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-                <div class="fixed inset-0 transition-opacity bg-black-500 bg-opacity-75" wire:click="closeMarkAllModal"></div>
-
-                <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
-                    <div>
-                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-primary-100 dark:bg-primary-900">
-                            <!-- Check Circle SVG -->
-                            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <div class="mt-3 text-center sm:mt-5">
-                            <h3 class="text-lg leading-6 font-medium text-black-900 dark:text-white font-poppins">
-                                Tandai Semua Sebagai Dibaca
-                            </h3>
-                            <div class="mt-2">
-                                <p class="text-sm text-black-500 dark:text-black-400 font-inter">
-                                    Adakah anda pasti ingin menandai semua {{ $unreadCount }} notifikasi sebagai telah dibaca?
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-                        <button
-                            type="button"
-                            wire:click="markAllAsRead"
-                            class="w-full inline-flex justify-center px-4 py-2 border border-transparent text-sm font-inter font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:col-start-2 transition-colors duration-200"
-                        >
-                            Ya, Tandai Semua
-                        </button>
-                        <button
-                            type="button"
-                            wire:click="closeMarkAllModal"
-                            class="mt-3 w-full inline-flex justify-center px-4 py-2 border border-divider text-sm font-inter font-medium rounded-md text-black-700 dark:text-black-300 bg-white dark:bg-dialog hover:bg-washed dark:hover:bg-black-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:col-start-1 transition-colors duration-200"
-                        >
-                            Batal
-                        </button>
-                    </div>
+                <x-myds.icon name="inbox" class="mx-auto h-12 w-12 text-txt-black-300" />
+                <div class="mt-2 text-heading-2xs text-txt-black-900">
+                    {{ __('Tiada Notifikasi / No Notifications') }}
+                </div>
+                <div class="mt-1 text-body-sm text-txt-black-500">
+                    {{ __('Anda tidak mempunyai notifikasi mengikut penapis yang dipilih / You don\'t have any notifications matching the selected filters') }}
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
+    </x-myds.card>
 
     {{-- Loading State --}}
     <div wire:loading class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <div class="flex items-center space-x-3">
-                <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-600"></div>
-                <span class="text-sm text-black-700 font-inter">Memproses...</span>
-            </div>
-        </div>
+        <x-myds.card>
+            <x-myds.card-body class="flex items-center gap-3">
+                <x-myds.spinner color="primary" size="medium" />
+                <span class="text-body-md text-txt-black-700">{{ __('Memproses... / Processing...') }}</span>
+            </x-myds.card-body>
+        </x-myds.card>
     </div>
-</div>
+</main>
+
+<x-myds.footer>
+    <x-myds.footer-section>
+        <x-myds.site-info>
+            <x-myds.footer-logo logoTitle="Bahagian Pengurusan Maklumat (BPM)" />
+            Aras 13, 14 &amp; 15, Blok Menara, Menara Usahawan, No. 18, Persiaran Perdana, Presint 2, 62000 Putrajaya, Malaysia
+            <div class="mt-2">© 2025 BPM, Kementerian Pelancongan, Seni dan Budaya Malaysia.</div>
+            <div class="mt-2 flex gap-3">
+                <a href="#" aria-label="Facebook" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="facebook" class="w-5 h-5" /></a>
+                <a href="#" aria-label="Twitter" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="twitter" class="w-5 h-5" /></a>
+                <a href="#" aria-label="Instagram" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="instagram" class="w-5 h-5" /></a>
+                <a href="#" aria-label="YouTube" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="youtube" class="w-5 h-5" /></a>
+            </div>
+        </x-myds.site-info>
+    </x-myds.footer-section>
+</x-myds.footer>

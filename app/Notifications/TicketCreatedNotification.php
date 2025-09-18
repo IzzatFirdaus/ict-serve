@@ -27,7 +27,7 @@ class TicketCreatedNotification extends Notification implements ShouldQueue
         // Add Telescope monitoring tags
         Telescope::tag(function () {
             $category = $this->ticket->category;
-            $categoryName = ($category && property_exists($category, 'name')) ? strtolower($category->name) : 'unknown';
+            $categoryName = isset($category->name) ? strtolower($category->name) : 'unknown';
 
             return ['notification:helpdesk', 'ticket:created', 'category:'.$categoryName];
         });
@@ -77,7 +77,7 @@ Ministry of Tourism, Arts and Culture (MOTAC)');
             'ticket_number' => $this->ticket->ticket_number,
             'title' => $this->ticket->title,
             'priority' => $this->ticket->priority->value,
-            'category' => $this->ticket->category ? $this->ticket->category->name : 'Unknown',
+            'category' => $this->ticket->category->name ?? 'Unknown',
             'message' => "Your support ticket #{$this->ticket->ticket_number} has been created successfully.",
             'action_url' => route('dashboard'),
         ];

@@ -29,7 +29,9 @@ class PublicLoanController extends Controller
             ->get()
             ->groupBy('category.name');
 
-        return view('public.loan.create', compact('availableEquipment')); // @phpstan-ignore-line
+    /** @var view-string $view */
+    $view = 'public.loan.create';
+    return view($view, compact('availableEquipment'));
     }
 
     public function store(Request $request)
@@ -144,12 +146,16 @@ class PublicLoanController extends Controller
             return redirect()->route('public.loan.create');
         }
 
-        return view('public.loan.success'); // @phpstan-ignore-line
+    /** @var view-string $view */
+    $view = 'public.loan.success';
+    return view($view);
     }
 
     public function track()
     {
-        return view('public.track');
+    /** @var view-string $view */
+    $view = 'public.track';
+    return view($view);
     }
 
     public function trackStatus(Request $request)
@@ -166,7 +172,9 @@ class PublicLoanController extends Controller
             return back()->with('error', __('Reference number not found. Please check and try again.'));
         }
 
-        return view('public.track-result', compact('loanRequest'));
+    /** @var view-string $view */
+    $view = 'public.track-result';
+    return view($view, compact('loanRequest'));
     }
 
     private function sendNotifications(LoanRequest $loanRequest, Request $request): void
@@ -204,7 +212,9 @@ class PublicLoanController extends Controller
             });
 
             // Notify ICT admins
-            $ictAdmins = User::whereIn('role', ['admin', 'superuser_admin'])->get();
+            $ictAdmins = User::query()
+                ->whereIn('role', ['ict_admin', 'super_admin'])
+                ->get();
             if ($ictAdmins->count() > 0) {
                 Notification::send($ictAdmins, new LoanRequestSubmitted($loanRequest));
             }

@@ -47,11 +47,10 @@ class LoanRequestTracker extends Component
         $this->dispatch('polling-disabled');
     }
 
-    // Backwards-compatible alias expected by tests
     public function togglePolling()
     {
         $this->polling = ! $this->polling;
-        $this->dispatch($this->polling ? 'polling-enabled' : 'polling-disabled');
+        $this->dispatch('polling-toggled');
     }
 
     public function render()

@@ -50,9 +50,9 @@
                             @endif">
                             {{ $request->status->name }}
                         </span>
-                        @if($request->priority)
+                                @if($request->priority)
                             <p class="text-xs text-gray-600 mt-1">
-                                {{ __('Priority: :priority', ['priority' => ucfirst($request->priority)]) }}
+                                {{ __('Priority: :priority', ['priority' => ucfirst(is_object($request->priority) && method_exists($request->priority,'value') ? (string)$request->priority->value : (string)$request->priority)]) }}
                             </p>
                         @endif
                     </div>
@@ -135,7 +135,7 @@
                                         @elseif($loanItem->status === 'rejected') bg-danger-100 text-danger-800
                                         @else bg-gray-100 text-gray-800
                                         @endif">
-                                        {{ ucfirst($loanItem->status) }}
+                                        {{ ucfirst(is_object($loanItem->status) && method_exists($loanItem->status,'value') ? (string)$loanItem->status->value : (string)$loanItem->status) }}
                                     </span>
                                 </div>
                             </div>
@@ -197,7 +197,7 @@
                             {{ $ticket->status->name }}
                         </span>
                         <p class="text-xs text-gray-600 mt-1">
-                            {{ __('Priority: :priority', ['priority' => ucfirst($ticket->priority)]) }}
+                            {{ __('Priority: :priority', ['priority' => ucfirst(is_object($ticket->priority) && method_exists($ticket->priority,'value') ? (string)$ticket->priority->value : (string)$ticket->priority)]) }}
                         </p>
                     </div>
                 </div>
@@ -239,7 +239,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <dt class="font-medium text-gray-500">{{ __('Priority:') }}</dt>
-                                <dd class="text-gray-900">{{ ucfirst($ticket->priority) }}</dd>
+                                <dd class="text-gray-900">{{ ucfirst(is_object($ticket->priority) && method_exists($ticket->priority,'value') ? (string)$ticket->priority->value : (string)$ticket->priority) }}</dd>
                             </div>
                             @if($ticket->equipmentItem)
                                 <div class="flex justify-between">

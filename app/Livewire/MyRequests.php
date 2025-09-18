@@ -26,9 +26,9 @@ class MyRequests extends Component
     #[Url]
     public string $search = '';
 
-    public ?LoanRequest $selectedLoanRequest = null;
+    public int $selectedLoanRequestId = 0;
 
-    public ?HelpdeskTicket $selectedTicket = null;
+    public int $selectedTicketId = 0;
 
     public bool $showLoanModal = false;
 
@@ -67,27 +67,25 @@ class MyRequests extends Component
 
     public function showLoanDetails(int $loanRequestId)
     {
-        $this->selectedLoanRequest = LoanRequest::with(['loanStatus', 'user', 'supervisor', 'ictAdmin', 'issuedBy', 'loanItems.equipmentItem'])
-            ->findOrFail($loanRequestId);
+        $this->selectedLoanRequestId = $loanRequestId;
         $this->showLoanModal = true;
     }
 
     public function closeLoanModal()
     {
-        $this->selectedLoanRequest = null;
+        $this->selectedLoanRequestId = 0;
         $this->showLoanModal = false;
     }
 
     public function showTicketDetails(int $ticketId)
     {
-        $this->selectedTicket = HelpdeskTicket::with(['assignedTo', 'category', 'comments.user'])
-            ->findOrFail($ticketId);
+        $this->selectedTicketId = $ticketId;
         $this->showTicketModal = true;
     }
 
     public function closeTicketModal()
     {
-        $this->selectedTicket = null;
+        $this->selectedTicketId = 0;
         $this->showTicketModal = false;
     }
 
@@ -159,9 +157,22 @@ class MyRequests extends Component
 
         $tickets = $ticketsQuery->paginate(10, ['*'], 'tickets');
 
+        // Get selected records for modals
+        $selectedLoanRequest = $this->selectedLoanRequestId
+            ? LoanRequest::with(['loanStatus', 'user', 'supervisor', 'ictAdmin', 'issuedBy', 'loanItems.equipmentItem'])
+                ->find($this->selectedLoanRequestId)
+            : null;
+
+        $selectedTicket = $this->selectedTicketId
+            ? HelpdeskTicket::with(['assignedTo', 'category', 'comments.user'])
+                ->find($this->selectedTicketId)
+            : null;
+
         return view('livewire.my-requests', compact(
             'loanRequests',
-            'tickets'
+            'tickets',
+            'selectedLoanRequest',
+            'selectedTicket'
         ));
     }
 }

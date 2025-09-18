@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        // Create the standard Laravel notifications table
+        // This is separate from our custom notifications table
+        Schema::create('laravel_notifications', function (Blueprint $table) {
+            $table->string('id')->primary();
             $table->string('type');
             $table->morphs('notifiable');
             $table->text('data');
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('laravel_notifications');
     }
 };

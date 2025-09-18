@@ -5,9 +5,10 @@ namespace App\Livewire\Helpdesk;
 use App\Enums\TicketPriority;
 use App\Enums\TicketUrgency;
 use App\Models\EquipmentItem;
+use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
+use App\Models\TicketStatus;
 use App\Notifications\TicketCreatedNotification;
-use App\Services\HelpdeskService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
@@ -20,8 +21,6 @@ use Livewire\WithFileUploads;
 class TicketForm extends Component
 {
     use WithFileUploads;
-
-    public HelpdeskService $helpdesk;
 
     // Basic Information
     #[Rule('required|string|max:255')]
@@ -62,9 +61,8 @@ class TicketForm extends Component
 
     protected $listeners = ['categoryChanged' => 'updateCategory'];
 
-    public function mount(HelpdeskService $helpdesk)
+    public function mount()
     {
-        $this->helpdesk = $helpdesk;
         // Pre-fill user information if authenticated
         if (Auth::check()) {
             $user = Auth::user();
@@ -146,20 +144,24 @@ class TicketForm extends Component
         }
 
         try {
-            $dueAt = $this->calculateDueDate();
+            // Get initial status
+            $initialStatus = TicketStatus::where('code', 'open')->first();
 
-            // Create ticket via service
-            $ticket = $this->helpdesk->createTicket([
+            // Create ticket
+            $ticket = HelpdeskTicket::create([
+                'ticket_number' => HelpdeskTicket::generateTicketNumber(),
+                'user_id' => Auth::id(),
                 'category_id' => $this->category_id,
+                'status_id' => $initialStatus->id,
                 'title' => $this->title,
                 'description' => $this->description,
-                'priority' => $this->priority,
-                'urgency' => $this->urgency,
+                'priority' => TicketPriority::from($this->priority),
+                'urgency' => TicketUrgency::from($this->urgency),
                 'equipment_item_id' => $this->equipment_item_id,
                 'location' => $this->location,
                 'contact_phone' => $this->contact_phone,
-                'due_at' => $dueAt,
-            ], Auth::user());
+                'due_at' => $this->calculateDueDate(),
+            ]);
 
             // Handle file attachments
             if (! empty($this->attachments)) {
@@ -178,9 +180,8 @@ class TicketForm extends Component
                 $ticket->update(['attachments' => $attachmentPaths]);
             }
 
-            // Send notification to helpdesk team
-            // @phpstan-ignore-next-line method.resultUnused
-            $this->notifyHelpdeskTeam($ticket);
+            // Send notification to helpdesk team (side effect only, ignore result)
+            $this->notifyHelpdeskTeam($ticket); // @phpstan-ignore-line
 
             // Send notification to user
             Auth::user()->notify(new TicketCreatedNotification($ticket));

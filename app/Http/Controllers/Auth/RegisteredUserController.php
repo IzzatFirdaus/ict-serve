@@ -39,6 +39,13 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'staff_id' => 'STAFF'.str_pad((string) (User::max('id') + 1), 3, '0', STR_PAD_LEFT),
+            'division' => 'BPM',
+            'department' => 'Information Management',
+            'position' => 'Officer',
+            'phone' => '',
+            'role' => 'user',
+            'is_active' => true,
         ]);
 
         event(new Registered($user));
