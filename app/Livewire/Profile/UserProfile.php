@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Profile;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -21,75 +20,33 @@ class UserProfile extends Component
 
     // User Profile Data
     public string $name = '';
-
     public string $email = '';
-
     public string $staff_id = '';
-
     public string $department = '';
-
     public string $phone = '';
-
     public string $position = '';
 
     // Password Change
     public string $current_password = '';
-
     public string $new_password = '';
-
     public string $new_password_confirmation = '';
 
     // Preferences
     public string $preferred_language = 'ms';
-
     public string $theme_preference = 'system';
-
     public bool $email_notifications = true;
-
     public bool $sms_notifications = false;
-
     public bool $browser_notifications = true;
-
     public array $notification_types = [];
 
     // Profile Picture
     #[Validate(['image', 'max:2048'])] // 2MB Max
     public $profile_picture;
-
     public ?string $current_profile_picture = null;
 
     // Activity and Statistics
     public array $userStats = [];
-
     public array $recentActivity = [];
-
-    protected function rules(): array
-    {
-        return [
-            'name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore(Auth::id()),
-            ],
-            'staff_id' => [
-                'required',
-                'string',
-                'max:20',
-                Rule::unique('users')->ignore(Auth::id()),
-            ],
-            'department' => 'required|string|max:255',
-            'phone' => 'nullable|string|max:20',
-            'position' => 'nullable|string|max:255',
-            'current_password' => 'nullable|current_password',
-            'new_password' => 'nullable|min:8|confirmed',
-            'new_password_confirmation' => 'nullable|same:new_password',
-            'preferred_language' => 'required|in:ms,en',
-            'theme_preference' => 'required|in:light,dark,system',
-            'profile_picture' => 'nullable|image|max:2048',
-        ];
-    }
 
     protected array $messages = [
         'name.required' => 'Nama diperlukan / Name is required',
@@ -106,9 +63,14 @@ class UserProfile extends Component
         'profile_picture.max' => 'Saiz imej tidak boleh melebihi 2MB / Image size cannot exceed 2MB',
     ];
 
+    public function __invoke()
+    {
+        return $this;
+    }
+
     public function mount(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
         // Load user data
         $this->name = $user->name;
@@ -138,11 +100,6 @@ class UserProfile extends Component
         $this->loadRecentActivity();
     }
 
-    public function __invoke()
-    {
-        return $this;
-    }
-
     public function updateProfile(): void
     {
         $this->validate([
@@ -151,13 +108,13 @@ class UserProfile extends Component
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('users')->ignore(Auth::id()),
+                Rule::unique('users')->ignore(auth()->id()),
             ],
             'staff_id' => [
                 'required',
                 'string',
                 'max:20',
-                Rule::unique('users')->ignore(Auth::id()),
+                Rule::unique('users')->ignore(auth()->id()),
             ],
             'department' => 'required|string|max:255',
             'phone' => 'nullable|string|max:20',
@@ -165,7 +122,7 @@ class UserProfile extends Component
         ]);
 
         try {
-            $user = Auth::user();
+            $user = auth()->user();
 
             $user->update([
                 'name' => $this->name,
@@ -177,8 +134,8 @@ class UserProfile extends Component
             ]);
 
             session()->flash('success', 'Profil berjaya dikemaskini / Profile updated successfully');
-        } catch (\Exception $e) {
-            logger('Profile update error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Profile update error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengemaskini profil / Error updating profile');
         }
     }
@@ -191,7 +148,7 @@ class UserProfile extends Component
         ]);
 
         try {
-            Auth::user()->update([
+            auth()->user()->update([
                 'password' => Hash::make($this->new_password),
             ]);
 
@@ -201,8 +158,8 @@ class UserProfile extends Component
             $this->new_password_confirmation = '';
 
             session()->flash('success', 'Kata laluan berjaya dikemaskini / Password updated successfully');
-        } catch (\Exception $e) {
-            logger('Password update error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Password update error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengemaskini kata laluan / Error updating password');
         }
     }
@@ -210,7 +167,7 @@ class UserProfile extends Component
     public function updatePreferences(): void
     {
         try {
-            $user = Auth::user();
+            $user = auth()->user();
 
             $preferences = [
                 'language' => $this->preferred_language,
@@ -230,8 +187,8 @@ class UserProfile extends Component
             }
 
             session()->flash('success', 'Keutamaan berjaya dikemaskini / Preferences updated successfully');
-        } catch (\Exception $e) {
-            logger('Preferences update error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Preferences update error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengemaskini keutamaan / Error updating preferences');
         }
     }
@@ -243,7 +200,7 @@ class UserProfile extends Component
         ]);
 
         try {
-            $user = Auth::user();
+            $user = auth()->user();
 
             // Delete old profile picture
             if ($user->profile_picture) {
@@ -259,8 +216,8 @@ class UserProfile extends Component
             $this->profile_picture = null;
 
             session()->flash('success', 'Gambar profil berjaya dikemaskini / Profile picture updated successfully');
-        } catch (\Exception $e) {
-            logger('Profile picture update error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Profile picture update error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengemaskini gambar profil / Error updating profile picture');
         }
     }
@@ -268,7 +225,7 @@ class UserProfile extends Component
     public function deleteProfilePicture(): void
     {
         try {
-            $user = Auth::user();
+            $user = auth()->user();
 
             if ($user->profile_picture) {
                 Storage::disk('public')->delete($user->profile_picture);
@@ -277,15 +234,48 @@ class UserProfile extends Component
 
                 session()->flash('success', 'Gambar profil berjaya dipadam / Profile picture deleted successfully');
             }
-        } catch (\Exception $e) {
-            logger('Profile picture deletion error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Profile picture deletion error: ' . $e->getMessage());
             session()->flash('error', 'Ralat memadam gambar profil / Error deleting profile picture');
         }
     }
 
+    public function render()
+    {
+        return view('livewire.profile.user-profile');
+    }
+
+    protected function rules(): array
+    {
+        return [
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore(auth()->id()),
+            ],
+            'staff_id' => [
+                'required',
+                'string',
+                'max:20',
+                Rule::unique('users')->ignore(auth()->id()),
+            ],
+            'department' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'position' => 'nullable|string|max:255',
+            'current_password' => 'nullable|current_password',
+            'new_password' => 'nullable|min:8|confirmed',
+            'new_password_confirmation' => 'nullable|same:new_password',
+            'preferred_language' => 'required|in:ms,en',
+            'theme_preference' => 'required|in:light,dark,system',
+            'profile_picture' => 'nullable|image|max:2048',
+        ];
+    }
+
     private function loadUserStats(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
         // Get user statistics
         $this->userStats = [
@@ -312,45 +302,41 @@ class UserProfile extends Component
 
     private function loadRecentActivity(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
         // Recent tickets
-        $recentTicketsCollection = $user->helpdeskTickets()
+        $recentTickets = $user->helpdeskTickets()
             ->with(['category', 'status'])
             ->orderBy('created_at', 'desc')
             ->limit(5)
-            ->get();
-
-        // @phpstan-ignore-next-line
-        $recentTickets = $recentTicketsCollection->map(function (\App\Models\HelpdeskTicket $ticket) {
-            return [
-                'type' => 'ticket',
-                'title' => $ticket->title,
-                'description' => 'Tiket '.$ticket->ticket_number.' - '.$ticket->category->name,
-                'status' => $ticket->status->name,
-                'created_at' => $ticket->created_at,
-                'url' => route('helpdesk.index-enhanced'),
-            ];
-        });
+            ->get()
+            ->map(function ($ticket) {
+                return [
+                    'type' => 'ticket',
+                    'title' => $ticket->title,
+                    'description' => 'Tiket ' . $ticket->ticket_number . ' - ' . $ticket->category->name,
+                    'status' => $ticket->status->name,
+                    'created_at' => $ticket->created_at,
+                    'url' => route('helpdesk.index-enhanced'),
+                ];
+            });
 
         // Recent loans
-        $recentLoansCollection = $user->loanRequests()
+        $recentLoans = $user->loanRequests()
             ->with(['equipmentItem'])
             ->orderBy('created_at', 'desc')
             ->limit(5)
-            ->get();
-
-        // @phpstan-ignore-next-line
-        $recentLoans = $recentLoansCollection->map(function (\App\Models\LoanRequest $loan) {
-            return [
-                'type' => 'loan',
-                'title' => 'Pinjaman Peralatan',
-                'description' => $loan->equipmentItem->name ?? 'Equipment Loan',
-                'status' => ucfirst($loan->status->label),
-                'created_at' => $loan->created_at,
-                'url' => route('loan.index'),
-            ];
-        });
+            ->get()
+            ->map(function ($loan) {
+                return [
+                    'type' => 'loan',
+                    'title' => 'Pinjaman Peralatan',
+                    'description' => $loan->equipmentItem->name ?? 'Equipment Loan',
+                    'status' => ucfirst($loan->status),
+                    'created_at' => $loan->created_at,
+                    'url' => route('loan.index'),
+                ];
+            });
 
         // Combine and sort by date
         $this->recentActivity = $recentTickets->merge($recentLoans)
@@ -358,10 +344,5 @@ class UserProfile extends Component
             ->take(10)
             ->values()
             ->toArray();
-    }
-
-    public function render()
-    {
-        return view('livewire.profile.user-profile');
     }
 }

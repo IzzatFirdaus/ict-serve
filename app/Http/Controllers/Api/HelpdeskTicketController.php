@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -7,6 +9,7 @@ use App\Http\Requests\StoreHelpdeskTicketRequest;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketStatus;
 use App\Services\NotificationService;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -108,7 +111,7 @@ class HelpdeskTicketController extends Controller
                 'data' => $ticket->load(['category', 'status', 'user']),
             ], 201);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return response()->json([
@@ -214,7 +217,7 @@ class HelpdeskTicketController extends Controller
                 'data' => $ticket->fresh(['user', 'category', 'status', 'assignedToUser']),
             ]);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return response()->json([
@@ -261,7 +264,7 @@ class HelpdeskTicketController extends Controller
                 'message' => 'Tiket telah berjaya dipadam.',
             ]);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ralat berlaku semasa memadam tiket.',

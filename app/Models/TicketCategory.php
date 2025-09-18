@@ -8,40 +8,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * @property int $id
- * @property string $name
- * @property string $name_bm
- * @property string|null $description
- * @property string|null $description_bm
- * @property string|null $icon
- * @property string $priority
- * @property int|null $default_sla_hours
- * @property bool $is_active
- * @property int $sort_order
- * @property int $total
- * @property int $met_sla
- * @property int $breached_sla
- *
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
 class TicketCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
+        'code',
         'name',
+        'name_bm',
         'description',
-        'color',
-        'icon',
+        'description_bm',
         'is_active',
         'sort_order',
     ];
 
     /**
-     * Get the tickets in this category.
+     * Get helpdesk tickets in this category
      */
-    public function tickets(): HasMany
+    public function helpdeskTickets(): HasMany
     {
         return $this->hasMany(HelpdeskTicket::class, 'category_id');
     }

@@ -9,7 +9,7 @@ use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -22,68 +22,44 @@ class CreateEnhanced extends Component
 
     // Form type and navigation
     public string $ticketType = 'general'; // general, incident, damage
-
     public int $currentStep = 1;
-
     public int $maxSteps = 3;
 
     // Basic ticket properties
     public string $title = '';
-
     public string $description = '';
-
     public int $category_id = 0;
-
     public string $priority = 'medium';
-
     public string $urgency = 'normal';
-
     public ?int $equipment_item_id = null;
-
     public string $location = '';
-
     public string $contact_phone = '';
-
     public array $attachments = [];
-
     public array $uploadedFiles = [];
 
     // Incident-specific fields
     public string $incident_datetime = '';
-
     public string $incident_witnesses = '';
-
     public string $incident_severity = 'minor';
-
     public string $incident_impact = '';
-
     public string $immediate_action_taken = '';
-
     public string $incident_location_details = '';
 
     // Damage-specific fields
     public string $damage_type = 'physical';
-
     public ?float $estimated_cost = null;
-
     public string $warranty_status = 'unknown';
-
     public bool $replacement_needed = false;
-
     public string $damage_cause = '';
-
     public string $damage_extent = '';
 
     // Data collections
     public array $ticketCategories = [];
-
     public array $equipmentItems = [];
-
     public array $technicians = [];
 
     // UI state
     public bool $showEquipmentSelector = false;
-
     public bool $isSubmitting = false;
 
     public function mount(): void
@@ -91,8 +67,8 @@ class CreateEnhanced extends Component
         $this->loadTicketCategories();
         $this->loadEquipmentItems();
         $this->loadTechnicians();
-        $this->contact_phone = Auth::user()->phone ?? '';
-        $this->location = Auth::user()->division ?? '';
+        $this->contact_phone = auth()->user()->phone ?? '';
+        $this->location = auth()->user()->division ?? '';
         $this->incident_datetime = now()->format('Y-m-d\TH:i');
     }
 
@@ -103,7 +79,7 @@ class CreateEnhanced extends Component
                 ->ordered()
                 ->get()
                 ->toArray();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->ticketCategories = [];
         }
     }
@@ -117,7 +93,7 @@ class CreateEnhanced extends Component
                 ->orderBy('model')
                 ->get()
                 ->toArray();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->equipmentItems = [];
         }
     }
@@ -130,7 +106,7 @@ class CreateEnhanced extends Component
                 ->orderBy('name')
                 ->get(['id', 'name', 'department'])
                 ->toArray();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->technicians = [];
         }
     }
@@ -157,13 +133,15 @@ class CreateEnhanced extends Component
         }
 
         // Auto-set ticket type based on category
-        if ($category) {
-            if (str_contains(strtolower($category->name), 'damage')) {
-                $this->ticketType = 'damage';
-            } elseif (str_contains(strtolower($category->name), 'incident')) {
-                $this->ticketType = 'incident';
-            }
+        if (! $category) {
+            return;
         }
+        if (str_contains(strtolower($category->name), 'damage')) {
+            $this->ticketType = 'damage';
+        } elseif (str_contains(strtolower($category->name), 'incident')) {
+            $this->ticketType = 'incident';
+        }
+
     }
 
     public function nextStep(): void
@@ -180,6 +158,82 @@ class CreateEnhanced extends Component
         if ($this->currentStep > 1) {
             $this->currentStep--;
         }
+    }
+
+    public function removeAttachment(int $index): void
+    {
+        if (isset($this->attachments[$index])) {
+            unset($this->attachments[$index]);
+            $this->attachments = array_values($this->attachments);
+        }
+    }
+
+    public function submit()
+    {
+        $this->isSubmitting = true;
+
+        try {
+            // Validate all steps
+            $this->validate($this->getAllValidationRules());
+
+            DB::transaction(function () {
+                // Handle file uploads
+                $attachmentPaths = $this->handleFileUploads();
+
+                // Get initial status
+                $newStatus = TicketStatus::where('code', 'new')->first();
+                if (! $newStatus) {
+                    throw new Exception('Initial ticket status not found');
+                }
+
+                // Prepare ticket data
+                $ticketData = [
+                    'user_id' => auth()->id(),
+                    'category_id' => $this->category_id,
+                    'status_id' => $newStatus->id,
+                    'title' => $this->title,
+                    'description' => $this->description,
+                    'priority' => $this->priority,
+                    'urgency' => $this->urgency,
+                    'equipment_item_id' => $this->equipment_item_id,
+                    'location' => $this->location,
+                    'contact_phone' => $this->contact_phone,
+                    'attachments' => json_encode($attachmentPaths),
+                ];
+
+                // Add type-specific data
+                if ($this->ticketType === 'incident') {
+                    $ticketData = array_merge($ticketData, [
+                        'description' => $this->buildIncidentDescription(),
+                    ]);
+                } elseif ($this->ticketType === 'damage') {
+                    $ticketData = array_merge($ticketData, [
+                        'description' => $this->buildDamageDescription(),
+                    ]);
+                }
+
+                // Create ticket
+                $ticket = HelpdeskTicket::create($ticketData);
+
+                session()->flash(
+                    'success',
+                    'Tiket bantuan telah berjaya diwujudkan. Nombor tiket: ' . $ticket->ticket_number .
+                    ' / Helpdesk ticket has been successfully created. Ticket number: ' . $ticket->ticket_number
+                );
+            });
+
+            return redirect()->route('helpdesk.index');
+        } catch (Exception $e) {
+            logger('Enhanced helpdesk ticket creation error: ' . $e->getMessage());
+            $this->addError('submit', 'Ralat semasa mewujudkan tiket / Error creating ticket: ' . $e->getMessage());
+        } finally {
+            $this->isSubmitting = false;
+        }
+    }
+
+    public function render()
+    {
+        return view('livewire.helpdesk.create-enhanced');
     }
 
     private function validateCurrentStep(): void
@@ -237,94 +291,26 @@ class CreateEnhanced extends Component
         }
     }
 
-    public function removeAttachment(int $index): void
-    {
-        if (isset($this->attachments[$index])) {
-            unset($this->attachments[$index]);
-            $this->attachments = array_values($this->attachments);
-        }
-    }
-
-    public function submit()
-    {
-        $this->isSubmitting = true;
-
-        try {
-            // Validate all steps
-            $this->validate($this->getAllValidationRules());
-
-            DB::transaction(function () {
-                // Handle file uploads
-                $attachmentPaths = $this->handleFileUploads();
-
-                // Get initial status
-                $newStatus = TicketStatus::where('code', 'new')->first();
-                if (! $newStatus) {
-                    throw new \Exception('Initial ticket status not found');
-                }
-
-                // Prepare ticket data
-                $ticketData = [
-                    'user_id' => Auth::id(),
-                    'category_id' => $this->category_id,
-                    'status_id' => $newStatus->id,
-                    'title' => $this->title,
-                    'description' => $this->description,
-                    'priority' => $this->priority,
-                    'urgency' => $this->urgency,
-                    'equipment_item_id' => $this->equipment_item_id,
-                    'location' => $this->location,
-                    'contact_phone' => $this->contact_phone,
-                    'attachments' => json_encode($attachmentPaths),
-                ];
-
-                // Add type-specific data
-                if ($this->ticketType === 'incident') {
-                    $ticketData = array_merge($ticketData, [
-                        'description' => $this->buildIncidentDescription(),
-                    ]);
-                } elseif ($this->ticketType === 'damage') {
-                    $ticketData = array_merge($ticketData, [
-                        'description' => $this->buildDamageDescription(),
-                    ]);
-                }
-
-                // Create ticket
-                $ticket = HelpdeskTicket::create($ticketData);
-
-                session()->flash('success',
-                    'Tiket bantuan telah berjaya diwujudkan. Nombor tiket: '.$ticket->ticket_number.
-                    ' / Helpdesk ticket has been successfully created. Ticket number: '.$ticket->ticket_number
-                );
-            });
-
-            return redirect()->route('helpdesk.index');
-        } catch (\Exception $e) {
-            logger('Enhanced helpdesk ticket creation error: '.$e->getMessage());
-            $this->addError('submit', 'Ralat semasa mewujudkan tiket / Error creating ticket: '.$e->getMessage());
-        } finally {
-            $this->isSubmitting = false;
-        }
-    }
-
     private function handleFileUploads(): array
     {
         $attachmentPaths = [];
 
         foreach ($this->attachments as $file) {
-            if ($file) {
-                $filename = uniqid().'.'.$file->getClientOriginalExtension();
-                $path = $file->storeAs('helpdesk-attachments', $filename, 'public');
-
-                $attachmentPaths[] = [
-                    'original_name' => $file->getClientOriginalName(),
-                    'filename' => $filename,
-                    'path' => $path,
-                    'size' => $file->getSize(),
-                    'mime_type' => $file->getMimeType(),
-                    'uploaded_at' => now()->toISOString(),
-                ];
+            if (! $file) {
+                continue;
             }
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('helpdesk-attachments', $filename, 'public');
+
+            $attachmentPaths[] = [
+                'original_name' => $file->getClientOriginalName(),
+                'filename' => $filename,
+                'path' => $path,
+                'size' => $file->getSize(),
+                'mime_type' => $file->getMimeType(),
+                'uploaded_at' => now()->toISOString(),
+            ];
+
         }
 
         return $attachmentPaths;
@@ -332,19 +318,19 @@ class CreateEnhanced extends Component
 
     private function buildIncidentDescription(): string
     {
-        $description = $this->description."\n\n";
+        $description = $this->description . "\n\n";
         $description .= "=== MAKLUMAT INSIDEN / INCIDENT DETAILS ===\n";
-        $description .= 'Tarikh & Masa / Date & Time: '.$this->incident_datetime."\n";
-        $description .= 'Keterukan / Severity: '.ucfirst($this->incident_severity)."\n";
-        $description .= 'Kesan / Impact: '.$this->incident_impact."\n";
-        $description .= 'Tindakan Segera / Immediate Action: '.$this->immediate_action_taken."\n";
+        $description .= 'Tarikh & Masa / Date & Time: ' . $this->incident_datetime . "\n";
+        $description .= 'Keterukan / Severity: ' . ucfirst($this->incident_severity) . "\n";
+        $description .= 'Kesan / Impact: ' . $this->incident_impact . "\n";
+        $description .= 'Tindakan Segera / Immediate Action: ' . $this->immediate_action_taken . "\n";
 
         if ($this->incident_witnesses) {
-            $description .= 'Saksi / Witnesses: '.$this->incident_witnesses."\n";
+            $description .= 'Saksi / Witnesses: ' . $this->incident_witnesses . "\n";
         }
 
         if ($this->incident_location_details) {
-            $description .= 'Butiran Lokasi / Location Details: '.$this->incident_location_details."\n";
+            $description .= 'Butiran Lokasi / Location Details: ' . $this->incident_location_details . "\n";
         }
 
         return $description;
@@ -352,16 +338,16 @@ class CreateEnhanced extends Component
 
     private function buildDamageDescription(): string
     {
-        $description = $this->description."\n\n";
+        $description = $this->description . "\n\n";
         $description .= "=== MAKLUMAT KEROSAKAN / DAMAGE DETAILS ===\n";
-        $description .= 'Jenis Kerosakan / Damage Type: '.ucfirst($this->damage_type)."\n";
-        $description .= 'Punca / Cause: '.$this->damage_cause."\n";
-        $description .= 'Tahap Kerosakan / Extent: '.$this->damage_extent."\n";
-        $description .= 'Status Waranti / Warranty Status: '.ucfirst($this->warranty_status)."\n";
-        $description .= 'Penggantian Diperlukan / Replacement Needed: '.($this->replacement_needed ? 'Ya/Yes' : 'Tidak/No')."\n";
+        $description .= 'Jenis Kerosakan / Damage Type: ' . ucfirst($this->damage_type) . "\n";
+        $description .= 'Punca / Cause: ' . $this->damage_cause . "\n";
+        $description .= 'Tahap Kerosakan / Extent: ' . $this->damage_extent . "\n";
+        $description .= 'Status Waranti / Warranty Status: ' . ucfirst($this->warranty_status) . "\n";
+        $description .= 'Penggantian Diperlukan / Replacement Needed: ' . ($this->replacement_needed ? 'Ya/Yes' : 'Tidak/No') . "\n";
 
         if ($this->estimated_cost) {
-            $description .= 'Anggaran Kos / Estimated Cost: RM '.number_format($this->estimated_cost, 2)."\n";
+            $description .= 'Anggaran Kos / Estimated Cost: RM ' . number_format($this->estimated_cost, 2) . "\n";
         }
 
         return $description;
@@ -422,10 +408,5 @@ class CreateEnhanced extends Component
         $this->replacement_needed = false;
         $this->damage_cause = '';
         $this->damage_extent = '';
-    }
-
-    public function render()
-    {
-        return view('livewire.helpdesk.create-enhanced');
     }
 }

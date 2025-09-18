@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -163,22 +165,24 @@ class DashboardController extends Controller
             ],
         ];
 
-        if ($user->role === 'admin') {
-            $actions[] = [
-                'title' => 'Senarai Kelulusan',
-                'description' => 'Semak dan luluskan permohonan peminjaman',
-                'icon' => 'check-circle',
-                'route' => '/admin/approvals',
-                'color' => 'success',
-            ];
-            $actions[] = [
-                'title' => 'Urus Tiket',
-                'description' => 'Urus dan tugaskan tiket helpdesk',
-                'icon' => 'cog',
-                'route' => '/admin/tickets',
-                'color' => 'info',
-            ];
+        if ($user->role !== 'admin') {
+
+            return $actions;
         }
+        $actions[] = [
+            'title' => 'Senarai Kelulusan',
+            'description' => 'Semak dan luluskan permohonan peminjaman',
+            'icon' => 'check-circle',
+            'route' => '/admin/approvals',
+            'color' => 'success',
+        ];
+        $actions[] = [
+            'title' => 'Urus Tiket',
+            'description' => 'Urus dan tugaskan tiket helpdesk',
+            'icon' => 'cog',
+            'route' => '/admin/tickets',
+            'color' => 'info',
+        ];
 
         return $actions;
     }

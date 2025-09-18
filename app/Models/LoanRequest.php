@@ -54,7 +54,8 @@ class LoanRequest extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
         'request_number',
         'user_id',
         'status_id',

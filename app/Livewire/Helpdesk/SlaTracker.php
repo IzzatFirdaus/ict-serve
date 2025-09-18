@@ -7,7 +7,7 @@ namespace App\Livewire\Helpdesk;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -16,20 +16,14 @@ class SlaTracker extends Component
 {
     // Filter properties
     public string $categoryFilter = 'all';
-
     public string $statusFilter = 'all';
-
     public string $slaStatusFilter = 'all'; // all, met, breached, at_risk
-
     public string $dateRange = '7'; // 7, 30, 90 days
 
     // Dashboard data
     public array $slaMetrics = [];
-
     public array $categoryBreakdown = [];
-
     public array $recentBreaches = [];
-
     public array $atRiskTickets = [];
 
     public function mount(): void
@@ -67,7 +61,7 @@ class SlaTracker extends Component
 
     public function loadSlaMetrics(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $query = $this->getBaseQuery($isAdmin);
@@ -109,19 +103,19 @@ class SlaTracker extends Component
 
     public function loadCategoryBreakdown(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $categories = TicketCategory::withCount([
             'helpdeskTickets as total' => function ($query) use ($isAdmin) {
                 if (! $isAdmin) {
-                    $query->where('user_id', Auth::id());
+                    $query->where('user_id', auth()->id());
                 }
                 $this->applyDateRange($query);
             },
             'helpdeskTickets as met_sla' => function ($query) use ($isAdmin) {
                 if (! $isAdmin) {
-                    $query->where('user_id', Auth::id());
+                    $query->where('user_id', auth()->id());
                 }
                 $this->applyDateRange($query);
                 $query->where(function ($q) {
@@ -135,7 +129,7 @@ class SlaTracker extends Component
             },
             'helpdeskTickets as breached_sla' => function ($query) use ($isAdmin) {
                 if (! $isAdmin) {
-                    $query->where('user_id', Auth::id());
+                    $query->where('user_id', auth()->id());
                 }
                 $this->applyDateRange($query);
                 $query->where(function ($q) {
@@ -149,7 +143,7 @@ class SlaTracker extends Component
             },
         ])->get();
 
-        $this->categoryBreakdown = $categories->map(function (TicketCategory $category) {
+        $this->categoryBreakdown = $categories->map(function ($category) {
             $metPercentage = $category->total > 0 ?
                 round(($category->met_sla / $category->total) * 100, 1) : 0;
 
@@ -166,13 +160,13 @@ class SlaTracker extends Component
 
     public function loadRecentBreaches(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser']);
 
         if (! $isAdmin) {
-            $query->where('user_id', Auth::id());
+            $query->where('user_id', auth()->id());
         }
 
         $this->recentBreaches = $query->where(function ($q) {
@@ -186,7 +180,7 @@ class SlaTracker extends Component
             ->orderBy('due_at', 'asc')
             ->limit(10)
             ->get()
-            ->map(function (HelpdeskTicket $ticket) {
+            ->map(function ($ticket) {
                 return [
                     'id' => $ticket->id,
                     'ticket_number' => $ticket->ticket_number,
@@ -206,13 +200,13 @@ class SlaTracker extends Component
 
     public function loadAtRiskTickets(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
 
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser']);
 
         if (! $isAdmin) {
-            $query->where('user_id', Auth::id());
+            $query->where('user_id', auth()->id());
         }
 
         $this->atRiskTickets = $query->where('due_at', '>', now())
@@ -221,7 +215,7 @@ class SlaTracker extends Component
             ->orderBy('due_at', 'asc')
             ->limit(10)
             ->get()
-            ->map(function (HelpdeskTicket $ticket) {
+            ->map(function ($ticket) {
                 return [
                     'id' => $ticket->id,
                     'ticket_number' => $ticket->ticket_number,
@@ -238,12 +232,47 @@ class SlaTracker extends Component
             })->toArray();
     }
 
+    public function escalateAtRiskTicket(int $ticketId): void
+    {
+        try {
+            $ticket = HelpdeskTicket::findOrFail($ticketId);
+
+            // Increase priority
+            $newPriority = match ($ticket->priority) {
+                'low' => 'medium',
+                'medium' => 'high',
+                'high' => 'critical',
+                'critical' => 'critical', // Already max
+            };
+
+            $ticket->update(['priority' => $newPriority]);
+
+            session()->flash(
+                'success',
+                'Tiket ' . $ticket->ticket_number . ' telah dinaikkan keutamaannya / Ticket ' . $ticket->ticket_number . ' priority has been escalated'
+            );
+
+            $this->loadAtRiskTickets();
+        } catch (Exception $e) {
+            logger('SLA escalation error: ' . $e->getMessage());
+            session()->flash('error', 'Ralat mengeskalasi tiket / Error escalating ticket');
+        }
+    }
+
+    public function render()
+    {
+        $categories = TicketCategory::active()->ordered()->get();
+        $statuses = TicketStatus::ordered()->get();
+
+        return view('livewire.helpdesk.sla-tracker', compact('categories', 'statuses'));
+    }
+
     private function getBaseQuery(bool $isAdmin)
     {
         $query = HelpdeskTicket::with(['category', 'status']);
 
         if (! $isAdmin) {
-            $query->where('user_id', Auth::id());
+            $query->where('user_id', auth()->id());
         }
 
         if ($this->categoryFilter !== 'all') {
@@ -324,46 +353,14 @@ class SlaTracker extends Component
     {
         $hoursRemaining = now()->diffInHours($ticket->due_at);
 
-        return match (true) {
-            $hoursRemaining <= 2 => 'critical',
-            $hoursRemaining <= 6 => 'high',
-            $hoursRemaining <= 12 => 'medium',
-            default => 'low',
-        };
-    }
-
-    public function escalateAtRiskTicket(int $ticketId): void
-    {
-        try {
-            $ticket = HelpdeskTicket::findOrFail($ticketId);
-
-            // Increase priority
-            $newPriority = match ($ticket->priority) {
-                'low' => 'medium',
-                'medium' => 'high',
-                'high' => 'critical',
-                default => 'critical', // Already max or other
-            };
-
-            $ticket->update(['priority' => $newPriority]);
-
-            session()->flash('success',
-                'Tiket '.$ticket->ticket_number.' telah dinaikkan keutamaannya / '.
-                'Ticket '.$ticket->ticket_number.' priority has been escalated'
-            );
-
-            $this->loadAtRiskTickets();
-        } catch (\Exception $e) {
-            logger('SLA escalation error: '.$e->getMessage());
-            session()->flash('error', 'Ralat mengeskalasi tiket / Error escalating ticket');
+        if ($hoursRemaining <= 2) {
+            return 'critical';
+        } elseif ($hoursRemaining <= 6) {
+            return 'high';
+        } elseif ($hoursRemaining <= 12) {
+            return 'medium';
+        } else {
+            return 'low';
         }
-    }
-
-    public function render()
-    {
-        $categories = TicketCategory::active()->ordered()->get();
-        $statuses = TicketStatus::ordered()->get();
-
-        return view('livewire.helpdesk.sla-tracker', compact('categories', 'statuses'));
     }
 }

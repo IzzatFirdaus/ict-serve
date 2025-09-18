@@ -27,14 +27,14 @@ class NotificationCenter extends Component
         'refreshNotifications' => '$refresh',
     ];
 
-    public function mount(): void
-    {
-        // Initialize component
-    }
-
     public function __invoke()
     {
         return $this;
+    }
+
+    public function mount(): void
+    {
+        // Initialize component
     }
 
     public function render()
@@ -48,53 +48,6 @@ class NotificationCenter extends Component
             'unreadCount' => $unreadCount,
             'stats' => $stats,
         ]);
-    }
-
-    private function getNotifications()
-    {
-        $query = Notification::where('user_id', auth()->id())
-            ->with('user')
-            ->notExpired()
-            ->recent();
-
-        // Apply filters
-        if ($this->filter === 'unread') {
-            $query->unread();
-        } elseif ($this->filter === 'read') {
-            $query->read();
-        }
-
-        if ($this->category !== 'all') {
-            $query->byCategory($this->category);
-        }
-
-        if ($this->priority !== 'all') {
-            $query->byPriority($this->priority);
-        }
-
-        return $query->paginate(10);
-    }
-
-    private function getUnreadCount(): int
-    {
-        return Notification::where('user_id', auth()->id())
-            ->unread()
-            ->notExpired()
-            ->count();
-    }
-
-    private function getNotificationStats(): array
-    {
-        $userId = auth()->id();
-
-        return [
-            'total' => Notification::where('user_id', $userId)->notExpired()->count(),
-            'unread' => Notification::where('user_id', $userId)->unread()->notExpired()->count(),
-            'tickets' => Notification::where('user_id', $userId)->byCategory('ticket')->notExpired()->count(),
-            'loans' => Notification::where('user_id', $userId)->byCategory('loan')->notExpired()->count(),
-            'system' => Notification::where('user_id', $userId)->byCategory('system')->notExpired()->count(),
-            'urgent' => Notification::where('user_id', $userId)->byPriority('urgent')->notExpired()->count(),
-        ];
     }
 
     public function setFilter(string $filter): void
@@ -217,5 +170,52 @@ class NotificationCenter extends Component
             'general' => 'bg-gray-100 text-gray-800 border-gray-200',
             default => 'bg-gray-100 text-gray-800 border-gray-200',
         };
+    }
+
+    private function getNotifications()
+    {
+        $query = Notification::where('user_id', auth()->id())
+            ->with('user')
+            ->notExpired()
+            ->recent();
+
+        // Apply filters
+        if ($this->filter === 'unread') {
+            $query->unread();
+        } elseif ($this->filter === 'read') {
+            $query->read();
+        }
+
+        if ($this->category !== 'all') {
+            $query->byCategory($this->category);
+        }
+
+        if ($this->priority !== 'all') {
+            $query->byPriority($this->priority);
+        }
+
+        return $query->paginate(10);
+    }
+
+    private function getUnreadCount(): int
+    {
+        return Notification::where('user_id', auth()->id())
+            ->unread()
+            ->notExpired()
+            ->count();
+    }
+
+    private function getNotificationStats(): array
+    {
+        $userId = auth()->id();
+
+        return [
+            'total' => Notification::where('user_id', $userId)->notExpired()->count(),
+            'unread' => Notification::where('user_id', $userId)->unread()->notExpired()->count(),
+            'tickets' => Notification::where('user_id', $userId)->byCategory('ticket')->notExpired()->count(),
+            'loans' => Notification::where('user_id', $userId)->byCategory('loan')->notExpired()->count(),
+            'system' => Notification::where('user_id', $userId)->byCategory('system')->notExpired()->count(),
+            'urgent' => Notification::where('user_id', $userId)->byPriority('urgent')->notExpired()->count(),
+        ];
     }
 }

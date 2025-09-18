@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Helpdesk;
 
 use App\Models\HelpdeskTicket;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
@@ -57,7 +57,6 @@ class AttachmentManager extends Component
 
         if (empty($this->files)) {
             session()->flash('error', 'Sila pilih sekurang-kurangnya satu fail / Please select at least one file');
-
             return;
         }
 
@@ -69,26 +68,28 @@ class AttachmentManager extends Component
                 // Generate unique filename
                 $originalName = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
-                $filename = time().'_'.uniqid().'.'.$extension;
+                $filename = time() . '_' . uniqid() . '.' . $extension;
 
                 // Store file in helpdesk directory
                 $path = $file->storeAs('helpdesk/attachments', $filename, 'public');
 
-                if ($path) {
-                    $uploadedFiles[] = [
-                        'id' => uniqid(),
-                        'filename' => $filename,
-                        'original_name' => $originalName,
-                        'path' => $path,
-                        'url' => Storage::url($path),
-                        'size' => $file->getSize(),
-                        'mime_type' => $file->getMimeType(),
-                        'uploaded_by' => Auth::id(),
-                        'uploaded_by_name' => Auth::user()->name,
-                        'uploaded_at' => now()->toISOString(),
-                        'description' => $this->attachmentDescription ?: null,
-                    ];
+                if (! $path) {
+                    continue;
                 }
+                $uploadedFiles[] = [
+                    'id' => uniqid(),
+                    'filename' => $filename,
+                    'original_name' => $originalName,
+                    'path' => $path,
+                    'url' => Storage::url($path),
+                    'size' => $file->getSize(),
+                    'mime_type' => $file->getMimeType(),
+                    'uploaded_by' => auth()->id(),
+                    'uploaded_by_name' => auth()->user()->name,
+                    'uploaded_at' => now()->toISOString(),
+                    'description' => $this->attachmentDescription ?: null,
+                ];
+
             }
 
             // Merge with existing attachments
@@ -99,27 +100,28 @@ class AttachmentManager extends Component
                 'file_attachments' => $allAttachments,
             ]);
 
-            // Add activity log entry using attribute access to avoid modifying a readonly/magic property
-            $currentActivityLog = $this->ticket->getAttribute('activity_log') ?? [];
-            $newLogEntry = [
-                'action' => 'files_uploaded',
-                'user_id' => (int) Auth::id(),
-                'user_name' => Auth::user()->name,
-                'timestamp' => now()->toISOString(),
-                'details' => [
-                    'files_count' => count($uploadedFiles),
-                    'files' => array_map(fn ($file) => $file['original_name'], $uploadedFiles),
-                    'description' => $this->attachmentDescription ?: null,
-                ],
-            ];
-
-            $this->ticket->setAttribute('activity_log', array_merge($currentActivityLog, [$newLogEntry]));
+            // Add activity log entry
+            $this->ticket->activity_log = array_merge(
+                $this->ticket->activity_log ?? [],
+                [[
+                    'action' => 'files_uploaded',
+                    'user_id' => auth()->id(),
+                    'user_name' => auth()->user()->name,
+                    'timestamp' => now()->toISOString(),
+                    'details' => [
+                        'files_count' => count($uploadedFiles),
+                        'files' => array_map(fn ($file) => $file['original_name'], $uploadedFiles),
+                        'description' => $this->attachmentDescription ?: null,
+                    ],
+                ]]
+            );
 
             $this->ticket->save();
 
-            session()->flash('success',
-                count($uploadedFiles).' fail berjaya dimuat naik / '.
-                count($uploadedFiles).' files successfully uploaded'
+            session()->flash(
+                'success',
+                count($uploadedFiles) . ' fail berjaya dimuat naik / ' .
+                count($uploadedFiles) . ' files successfully uploaded'
             );
 
             // Reset form
@@ -127,8 +129,8 @@ class AttachmentManager extends Component
             $this->attachmentDescription = '';
             $this->loadAttachments();
 
-        } catch (\Exception $e) {
-            logger('File upload error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('File upload error: ' . $e->getMessage());
             session()->flash('error', 'Ralat memuat naik fail / Error uploading files');
         }
     }
@@ -142,20 +144,18 @@ class AttachmentManager extends Component
                 abort(404, 'Fail tidak dijumpai / File not found');
             }
 
-            $filePath = storage_path('app/public/'.$attachment['path']);
+            $filePath = storage_path('app/public/' . $attachment['path']);
 
             if (! file_exists($filePath)) {
                 session()->flash('error', 'Fail tidak wujud / File does not exist');
-
                 return redirect()->back();
             }
 
             return response()->download($filePath, $attachment['original_name']);
 
-        } catch (\Exception $e) {
-            logger('File download error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('File download error: ' . $e->getMessage());
             session()->flash('error', 'Ralat memuat turun fail / Error downloading file');
-
             return redirect()->back();
         }
     }
@@ -167,24 +167,22 @@ class AttachmentManager extends Component
 
             if (! $attachment) {
                 session()->flash('error', 'Fail tidak dijumpai / File not found');
-
                 return;
             }
 
             // Check permissions
-            $user = Auth::user();
-            $canDelete = $user->id === ($attachment['uploaded_by'] ?? 0) ||
+            $user = auth()->user();
+            $canDelete = $user->id === (int) $attachment['uploaded_by'] ||
                         in_array($user->role, ['ict_admin', 'supervisor']) ||
-                        $user->id === ($this->ticket->user_id ?? 0);
+                        $user->id === $this->ticket->user_id;
 
             if (! $canDelete) {
                 session()->flash('error', 'Tiada kebenaran untuk memadam fail / No permission to delete file');
-
                 return;
             }
 
             // Delete physical file
-            $filePath = storage_path('app/public/'.$attachment['path']);
+            $filePath = storage_path('app/public/' . $attachment['path']);
             if (file_exists($filePath)) {
                 unlink($filePath);
             }
@@ -199,27 +197,27 @@ class AttachmentManager extends Component
                 'file_attachments' => $updatedAttachments,
             ]);
 
-            // Add activity log entry using attribute access to avoid modifying a readonly/magic property
-            $currentActivityLog = $this->ticket->getAttribute('activity_log') ?? [];
-            $newLogEntry = [
-                'action' => 'file_deleted',
-                'user_id' => Auth::id(),
-                'user_name' => Auth::user()->name,
-                'timestamp' => now()->toISOString(),
-                'details' => [
-                    'filename' => $attachment['original_name'],
-                ],
-            ];
-
-            $this->ticket->setAttribute('activity_log', array_merge($currentActivityLog, [$newLogEntry]));
+            // Add activity log entry
+            $this->ticket->activity_log = array_merge(
+                $this->ticket->activity_log ?? [],
+                [[
+                    'action' => 'file_deleted',
+                    'user_id' => auth()->id(),
+                    'user_name' => auth()->user()->name,
+                    'timestamp' => now()->toISOString(),
+                    'details' => [
+                        'filename' => $attachment['original_name'],
+                    ],
+                ]]
+            );
 
             $this->ticket->save();
 
             session()->flash('success', 'Fail berjaya dipadam / File successfully deleted');
             $this->loadAttachments();
 
-        } catch (\Exception $e) {
-            logger('File deletion error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('File deletion error: ' . $e->getMessage());
             session()->flash('error', 'Ralat memadam fail / Error deleting file');
         }
     }
@@ -245,15 +243,15 @@ class AttachmentManager extends Component
 
         $bytes /= pow(1024, $pow);
 
-        return round($bytes, 2).' '.$units[$pow];
+        return round($bytes, 2) . ' ' . $units[$pow];
     }
 
     public function render()
     {
         // Check if user can upload files
-        $user = Auth::user();
+        $user = auth()->user();
         $canUpload = $user->id === $this->ticket->user_id ||
-                    $user->id === $this->ticket->getOriginal('assigned_to') ||
+                    $user->id === $this->ticket->assigned_to ||
                     in_array($user->role, ['ict_admin', 'supervisor']);
 
         return view('livewire.helpdesk.attachment-manager', compact('canUpload'));

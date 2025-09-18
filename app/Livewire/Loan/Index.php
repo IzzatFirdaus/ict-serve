@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Loan;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
@@ -14,9 +15,14 @@ class Index extends Component
         $this->loadUserStats();
     }
 
+    public function render()
+    {
+        return view('livewire.loan.index');
+    }
+
     private function loadUserStats()
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
         if (! $user) {
             $this->userLoanStats = [
@@ -35,10 +41,5 @@ class Index extends Component
             'active' => 1,
             'due_soon' => 0,
         ];
-    }
-
-    public function render()
-    {
-        return view('livewire.loan.index');
     }
 }

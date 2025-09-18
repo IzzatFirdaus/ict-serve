@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -7,6 +9,7 @@ use App\Http\Requests\StoreLoanRequestRequest;
 use App\Models\LoanRequest;
 use App\Models\LoanStatus;
 use App\Services\NotificationService;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,7 +92,7 @@ class LoanRequestController extends Controller
                 'data' => $loanRequest->load(['loanItems.equipmentItem', 'status']),
             ], 201);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return response()->json([
@@ -171,7 +174,7 @@ class LoanRequestController extends Controller
                 'data' => $loanRequest->fresh(['user', 'loanItems.equipmentItem', 'status']),
             ]);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return response()->json([
@@ -203,7 +206,7 @@ class LoanRequestController extends Controller
                 'message' => 'Permohonan telah berjaya dipadam.',
             ]);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ralat berlaku semasa memadam permohonan.',

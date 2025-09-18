@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class App extends Component
@@ -13,7 +14,7 @@ class App extends Component
 
     public function mount()
     {
-        $this->user = Auth::user();
+        $this->user = auth()->user();
         if (! $this->user) {
             return redirect()->route('login');
         }
@@ -26,7 +27,7 @@ class App extends Component
 
     public function logout()
     {
-        Auth::logout();
+        auth()->logout();
 
         return redirect()->route('login');
     }

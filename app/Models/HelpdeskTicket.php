@@ -51,7 +51,8 @@ class HelpdeskTicket extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
         'ticket_number',
         'user_id',
         'category_id',
@@ -170,6 +171,27 @@ class HelpdeskTicket extends Model
         return $this->status->code === 'closed';
     }
 
+    /**
+     * Accessor for assignedTo (legacy property)
+     */
+    public function getAssignedToAttribute(): ?User
+    {
+        $user = $this->assignedToUser;
+
+        return $user instanceof User ? $user : null;
+    }
+
+    /**
+     * Accessor for activity_log (stub for Larastan)
+     *
+     * @return mixed
+     */
+    public function getActivityLogAttribute()
+    {
+        // Return null or actual activity log if implemented
+        return null;
+    }
+
     protected function casts(): array
     {
         return [
@@ -201,27 +223,6 @@ class HelpdeskTicket extends Model
                 $ticket->due_at = now()->addHours($ticket->category->default_sla_hours);
             }
         });
-    }
-
-    /**
-     * Accessor for assignedTo (legacy property)
-     */
-    public function getAssignedToAttribute(): ?User
-    {
-        $user = $this->assignedToUser;
-
-        return $user instanceof User ? $user : null;
-    }
-
-    /**
-     * Accessor for activity_log (stub for Larastan)
-     *
-     * @return mixed
-     */
-    public function getActivityLogAttribute()
-    {
-        // Return null or actual activity log if implemented
-        return null;
     }
 
     /**

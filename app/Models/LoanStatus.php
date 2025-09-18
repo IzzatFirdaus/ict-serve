@@ -26,7 +26,8 @@ class LoanStatus extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
         'code',
         'name',
         'name_bm',

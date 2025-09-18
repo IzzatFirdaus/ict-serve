@@ -12,7 +12,8 @@ class Notification extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
         'type',
         'user_id',
         'title',
@@ -40,7 +41,7 @@ class Notification extends Model
     // Relationships
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     // Scopes

@@ -13,7 +13,8 @@ class AuditLog extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    /** @var list<string> */
+    protected array $fillable = [
         'user_id',
         'action',
         'auditable_type',

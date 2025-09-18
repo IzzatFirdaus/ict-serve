@@ -1,30 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @property int $id
- * @property string $ticket_number
- * @property string $title
- * @property string $description
- * @property \App\Models\User $user
- * @property \App\Models\TicketCategory $category
- * @property string $priority
- * @property \App\Models\TicketStatus $status
- * @property string $location
- * @property \App\Models\EquipmentItem|null $equipmentItem
- * @property \App\Models\User|null $assignedTo
- * @property string|null $admin_remarks
- * @property array|null $attachments
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
- *
- * @mixin \App\Models\HelpdeskTicket
- */
 class HelpdeskTicketResource extends JsonResource
+    /**
+     * @property int                            $id
+     * @property string                         $ticket_number
+     * @property string                         $title
+     * @property string                         $description
+     * @property \App\Models\User               $user
+     * @property \App\Models\TicketCategory     $category
+     * @property string                         $priority
+     * @property \App\Models\TicketStatus       $status
+     * @property string                         $location
+     * @property \App\Models\EquipmentItem|null $equipmentItem
+     * @property \App\Models\User|null          $assignedTo
+     * @property string|null                    $admin_remarks
+     * @property array|null                     $attachments
+     * @property \Illuminate\Support\Carbon     $created_at
+     * @property \Illuminate\Support\Carbon     $updated_at
+     */
 {
     /**
      * Transform the resource into an array.

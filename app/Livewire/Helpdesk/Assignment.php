@@ -7,9 +7,8 @@ namespace App\Livewire\Helpdesk;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketStatus;
 use App\Models\User;
-use App\Services\NotificationService;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -18,41 +17,27 @@ use Livewire\Component;
 class Assignment extends Component
 {
     public HelpdeskTicket $ticket;
-
     public array $technicians = [];
-
     public array $escalationHistory = [];
-
     public array $comments = [];
 
     // Assignment fields
-    public ?int $assigned_to = null;
-
-    public ?string $due_date = null;
-
-    public bool $showModal = false;
-
     public ?int $selectedTechnician = null;
-
     public string $assignmentNote = '';
-
     public string $priority = '';
+    public ?string $dueDate = null;
 
     // Escalation fields
     public string $escalationReason = '';
-
     public string $escalationLevel = 'supervisor'; // supervisor, manager, external
-
     public ?int $escalateTo = null;
 
     // Comment/Update fields
     public string $newComment = '';
-
     public string $statusUpdate = '';
 
     // UI State
     public string $activeTab = 'assignment'; // assignment, escalation, history, comments
-
     public bool $isSubmitting = false;
 
     protected $rules = [
@@ -76,7 +61,7 @@ class Assignment extends Component
         ])->findOrFail($ticketId);
 
         // Check permissions
-        $user = Auth::user();
+        $user = auth()->user();
         if (! in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
             abort(403, 'Unauthorized access');
         }
@@ -87,9 +72,9 @@ class Assignment extends Component
         $this->loadComments();
 
         // Set current values
-        $this->assigned_to = $this->ticket->getOriginal('assigned_to');
+        $this->selectedTechnician = $this->ticket->assigned_to;
         $this->priority = $this->ticket->priority;
-        $this->due_date = $this->ticket->due_at?->format('Y-m-d\TH:i');
+        $this->dueDate = $this->ticket->due_at?->format('Y-m-d\TH:i');
     }
 
     public function loadTechnicians(): void
@@ -118,29 +103,51 @@ class Assignment extends Component
     public function assignTicket(): void
     {
         $this->validate([
-            'assigned_to' => 'required|exists:users,id',
-            'due_date' => 'nullable|date',
+            'selectedTechnician' => 'required|integer|exists:users,id',
+            'assignmentNote' => 'required|string|max:500',
         ]);
 
-        try {
-            $this->ticket->update([
-                'assigned_to' => $this->assigned_to,
-                'due_at' => $this->due_date ? Carbon::parse($this->due_date) : null,
-                'assigned_at' => now(),
-                'status_id' => TicketStatus::where('code', 'assigned')->firstOrFail()->id,
-            ]);
+        $this->isSubmitting = true;
 
-            // Notify assigned user
-            NotificationService::createTicketAssignedNotification(
-                $this->ticket,
-                User::find($this->assigned_to)
+        try {
+            DB::transaction(function () {
+                // Update ticket assignment
+                $this->ticket->update([
+                    'assigned_to' => $this->selectedTechnician,
+                    'assigned_at' => now(),
+                    'priority' => $this->priority,
+                    'due_at' => $this->dueDate ? Carbon::parse($this->dueDate) : null,
+                ]);
+
+                // Update status to 'assigned' if it's currently 'new'
+                if ($this->ticket->status->code === 'new') {
+                    $assignedStatus = TicketStatus::where('code', 'assigned')->first();
+                    if ($assignedStatus) {
+                        $this->ticket->update(['status_id' => $assignedStatus->id]);
+                    }
+                }
+
+                // Log assignment (would typically go to a separate table)
+                $this->logActivity('assigned', 'Ticket assigned to ' . User::find($this->selectedTechnician)->name . '. Note: ' . $this->assignmentNote);
+            });
+
+            session()->flash(
+                'success',
+                'Tiket berjaya ditugaskan kepada ' . User::find($this->selectedTechnician)->name .
+                ' / Ticket successfully assigned to ' . User::find($this->selectedTechnician)->name
             );
 
-            session()->flash('success', 'Ticket assigned successfully.');
-            $this->dispatch('ticketUpdated');
-            $this->showModal = false;
-        } catch (\Exception $e) {
-            session()->flash('error', 'Error assigning ticket: '.$e->getMessage());
+            // Reset form
+            $this->assignmentNote = '';
+
+            // Refresh ticket data
+            $this->ticket->refresh();
+
+        } catch (Exception $e) {
+            logger('Ticket assignment error: ' . $e->getMessage());
+            session()->flash('error', 'Ralat menugaskan tiket / Error assigning ticket');
+        } finally {
+            $this->isSubmitting = false;
         }
     }
 
@@ -170,12 +177,13 @@ class Assignment extends Component
                 }
 
                 // Log escalation
-                $this->logActivity('escalated', 'Ticket escalated to '.User::find($this->escalateTo)->name.'. Reason: '.$this->escalationReason);
+                $this->logActivity('escalated', 'Ticket escalated to ' . User::find($this->escalateTo)->name . '. Reason: ' . $this->escalationReason);
             });
 
-            session()->flash('success',
-                'Tiket berjaya dieskalasi kepada '.User::find($this->escalateTo)->name.
-                ' / Ticket successfully escalated to '.User::find($this->escalateTo)->name
+            session()->flash(
+                'success',
+                'Tiket berjaya dieskalasi kepada ' . User::find($this->escalateTo)->name .
+                ' / Ticket successfully escalated to ' . User::find($this->escalateTo)->name
             );
 
             // Reset form
@@ -185,8 +193,8 @@ class Assignment extends Component
             // Refresh ticket data
             $this->ticket->refresh();
 
-        } catch (\Exception $e) {
-            logger('Ticket escalation error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Ticket escalation error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengeskalasi tiket / Error escalating ticket');
         } finally {
             $this->isSubmitting = false;
@@ -203,7 +211,6 @@ class Assignment extends Component
             $status = TicketStatus::where('code', $this->statusUpdate)->first();
             if (! $status) {
                 session()->flash('error', 'Status tidak sah / Invalid status');
-
                 return;
             }
 
@@ -213,19 +220,19 @@ class Assignment extends Component
             if (in_array($this->statusUpdate, ['resolved', 'closed'])) {
                 $this->ticket->update([
                     'resolved_at' => now(),
-                    'resolved_by' => Auth::id(),
+                    'resolved_by' => auth()->id(),
                 ]);
             }
 
-            $this->logActivity('status_updated', 'Status updated to: '.$status->name);
+            $this->logActivity('status_updated', 'Status updated to: ' . $status->name);
 
             session()->flash('success', 'Status tiket dikemaskini / Ticket status updated');
 
             // Refresh ticket data
             $this->ticket->refresh();
 
-        } catch (\Exception $e) {
-            logger('Status update error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Status update error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengemaskini status / Error updating status');
         }
     }
@@ -243,19 +250,18 @@ class Assignment extends Component
             $this->newComment = '';
             $this->loadComments();
 
-        } catch (\Exception $e) {
-            logger('Comment add error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Comment add error: ' . $e->getMessage());
             session()->flash('error', 'Ralat menambah komen / Error adding comment');
         }
     }
 
     public function reassignToSelf(): void
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
         if (! in_array($user->role, ['technician', 'ict_admin', 'supervisor'])) {
             session()->flash('error', 'Tiada kebenaran / No permission');
-
             return;
         }
 
@@ -265,41 +271,30 @@ class Assignment extends Component
                 'assigned_at' => now(),
             ]);
 
-            $this->logActivity('reassigned', 'Ticket reassigned to self: '.$user->name);
+            $this->logActivity('reassigned', 'Ticket reassigned to self: ' . $user->name);
 
             session()->flash('success', 'Tiket ditugaskan kepada anda / Ticket assigned to you');
 
             // Refresh ticket data
             $this->ticket->refresh();
 
-        } catch (\Exception $e) {
-            logger('Reassignment error: '.$e->getMessage());
+        } catch (Exception $e) {
+            logger('Reassignment error: ' . $e->getMessage());
             session()->flash('error', 'Ralat menugaskan semula tiket / Error reassigning ticket');
         }
+    }
+
+    public function render()
+    {
+        $statuses = TicketStatus::ordered()->get();
+
+        return view('livewire.helpdesk.assignment', compact('statuses'));
     }
 
     private function logActivity(string $action, string $description): void
     {
         // In a real implementation, this would save to an audit_logs or ticket_activities table
         // For now, we'll just log it
-        logger("Ticket {$this->ticket->ticket_number}: {$action} by ".Auth::user()->name." - {$description}");
-    }
-
-    public function render()
-    {
-        $user = $this->ticket->assignedTo;
-        $assignedUser = null;
-        if ($user) {
-            $assignedUser = [
-                'id' => $user->id,
-                'name' => $user->name,
-                'avatar' => $user->profile_picture,
-                'assigned_at' => $this->ticket->assigned_at ? $this->ticket->assigned_at->format('d M Y, H:i') : 'N/A',
-            ];
-        }
-
-        return view('livewire.helpdesk.assignment', [
-            'assignedUser' => $assignedUser,
-        ]);
+        logger("Ticket {$this->ticket->ticket_number}: {$action} by " . auth()->user()->name . " - {$description}");
     }
 }
