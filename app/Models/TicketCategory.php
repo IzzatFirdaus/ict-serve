@@ -12,16 +12,6 @@ class TicketCategory extends Model
 {
     use HasFactory;
 
-    /** @var list<string> */
-    protected array $fillable = [
-        'code',
-        'name',
-        'name_bm',
-        'description',
-        'description_bm',
-        'is_active',
-        'sort_order',
-    ];
 
     /**
      * Get helpdesk tickets in this category

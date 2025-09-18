@@ -12,18 +12,6 @@ class TicketStatus extends Model
 {
     use HasFactory;
 
-    /** @var list<string> */
-    protected array $fillable = [
-        'code',
-        'name',
-        'name_bm',
-        'description',
-        'description_bm',
-        'color',
-        'is_active',
-        'is_final',
-        'sort_order',
-    ];
 
     /**
      * Get helpdesk tickets with this status

@@ -27,18 +27,6 @@ class LoanItem extends Model
 {
     use HasFactory;
 
-    /** @var list<string> */
-    protected array $fillable = [
-        'loan_request_id',
-        'equipment_item_id',
-        'quantity',
-        'condition_out',
-        'condition_in',
-        'notes_out',
-        'notes_in',
-        'damage_reported',
-    ];
-
     /**
      * Get the loan request this item belongs to
      */

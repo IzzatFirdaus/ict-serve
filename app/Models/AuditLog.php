@@ -13,19 +13,6 @@ class AuditLog extends Model
 {
     use HasFactory;
 
-    /** @var list<string> */
-    protected array $fillable = [
-        'user_id',
-        'action',
-        'auditable_type',
-        'auditable_id',
-        'old_values',
-        'new_values',
-        'ip_address',
-        'user_agent',
-        'notes',
-    ];
-
     /**
      * Get the user who performed the action
      */
