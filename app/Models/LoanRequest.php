@@ -102,6 +102,16 @@ class LoanRequest extends Model
     }
 
     /**
+     * Accessor for single equipment item (for legacy code)
+     */
+    public function getEquipmentItemAttribute(): ?EquipmentItem
+    {
+        $item = $this->equipmentItems()->first();
+
+        return $item instanceof EquipmentItem ? $item : null;
+    }
+
+    /**
      * Get loan items for this request
      */
     public function loanItems(): HasMany

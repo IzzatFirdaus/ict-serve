@@ -136,6 +136,7 @@ This application uses these core packages:
 
 === git/project rules ===
 
+<<<<<<< HEAD
 ## Git & PR Workflow
 - Use feature-branch workflow: branch from main, develop, PR, review, merge after CI passes.
 - Branch names: `feature/`, `bugfix/`, `hotfix/`.
@@ -145,6 +146,15 @@ This application uses these core packages:
 - Use .gitignore for node_modules, vendor, .env, log files, etc.
 - main must always be deployable.
 - Use PR templates: description, testing, screenshots, related issues, migration notes.
+=======
+        <code-snippet name="Valid Flex Gap Spacing Example" lang="html">
+            <div class="flex gap-8">
+                <div>Superior</div>
+                <div>Michigan</div>
+                <div>Erie</div>
+            </div>
+        </code-snippet>
+>>>>>>> origin/chore/phpinsights
 
 === docs/project rules ===
 

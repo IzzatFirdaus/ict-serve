@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Models\Notification;
 use App\Models\HelpdeskTicket;
 use App\Models\LoanRequest;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
@@ -81,6 +81,30 @@ class NotificationService
     }
 
     /**
+     * Notify about new loan request
+     */
+    public function notifyNewLoanRequest(LoanRequest $loanRequest): void
+    {
+        $this->notifyLoanEvent($loanRequest, 'loan_request_submitted', 'Permohonan peminjaman baharu telah dihantar');
+    }
+
+    /**
+     * Notify about loan status update
+     */
+    public function notifyLoanStatusUpdate(LoanRequest $loanRequest): void
+    {
+        $status = $loanRequest->status->name;
+        $messages = [
+            'approved' => 'Permohonan peminjaman anda telah diluluskan',
+            'rejected' => 'Permohonan peminjaman anda telah ditolak',
+            'returned' => 'Peralatan telah dikembalikan',
+        ];
+
+        $message = $messages[$status] ?? 'Status permohonan peminjaman telah dikemas kini';
+        $this->notifyLoanEvent($loanRequest, "loan_status_{$status}", $message);
+    }
+
+    /**
      * Create a system-wide notification
      */
     public function notifySystemEvent(string $title, string $message, array $options = []): void
@@ -93,12 +117,12 @@ class NotificationService
         $usersToNotify = collect();
 
         // If specific users are targeted
-        if (!empty($targetUsers)) {
+        if (! empty($targetUsers)) {
             $usersToNotify = collect($targetUsers);
         }
 
         // If roles are targeted
-        if (!empty($targetRoles)) {
+        if (! empty($targetRoles)) {
             if (in_array('all', $targetRoles)) {
                 $roleUsers = User::where('is_active', true)->pluck('id');
             } else {
@@ -166,6 +190,7 @@ class NotificationService
 
         if ($notification) {
             $notification->markAsRead();
+
             return true;
         }
 
