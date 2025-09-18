@@ -1,16 +1,23 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
     public function up(): void
     {
-        // Duplicate of 2025_09_08_092402_create_loan_statuses_table. No-op.
+        Schema::create('loan_statuses', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     public function down(): void
     {
-        // No-op
+    Schema::dropIfExists('loan_statuses');
     }
 };
