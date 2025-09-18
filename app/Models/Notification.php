@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\TicketPriority;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -153,7 +155,7 @@ class Notification extends Model
             'system_announcement' => 'speakerphone',
             'system_maintenance' => 'cog',
             'user_assigned' => 'user-group',
-            default => 'information-circle'
+            default => 'information-circle',
         };
     }
 
@@ -172,8 +174,8 @@ class Notification extends Model
                 'ticket' => 'blue',
                 'loan' => 'green',
                 'system' => 'purple',
-                default => 'gray'
-            }
+                default => 'gray',
+            },
         };
     }
 
@@ -231,10 +233,10 @@ class Notification extends Model
             'message' => $message ?: "Tiket #{$ticket->ticket_number} - {$ticket->title}",
             'category' => 'ticket',
             'priority' => match ($ticket->priority) {
-                'critical' => 'urgent',
-                'high' => 'high',
-                'medium' => 'medium',
-                'low' => 'low',
+                TicketPriority::CRITICAL => 'urgent',
+                TicketPriority::HIGH => 'high',
+                TicketPriority::MEDIUM => 'medium',
+                TicketPriority::LOW => 'low',
                 default => 'medium'
             },
             'action_url' => route('helpdesk.index-enhanced'),

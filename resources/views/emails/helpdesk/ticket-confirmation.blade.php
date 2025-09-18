@@ -1,37 +1,201 @@
-@component('mail::message')
-# Support Ticket Confirmation
-
-Dear {{ $reporterName }},
-
-Thank you for reporting your ICT issue. We have received your support ticket and it has been logged in our system for processing.
-
-## Ticket Details
-**Ticket Number:** {{ $ticket->ticket_number }}
-**Submitted on:** {{ $ticket->created_at->format('F j, Y \a\t g:i A') }}
-**Status:** {{ $ticket->status->name }}
 @php
-	$priority = $priorityString;
+/**
+ * Ticket Confirmation Email – MYDS & MyGovEA compliant
+ * For ICTServe (iServe)
+ * Follows MYDS grid, typography, color tokens, and status components.
+ * Uses inline styles for email client compatibility.
+ */
 @endphp
-**Priority:** {{ ucfirst($priority) }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICTServe Ticket Confirmation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- MYDS Typography (system fallback) -->
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap');
+    </style>
+</head>
+<body style="margin:0;padding:0;font-family:'Inter',Arial,sans-serif;background:#FAFAFA;color:#18181B;">
+    <!-- Masthead -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#2563EB;border-bottom:4px solid #3A75F6;">
+        <tr>
+            <td style="padding:24px;">
+                <table width="600" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;">
+                    <tr>
+                        <td valign="middle" style="width:56px;">
+                            <!-- Ministry/Dept Logo (replace src as needed) -->
+                            <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="MOTAC Logo" width="48" height="48" style="display:block;border-radius:6px;">
+                        </td>
+                        <td style="padding-left:16px;">
+                            <div style="font-family:Poppins,Arial,sans-serif;font-size:18px;font-weight:600;color:#fff;line-height:1.1;">
+                                Kementerian Pelancongan, Seni dan Budaya Malaysia
+                            </div>
+                            <div style="font-family:Inter,Arial,sans-serif;font-size:14px;font-weight:400;color:#C2D5FF;">
+                                Bahagian Pengurusan Maklumat (BPM) – ICTServe (iServe)
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 
-### Reporter Information
-- **Name:** {{ $ticket->user->name }}
-- **Email:** {{ $ticket->user->email }}
-- **Department:** {{ $ticket->user->department }}
-- **Division:** {{ $ticket->user->division }}
-- **Position:** {{ $ticket->user->position }}
+    <!-- Main content container -->
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="padding:32px 0;">
+                <table width="600" align="center" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:0 24px 24px 24px;">
+                    <!-- Panel (MYDS) -->
+                    <tr>
+                        <td colspan="2" style="padding:32px 0 12px 0;">
+                            <div style="border-radius:12px;padding:20px 24px;background:#EFF6FF;border-left:8px solid #2563EB;">
+                                <span style="font-family:Poppins,Arial,sans-serif;font-size:22px;font-weight:600;color:#2563EB;display:block;margin-bottom:6px;">Support Ticket Confirmation</span>
+                                <span style="font-size:15px;color:#3F3F46;">Thank you for reporting your ICT issue. We have received your support ticket and it is being processed.</span>
+                            </div>
+                        </td>
+                    </tr>
 
-### Issue Information
-- **Category:** {{ $ticket->category->name }}
-- **Title:** {{ $ticket->title }}
-- **Location:** {{ $ticket->location }}
-@if($ticket->equipmentItem)
-- **Related Equipment:** {{ $ticket->equipmentItem->brand }} {{ $ticket->equipmentItem->model }}
-@endif
+                    <!-- Status & Ticket Info -->
+                    <tr>
+                        <td colspan="2" style="padding-top:18px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-size:14px;">
+                                <tr>
+                                    <td style="padding:0 0 8px 0;">
+                                        <strong style="color:#2563EB;">Ticket Number:</strong>
+                                        <span style="font-family:monospace;color:#18181B;">{{ $ticket->ticket_number }}</span>
+                                    </td>
+                                    <td align="right" style="color:#71717A;">
+                                        <strong>Submitted:</strong>
+                                        {{ $ticket->created_at->format('d M Y, g:i A') }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Status:</strong>
+                                        <!-- MYDS Status Tag -->
+                                        <span style="background:#DBEAFE;color:#2563EB;border-radius:6px;padding:2px 10px 2px 8px;font-size:13px;font-weight:600;vertical-align:middle;">
+                                            {{ $ticket->status->name }}
+                                        </span>
+                                    </td>
+                                    <td align="right">
+                                        <strong>Priority:</strong>
+                                        <!-- MYDS Tag: color by priority -->
+                                        @php
+                                            // Ensure we use a string key when TicketPriority is an enum
+                                            $priorityKey = is_object($ticket->priority) && method_exists($ticket->priority, 'value')
+                                                ? (string) $ticket->priority->value
+                                                : (string) $ticket->priority;
+                                            $priorityColorMap = [
+                                                'urgent' => ['#DC2626','#FEF2F2'],
+                                                'high' => ['#CA8A04','#FEF9C3'],
+                                                'medium'=> ['#2563EB','#EFF6FF'],
+                                                'low' => ['#71717A','#F4F4F5'],
+                                            ];
+                                            $priorityColor = $priorityColorMap[$priorityKey] ?? ['#2563EB','#EFF6FF'];
+                                        @endphp
+                                        <span style="background:{{ $priorityColor[1] }};color:{{ $priorityColor[0] }};border-radius:6px;padding:2px 10px 2px 8px;font-size:13px;font-weight:600;">
+                                            {{ ucfirst($priorityKey) }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
 
-### Issue Description
-{{ $ticket->description }}
+                    <!-- Summary List (MYDS) -->
+                    <tr>
+                        <td colspan="2" style="padding-top:28px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" style="border-spacing:0;font-size:14px;">
+                                <tr>
+                                    <td colspan="2" style="font-size:16px;font-family:Poppins,Arial,sans-serif;font-weight:600;color:#2563EB;padding-bottom:8px;">Reporter Information</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:#71717A;width:150px;padding:4px 0;">Name</td>
+                                    <td>{{ $ticket->user->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:#71717A;padding:4px 0;">Email</td>
+                                    <td>{{ $ticket->user->email }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:#71717A;padding:4px 0;">Department</td>
+                                    <td>{{ $ticket->user->department }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:#71717A;padding:4px 0;">Division</td>
+                                    <td>{{ $ticket->user->division }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:#71717A;padding:4px 0;">Position</td>
+                                    <td>{{ $ticket->user->position }}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-top:24px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" style="border-spacing:0;font-size:14px;">
+                                <tr>
+                                    <td colspan="2" style="font-size:16px;font-family:Poppins,Arial,sans-serif;font-weight:600;color:#2563EB;padding-bottom:8px;">Issue Details</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:#71717A;width:150px;padding:4px 0;">Category</td>
+                                    <td>{{ $ticket->category->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:#71717A;padding:4px 0;">Title</td>
+                                    <td>{{ $ticket->title }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:#71717A;padding:4px 0;">Location</td>
+                                    <td>{{ $ticket->location }}</td>
+                                </tr>
+                                @if($ticket->equipmentItem)
+                                    <tr>
+                                        <td style="color:#71717A;padding:4px 0;">Equipment</td>
+                                        <td>{{ $ticket->equipmentItem->brand }} {{ $ticket->equipmentItem->model }}</td>
+                                    </tr>
+                                @endif
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-top:24px;">
+                            <div style="font-size:14px;color:#18181B;">
+                                <span style="font-weight:600;color:#2563EB;">Description:</span><br>
+                                <span>{{ $ticket->description }}</span>
+                            </div>
+                        </td>
+                    </tr>
 
+                    <!-- Response Time Panel -->
+                    <tr>
+                        <td colspan="2" style="padding-top:24px;">
+                            <div style="background:#F4F4F5;border-radius:8px;padding:16px 20px;">
+                                <span style="font-weight:600;color:#2563EB;">Expected Response Time:</span>
+                                <ul style="padding-left:24px;margin:8px 0 0 0;color:#3F3F46;">
+                                    @if($ticket->priority === 'urgent')
+                                        <li>Urgent: Response within 2-4 hours (business hours)</li>
+                                    @elseif($ticket->priority === 'high')
+                                        <li>High: Response within 8-12 hours (business hours)</li>
+                                    @elseif($ticket->priority === 'medium')
+                                        <li>Medium: Response within 1-2 business days</li>
+                                    @else
+                                        <li>Low: Response within 3-5 business days</li>
+                                    @endif
+                                </ul>
+                                @if($ticket->due_at)
+                                    <div style="margin-top:8px;color:#18181B;">
+                                        <strong>Expected Resolution:</strong> {{ $ticket->due_at->format('d M Y, g:i A') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </td>
+                    </tr>
+
+<<<<<<< HEAD
 ## Expected Response Time
 Based on your ticket priority ({{ ucfirst($priority) }}), our expected response times are:
 
@@ -44,41 +208,75 @@ Based on your ticket priority ({{ ucfirst($priority) }}), our expected response 
 @else
 - **Low:** Response within 3-5 business days
 @endif
+=======
+                    <!-- Next Steps Callout -->
+                    <tr>
+                        <td colspan="2" style="padding-top:24px;">
+                            <div style="border-left:4px solid #2563EB;padding:12px 0 12px 16px;background:#EFF6FF;border-radius:6px;font-size:14px;">
+                                <strong style="color:#2563EB;">What happens next?</strong>
+                                <ol style="margin:8px 0 0 18px;padding:0;color:#18181B;">
+                                    <li>ICT support will review and prioritize your ticket.</li>
+                                    <li>A technician will be assigned to your case.</li>
+                                    <li>You will receive updates as your ticket progresses.</li>
+                                    <li>The assigned technician may contact you for more info.</li>
+                                </ol>
+                            </div>
+                        </td>
+                    </tr>
 
-@if($ticket->due_at)
-**Expected Resolution:** {{ $ticket->due_at->format('F j, Y \a\t g:i A') }}
-@endif
+                    <!-- MYDS Button (Track Status) -->
+                    <tr>
+                        <td colspan="2" align="center" style="padding-top:26px;">
+                            <a href="{{ route('public.track').'?tracking_number='.$ticket->ticket_number }}"
+                               style="background:#2563EB;color:#fff;font-family:Poppins,Arial,sans-serif;font-size:16px;font-weight:600;display:inline-block;padding:12px 30px;border-radius:6px;text-decoration:none;box-shadow:0 2px 6px rgba(37,99,235,0.16);">
+                                Track Ticket Status
+                            </a>
+                        </td>
+                    </tr>
+>>>>>>> feature/larastan-autofix
 
-## What Happens Next?
+                    <!-- Emergency Info (MYDS Callout style) -->
+                    <tr>
+                        <td colspan="2" style="padding-top:32px;">
+                            <div style="background:#FEF2F2;border-left:5px solid #DC2626;padding:16px 24px;border-radius:6px;">
+                                <span style="font-weight:600;color:#DC2626;">Emergency Support:</span>
+                                <span style="color:#B91C1C;">If this is a critical issue affecting operations, call our 24/7 hotline: <b>+60 3-yyyy yyyy</b></span>
+                            </div>
+                        </td>
+                    </tr>
 
-1. Our ICT support team will review and prioritize your ticket
-2. A technician will be assigned to your case
-3. You will receive updates as your ticket progresses
-4. The assigned technician may contact you for additional information
+                    <!-- Important Notes -->
+                    <tr>
+                        <td colspan="2" style="padding-top:24px;">
+                            <ul style="font-size:13px;color:#71717A;line-height:1.6;padding-left:18px;">
+                                <li>Please save your ticket number for future reference.</li>
+                                <li>You can track your ticket status at any time.</li>
+                                <li>Reply to this email to provide additional info if needed.</li>
+                                <li>Do not create duplicate tickets for the same issue.</li>
+                            </ul>
+                        </td>
+                    </tr>
 
-@component('mail::button', ['url' => route('public.track').'?tracking_number='.$ticket->ticket_number])
-Track Ticket Status
-@endcomponent
-
-## Emergency Support
-If this is a critical issue affecting operations, please call our emergency hotline:
-**Emergency Hotline:** +60 3-yyyy yyyy (Available 24/7)
-
-## Important Notes
-- Please save your ticket number: **{{ $ticket->ticket_number }}** for future reference
-- You can track your ticket status using the link above
-- Reply to this email if you need to provide additional information
-- Do not create duplicate tickets for the same issue
-
-If you have any questions or concerns, please contact our ICT support team:
-
-**Email:** ict-support@example.gov.my
-**Phone:** +60 3-xxxx xxxx
-**Emergency Hotline:** +60 3-yyyy yyyy (24/7)
-**Office Hours:** Monday - Friday, 8:00 AM - 5:00 PM
-
-Thank you for using ICT Serve.
-
-Best regards,
-ICT Support Team
-@endcomponent
+                    <!-- Support Contacts / Footer -->
+                    <tr>
+                        <td colspan="2" style="padding-top:24px;text-align:center;font-size:13px;color:#52525B;">
+                            <div>
+                                <span style="color:#2563EB;font-weight:600;">ICT Support Team</span><br>
+                                Email: <a href="mailto:ict-support@example.gov.my" style="color:#2563EB;text-decoration:underline;">ict-support@example.gov.my</a><br>
+                                Phone: +60 3-xxxx xxxx<br>
+                                Emergency Hotline: +60 3-yyyy yyyy (24/7)<br>
+                                Office hours: Mon-Fri, 8:00 AM–5:00 PM
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-top:30px;padding-bottom:8px;text-align:center;font-size:12px;color:#A1A1AA;">
+                            &copy; {{ date('Y') }} Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia. Powered by ICTServe (iServe).
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

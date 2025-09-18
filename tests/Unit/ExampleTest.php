@@ -11,6 +11,7 @@ class ExampleTest extends TestCase
      */
     public function test_that_true_is_true(): void
     {
-        $this->assertTrue(true);
+        // Basic sanity: ensure the User model class exists in the app
+        $this->assertTrue(class_exists(\App\Models\User::class));
     }
 }

@@ -12,7 +12,6 @@ class LoanRequestFactory extends Factory
     public function definition(): array
     {
         $statusCode = $this->faker->randomElement([
-            'pending_bpm_review',
             'pending_supervisor_approval',
             'pending_ict_approval',
             'approved',
@@ -22,7 +21,8 @@ class LoanRequestFactory extends Factory
             'overdue',
             'cancelled',
         ]);
-        $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
+    /** @var \App\Models\LoanStatus $loanStatus */
+    $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
 
         return [
             'reference_number' => $this->faker->unique()->numerify('REF-####'),
@@ -47,7 +47,7 @@ class LoanRequestFactory extends Factory
             'endorsing_officer_position' => $this->faker->jobTitle(),
             'endorsement_status' => 'pending',
             'endorsement_comments' => $this->faker->sentence(),
-            'submitted_at' => $this->faker->dateTimeBetween('-2 weeks', 'now'),
+    'status' => $statusCode,
             'requested_to' => $this->faker->dateTimeBetween('now', '+2 weeks'),
             'actual_from' => null,
             'actual_to' => null,

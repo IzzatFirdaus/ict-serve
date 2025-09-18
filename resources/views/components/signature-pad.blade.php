@@ -1,179 +1,188 @@
+{{--
+  ICTServe (iServe) Signature Pad Component
+  MYDS & MyGovEA Compliance:
+    - Layout: Uses MYDS card (bg-bg-white, border-otl-divider, rounded-lg, shadow-card, p-6) for signature area.
+    - Typography: Inter for body text, Poppins for headings. text-sm for label/hint, text-txt-black-900 for label.
+    - Colour: All backgrounds, borders, text, buttons use MYDS tokens (see MYDS-Colour-Reference.md).
+    - Button: Primary and secondary buttons use MYDS tokens and states, radius-m, shadow-button.
+    - Icon: Uses MYDS "edit" (pen) icon in signature area, and "refresh" icon for clear, both 20x20, stroke 1.5px (see MYDS-Icons-Overview.md).
+    - Accessibility: Keyboard focusable, ARIA labels, visible focus ring, high-contrast text and controls.
+    - Responsive: Fills container, uses 12/8/4 grid spacing.
+    - Error prevention: Inline error callout below pad if validation fails.
+    - Minimal, clear, citizen-centric (prinsip-reka-bentuk-mygovea.md).
+    - Mobile: Touch-friendly, minimum height 180px, large clear/hint button.
+--}}
+
 @props([
-    'wireModel' => null,
-    'label' => 'Signature',
+    'label' => 'Digital Signature',
+    'hint' => 'Sign in the box below using your mouse or touch. Ensure your signature is clear and matches your official record.',
     'required' => false,
-    'height' => '200px',
-    'width' => '100%'
+    'name' => 'signature',
+    'value' => null, // base64 PNG or null
+    'error' => null,
+    'readonly' => false,
+    'height' => 180,
+    'class' => '',
 ])
 
-<div {{ $attributes->merge(['class' => 'signature-pad-wrapper']) }} wire:ignore>
-    <div x-data="{
-        signaturePadId: $id('signature'),
-        signaturePad: null,
-        signature: @if($wireModel) @entangle($wireModel) @else null @endif,
-        ratio: null,
-        isEmpty: true,
+@php
+    $uid = 'signature_' . uniqid();
+    $readonly = filter_var($readonly, FILTER_VALIDATE_BOOLEAN);
+@endphp
 
-        init() {
-            this.resizeCanvas();
-            this.signaturePad = new SignaturePad(this.$refs.canvas, {
-                backgroundColor: 'rgb(255, 255, 255)',
-                penColor: 'rgb(0, 0, 0)',
-                minWidth: 0.5,
-                maxWidth: 2.5,
-                throttle: 16,
-                minDistance: 5,
-            });
-
-            this.signaturePad.addEventListener('beginStroke', () => {
-                this.isEmpty = false;
-            });
-
-            this.signaturePad.addEventListener('endStroke', () => {
-                this.save();
-            });
-
-            if (this.signature) {
-                this.signaturePad.fromDataURL(this.signature, {
-                    ratio: this.ratio
-                });
-                this.isEmpty = this.signaturePad.isEmpty();
-            }
-        },
-
-        save() {
-            if (!this.signaturePad.isEmpty()) {
-                this.signature = this.signaturePad.toDataURL('image/png');
-                this.isEmpty = false;
-                this.$dispatch('signature-saved', {
-                    id: this.signaturePadId,
-                    signature: this.signature
-                });
-            }
-        },
-
-        clear() {
-            this.signaturePad.clear();
-            this.signature = null;
-            this.isEmpty = true;
-            this.$dispatch('signature-cleared', { id: this.signaturePadId });
-        },
-
-        resizeCanvas() {
-            this.ratio = Math.max(window.devicePixelRatio || 1, 1);
-            this.$refs.canvas.width = this.$refs.canvas.offsetWidth * this.ratio;
-            this.$refs.canvas.height = this.$refs.canvas.offsetHeight * this.ratio;
-            this.$refs.canvas.getContext('2d').scale(this.ratio, this.ratio);
-        }
-    }"
-    @resize.window="resizeCanvas"
-    class="space-y-3">
-
-        <!-- Label -->
-        @if($label)
-        <label class="myds-label">
-            {{ $label }}
-            @if($required)
-                <span class="text-danger-600 ml-1">*</span>
-            @endif
-        </label>
+<div class="bg-bg-white rounded-lg shadow-card border border-otl-divider p-6 {{ $class }}">
+    <label class="block text-sm font-medium text-txt-black-900 font-poppins mb-2" for="{{ $uid }}">
+        {{ $label }}
+        @if($required)
+            <span class="text-txt-danger ml-1" aria-label="required" title="Required">*</span>
         @endif
+    </label>
+    @if($hint)
+        <div class="text-xs text-txt-black-500 mb-3">{{ $hint }}</div>
+    @endif
 
-        <!-- Canvas Container -->
-        <div class="relative border-2 border-otl-gray-300 border-dashed rounded-lg bg-bg-white"
-             x-bind:style="{ height: '{{ $height }}' }">
-            <canvas
-                x-ref="canvas"
-                class="w-full h-full cursor-crosshair touch-none"
-                x-bind:style="{ width: '{{ $width }}', height: '{{ $height }}' }">
-            </canvas>
+    <div
+        x-data="{
+            isDrawing: false,
+            lastPoint: null,
+            hasSignature: {{ $value ? 'true' : 'false' }},
+            clearPad() {
+                const c = this.$refs.signaturePad;
+                const ctx = c.getContext('2d');
+                ctx.clearRect(0, 0, c.width, c.height);
+                this.hasSignature = false;
+                @this.set('{{ $name }}', '');
+            },
+            startDraw(e) {
+                if ({{ $readonly ? 'true' : 'false' }}) return;
+                this.isDrawing = true;
+                const rect = this.$refs.signaturePad.getBoundingClientRect();
+                this.lastPoint = this.getPoint(e, rect);
+            },
+            draw(e) {
+                if (!this.isDrawing || {{ $readonly ? 'true' : 'false' }}) return;
+                const c = this.$refs.signaturePad;
+                const ctx = c.getContext('2d');
+                ctx.strokeStyle = '#18181B'; // MYDS gray-900
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                const rect = c.getBoundingClientRect();
+                const point = this.getPoint(e, rect);
 
-            <!-- Empty State Message -->
-            <div x-show="isEmpty"
-                 class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div class="text-center text-txt-black-500">
-                    <svg class="mx-auto h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                    </svg>
-                    <p class="text-sm">Click and drag to sign</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="flex items-center justify-between">
-            <div class="flex space-x-2">
-                <button type="button"
-                        x-on:click="clear()"
-                        class="myds-btn-outline-danger myds-btn-sm">
-                    <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1-1H8a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                    Clear
-                </button>
-            </div>
-
-            <!-- Status Indicator -->
-            <div class="flex items-center space-x-2">
-                <span x-show="!isEmpty"
-                      x-transition
-                      class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-success-100 text-success-800">
-                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clip-rule="evenodd" />
-                    </svg>
-                    Signed
-                </span>
-
-            <span x-show="isEmpty"
-                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-black-100 text-txt-black-700">
-                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                              clip-rule="evenodd" />
-                    </svg>
-                    Not signed
-                </span>
-            </div>
-        </div>
-
-        <!-- Notification -->
-        <div x-data="{
-            show: false,
-            message: '',
-            type: 'success',
-
-            showNotification(message, type = 'success') {
-                this.message = message;
-                this.type = type;
-                this.show = true;
-                setTimeout(() => { this.show = false }, 2000);
-            }
+                ctx.beginPath();
+                ctx.moveTo(this.lastPoint.x, this.lastPoint.y);
+                ctx.lineTo(point.x, point.y);
+                ctx.stroke();
+                this.lastPoint = point;
+                this.hasSignature = true;
+            },
+            endDraw() {
+                if (!this.isDrawing) return;
+                this.isDrawing = false;
+                // Save as base64 PNG to Livewire (if present) or hidden input
+                const c = this.$refs.signaturePad;
+                const dataUrl = c.toDataURL('image/png');
+                @this && @this.set('{{ $name }}', dataUrl);
+                // For non-Livewire use, update hidden input
+                if (document.getElementById('{{ $uid }}-input')) {
+                    document.getElementById('{{ $uid }}-input').value = dataUrl;
+                }
+            },
+            getPoint(e, rect) {
+                let clientX, clientY;
+                if (e.touches?.length) {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                } else {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                }
+                return {
+                    x: clientX - rect.left,
+                    y: clientY - rect.top
+                };
+            },
+            fillPadIfValue() {
+                if (this.hasSignature && '{{ $value }}') {
+                    const c = this.$refs.signaturePad;
+                    const ctx = c.getContext('2d');
+                    const img = new window.Image();
+                    img.onload = function() {
+                        ctx.clearRect(0, 0, c.width, c.height);
+                        ctx.drawImage(img, 0, 0, c.width, c.height);
+                    };
+                    img.src = '{{ $value }}';
+                }
+            },
         }"
-        @signature-saved.window="if ($event.detail.id === signaturePadId) showNotification('Signature saved successfully')"
-        @signature-cleared.window="if ($event.detail.id === signaturePadId) showNotification('Signature cleared', 'info')">
-            <div x-show="show"
-                 x-transition:enter="transition ease-out duration-300"
-                 x-transition:enter-start="opacity-0 transform translate-y-2"
-                 x-transition:enter-end="opacity-100 transform translate-y-0"
-                 x-transition:leave="transition ease-in duration-200"
-                 x-transition:leave-start="opacity-100 transform translate-y-0"
-                 x-transition:leave-end="opacity-0 transform translate-y-2"
-                 :class="{
-                     'bg-success-50 border-success-200 text-success-700': type === 'success',
-                     'bg-primary-50 border-otl-primary-300 text-txt-primary': type === 'info'
-                 }"
-                 class="mt-2 border rounded-md p-2 text-sm font-medium"
-                 x-cloak>
-                <span x-text="message"></span>
+        x-init="fillPadIfValue()"
+        class="relative border border-otl-gray-300 rounded-md bg-washed focus-within:ring-2 focus-within:ring-fr-primary"
+        tabindex="0"
+        aria-label="{{ $label }}"
+        aria-required="{{ $required ? 'true' : 'false' }}"
+        aria-invalid="{{ $error ? 'true' : 'false' }}"
+        role="region"
+        style="outline: none;"
+    >
+        <canvas
+            x-ref="signaturePad"
+            id="{{ $uid }}"
+            width="600"
+            height="{{ $height }}"
+            class="w-full max-w-full h-[{{ $height }}px] min-h-[120px] touch-manipulation bg-bg-white rounded-md"
+            style="cursor: {{ $readonly ? 'not-allowed' : 'crosshair' }}; background-color: #fff;"
+            @mousedown="startDraw($event)"
+            @mousemove="draw($event)"
+            @mouseup="endDraw()"
+            @mouseleave="isDrawing && endDraw()"
+            @touchstart.prevent="startDraw($event)"
+            @touchmove.prevent="draw($event)"
+            @touchend="endDraw()"
+            aria-label="{{ $label }}"
+            {{ $readonly ? 'tabindex=-1' : '' }}
+        >
+            {{ __('Your browser does not support the HTML5 canvas element.') }}
+        </canvas>
+        @if(!$readonly)
+            <button
+                type="button"
+                @click="clearPad()"
+                class="absolute top-3 right-3 flex items-center px-2 py-1 bg-white text-txt-black-700 border border-otl-divider rounded-md shadow-button hover:bg-bg-gray-50 focus-visible:ring-2 focus-visible:ring-fr-primary transition-colors"
+                aria-label="Clear signature"
+            >
+                {{-- MYDS refresh icon --}}
+                <svg class="w-5 h-5 mr-1" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                    <path d="M4.5 10a5.5 5.5 0 0 1 9-4.2M15.5 10a5.5 5.5 0 0 1-9 4.2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <path d="M13.5 5.5v2h2M6.5 14.5v-2h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="text-xs font-medium">Clear</span>
+            </button>
+        @endif
+        @if($readonly && $value)
+            {{-- Show icon overlay for "view" --}}
+            <div class="absolute top-3 left-3 flex items-center text-txt-primary">
+                {{-- MYDS edit (pen) icon --}}
+                <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                    <path d="M14.8 4.8a2 2 0 1 1 2.8 2.8L8 17.5 4 18.5l1-4L14.8 4.8z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span class="ml-1 text-xs">View only</span>
+            </div>
+        @endif
+    </div>
+
+    {{-- For Livewire or standard form: store as base64 PNG --}}
+    <input type="hidden" id="{{ $uid }}-input" name="{{ $name }}" value="{{ $value }}">
+
+    @if($error)
+        <div class="mt-2" role="alert" aria-live="polite">
+            <div class="flex items-start gap-2 text-sm text-txt-danger">
+                <svg class="w-5 h-5 text-danger-600 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                    <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <path d="M10 7v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="10" cy="14" r="1" fill="currentColor"/>
+                </svg>
+                <span>{{ $error }}</span>
             </div>
         </div>
-    </div>
+    @endif
 </div>
-
-@pushonce('scripts')
-<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
-@endpushonce

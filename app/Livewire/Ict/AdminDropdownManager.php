@@ -394,9 +394,8 @@ class AdminDropdownManager extends Component
     {
         $config = $this->categories_config[$category];
         $tableName = $config['table'];
-
-        if (! Schema::hasTable($tableName)) {
-            Schema::create($tableName, function ($table) {
+        if (! \Illuminate\Support\Facades\Schema::hasTable($tableName)) {
+            \Illuminate\Support\Facades\Schema::create($tableName, function ($table) {
                 $table->id();
                 $table->string('name');
                 $table->text('description')->nullable();
