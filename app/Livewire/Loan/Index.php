@@ -18,13 +18,12 @@ class Index extends Component
     {
         $user = Auth::user();
 
-        if (! $user) {
+        if (!$user) {
             $this->userLoanStats = [
                 'pending' => 0,
                 'active' => 0,
                 'due_soon' => 0,
             ];
-
             return;
         }
 

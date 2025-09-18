@@ -15,7 +15,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user() || ! $request->user()->hasRole(['ict_admin', 'super_admin'])) {
+        if (! $request->user() || ! in_array($request->user()->role, ['ict_admin', 'super_admin'], true)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Akses tidak dibenarkan. Hanya pentadbir yang boleh mengakses fungsi ini.',

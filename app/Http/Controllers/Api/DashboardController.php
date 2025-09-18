@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\EquipmentItem;
 use App\Models\HelpdeskTicket;
@@ -13,6 +12,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
+
     /**
      * Get unified dashboard data for ICT Serve system.
      */
@@ -28,7 +32,7 @@ class DashboardController extends Controller
         ];
 
         // Admin gets system-wide stats
-        if (in_array($user->role, [UserRole::ICT_ADMIN, UserRole::SUPER_ADMIN], true)) {
+        if (in_array($user->role, ['ict_admin', 'super_admin'], true)) {
             $stats['admin_stats'] = $this->getAdminStats();
         }
 

@@ -9,7 +9,6 @@ use App\Models\LoanStatus;
 use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class LoanRequestController extends Controller
@@ -17,7 +16,7 @@ class LoanRequestController extends Controller
     public function __construct(
         private NotificationService $notificationService
     ) {
-        // Middleware is handled in routes/api.php
+        $this->middleware('auth:sanctum');
     }
 
     /**
@@ -25,20 +24,12 @@ class LoanRequestController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        /** @var \Illuminate\Http\Request $request */
         $query = LoanRequest::with(['user', 'loanItems.equipmentItem', 'status'])
-            ->when(! Auth::user()?->hasRole(['ict_admin', 'super_admin']), function ($q) {
-                return $q->where('user_id', Auth::id());
+            ->when(! in_array($request->user()->role, ['ict_admin', 'super_admin'], true), function ($q) use ($request) {
+                return $q->where('user_id', $request->user()->id);
             })
             ->when($request->status, function ($q, $status) {
                 return $q->whereHas('status', fn ($sq) => $sq->where('name', $status));
-            })
-            ->when($request->search, function ($q, $search) {
-                $q->where(function ($sq) use ($search) {
-                    $sq->where('purpose', 'like', "%$search%")
-                        ->orWhere('remarks', 'like', "%$search%")
-                        ->orWhereHas('user', fn ($uq) => $uq->where('name', 'like', "%$search%"));
-                });
             })
             ->orderBy('created_at', 'desc');
 
@@ -60,7 +51,7 @@ class LoanRequestController extends Controller
 
             // Create loan request
             $loanRequest = LoanRequest::create([
-                'user_id' => Auth::id(),
+                'user_id' => $request->user()->id,
                 'purpose' => $request->validated()['purpose'],
                 'start_date' => $request->validated()['start_date'],
                 'end_date' => $request->validated()['end_date'],
@@ -104,7 +95,7 @@ class LoanRequestController extends Controller
     public function show(Request $request, LoanRequest $loanRequest): JsonResponse
     {
         // Check authorization
-        if (! $request->user()?->hasRole(['ict_admin', 'super_admin']) && $loanRequest->user->id !== $request->user()->id) {
+        if (! in_array($request->user()->role, ['ict_admin', 'super_admin'], true) && $loanRequest->user->id !== $request->user()->id) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -127,7 +118,7 @@ class LoanRequestController extends Controller
     public function update(Request $request, LoanRequest $loanRequest): JsonResponse
     {
         // Only admins can update loan request status
-        if (! $request->user()?->hasRole(['ict_admin', 'super_admin'])) {
+        if (! in_array($request->user()->role, ['ict_admin', 'super_admin'], true)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -208,31 +199,5 @@ class LoanRequestController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
-    }
-
-    /**
-     * Bulk approve loan requests.
-     */
-    public function bulkApprove(Request $request): JsonResponse
-    {
-        $ids = $request->input('ids', []);
-        $updated = LoanRequest::whereIn('id', $ids)
-            ->whereHas('status', fn ($q) => $q->where('name', 'pending'))
-            ->update(['status_id' => LoanStatus::where('name', 'approved')->first()->id]);
-
-        return response()->json(['success' => true, 'updated' => $updated]);
-    }
-
-    /**
-     * Bulk reject loan requests.
-     */
-    public function bulkReject(Request $request): JsonResponse
-    {
-        $ids = $request->input('ids', []);
-        $updated = LoanRequest::whereIn('id', $ids)
-            ->whereHas('status', fn ($q) => $q->where('name', 'pending'))
-            ->update(['status_id' => LoanStatus::where('name', 'rejected')->first()->id]);
-
-        return response()->json(['success' => true, 'updated' => $updated]);
     }
 }
