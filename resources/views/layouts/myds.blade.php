@@ -1,478 +1,340 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="themeManager()" x-bind:class="{ 'dark': isDark }" class="h-full">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="{{ $metaDescription ?? 'ICTServe (iServe) — Sistem Pengurusan Perkhidmatan ICT, MOTAC' }}">
-    <meta name="theme-color" content="#FFFFFF" id="theme-color">
-
-    <title>{{ isset($title) ? $title . ' - ' : '' }}{{ config('app.name', 'ICTServe (iServe)') }}</title>
-
-    <!-- Fonts: MYDS typography (Poppins for headings, Inter for body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <title>{{ isset($title) ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
+    
+    <!-- MYDS Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-
-    <!-- Assets (Vite) -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Vite Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
-
-    <!-- Prevent FOUC: set theme before frameworks load -->
-    <script>
-        (function () {
-            try {
-                const saved = localStorage.getItem('theme') || 'system';
-                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const dark = saved === 'dark' || (saved === 'system' && prefersDark);
-                if (dark) {
-                    document.documentElement.classList.add('dark');
-                    document.getElementById('theme-color')?.setAttribute('content', '#18181B');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    document.getElementById('theme-color')?.setAttribute('content', '#FFFFFF');
-                }
-            } catch (e) { /* fail silently */ }
-        })();
-    </script>
-
-    <style>
-        /* MYDS skip link (hidden until focused) */
-        .myds-skip-link {
-            position: absolute;
-            left: 1rem;
-            top: -48px;
-            background: var(--myds-primary-600, #2563EB);
-            color: #fff;
-            padding: 0.5rem 0.75rem;
-            border-radius: 6px;
-            z-index: 9999;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-            transition: top 150ms ease-in-out;
-        }
-        .myds-skip-link:focus{ top: 1rem; }
-    </style>
-
-    {{ $head ?? '' }}
 </head>
-<body class="min-h-screen bg-bg-washed text-txt-black-900 antialiased">
+<body class="h-full bg-gray-50 font-sans antialiased">
+    <!-- MYDS Header Component -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto">
+            <!-- Top Bar with Government Branding -->
+            <div class="bg-gray-900 text-white py-2">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-4">
+                            <span class="flex items-center gap-2">
+                                <img src="{{ asset('images/jata-negara.png') }}" alt="Jata Negara" class="w-4 h-4">
+                                Official Malaysian Government Website
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <!-- Language Switcher -->
+                            <div class="flex items-center gap-2">
+                                <a href="{{ route('language.switch', 'en') }}" 
+                                   class="hover:text-blue-300 transition-colors {{ app()->getLocale() === 'en' ? 'text-blue-300' : '' }}">
+                                    English
+                                </a>
+                                <span class="text-gray-400">|</span>
+                                <a href="{{ route('language.switch', 'ms') }}" 
+                                   class="hover:text-blue-300 transition-colors {{ app()->getLocale() === 'ms' ? 'text-blue-300' : '' }}">
+                                    Bahasa Malaysia
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Navigation -->
+            <div class="px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo and Ministry Branding -->
+                    <div class="flex items-center">
+                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
+                            <img src="{{ asset('images/motac-logo.png') }}" alt="MOTAC Logo" class="w-10 h-10">
+                            <div>
+                                <h1 class="text-xl font-semibold text-gray-900">iServe System</h1>
+                                <p class="text-sm text-gray-600">Ministry of Tourism, Arts and Culture</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Main Navigation Links -->
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a href="{{ route('dashboard') }}" 
+                           class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('dashboard') ? 'text-blue-600' : '' }}">
+                            Dashboard
+                        </a>
+                        <a href="{{ route('loan.index') }}" 
+                           class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('loan.*') ? 'text-blue-600' : '' }}">
+                            ICT Loan
+                        </a>
+                        <a href="{{ route('helpdesk.index') }}" 
+                           class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('helpdesk.*') ? 'text-blue-600' : '' }}">
+                            Helpdesk
+                        </a>
+                        <a href="{{ route('equipment.index') }}" 
+                           class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('equipment.*') ? 'text-blue-600' : '' }}">
+                            Equipment
+                        </a>
+                        @auth
+                            @if(auth()->user()->isIctAdmin() || auth()->user()->isSuperAdmin())
+                                <a href="{{ route('admin.dashboard') }}" 
+                                   class="text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('admin.*') ? 'text-blue-600' : '' }}">
+                                    Admin
+                                </a>
+                            @endif
+                        @endauth
+                    </nav>
+                    
+                    <!-- User Menu -->
+                    <div class="flex items-center gap-4">
+                        @auth
+                            <!-- Notifications -->
+                            <a href="{{ route('notifications.index') }}" 
+                               class="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                          d="M15 17h5l-5-5V9a6 6 0 10-12 0v3l-5 5h5a3 3 0 106 0z"></path>
+                                </svg>
+                                @if(auth()->user()->unreadNotifications->count() > 0)
+                                    <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+                                        {{ auth()->user()->unreadNotifications->count() }}
+                                    </span>
+                                @endif
+                            </a>
+                            
+                            <!-- User Dropdown -->
+                            <div class="relative" x-data="{ open: false }">
+                                <button @click="open = !open" 
+                                        class="flex items-center gap-2 p-2 text-gray-700 hover:text-gray-900 transition-colors">
+                                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center">
+                                        {{ substr(auth()->user()->name, 0, 1) }}
+                                    </div>
+                                    <span class="hidden md:block font-medium">{{ auth()->user()->name }}</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                
+                                <div x-show="open" @click.away="open = false" 
+                                     class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50">
+                                    <div class="py-1">
+                                        <div class="px-4 py-2 text-sm text-gray-500 border-b border-gray-100">
+                                            {{ auth()->user()->position }}
+                                        </div>
+                                        <a href="{{ route('profile.index') }}" 
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                            Profile
+                                        </a>
+                                        <a href="{{ route('notifications.index') }}" 
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                            Notifications
+                                        </a>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" 
+                                                    class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                                Sign Out
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{ route('login') }}" 
+                               class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                                Sign In
+                            </a>
+                            <x-myds.button variant="primary" href="{{ route('register') }}">
+                                Get Started
+                            </x-myds.button>
+                        @endauth
+                        
+                        <!-- Mobile Menu Button -->
+                        <button x-data x-on:click="$dispatch('toggle-mobile-menu')"
+                                class="md:hidden p-2 text-gray-400 hover:text-gray-600 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <!-- Skip link for keyboard users (MYDS) -->
-    <a href="#main-content" class="myds-skip-link myds-focus-visible">Langkau ke kandungan utama / Skip to main content</a>
+    <!-- Main Content -->
+    <main class="flex-1">
+        @if(isset($breadcrumbs))
+            <div class="bg-white border-b border-gray-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+                    <nav class="flex" aria-label="Breadcrumb">
+                        <ol class="flex items-center space-x-4">
+                            @foreach($breadcrumbs as $index => $breadcrumb)
+                                <li class="flex">
+                                    @if(!$loop->last)
+                                        <a href="{{ $breadcrumb['url'] }}" 
+                                           class="text-gray-500 hover:text-gray-700 transition-colors">
+                                            {{ $breadcrumb['title'] }}
+                                        </a>
+                                        @if(!$loop->last)
+                                            <svg class="flex-shrink-0 ml-4 w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        @endif
+                                    @else
+                                        <span class="text-gray-900 font-medium">{{ $breadcrumb['title'] }}</span>
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        @endif
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {{ $slot }}
+        </div>
+    </main>
 
-    <!-- Phase banner (optional) -->
-    @if(isset($phaseBanner))
-        <div class="bg-primary-50 border-b border-otl-divider">
-            <div class="myds-container py-2 flex items-center gap-3">
-                <span class="inline-flex items-center rounded-md bg-primary-100 text-primary-600 px-3 py-1 text-body-sm font-medium">
-                    {{ $phaseBanner['phase'] ?? 'BETA' }}
-                </span>
-                <p class="text-body-sm text-txt-black-700">
-                    {{ $phaseBanner['description'] ?? 'Perkhidmatan baharu – maklum balas anda penting untuk penambahbaikan.' }}
-                </p>
-                @if(!empty($phaseBanner['feedbackUrl']))
-                    <a href="{{ $phaseBanner['feedbackUrl'] }}" class="ml-auto text-body-sm text-primary-600 hover:text-primary-700 underline">
-                        {{ $phaseBanner['feedbackText'] ?? 'Beri maklum balas / Give feedback' }}
-                    </a>
-                @endif
+    <!-- MYDS Footer Component -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="py-12">
+                <!-- Grid System: 12-8-4 -->
+                <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
+                    <!-- Logo and Ministry Info -->
+                    <div class="col-span-4 lg:col-span-4">
+                        <div class="flex items-center gap-3 mb-4">
+                            <img src="{{ asset('images/jata-negara.png') }}" alt="Jata Negara" class="w-8 h-8">
+                            <div>
+                                <h3 class="font-semibold">Ministry of Tourism, Arts and Culture</h3>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Driving digital transformation in Malaysian tourism, arts, and culture through innovative ICT solutions.
+                        </p>
+                        <div class="text-sm text-gray-400">
+                            <p>Level 28, Menara Bangkok Bank</p>
+                            <p>Berjaya Central Park, KL 50088</p>
+                            <p>Phone: +60 3-2161 2008</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div class="col-span-2 lg:col-span-2">
+                        <h4 class="font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li><a href="{{ route('dashboard') }}" class="hover:text-white transition-colors">Dashboard</a></li>
+                            <li><a href="{{ route('loan.create') }}" class="hover:text-white transition-colors">Request ICT Loan</a></li>
+                            <li><a href="{{ route('helpdesk.create') }}" class="hover:text-white transition-colors">Report Issue</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Track Status</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Support -->
+                    <div class="col-span-2 lg:col-span-3">
+                        <h4 class="font-semibold mb-4">Support</h4>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">User Guide</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                            <li><a href="{{ route('helpdesk.create') }}" class="hover:text-white transition-colors">Contact Support</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">System Status</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Ministry Links -->
+                    <div class="col-span-4 lg:col-span-3">
+                        <h4 class="font-semibold mb-4">Ministry Resources</h4>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li><a href="https://motac.gov.my" target="_blank" class="hover:text-white transition-colors">Official Website</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Digital Policy</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Accessibility Statement</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright Bar -->
+            <div class="border-t border-gray-800 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <div class="flex items-center gap-4 mb-4 md:mb-0">
+                        <p>&copy; {{ date('Y') }} Ministry of Tourism, Arts and Culture Malaysia. All rights reserved.</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span>Powered by MYDS</span>
+                        <a href="https://design.digital.gov.my" target="_blank" class="hover:text-white transition-colors">
+                            Malaysia Government Design System
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @livewireScripts
+    
+    <!-- Alpine.js for interactive components -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Toast Notifications -->
+    @if(session()->has('message') || session()->has('error') || session()->has('success') || session()->has('warning'))
+        <div x-data="{ 
+            show: true, 
+            message: '{{ session('message') ?? session('error') ?? session('success') ?? session('warning') }}',
+            type: '{{ session()->has('error') ? 'error' : (session()->has('success') ? 'success' : (session()->has('warning') ? 'warning' : 'info')) }}'
+        }"
+             x-show="show" 
+             x-init="setTimeout(() => show = false, 5000)"
+             x-transition.opacity.duration.500ms
+             class="fixed bottom-4 right-4 z-50">
+            <div :class="{
+                'bg-green-50 border-green-200 text-green-800': type === 'success',
+                'bg-red-50 border-red-200 text-red-800': type === 'error', 
+                'bg-yellow-50 border-yellow-200 text-yellow-800': type === 'warning',
+                'bg-blue-50 border-blue-200 text-blue-800': type === 'info'
+            }" 
+                 class="max-w-sm p-4 rounded-lg border shadow-lg">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div :class="{
+                            'text-green-600': type === 'success',
+                            'text-red-600': type === 'error',
+                            'text-yellow-600': type === 'warning', 
+                            'text-blue-600': type === 'info'
+                        }" class="mr-3">
+                            <!-- Success icon -->
+                            <svg x-show="type === 'success'" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <!-- Error icon -->
+                            <svg x-show="type === 'error'" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                            <!-- Warning icon -->
+                            <svg x-show="type === 'warning'" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                            <!-- Info icon -->
+                            <svg x-show="type === 'info'" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <p class="text-sm font-medium" x-text="message"></p>
+                    </div>
+                    <button @click="show = false" class="ml-4 text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     @endif
-
-    <div class="flex flex-col min-h-screen">
-
-        <!-- Masthead -->
-        <header class="bg-bg-white-0 border-b border-otl-divider" role="banner">
-            <div class="myds-container flex items-center justify-between py-4">
-                <div class="flex items-center gap-4">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-3" aria-label="Halaman Utama ICTServe">
-                        <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="Jata Negara Malaysia" class="h-10 w-auto">
-                        <div>
-                            <div class="text-heading-3xs font-semibold text-txt-black-900">ICTServe (iServe)</div>
-                            <div class="text-body-xs text-txt-black-500">Sistem Pengurusan Perkhidmatan ICT — MOTAC</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="flex items-center gap-3">
-                    <!-- Language select -->
-                    <label for="locale-select" class="sr-only">Pilih Bahasa</label>
-                    <select id="locale-select" onchange="location.href='{{ url('language') }}/'+this.value"
-                            class="text-body-sm border otl-gray-300 rounded px-2 py-1 bg-bg-white-0"
-                            aria-label="Pilih Bahasa / Select Language">
-                        <option value="ms" {{ app()->getLocale() === 'ms' ? 'selected' : '' }}>BM</option>
-                        <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>EN</option>
-                    </select>
-
-                    <!-- Theme switcher component (MYDS wrapper) -->
-                    <x-myds.theme-switcher aria-label="Tukar tema / Toggle theme" />
-
-                    <!-- Auth / user actions -->
-                    @auth
-                        <a href="{{ route('notifications.index') }}" class="relative p-2 rounded-md hover:bg-bg-washed focus:outline-none focus:ring-2 focus:ring-fr-primary" aria-label="Notifications">
-                            <svg class="w-5 h-5 text-txt-black-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-5-5V9a6 6 0 10-12 0v3l-5 5h5a3 3 0 106 0z"></path>
-                            </svg>
-                            @if(auth()->user()->unreadNotifications->count() > 0)
-                                <span class="absolute -top-1 -right-1 w-5 h-5 bg-danger-600 text-white text-xs rounded-full flex items-center justify-center" aria-hidden="true">
-                                    {{ auth()->user()->unreadNotifications->count() }}
-                                </span>
-                            @endif
-                        </a>
-
-                        <div class="relative" x-data="{ open: false }">
-                            <button @click="open = !open" @keydown.escape="open = false"
-                                    class="flex items-center gap-2 rounded-md p-2 hover:bg-bg-washed focus:outline-none focus:ring-2 focus:ring-fr-primary"
-                                    aria-haspopup="true" :aria-expanded="open.toString()">
-                                <span class="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white font-medium">
-                                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-                                </span>
-                                <span class="hidden md:block text-body-sm text-txt-black-900">{{ auth()->user()->name }}</span>
-                                <svg class="w-4 h-4 text-txt-black-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-
-                            <div x-show="open" x-cloak
-                                 x-transition:enter="transition ease-out duration-150"
-                                 x-transition:enter-start="opacity-0 translate-y-1"
-                                 x-transition:enter-end="opacity-100 translate-y-0"
-                                 x-transition:leave="transition ease-in duration-100"
-                                 x-transition:leave-start="opacity-100 translate-y-0"
-                                 x-transition:leave-end="opacity-0 translate-y-1"
-                                 @click.outside="open = false"
-                                 class="absolute right-0 mt-2 w-56 bg-bg-white-0 border border-otl-divider rounded-md shadow-context-menu z-50"
-                                 role="menu" aria-label="Menu pengguna">
-                                <div class="py-1">
-                                    <div class="px-4 py-2 text-sm text-txt-black-500 border-b border-otl-divider">
-                                        {{ auth()->user()->position ?? '' }}
-                                    </div>
-                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Profil</a>
-                                    <a href="{{ route('helpdesk.index') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Bantuan</a>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="w-full text-left px-4 py-2 text-body-sm text-danger-600 hover:bg-bg-washed" role="menuitem">Log keluar</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    @else
-                        <div class="flex items-center gap-2">
-                            <a href="{{ route('login') }}" class="text-body-sm text-primary-600 hover:underline">Log masuk</a>
-                            <a href="{{ route('register') }}" class="myds-btn-primary myds-btn-sm">Daftar</a>
-                        </div>
-                    @endauth
-
-                    <!-- Mobile menu toggle -->
-                    <button x-data @click="$dispatch('toggle-mobile-menu')" class="md:hidden p-2 rounded-md hover:bg-bg-washed" aria-label="Buka menu mudah alih">
-                        <svg class="w-6 h-6 text-txt-black-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            @auth
-                <!-- Primary navigation -->
-                <nav id="primary-navigation" class="bg-bg-white-0 border-t border-otl-divider" aria-label="Navigasi utama">
-                    <div class="myds-container">
-                        <ul class="flex gap-1 py-2" role="menubar" aria-label="Primary">
-                            @php
-                                $navItems = [
-                                    ['route' => 'dashboard', 'label' => 'Utama', 'icon' => 'home', 'pattern' => 'dashboard'],
-                                    ['route' => 'loan.index', 'label' => 'Pinjaman ICT', 'icon' => 'document-text', 'pattern' => 'loan.*'],
-                                    ['route' => 'helpdesk.index', 'label' => 'Aduan ICT', 'icon' => 'support', 'pattern' => 'helpdesk.*'],
-                                    ['route' => 'equipment.index', 'label' => 'Peralatan', 'icon' => 'computer-desktop', 'pattern' => 'equipment.*'],
-                                ];
-                                if(auth()->user()->isIctAdmin() || auth()->user()->isSuperAdmin()) {
-                                    $navItems[] = ['route' => 'admin.dashboard', 'label' => 'Pentadbiran', 'icon' => 'cog-6-tooth', 'pattern' => 'admin.*'];
-                                }
-                            @endphp
-
-                            @foreach($navItems as $item)
-                                @php $active = request()->routeIs($item['pattern'] ?? ($item['route'] . '*')); @endphp
-                                <li role="none">
-                                    <a role="menuitem" href="{{ route($item['route']) }}"
-                                       class="flex items-center gap-2 px-3 py-2 rounded-md text-body-sm font-medium transition-colors
-                                       {{ $active ? 'bg-primary-50 text-primary-700 border-b-2 border-primary-600' : 'text-txt-black-700 hover:bg-bg-washed hover:text-txt-black-900' }}">
-                                        @switch($item['icon'])
-                                            @case('home')
-                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                                                    <path d="M3 9.5L10 3l7 6.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M5 10v6a1 1 0 001 1h2m6-7v6a1 1 0 01-1 1h-2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                                @break
-                                            @case('document-text')
-                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                                                    <path d="M7 2h5l5 5v9a1 1 0 01-1 1H5a1 1 0 01-1-1V3a1 1 0 011-1z" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M9 8h6M9 12h6" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                                @break
-                                            @case('support')
-                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                                                    <circle cx="10" cy="10" r="8" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M10 7v4l3 1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                                @break
-                                            @case('computer-desktop')
-                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                                                    <rect x="3" y="4" width="14" height="9" rx="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M8 17h4" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                                @break
-                                            @case('cog-6-tooth')
-                                                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                                                    <circle cx="10" cy="10" r="3"></circle>
-                                                    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                                @break
-                                        @endswitch
-                                        <span>{{ $item['label'] }}</span>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </nav>
-            @endauth
-        </header>
-
-        <!-- Main content (landmark) -->
-        <main id="main-content" role="main" tabindex="-1" class="flex-1 bg-bg-white-50">
-            @if(isset($breadcrumbs))
-                <div class="bg-bg-white-0 border-b border-otl-divider">
-                    <div class="myds-container py-3">
-                        <nav aria-label="Breadcrumb">
-                            <ol class="flex items-center space-x-2 text-body-sm">
-                                @foreach($breadcrumbs as $crumb)
-                                    <li class="flex items-center">
-                                        @if(!$loop->first)
-                                            <svg class="w-3 h-3 text-txt-black-400 mx-2" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                                            </svg>
-                                        @endif
-                                        @if(isset($crumb['url']) && !$loop->last)
-                                            <a href="{{ $crumb['url'] }}" class="text-primary-600 hover:text-primary-700 myds-hover-underline">{{ $crumb['title'] }}</a>
-                                        @else
-                                            <span class="text-txt-black-700" aria-current="page">{{ $crumb['title'] }}</span>
-                                        @endif
-                                    </li>
-                                @endforeach
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            @endif
-
-            <div class="myds-container py-6">
-                {{ $slot }}
-                @yield('content')
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="bg-bg-white-0 border-t border-otl-divider mt-auto" role="contentinfo">
-            <div class="myds-container py-8">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                    <div class="md:col-span-6">
-                        <div class="flex items-center gap-3 mb-3">
-                            <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="Jata Negara Malaysia" class="h-8 w-auto">
-                            <div>
-                                <div class="text-heading-3xs font-medium text-txt-black-900">Ministry of Tourism, Arts and Culture</div>
-                                <div class="text-body-xs text-txt-black-500">Bahagian Pengurusan Maklumat (BPM)</div>
-                            </div>
-                        </div>
-                        <p class="text-body-sm text-txt-black-700 mb-4">
-                            ICTServe (iServe) — Sistem pengurusan peralatan dan meja bantuan ICT dalaman. Dibina mengikuti MYDS &amp; MyGovEA untuk pengalaman yang konsisten dan boleh diakses.
-                        </p>
-                        <div class="text-sm text-txt-black-500">
-                            <p>Aras 28, Menara Bangkok Bank</p>
-                            <p>Berjaya Central Park, Kuala Lumpur</p>
-                            <p>Telefon: +60 3-xxxx xxxx</p>
-                        </div>
-                    </div>
-
-                    <div class="md:col-span-2">
-                        <h3 class="myds-heading text-heading-4xs font-medium text-txt-black-900 mb-2">Pautan Pantas</h3>
-                        <ul class="space-y-2 text-body-sm text-txt-black-700">
-                            <li><a href="{{ route('dashboard') }}" class="hover:text-primary-600 myds-hover-underline">Utama</a></li>
-                            <li><a href="{{ route('loan.create') }}" class="hover:text-primary-600 myds-hover-underline">Mohon Pinjaman</a></li>
-                            <li><a href="{{ route('helpdesk.create') }}" class="hover:text-primary-600 myds-hover-underline">Lapor Kerosakan</a></li>
-                            <li><a href="{{ route('equipment.index') }}" class="hover:text-primary-600 myds-hover-underline">Katalog Peralatan</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="md:col-span-2">
-                        <h3 class="myds-heading text-heading-4xs font-medium text-txt-black-900 mb-2">Sokongan</h3>
-                        <ul class="space-y-2 text-body-sm text-txt-black-700">
-                            <li><a href="#" class="hover:text-primary-600 myds-hover-underline">Pusat Bantuan</a></li>
-                            <li><a href="#" class="hover:text-primary-600 myds-hover-underline">FAQ</a></li>
-                            <li><a href="#" class="hover:text-primary-600 myds-hover-underline">Hubungi Kami</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="md:col-span-2">
-                        <h3 class="myds-heading text-heading-4xs font-medium text-txt-black-900 mb-2">Sumber</h3>
-                        <ul class="space-y-2 text-body-sm text-txt-black-700">
-                            <li><a href="https://design.digital.gov.my" target="_blank" rel="noopener" class="hover:text-primary-600 myds-hover-underline">MYDS</a></li>
-                            <li><a href="{{ asset('docs/prinsip-reka-bentuk-mygovea.md') }}" class="hover:text-primary-600 myds-hover-underline">MyGovEA</a></li>
-                            <li><a href="#" class="hover:text-primary-600 myds-hover-underline">Dasar Privasi</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="border-t border-otl-divider mt-6 pt-4">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                        <p class="text-body-xs text-txt-black-500">© {{ date('Y') }} Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.</p>
-                        <p class="text-body-xs text-txt-black-500">
-                            Mematuhi <a href="https://design.digital.gov.my" class="text-primary-600 hover:underline" target="_blank" rel="noopener">Malaysia Government Design System (MYDS)</a> &amp; prinsip <a href="{{ asset('docs/prinsip-reka-bentuk-mygovea.md') }}" class="text-primary-600 hover:underline">MyGovEA</a>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Toast area (MYDS) -->
-    <div id="toast-root" class="fixed bottom-6 right-6 z-50 pointer-events-none" aria-live="polite" x-data="toaster()">
-        <template x-for="toast in toasts" :key="toast.id">
-            <div x-show="toast.visible" x-transition:enter="transition ease-out duration-300" x-transition:leave="transition ease-in duration-200"
-                 class="pointer-events-auto max-w-sm w-full bg-bg-white-0 border border-otl-divider rounded-md shadow-context-menu overflow-hidden mb-3"
-                 :class="{
-                    'border-l-4 border-l-primary-600': toast.type === 'info',
-                    'border-l-4 border-l-success-600': toast.type === 'success',
-                    'border-l-4 border-l-warning-600': toast.type === 'warning',
-                    'border-l-4 border-l-danger-600': toast.type === 'error'
-                 }" role="status" aria-atomic="true">
-                <div class="p-4 flex items-start gap-3">
-                    <div class="flex-shrink-0" x-html="toast.icon"></div>
-                    <div class="flex-1">
-                        <p class="text-body-sm font-medium text-txt-black-900" x-text="toast.title"></p>
-                        <p class="mt-1 text-body-sm text-txt-black-700" x-text="toast.message"></p>
-                    </div>
-                    <button @click="remove(toast.id)" class="text-txt-black-400 hover:text-txt-black-600" aria-label="Close notification">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div x-show="toast.progress" class="h-1 bg-bg-white-100">
-                    <div class="h-full" :style="{ width: toast.progressWidth + '%' }" :class="{
-                        'bg-primary-600': toast.type === 'info',
-                        'bg-success-600': toast.type === 'success',
-                        'bg-warning-600': toast.type === 'warning',
-                        'bg-danger-600': toast.type === 'error'
-                    }"></div>
-                </div>
-            </div>
-        </template>
-    </div>
-
-    @livewireScripts
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <script>
-        // Minimal theme manager for Alpine + JS interop
-        function themeManager() {
-            return {
-                isDark: document.documentElement.classList.contains('dark'),
-                init() {
-                    this.isDark = document.documentElement.classList.contains('dark');
-                },
-                toggle() {
-                    this.isDark = !this.isDark;
-                    if (this.isDark) {
-                        document.documentElement.classList.add('dark');
-                        localStorage.setItem('theme', 'dark');
-                        document.getElementById('theme-color')?.setAttribute('content', '#18181B');
-                    } else {
-                        document.documentElement.classList.remove('dark');
-                        localStorage.setItem('theme', 'light');
-                        document.getElementById('theme-color')?.setAttribute('content', '#FFFFFF');
-                    }
-                }
-            };
-        }
-
-        // Simple toast manager - used by layout
-        function toaster() {
-            return {
-                toasts: [],
-                add(type = 'info', title = '', message = '', duration = 3500) {
-                    const id = Date.now() + Math.random().toString(36).slice(2,8);
-                    const iconMap = {
-                        success: '<svg class="w-5 h-5 text-success-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>',
-                        error: '<svg class="w-5 h-5 text-danger-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>',
-                        warning: '<svg class="w-5 h-5 text-warning-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>',
-                        info: '<svg class="w-5 h-5 text-primary-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>'
-                    };
-                    const toast = {
-                        id,
-                        type,
-                        title,
-                        message,
-                        visible: true,
-                        progress: true,
-                        progressWidth: 100,
-                        icon: iconMap[type] || iconMap.info
-                    };
-                    this.toasts.push(toast);
-
-                    // animate progress
-                    const interval = 50;
-                    const steps = Math.max(1, Math.floor(duration / interval));
-                    let step = 0;
-                    const timer = setInterval(() => {
-                        step++;
-                        toast.progressWidth = Math.max(0, 100 - Math.round((step / steps) * 100));
-                        if (step >= steps) {
-                            clearInterval(timer);
-                            this.remove(id);
-                        }
-                    }, interval);
-                },
-                remove(id) {
-                    const t = this.toasts.find(t => t.id === id);
-                    if (!t) return;
-                    t.visible = false;
-                    setTimeout(() => {
-                        this.toasts = this.toasts.filter(i => i.id !== id);
-                    }, 220);
-                }
-            };
-        }
-
-        // Expose a global helper to trigger toasts from anywhere
-        window.showToast = function(type, title, message, duration) {
-            const root = document.querySelector('[x-data="toaster()"]') || document.getElementById('toast-root');
-            if (!root) return;
-            const data = root.__x ? root.__x.$data : (root._x_dataStack ? root._x_dataStack[0] : null);
-            if (data && typeof data.add === 'function') {
-                data.add(type, title, message, duration ?? 3500);
-            } else {
-                console.warn('Toast root not initialized yet.');
-            }
-        };
-
-        // On page load, flash server-side messages (session) to the toast system
-        document.addEventListener('alpine:init', () => {
-            Alpine.onReady(() => {
-                @if(session()->has('success'))
-                    showToast('success', 'Berjaya', {!! json_encode(session('success')) !!}, 4500);
-                @endif
-                @if(session()->has('error'))
-                    showToast('error', 'Ralat', {!! json_encode(session('error')) !!}, 6000);
-                @endif
-                @if(session()->has('warning'))
-                    showToast('warning', 'Amaran', {!! json_encode(session('warning')) !!}, 5000);
-                @endif
-                @if(session()->has('info'))
-                    showToast('info', 'Makluman', {!! json_encode(session('info')) !!}, 4000);
-                @endif
-            });
-        });
-    </script>
-
-    {{ $scripts ?? '' }}
 </body>
 </html>

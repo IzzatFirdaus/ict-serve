@@ -6,9 +6,10 @@ namespace App\Livewire\Admin;
 
 use App\Models\AuditLog;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class AuditLogViewer extends Component
 {
@@ -16,24 +17,16 @@ class AuditLogViewer extends Component
 
     // Filter properties
     public string $search = '';
-
     public string $action = 'all';
-
     public string $auditable_type = 'all';
-
     public string $user_id = 'all';
-
     public string $date_from = '';
-
     public string $date_to = '';
-
     public int $per_page = 25;
 
     // View properties
     public string $view_mode = 'detailed'; // detailed, compact, timeline
-
     public bool $show_filters = true;
-
     public ?int $selected_log = null;
 
     protected $queryString = [
@@ -88,11 +81,11 @@ class AuditLogViewer extends Component
         if ($this->search) {
             $query->where(function (Builder $q) {
                 $q->where('action', 'like', "%{$this->search}%")
-                    ->orWhere('notes', 'like', "%{$this->search}%")
-                    ->orWhereHas('user', function (Builder $userQuery) {
-                        $userQuery->where('name', 'like', "%{$this->search}%")
-                            ->orWhere('email', 'like', "%{$this->search}%");
-                    });
+                  ->orWhere('notes', 'like', "%{$this->search}%")
+                  ->orWhereHas('user', function (Builder $userQuery) {
+                      $userQuery->where('name', 'like', "%{$this->search}%")
+                               ->orWhere('email', 'like', "%{$this->search}%");
+                  });
             });
         }
 
@@ -196,7 +189,7 @@ class AuditLogViewer extends Component
 
     public function toggleFilters(): void
     {
-        $this->show_filters = ! $this->show_filters;
+        $this->show_filters = !$this->show_filters;
     }
 
     public function updatedSearch(): void

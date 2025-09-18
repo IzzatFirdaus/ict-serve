@@ -10,9 +10,9 @@ use App\Models\TicketStatus;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Layout;
 
 #[Layout('layouts.iserve')]
 class IndexEnhanced extends Component
@@ -21,40 +21,27 @@ class IndexEnhanced extends Component
 
     // Search and filters
     public string $search = '';
-
     public string $statusFilter = 'all';
-
     public string $categoryFilter = 'all';
-
     public string $priorityFilter = 'all';
-
     public string $assigneeFilter = 'all';
-
     public string $dateFilter = 'all'; // all, today, week, month, overdue
 
     // View options
     public string $viewMode = 'list'; // list, card, kanban
-
     public string $sortBy = 'created_at';
-
     public string $sortDirection = 'desc';
-
     public int $perPage = 15;
 
     // Bulk actions
     public array $selectedTickets = [];
-
     public bool $selectAll = false;
-
     public string $bulkAction = '';
 
     // Advanced filters
     public ?string $startDate = null;
-
     public ?string $endDate = null;
-
     public bool $showAdvancedFilters = false;
-
     public bool $myTicketsOnly = true;
 
     // Stats
@@ -149,14 +136,13 @@ class IndexEnhanced extends Component
 
     public function toggleAdvancedFilters(): void
     {
-        $this->showAdvancedFilters = ! $this->showAdvancedFilters;
+        $this->showAdvancedFilters = !$this->showAdvancedFilters;
     }
 
     public function executeBulkAction(): void
     {
         if (empty($this->selectedTickets) || empty($this->bulkAction)) {
             session()->flash('error', 'Sila pilih tiket dan tindakan / Please select tickets and action');
-
             return;
         }
 
@@ -183,9 +169,9 @@ class IndexEnhanced extends Component
             $this->selectAll = false;
             $this->loadStats();
 
-            session()->flash('success', count($this->selectedTickets).' tiket telah dikemaskini / tickets updated');
+            session()->flash('success', count($this->selectedTickets) . ' tiket telah dikemaskini / tickets updated');
         } catch (\Exception $e) {
-            logger('Bulk action error: '.$e->getMessage());
+            logger('Bulk action error: ' . $e->getMessage());
             session()->flash('error', 'Ralat semasa menjalankan tindakan / Error executing action');
         }
     }
@@ -196,7 +182,7 @@ class IndexEnhanced extends Component
         $user = Auth::user();
         $query = HelpdeskTicket::whereIn('id', $this->selectedTickets);
 
-        if (! in_array($user->role, ['ict_admin', 'supervisor'])) {
+        if (!in_array($user->role, ['ict_admin', 'supervisor'])) {
             $query->where('user_id', $user->id);
         }
 
@@ -228,9 +214,8 @@ class IndexEnhanced extends Component
 
             // Check permissions
             $user = Auth::user();
-            if (! in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
+            if (!in_array($user->role, ['ict_admin', 'supervisor', 'technician'])) {
                 session()->flash('error', 'Tiada kebenaran / No permission');
-
                 return;
             }
 
@@ -242,7 +227,7 @@ class IndexEnhanced extends Component
             session()->flash('success', 'Tiket berjaya ditugaskan / Ticket assigned successfully');
             $this->loadStats();
         } catch (\Exception $e) {
-            logger('Ticket assignment error: '.$e->getMessage());
+            logger('Ticket assignment error: ' . $e->getMessage());
             session()->flash('error', 'Ralat menugaskan tiket / Error assigning ticket');
         }
     }
@@ -253,9 +238,8 @@ class IndexEnhanced extends Component
             $ticket = HelpdeskTicket::findOrFail($ticketId);
             $statusModel = TicketStatus::where('code', $status)->first();
 
-            if (! $statusModel) {
+            if (!$statusModel) {
                 session()->flash('error', 'Status tidak sah / Invalid status');
-
                 return;
             }
 
@@ -272,7 +256,7 @@ class IndexEnhanced extends Component
             session()->flash('success', 'Status tiket dikemaskini / Ticket status updated');
             $this->loadStats();
         } catch (\Exception $e) {
-            logger('Ticket status update error: '.$e->getMessage());
+            logger('Ticket status update error: ' . $e->getMessage());
             session()->flash('error', 'Ralat mengemaskini status / Error updating status');
         }
     }
@@ -284,17 +268,17 @@ class IndexEnhanced extends Component
 
         $baseQuery = HelpdeskTicket::query();
 
-        if (! $isAdmin && $this->myTicketsOnly) {
+        if (!$isAdmin && $this->myTicketsOnly) {
             $baseQuery->where('user_id', $user->id);
         }
 
         $this->stats = [
             'total' => $baseQuery->count(),
-            'open' => $baseQuery->whereHas('status', fn ($q) => $q->where('code', 'new'))->count(),
-            'in_progress' => $baseQuery->whereHas('status', fn ($q) => $q->where('code', 'in_progress'))->count(),
-            'resolved' => $baseQuery->whereHas('status', fn ($q) => $q->where('code', 'resolved'))->count(),
+            'open' => $baseQuery->whereHas('status', fn($q) => $q->where('code', 'new'))->count(),
+            'in_progress' => $baseQuery->whereHas('status', fn($q) => $q->where('code', 'in_progress'))->count(),
+            'resolved' => $baseQuery->whereHas('status', fn($q) => $q->where('code', 'resolved'))->count(),
             'overdue' => $baseQuery->where('due_at', '<', now())
-                ->whereHas('status', fn ($q) => $q->where('is_final', false))->count(),
+                                  ->whereHas('status', fn($q) => $q->where('is_final', false))->count(),
         ];
     }
 
@@ -306,12 +290,12 @@ class IndexEnhanced extends Component
         $query = HelpdeskTicket::with(['category', 'status', 'user', 'assignedToUser', 'equipmentItem'])
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('title', 'like', '%'.$this->search.'%')
-                        ->orWhere('description', 'like', '%'.$this->search.'%')
-                        ->orWhere('ticket_number', 'like', '%'.$this->search.'%')
-                        ->orWhereHas('user', function ($userQuery) {
-                            $userQuery->where('name', 'like', '%'.$this->search.'%');
-                        });
+                    $q->where('title', 'like', '%' . $this->search . '%')
+                      ->orWhere('description', 'like', '%' . $this->search . '%')
+                      ->orWhere('ticket_number', 'like', '%' . $this->search . '%')
+                      ->orWhereHas('user', function ($userQuery) {
+                          $userQuery->where('name', 'like', '%' . $this->search . '%');
+                      });
                 });
             })
             ->when($this->statusFilter !== 'all', function ($query) {
@@ -345,7 +329,7 @@ class IndexEnhanced extends Component
                         break;
                     case 'overdue':
                         $query->where('due_at', '<', now())
-                            ->whereHas('status', fn ($q) => $q->where('is_final', false));
+                              ->whereHas('status', fn($q) => $q->where('is_final', false));
                         break;
                 }
             })
@@ -354,7 +338,7 @@ class IndexEnhanced extends Component
             });
 
         // Apply user restrictions
-        if (! $isAdmin && $this->myTicketsOnly) {
+        if (!$isAdmin && $this->myTicketsOnly) {
             $query->where('user_id', $user->id);
         }
 

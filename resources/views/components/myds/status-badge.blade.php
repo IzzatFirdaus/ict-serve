@@ -1,55 +1,66 @@
-{{--
-    MYDS Status Badge for ICTServe (iServe)
-    - Variants: info | success | warning | danger | primary
-    - Modes: filled | outline | subtle
-    - Sizes: small | medium | large
-    - Props: status, size, variant, icon (Blade/SVG), dismissible
-    - A11y: Non-colour indicators via optional icon and clear text
---}}
 @props([
-    'status' => 'info',
-    'size' => 'medium',
-    'variant' => 'filled', // filled | outline | subtle
+    'status' => 'info', // info, success, warning, danger, primary
+    'size' => 'medium', // small, medium, large
+    'variant' => 'filled', // filled, outline, subtle
     'icon' => null,
-    'dismissible' => false,
+    'dismissible' => false
 ])
 
 @php
-    $base = 'inline-flex items-center justify-center font-medium rounded-full';
-    $sizeCls = match($size) {
+    $baseClasses = 'myds-status-badge inline-flex items-center justify-center font-medium rounded-full';
+    
+    // Size classes
+    $sizeClasses = match($size) {
         'small' => 'px-2 py-0.5 text-xs gap-1',
         'large' => 'px-4 py-2 text-base gap-2',
-        default => 'px-3 py-1 text-sm gap-1.5',
+        default => 'px-3 py-1 text-sm gap-1.5' // medium
     };
-
-    // Token set mapping
-    $tone = match($status) {
-        'success' => ['txt' => 'txt-success', 'bg' => 'bg-success-600', 'bgSubtle' => 'bg-success-50', 'bd' => 'border-otl-success-300'],
-        'warning' => ['txt' => 'txt-warning', 'bg' => 'bg-warning-600', 'bgSubtle' => 'bg-warning-50', 'bd' => 'border-otl-warning-300'],
-        'danger'  => ['txt' => 'txt-danger',  'bg' => 'bg-danger-600',  'bgSubtle' => 'bg-danger-50',  'bd' => 'border-otl-danger-300'],
-        'primary' => ['txt' => 'txt-primary', 'bg' => 'bg-primary-600', 'bgSubtle' => 'bg-primary-50','bd' => 'border-otl-primary-300'],
-        default   => ['txt' => 'txt-black-700','bg' => 'bg-black-300',   'bgSubtle' => 'bg-black-100', 'bd' => 'border-otl-gray-300'],
+    
+    // Status and variant classes
+    $statusClasses = match($status) {
+        'success' => match($variant) {
+            'outline' => 'text-green-700 bg-white border border-green-300',
+            'subtle' => 'text-green-800 bg-green-50',
+            default => 'text-white bg-green-600' // filled
+        },
+        'warning' => match($variant) {
+            'outline' => 'text-yellow-700 bg-white border border-yellow-300',
+            'subtle' => 'text-yellow-800 bg-yellow-50',
+            default => 'text-yellow-900 bg-yellow-400' // filled
+        },
+        'danger' => match($variant) {
+            'outline' => 'text-red-700 bg-white border border-red-300',
+            'subtle' => 'text-red-800 bg-red-50',
+            default => 'text-white bg-red-600' // filled
+        },
+        'primary' => match($variant) {
+            'outline' => 'text-blue-700 bg-white border border-blue-300',
+            'subtle' => 'text-blue-800 bg-blue-50',
+            default => 'text-white bg-blue-600' // filled
+        },
+        default => match($variant) { // info
+            'outline' => 'text-gray-700 bg-white border border-gray-300',
+            'subtle' => 'text-gray-800 bg-gray-50',
+            default => 'text-gray-800 bg-gray-200' // filled
+        }
     };
-
-    $modeCls = match($variant) {
-        'outline' => "bg-white {$tone['txt']} border {$tone['bd']}",
-        'subtle'  => "{$tone['bgSubtle']} {$tone['txt']}",
-        default   => "{$tone['bg']} txt-white",
-    };
-
-    $classes = trim("$base $sizeCls $modeCls");
+    
+    $classes = trim($baseClasses . ' ' . $sizeClasses . ' ' . $statusClasses);
 @endphp
 
 <span {{ $attributes->merge(['class' => $classes]) }}>
     @if($icon)
-        <span class="inline-flex items-center" aria-hidden="true">{!! $icon !!}</span>
+        <span class="myds-badge-icon">
+            {!! $icon !!}
+        </span>
     @endif
+    
     <span class="myds-badge-text">{{ $slot }}</span>
+    
     @if($dismissible)
-        <button type="button" class="ml-1 hover:opacity-80 transition-opacity" aria-label="Tutup" onclick="this.closest('span').remove()">
-            <svg class="w-3 h-3" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <line x1="5" y1="5" x2="15" y2="15"></line>
-                <line x1="15" y1="5" x2="5" y2="15"></line>
+        <button type="button" class="ml-1 hover:opacity-70 transition-opacity" onclick="this.parentElement.remove()">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
         </button>
     @endif

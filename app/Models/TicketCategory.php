@@ -38,15 +38,6 @@ class TicketCategory extends Model
         'sort_order',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'default_sla_hours' => 'integer',
-            'sort_order' => 'integer',
-        ];
-    }
-
     /**
      * Get the tickets in this category.
      */
@@ -69,5 +60,14 @@ class TicketCategory extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'default_sla_hours' => 'integer',
+            'sort_order' => 'integer',
+        ];
     }
 }

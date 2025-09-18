@@ -1,427 +1,461 @@
-{{--
-    ICTServe (iServe) - ICT Equipment Loan Application (MYDS & MyGovEA Compliant)
-    - MYDS: Breadcrumb, Card, Input, Select, Textarea, Button, Modal, Alert, Icon
-    - Follows 12/8/4 grid, semantic tokens, accessible structure, responsive on all devices
-    - Citizen-centric (MyGovEA): bilingual, clear, minimal input burden, error prevention, accessibility
---}}
+<!-- Loan Request Form - ICT Serve (iServe) -->
+<div class="myds-container">
+    <!-- MYDS Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="myds-breadcrumb mb-6">
+        <ol class="myds-breadcrumb-list">
+            @foreach($breadcrumbs as $index => $breadcrumb)
+                <li class="myds-breadcrumb-item">
+                    @if(isset($breadcrumb['url']) && !$loop->last)
+                        <a href="{{ $breadcrumb['url'] }}" class="myds-breadcrumb-link">
+                            {{ $breadcrumb['title'] }}
+                        </a>
+                    @else
+                        <span class="myds-breadcrumb-current" aria-current="page">
+                            {{ $breadcrumb['title'] }}
+                        </span>
+                    @endif
+                </li>
+            @endforeach
+        </ol>
+    </nav>
 
-<x-myds.skiplink href="#main-content">
-    <span>Skip to main content</span>
-</x-myds.skiplink>
-
-<x-myds.masthead>
-    <x-myds.masthead-header>
-        <x-myds.masthead-title>
-            <x-myds.icon name="laptop" class="mr-3" /> Mohon Pinjaman Peralatan ICT
-        </x-myds.masthead-title>
-    </x-myds.masthead-header>
-    <x-myds.masthead-content>
-        <x-myds.masthead-section title="Permohonan Pinjaman ICT" icon="hand-raised" />
-    </x-myds.masthead-content>
-</x-myds.masthead>
-
-<main id="main-content" tabindex="0" class="myds-container max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-
-    {{-- Breadcrumb --}}
-    <x-myds.breadcrumb>
-        @foreach($breadcrumbs as $breadcrumb)
-            <x-myds.breadcrumb-item>
-                @if(isset($breadcrumb['url']))
-                    <x-myds.breadcrumb-link :href="$breadcrumb['url']">{{ $breadcrumb['title'] }}</x-myds.breadcrumb-link>
-                @else
-                    <x-myds.breadcrumb-page>{{ $breadcrumb['title'] }}</x-myds.breadcrumb-page>
-                @endif
-            </x-myds.breadcrumb-item>
-        @endforeach
-    </x-myds.breadcrumb>
-
-    {{-- Page header --}}
-    <header class="mb-8">
-        <h1 class="text-heading-xl text-txt-primary font-semibold flex items-center gap-3">
-            <x-myds.icon name="laptop" class="w-8 h-8" />
-            Mohon Pinjaman Peralatan ICT
-        </h1>
-        <div class="text-body-md text-txt-black-700 mt-2 mb-1">
-            Request for ICT Equipment Loan
-        </div>
-        <div class="text-body-sm text-txt-black-500">
-            Sila lengkapkan borang di bawah untuk mohon pinjaman peralatan ICT.<br>
-            <span class="text-txt-black-400">Please complete the form below to request ICT equipment loan.</span>
+    <!-- Page Header -->
+    <header class="myds-page-header mb-8">
+        <div class="myds-page-header-content">
+            <h1 class="myds-heading-xl text-myds-primary-700 dark:text-myds-primary-300">
+                <i class="myds-icon-laptop mr-3" aria-hidden="true"></i>
+                Mohon Pinjaman Peralatan ICT
+            </h1>
+            <p class="myds-text-body-md text-myds-gray-600 dark:text-myds-gray-400 mt-2">
+                Request for ICT Equipment Loan
+            </p>
+            <p class="myds-text-body-sm text-myds-gray-500 dark:text-myds-gray-500 mt-1">
+                Sila lengkapkan borang di bawah untuk mohon pinjaman peralatan ICT.
+                <br class="sm:hidden">
+                <span class="text-myds-gray-400">Please complete the form below to request ICT equipment loan.</span>
+            </p>
         </div>
     </header>
 
-    {{-- Alert Messages --}}
+    <!-- Alert Messages -->
     @if (session()->has('message'))
-        <x-myds.callout variant="success">
-            <x-myds.icon name="check-circle" class="w-5 h-5" />
-            <span>{{ session('message') }}</span>
-        </x-myds.callout>
-    @endif
-    @if ($errors->has('form'))
-        <x-myds.callout variant="danger">
-            <x-myds.icon name="x-circle" class="w-5 h-5" />
-            <span>{{ $errors->first('form') }}</span>
-        </x-myds.callout>
+        <div class="myds-alert myds-alert-success mb-6" role="alert">
+            <div class="myds-alert-icon">
+                <i class="myds-icon-check-circle" aria-hidden="true"></i>
+            </div>
+            <div class="myds-alert-content">
+                <h3 class="myds-alert-title">Berjaya / Success</h3>
+                <p class="myds-alert-description">{{ session('message') }}</p>
+            </div>
+        </div>
     @endif
 
-    {{-- Main Form --}}
-    <form wire:submit.prevent="submit" class="myds-space-y-8" aria-label="ICT Equipment Loan Application">
+    @if ($errors->has('form'))
+        <div class="myds-alert myds-alert-error mb-6" role="alert">
+            <div class="myds-alert-icon">
+                <i class="myds-icon-x-circle" aria-hidden="true"></i>
+            </div>
+            <div class="myds-alert-content">
+                <h3 class="myds-alert-title">Ralat / Error</h3>
+                <p class="myds-alert-description">{{ $errors->first('form') }}</p>
+            </div>
+        </div>
+    @endif
+
+    <!-- Main Form -->
+    <form wire:submit="submit" class="myds-form space-y-8">
         @csrf
 
-        {{-- Request Details --}}
-        <x-myds.card>
-            <x-myds.card-header>
-                <span class="text-heading-lg text-txt-black-900 flex items-center gap-2">
-                    <x-myds.icon name="document-text" class="w-6 h-6" />
+        <!-- Request Details Section -->
+        <div class="myds-card myds-card-elevated">
+            <div class="myds-card-header">
+                <h2 class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100">
+                    <i class="myds-icon-document-text mr-2" aria-hidden="true"></i>
                     Butiran Permohonan / Request Details
-                </span>
-            </x-myds.card-header>
-            <x-myds.card-body>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                </h2>
+            </div>
 
-                    {{-- Purpose --}}
-                    <x-myds.field class="md:col-span-2">
-                        <x-myds.textarea
+            <div class="myds-card-body">
+                <div class="myds-grid myds-grid-cols-1 lg:myds-grid-cols-2 myds-gap-6">
+                    <!-- Purpose -->
+                    <div class="lg:myds-col-span-2">
+                        <label for="purpose" class="myds-label myds-label-required">
+                            Tujuan Pinjaman / Purpose of Loan
+                        </label>
+                        <textarea
                             id="purpose"
-                            name="purpose"
-                            label="Tujuan Pinjaman / Purpose of Loan"
                             wire:model="purpose"
+                            class="myds-textarea @error('purpose') myds-input-error @enderror"
                             rows="3"
+                            placeholder="Nyatakan tujuan penggunaan peralatan ICT... / State the purpose of ICT equipment usage..."
+                            aria-describedby="purpose-help @error('purpose') purpose-error @enderror"
+                            required
                             maxlength="500"
-                            required
-                            :invalid="$errors->has('purpose')"
-                            hint="Berikan penerangan yang jelas untuk memudahkan proses kelulusan. / Provide clear explanation to facilitate approval process."
-                        />
+                        ></textarea>
+                        <p id="purpose-help" class="myds-help-text">
+                            Berikan penerangan yang jelas untuk memudahkan proses kelulusan.
+                            <span class="text-myds-gray-400">Provide clear explanation to facilitate approval process.</span>
+                        </p>
                         @error('purpose')
-                            <x-myds.input-error>{{ $message }}</x-myds.input-error>
+                            <p id="purpose-error" class="myds-error-text" role="alert">{{ $message }}</p>
                         @enderror
-                    </x-myds.field>
+                    </div>
 
-                    {{-- Date From --}}
-                    <x-myds.field>
-                        <x-myds.input
-                            id="requested_from"
-                            name="requested_from"
-                            label="Tarikh Mula / Start Date"
+                    <!-- Date From -->
+                    <div>
+                        <label for="requested_from" class="myds-label myds-label-required">
+                            Tarikh Mula / Start Date
+                        </label>
+                        <input
                             type="date"
+                            id="requested_from"
                             wire:model="requested_from"
-                            min="{{ now()->addDay()->format('Y-m-d') }}"
+                            class="myds-input @error('requested_from') myds-input-error @enderror"
                             required
-                            :invalid="$errors->has('requested_from')"
+                            min="{{ now()->addDay()->format('Y-m-d') }}"
+                            aria-describedby="@error('requested_from') date-from-error @enderror"
                         />
                         @error('requested_from')
-                            <x-myds.input-error>{{ $message }}</x-myds.input-error>
+                            <p id="date-from-error" class="myds-error-text" role="alert">{{ $message }}</p>
                         @enderror
-                    </x-myds.field>
+                    </div>
 
-                    {{-- Date To --}}
-                    <x-myds.field>
-                        <x-myds.input
-                            id="requested_to"
-                            name="requested_to"
-                            label="Tarikh Tamat / End Date"
+                    <!-- Date To -->
+                    <div>
+                        <label for="requested_to" class="myds-label myds-label-required">
+                            Tarikh Tamat / End Date
+                        </label>
+                        <input
                             type="date"
+                            id="requested_to"
                             wire:model="requested_to"
-                            min="{{ $requested_from ?: now()->addDay()->format('Y-m-d') }}"
+                            class="myds-input @error('requested_to') myds-input-error @enderror"
                             required
-                            :invalid="$errors->has('requested_to')"
+                            min="{{ $requested_from ?: now()->addDay()->format('Y-m-d') }}"
+                            aria-describedby="@error('requested_to') date-to-error @enderror"
                         />
                         @error('requested_to')
-                            <x-myds.input-error>{{ $message }}</x-myds.input-error>
+                            <p id="date-to-error" class="myds-error-text" role="alert">{{ $message }}</p>
                         @enderror
-                    </x-myds.field>
+                    </div>
 
-                    {{-- Contact Phone --}}
-                    <x-myds.field>
-                        <x-myds.input
-                            id="contact_phone"
-                            name="contact_phone"
-                            label="No. Telefon Perhubungan / Contact Phone"
+                    <!-- Contact Phone -->
+                    <div>
+                        <label for="contact_phone" class="myds-label">
+                            No. Telefon Perhubungan / Contact Phone
+                        </label>
+                        <input
                             type="tel"
+                            id="contact_phone"
                             wire:model="contact_phone"
-                            maxlength="20"
+                            class="myds-input @error('contact_phone') myds-input-error @enderror"
                             placeholder="012-3456789"
-                            :invalid="$errors->has('contact_phone')"
-                            hint="Untuk dihubungi jika diperlukan. / For contact if necessary."
+                            maxlength="20"
+                            aria-describedby="phone-help @error('contact_phone') phone-error @enderror"
                         />
+                        <p id="phone-help" class="myds-help-text">
+                            Untuk dihubungi jika diperlukan. / For contact if necessary.
+                        </p>
                         @error('contact_phone')
-                            <x-myds.input-error>{{ $message }}</x-myds.input-error>
+                            <p id="phone-error" class="myds-error-text" role="alert">{{ $message }}</p>
                         @enderror
-                    </x-myds.field>
+                    </div>
 
-                    {{-- Additional Notes --}}
-                    <x-myds.field>
-                        <x-myds.textarea
+                    <!-- Additional Notes -->
+                    <div>
+                        <label for="notes" class="myds-label">
+                            Catatan Tambahan / Additional Notes
+                        </label>
+                        <textarea
                             id="notes"
-                            name="notes"
-                            label="Catatan Tambahan / Additional Notes"
                             wire:model="notes"
+                            class="myds-textarea @error('notes') myds-input-error @enderror"
                             rows="3"
-                            maxlength="1000"
                             placeholder="Catatan atau keperluan khas... / Additional notes or special requirements..."
-                            :invalid="$errors->has('notes')"
-                        />
+                            maxlength="1000"
+                            aria-describedby="@error('notes') notes-error @enderror"
+                        ></textarea>
                         @error('notes')
-                            <x-myds.input-error>{{ $message }}</x-myds.input-error>
+                            <p id="notes-error" class="myds-error-text" role="alert">{{ $message }}</p>
                         @enderror
-                    </x-myds.field>
+                    </div>
                 </div>
-            </x-myds.card-body>
-        </x-myds.card>
+            </div>
+        </div>
 
-        {{-- Equipment Selection --}}
-        <x-myds.card>
-            <x-myds.card-header>
-                <span class="text-heading-lg text-txt-black-900 flex items-center gap-2">
-                    <x-myds.icon name="desktop-computer" class="w-6 h-6" />
+        <!-- Equipment Selection Section -->
+        <div class="myds-card myds-card-elevated">
+            <div class="myds-card-header">
+                <h2 class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100">
+                    <i class="myds-icon-desktop-computer mr-2" aria-hidden="true"></i>
                     Pemilihan Peralatan / Equipment Selection
-                </span>
-            </x-myds.card-header>
-            <x-myds.card-body>
-                {{-- Equipment Categories --}}
+                </h2>
+            </div>
+
+            <div class="myds-card-body">
+                <!-- Equipment Categories -->
                 @if(count($equipmentCategories) > 0)
                     <div class="mb-6">
-                        <h3 class="text-heading-md text-txt-black-800 mb-4">
+                        <h3 class="myds-heading-md text-myds-gray-800 dark:text-myds-gray-200 mb-4">
                             Kategori Peralatan / Equipment Categories
                         </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="myds-grid myds-grid-cols-1 sm:myds-grid-cols-2 lg:myds-grid-cols-3 myds-gap-4">
                             @foreach($equipmentCategories as $category)
-                                <x-myds.button
+                                <button
                                     type="button"
-                                    variant="secondary"
-                                    class="w-full text-left p-4 h-auto"
                                     wire:click="loadEquipmentByCategory({{ $category['id'] }})"
+                                    class="myds-button myds-button-secondary myds-button-block text-left p-4 h-auto"
                                 >
-                                    <div class="flex items-start gap-3">
-                                        <x-myds.icon :name="$category['icon'] ?? 'desktop-computer'" class="text-primary-600 mt-1" />
+                                    <div class="flex items-start space-x-3">
+                                        <i class="myds-icon-{{ $category['icon'] ?? 'desktop-computer' }} text-myds-primary-600 mt-1" aria-hidden="true"></i>
                                         <div>
-                                            <div class="text-body-md font-semibold text-txt-black-900">
+                                            <div class="myds-text-body-md font-semibold text-myds-gray-900 dark:text-myds-gray-100">
                                                 {{ $category['name'] }}
                                             </div>
                                             @if(!empty($category['description']))
-                                                <div class="text-body-sm text-txt-black-600 mt-1">
+                                                <div class="myds-text-body-sm text-myds-gray-600 dark:text-myds-gray-400 mt-1">
                                                     {{ $category['description'] }}
                                                 </div>
                                             @endif
                                         </div>
                                     </div>
-                                </x-myds.button>
+                                </button>
                             @endforeach
                         </div>
                     </div>
                 @else
-                    <x-myds.callout variant="warning" class="text-center">
-                        <x-myds.icon name="exclamation-triangle" class="w-6 h-6" />
-                        Tiada kategori peralatan. No equipment categories available at the moment.
-                    </x-myds.callout>
+                    <div class="myds-empty-state text-center py-12">
+                        <i class="myds-icon-exclamation-triangle text-myds-yellow-500 text-4xl mb-4" aria-hidden="true"></i>
+                        <h3 class="myds-heading-md text-myds-gray-900 dark:text-myds-gray-100 mb-2">
+                            Tiada Kategori Peralatan
+                        </h3>
+                        <p class="myds-text-body-md text-myds-gray-600 dark:text-myds-gray-400">
+                            No equipment categories available at the moment.
+                        </p>
+                    </div>
                 @endif
 
-                {{-- Selected Equipment --}}
+                <!-- Selected Equipment -->
                 @if(count($this->selectedEquipmentDetails) > 0)
-                    <div class="border-t border-otl-divider pt-6">
-                        <h3 class="text-heading-md text-txt-black-800 mb-4">
+                    <div class="border-t border-myds-gray-200 dark:border-myds-gray-700 pt-6">
+                        <h3 class="myds-heading-md text-myds-gray-800 dark:text-myds-gray-200 mb-4">
                             Peralatan Dipilih / Selected Equipment
-                            <x-myds.badge variant="primary" class="ml-2">{{ count($selectedEquipment) }}</x-myds.badge>
+                            <span class="myds-badge myds-badge-primary ml-2">{{ count($selectedEquipment) }}</span>
                         </h3>
+
                         <div class="space-y-3">
                             @foreach($this->selectedEquipmentDetails as $equipment)
-                                <x-myds.card variant="bordered">
-                                    <x-myds.card-body class="p-4">
+                                <div class="myds-card myds-card-bordered">
+                                    <div class="myds-card-body p-4">
                                         <div class="flex items-center justify-between">
                                             <div class="flex-1">
-                                                <div class="text-body-md font-semibold text-txt-black-900">
+                                                <div class="myds-text-body-md font-semibold text-myds-gray-900 dark:text-myds-gray-100">
                                                     {{ $equipment['brand'] }} {{ $equipment['model'] }}
                                                 </div>
-                                                <div class="text-body-sm text-txt-black-600">
+                                                <div class="myds-text-body-sm text-myds-gray-600 dark:text-myds-gray-400">
                                                     {{ $equipment['category']['name'] ?? 'N/A' }} • {{ $equipment['asset_tag'] }}
                                                 </div>
                                                 @if(!empty($equipment['specifications']))
-                                                    <div class="text-body-sm text-txt-black-500 mt-1">
+                                                    <div class="myds-text-body-sm text-myds-gray-500 dark:text-myds-gray-500 mt-1">
                                                         {{ $equipment['specifications'] }}
                                                     </div>
                                                 @endif
                                             </div>
-                                            <div class="flex items-center gap-3 ml-4">
-                                                {{-- Quantity Input --}}
-                                                <div class="flex items-center gap-2">
-                                                    <label for="qty-{{ $equipment['id'] }}" class="text-body-sm text-txt-black-600">Kuantiti:</label>
-                                                    <x-myds.input
-                                                        id="qty-{{ $equipment['id'] }}"
+
+                                            <div class="flex items-center space-x-3 ml-4">
+                                                <!-- Quantity Input -->
+                                                <div class="flex items-center space-x-2">
+                                                    <label for="qty-{{ $equipment['id'] }}" class="myds-text-body-sm text-myds-gray-600 dark:text-myds-gray-400">
+                                                        Kuantiti:
+                                                    </label>
+                                                    <input
                                                         type="number"
+                                                        id="qty-{{ $equipment['id'] }}"
                                                         wire:model="equipmentQuantities.{{ $equipment['id'] }}"
-                                                        class="w-16 text-center"
+                                                        class="myds-input w-16 text-center"
                                                         min="1"
                                                         max="10"
-                                                        size="sm"
                                                         aria-label="Quantity for {{ $equipment['brand'] }} {{ $equipment['model'] }}"
                                                     />
                                                 </div>
-                                                <x-myds.button
+
+                                                <!-- Remove Button -->
+                                                <button
                                                     type="button"
-                                                    variant="danger-ghost"
-                                                    size="sm"
                                                     wire:click="removeEquipment({{ $equipment['id'] }})"
+                                                    class="myds-button myds-button-danger-ghost myds-button-sm"
                                                     aria-label="Remove {{ $equipment['brand'] }} {{ $equipment['model'] }} from selection"
                                                 >
-                                                    <x-myds.icon name="trash" />
-                                                </x-myds.button>
+                                                    <i class="myds-icon-trash" aria-hidden="true"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                    </x-myds.card-body>
-                                </x-myds.card>
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
                 @else
                     @error('selectedEquipment')
-                        <x-myds.callout variant="warning">
-                            <x-myds.icon name="exclamation-triangle" class="w-5 h-5" />
-                            {{ $message }}
-                        </x-myds.callout>
+                        <div class="myds-alert myds-alert-warning" role="alert">
+                            <div class="myds-alert-icon">
+                                <i class="myds-icon-exclamation-triangle" aria-hidden="true"></i>
+                            </div>
+                            <div class="myds-alert-content">
+                                <p class="myds-alert-description">{{ $message }}</p>
+                            </div>
+                        </div>
                     @enderror
                 @endif
-            </x-myds.card-body>
-        </x-myds.card>
+            </div>
+        </div>
 
-        {{-- Form Actions --}}
-        <x-myds.card>
-            <x-myds.card-body>
+        <!-- Form Actions -->
+        <div class="myds-card myds-card-elevated">
+            <div class="myds-card-body">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div class="text-body-sm text-txt-black-600">
-                        <x-myds.icon name="information-circle" class="mr-1" />
-                        Permohonan akan dihantar kepada penyelia untuk kelulusan.<br class="sm:hidden">
-                        <span class="text-txt-black-500">Request will be sent to supervisor for approval.</span>
+                    <div class="myds-text-body-sm text-myds-gray-600 dark:text-myds-gray-400">
+                        <i class="myds-icon-information-circle mr-1" aria-hidden="true"></i>
+                        Permohonan akan dihantar kepada penyelia untuk kelulusan.
+                        <br class="sm:hidden">
+                        <span class="text-myds-gray-500">Request will be sent to supervisor for approval.</span>
                     </div>
+
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <x-myds.button
-                            :href="route('loan.index')"
-                            variant="secondary"
+                        <a
+                            href="{{ route('loan.index') }}"
+                            class="myds-button myds-button-secondary"
+                            wire:navigate
                         >
-                            <x-myds.button-icon>
-                                <x-myds.icon name="arrow-left" />
-                            </x-myds.button-icon>
+                            <i class="myds-icon-arrow-left mr-2" aria-hidden="true"></i>
                             Batal / Cancel
-                        </x-myds.button>
-                        <x-myds.button
+                        </a>
+
+                        <button
                             type="submit"
-                            variant="primary"
+                            class="myds-button myds-button-primary"
                             wire:loading.attr="disabled"
                             wire:target="submit"
                         >
                             <span wire:loading.remove wire:target="submit">
-                                <x-myds.button-icon>
-                                    <x-myds.icon name="paper-airplane" />
-                                </x-myds.button-icon>
+                                <i class="myds-icon-paper-airplane mr-2" aria-hidden="true"></i>
                                 Hantar Permohonan / Submit Request
                             </span>
                             <span wire:loading wire:target="submit" class="flex items-center">
-                                <x-myds.spinner color="white" size="small" class="mr-2" />
+                                <svg class="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
                                 Menghantar...
                             </span>
-                        </x-myds.button>
+                        </button>
                     </div>
                 </div>
-            </x-myds.card-body>
-        </x-myds.card>
+            </div>
+        </div>
     </form>
 
-    {{-- Equipment Selection Modal --}}
+    <!-- Equipment Selection Modal -->
     @if($showEquipmentModal)
-        <x-myds.modal open>
-            <x-myds.modal-header>
-                <x-myds.icon name="desktop-computer" class="w-5 h-5 mr-2" />
-                Pilih Peralatan / Select Equipment
-                <x-myds.button type="button" variant="tertiary" size="sm" class="ml-auto" wire:click="closeEquipmentModal" aria-label="Close modal">
-                    <x-myds.icon name="x" />
-                </x-myds.button>
-            </x-myds.modal-header>
-            <x-myds.modal-body>
-                @if(count($availableEquipment) > 0)
-                    <div class="space-y-3">
-                        @foreach($availableEquipment as $equipment)
-                            <x-myds.card variant="bordered" class="hover:bg-washed transition">
-                                <x-myds.card-body class="p-4">
-                                    <div class="flex items-start gap-4">
-                                        <x-myds.checkbox
-                                            id="equipment-{{ $equipment['id'] }}"
-                                            wire:click="toggleEquipment({{ $equipment['id'] }})"
-                                            :checked="in_array($equipment['id'], $selectedEquipment)"
-                                            class="mt-1"
-                                        />
-                                        <label for="equipment-{{ $equipment['id'] }}" class="flex-1 cursor-pointer">
-                                            <div class="text-body-md font-semibold text-txt-black-900">
-                                                {{ $equipment['brand'] }} {{ $equipment['model'] }}
-                                            </div>
-                                            <div class="text-body-sm text-txt-black-600">
-                                                {{ $equipment['asset_tag'] }}
-                                                @if(!empty($equipment['serial_number']))
-                                                    • S/N: {{ $equipment['serial_number'] }}
+        <div class="myds-modal myds-modal-open" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="myds-modal-backdrop" wire:click="closeEquipmentModal"></div>
+            <div class="myds-modal-content myds-modal-lg">
+                <div class="myds-modal-header">
+                    <h3 id="modal-title" class="myds-modal-title">
+                        <i class="myds-icon-desktop-computer mr-2" aria-hidden="true"></i>
+                        Pilih Peralatan / Select Equipment
+                    </h3>
+                    <button
+                        type="button"
+                        wire:click="closeEquipmentModal"
+                        class="myds-modal-close"
+                        aria-label="Close modal"
+                    >
+                        <i class="myds-icon-x" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div class="myds-modal-body">
+                    @if(count($availableEquipment) > 0)
+                        <div class="space-y-3">
+                            @foreach($availableEquipment as $equipment)
+                                <div class="myds-card myds-card-bordered hover:myds-card-hover transition-colors">
+                                    <div class="myds-card-body p-4">
+                                        <div class="flex items-start space-x-4">
+                                            <input
+                                                type="checkbox"
+                                                id="equipment-{{ $equipment['id'] }}"
+                                                class="myds-checkbox mt-1"
+                                                wire:click="toggleEquipment({{ $equipment['id'] }})"
+                                                @if(in_array($equipment['id'], $selectedEquipment)) checked @endif
+                                            />
+
+                                            <label for="equipment-{{ $equipment['id'] }}" class="flex-1 cursor-pointer">
+                                                <div class="myds-text-body-md font-semibold text-myds-gray-900 dark:text-myds-gray-100">
+                                                    {{ $equipment['brand'] }} {{ $equipment['model'] }}
+                                                </div>
+                                                <div class="myds-text-body-sm text-myds-gray-600 dark:text-myds-gray-400">
+                                                    {{ $equipment['asset_tag'] }}
+                                                    @if(!empty($equipment['serial_number']))
+                                                        • S/N: {{ $equipment['serial_number'] }}
+                                                    @endif
+                                                </div>
+                                                @if(!empty($equipment['specifications']))
+                                                    <div class="myds-text-body-sm text-myds-gray-500 dark:text-myds-gray-500 mt-1">
+                                                        {{ $equipment['specifications'] }}
+                                                    </div>
                                                 @endif
+                                                @if(!empty($equipment['location']))
+                                                    <div class="myds-text-body-sm text-myds-gray-400 dark:text-myds-gray-600 mt-1">
+                                                        <i class="myds-icon-location-marker mr-1" aria-hidden="true"></i>
+                                                        {{ $equipment['location'] }}
+                                                    </div>
+                                                @endif
+                                            </label>
+
+                                            <div class="myds-badge myds-badge-success">
+                                                {{ ucfirst($equipment['status']) }}
                                             </div>
-                                            @if(!empty($equipment['specifications']))
-                                                <div class="text-body-sm text-txt-black-500 mt-1">
-                                                    {{ $equipment['specifications'] }}
-                                                </div>
-                                            @endif
-                                            @if(!empty($equipment['location']))
-                                                <div class="text-body-sm text-txt-black-400 mt-1">
-                                                    <x-myds.icon name="location-marker" class="mr-1" />
-                                                    {{ $equipment['location'] }}
-                                                </div>
-                                            @endif
-                                        </label>
-                                        <x-myds.badge variant="success">
-                                            {{ ucfirst($equipment['status']) }}
-                                        </x-myds.badge>
+                                        </div>
                                     </div>
-                                </x-myds.card-body>
-                            </x-myds.card>
-                        @endforeach
-                    </div>
-                @else
-                    <x-myds.callout variant="info" class="text-center py-8">
-                        <x-myds.icon name="desktop-computer" class="text-txt-black-400 text-4xl mb-4" />
-                        <div class="myds-heading-md text-txt-black-900 mb-2">
-                            Tiada Peralatan Tersedia
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="text-body-md text-txt-black-600">
-                            No equipment available in this category at the moment.
+                    @else
+                        <div class="myds-empty-state text-center py-8">
+                            <i class="myds-icon-desktop-computer text-myds-gray-400 text-4xl mb-4" aria-hidden="true"></i>
+                            <h3 class="myds-heading-md text-myds-gray-900 dark:text-myds-gray-100 mb-2">
+                                Tiada Peralatan Tersedia
+                            </h3>
+                            <p class="myds-text-body-md text-myds-gray-600 dark:text-myds-gray-400">
+                                No equipment available in this category at the moment.
+                            </p>
                         </div>
-                    </x-myds.callout>
-                @endif
-            </x-myds.modal-body>
-            <x-myds.modal-footer>
-                <x-myds.button type="button" variant="primary" wire:click="closeEquipmentModal">
-                    <x-myds.icon name="check" class="mr-2" />
-                    Selesai / Done
-                    @if(count($selectedEquipment) > 0)
-                        <x-myds.badge variant="white" class="ml-2">{{ count($selectedEquipment) }}</x-myds.badge>
                     @endif
-                </x-myds.button>
-            </x-myds.modal-footer>
-        </x-myds.modal>
-    @endif
-</main>
+                </div>
 
-<x-myds.footer>
-    <x-myds.footer-section>
-        <x-myds.site-info>
-            <x-myds.footer-logo logoTitle="Bahagian Pengurusan Maklumat (BPM)" />
-            Aras 13, 14 &amp; 15, Blok Menara, Menara Usahawan, No. 18, Persiaran Perdana, Presint 2, 62000 Putrajaya, Malaysia
-            <div class="mt-2">© 2025 BPM, Kementerian Pelancongan, Seni dan Budaya Malaysia.</div>
-            <div class="mt-2 flex gap-3">
-                <a href="#" aria-label="Facebook" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="facebook" class="w-5 h-5" /></a>
-                <a href="#" aria-label="Twitter" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="twitter" class="w-5 h-5" /></a>
-                <a href="#" aria-label="Instagram" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="instagram" class="w-5 h-5" /></a>
-                <a href="#" aria-label="YouTube" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="youtube" class="w-5 h-5" /></a>
+                <div class="myds-modal-footer">
+                    <button
+                        type="button"
+                        wire:click="closeEquipmentModal"
+                        class="myds-button myds-button-primary"
+                    >
+                        <i class="myds-icon-check mr-2" aria-hidden="true"></i>
+                        Selesai / Done
+                        @if(count($selectedEquipment) > 0)
+                            <span class="myds-badge myds-badge-white ml-2">{{ count($selectedEquipment) }}</span>
+                        @endif
+                    </button>
+                </div>
             </div>
-        </x-myds.site-info>
-    </x-myds.footer-section>
-</x-myds.footer>
+        </div>
+    @endif
+</div>
 
-{{-- Enhanced UX: focus modal, enforce date constraints --}}
+<!-- Add JavaScript for enhanced UX -->
 <script>
     document.addEventListener('alpine:init', () => {
+        // Auto-focus on modal open
         Livewire.on('modal-opened', () => {
             setTimeout(() => {
                 const modal = document.querySelector('.myds-modal-open');
@@ -431,8 +465,11 @@
                 }
             }, 100);
         });
+
+        // Date validation
         const fromDate = document.getElementById('requested_from');
         const toDate = document.getElementById('requested_to');
+
         if (fromDate && toDate) {
             fromDate.addEventListener('change', () => {
                 toDate.min = fromDate.value;

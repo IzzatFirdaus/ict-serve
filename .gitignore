@@ -1,116 +1,70 @@
-###
-# .gitignore — Laravel + Node.js (clean, organized)
-# Keep this file focused on generated artifacts, OS/IDE metadata, caches and secrets.
-###
-
-## --- Logs
 *.log
-logs/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-## --- Runtime / process files
-/pids/
-*.pid
-
-## --- Composer & PHP
+.DS_Store
+.env
+.env*
 /vendor/
-composer.phar
-# Note: for applications you typically commit composer.lock — keep it tracked unless
-# you intentionally want to ignore it.
-
-## --- Node & frontend
+# Laravel & general
+/vendor/
 /node_modules/
-/public/node_modules/
-
-## --- Build outputs (frontend)
-/public/build/
-/public/hot
-/public/mix-manifest.json
-/public/js/*.js
-/public/js/*.js.map
-/public/css/*.css
-/public/css/*.css.map
-/public/favicon.ico
-/public/robots.txt
-
-## --- Laravel specific
 /.env
 /.env.*
-/storage/
-/bootstrap/cache/
-/storage/*.key
+/composer.phar
 
-## --- Database
+# Laravel storage & cache
+/storage/
+/storage/*.key
+/storage/debugbar
+/bootstrap/cache/
+
+# Build artifacts
+/public/hot
+/public/build
+/public/mix-manifest.json
+
+# Database
 /database/*.sqlite
 /database/*.sqlite3
 
-## --- Tests & CI
+# Test results & caches
 /test-results/
-/phpunit.result.cache
+/.phpunit.result.cache
 /.phpunit.cache
 
-## --- Documentation / generated docs
-/.phpdoc/
-.phpdoc/build/
-.phpdoc/cache/
-phpDocumentor.phar
-/docs/api/
+# Package managers
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
 
-## --- QA / E2E
-/qa-results/
-/tests-examples/
-/playwright-report/
-playwright.config.ts
-playwright.spec.js
-
-## --- IDEs, editors, OS files
+# Editor directories and metadata
 /.idea/
 /.vscode/
-.phpactor.json
-.phpunit.result.cache
 .DS_Store
 Thumbs.db
-.cache/
-.zoekt/
 
-## --- Misc / tooling
+# Documentation generators / tooling
+/.phpdoc/cache/
+/.phpactor.json
+
+# Misc
+/composer.phar
 /auth.json
-Homestead.json
-Homestead.yaml
+/Homestead.json
+/Homestead.yaml
+/playwright-report/
+
+# Keep source files and configuration tracked. Do NOT ignore these:
+# - app/
+# - bootstrap/
+# - config/
+# - database/migrations (except editor backups, which are safe to ignore)
+# - resources/
+# - routes/
+# - tests/
+# - artisan, README.md, and other project files
+
+# If you have local env backups you want ignored
 .env.backup
 .env.production
 
-## --- Optional: package manager lock files
-# It's recommended to track package-lock.json / yarn.lock / pnpm-lock.yaml for apps.
-# If you prefer to ignore them, uncomment the lines below.
-# /package-lock.json
-# /yarn.lock
-# /pnpm-lock.yaml
-
-## --- Optional project folders (commented by default to ensure source is tracked)
-# If you want to ignore large generated source folders, uncomment the lines below.
-# /public/storage
-# /resources/sass/
-# /resources/js/
-# /resources/css/
-# /resources/views/
-# /app/Http/Controllers/
-# /app/Models/
-# /app/Providers/
-# /app/Livewire/
-# /routes/
-# /tests/
-
-## --- Keep source files tracked (do NOT ignore these)
-# app/
-# bootstrap/
-# config/
-# database/migrations/
-# resources/
-# routes/
-# tests/
-
-### End of file
-
+# End of file
+.phpactor.json

@@ -5,80 +5,34 @@ declare(strict_types=1);
 namespace App\Livewire\Notifications;
 
 use App\Models\Notification;
-use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\On;
-use Livewire\Attributes\Title;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-#[Layout('layouts.app')]
-#[Title('Pusat Notifikasi - ICTServe')]
 class NotificationCenter extends Component
 {
     use WithPagination;
 
     public string $filter = 'all';
-
     public string $category = 'all';
-
     public string $priority = 'all';
-
     public bool $showDropdown = false;
-
-    public bool $showMarkAllModal = false;
 
     protected $listeners = [
         'markAsRead' => 'markNotificationAsRead',
         'markAllAsRead' => 'markAllAsRead',
         'deleteNotification' => 'deleteNotification',
         'refreshNotifications' => '$refresh',
-        'notificationReceived' => 'handleNewNotification',
     ];
 
     public function mount(): void
     {
-        // Subscribe to real-time notifications for the current user
-        if (Auth::check()) {
-            $this->dispatch('subscribeToNotifications', ['userId' => Auth::id()]);
-        }
+        // Initialize component
     }
 
-    public function updatingFilter()
+    public function __invoke()
     {
-        $this->resetPage();
-    }
-
-    public function updatingCategory()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingPriority()
-    {
-        $this->resetPage();
-    }
-
-    #[On('notificationReceived')]
-    public function handleNewNotification($data)
-    {
-        $this->dispatch('$refresh');
-
-        // Show toast notification
-        $this->dispatch('showToast', [
-            'type' => 'info',
-            'message' => $data['title'] ?? 'Notifikasi baharu diterima',
-        ]);
-    }
-
-    public function openMarkAllModal()
-    {
-        $this->showMarkAllModal = true;
-    }
-
-    public function closeMarkAllModal()
-    {
-        $this->showMarkAllModal = false;
+        return $this;
     }
 
     public function render()
@@ -96,9 +50,7 @@ class NotificationCenter extends Component
 
     private function getNotifications()
     {
-        $userId = $this->currentUserId();
-
-        $query = Notification::where('user_id', $userId ?? 0)
+        $query = Notification::where('user_id', auth()->id())
             ->with('user')
             ->notExpired()
             ->recent();
@@ -123,9 +75,7 @@ class NotificationCenter extends Component
 
     private function getUnreadCount(): int
     {
-        $userId = $this->currentUserId();
-
-        return Notification::where('user_id', $userId ?? 0)
+        return Notification::where('user_id', auth()->id())
             ->unread()
             ->notExpired()
             ->count();
@@ -133,18 +83,15 @@ class NotificationCenter extends Component
 
     private function getNotificationStats(): array
     {
-        /** @var \App\Models\User|null $user */
-        $user = Auth::user();
-
-        $userId = $user?->id;
+        $userId = auth()->id();
 
         return [
-            'total' => Notification::where('user_id', $userId ?? 0)->notExpired()->count(),
-            'unread' => Notification::where('user_id', $userId ?? 0)->unread()->notExpired()->count(),
-            'tickets' => Notification::where('user_id', $userId ?? 0)->byCategory('ticket')->notExpired()->count(),
-            'loans' => Notification::where('user_id', $userId ?? 0)->byCategory('loan')->notExpired()->count(),
-            'system' => Notification::where('user_id', $userId ?? 0)->byCategory('system')->notExpired()->count(),
-            'urgent' => Notification::where('user_id', $userId ?? 0)->byPriority('urgent')->notExpired()->count(),
+            'total' => Notification::where('user_id', $userId)->notExpired()->count(),
+            'unread' => Notification::where('user_id', $userId)->unread()->notExpired()->count(),
+            'tickets' => Notification::where('user_id', $userId)->byCategory('ticket')->notExpired()->count(),
+            'loans' => Notification::where('user_id', $userId)->byCategory('loan')->notExpired()->count(),
+            'system' => Notification::where('user_id', $userId)->byCategory('system')->notExpired()->count(),
+            'urgent' => Notification::where('user_id', $userId)->byPriority('urgent')->notExpired()->count(),
         ];
     }
 
@@ -168,18 +115,12 @@ class NotificationCenter extends Component
 
     public function toggleDropdown(): void
     {
-        $this->showDropdown = ! $this->showDropdown;
+        $this->showDropdown = !$this->showDropdown;
     }
 
     public function markNotificationAsRead(int $notificationId): void
     {
-        $userId = $this->currentUserId();
-
-        if ($userId === null) {
-            return;
-        }
-
-        $notification = Notification::where('user_id', $userId)
+        $notification = Notification::where('user_id', auth()->id())
             ->where('id', $notificationId)
             ->first();
 
@@ -191,41 +132,18 @@ class NotificationCenter extends Component
 
     public function markAllAsRead(): void
     {
-        $userId = $this->currentUserId();
-
-        if ($userId === null) {
-            return;
-        }
-
-        $unreadCount = Notification::where('user_id', $userId)
+        Notification::where('user_id', auth()->id())
             ->unread()
-            ->notExpired()
-            ->count();
+            ->get()
+            ->each(fn ($notification) => $notification->markAsRead());
 
-        if ($unreadCount > 0) {
-            Notification::where('user_id', $userId)
-                ->unread()
-                ->get()
-                ->each(fn ($notification) => $notification->markAsRead());
-
-            session()->flash('success', "Sebanyak {$unreadCount} notifikasi telah ditandai sebagai dibaca.");
-            $this->dispatch('allNotificationsRead');
-        } else {
-            session()->flash('info', 'Tiada notifikasi yang belum dibaca.');
-        }
-
-        $this->closeMarkAllModal();
+        $this->dispatch('allNotificationsRead');
+        session()->flash('message', 'Semua notifikasi telah ditandai sebagai dibaca / All notifications marked as read');
     }
 
     public function deleteNotification(int $notificationId): void
     {
-        $userId = $this->currentUserId();
-
-        if ($userId === null) {
-            return;
-        }
-
-        $notification = Notification::where('user_id', $userId)
+        $notification = Notification::where('user_id', auth()->id())
             ->where('id', $notificationId)
             ->first();
 
@@ -238,26 +156,12 @@ class NotificationCenter extends Component
 
     public function clearAllRead(): void
     {
-        $userId = $this->currentUserId();
-
-        if ($userId === null) {
-            return;
-        }
-
-        Notification::where('user_id', $userId)
+        Notification::where('user_id', auth()->id())
             ->read()
             ->delete();
 
         $this->dispatch('readNotificationsCleared');
         session()->flash('message', 'Semua notifikasi yang telah dibaca telah dihapus / All read notifications cleared');
-    }
-
-    private function currentUserId(): ?int
-    {
-        /** @var \App\Models\User|null $user */
-        $user = Auth::user();
-
-        return $user?->id;
     }
 
     public function getFilterOptions(): array

@@ -37,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        // Middleware should be handled in routes
+        $this->middleware('guest');
     }
 
     /**
@@ -55,7 +55,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      */
-    protected function create(array $data): User
+    protected function create(array $data): \App\Models\User
     {
         return User::create([
             'name' => $data['name'],

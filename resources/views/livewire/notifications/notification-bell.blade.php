@@ -1,186 +1,173 @@
-{{--
-    ICTServe (iServe) – Notification Bell
-    MYDS & MyGovEA: accessible, semantic, responsive, clear, and consistent
---}}
-
-<div class="relative" x-data="{ open: @entangle('showDropdown').defer }">
+<div class="relative" x-data="{ open: @entangle('showDropdown') }">
     {{-- Bell Icon Button --}}
-    <x-myds.button
-        type="button"
-        variant="tertiary"
-        size="icon"
-        aria-label="{{ __('Buka notifikasi / View notifications') }}"
-        :aria-expanded="open ? 'true' : 'false'"
-        aria-haspopup="menu"
+    <button
         @click="open = !open"
-        class="relative"
-        :iconOnly="true"
-        tabindex="0"
+        type="button"
+        class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        aria-expanded="false"
+        aria-haspopup="true"
     >
-        <x-myds.button-icon>
-            <x-myds.icon name="bell" class="w-6 h-6" />
-        </x-myds.button-icon>
+        <span class="sr-only">{{ __('Buka notifikasi / View notifications') }}</span>
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5m0-10v5m-5-5h5m-5 0v5h5v-5h-5z" />
+        </svg>
+
         {{-- Notification Badge --}}
         @if($unreadCount > 0)
-            <span class="absolute -top-0.5 -right-0.5 h-5 w-5 rounded-full bg-danger-600 text-xs font-semibold text-white flex items-center justify-center ring-2 ring-white z-10" aria-label="{{ $unreadCount }} {{ __('notifikasi belum dibaca / unread notifications') }}">
+            <span class="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-red-500 text-xs font-medium text-white flex items-center justify-center ring-2 ring-white">
                 {{ $unreadCount > 99 ? '99+' : $unreadCount }}
             </span>
         @endif
-    </x-myds.button>
+    </button>
+
     {{-- Dropdown Panel --}}
     <div
         x-show="open"
-        x-transition:enter="transition easeoutback-short"
+        x-transition:enter="transition ease-out duration-100"
         x-transition:enter-start="transform opacity-0 scale-95"
         x-transition:enter-end="transform opacity-100 scale-100"
-        x-transition:leave="transition easeout-short"
+        x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        @keydown.escape.window="open = false"
         @click.outside="open = false"
-        class="absolute right-0 z-50 mt-3 w-96 max-w-xs min-w-[300px] origin-top-right myds-shadow-context-menu rounded-lg bg-bg-white-0 ring-1 ring-black ring-opacity-5 focus:outline-none"
+        class="absolute right-0 z-10 mt-2 w-80 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         role="menu"
         aria-orientation="vertical"
-        tabindex="-1"
         style="display: none;"
     >
         {{-- Header --}}
-        <div class="flex items-center justify-between px-5 py-3 border-b otl-divider bg-bg-washed rounded-t-lg">
-            <h3 class="text-heading-3xs font-semibold text-txt-black-900">
-                <x-myds.icon name="bell" class="mr-1 w-4 h-4 text-primary-600" />
-                {{ __('Notifikasi / Notifications') }}
-            </h3>
-            <div class="flex items-center gap-2">
-                @if($unreadCount > 0)
-                    <x-myds.button
-                        type="button"
-                        variant="tertiary"
-                        size="xs"
-                        wire:click="markAllAsRead"
-                        class="text-primary-600"
+        <div class="px-4 py-3 border-b border-gray-200">
+            <div class="flex items-center justify-between">
+                <h3 class="text-sm font-medium text-gray-900">
+                    {{ __('Notifikasi / Notifications') }}
+                </h3>
+                <div class="flex items-center space-x-2">
+                    @if($unreadCount > 0)
+                        <button
+                            wire:click="markAllAsRead"
+                            class="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                        >
+                            {{ __('Tandai Semua / Mark All') }}
+                        </button>
+                    @endif
+                    <a
+                        href="{{ route('notifications.index') }}"
+                        class="text-xs text-gray-500 hover:text-gray-700 font-medium"
+                        @click="open = false"
                     >
-                        {{ __('Tandai Semua / Mark All') }}
-                    </x-myds.button>
-                @endif
-                <x-myds.button
-                    :href="route('notifications.index')"
-                    variant="tertiary"
-                    size="xs"
-                    @click="open = false"
-                >
-                    {{ __('Lihat Semua / View All') }}
-                </x-myds.button>
+                        {{ __('Lihat Semua / View All') }}
+                    </a>
+                </div>
             </div>
+            @if($unreadCount > 0)
+                <p class="text-xs text-gray-500 mt-1">
+                    {{ $unreadCount }} {{ __('notifikasi belum dibaca / unread notifications') }}
+                </p>
+            @endif
         </div>
-        @if($unreadCount > 0)
-            <div class="px-5 py-1 text-body-xs text-txt-black-500 border-b otl-divider">
-                {{ $unreadCount }} {{ __('notifikasi belum dibaca / unread notifications') }}
-            </div>
-        @endif
+
         {{-- Notifications List --}}
         <div class="max-h-96 overflow-y-auto">
             @forelse($recentNotifications as $notification)
                 <div
-                    class="px-5 py-4 flex gap-3 items-start border-b otl-divider hover:bg-washed last:border-b-0 {{ !$notification->is_read ? 'bg-primary-50' : '' }}"
+                    class="px-4 py-3 hover:bg-gray-50 border-b border-gray-100 last:border-b-0 {{ !$notification->is_read ? 'bg-blue-50' : '' }}"
                     wire:key="bell-notification-{{ $notification->id }}"
-                    tabindex="0"
-                    role="menuitem"
-                    aria-label="{{ $notification->title }}"
                 >
-                    {{-- Icon --}}
-                    <div class="flex-shrink-0">
-                        <div class="w-9 h-9 rounded-full flex items-center justify-center
-                            @if($notification->priority === 'high') bg-warning-100
-                            @elseif($notification->priority === 'critical') bg-danger-100
-                            @else bg-primary-100 @endif
-                        ">
-                            {{-- Choose icon based on type --}}
-                            <x-myds.icon
-                                :name="match($notification->type) {
-                                    'ticket_created', 'ticket_updated' => 'clipboard-list',
-                                    'ticket_resolved', 'loan_approved' => 'check-circle',
-                                    'loan_requested' => 'document',
-                                    'equipment_due', 'equipment_overdue' => 'clock',
-                                    default => 'information-circle'
-                                }"
-                                class="w-5 h-5
-                                    @if($notification->priority === 'critical') text-danger-600
-                                    @elseif($notification->priority === 'high') text-warning-600
-                                    @else text-primary-600 @endif"
-                            />
-                        </div>
-                    </div>
-                    {{-- Content --}}
-                    <div class="min-w-0 flex-1">
-                        <div class="flex items-center gap-2">
-                            <span class="text-body-sm font-semibold text-txt-black-900 truncate">
-                                {{ $notification->title }}
-                            </span>
-                            @if(!$notification->is_read)
-                                <x-myds.tag variant="primary" dot="true" size="xs" mode="pill">
-                                    Baru
-                                </x-myds.tag>
-                            @endif
-                        </div>
-                        <div class="text-body-xs text-txt-black-700 mt-1 line-clamp-2">
-                            {{ $notification->message }}
-                        </div>
-                        <div class="flex items-center justify-between mt-2">
-                            <span class="text-xs text-txt-black-500">
-                                {{ $notification->getTimeAgo() }}
-                            </span>
-                            <div class="flex items-center gap-2">
-                                @if($notification->action_url)
-                                    <x-myds.button
-                                        :href="$notification->action_url"
-                                        variant="primary"
-                                        size="xs"
-                                        @click="open = false; @this.markAsRead({{ $notification->id }})"
-                                    >
-                                        {{ __('Lihat / View') }}
-                                    </x-myds.button>
-                                @endif
-                                @if(!$notification->is_read)
-                                    <x-myds.button
-                                        type="button"
-                                        variant="secondary"
-                                        size="xs"
-                                        wire:click="markAsRead({{ $notification->id }})"
-                                    >
-                                        {{ __('Tandai / Mark') }}
-                                    </x-myds.button>
-                                @endif
+                    <div class="flex items-start space-x-3">
+                        {{-- Icon --}}
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 rounded-full bg-{{ $notification->color }}-100 flex items-center justify-center">
+                                <svg class="w-4 h-4 {{ $this->getPriorityColor($notification->priority) }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    @switch($notification->type)
+                                        @case('ticket_created')
+                                        @case('ticket_updated')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 14.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                            @break
+                                        @case('ticket_resolved')
+                                        @case('loan_approved')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            @break
+                                        @case('loan_requested')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                            @break
+                                        @case('equipment_due')
+                                        @case('equipment_overdue')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            @break
+                                        @default
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    @endswitch
+                                </svg>
                             </div>
                         </div>
+
+                        {{-- Content --}}
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate">
+                                {{ $notification->title }}
+                            </p>
+                            <p class="text-xs text-gray-600 mt-1 line-clamp-2">
+                                {{ $notification->message }}
+                            </p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs text-gray-500">
+                                    {{ $notification->getTimeAgo() }}
+                                </span>
+                                <div class="flex items-center space-x-2">
+                                    @if($notification->action_url)
+                                        <a
+                                            href="{{ $notification->action_url }}"
+                                            class="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                                            @click="open = false; @this.markAsRead({{ $notification->id }})"
+                                        >
+                                            {{ __('Lihat / View') }}
+                                        </a>
+                                    @endif
+                                    @if(!$notification->is_read)
+                                        <button
+                                            wire:click="markAsRead({{ $notification->id }})"
+                                            class="text-xs text-green-600 hover:text-green-800 font-medium"
+                                        >
+                                            {{ __('Tandai / Mark') }}
+                                        </button>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Unread Indicator --}}
+                        @if(!$notification->is_read)
+                            <div class="flex-shrink-0">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             @empty
-                <div class="px-5 py-10 text-center">
-                    <x-myds.icon name="inbox" class="mx-auto h-12 w-12 text-txt-black-300" />
-                    <h3 class="mt-2 text-heading-3xs text-txt-black-900">
+                <div class="px-4 py-8 text-center">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5m0-10v5m-5-5h5m-5 0v5h5v-5h-5z"></path>
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">
                         {{ __('Tiada Notifikasi / No Notifications') }}
                     </h3>
-                    <p class="mt-1 text-body-sm text-txt-black-500">
+                    <p class="mt-1 text-sm text-gray-500">
                         {{ __('Anda tidak mempunyai notifikasi baharu / You don\'t have any new notifications') }}
                     </p>
                 </div>
             @endforelse
         </div>
+
         {{-- Footer --}}
         @if($recentNotifications->count() > 0)
-            <div class="px-5 py-3 border-t otl-divider bg-bg-washed rounded-b-lg">
-                <x-myds.button
-                    :href="route('notifications.index')"
-                    variant="primary"
-                    size="sm"
-                    class="w-full"
+            <div class="px-4 py-3 border-t border-gray-200 bg-gray-50">
+                <a
+                    href="{{ route('notifications.index') }}"
+                    class="block text-center text-sm text-blue-600 hover:text-blue-800 font-medium"
                     @click="open = false"
                 >
-                    <x-myds.button-icon>
-                        <x-myds.icon name="inbox" />
-                    </x-myds.button-icon>
                     {{ __('Lihat Semua Notifikasi / View All Notifications') }}
-                </x-myds.button>
+                </a>
             </div>
         @endif
     </div>

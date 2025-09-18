@@ -4,25 +4,22 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
-use App\Models\HelpdeskTicket;
 use App\Models\LoanRequest;
+use App\Models\HelpdeskTicket;
+use App\Models\EquipmentItem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
 #[Layout('layouts.iserve')]
 class Dashboard extends Component
 {
     public Collection $recentLoans;
-
     public Collection $recentTickets;
-
     public array $loanStats = [];
-
     public array $ticketStats = [];
-
     public array $quickActions = [];
 
     public function mount(): void
@@ -45,12 +42,11 @@ class Dashboard extends Component
     {
         $user = Auth::user();
 
-        if (! $user) {
+        if (!$user) {
             $this->loanStats = ['total' => 0, 'active' => 0, 'pending_approval' => 0, 'overdue' => 0];
             $this->ticketStats = ['total' => 0, 'open' => 0, 'in_progress' => 0, 'resolved_today' => 0];
             $this->recentLoans = collect();
             $this->recentTickets = collect();
-
             return;
         }
 
@@ -105,7 +101,7 @@ class Dashboard extends Component
                 ->get();
         } catch (\Exception $e) {
             // Keep defaults if database query fails
-            Log::error('Dashboard data loading failed: '.$e->getMessage());
+            Log::error('Dashboard data loading failed: ' . $e->getMessage());
         }
     }
 
@@ -178,7 +174,7 @@ class Dashboard extends Component
     public function render()
     {
         return view('livewire.dashboard', [
-            'title' => 'Papan Pemuka / Dashboard',
+            'title' => 'Papan Pemuka / Dashboard'
         ]);
     }
 }

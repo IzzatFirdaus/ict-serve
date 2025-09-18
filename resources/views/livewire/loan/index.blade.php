@@ -1,228 +1,210 @@
-{{--
-    ICTServe (iServe) – Loan Module Index
-    MYDS & MyGovEA compliant: Accessible, semantic, visually clear, responsive, keyboard-friendly
---}}
-
-<x-myds.skiplink href="#main-content">
-    <span>Skip to main content</span>
-</x-myds.skiplink>
-
-<x-myds.masthead>
-    <x-myds.masthead-header>
-        <x-myds.masthead-title>
-            <x-myds.icon name="inbox" class="w-6 h-6 mr-2" />
-            Modul Peminjaman ICT
-        </x-myds.masthead-title>
-    </x-myds.masthead-header>
-</x-myds.masthead>
-
-<main id="main-content" tabindex="0" class="myds-container max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8" x-data="{
+<div class="space-y-6" x-data="{
     activeTab: 'catalog',
     showFilters: false,
     searchQuery: '',
     selectedCategory: 'all'
 }">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
-        <h1 class="text-heading-lg font-semibold text-txt-black-900 flex items-center gap-2">
-            <x-myds.icon name="inbox" class="w-6 h-6" />
-            Modul Peminjaman
-        </h1>
-        <x-myds.button
-            variant="primary"
-            size="md"
+    <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-gray-900">Modul Peminjaman</h2>
+        <button
+            type="button"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
             @click="window.showNotification('Permohonan baru akan dibuka', 'info')"
         >
-            <x-myds.button-icon>
-                <x-myds.icon name="plus" class="w-5 h-5" />
-            </x-myds.button-icon>
             Permohonan Baru
-        </x-myds.button>
+        </button>
     </div>
 
-    {{-- Quick Stats --}}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <x-myds.card>
-            <x-myds.card-body>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-primary-50">
-                        <x-myds.icon name="clipboard-list" class="w-7 h-7 text-primary-600" />
-                    </div>
-                    <div>
-                        <div class="text-body-xs text-txt-black-500">Permohonan Aktif</div>
-                        <div class="text-heading-lg font-semibold text-txt-black-900">{{ $userLoanStats['pending'] ?? 0 }}</div>
-                    </div>
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <span class="text-2xl">📋</span>
                 </div>
-            </x-myds.card-body>
-        </x-myds.card>
-        <x-myds.card>
-            <x-myds.card-body>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-success-50">
-                        <x-myds.icon name="check-circle" class="w-7 h-7 text-success-600" />
-                    </div>
-                    <div>
-                        <div class="text-body-xs text-txt-black-500">Sedang Dipinjam</div>
-                        <div class="text-heading-lg font-semibold text-txt-black-900">{{ $userLoanStats['active'] ?? 0 }}</div>
-                    </div>
-                </div>
-            </x-myds.card-body>
-        </x-myds.card>
-        <x-myds.card>
-            <x-myds.card-body>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-warning-50">
-                        <x-myds.icon name="clock" class="w-7 h-7 text-warning-600" />
-                    </div>
-                    <div>
-                        <div class="text-body-xs text-txt-black-500">Perlu Pulangkan</div>
-                        <div class="text-heading-lg font-semibold text-txt-black-900">{{ $userLoanStats['due_soon'] ?? 0 }}</div>
-                    </div>
-                </div>
-            </x-myds.card-body>
-        </x-myds.card>
-    </div>
-
-    {{-- Tabs (MYDS tabs component) --}}
-    <x-myds.tabs variant="line" size="medium" class="mb-6">
-        <x-myds.tabs-list>
-            <x-myds.tabs-trigger
-                value="catalog"
-                :active="activeTab === 'catalog'"
-                @click="activeTab = 'catalog'"
-            >
-                <x-myds.tabs-icon>
-                    <x-myds.icon name="folder" />
-                </x-myds.tabs-icon>
-                Katalog Peralatan
-            </x-myds.tabs-trigger>
-            <x-myds.tabs-trigger
-                value="my-loans"
-                :active="activeTab === 'my-loans'"
-                @click="activeTab = 'my-loans'"
-            >
-                <x-myds.tabs-icon>
-                    <x-myds.icon name="archive" />
-                </x-myds.tabs-icon>
-                Peminjaman Saya
-            </x-myds.tabs-trigger>
-            <x-myds.tabs-trigger
-                value="history"
-                :active="activeTab === 'history'"
-                @click="activeTab = 'history'"
-            >
-                <x-myds.tabs-icon>
-                    <x-myds.icon name="clock" />
-                </x-myds.tabs-icon>
-                Sejarah
-            </x-myds.tabs-trigger>
-        </x-myds.tabs-list>
-
-        {{-- Filters/Search --}}
-        <div class="p-6 border-b otl-divider">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div class="flex-1 max-w-lg">
-                    <x-myds.search-bar size="medium">
-                        <x-myds.search-bar-input-container>
-                            <x-myds.search-bar-input x-model="searchQuery" placeholder="Cari peralatan..." />
-                            <x-myds.search-bar-search-button />
-                        </x-myds.search-bar-input-container>
-                    </x-myds.search-bar>
-                </div>
-                <div class="flex items-center gap-4">
-                    <x-myds.button
-                        type="button"
-                        variant="secondary"
-                        size="sm"
-                        @click="showFilters = !showFilters"
-                        aria-expanded="showFilters"
-                        aria-controls="loan-filters"
-                    >
-                        <x-myds.button-icon>
-                            <x-myds.icon name="filter" />
-                        </x-myds.button-icon>
-                        Tapis
-                    </x-myds.button>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-600">Permohonan Aktif</p>
+                    <p class="text-2xl font-semibold text-gray-900">{{ $userLoanStats['pending'] ?? 0 }}</p>
                 </div>
             </div>
-            {{-- Filters Panel --}}
-            <div id="loan-filters" x-show="showFilters" x-transition class="mt-4 pt-4 border-t otl-divider">
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <span class="text-2xl">✅</span>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-600">Sedang Dipinjam</p>
+                    <p class="text-2xl font-semibold text-gray-900">{{ $userLoanStats['active'] ?? 0 }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <span class="text-2xl">⏱️</span>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-600">Perlu Pulangkan</p>
+                    <p class="text-2xl font-semibold text-gray-900">{{ $userLoanStats['due_soon'] ?? 0 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loan Management Tabs with Alpine.js -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div class="border-b border-gray-200">
+            <nav class="flex space-x-8 px-6" role="tablist">
+                <button
+                    class="py-4 px-1 border-b-2 font-medium text-sm transition-colors"
+                    :class="activeTab === 'catalog' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'"
+                    @click="activeTab = 'catalog'"
+                    role="tab"
+                >
+                    Katalog Peralatan
+                </button>
+                <button
+                    class="py-4 px-1 border-b-2 font-medium text-sm transition-colors"
+                    :class="activeTab === 'my-loans' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'"
+                    @click="activeTab = 'my-loans'"
+                    role="tab"
+                >
+                    Peminjaman Saya
+                </button>
+                <button
+                    class="py-4 px-1 border-b-2 font-medium text-sm transition-colors"
+                    :class="activeTab === 'history' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'"
+                    @click="activeTab = 'history'"
+                    role="tab"
+                >
+                    Sejarah
+                </button>
+            </nav>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="p-6 border-b border-gray-100">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+                <div class="flex-1 max-w-lg">
+                    <label for="search" class="sr-only">Cari peralatan</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <input
+                            id="search"
+                            name="search"
+                            class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Cari peralatan..."
+                            x-model="searchQuery"
+                        >
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button
+                        type="button"
+                        class="flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                        @click="showFilters = !showFilters"
+                    >
+                        <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                        </svg>
+                        Tapis
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters Panel -->
+            <div x-show="showFilters" x-transition class="mt-4 pt-4 border-t border-gray-100">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <x-myds.field>
-                        <x-myds.label for="category">Kategori</x-myds.label>
-                        <x-myds.select id="category" x-model="selectedCategory">
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                        <select
+                            id="category"
+                            class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            x-model="selectedCategory"
+                        >
                             <option value="all">Semua Kategori</option>
                             <option value="laptop">Laptop</option>
                             <option value="projector">Projektor</option>
                             <option value="camera">Kamera</option>
                             <option value="accessories">Aksesori</option>
-                        </x-myds.select>
-                    </x-myds.field>
-                    <x-myds.field>
-                        <x-myds.label for="availability">Ketersediaan</x-myds.label>
-                        <x-myds.select id="availability">
+                        </select>
+                    </div>
+                    <div>
+                        <label for="availability" class="block text-sm font-medium text-gray-700 mb-2">Ketersediaan</label>
+                        <select
+                            id="availability"
+                            class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        >
                             <option value="all">Semua</option>
                             <option value="available">Tersedia</option>
                             <option value="borrowed">Sedang Dipinjam</option>
                             <option value="maintenance">Dalam Pembaikan</option>
-                        </x-myds.select>
-                    </x-myds.field>
-                    <x-myds.field>
-                        <x-myds.label for="sort">Susun mengikut</x-myds.label>
-                        <x-myds.select id="sort">
+                        </select>
+                    </div>
+                    <div>
+                        <label for="sort" class="block text-sm font-medium text-gray-700 mb-2">Susun mengikut</label>
+                        <select
+                            id="sort"
+                            class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        >
                             <option value="name">Nama</option>
                             <option value="category">Kategori</option>
                             <option value="availability">Ketersediaan</option>
-                        </x-myds.select>
-                    </x-myds.field>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
 
-        {{-- Tab Contents --}}
-        <x-myds.tabs-content value="catalog" x-show="activeTab === 'catalog'" x-transition>
-            <div class="text-center py-12">
-                <x-myds.icon name="table" class="mx-auto h-12 w-12 text-txt-black-300" />
-                <div class="mt-2 text-heading-xs text-txt-black-900">Katalog Peralatan</div>
-                <div class="mt-1 text-body-sm text-txt-black-500">Senarai peralatan akan dipaparkan di sini.</div>
-                <div class="mt-2 text-body-sm text-txt-black-500">
-                    <template x-if="searchQuery">
-                        <span>Mencari: "<span x-text="searchQuery"></span>"</span>
-                    </template>
-                    <template x-if="selectedCategory !== 'all'">
-                        <span class="ml-2">Kategori: <span x-text="selectedCategory"></span></span>
-                    </template>
+        <!-- Tab Content -->
+        <div class="p-6">
+            <!-- Catalog Tab -->
+            <div x-show="activeTab === 'catalog'" x-transition>
+                <div class="text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">Katalog Peralatan</h3>
+                    <p class="mt-1 text-sm text-gray-500">Senarai peralatan akan dipaparkan di sini.</p>
+                    <div class="mt-2 text-sm text-gray-500">
+                        <template x-if="searchQuery">
+                            <span>Mencari: "<span x-text="searchQuery"></span>"</span>
+                        </template>
+                        <template x-if="selectedCategory !== 'all'">
+                            <span class="ml-2">Kategori: <span x-text="selectedCategory"></span></span>
+                        </template>
+                    </div>
                 </div>
             </div>
-        </x-myds.tabs-content>
-        <x-myds.tabs-content value="my-loans" x-show="activeTab === 'my-loans'" x-transition>
-            <div class="text-center py-12">
-                <x-myds.icon name="archive" class="mx-auto h-12 w-12 text-txt-black-300" />
-                <div class="mt-2 text-heading-xs text-txt-black-900">Peminjaman Saya</div>
-                <div class="mt-1 text-body-sm text-txt-black-500">Senarai peminjaman anda akan dipaparkan di sini.</div>
-            </div>
-        </x-myds.tabs-content>
-        <x-myds.tabs-content value="history" x-show="activeTab === 'history'" x-transition>
-            <div class="text-center py-12">
-                <x-myds.icon name="clock" class="mx-auto h-12 w-12 text-txt-black-300" />
-                <div class="mt-2 text-heading-xs text-txt-black-900">Sejarah Peminjaman</div>
-                <div class="mt-1 text-body-sm text-txt-black-500">Sejarah peminjaman anda akan dipaparkan di sini.</div>
-            </div>
-        </x-myds.tabs-content>
-    </x-myds.tabs>
-</main>
 
-<x-myds.footer>
-    <x-myds.footer-section>
-        <x-myds.site-info>
-            <x-myds.footer-logo logoTitle="Bahagian Pengurusan Maklumat (BPM)" />
-            Aras 13, 14 &amp; 15, Blok Menara, Menara Usahawan, No. 18, Persiaran Perdana, Presint 2, 62000 Putrajaya, Malaysia
-            <div class="mt-2">© 2025 BPM, Kementerian Pelancongan, Seni dan Budaya Malaysia.</div>
-            <div class="mt-2 flex gap-3">
-                <a href="#" aria-label="Facebook" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="facebook" class="w-5 h-5" /></a>
-                <a href="#" aria-label="Twitter" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="twitter" class="w-5 h-5" /></a>
-                <a href="#" aria-label="Instagram" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="instagram" class="w-5 h-5" /></a>
-                <a href="#" aria-label="YouTube" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="youtube" class="w-5 h-5" /></a>
+            <!-- My Loans Tab -->
+            <div x-show="activeTab === 'my-loans'" x-transition>
+                <div class="text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">Peminjaman Saya</h3>
+                    <p class="mt-1 text-sm text-gray-500">Senarai peminjaman anda akan dipaparkan di sini.</p>
+                </div>
             </div>
-        </x-myds.site-info>
-    </x-myds.footer-section>
-</x-myds.footer>
+
+            <!-- History Tab -->
+            <div x-show="activeTab === 'history'" x-transition>
+                <div class="text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">Sejarah Peminjaman</h3>
+                    <p class="mt-1 text-sm text-gray-500">Sejarah peminjaman anda akan dipaparkan di sini.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

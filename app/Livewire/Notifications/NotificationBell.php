@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace App\Livewire\Notifications;
 
 use App\Models\Notification;
-use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
+use Livewire\Attributes\Computed;
 
 class NotificationBell extends Component
 {
     public bool $showDropdown = false;
-
     public int $maxNotifications = 5;
 
     protected $listeners = [
@@ -33,13 +31,7 @@ class NotificationBell extends Component
     #[Computed]
     public function getUnreadCount(): int
     {
-        $userId = $this->currentUserId();
-
-        if ($userId === null) {
-            return 0;
-        }
-
-        return Notification::where('user_id', $userId)
+        return Notification::where('user_id', auth()->id())
             ->unread()
             ->notExpired()
             ->count();
@@ -48,13 +40,7 @@ class NotificationBell extends Component
     #[Computed]
     public function getRecentNotifications()
     {
-        $userId = $this->currentUserId();
-
-        if ($userId === null) {
-            return collect([]);
-        }
-
-        return Notification::where('user_id', $userId)
+        return Notification::where('user_id', auth()->id())
             ->notExpired()
             ->recent()
             ->limit($this->maxNotifications)
@@ -63,7 +49,7 @@ class NotificationBell extends Component
 
     public function toggleDropdown(): void
     {
-        $this->showDropdown = ! $this->showDropdown;
+        $this->showDropdown = !$this->showDropdown;
     }
 
     public function closeDropdown(): void
@@ -73,13 +59,7 @@ class NotificationBell extends Component
 
     public function markAsRead(int $notificationId): void
     {
-        $userId = $this->currentUserId();
-
-        if ($userId === null) {
-            return;
-        }
-
-        $notification = Notification::where('user_id', $userId)
+        $notification = Notification::where('user_id', auth()->id())
             ->where('id', $notificationId)
             ->first();
 
@@ -91,27 +71,13 @@ class NotificationBell extends Component
 
     public function markAllAsRead(): void
     {
-        $userId = $this->currentUserId();
-
-        if ($userId === null) {
-            return;
-        }
-
-        Notification::where('user_id', $userId)
+        Notification::where('user_id', auth()->id())
             ->unread()
             ->get()
             ->each(fn ($notification) => $notification->markAsRead());
 
         $this->dispatch('allNotificationsRead');
         $this->showDropdown = false;
-    }
-
-    private function currentUserId(): ?int
-    {
-        /** @var \App\Models\User|null $user */
-        $user = Auth::user();
-
-        return $user?->id;
     }
 
     public function getNotificationIcon(string $type): string
@@ -152,15 +118,13 @@ class NotificationBell extends Component
         if ($diff < 1) {
             return 'Baru sahaja';
         } elseif ($diff < 60) {
-            return $diff.' minit lalu';
+            return $diff . ' minit lalu';
         } elseif ($diff < 1440) {
             $hours = floor($diff / 60);
-
-            return $hours.' jam lalu';
+            return $hours . ' jam lalu';
         } else {
             $days = floor($diff / 1440);
-
-            return $days.' hari lalu';
+            return $days . ' hari lalu';
         }
     }
 }

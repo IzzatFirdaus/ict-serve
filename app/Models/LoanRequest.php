@@ -7,76 +7,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
- * @property int $id
- * @property string $request_number
- * @property int $user_id
- * @property int $status_id
- * @property string $purpose
- * @property \Carbon\Carbon|null $requested_from
- * @property \Carbon\Carbon|null $requested_to
- * @property \Carbon\Carbon|null $actual_from
- * @property \Carbon\Carbon|null $actual_to
- * @property string|null $notes
- * @property string|null $rejection_reason
- * @property string|null $approval_token
- * @property int|null $supervisor_id
- * @property \Carbon\Carbon|null $supervisor_approved_at
- * @property string|null $supervisor_notes
- * @property int|null $ict_admin_id
- * @property \Carbon\Carbon|null $ict_approved_at
- * @property string|null $ict_notes
- * @property int|null $issued_by
- * @property \Carbon\Carbon|null $issued_at
- * @property string|null $pickup_signature_path
- * @property int|null $received_by
- * @property \Carbon\Carbon|null $returned_at
- * @property string|null $return_signature_path
- * @property string|null $return_condition_notes
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @property-read User $user
  * @property-read LoanStatus $status
- * @property-read User|null $supervisor
- * @property-read User|null $ictAdmin
- * @property-read User|null $issuedBy
- * @property-read User|null $receivedBy
- * @property-read \Illuminate\Database\Eloquent\Collection<int, LoanItem> $loanItems
- * @property-read \Illuminate\Database\Eloquent\Collection<int, EquipmentItem> $equipmentItems
- * @property-read EquipmentItem|null $equipmentItem
  */
 class LoanRequest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'reference_number',
         'request_number',
         'user_id',
-        'applicant_name',
-        'applicant_position',
-        'applicant_department',
-        'applicant_phone',
         'status_id',
-        'status',
         'purpose',
-        'location',
         'requested_from',
-        'loan_start_date',
-        'expected_return_date',
-        'responsible_officer_name',
-        'responsible_officer_position',
-        'responsible_officer_phone',
-        'same_as_applicant',
-        'equipment_requests',
-        'endorsing_officer_name',
-        'endorsing_officer_position',
-        'endorsement_status',
-        'endorsement_comments',
-        'submitted_at',
         'requested_to',
         'actual_from',
         'actual_to',
@@ -97,27 +43,8 @@ class LoanRequest extends Model
         'return_condition_notes',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'equipment_requests' => 'array',
-            'same_as_applicant' => 'boolean',
-            'requested_from' => 'date',
-            'requested_to' => 'date',
-            'loan_start_date' => 'date',
-            'expected_return_date' => 'date',
-            'actual_from' => 'date',
-            'actual_to' => 'date',
-            'submitted_at' => 'datetime',
-            'supervisor_approved_at' => 'datetime',
-            'ict_approved_at' => 'datetime',
-            'issued_at' => 'datetime',
-            'returned_at' => 'datetime',
-        ];
-    }
-
     /**
-     * Get the user who made the request.
+     * Get the user who made this loan request
      */
     public function user(): BelongsTo
     {
@@ -125,7 +52,7 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the loan status.
+     * Get the current status of this loan request
      */
     public function status(): BelongsTo
     {
@@ -133,15 +60,7 @@ class LoanRequest extends Model
     }
 
     /**
-     * Alias for status() method - for backward compatibility.
-     */
-    public function loanStatus(): BelongsTo
-    {
-        return $this->status();
-    }
-
-    /**
-     * Get the supervisor who needs to approve.
+     * Get the supervisor who approved this request
      */
     public function supervisor(): BelongsTo
     {
@@ -149,7 +68,7 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the ICT admin who approved.
+     * Get the ICT admin who approved this request
      */
     public function ictAdmin(): BelongsTo
     {
@@ -157,7 +76,7 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the staff who issued the equipment.
+     * Get the user who issued the equipment
      */
     public function issuedBy(): BelongsTo
     {
@@ -165,7 +84,7 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the person who received the equipment.
+     * Get the user who received the returned equipment
      */
     public function receivedBy(): BelongsTo
     {
@@ -173,126 +92,87 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the loan items for this request.
+     * Get equipment items for this loan request
+     */
+    public function equipmentItems(): BelongsToMany
+    {
+        return $this->belongsToMany(EquipmentItem::class, 'loan_items', 'loan_request_id', 'equipment_item_id')
+            ->withPivot(['quantity', 'condition_out', 'condition_in', 'notes_out', 'notes_in', 'damage_reported'])
+            ->withTimestamps();
+    }
+
+    /**
+     * Get loan items for this request
      */
     public function loanItems(): HasMany
     {
-        return $this->hasMany(LoanItem::class, 'loan_request_id');
+        return $this->hasMany(LoanItem::class);
     }
 
     /**
-     * Get the equipment items for this request (through loan items).
+     * Check if request is pending approval
      */
-    public function equipmentItems(): HasManyThrough
+    public function isPending(): bool
     {
-        return $this->hasManyThrough(
-            EquipmentItem::class,
-            LoanItem::class,
-            'loan_request_id',
-            'id',
-            'id',
-            'equipment_item_id'
-        );
+        return $this->status->code === 'pending';
     }
 
     /**
-     * Get the approvals for this request.
+     * Check if request is approved by supervisor
      */
-    public function approvals(): HasMany
+    public function isSupervisorApproved(): bool
     {
-        return $this->hasMany(LoanApproval::class, 'loan_request_id');
+        return $this->status->code === 'supervisor_approved';
     }
 
     /**
-     * Accessor for single equipment item (for legacy code)
+     * Check if request is approved by ICT
      */
-    public function getEquipmentItemAttribute(): ?EquipmentItem
+    public function isIctApproved(): bool
     {
-        /** @var \App\Models\LoanItem|null $loanItem */
-        $loanItem = $this->loanItems()->first();
-
-        return $loanItem?->equipmentItem;
+        return $this->status->code === 'ict_approved';
     }
 
     /**
-     * Generate unique request number
+     * Check if loan is currently active
      */
-    public static function generateRequestNumber(): string
+    public function isActive(): bool
     {
-        $prefix = 'LR'.date('Y');
-        $lastRequest = static::where('request_number', 'like', $prefix.'%', 'and')
-            ->orderBy('request_number', 'desc')
-            ->first();
-
-        if ($lastRequest) {
-            $lastNumber = (int) substr($lastRequest->request_number, -4);
-            $newNumber = $lastNumber + 1;
-        } else {
-            $newNumber = 1;
-        }
-
-        return $prefix.str_pad((string) $newNumber, 4, '0', STR_PAD_LEFT);
+        return $this->status->code === 'active';
     }
 
     /**
-     * Check if request can be edited.
+     * Check if loan is returned
      */
-    public function canBeEdited(): bool
+    public function isReturned(): bool
     {
-        // Safety check - if status is a string (legacy data), try to get the relationship
-        if (is_string($this->status)) {
-            $this->load('status');
-        }
-
-        return $this->status &&
-               is_object($this->status) &&
-               method_exists($this->status, 'canBeEdited') ?
-               $this->status->canBeEdited() : false;
+        return $this->status->code === 'returned';
     }
 
     /**
-     * Check if request can be cancelled.
-     */
-    public function canBeCancelled(): bool
-    {
-        // Safety check - if status is a string (legacy data), try to get the relationship
-        if (is_string($this->status)) {
-            $this->load('status');
-        }
-
-        return $this->status &&
-               is_object($this->status) &&
-               method_exists($this->status, 'canBeCancelled') ?
-               $this->status->canBeCancelled() : false;
-    }
-
-    /**
-     * Check if request is overdue.
+     * Check if loan is overdue
      */
     public function isOverdue(): bool
     {
-        // Safety check - if status is a string (legacy data), try to get the relationship
-        if (is_string($this->status)) {
-            $this->load('status');
+        if (! $this->isActive()) {
+            return false;
         }
 
-        return $this->status &&
-               is_object($this->status) &&
-               $this->status->code === 'active'
-            && $this->requested_to
-            && $this->requested_to < now();
+        return now()->isAfter($this->requested_to);
     }
 
-    /**
-     * Get loan duration in days.
-     */
-    public function getLoanDurationAttribute(): ?int
+    protected function casts(): array
     {
-        if (! $this->requested_from || ! $this->requested_to) {
-            return null;
-        }
-
-        return (int) ($this->requested_from->diffInDays($this->requested_to) + 1);
+        return [
+            'requested_from' => 'date',
+            'requested_to' => 'date',
+            'actual_from' => 'date',
+            'actual_to' => 'date',
+            'supervisor_approved_at' => 'datetime',
+            'ict_approved_at' => 'datetime',
+            'issued_at' => 'datetime',
+            'returned_at' => 'datetime',
+        ];
     }
 
     /**
@@ -307,5 +187,27 @@ class LoanRequest extends Model
                 $loanRequest->request_number = static::generateRequestNumber();
             }
         });
+    }
+
+    /**
+     * Generate request number in format: LR-YYYY-MMDD-XXX
+     */
+    protected static function generateRequestNumber(): string
+    {
+        $date = now();
+        $prefix = 'LR-'.$date->format('Y-md');
+
+        $lastRequest = static::where('request_number', 'like', $prefix.'%')
+            ->orderBy('request_number', 'desc')
+            ->first();
+
+        if ($lastRequest) {
+            $lastSequence = intval(substr($lastRequest->request_number, -3));
+            $sequence = str_pad(strval($lastSequence + 1), 3, '0', STR_PAD_LEFT);
+        } else {
+            $sequence = '001';
+        }
+
+        return $prefix.'-'.$sequence;
     }
 }

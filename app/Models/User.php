@@ -4,31 +4,14 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-/**
- * @property int $id
- * @property string $name
- * @property string $email
- * @property string|null $staff_id
- * @property string|null $department
- * @property string|null $phone
- * @property string|null $position
- * @property string|null $profile_picture
- * @property \App\Enums\UserRole|null $role
- * @property array|null $preferences
- * @property \Illuminate\Support\Carbon|null $last_login_at
- * @property-read string|null $avatar_url
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $loanRequests
- *
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -43,16 +26,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'staff_id',
-        'role',
         'division',
         'department',
         'position',
         'phone',
+        'role',
         'supervisor_id',
         'is_active',
         'last_login_at',
-        'profile_picture',
-        'preferences',
     ];
 
     /**
@@ -66,71 +47,55 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Get the supervisor of this user
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'role' => \App\Enums\UserRole::class,
-            'preferences' => 'array',
-            'is_active' => 'boolean',
-        ];
-    }
-
-    /**
-     * Get the supervisor that this user reports to.
-     */
-    public function supervisor()
+    public function supervisor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'supervisor_id');
     }
 
     /**
-     * Get the subordinates that report to this user.
+     * Get users supervised by this user
      */
-    public function subordinates()
+    public function subordinates(): HasMany
     {
         return $this->hasMany(User::class, 'supervisor_id');
     }
 
     /**
-     * Get the loan requests created by this user.
+     * Get loan requests made by this user
      */
-    public function loanRequests()
+    public function loanRequests(): HasMany
     {
-        return $this->hasMany(LoanRequest::class, 'user_id');
+        return $this->hasMany(LoanRequest::class);
     }
 
     /**
-     * Get the loan requests supervised by this user.
+     * Get loan requests supervised by this user
      */
-    public function supervisedLoanRequests()
+    public function supervisedLoanRequests(): HasMany
     {
         return $this->hasMany(LoanRequest::class, 'supervisor_id');
     }
 
     /**
-     * Get the helpdesk tickets created by this user.
+     * Get loan requests approved by this user as ICT admin
+     */
+    public function ictApprovedLoanRequests(): HasMany
+    {
+        return $this->hasMany(LoanRequest::class, 'ict_admin_id');
+    }
+
+    /**
+     * Get helpdesk tickets created by this user
      */
     public function helpdeskTickets(): HasMany
     {
-        return $this->hasMany(HelpdeskTicket::class, 'user_id');
+        return $this->hasMany(HelpdeskTicket::class);
     }
 
     /**
-     * Get the helpdesk tickets created by this user (alias).
-     */
-    public function tickets(): HasMany
-    {
-        return $this->helpdeskTickets();
-    }
-
-    /**
-     * Get the helpdesk tickets assigned to this user.
+     * Get helpdesk tickets assigned to this user
      */
     public function assignedTickets(): HasMany
     {
@@ -138,56 +103,19 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Check if user has a specific role.
-     */
-    public function hasRole(string|array $role): bool
-    {
-        if (is_array($role)) {
-            return in_array($this->getCurrentRole(), $role, true);
-        }
-
-        return $this->getCurrentRole() === $role;
-    }
-
-    /**
-     * Get the current role value as string.
-     */
-    private function getCurrentRole(): string
-    {
-        if ($this->role instanceof \App\Enums\UserRole) {
-            return $this->role->value;
-        }
-
-        return '';
-    }
-
-    /**
-     * Get audit logs for this user.
+     * Get audit logs for this user
      */
     public function auditLogs(): HasMany
     {
-        return $this->hasMany(\OwenIt\Auditing\Models\Audit::class, 'user_id');
+        return $this->hasMany(AuditLog::class);
     }
 
     /**
-     * Get the application's custom notifications for this user.
-     * Note: Laravel's built-in database notifications are available via Notifiable::notifications().
+     * Get notifications for this user
      */
-    public function appNotifications()
+    public function notifications(): HasMany
     {
-        return $this->hasMany(Notification::class, 'user_id');
-    }
-
-    /**
-     * Get Laravel database notifications for this user
-     * (Override the Notifiable trait's method to use our custom table)
-     */
-    public function notifications()
-    {
-        return $this->morphMany(
-            \Illuminate\Notifications\DatabaseNotification::class,
-            'notifiable'
-        );
+        return $this->hasMany(Notification::class);
     }
 
     /**
@@ -201,9 +129,49 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Check if user has specific role
      */
-    public function activityLogs()
+    public function hasRole(string $role): bool
     {
-        return $this->hasMany(ActivityLog::class, 'user_id');
+        return $this->role === $role;
+    }
+
+    /**
+     * Check if user is supervisor
+     */
+    public function isSupervisor(): bool
+    {
+        return $this->role === 'supervisor';
+    }
+
+    /**
+     * Check if user is ICT admin
+     */
+    public function isIctAdmin(): bool
+    {
+        return $this->role === 'ict_admin';
+    }
+
+    /**
+     * Check if user is helpdesk staff
+     */
+    public function isHelpdeskStaff(): bool
+    {
+        return $this->role === 'helpdesk_staff';
+    }
+
+    /**
+     * Check if user is super admin
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->role === 'super_admin';
+    }
+
+    /**
+     * Get full name with staff ID
+     */
+    public function getFullNameWithStaffIdAttribute(): string
+    {
+        return $this->name.' ('.$this->staff_id.')';
     }
 
     /**
@@ -211,18 +179,13 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return array<string, string>
      */
-    // ...existing code...
-
-    /**
-     * Get the user's avatar URL.
-     */
-    public function getAvatarUrlAttribute(): ?string
+    protected function casts(): array
     {
-        if ($this->profile_picture) {
-            return asset('storage/'.$this->profile_picture);
-        }
-
-        // Return gravatar or default avatar
-        return 'https://www.gravatar.com/avatar/'.md5(strtolower($this->email)).'?d=mp&s=80';
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'is_active' => 'boolean',
+            'last_login_at' => 'datetime',
+        ];
     }
 }

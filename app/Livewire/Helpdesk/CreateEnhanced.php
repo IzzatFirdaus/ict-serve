@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace App\Livewire\Helpdesk;
 
-use App\Models\EquipmentItem;
-use App\Models\HelpdeskTicket;
 use App\Models\TicketCategory;
 use App\Models\TicketStatus;
+use App\Models\HelpdeskTicket;
+use App\Models\EquipmentItem;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Layout;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 use Livewire\WithFileUploads;
 
 #[Layout('layouts.iserve')]
@@ -22,68 +23,44 @@ class CreateEnhanced extends Component
 
     // Form type and navigation
     public string $ticketType = 'general'; // general, incident, damage
-
     public int $currentStep = 1;
-
     public int $maxSteps = 3;
 
     // Basic ticket properties
     public string $title = '';
-
     public string $description = '';
-
     public int $category_id = 0;
-
     public string $priority = 'medium';
-
     public string $urgency = 'normal';
-
     public ?int $equipment_item_id = null;
-
     public string $location = '';
-
     public string $contact_phone = '';
-
     public array $attachments = [];
-
     public array $uploadedFiles = [];
 
     // Incident-specific fields
     public string $incident_datetime = '';
-
     public string $incident_witnesses = '';
-
     public string $incident_severity = 'minor';
-
     public string $incident_impact = '';
-
     public string $immediate_action_taken = '';
-
     public string $incident_location_details = '';
 
     // Damage-specific fields
     public string $damage_type = 'physical';
-
     public ?float $estimated_cost = null;
-
     public string $warranty_status = 'unknown';
-
     public bool $replacement_needed = false;
-
     public string $damage_cause = '';
-
     public string $damage_extent = '';
 
     // Data collections
     public array $ticketCategories = [];
-
     public array $equipmentItems = [];
-
     public array $technicians = [];
 
     // UI state
     public bool $showEquipmentSelector = false;
-
     public bool $isSubmitting = false;
 
     public function mount(): void
@@ -149,10 +126,10 @@ class CreateEnhanced extends Component
             'Hardware Issues',
             'Equipment Damage',
             'Printer Issues',
-            'Network Issues',
+            'Network Issues'
         ]);
 
-        if (! $this->showEquipmentSelector) {
+        if (!$this->showEquipmentSelector) {
             $this->equipment_item_id = null;
         }
 
@@ -259,7 +236,7 @@ class CreateEnhanced extends Component
 
                 // Get initial status
                 $newStatus = TicketStatus::where('code', 'new')->first();
-                if (! $newStatus) {
+                if (!$newStatus) {
                     throw new \Exception('Initial ticket status not found');
                 }
 
@@ -293,15 +270,15 @@ class CreateEnhanced extends Component
                 $ticket = HelpdeskTicket::create($ticketData);
 
                 session()->flash('success',
-                    'Tiket bantuan telah berjaya diwujudkan. Nombor tiket: '.$ticket->ticket_number.
-                    ' / Helpdesk ticket has been successfully created. Ticket number: '.$ticket->ticket_number
+                    'Tiket bantuan telah berjaya diwujudkan. Nombor tiket: ' . $ticket->ticket_number .
+                    ' / Helpdesk ticket has been successfully created. Ticket number: ' . $ticket->ticket_number
                 );
             });
 
             return redirect()->route('helpdesk.index');
         } catch (\Exception $e) {
-            logger('Enhanced helpdesk ticket creation error: '.$e->getMessage());
-            $this->addError('submit', 'Ralat semasa mewujudkan tiket / Error creating ticket: '.$e->getMessage());
+            logger('Enhanced helpdesk ticket creation error: ' . $e->getMessage());
+            $this->addError('submit', 'Ralat semasa mewujudkan tiket / Error creating ticket: ' . $e->getMessage());
         } finally {
             $this->isSubmitting = false;
         }
@@ -313,7 +290,7 @@ class CreateEnhanced extends Component
 
         foreach ($this->attachments as $file) {
             if ($file) {
-                $filename = uniqid().'.'.$file->getClientOriginalExtension();
+                $filename = uniqid() . '.' . $file->getClientOriginalExtension();
                 $path = $file->storeAs('helpdesk-attachments', $filename, 'public');
 
                 $attachmentPaths[] = [
@@ -332,19 +309,19 @@ class CreateEnhanced extends Component
 
     private function buildIncidentDescription(): string
     {
-        $description = $this->description."\n\n";
+        $description = $this->description . "\n\n";
         $description .= "=== MAKLUMAT INSIDEN / INCIDENT DETAILS ===\n";
-        $description .= 'Tarikh & Masa / Date & Time: '.$this->incident_datetime."\n";
-        $description .= 'Keterukan / Severity: '.ucfirst($this->incident_severity)."\n";
-        $description .= 'Kesan / Impact: '.$this->incident_impact."\n";
-        $description .= 'Tindakan Segera / Immediate Action: '.$this->immediate_action_taken."\n";
+        $description .= "Tarikh & Masa / Date & Time: " . $this->incident_datetime . "\n";
+        $description .= "Keterukan / Severity: " . ucfirst($this->incident_severity) . "\n";
+        $description .= "Kesan / Impact: " . $this->incident_impact . "\n";
+        $description .= "Tindakan Segera / Immediate Action: " . $this->immediate_action_taken . "\n";
 
         if ($this->incident_witnesses) {
-            $description .= 'Saksi / Witnesses: '.$this->incident_witnesses."\n";
+            $description .= "Saksi / Witnesses: " . $this->incident_witnesses . "\n";
         }
 
         if ($this->incident_location_details) {
-            $description .= 'Butiran Lokasi / Location Details: '.$this->incident_location_details."\n";
+            $description .= "Butiran Lokasi / Location Details: " . $this->incident_location_details . "\n";
         }
 
         return $description;
@@ -352,16 +329,16 @@ class CreateEnhanced extends Component
 
     private function buildDamageDescription(): string
     {
-        $description = $this->description."\n\n";
+        $description = $this->description . "\n\n";
         $description .= "=== MAKLUMAT KEROSAKAN / DAMAGE DETAILS ===\n";
-        $description .= 'Jenis Kerosakan / Damage Type: '.ucfirst($this->damage_type)."\n";
-        $description .= 'Punca / Cause: '.$this->damage_cause."\n";
-        $description .= 'Tahap Kerosakan / Extent: '.$this->damage_extent."\n";
-        $description .= 'Status Waranti / Warranty Status: '.ucfirst($this->warranty_status)."\n";
-        $description .= 'Penggantian Diperlukan / Replacement Needed: '.($this->replacement_needed ? 'Ya/Yes' : 'Tidak/No')."\n";
+        $description .= "Jenis Kerosakan / Damage Type: " . ucfirst($this->damage_type) . "\n";
+        $description .= "Punca / Cause: " . $this->damage_cause . "\n";
+        $description .= "Tahap Kerosakan / Extent: " . $this->damage_extent . "\n";
+        $description .= "Status Waranti / Warranty Status: " . ucfirst($this->warranty_status) . "\n";
+        $description .= "Penggantian Diperlukan / Replacement Needed: " . ($this->replacement_needed ? 'Ya/Yes' : 'Tidak/No') . "\n";
 
         if ($this->estimated_cost) {
-            $description .= 'Anggaran Kos / Estimated Cost: RM '.number_format($this->estimated_cost, 2)."\n";
+            $description .= "Anggaran Kos / Estimated Cost: RM " . number_format($this->estimated_cost, 2) . "\n";
         }
 
         return $description;

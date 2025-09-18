@@ -39,10 +39,7 @@ Route::post('/auth/login', function (Request $request) {
         ], 401);
     }
 
-    // If Sanctum is installed, you can create a token; otherwise fallback to a simple stub string.
-    $token = method_exists($user, 'createToken')
-        ? $user->createToken('auth-token')->plainTextToken
-        : base64_encode(random_bytes(24));
+    $token = $user->createToken('auth-token')->plainTextToken;
 
     return response()->json([
         'success' => true,
@@ -58,9 +55,7 @@ Route::post('/auth/login', function (Request $request) {
 });
 
 Route::post('/auth/logout', function (Request $request) {
-    if ($request->user() && method_exists($request->user(), 'currentAccessToken')) {
-        $request->user()->currentAccessToken()?->delete();
-    }
+    $request->user()->currentAccessToken()->delete();
 
     return response()->json(['success' => true]);
 })->middleware('auth:sanctum');
@@ -71,21 +66,15 @@ Route::get('/user', function (Request $request) {
 
 // Protected API routes (requires authentication)
 Route::middleware('auth:sanctum')->group(function () {
-    // Bulk operations for helpdesk tickets
-    Route::post('/helpdesk-tickets/bulk-approve', [HelpdeskTicketController::class, 'bulkApprove'])->middleware('throttle:30,1');
-    Route::post('/helpdesk-tickets/bulk-reject', [HelpdeskTicketController::class, 'bulkReject'])->middleware('throttle:30,1');
-    // Bulk operations for loan requests
-    Route::post('/loan-requests/bulk-approve', [LoanRequestController::class, 'bulkApprove'])->middleware('throttle:30,1');
-    Route::post('/loan-requests/bulk-reject', [LoanRequestController::class, 'bulkReject'])->middleware('throttle:30,1');
 
     // Unified Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('throttle:60,1');
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 
     // ICT Loan Module API Routes
-    Route::apiResource('loan-requests', LoanRequestController::class)->middleware('throttle:60,1');
+    Route::apiResource('loan-requests', LoanRequestController::class);
 
     // Helpdesk Module API Routes
-    Route::apiResource('helpdesk-tickets', HelpdeskTicketController::class)->middleware('throttle:60,1');
+    Route::apiResource('helpdesk-tickets', HelpdeskTicketController::class);
 
     // Additional utility routes for frontend
     Route::prefix('utilities')->group(function () {

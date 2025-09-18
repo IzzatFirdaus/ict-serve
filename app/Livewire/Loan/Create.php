@@ -10,9 +10,9 @@ use App\Models\LoanRequest;
 use App\Models\LoanStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
-use Livewire\Component;
 
 #[Layout('layouts.iserve')]
 class Create extends Component
@@ -36,13 +36,9 @@ class Create extends Component
     public string $contact_phone = '';
 
     public array $equipmentCategories = [];
-
     public array $availableEquipment = [];
-
     public ?int $selectedCategoryId = null;
-
     public bool $showEquipmentModal = false;
-
     public array $equipmentQuantities = [];
 
     public function mount(): void
@@ -92,7 +88,7 @@ class Create extends Component
     public function toggleEquipment(int $equipmentId): void
     {
         if (in_array($equipmentId, $this->selectedEquipment)) {
-            $this->selectedEquipment = array_filter($this->selectedEquipment, fn ($id) => $id !== $equipmentId);
+            $this->selectedEquipment = array_filter($this->selectedEquipment, fn($id) => $id !== $equipmentId);
             unset($this->equipmentQuantities[$equipmentId]);
         } else {
             $this->selectedEquipment[] = $equipmentId;
@@ -109,7 +105,7 @@ class Create extends Component
 
     public function removeEquipment(int $equipmentId): void
     {
-        $this->selectedEquipment = array_filter($this->selectedEquipment, fn ($id) => $id !== $equipmentId);
+        $this->selectedEquipment = array_filter($this->selectedEquipment, fn($id) => $id !== $equipmentId);
         unset($this->equipmentQuantities[$equipmentId]);
     }
 
@@ -119,7 +115,6 @@ class Create extends Component
 
         if (empty($this->selectedEquipment)) {
             $this->addError('selectedEquipment', 'Please select at least one equipment item.');
-
             return;
         }
 
@@ -127,11 +122,11 @@ class Create extends Component
             DB::beginTransaction();
 
             // Generate unique request number
-            $requestNumber = 'LR'.now()->format('Ymd').sprintf('%04d', LoanRequest::whereDate('created_at', today())->count() + 1);
+            $requestNumber = 'LR' . now()->format('Ymd') . sprintf('%04d', LoanRequest::whereDate('created_at', today())->count() + 1);
 
             // Get pending status (assuming status ID 1 is 'pending')
             $pendingStatus = LoanStatus::where('code', 'pending')->first();
-            if (! $pendingStatus) {
+            if (!$pendingStatus) {
                 $pendingStatus = LoanStatus::first(); // Fallback
             }
 
@@ -159,7 +154,7 @@ class Create extends Component
             DB::commit();
 
             // Success message
-            session()->flash('message', 'Permohonan pinjaman telah berjaya dihantar. Nombor rujukan: '.$requestNumber);
+            session()->flash('message', 'Permohonan pinjaman telah berjaya dihantar. Nombor rujukan: ' . $requestNumber);
 
             // Redirect to loan index
             $this->redirect(route('loan.index'), navigate: true);
@@ -194,7 +189,7 @@ class Create extends Component
                 ['title' => 'Papan Pemuka / Dashboard', 'url' => route('dashboard')],
                 ['title' => 'Pinjaman ICT / ICT Loan', 'url' => route('loan.index')],
                 ['title' => 'Mohon Pinjaman / Request Loan'],
-            ],
+            ]
         ]);
     }
 }

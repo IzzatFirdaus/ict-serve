@@ -11,9 +11,7 @@ class Index extends Component
     use WithPagination;
 
     public $search = '';
-
     public $statusFilter = 'all';
-
     public $categoryFilter = 'all';
 
     protected $paginationTheme = 'bootstrap';
@@ -46,9 +44,9 @@ class Index extends Component
         $tickets = HelpdeskTicket::with(['category', 'status', 'user'])
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('title', 'like', '%'.$this->search.'%')
-                        ->orWhere('description', 'like', '%'.$this->search.'%')
-                        ->orWhere('ticket_number', 'like', '%'.$this->search.'%');
+                    $q->where('title', 'like', '%' . $this->search . '%')
+                      ->orWhere('description', 'like', '%' . $this->search . '%')
+                      ->orWhere('ticket_number', 'like', '%' . $this->search . '%');
                 });
             })
             ->when($this->statusFilter !== 'all', function ($query) {
