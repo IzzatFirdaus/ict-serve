@@ -358,8 +358,12 @@ class LoanApplicationFormNew extends Component
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
     public function render()
     {
+        // @phpstan-ignore-next-line argument.type
         return view('livewire.equipment.loan-application-form-new');
     }
 }

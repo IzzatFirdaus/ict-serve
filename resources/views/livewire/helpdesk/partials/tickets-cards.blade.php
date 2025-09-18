@@ -1,6 +1,11 @@
 {{--
     ICTServe (iServe) – Tickets Card View
     MYDS & MyGovEA Compliant: Grid, tokens, icons, a11y, clear hierarchy
+    Updates:
+    - Uses MYDS tag, avatar, and icon primitives for status, assignment, actions.
+    - Responsive 12/8/4 grid, with accessible structure and ARIA.
+    - Non-colour indicators and accessible labels for all interactive elements.
+    - Follows MYDS spacing, shadow, card, and button conventions.
 --}}
 
 <div class="myds-p-6">
@@ -15,15 +20,15 @@
                     {{-- Card Header --}}
                     <header class="myds-card-header border-b otl-divider flex items-start justify-between">
                         <div class="flex-1 min-w-0">
-                            {{-- Ticket Number with Status Dot --}}
+                            {{-- Status Dot & Ticket Number --}}
                             <div class="flex items-center gap-2 mb-2">
-                                @if($ticket->isOverdue())
-                                    <span class="myds-tag myds-tag-danger myds-tag-dot" aria-label="Overdue"></span>
-                                @elseif($ticket->isNew())
-                                    <span class="myds-tag myds-tag-success myds-tag-dot" aria-label="New"></span>
-                                @else
-                                    <span class="myds-tag myds-tag-primary myds-tag-dot" aria-label="In Progress"></span>
-                                @endif
+                                <x-myds.tag
+                                    :variant="$ticket->isOverdue() ? 'danger' : ($ticket->isNew() ? 'success' : 'primary')"
+                                    dot="true"
+                                    size="small"
+                                    :mode="'pill'"
+                                    :aria-label="$ticket->isOverdue() ? 'Overdue' : ($ticket->isNew() ? 'New' : 'In Progress')"
+                                />
                                 <span class="text-body-xs font-mono text-txt-black-500">
                                     {{ $ticket->ticket_number }}
                                 </span>
@@ -34,7 +39,7 @@
                             </h3>
                             {{-- Category --}}
                             <div class="flex items-center gap-2">
-                                <i class="myds-icon-folder text-txt-black-400 w-4 h-4" aria-hidden="true"></i>
+                                <x-myds.icon name="folder" class="w-4 h-4 text-txt-black-400" />
                                 <span class="text-body-xs text-txt-black-500">
                                     {{ $ticket->category->name }}
                                 </span>
@@ -42,79 +47,70 @@
                         </div>
                         {{-- Checkbox --}}
                         <div class="ml-3 flex-shrink-0">
-                            <input type="checkbox"
-                                   wire:model.live="selectedTickets"
-                                   value="{{ $ticket->id }}"
-                                   class="myds-checkbox"
-                                   aria-label="Select ticket {{ $ticket->ticket_number }}">
+                            <x-myds.checkbox
+                                wire:model.live="selectedTickets"
+                                value="{{ $ticket->id }}"
+                                aria-label="Select ticket {{ $ticket->ticket_number }}"
+                            />
                         </div>
                     </header>
 
                     {{-- Card Body --}}
                     <div class="myds-card-body">
-                        {{-- Description --}}
                         <p class="text-body-sm text-txt-black-700 mb-4 line-clamp-2">
                             {{ Str::limit($ticket->description, 120) }}
                         </p>
-                        {{-- Status & Priority Badges --}}
                         <div class="flex items-center gap-2 mb-4">
-                            <span class="myds-tag myds-tag-{{
-                                $ticket->status->code === 'new' ? 'warning' :
-                                ($ticket->status->code === 'in_progress' ? 'primary' :
-                                ($ticket->status->code === 'resolved' ? 'success' : 'default'))
-                            }}">
-                                {{ $ticket->status->name }}
-                            </span>
-                            <span class="myds-tag myds-tag-{{
-                                $ticket->priority === 'critical' ? 'danger' :
-                                ($ticket->priority === 'high' ? 'warning' :
-                                ($ticket->priority === 'medium' ? 'primary' : 'success'))
-                            }}">
-                                {{ ucfirst($ticket->priority) }}
-                            </span>
+                            <x-myds.tag
+                                :variant="match($ticket->status->code) {
+                                    'new' => 'warning',
+                                    'in_progress' => 'primary',
+                                    'resolved', 'closed' => 'success',
+                                    default => 'default'
+                                }"
+                            >{{ $ticket->status->name }}</x-myds.tag>
+                            <x-myds.tag
+                                :variant="match($ticket->priority) {
+                                    'critical' => 'danger',
+                                    'high' => 'warning',
+                                    'medium' => 'primary',
+                                    default => 'success'
+                                }"
+                            >{{ ucfirst($ticket->priority) }}</x-myds.tag>
                         </div>
-                        {{-- Assigned To --}}
                         <div class="flex items-center gap-2 mb-4">
                             @if($ticket->assignedToUser)
                                 <div class="flex items-center gap-2">
-                                    <div class="h-6 w-6 rounded-full bg-primary-600 flex items-center justify-center">
-                                        <span class="text-xs font-medium text-white">
-                                            {{ mb_substr($ticket->assignedToUser->name, 0, 1) }}
-                                        </span>
-                                    </div>
+                                    <x-myds.avatar :name="$ticket->assignedToUser->name" size="xs" />
                                     <span class="text-body-xs text-txt-black-900">
                                         {{ $ticket->assignedToUser->name }}
                                     </span>
                                 </div>
                             @else
                                 <div class="flex items-center gap-2">
-                                    <div class="h-6 w-6 rounded-full bg-washed flex items-center justify-center">
-                                        <i class="myds-icon-user text-txt-black-300 w-4 h-4" aria-hidden="true"></i>
-                                    </div>
+                                    <x-myds.avatar :name="'?'" size="xs" />
                                     <span class="text-body-xs text-txt-black-400 italic">
                                         Belum ditugaskan / Unassigned
                                     </span>
                                 </div>
                             @endif
                         </div>
-                        {{-- Equipment Item (if any) --}}
                         @if($ticket->equipmentItem)
                             <div class="flex items-center gap-2 mb-4 p-2 bg-washed rounded radius-m">
-                                <i class="myds-icon-device-desktop text-txt-black-400 w-4 h-4" aria-hidden="true"></i>
+                                <x-myds.icon name="device-desktop" class="w-4 h-4 text-txt-black-400" />
                                 <span class="text-body-xs text-txt-black-700">
                                     {{ $ticket->equipmentItem->brand }} {{ $ticket->equipmentItem->model }}
                                 </span>
                             </div>
                         @endif
-                        {{-- Date and Time Info --}}
                         <div class="flex items-center justify-between text-body-xs text-txt-black-500">
                             <div class="flex items-center gap-1">
-                                <i class="myds-icon-clock w-3 h-3" aria-hidden="true"></i>
+                                <x-myds.icon name="clock" class="w-3 h-3" />
                                 <span>{{ $ticket->created_at->format('d/m/Y H:i') }}</span>
                             </div>
                             @if($ticket->due_at)
                                 <div class="flex items-center gap-1 {{ $ticket->isOverdue() ? 'text-danger-600' : '' }}">
-                                    <i class="myds-icon-calendar w-3 h-3" aria-hidden="true"></i>
+                                    <x-myds.icon name="calendar" class="w-3 h-3" />
                                     <span>Due: {{ $ticket->due_at->format('d/m/Y') }}</span>
                                     @if($ticket->isOverdue())
                                         <span class="text-danger-600 font-medium">(Overdue)</span>
@@ -126,52 +122,44 @@
 
                     {{-- Card Footer --}}
                     <footer class="myds-card-footer flex items-center justify-between border-t otl-divider px-5 py-3 bg-washed rounded-b-xl">
-                        {{-- User Info --}}
                         <div class="flex items-center gap-2">
-                            <div class="h-6 w-6 rounded-full bg-txt-black-500 flex items-center justify-center">
-                                <span class="text-xs font-medium text-white">
-                                    {{ mb_substr($ticket->user->name, 0, 1) }}
-                                </span>
-                            </div>
+                            <x-myds.avatar :name="$ticket->user->name" size="xs" />
                             <span class="text-body-xs text-txt-black-500">
                                 {{ $ticket->user->name }}
                             </span>
                         </div>
-                        {{-- Actions --}}
                         <div class="flex items-center gap-2">
-                            {{-- View Details --}}
-                            <button class="myds-btn myds-btn-tertiary myds-btn-icon" title="Lihat Butiran / View Details" aria-label="View">
-                                <i class="myds-icon-eye w-4 h-4" aria-hidden="true"></i>
-                            </button>
-                            {{-- Attachments --}}
+                            <a href="{{ route('helpdesk.show', $ticket->id) }}"
+                               class="myds-btn myds-btn-tertiary myds-btn-icon"
+                               title="Lihat Butiran / View Details" aria-label="View">
+                                <x-myds.icon name="eye" class="w-4 h-4" />
+                            </a>
                             @if(!empty($ticket->file_attachments))
                                 <a href="{{ route('helpdesk.attachments', $ticket->id) }}"
                                    class="myds-btn myds-btn-tertiary myds-btn-icon relative"
                                    title="Lampiran / Attachments"
                                    aria-label="Attachments">
-                                    <i class="myds-icon-paperclip w-4 h-4" aria-hidden="true"></i>
+                                    <x-myds.icon name="paper-clip" class="w-4 h-4" />
                                     <span class="absolute -top-2 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold text-white bg-danger-600 rounded-full">
                                         {{ count($ticket->file_attachments) }}
                                     </span>
                                 </a>
                             @endif
-                            {{-- Assignment (Admin/Supervisor only) --}}
                             @if(in_array(Auth::user()->role, ['ict_admin', 'supervisor']))
                                 <a href="{{ route('helpdesk.assign', $ticket->id) }}"
                                    class="myds-btn myds-btn-tertiary myds-btn-icon"
                                    title="Tugaskan / Assign"
                                    aria-label="Assign">
-                                    <i class="myds-icon-user-plus w-4 h-4" aria-hidden="true"></i>
+                                    <x-myds.icon name="user-plus" class="w-4 h-4" />
                                 </a>
                             @endif
-                            {{-- Quick Actions Dropdown --}}
                             <div class="relative" x-data="{ open: false }">
                                 <button @click="open = !open"
                                     class="myds-btn myds-btn-tertiary myds-btn-icon"
                                     aria-haspopup="menu"
-                                    aria-expanded="false"
+                                    :aria-expanded="open.toString()"
                                     aria-label="Tindakan Cepat / Quick Actions">
-                                    <i class="myds-icon-dots-horizontal w-4 h-4" aria-hidden="true"></i>
+                                    <x-myds.icon name="dots-horizontal" class="w-4 h-4" />
                                 </button>
                                 <div x-show="open"
                                      x-transition
@@ -223,7 +211,7 @@
     @else
         {{-- Empty State --}}
         <div class="text-center py-12 flex flex-col items-center justify-center">
-            <i class="myds-icon-inbox text-txt-black-200 text-6xl mb-4" aria-hidden="true"></i>
+            <x-myds.icon name="inbox" class="text-txt-black-200 text-6xl mb-4" />
             <h3 class="myds-heading-xs text-txt-black-700 mb-2">
                 Tiada tiket ditemui / No tickets found
             </h3>
@@ -233,7 +221,7 @@
             <a href="{{ route('helpdesk.create-enhanced') }}"
                class="myds-btn myds-btn-primary flex items-center gap-2"
                aria-label="Cipta Tiket Baharu / Create New Ticket">
-                <i class="myds-icon-plus w-5 h-5" aria-hidden="true"></i>
+                <x-myds.icon name="plus" class="w-5 h-5" />
                 Cipta Tiket Baharu / Create New Ticket
             </a>
         </div>

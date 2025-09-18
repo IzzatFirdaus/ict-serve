@@ -147,7 +147,7 @@
                                     <div class="px-4 py-2 text-sm text-txt-black-500 border-b border-otl-divider">
                                         {{ auth()->user()->position ?? '' }}
                                     </div>
-                                    <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Profil</a>
+                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Profil</a>
                                     <a href="{{ route('helpdesk.index') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Bantuan</a>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf

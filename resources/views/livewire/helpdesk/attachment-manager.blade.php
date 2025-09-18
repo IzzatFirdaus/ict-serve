@@ -1,185 +1,166 @@
-<div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <!-- Header -->
-    <div class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="flex items-center justify-between">
-                <div>
-                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
-                        Lampiran Tiket / Ticket Attachments
-                    </h1>
-                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                        #{{ $ticket->ticket_number }} - {{ $ticket->title }}
-                    </p>
-                </div>
+{{--
+    ICTServe (iServe) Ticket Attachments Manager
+    - MYDS standards: grid, colour, icon, typography, accessible by default
+    - MyGovEA: citizen-centric, clear, error-preventive, consistent
+--}}
 
-                <div class="flex items-center gap-4">
-                    <a href="{{ route('helpdesk.index-enhanced') }}"
-                       class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                        </svg>
-                        Kembali / Back
-                    </a>
-                </div>
+<x-myds.skiplink href="#main-content">
+    <span>Skip to main content</span>
+</x-myds.skiplink>
+
+<x-myds.masthead>
+    <x-myds.masthead-header>
+        <x-myds.masthead-title>Lampiran Tiket / Ticket Attachments</x-myds.masthead-title>
+    </x-myds.masthead-header>
+    <x-myds.masthead-content>
+        <x-myds.masthead-section
+            :title="'Tiket #' . $ticket->ticket_number"
+            icon="paper-clip"
+        >
+            {{ $ticket->title }}
+        </x-myds.masthead-section>
+    </x-myds.masthead-content>
+</x-myds.masthead>
+
+<main id="main-content" tabindex="0" class="myds-container max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        <div>
+            <h1 class="text-heading-m font-semibold text-txt-black-900 flex items-center gap-2">
+                <x-myds.icon name="paper-clip" class="w-6 h-6 text-primary-600" />
+                Lampiran Tiket / Ticket Attachments
+            </h1>
+            <div class="text-body-sm text-txt-black-700 mt-1">
+                #{{ $ticket->ticket_number }} – {{ $ticket->title }}
             </div>
+        </div>
+        <div>
+            <x-myds.button :href="route('helpdesk.index')" variant="secondary" size="sm">
+                <x-myds.button-icon>
+                    <x-myds.icon name="arrow-left" class="w-4 h-4" />
+                </x-myds.button-icon>
+                Kembali / Back
+            </x-myds.button>
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Upload Section -->
-            @if($canUpload)
-            <div class="lg:col-span-1">
-                <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg border border-gray-200 dark:border-gray-700">
-                    <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">
-                            Muat Naik Lampiran / Upload Attachments
-                        </h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Had saiz: 5MB setiap fail / Size limit: 5MB per file
-                        </p>
-                    </div>
-                    <form wire:submit="uploadFiles" class="p-6 space-y-6">
-                        <!-- File Upload -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {{-- Upload Section --}}
+        @if($canUpload)
+        <div class="lg:col-span-1">
+            <x-myds.card class="mb-8">
+                <x-myds.card-header>
+                    <span class="text-heading-xs font-semibold text-txt-black-900 flex items-center gap-2">
+                        <x-myds.icon name="cloud-upload" class="w-5 h-5" />
+                        Muat Naik Lampiran / Upload Attachments
+                    </span>
+                </x-myds.card-header>
+                <x-myds.card-body>
+                    <form wire:submit.prevent="uploadFiles" class="space-y-5" aria-label="Upload Files">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                Pilih Fail / Select Files
-                            </label>
-                            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-md hover:border-gray-400 dark:hover:border-gray-500 transition-colors">
-                                <div class="space-y-1 text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    <div class="flex text-sm text-gray-600 dark:text-gray-400">
-                                        <label for="file-upload" class="relative cursor-pointer bg-white dark:bg-gray-800 rounded-md font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                            <span>Muat naik fail / Upload files</span>
-                                            <input id="file-upload" wire:model="files" type="file" multiple class="sr-only">
-                                        </label>
-                                        <p class="pl-1">atau seret dan lepas / or drag and drop</p>
-                                    </div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                                        PDF, DOC, DOCX, JPG, PNG, GIF, XLSX, TXT, ZIP hingga / up to 5MB
-                                    </p>
-                                </div>
-                            </div>
+                            <x-myds.file-upload
+                                id="file-upload"
+                                wire:model="files"
+                                :multiple="true"
+                                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif,.xlsx,.txt,.zip"
+                                label="Pilih Fail / Select Files"
+                                hint="PDF, DOC, DOCX, JPG, PNG, GIF, XLSX, TXT, ZIP. Maksimum 5MB setiap fail."
+                                :invalid="$errors->has('files.*')"
+                            />
                             @error('files.*')
-                                <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                <x-myds.input-error>{{ $message }}</x-myds.input-error>
                             @enderror
                         </div>
-
-                        <!-- File Preview -->
                         @if(!empty($files))
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                Fail Dipilih / Selected Files
-                            </label>
-                            <ul class="divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700 rounded-md">
+                            <label class="myds-label mb-2">Fail Dipilih / Selected Files</label>
+                            <ul class="myds-list myds-list-bordered">
                                 @foreach($files as $index => $file)
-                                <li class="p-3 flex items-center justify-between">
-                                    <div class="flex items-center">
-                                        <svg class="h-5 w-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                        </svg>
-                                        <span class="text-sm text-gray-900 dark:text-white">{{ $file->getClientOriginalName() }}</span>
+                                <li class="flex items-center justify-between p-2">
+                                    <div class="flex items-center gap-2">
+                                        <x-myds.icon name="document" class="w-4 h-4 text-txt-black-500" />
+                                        <span class="text-body-sm text-txt-black-900">{{ $file->getClientOriginalName() }}</span>
                                     </div>
-                                    <div class="text-xs text-gray-500 dark:text-gray-400">
-                                        {{ number_format($file->getSize() / 1024, 1) }} KB
-                                    </div>
+                                    <span class="text-xs text-txt-black-500">{{ number_format($file->getSize() / 1024, 1) }} KB</span>
                                 </li>
                                 @endforeach
                             </ul>
                         </div>
                         @endif
-
-                        <!-- Description -->
                         <div>
-                            <label for="attachmentDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Keterangan (Pilihan) / Description (Optional)
-                            </label>
-                            <div class="mt-1">
-                                <textarea wire:model="attachmentDescription"
-                                          id="attachmentDescription"
-                                          rows="3"
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md"
-                                          placeholder="Huraikan fail yang dimuat naik (pilihan) / Describe the uploaded files (optional)"></textarea>
-                            </div>
+                            <x-myds.textarea
+                                id="attachmentDescription"
+                                wire:model="attachmentDescription"
+                                label="Keterangan (Pilihan) / Description (Optional)"
+                                rows="3"
+                                maxlength="255"
+                                hint="Huraikan fail yang dimuat naik (pilihan) / Describe the uploaded files (optional)"
+                                :invalid="$errors->has('attachmentDescription')"
+                            />
                             @error('attachmentDescription')
-                                <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                <x-myds.input-error>{{ $message }}</x-myds.input-error>
                             @enderror
                         </div>
-
-                        <!-- Upload Button -->
-                        <button type="submit"
-                                @if(empty($files)) disabled @endif
-                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed">
-                            <svg wire:loading wire:target="uploadFiles" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            <span wire:loading.remove wire:target="uploadFiles">Muat Naik / Upload</span>
-                            <span wire:loading wire:target="uploadFiles">Memuat naik... / Uploading...</span>
-                        </button>
+                        <div>
+                            <x-myds.button type="submit" variant="primary" size="md" class="w-full"
+                                :disabled="empty($files)"
+                                wire:loading.attr="disabled"
+                                wire:target="uploadFiles"
+                            >
+                                <span wire:loading.remove wire:target="uploadFiles">
+                                    <x-myds.button-icon>
+                                        <x-myds.icon name="cloud-upload" class="w-4 h-4" />
+                                    </x-myds.button-icon>
+                                    Muat Naik / Upload
+                                </span>
+                                <span wire:loading wire:target="uploadFiles">
+                                    <x-myds.spinner color="white" size="small" class="mr-2" />
+                                    Memuat naik... / Uploading...
+                                </span>
+                            </x-myds.button>
+                        </div>
                     </form>
-                </div>
-            </div>
-            @endif
+                </x-myds.card-body>
+            </x-myds.card>
+        </div>
+        @endif
 
-            <!-- Attachments List -->
-            <div class="{{ $canUpload ? 'lg:col-span-2' : 'lg:col-span-3' }}">
-                <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg border border-gray-200 dark:border-gray-700">
-                    <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">
-                            Lampiran Sedia Ada / Existing Attachments
-                        </h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">
-                            {{ count($attachments) }} fail dilampirkan / files attached
-                        </p>
-                    </div>
-
+        {{-- Attachments List Section --}}
+        <div class="{{ $canUpload ? 'lg:col-span-2' : 'lg:col-span-3' }}">
+            <x-myds.card>
+                <x-myds.card-header>
+                    <span class="text-heading-xs font-semibold text-txt-black-900 flex items-center gap-2">
+                        <x-myds.icon name="folder-open" class="w-5 h-5" />
+                        Lampiran Sedia Ada / Existing Attachments
+                        <span class="ml-2 text-body-xs text-txt-black-500">({{ count($attachments) }} fail dilampirkan / files attached)</span>
+                    </span>
+                </x-myds.card-header>
+                <x-myds.card-body>
                     @if(empty($attachments))
-                    <div class="p-12 text-center">
-                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Tiada lampiran / No attachments
-                        </h3>
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                            Belum ada fail yang dilampirkan pada tiket ini / No files have been attached to this ticket yet
-                        </p>
-                    </div>
+                        <div class="text-center py-10">
+                            <x-myds.icon name="inbox" class="mx-auto h-12 w-12 text-txt-black-400 mb-4" />
+                            <div class="text-heading-xs font-medium text-txt-black-900 mb-1">
+                                Tiada lampiran / No attachments
+                            </div>
+                            <div class="text-body-sm text-txt-black-500">
+                                Belum ada fail yang dilampirkan pada tiket ini.<br>No files have been attached to this ticket yet.
+                            </div>
+                        </div>
                     @else
-                    <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-                        @foreach($attachments as $attachment)
-                        <li class="p-6 hover:bg-gray-50 dark:hover:bg-gray-700">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-start space-x-4">
-                                    <!-- File Icon -->
+                        <ul class="myds-list myds-list-divided">
+                            @foreach($attachments as $attachment)
+                            <li class="py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-0 hover:bg-bg-washed dark:hover:bg-bg-washed transition-colors rounded-md">
+                                <div class="flex items-center gap-3 flex-1 min-w-0">
                                     <div class="flex-shrink-0">
-                                        <div class="w-10 h-10 bg-gray-100 dark:bg-gray-600 rounded-lg flex items-center justify-center">
-                                            @php
-                                                $icon = $this->getFileIcon($attachment['mime_type']);
-                                            @endphp
-                                            <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                @if($icon === 'photograph')
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                                @elseif($icon === 'table')
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0V7a2 2 0 012-2h14a2 2 0 012 2v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                                @elseif($icon === 'archive')
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                                                @else
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                                @endif
-                                            </svg>
-                                        </div>
+                                        @php
+                                            $icon = $this->getFileIcon($attachment['mime_type']);
+                                        @endphp
+                                        <x-myds.icon :name="$icon" class="w-8 h-8 text-primary-400" />
                                     </div>
-
-                                    <!-- File Info -->
                                     <div class="flex-1 min-w-0">
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
+                                        <div class="text-body-sm font-medium text-txt-black-900 truncate">
                                             {{ $attachment['original_name'] }}
-                                        </p>
-                                        <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 space-x-4">
+                                        </div>
+                                        <div class="flex flex-wrap items-center text-xs text-txt-black-500 gap-2">
                                             <span>{{ $this->formatFileSize($attachment['size']) }}</span>
                                             <span>•</span>
                                             <span>{{ $attachment['uploaded_by_name'] ?? 'Unknown' }}</span>
@@ -187,85 +168,80 @@
                                             <span>{{ \Carbon\Carbon::parse($attachment['uploaded_at'])->format('d/m/Y H:i') }}</span>
                                         </div>
                                         @if($attachment['description'])
-                                        <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">
+                                        <div class="text-xs text-txt-black-700 mt-1">
                                             {{ $attachment['description'] }}
-                                        </p>
+                                        </div>
                                         @endif
                                     </div>
                                 </div>
-
-                                <!-- Actions -->
-                                <div class="flex items-center space-x-2">
-                                    <!-- Download Button -->
-                                    <button wire:click="downloadFile('{{ $attachment['id'] }}')"
-                                            class="inline-flex items-center p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                        </svg>
-                                    </button>
-
-                                    <!-- Delete Button -->
+                                <div class="flex items-center gap-2 mt-2 md:mt-0">
+                                    <x-myds.button
+                                        type="button"
+                                        variant="secondary"
+                                        size="sm"
+                                        wire:click="downloadFile('{{ $attachment['id'] }}')"
+                                        aria-label="Muat turun / Download {{ $attachment['original_name'] }}"
+                                    >
+                                        <x-myds.button-icon>
+                                            <x-myds.icon name="download" class="w-4 h-4" />
+                                        </x-myds.button-icon>
+                                    </x-myds.button>
                                     @php
                                         $user = Auth::user();
-                                        $canDelete = $user->id === (int) $attachment['uploaded_by'] ||
-                                                    in_array($user->role, ['ict_admin', 'supervisor']) ||
-                                                    $user->id === $ticket->user_id;
+                                        $canDelete = $user->id === (int) $attachment['uploaded_by']
+                                            || in_array($user->role, ['ict_admin', 'supervisor'])
+                                            || $user->id === $ticket->user_id;
                                     @endphp
-
                                     @if($canDelete)
-                                    <button wire:click="deleteFile('{{ $attachment['id'] }}')"
-                                            wire:confirm="Adakah anda pasti ingin memadam fail ini? / Are you sure you want to delete this file?"
-                                            class="inline-flex items-center p-2 border border-red-300 dark:border-red-600 rounded-md shadow-sm bg-red-50 dark:bg-red-900 text-sm font-medium text-red-700 dark:text-red-200 hover:bg-red-100 dark:hover:bg-red-800">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                        </svg>
-                                    </button>
+                                    <x-myds.button
+                                        type="button"
+                                        variant="danger"
+                                        size="sm"
+                                        wire:click="deleteFile('{{ $attachment['id'] }}')"
+                                        x-data
+                                        x-on:click.prevent="if(!confirm('Adakah anda pasti ingin memadam fail ini? / Are you sure you want to delete this file?')) return false;"
+                                        aria-label="Padam / Delete {{ $attachment['original_name'] }}"
+                                    >
+                                        <x-myds.button-icon>
+                                            <x-myds.icon name="trash" class="w-4 h-4" />
+                                        </x-myds.button-icon>
+                                    </x-myds.button>
                                     @endif
                                 </div>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
+                            </li>
+                            @endforeach
+                        </ul>
                     @endif
-                </div>
-            </div>
+                </x-myds.card-body>
+            </x-myds.card>
         </div>
+    </section>
 
-        <!-- Flash Messages -->
-        @if(session('success'))
-        <div class="fixed bottom-4 right-4 max-w-sm w-full bg-green-100 dark:bg-green-800 border border-green-400 dark:border-green-600 text-green-700 dark:text-green-200 px-4 py-3 rounded shadow-lg z-50">
-            <div class="flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                {{ session('success') }}
+    {{-- Toast on Success/Error --}}
+    @if(session('success'))
+        <x-myds.toast variant="success" :show="true">
+            {{ session('success') }}
+        </x-myds.toast>
+    @endif
+    @if(session('error'))
+        <x-myds.toast variant="danger" :show="true">
+            {{ session('error') }}
+        </x-myds.toast>
+    @endif
+</main>
+
+<x-myds.footer>
+    <x-myds.footer-section>
+        <x-myds.site-info>
+            <x-myds.footer-logo logoTitle="Bahagian Pengurusan Maklumat (BPM)" />
+            Aras 13, 14 &amp; 15, Blok Menara, Menara Usahawan, No. 18, Persiaran Perdana, Presint 2, 62000 Putrajaya, Malaysia
+            <div class="mt-2">© 2025 BPM, Kementerian Pelancongan, Seni dan Budaya Malaysia.</div>
+            <div class="mt-2 flex gap-3">
+                <a href="#" aria-label="Facebook" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="facebook" class="w-5 h-5" /></a>
+                <a href="#" aria-label="Twitter" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="twitter" class="w-5 h-5" /></a>
+                <a href="#" aria-label="Instagram" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="instagram" class="w-5 h-5" /></a>
+                <a href="#" aria-label="YouTube" class="text-txt-black-700 hover:text-primary-600"><x-myds.icon name="youtube" class="w-5 h-5" /></a>
             </div>
-        </div>
-        @endif
-
-        @if(session('error'))
-        <div class="fixed bottom-4 right-4 max-w-sm w-full bg-red-100 dark:bg-red-800 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-200 px-4 py-3 rounded shadow-lg z-50">
-            <div class="flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-                </svg>
-                {{ session('error') }}
-            </div>
-        </div>
-        @endif
-    </div>
-
-    <!-- Auto-hide flash messages -->
-    <script>
-        setTimeout(function() {
-            const messages = document.querySelectorAll('.fixed.bottom-4.right-4');
-            messages.forEach(function(message) {
-                message.style.transition = 'opacity 0.5s';
-                message.style.opacity = '0';
-                setTimeout(function() {
-                    message.remove();
-                }, 500);
-            });
-        }, 5000);
-    </script>
-</div>
+        </x-myds.site-info>
+    </x-myds.footer-section>
+</x-myds.footer>

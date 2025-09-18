@@ -21,7 +21,7 @@ class DropdownManagerTest extends TestCase
 
         // Create and authenticate a user
         $user = User::factory()->create([
-            'role' => 'admin',
+            'role' => 'ict_admin',
         ]);
         $this->actingAs($user);
     }

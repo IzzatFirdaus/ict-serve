@@ -179,11 +179,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get notifications for this user
+     * Get Laravel database notifications for this user
+     * (Override the Notifiable trait's method to use our custom table)
      */
-    public function notifications(): HasMany
+    public function notifications()
     {
-        return $this->hasMany(Notification::class);
+        return $this->morphMany(
+            \Illuminate\Notifications\DatabaseNotification::class,
+            'notifiable'
+        );
     }
 
     /**

@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ICTServeTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test the dashboard page loads successfully.
      */
@@ -38,7 +41,7 @@ class ICTServeTest extends TestCase
     public function test_equipment_loan_form_loads_successfully(): void
     {
         $user = User::factory()->create();
-        
+
         $response = $this->actingAs($user)->get('/equipment-loan');
 
         $response->assertStatus(200);

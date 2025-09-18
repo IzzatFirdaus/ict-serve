@@ -8,15 +8,14 @@ use App\Http\Controllers\PublicController;
 use App\Livewire\Counter;
 use App\Livewire\DamageComplaintForm;
 use App\Livewire\Dashboard;
-use App\Livewire\EquipmentLoanForm;
 use App\Livewire\Login;
 use App\Livewire\Register;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
-Route::get('/login', Login::class)->name('login');
-Route::get('/register', Register::class)->name('register');
+// Route::get('/login', Login::class)->name('login');
+// Route::get('/register', Register::class)->name('register');
 Route::post('/logout', function () {
     auth()->guard()->logout();
     session()->invalidate();
@@ -28,7 +27,7 @@ Route::post('/logout', function () {
 // Public Routes
 Route::get('/', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -189,6 +188,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/sla-tracker', [\App\Livewire\Helpdesk\SlaTracker::class, '__invoke'])->name('sla-tracker');
         Route::get('/attachments/{ticket}', [\App\Livewire\Helpdesk\AttachmentManager::class, '__invoke'])->name('attachments');
         Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
+        Route::get('/ticket/{ticket}', function ($ticket) {
+            return view('helpdesk.ticket-detail', compact('ticket'));
+        })->name('ticket.detail');
 
         // New MYDS Components
         Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
@@ -200,12 +202,12 @@ Route::middleware('auth')->group(function () {
     // Damage complaint create route
     Route::get('/damage-complaint/create', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint.create');
 
-// Equipment loan routes
-Route::get('/equipment-loan', function () {
-    return view('equipment-loan.index');
-})->name('equipment-loan.index');
+    // Equipment loan routes
+    Route::get('/equipment-loan', function () {
+        return view('equipment-loan.index');
+    })->name('equipment-loan.index');
 
-Route::get('/equipment-loan/create', \App\Livewire\EquipmentLoanForm::class)->name('equipment-loan.create');
+    Route::get('/equipment-loan/create', \App\Livewire\EquipmentLoanForm::class)->name('equipment-loan.create');
 
     // Ticket routes (legacy alias for helpdesk)
     Route::prefix('tickets')->name('ticket.')->group(function () {
@@ -246,10 +248,7 @@ Route::get('/equipment-loan/create', \App\Livewire\EquipmentLoanForm::class)->na
         Route::get('/', \App\Livewire\Notifications\NotificationCenter::class)->name('index');
     });
 
-    // Profile routes
-    Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', \App\Livewire\Profile\UserProfile::class)->name('index');
-    });
+    // Profile routes moved to auth middleware group above to avoid conflicts
 
     // Test notification route (temporary)
     Route::get('/test-notifications', function () {

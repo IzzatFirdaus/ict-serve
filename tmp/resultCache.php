@@ -3278,6 +3278,26 @@ return [
 	'errorsCallback' => static function (): array { return array (
 ); },
 	'locallyIgnoredErrorsCallback' => static function (): array { return array (
+  'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
+       'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+       'line' => 367,
+       'canBeIgnored' => true,
+       'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 367,
+       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
+       'identifier' => 'argument.type',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+  ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => 
   array (
     0 => 
@@ -3300,6 +3320,13 @@ return [
   ),
 ); },
 	'linesToIgnore' => array (
+  'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => 
+  array (
+    'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => 
+    array (
+      367 => NULL,
+    ),
+  ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => 
   array (
     'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => 
@@ -5280,6 +5307,12 @@ return [
       0 => 
       array (
         0 => 'App\\Models\\DamageType',
+        1 => 'getNameEnAttribute',
+        2 => 'App\\Models\\DamageType',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Models\\DamageType',
         1 => 'casts',
         2 => 'App\\Models\\DamageType',
       ),
@@ -5289,7 +5322,7 @@ return [
       0 => 
       array (
         0 => 'logger',
-        1 => 146,
+        1 => 154,
       ),
     ),
     'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
@@ -5298,7 +5331,7 @@ return [
       array (
         0 => 'Illuminate\\Database\\Eloquent\\Builder',
         1 => 'create',
-        2 => 133,
+        2 => 141,
       ),
     ),
     'PHPStan\\Rules\\Traits\\TraitUseCollector' => 
@@ -5966,7 +5999,7 @@ return [
       0 => 
       array (
         0 => 'Request/Ticket number not found. Please check and try again.',
-        1 => 128,
+        1 => 125,
       ),
     ),
     'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => 
@@ -5980,15 +6013,17 @@ return [
       6 => 'public.track-result',
       7 => 'app',
       8 => 'welcome',
-      9 => 'test-notifications',
-      10 => 'admin.dashboard',
+      9 => 'loan.index',
+      10 => 'equipment-loan.index',
+      11 => 'test-notifications',
+      12 => 'admin.dashboard',
     ),
     'PHPStan\\Rules\\DeadCode\\PossiblyPureFuncCallCollector' => 
     array (
       0 => 
       array (
         0 => 'session',
-        1 => 284,
+        1 => 298,
       ),
     ),
     'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
@@ -5997,19 +6032,19 @@ return [
       array (
         0 => 'Illuminate\\Support\\Facades\\Route',
         1 => 'post',
-        2 => 82,
+        2 => 79,
       ),
       1 => 
       array (
         0 => 'Illuminate\\Support\\Facades\\Route',
         1 => 'get',
-        2 => 144,
+        2 => 141,
       ),
       2 => 
       array (
         0 => 'Illuminate\\Support\\Facades\\Route',
         1 => 'get',
-        2 => 279,
+        2 => 293,
       ),
     ),
   ),
@@ -6536,12 +6571,13 @@ return [
       68 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
       69 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
       70 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-      71 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-      72 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-      73 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-      74 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-      75 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
-      76 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+      71 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php',
+      72 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+      73 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+      74 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+      75 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+      76 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
+      77 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
     ),
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php' => 
@@ -7302,7 +7338,7 @@ return [
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => 
   array (
-    'fileHash' => '4cabf67d4b1bf2d5461b36a301e951297ad30411',
+    'fileHash' => '51647518348f52c74fd905e7d50aa3e4b6fe69e4',
     'dependentFiles' => 
     array (
       0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
@@ -7553,7 +7589,7 @@ return [
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageType.php' => 
   array (
-    'fileHash' => 'c5c40b29f163c558dd9fb531baf4f3a60fae1901',
+    'fileHash' => '5830c4008ba6ee638ccade2cd7ac208b725a4f54',
     'dependentFiles' => 
     array (
       0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php',
@@ -7771,12 +7807,13 @@ return [
       83 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
       84 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
       85 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-      86 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-      87 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-      88 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-      89 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-      90 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
-      91 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+      86 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php',
+      87 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+      88 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+      89 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+      90 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+      91 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
+      92 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
     ),
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php' => 
@@ -7842,7 +7879,7 @@ return [
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => 
   array (
-    'fileHash' => '18b81bbf7e7ffbfcb4ad443b1325520a5682f253',
+    'fileHash' => '97b50c70c1e40f6440cd9df2d9b1aff72e2c12a1',
     'dependentFiles' => 
     array (
       0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
@@ -7924,12 +7961,13 @@ return [
       76 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
       77 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
       78 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-      79 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-      80 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-      81 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-      82 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-      83 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
-      84 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+      79 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php',
+      80 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+      81 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+      82 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+      83 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+      84 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
+      85 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
     ),
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php' => 
@@ -8212,12 +8250,13 @@ return [
       89 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
       90 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
       91 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-      92 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-      93 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-      94 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-      95 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-      96 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
-      97 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+      92 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php',
+      93 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+      94 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+      95 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+      96 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+      97 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
+      98 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
     ),
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php' => 
@@ -8330,7 +8369,7 @@ return [
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\DamageTypeFactory.php' => 
   array (
-    'fileHash' => '7b13869d5a8b8857a376a7fbe8c37c1d2dc87024',
+    'fileHash' => '018d6450a4f1e0c490d985b4408e4a32db9f1ff0',
     'dependentFiles' => 
     array (
       0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
@@ -8408,7 +8447,7 @@ return [
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\UserFactory.php' => 
   array (
-    'fileHash' => '7ac74334b97dded2308b4265ca46014b317a82f9',
+    'fileHash' => '892e4ab8152e99880f8d31e50c1a0c6619bcba9e',
     'dependentFiles' => 
     array (
       0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
@@ -8422,11 +8461,12 @@ return [
       8 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
       9 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
       10 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-      11 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-      12 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-      13 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-      14 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-      15 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+      11 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php',
+      12 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+      13 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+      14 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+      15 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+      16 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
     ),
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000000_create_users_table.php' => 
@@ -8646,13 +8686,6 @@ return [
     array (
     ),
   ),
-  'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_130332_create_notifications_table.php' => 
-  array (
-    'fileHash' => '1afc274fa3ee907b42da59ce88e859496e0a998b',
-    'dependentFiles' => 
-    array (
-    ),
-  ),
   'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_130500_create_app_notifications_table.php' => 
   array (
     'fileHash' => '6703d86f957873a611dbc77b77bb0949d2e2bd18',
@@ -8760,7 +8793,7 @@ return [
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php' => 
   array (
-    'fileHash' => '9ccc5d669499e9ab0e860b0dee770e5411a735ea',
+    'fileHash' => 'eb6ccd22df919d42b2bb1ae0db75b3f26d8a4d66',
     'dependentFiles' => 
     array (
     ),
@@ -8851,7 +8884,7 @@ return [
   ),
   'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php' => 
   array (
-    'fileHash' => 'c62e26da92b60ea6fa6adda9f7c42d2e23fee6e4',
+    'fileHash' => '12098a4f2bf10feb625e41504e9c79ddb8ef19fa',
     'dependentFiles' => 
     array (
     ),
@@ -25816,7 +25849,27 @@ return [
         34 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'render',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return \\Illuminate\\Contracts\\View\\View
+     */',
+             'namespace' => 'App\\Livewire\\Equipment',
+             'uses' => 
+            array (
+              'auditlog' => 'App\\Models\\AuditLog',
+              'loanrequest' => 'App\\Models\\LoanRequest',
+              'carbon' => 'Carbon\\Carbon',
+              'auth' => 'Illuminate\\Support\\Facades\\Auth',
+              'db' => 'Illuminate\\Support\\Facades\\DB',
+              'log' => 'Illuminate\\Support\\Facades\\Log',
+              'validate' => 'Livewire\\Attributes\\Validate',
+              'component' => 'Livewire\\Component',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -39542,6 +39595,39 @@ return [
         )),
         6 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getNameEnAttribute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Alias for name column - for backward compatibility.
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getDisplayDescription',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -39584,7 +39670,7 @@ return [
           array (
           ),
         )),
-        7 => 
+        8 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getDisplayDescriptionText',
            'phpDoc' => NULL,
@@ -39613,7 +39699,7 @@ return [
           array (
           ),
         )),
-        8 => 
+        9 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'boot',
            'phpDoc' => 
@@ -39646,7 +39732,7 @@ return [
           array (
           ),
         )),
-        9 => 
+        10 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'logAuditEvent',
            'phpDoc' => 
@@ -39723,7 +39809,7 @@ return [
           array (
           ),
         )),
-        10 => 
+        11 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'casts',
            'phpDoc' => NULL,
@@ -41899,6 +41985,41 @@ return [
         )),
         4 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'loanStatus',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Alias for status() method - for backward compatibility.
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+              'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'supervisor',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -41932,7 +42053,7 @@ return [
           array (
           ),
         )),
-        5 => 
+        6 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'ictAdmin',
            'phpDoc' => 
@@ -41967,7 +42088,7 @@ return [
           array (
           ),
         )),
-        6 => 
+        7 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'issuedBy',
            'phpDoc' => 
@@ -42002,7 +42123,7 @@ return [
           array (
           ),
         )),
-        7 => 
+        8 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'receivedBy',
            'phpDoc' => 
@@ -42037,7 +42158,7 @@ return [
           array (
           ),
         )),
-        8 => 
+        9 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'loanItems',
            'phpDoc' => 
@@ -42072,7 +42193,7 @@ return [
           array (
           ),
         )),
-        9 => 
+        10 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'equipmentItems',
            'phpDoc' => 
@@ -42107,7 +42228,7 @@ return [
           array (
           ),
         )),
-        10 => 
+        11 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'approvals',
            'phpDoc' => 
@@ -42142,7 +42263,7 @@ return [
           array (
           ),
         )),
-        11 => 
+        12 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getEquipmentItemAttribute',
            'phpDoc' => 
@@ -42177,7 +42298,7 @@ return [
           array (
           ),
         )),
-        12 => 
+        13 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'generateRequestNumber',
            'phpDoc' => 
@@ -42212,7 +42333,7 @@ return [
           array (
           ),
         )),
-        13 => 
+        14 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'canBeEdited',
            'phpDoc' => 
@@ -42247,7 +42368,7 @@ return [
           array (
           ),
         )),
-        14 => 
+        15 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'canBeCancelled',
            'phpDoc' => 
@@ -42282,7 +42403,7 @@ return [
           array (
           ),
         )),
-        15 => 
+        16 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'isOverdue',
            'phpDoc' => 
@@ -42317,7 +42438,7 @@ return [
           array (
           ),
         )),
-        16 => 
+        17 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'getLoanDurationAttribute',
            'phpDoc' => 
@@ -42352,7 +42473,7 @@ return [
           array (
           ),
         )),
-        17 => 
+        18 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'boot',
            'phpDoc' => 
@@ -49934,6 +50055,7 @@ return [
              'namespace' => 'Tests\\Feature',
              'uses' => 
             array (
+              'user' => 'App\\Models\\User',
               'testcase' => 'Tests\\TestCase',
             ),
              'constUses' => 
@@ -49965,6 +50087,7 @@ return [
              'namespace' => 'Tests\\Feature',
              'uses' => 
             array (
+              'user' => 'App\\Models\\User',
               'testcase' => 'Tests\\TestCase',
             ),
              'constUses' => 
@@ -49996,6 +50119,7 @@ return [
              'namespace' => 'Tests\\Feature',
              'uses' => 
             array (
+              'user' => 'App\\Models\\User',
               'testcase' => 'Tests\\TestCase',
             ),
              'constUses' => 
@@ -50027,6 +50151,7 @@ return [
              'namespace' => 'Tests\\Feature',
              'uses' => 
             array (
+              'user' => 'App\\Models\\User',
               'testcase' => 'Tests\\TestCase',
             ),
              'constUses' => 
@@ -50058,6 +50183,7 @@ return [
              'namespace' => 'Tests\\Feature',
              'uses' => 
             array (
+              'user' => 'App\\Models\\User',
               'testcase' => 'Tests\\TestCase',
             ),
              'constUses' => 

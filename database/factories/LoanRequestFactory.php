@@ -22,8 +22,29 @@ class LoanRequestFactory extends Factory
             'overdue',
             'cancelled',
         ]);
-    /** @var \App\Models\LoanStatus $loanStatus */
-    $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
+        /** @var \App\Models\LoanStatus $loanStatus */
+        $loanStatus = \App\Models\LoanStatus::firstOrCreate(
+            ['code' => $statusCode],
+            [
+                'name' => ucwords(str_replace('_', ' ', $statusCode)),
+                'name_bm' => ucwords(str_replace('_', ' ', $statusCode)).' BM',
+                'description' => $this->faker->sentence(),
+                'description_bm' => $this->faker->sentence(),
+                'color' => $this->faker->hexColor(),
+                'is_active' => true,
+                'sort_order' => array_search($statusCode, [
+                    'pending_bpm_review',
+                    'pending_supervisor_approval',
+                    'pending_ict_approval',
+                    'approved',
+                    'rejected',
+                    'collected',
+                    'returned',
+                    'overdue',
+                    'cancelled',
+                ]) + 1,
+            ]
+        );
 
         return [
             'reference_number' => $this->faker->unique()->numerify('REF-####'),
@@ -34,6 +55,7 @@ class LoanRequestFactory extends Factory
             'applicant_department' => $this->faker->word(),
             'applicant_phone' => $this->faker->phoneNumber(),
             'status_id' => $loanStatus->id,
+            'status' => $statusCode, // Add the status string field
             'purpose' => $this->faker->sentence(),
             'location' => $this->faker->city(),
             'requested_from' => $this->faker->dateTimeBetween('-1 week', 'now'),
@@ -43,12 +65,17 @@ class LoanRequestFactory extends Factory
             'responsible_officer_position' => $this->faker->jobTitle(),
             'responsible_officer_phone' => $this->faker->phoneNumber(),
             'same_as_applicant' => $this->faker->boolean(),
-            'equipment_requests' => [],
+            'equipment_requests' => [
+                [
+                    'equipment_type' => $this->faker->randomElement(['Laptop', 'Monitor', 'Printer', 'Camera']),
+                    'quantity' => $this->faker->numberBetween(1, 3),
+                    'specifications' => $this->faker->sentence(),
+                ],
+            ],
             'endorsing_officer_name' => $this->faker->name(),
             'endorsing_officer_position' => $this->faker->jobTitle(),
             'endorsement_status' => 'pending',
             'endorsement_comments' => $this->faker->sentence(),
-            'status' => $statusCode,
             'submitted_at' => $this->faker->dateTimeBetween('-2 weeks', 'now'),
             'requested_to' => $this->faker->dateTimeBetween('now', '+2 weeks'),
             'actual_from' => null,

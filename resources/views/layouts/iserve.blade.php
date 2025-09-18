@@ -146,7 +146,7 @@
                                  class="absolute right-0 mt-2 w-56 bg-bg-white-0 border border-otl-divider rounded-md shadow-context-menu z-50"
                                  role="menu" aria-label="Menu pengguna">
                                 <div class="py-1">
-                                    <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Tetapan Profil / Profile</a>
+                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Tetapan Profil / Profile</a>
                                     <a href="{{ route('helpdesk.index') }}" class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed" role="menuitem">Bantuan / Helpdesk</a>
                                     <hr class="border-otl-divider my-1">
                                     <form method="POST" action="{{ route('logout') }}">

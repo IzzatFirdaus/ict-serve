@@ -27,7 +27,7 @@ class LoanRequestTracker extends Component
     public function refreshStatus()
     {
         $this->loanRequest->refresh();
-        $this->dispatch('loan-status-updated', loanRequestId: $this->loanRequest->id);
+        $this->dispatch('status-refreshed', loanRequestId: $this->loanRequest->id);
     }
 
     public function toggleDetails()
@@ -45,6 +45,12 @@ class LoanRequestTracker extends Component
     {
         $this->polling = false;
         $this->dispatch('polling-disabled');
+    }
+
+    public function togglePolling()
+    {
+        $this->polling = ! $this->polling;
+        $this->dispatch('polling-toggled');
     }
 
     public function render()

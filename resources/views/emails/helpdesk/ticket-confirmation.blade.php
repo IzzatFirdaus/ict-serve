@@ -1,6 +1,5 @@
 @php
 /**
-<<<<<<< HEAD
  * Pengesahan Tiket Sokongan – MYDS & MyGovEA (Bahasa Melayu)
  * Untuk ICTServe (iServe)
  * Gaya, warna, tipografi dan struktur ikut MYDS & prinsip MyGovEA.
@@ -12,7 +11,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Pengesahan Tiket Sokongan ICTServe</title>
-=======
  * Ticket Confirmation Email – MYDS & MyGovEA compliant
  * For ICTServe (iServe)
  * Follows MYDS grid, typography, color tokens, and status components.
@@ -24,7 +22,6 @@
 <head>
     <meta charset="UTF-8">
     <title>ICTServe Ticket Confirmation</title>
->>>>>>> feature/larastan-autofix
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- MYDS Typography (system fallback) -->
     <style type="text/css">
@@ -39,12 +36,9 @@
                 <table width="600" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;">
                     <tr>
                         <td valign="middle" style="width:56px;">
-<<<<<<< HEAD
                             <img src="{{ asset('img/motac-logo.png') }}" alt="Logo MOTAC" width="48" height="48" style="display:block;border-radius:6px;">
-=======
                             <!-- Ministry/Dept Logo (replace src as needed) -->
                             <img src="{{ asset('images/malaysia_tourism_ministry_motac.jpeg') }}" alt="MOTAC Logo" width="48" height="48" style="display:block;border-radius:6px;">
->>>>>>> feature/larastan-autofix
                         </td>
                         <td style="padding-left:16px;">
                             <div style="font-family:Poppins,Arial,sans-serif;font-size:18px;font-weight:600;color:#fff;line-height:1.1;">
@@ -69,13 +63,10 @@
                     <tr>
                         <td colspan="2" style="padding:32px 0 12px 0;">
                             <div style="border-radius:12px;padding:20px 24px;background:#EFF6FF;border-left:8px solid #2563EB;">
-<<<<<<< HEAD
                                 <span style="font-family:Poppins,Arial,sans-serif;font-size:22px;font-weight:600;color:#2563EB;display:block;margin-bottom:6px;">Pengesahan Tiket Sokongan</span>
                                 <span style="font-size:15px;color:#3F3F46;">Terima kasih kerana melaporkan isu ICT anda. Tiket sokongan anda telah diterima dan sedang diproses oleh pasukan kami.</span>
-=======
                                 <span style="font-family:Poppins,Arial,sans-serif;font-size:22px;font-weight:600;color:#2563EB;display:block;margin-bottom:6px;">Support Ticket Confirmation</span>
                                 <span style="font-size:15px;color:#3F3F46;">Thank you for reporting your ICT issue. We have received your support ticket and it is being processed.</span>
->>>>>>> feature/larastan-autofix
                             </div>
                         </td>
                     </tr>
@@ -86,35 +77,28 @@
                             <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-size:14px;">
                                 <tr>
                                     <td style="padding:0 0 8px 0;">
-<<<<<<< HEAD
                                         <strong style="color:#2563EB;">No. Tiket:</strong>
                                         <span style="font-family:monospace;color:#18181B;">{{ $ticket->ticket_number }}</span>
                                     </td>
                                     <td align="right" style="color:#71717A;">
                                         <strong>Dihantar pada:</strong>
-=======
                                         <strong style="color:#2563EB;">Ticket Number:</strong>
                                         <span style="font-family:monospace;color:#18181B;">{{ $ticket->ticket_number }}</span>
                                     </td>
                                     <td align="right" style="color:#71717A;">
                                         <strong>Submitted:</strong>
->>>>>>> feature/larastan-autofix
                                         {{ $ticket->created_at->format('d M Y, g:i A') }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <strong>Status:</strong>
-<<<<<<< HEAD
-=======
                                         <!-- MYDS Status Tag -->
->>>>>>> feature/larastan-autofix
                                         <span style="background:#DBEAFE;color:#2563EB;border-radius:6px;padding:2px 10px 2px 8px;font-size:13px;font-weight:600;vertical-align:middle;">
                                             {{ $ticket->status->name }}
                                         </span>
                                     </td>
                                     <td align="right">
-<<<<<<< HEAD
                                         <strong>Keutamaan:</strong>
                                         @php
                                             $priorityColor = [
@@ -235,7 +219,6 @@
                                     <li>Anda akan menerima kemas kini sepanjang proses aduan.</li>
                                     <li>Juruteknik mungkin menghubungi anda untuk maklumat tambahan.</li>
                                 </ol>
-=======
                                         <strong>Priority:</strong>
                                         <!-- MYDS Tag: color by priority -->
                                         @php
@@ -324,12 +307,10 @@
                             <div style="font-size:14px;color:#18181B;">
                                 <span style="font-weight:600;color:#2563EB;">Description:</span><br>
                                 <span>{{ $ticket->description }}</span>
->>>>>>> feature/larastan-autofix
                             </div>
                         </td>
                     </tr>
 
-<<<<<<< HEAD
                     <!-- MYDS Button (Track Status) -->
                     <tr>
                         <td colspan="2" align="center" style="padding-top:26px;">
@@ -346,7 +327,6 @@
                             <div style="background:#FEF2F2;border-left:5px solid #DC2626;padding:16px 24px;border-radius:6px;">
                                 <span style="font-weight:600;color:#DC2626;">Sokongan Kecemasan:</span>
                                 <span style="color:#B91C1C;">Jika ini isu kritikal yang menjejaskan operasi, sila hubungi talian kecemasan 24/7: <b>+60 3-yyyy yyyy</b></span>
-=======
                     <!-- Response Time Panel -->
                     <tr>
                         <td colspan="2" style="padding-top:24px;">
@@ -383,12 +363,10 @@
                                     <li>You will receive updates as your ticket progresses.</li>
                                     <li>The assigned technician may contact you for more info.</li>
                                 </ol>
->>>>>>> feature/larastan-autofix
                             </div>
                         </td>
                     </tr>
 
-<<<<<<< HEAD
                     <!-- Important Notes -->
                     <tr>
                         <td colspan="2" style="padding-top:24px;">
@@ -401,7 +379,6 @@
                         </td>
                     </tr>
 
-=======
                     <!-- MYDS Button (Track Status) -->
                     <tr>
                         <td colspan="2" align="center" style="padding-top:26px;">
@@ -434,34 +411,27 @@
                         </td>
                     </tr>
 
->>>>>>> feature/larastan-autofix
                     <!-- Support Contacts / Footer -->
                     <tr>
                         <td colspan="2" style="padding-top:24px;text-align:center;font-size:13px;color:#52525B;">
                             <div>
-<<<<<<< HEAD
                                 <span style="color:#2563EB;font-weight:600;">Pasukan Sokongan ICT</span><br>
                                 E-mel: <a href="mailto:ict-support@example.gov.my" style="color:#2563EB;text-decoration:underline;">ict-support@example.gov.my</a><br>
                                 Telefon: +60 3-xxxx xxxx<br>
                                 Talian Kecemasan: +60 3-yyyy yyyy (24/7)<br>
                                 Waktu Operasi: Isnin - Jumaat, 8:00 pagi – 5:00 petang
-=======
                                 <span style="color:#2563EB;font-weight:600;">ICT Support Team</span><br>
                                 Email: <a href="mailto:ict-support@example.gov.my" style="color:#2563EB;text-decoration:underline;">ict-support@example.gov.my</a><br>
                                 Phone: +60 3-xxxx xxxx<br>
                                 Emergency Hotline: +60 3-yyyy yyyy (24/7)<br>
                                 Office hours: Mon-Fri, 8:00 AM–5:00 PM
->>>>>>> feature/larastan-autofix
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-top:30px;padding-bottom:8px;text-align:center;font-size:12px;color:#A1A1AA;">
-<<<<<<< HEAD
                             &copy; {{ date('Y') }} Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia. Dikuasakan oleh ICTServe (iServe).
-=======
                             &copy; {{ date('Y') }} Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia. Powered by ICTServe (iServe).
->>>>>>> feature/larastan-autofix
                         </td>
                     </tr>
                 </table>

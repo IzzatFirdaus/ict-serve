@@ -26,9 +26,9 @@ class MyRequests extends Component
     #[Url]
     public string $search = '';
 
-    public int $selectedLoanRequest = 0;
+    public int $selectedLoanRequestId = 0;
 
-    public int $selectedTicket = 0;
+    public int $selectedTicketId = 0;
 
     public bool $showLoanModal = false;
 
@@ -67,25 +67,25 @@ class MyRequests extends Component
 
     public function showLoanDetails(int $loanRequestId)
     {
-        $this->selectedLoanRequest = $loanRequestId;
+        $this->selectedLoanRequestId = $loanRequestId;
         $this->showLoanModal = true;
     }
 
     public function closeLoanModal()
     {
-        $this->selectedLoanRequest = 0;
+        $this->selectedLoanRequestId = 0;
         $this->showLoanModal = false;
     }
 
     public function showTicketDetails(int $ticketId)
     {
-        $this->selectedTicket = $ticketId;
+        $this->selectedTicketId = $ticketId;
         $this->showTicketModal = true;
     }
 
     public function closeTicketModal()
     {
-        $this->selectedTicket = 0;
+        $this->selectedTicketId = 0;
         $this->showTicketModal = false;
     }
 
@@ -158,14 +158,14 @@ class MyRequests extends Component
         $tickets = $ticketsQuery->paginate(10, ['*'], 'tickets');
 
         // Get selected records for modals
-        $selectedLoanRequest = $this->selectedLoanRequest
+        $selectedLoanRequest = $this->selectedLoanRequestId
             ? LoanRequest::with(['loanStatus', 'user', 'supervisor', 'ictAdmin', 'issuedBy', 'loanItems.equipmentItem'])
-                ->find($this->selectedLoanRequest)
+                ->find($this->selectedLoanRequestId)
             : null;
 
-        $selectedTicket = $this->selectedTicket
+        $selectedTicket = $this->selectedTicketId
             ? HelpdeskTicket::with(['assignedTo', 'category', 'comments.user'])
-                ->find($this->selectedTicket)
+                ->find($this->selectedTicketId)
             : null;
 
         return view('livewire.my-requests', compact(

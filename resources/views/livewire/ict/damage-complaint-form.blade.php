@@ -1,412 +1,429 @@
-<div class="max-w-4xl mx-auto">
-    @if($submitted)
-        <!-- Success State -->
-        <div class="bg-success-50 dark:bg-success-900/20 border border-success-200 dark:border-success-800 rounded-lg p-6 text-center">
-            <div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-success-100 dark:bg-success-800 rounded-full">
-                <svg class="w-6 h-6 text-success-600 dark:text-success-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
+@php
+    // Page meta
+    $pageTitle = 'Borang Aduan Kerosakan ICT';
+    $pageSubtitle = 'ICT Damage Complaint Form';
+    $formReference = $formReference ?? 'PK.(S).MOTAC.07.(L1)';
+@endphp
+
+<x-layouts.app :title="$pageTitle">
+    {{-- Skiplink for accessibility (MYDS) --}}
+    <x-myds.skiplink href="#main-content">
+        <span>Langkau ke kandungan utama</span>
+    </x-myds.skiplink>
+
+    {{-- MYDS Masthead/Header (Logo, navigation, search) --}}
+    <x-myds.masthead>
+        <x-myds.masthead-header>
+            <x-myds.masthead-title>
+                {{ config('app.name', 'ICTServe') }}
+            </x-myds.masthead-title>
+        </x-myds.masthead-header>
+        <x-myds.masthead-content>
+            <x-myds.masthead-section title="ServiceDesk ICT" icon="<x-myds.icon name='support' />">
+                {{-- Additional navigation actions, if any --}}
+            </x-myds.masthead-section>
+        </x-myds.masthead-content>
+    </x-myds.masthead>
+
+    {{-- Content Banner (refer breakdown) --}}
+    <section class="bg-primary-600 bg-[url('/images/ict-servicedesk-banner.png')] bg-cover bg-center py-8 mb-6 text-white relative">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="flex flex-col gap-1">
+                <h1 class="font-heading text-heading-m font-semibold">
+                    {{ $pageTitle }}
+                </h1>
+                <h2 class="font-heading text-heading-2xs font-medium opacity-90">
+                    {{ $pageSubtitle }}
+                </h2>
+                {{-- Breadcrumb navigation --}}
+                <x-myds.breadcrumb>
+                    <x-myds.breadcrumb-item>
+                        <x-myds.breadcrumb-link href="{{ route('dashboard') }}">Utama</x-myds.breadcrumb-link>
+                    </x-myds.breadcrumb-item>
+                    <x-myds.breadcrumb-separator />
+                    <x-myds.breadcrumb-item>
+                        <x-myds.breadcrumb-page>ServiceDesk ICT</x-myds.breadcrumb-page>
+                    </x-myds.breadcrumb-item>
+                </x-myds.breadcrumb>
             </div>
-            <h3 class="text-lg font-semibold text-success-900 dark:text-success-100 mb-2">
-                Damage Report Submitted Successfully
-            </h3>
-            <p class="text-success-700 dark:text-success-300 mb-4">
-                Your damage report has been submitted and a support ticket has been created. You will receive an email confirmation shortly.
+            {{-- Form reference (top right) --}}
+            <span class="absolute top-4 right-8">
+                <x-myds.tag variant="primary" size="medium">
+                    {{ $formReference }}
+                </x-myds.tag>
+            </span>
+        </div>
+    </section>
+
+    <main id="main-content" tabindex="0" class="myds-container max-w-4xl mx-auto py-8">
+        {{-- Status: Success Toast --}}
+        @if(session()->has('success'))
+            <div class="fixed inset-0 bg-bg-washed/70 flex items-center justify-center z-50"
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition:enter="ease-out duration-300"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                aria-modal="true" role="dialog">
+                <div class="bg-bg-white-0 rounded-radius-l shadow-context-menu p-8 max-w-md mx-4 text-center">
+                    <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <x-myds.icon name="check-circle" class="w-8 h-8 text-success-600" />
+                    </div>
+                    <h2 class="font-heading text-heading-s font-semibold text-txt-black-900 mb-2">
+                        Aduan Berjaya Dihantar
+                    </h2>
+                    <p class="text-body-sm text-txt-black-700 mb-4">
+                        {{ session('success') }}
+                    </p>
+                    <p class="text-body-xs text-txt-black-500 mb-6">
+                        Rujukan: <strong>{{ session('reference_code') }}</strong>
+                    </p>
+                    <x-myds.button
+                        type="button"
+                        variant="primary"
+                        @click="show = false; window.location.href = '{{ route('dashboard') }}'"
+                    >Kembali ke Dashboard</x-myds.button>
+                </div>
+            </div>
+        @endif
+
+        {{-- Info Callout --}}
+        <x-myds.callout variant="info" class="mb-6">
+            <p class="text-body-sm">
+                Sila lengkapkan borang ini untuk mengadukan kerosakan peralatan ICT.
+                Semua maklumat bertanda <span class="text-danger-600 font-medium">*</span> adalah wajib diisi.
+                Aduan anda akan diproses dalam tempoh 3 hari bekerja.
             </p>
-            <button
-                wire:click="resetForm"
-                class="btn-secondary"
-            >
-                Submit Another Report
-            </button>
-        </div>
-    @else
-        <!-- Form Header -->
-        <div class="mb-6">
-            <h1 class="text-h2 text-gray-900 dark:text-gray-100 mb-2">
-                ICT Damage Report Form
-            </h1>
-            <p class="text-body-lg text-gray-600 dark:text-gray-400">
-                Report damaged ICT equipment and request repair services through this secure form.
-            </p>
-        </div>
+        </x-myds.callout>
 
-        <!-- Progress Indicator -->
-        <div class="mb-8">
-            <div class="flex items-center justify-between mb-4">
-                @for($step = 1; $step <= $totalSteps; $step++)
-                    <div class="flex items-center {{ $step < $totalSteps ? 'flex-1' : '' }}">
-                        <div class="flex items-center justify-center w-8 h-8 rounded-full
-                            {{ $currentStep >= $step ? 'bg-primary-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400' }}">
-                            {{ $step }}
-                        </div>
-                        @if($step < $totalSteps)
-                            <div class="flex-1 h-1 mx-4 {{ $currentStep > $step ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700' }}"></div>
-                        @endif
-                    </div>
-                @endfor
+        {{-- Form --}}
+        <form
+            wire:submit="submit"
+            class="space-y-8"
+            novalidate
+            aria-label="{{ $pageTitle }}"
+            x-data="{
+                currentStep: 1,
+                totalSteps: 4,
+                isSubmitting: false
+            }"
+        >
+
+            {{-- MYDS Progress Indicator --}}
+            <div class="relative mb-8">
+                <div class="overflow-hidden h-2 text-xs flex rounded-full bg-bg-washed">
+                    <div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary-600 transition-all duration-300"
+                         :style="`width: ${(currentStep / totalSteps) * 100}%`"></div>
+                </div>
+                <div class="flex justify-between text-body-xs text-txt-black-500 mt-2">
+                    <span>Maklumat Pelapor</span>
+                    <span>Kerosakan</span>
+                    <span>Perakuan</span>
+                    <span>Selesai</span>
+                </div>
             </div>
-            <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
-                <span>Contact Details</span>
-                <span>Equipment & Damage</span>
-                <span>Additional Info</span>
-            </div>
-        </div>
 
-        <!-- Form Steps -->
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
-            <form wire:submit="submit">
-                @if($currentStep === 1)
-                    <!-- Step 1: Contact Information -->
-                    <div class="space-y-6">
-                        <h3 class="text-h4 text-gray-900 dark:text-gray-100 mb-4">
-                            Contact Information
-                        </h3>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="reporter_name" class="form-label required">
-                                    Full Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="reporter_name"
-                                    wire:model.blur="reporter_name"
-                                    class="form-input @error('reporter_name') error @enderror"
-                                    placeholder="Enter your full name"
-                                >
-                                @error('reporter_name')
-                                    <p class="form-error">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="reporter_email" class="form-label required">
-                                    Email Address
-                                </label>
-                                <input
-                                    type="email"
-                                    id="reporter_email"
-                                    wire:model.blur="reporter_email"
-                                    class="form-input @error('reporter_email') error @enderror"
-                                    placeholder="Enter your email address"
-                                >
-                                @error('reporter_email')
-                                    <p class="form-error">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="reporter_phone" class="form-label">
-                                    Phone Number
-                                </label>
-                                <input
-                                    type="tel"
-                                    id="reporter_phone"
-                                    wire:model.blur="reporter_phone"
-                                    class="form-input @error('reporter_phone') error @enderror"
-                                    placeholder="Enter your phone number"
-                                >
-                                @error('reporter_phone')
-                                    <p class="form-error">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="department" class="form-label required">
-                                    Department
-                                </label>
-                                <select
-                                    id="department"
-                                    wire:model.blur="department"
-                                    class="form-select @error('department') error @enderror"
-                                >
-                                    <option value="">Select your department</option>
-                                    @foreach($departments as $dept)
-                                        <option value="{{ $dept }}">{{ $dept }}</option>
-                                    @endforeach
-                                </select>
-                                @error('department')
-                                    <p class="form-error">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
+            {{-- Step 1: Reporter Information --}}
+            <x-myds.panel variant="default" x-show="currentStep === 1">
+                <h2 class="font-heading text-heading-s font-medium text-txt-black-900 mb-6 flex items-center">
+                    <span class="bg-primary-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-body-sm font-medium mr-3">1</span>
+                    Maklumat Pelapor
+                </h2>
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {{-- Full Name --}}
+                        <x-myds.input
+                            name="full_name"
+                            label="Nama Penuh"
+                            wire:model.blur="full_name"
+                            required
+                            placeholder="Contoh: Ahmad bin Ali"
+                            autocomplete="name"
+                        />
+                        {{-- Department --}}
+                        <x-myds.select
+                            name="department"
+                            label="Bahagian"
+                            wire:model.live="department"
+                            required
+                            :options="$departments"
+                        />
                     </div>
-
-                @elseif($currentStep === 2)
-                    <!-- Step 2: Equipment and Damage Details -->
-                    <div class="space-y-6">
-                        <h3 class="text-h4 text-gray-900 dark:text-gray-100 mb-4">
-                            Equipment & Damage Details
-                        </h3>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="equipment_id" class="form-label required">
-                                    Equipment Item
-                                </label>
-                                <select
-                                    id="equipment_id"
-                                    wire:model.live="equipment_id"
-                                    class="form-select @error('equipment_id') error @enderror"
-                                >
-                                    <option value="">Select equipment item</option>
-                                    @foreach($equipmentItems as $equipment)
-                                        <option value="{{ $equipment->id }}">
-                                            {{ $equipment->name }} - {{ $equipment->model }} ({{ $equipment->asset_tag }})
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('equipment_id')
-                                    <p class="form-error">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="damage_type" class="form-label required">
-                                    Damage Type
-                                </label>
-                                <select
-                                    id="damage_type"
-                                    wire:model.blur="damage_type"
-                                    class="form-select @error('damage_type') error @enderror"
-                                >
-                                    <option value="">Select damage type</option>
-                                    @foreach($damageTypes as $type)
-                                        <option value="{{ $type }}">{{ $type }}</option>
-                                    @endforeach
-                                </select>
-                                @error('damage_type')
-                                    <p class="form-error">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="description" class="form-label required">
-                                Damage Description
-                            </label>
-                            <div class="relative">
-                                <textarea
-                                    id="description"
-                                    wire:model.live="description"
-                                    rows="4"
-                                    class="form-input @error('description') error @enderror"
-                                    placeholder="Please provide a detailed description of the damage or issue..."
-                                ></textarea>
-                                <div class="absolute bottom-2 right-2 text-xs text-gray-500 dark:text-gray-400">
-                                    {{ $descriptionLength }}/{{ $maxDescriptionLength }}
-                                </div>
-                            </div>
-                            @error('description')
-                                <p class="form-error">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div>
-                            <label for="priority" class="form-label">
-                                Priority Level
-                            </label>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
-                                @foreach(['low' => 'Low', 'medium' => 'Medium', 'high' => 'High', 'urgent' => 'Urgent'] as $value => $label)
-                                    <label class="flex items-center p-3 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 {{ $priority === $value ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-300 dark:border-primary-600' : '' }}">
-                                        <input
-                                            type="radio"
-                                            wire:model.live="priority"
-                                            value="{{ $value }}"
-                                            class="sr-only"
-                                        >
-                                        <div class="flex items-center">
-                                            <div class="w-4 h-4 border-2 rounded-full mr-3 {{ $priority === $value ? 'border-primary-600 bg-primary-600' : 'border-gray-300 dark:border-gray-600' }}">
-                                                @if($priority === $value)
-                                                    <div class="w-2 h-2 bg-white rounded-full mx-auto mt-0.5"></div>
-                                                @endif
-                                            </div>
-                                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ $label }}</span>
-                                        </div>
-                                    </label>
-                                @endforeach
-                            </div>
-                        </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {{-- Position Grade --}}
+                        <x-myds.input
+                            name="position_grade"
+                            label="Gred Jawatan"
+                            wire:model.blur="position_grade"
+                            placeholder="Contoh: N41, M41, JUSA"
+                        />
+                        {{-- Email --}}
+                        <x-myds.input
+                            name="email"
+                            label="E-Mel"
+                            type="email"
+                            wire:model.blur="email"
+                            required
+                            placeholder="nama@motac.gov.my"
+                            autocomplete="email"
+                        />
                     </div>
+                    {{-- Phone Number --}}
+                    <x-myds.input
+                        name="phone"
+                        label="No. Telefon"
+                        type="tel"
+                        wire:model.blur="phone"
+                        required
+                        placeholder="Contoh: 03-1234567 atau 012-3456789"
+                        autocomplete="tel"
+                    />
+                </div>
+                <div class="flex justify-end mt-8">
+                    <x-myds.button
+                        type="button"
+                        variant="primary"
+                        @click="currentStep = 2"
+                        :disabled="!$this->canProceedToStep2"
+                    >Seterusnya
+                        <x-myds.icon name="arrow-right" class="w-4 h-4 ml-2" />
+                    </x-myds.button>
+                </div>
+            </x-myds.panel>
 
-                @elseif($currentStep === 3)
-                    <!-- Step 3: Additional Information -->
-                    <div class="space-y-6">
-                        <h3 class="text-h4 text-gray-900 dark:text-gray-100 mb-4">
-                            Additional Information
-                        </h3>
-
-                        <div>
-                            <label for="preferred_repair_date" class="form-label">
-                                Preferred Repair Date
-                            </label>
-                            <input
-                                type="date"
-                                id="preferred_repair_date"
-                                wire:model.blur="preferred_repair_date"
-                                class="form-input @error('preferred_repair_date') error @enderror"
-                                min="{{ date('Y-m-d', strtotime('+1 day')) }}"
-                            >
-                            @error('preferred_repair_date')
-                                <p class="form-error">{{ $message }}</p>
-                            @enderror
-                            <p class="form-help">
-                                Select a preferred date for repair (optional). We will try to accommodate your request.
-                            </p>
+            {{-- Step 2: Damage Information --}}
+            <x-myds.panel variant="default" x-show="currentStep === 2">
+                <h2 class="font-heading text-heading-s font-medium text-txt-black-900 mb-6 flex items-center">
+                    <span class="bg-primary-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-body-sm font-medium mr-3">2</span>
+                    Maklumat Kerosakan
+                </h2>
+                <div class="space-y-6">
+                    {{-- Damage Type --}}
+                    <x-myds.select
+                        name="damage_type_id"
+                        label="Jenis Kerosakan"
+                        wire:model.live="damage_type_id"
+                        required
+                        :options="$damageTypes"
+                    />
+                    {{-- Equipment Selection (if high priority or required) --}}
+                    @if($showEquipmentSelector)
+                        <div class="space-y-4">
+                            <h3 class="font-heading text-heading-xs font-medium text-txt-black-900">
+                                Peralatan yang Rosak
+                            </h3>
+                            <x-myds.select
+                                name="equipment_id"
+                                label="Pilih Peralatan"
+                                wire:model.live="equipment_id"
+                                required
+                                :options="$equipmentOptions"
+                            />
                         </div>
-
-                        <div>
-                            <label class="form-label">
-                                Damage Photos (Optional)
-                            </label>
-                            <div class="mt-2">
-                                <div class="flex items-center justify-center w-full">
-                                    <label for="photos" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg class="w-8 h-8 mb-2 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                            </svg>
-                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                                                <span class="font-semibold">Click to upload</span> or drag and drop
-                                            </p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG or JPEG (MAX. 2MB each)</p>
-                                        </div>
-                                        <input
-                                            id="photos"
-                                            type="file"
-                                            wire:model.live="photos"
-                                            class="hidden"
-                                            multiple
-                                            accept="image/*"
-                                        >
-                                    </label>
-                                </div>
-
-                                @if(!empty($photos))
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                                        @foreach($photos as $index => $photo)
-                                            <div class="relative group">
-                                                <img
-                                                    src="{{ $photo->temporaryUrl() }}"
-                                                    alt="Damage photo {{ $index + 1 }}"
-                                                    class="w-full h-24 object-cover rounded-lg border border-gray-200 dark:border-gray-600"
-                                                >
-                                                <button
-                                                    type="button"
-                                                    wire:click="removePhoto({{ $index }})"
-                                                    class="absolute -top-2 -right-2 bg-danger-600 text-white rounded-full p-1 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                                                >
-                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endif
-
-                                @error('photos.*')
-                                    <p class="form-error">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Form Summary -->
-                        <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
-                            <h4 class="text-h5 text-gray-900 dark:text-gray-100 mb-3">Review Your Report</h4>
-                            <div class="space-y-2 text-sm">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Reporter:</span>
-                                    <span class="text-gray-900 dark:text-gray-100">{{ $reporter_name }}</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Equipment:</span>
-                                    <span class="text-gray-900 dark:text-gray-100">
-                                        @if($equipment_id)
-                                            {{ $equipmentItems->find($equipment_id)->name ?? 'Selected Equipment' }}
-                                        @else
-                                            Not selected
-                                        @endif
-                                    </span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Damage Type:</span>
-                                    <span class="text-gray-900 dark:text-gray-100">{{ $damage_type ?: 'Not specified' }}</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Priority:</span>
-                                    <span class="px-2 py-1 rounded-full text-xs font-medium
-                                        {{ $priority === 'urgent' ? 'bg-danger-100 text-danger-800 dark:bg-danger-900/20 dark:text-danger-400' : '' }}
-                                        {{ $priority === 'high' ? 'bg-warning-100 text-warning-800 dark:bg-warning-900/20 dark:text-warning-400' : '' }}
-                                        {{ $priority === 'medium' ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/20 dark:text-primary-400' : '' }}
-                                        {{ $priority === 'low' ? 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400' : '' }}
-                                    ">
-                                        {{ ucfirst($priority) }}
-                                    </span>
-                                </div>
-                                @if(!empty($photos))
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600 dark:text-gray-400">Photos:</span>
-                                        <span class="text-gray-900 dark:text-gray-100">{{ count($photos) }} file(s) attached</span>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
-                <!-- Form Navigation -->
-                <div class="flex justify-between items-center mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    @endif
+                    {{-- Damage Description --}}
+                    <x-myds.textarea
+                        name="damage_description"
+                        label="Penerangan Kerosakan"
+                        wire:model.blur="damage_description"
+                        required
+                        placeholder="Terangkan secara terperinci mengenai kerosakan yang dialami..."
+                        :maxlength="1000"
+                    />
+                    {{-- Location --}}
+                    <x-myds.input
+                        name="location"
+                        label="Lokasi"
+                        wire:model.blur="location"
+                        required
+                        placeholder="Contoh: Bilik 204, Tingkat 2, Blok A"
+                    />
+                    {{-- Urgency Level --}}
                     <div>
-                        @if($currentStep > 1)
-                            <button
-                                type="button"
-                                wire:click="previousStep"
-                                class="btn-secondary"
-                            >
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                </svg>
-                                Previous
-                            </button>
-                        @endif
-                    </div>
-
-                    <div>
-                        @if($currentStep < $totalSteps)
-                            <button
-                                type="button"
-                                wire:click="nextStep"
-                                class="btn-primary"
-                            >
-                                Next
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </button>
-                        @else
-                            <button
-                                type="submit"
-                                class="btn-primary {{ $loading ? 'opacity-75 cursor-not-allowed' : '' }}"
-                                {{ $loading ? 'disabled' : '' }}
-                            >
-                                @if($loading)
-                                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                    Submitting...
-                                @else
-                                    Submit Report
-                                @endif
-                            </button>
-                        @endif
+                        <x-myds.select
+                            name="priority"
+                            label="Tahap Keutamaan"
+                            wire:model.live="priority"
+                            required
+                            :options="$priorities"
+                        />
+                        <p class="mt-1 text-body-xs text-txt-black-500">
+                            Tahap keutamaan akan ditetapkan secara automatik berdasarkan jenis kerosakan yang dipilih.
+                        </p>
                     </div>
                 </div>
-            </form>
-        </div>
-    @endif
-</div>
+                <div class="flex justify-between mt-8">
+                    <x-myds.button
+                        type="button"
+                        variant="secondary"
+                        @click="currentStep = 1"
+                    >
+                        <x-myds.icon name="arrow-left" class="w-4 h-4 mr-2" />
+                        Kembali
+                    </x-myds.button>
+                    <x-myds.button
+                        type="button"
+                        variant="primary"
+                        @click="currentStep = 3"
+                        :disabled="!$this->canProceedToStep3"
+                    >
+                        Seterusnya
+                        <x-myds.icon name="arrow-right" class="w-4 h-4 ml-2" />
+                    </x-myds.button>
+                </div>
+            </x-myds.panel>
+
+            {{-- Step 3: Declaration --}}
+            <x-myds.panel variant="warning" x-show="currentStep === 3">
+                <h2 class="font-heading text-heading-s font-medium text-txt-black-900 mb-6 flex items-center">
+                    <span class="bg-warning-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-body-sm font-medium mr-3">3</span>
+                    Perakuan dan Pengesahan
+                </h2>
+                <div class="space-y-6">
+                    <div class="bg-bg-white-0 border border-otl-gray-200 rounded-radius-m p-6">
+                        <h3 class="font-heading text-heading-xs font-medium text-txt-black-900 mb-4">Perakuan Pelapor</h3>
+                        <div class="prose prose-sm text-txt-black-700 max-w-none">
+                            <p>Saya memperakui dan mengesahkan bahawa:</p>
+                            <ul class="list-disc list-inside space-y-1 mt-3">
+                                <li>Maklumat yang diberikan adalah benar dan tepat</li>
+                                <li>Kerosakan yang dilaporkan adalah benar berlaku</li>
+                                <li>Saya bersetuju untuk dihubungi bagi tujuan pengesahan maklumat</li>
+                                <li>Aduan ini dibuat untuk tujuan rasmi dan bukan peribadi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3 p-4 border border-danger-200 rounded-radius-m bg-danger-25">
+                        <x-myds.checkbox
+                            id="confirmation"
+                            wire:model.live="confirmation"
+                            class="mt-1"
+                            required
+                        />
+                        <label for="confirmation" class="text-body-sm text-txt-black-900 font-medium">
+                            Saya mengesahkan bahawa semua maklumat yang diberikan adalah benar dan tepat. <span class="text-danger-600">*</span>
+                        </label>
+                    </div>
+                    @error('confirmation')
+                        <div class="text-danger-600 text-body-sm mt-1" role="alert">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="flex justify-between mt-8">
+                    <x-myds.button
+                        type="button"
+                        variant="secondary"
+                        @click="currentStep = 2"
+                    >
+                        <x-myds.icon name="arrow-left" class="w-4 h-4 mr-2" />
+                        Kembali
+                    </x-myds.button>
+                    <x-myds.button
+                        type="button"
+                        variant="primary"
+                        @click="currentStep = 4"
+                        :disabled="!$confirmation"
+                    >
+                        Semak Semula
+                        <x-myds.icon name="arrow-right" class="w-4 h-4 ml-2" />
+                    </x-myds.button>
+                </div>
+            </x-myds.panel>
+
+            {{-- Step 4: Review and Submit --}}
+            <x-myds.panel variant="success" x-show="currentStep === 4">
+                <h2 class="font-heading text-heading-s font-medium text-txt-black-900 mb-6 flex items-center">
+                    <span class="bg-success-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-body-sm font-medium mr-3">4</span>
+                    Semakan Terakhir
+                </h2>
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <h3 class="font-heading text-heading-xs font-medium text-txt-black-900 border-b border-otl-gray-200 pb-2">
+                                Maklumat Pelapor
+                            </h3>
+                            <div class="space-y-2 text-body-sm">
+                                <div><strong>Nama:</strong> {{ $full_name ?: '-' }}</div>
+                                <div><strong>Bahagian:</strong> {{ $selectedDepartmentName ?: '-' }}</div>
+                                <div><strong>Gred:</strong> {{ $position_grade ?: '-' }}</div>
+                                <div><strong>E-Mel:</strong> {{ $email ?: '-' }}</div>
+                                <div><strong>Telefon:</strong> {{ $phone ?: '-' }}</div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="font-heading text-heading-xs font-medium text-txt-black-900 border-b border-otl-gray-200 pb-2">
+                                Maklumat Kerosakan
+                            </h3>
+                            <div class="space-y-2 text-body-sm">
+                                <div><strong>Jenis:</strong> {{ $selectedDamageTypeName ?: '-' }}</div>
+                                <div>
+                                    <strong>Keutamaan:</strong>
+                                    <x-myds.tag
+                                        :variant="$priority === 'high' ? 'danger' : ($priority === 'medium' ? 'warning' : 'success')"
+                                        size="sm"
+                                    >
+                                        {{ $priorityLabels[$priority] ?? '-' }}
+                                    </x-myds.tag>
+                                </div>
+                                <div><strong>Lokasi:</strong> {{ $location ?: '-' }}</div>
+                                @if($equipment_id)
+                                    <div><strong>Peralatan:</strong> {{ $selectedEquipmentName ?: '-' }}</div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-heading-xs font-medium text-txt-black-900 border-b border-otl-gray-200 pb-2 mb-3">
+                            Penerangan Kerosakan
+                        </h3>
+                        <div class="bg-bg-washed p-4 rounded-radius-m text-body-sm">
+                            {{ $damage_description ?: 'Tiada penerangan diberikan' }}
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between mt-8">
+                    <x-myds.button
+                        type="button"
+                        variant="secondary"
+                        @click="currentStep = 3"
+                    >
+                        <x-myds.icon name="arrow-left" class="w-4 h-4 mr-2" />
+                        Kembali
+                    </x-myds.button>
+                    <x-myds.button
+                        type="submit"
+                        variant="primary"
+                        wire:loading.attr="disabled"
+                        wire:target="submit"
+                        @click="isSubmitting = true"
+                        x-bind:disabled="isSubmitting"
+                    >
+                        <span wire:loading.remove wire:target="submit">
+                            <x-myds.icon name="send" class="w-4 h-4 mr-2" />
+                            Hantar Aduan
+                        </span>
+                        <span wire:loading wire:target="submit" class="flex items-center">
+                            <x-myds.spinner class="animate-spin -ml-1 mr-2 h-4 w-4" />
+                            Menghantar...
+                        </span>
+                    </x-myds.button>
+                </div>
+            </x-myds.panel>
+        </form>
+    </main>
+
+    {{-- MYDS Footer (Info, copyright, social) --}}
+    <x-myds.footer>
+        <x-myds.footer-section>
+            <x-myds.siteinfo>
+                <x-myds.footerlogo logoTitle="Bahagian Pengurusan Maklumat (BPM)" />
+                © 2025 Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.
+            </x-myds.siteinfo>
+            <x-myds.sitelinkgroup groupTitle="Pautan">
+                <x-myds.sitelink href="https://www.motac.gov.my">Laman Utama MOTAC</x-myds.sitelink>
+                <x-myds.sitelink href="https://www.facebook.com/motacmalaysia" newtab>Facebook</x-myds.sitelink>
+                <x-myds.sitelink href="https://www.twitter.com/motacmalaysia" newtab>Twitter</x-myds.sitelink>
+                <x-myds.sitelink href="https://www.instagram.com/motacmalaysia" newtab>Instagram</x-myds.sitelink>
+                <x-myds.sitelink href="https://www.youtube.com/motacmalaysia" newtab>YouTube</x-myds.sitelink>
+            </x-myds.sitelinkgroup>
+        </x-myds.footer-section>
+    </x-myds.footer>
+</x-layouts.app>

@@ -2,7 +2,6 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-<<<<<<< HEAD
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -46,7 +45,6 @@
         </div>
     </form>
 </x-guest-layout>
-=======
 @section('content')
 <div class="myds-container max-w-md mx-auto py-10">
     <div class="bg-bg-white-0 border border-otl-gray-200 rounded-radius-l shadow-context-menu p-6">
@@ -94,4 +92,3 @@
     </div>
 </div>
 @endsection
->>>>>>> 6d94ec6966122a01c5eff96f247c9667922ef5f9

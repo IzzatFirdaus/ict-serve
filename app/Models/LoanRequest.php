@@ -53,17 +53,35 @@ class LoanRequest extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reference_number',
         'request_number',
         'user_id',
+        'applicant_name',
+        'applicant_position',
+        'applicant_department',
+        'applicant_phone',
         'status_id',
+        'status',
         'purpose',
+        'location',
         'requested_from',
+        'loan_start_date',
+        'expected_return_date',
+        'responsible_officer_name',
+        'responsible_officer_position',
+        'responsible_officer_phone',
+        'same_as_applicant',
+        'equipment_requests',
+        'endorsing_officer_name',
+        'endorsing_officer_position',
+        'endorsement_status',
+        'endorsement_comments',
+        'submitted_at',
         'requested_to',
         'actual_from',
         'actual_to',
         'notes',
         'rejection_reason',
-        'approval_token',
         'supervisor_id',
         'supervisor_approved_at',
         'supervisor_notes',
@@ -82,10 +100,15 @@ class LoanRequest extends Model
     protected function casts(): array
     {
         return [
+            'equipment_requests' => 'array',
+            'same_as_applicant' => 'boolean',
             'requested_from' => 'date',
             'requested_to' => 'date',
+            'loan_start_date' => 'date',
+            'expected_return_date' => 'date',
             'actual_from' => 'date',
             'actual_to' => 'date',
+            'submitted_at' => 'datetime',
             'supervisor_approved_at' => 'datetime',
             'ict_approved_at' => 'datetime',
             'issued_at' => 'datetime',
@@ -216,7 +239,15 @@ class LoanRequest extends Model
      */
     public function canBeEdited(): bool
     {
-        return $this->status->canBeEdited();
+        // Safety check - if status is a string (legacy data), try to get the relationship
+        if (is_string($this->status)) {
+            $this->load('status');
+        }
+
+        return $this->status &&
+               is_object($this->status) &&
+               method_exists($this->status, 'canBeEdited') ?
+               $this->status->canBeEdited() : false;
     }
 
     /**
@@ -224,7 +255,15 @@ class LoanRequest extends Model
      */
     public function canBeCancelled(): bool
     {
-        return $this->status->canBeCancelled();
+        // Safety check - if status is a string (legacy data), try to get the relationship
+        if (is_string($this->status)) {
+            $this->load('status');
+        }
+
+        return $this->status &&
+               is_object($this->status) &&
+               method_exists($this->status, 'canBeCancelled') ?
+               $this->status->canBeCancelled() : false;
     }
 
     /**
@@ -232,7 +271,14 @@ class LoanRequest extends Model
      */
     public function isOverdue(): bool
     {
-        return $this->status->code === 'active'
+        // Safety check - if status is a string (legacy data), try to get the relationship
+        if (is_string($this->status)) {
+            $this->load('status');
+        }
+
+        return $this->status &&
+               is_object($this->status) &&
+               $this->status->code === 'active'
             && $this->requested_to
             && $this->requested_to < now();
     }

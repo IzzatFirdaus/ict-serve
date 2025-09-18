@@ -124,7 +124,7 @@
                                      x-transition:leave-end="opacity-0 scale-95"
                                      class="absolute right-0 mt-2 w-48 bg-bg-white-0 border border-otl-gray-200 rounded-lg shadow-context-menu z-50">
                                     <div class="py-2">
-                                        <a href="{{ route('profile.index') }}"
+                                        <a href="{{ route('profile.edit') }}"
                                            class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed">
                                             Tetapan Profil
                                         </a>

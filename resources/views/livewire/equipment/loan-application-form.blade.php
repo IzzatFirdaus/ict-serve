@@ -492,7 +492,7 @@
                             <div class="space-y-2 text-body-sm">
                                 <div><strong>Nama:</strong> {{ $applicant_name ?: '-' }}</div>
                                 <div><strong>Jawatan & Gred:</strong> {{ $applicant_position ?: '-' }}</div>
-                                <div><strong>Bahagian/Unit:</strong> {{ $selectedDepartmentName ?: '-' }}</div>
+                                    <div><strong>Bahagian/Unit:</strong> {{ $applicant_department ?: '-' }}</div>
                                 <div><strong>No. Telefon:</strong> {{ $applicant_phone ?: '-' }}</div>
                                 <div><strong>Lokasi:</strong> {{ $location ?: '-' }}</div>
                                 <div><strong>Tarikh Pinjaman:</strong> {{ $loan_start_date ? \Carbon\Carbon::parse($loan_start_date)->format('d/m/Y') : '-' }}</div>
