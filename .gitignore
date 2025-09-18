@@ -44,6 +44,8 @@ Thumbs.db
 # Documentation generators / tooling
 /.phpdoc/cache/
 /.phpactor.json
+/.phpdoc/build/
+/.phpdoc/build/classes/
 
 # Misc
 /composer.phar
@@ -51,6 +53,15 @@ Thumbs.db
 /Homestead.json
 /Homestead.yaml
 /playwright-report/
+
+# Generated API docs
+/docs/api/
+/docs/api/classes/
+/docs/api/files/
+/docs/api/js/
+/docs/api/namespaces/
+/docs/api/packages/
+/docs/api/reports/
 
 # Keep source files and configuration tracked. Do NOT ignore these:
 # - app/

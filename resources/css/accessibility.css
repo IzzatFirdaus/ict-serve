@@ -1,0 +1,500 @@
+/**
+ * MYDS Accessibility CSS Module  
+ * Implements accessibility features including skip links, focus indicators,
+ * screen reader utilities, and ARIA styling following MYDS standards.
+ */
+
+/* =============================================================================
+   Screen Reader Only Content
+   ============================================================================= */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: inherit;
+}
+
+/* =============================================================================
+   Skip Links for Keyboard Navigation
+   ============================================================================= */
+
+.skip-link,
+.myds-skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-2);
+  z-index: 9999;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-primary-600);
+  color: white;
+  font-size: var(--fontSize-body-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-s);
+  border: 2px solid var(--color-primary-700);
+  transition: top var(--transition-short) ease-out;
+}
+
+.skip-link:focus,
+.myds-skip-link:focus,
+.skip-link:focus-visible,
+.myds-skip-link:focus-visible {
+  top: var(--space-2);
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.skip-link:hover,
+.myds-skip-link:hover {
+  background-color: var(--color-primary-700);
+  text-decoration: underline;
+}
+
+/* Multiple skip links container */
+.skip-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.skip-links .skip-link:not(:focus) + .skip-link {
+  top: -100px;
+}
+
+/* =============================================================================
+   Enhanced Focus Indicators (MYDS Compliant)
+   ============================================================================= */
+
+/* Base focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-fr-primary-600);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Interactive element focus */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="option"]:focus-visible {
+  outline: 2px solid var(--color-fr-primary-600);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+}
+
+/* Link focus styles */
+a:focus-visible {
+  outline: 2px solid var(--color-fr-primary-600);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+/* MYDS specific focus class */
+.myds-focus-visible:focus,
+.myds-focus-visible:focus-visible {
+  outline: 2px solid var(--color-fr-primary-600);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Focus within containers */
+.focus-within:focus-within {
+  outline: 1px solid var(--color-fr-primary-600);
+  outline-offset: 1px;
+}
+
+/* =============================================================================
+   High Contrast Mode Support
+   ============================================================================= */
+
+@media (prefers-contrast: high) {
+  /* Enhanced focus indicators for high contrast */
+  :focus-visible,
+  .myds-focus-visible:focus {
+    outline-width: 3px;
+    outline-offset: 3px;
+    outline-color: #0000FF;
+  }
+  
+  .dark :focus-visible,
+  .dark .myds-focus-visible:focus {
+    outline-color: #FFFF00;
+  }
+  
+  /* Stronger borders and text */
+  button,
+  input,
+  select,
+  textarea {
+    border-width: 2px;
+    border-color: currentColor;
+  }
+  
+  /* Enhanced button visibility */
+  button,
+  [role="button"] {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border: 2px solid ButtonText;
+  }
+  
+  button:hover,
+  [role="button"]:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+
+/* =============================================================================
+   ARIA Live Regions and Status Messages
+   ============================================================================= */
+
+/* Screen reader announcements */
+[aria-live="polite"],
+[aria-live="assertive"] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Status messages that should be visible */
+.status-message[aria-live],
+.toast[aria-live] {
+  position: static;
+  left: auto;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* =============================================================================
+   ARIA States and Properties Styling
+   ============================================================================= */
+
+/* Disabled elements */
+[aria-disabled="true"],
+:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Hidden elements */
+[aria-hidden="true"] {
+  display: none !important;
+}
+
+/* Expanded/Collapsed indicators */
+[aria-expanded="true"] .collapse-icon {
+  transform: rotate(180deg);
+}
+
+[aria-expanded="false"] .collapse-icon {
+  transform: rotate(0deg);
+}
+
+.collapse-icon {
+  transition: transform var(--transition-short);
+}
+
+/* Selected state */
+[aria-selected="true"] {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+  font-weight: 600;
+}
+
+/* Pressed state for toggle buttons */
+[aria-pressed="true"] {
+  background-color: var(--color-primary-600);
+  color: white;
+}
+
+[aria-pressed="false"] {
+  background-color: var(--theme-bg-secondary);
+  color: var(--theme-text-primary);
+}
+
+/* =============================================================================
+   Keyboard Navigation Indicators
+   ============================================================================= */
+
+/* Navigation lists */
+[role="tablist"],
+[role="menubar"],
+.navigation-list {
+  position: relative;
+}
+
+/* Current/Active navigation item */
+[aria-current="page"],
+[aria-current="location"],
+[aria-current="step"] {
+  position: relative;
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+  font-weight: 600;
+}
+
+[aria-current="page"]::before,
+[aria-current="location"]::before,
+[aria-current="step"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-primary-600);
+}
+
+/* =============================================================================
+   Form Accessibility Enhancements
+   ============================================================================= */
+
+/* Required field indicators */
+[aria-required="true"]::after,
+.required::after {
+  content: " *";
+  color: var(--color-danger-600);
+  font-weight: bold;
+}
+
+/* Invalid form fields */
+[aria-invalid="true"],
+.invalid {
+  border-color: var(--color-danger-600) !important;
+  background-color: var(--color-danger-50);
+  color: var(--color-danger-800);
+}
+
+[aria-invalid="true"]:focus,
+.invalid:focus {
+  outline-color: var(--color-danger-600);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Valid form fields */
+[aria-invalid="false"].validated,
+.valid {
+  border-color: var(--color-success-600);
+  background-color: var(--color-success-50);
+}
+
+/* Form error messages */
+.error-message,
+[role="alert"] {
+  color: var(--color-danger-700);
+  font-size: var(--fontSize-body-sm);
+  font-weight: 500;
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.error-message::before,
+[role="alert"]::before {
+  content: "⚠";
+  font-size: var(--fontSize-body-base);
+}
+
+/* Form success messages */
+.success-message {
+  color: var(--color-success-700);
+  font-size: var(--fontSize-body-sm);
+  font-weight: 500;
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.success-message::before {
+  content: "✓";
+  font-size: var(--fontSize-body-base);
+}
+
+/* =============================================================================
+   Modal and Dialog Accessibility
+   ============================================================================= */
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+/* Modal focus trap */
+[role="dialog"],
+[role="alertdialog"] {
+  position: relative;
+  z-index: 1001;
+}
+
+[role="dialog"]:focus,
+[role="alertdialog"]:focus {
+  outline: none;
+}
+
+/* =============================================================================
+   Reduced Motion Support
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .collapse-icon {
+    transition: none;
+  }
+  
+  .skip-link,
+  .myds-skip-link {
+    transition: none;
+  }
+}
+
+/* =============================================================================
+   Print Accessibility
+   ============================================================================= */
+
+@media print {
+  /* Show skip link content in print */
+  .skip-link,
+  .myds-skip-link {
+    position: static;
+    top: auto;
+    padding: var(--space-2);
+    background: transparent;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  /* Print URLs for links */
+  a[href]:not([href^="#"])::after {
+    content: " (" attr(href) ")";
+    font-size: smaller;
+    color: #666;
+  }
+  
+  /* Hide decorative elements */
+  .decorative,
+  [aria-hidden="true"] {
+    display: none !important;
+  }
+}
+
+/* =============================================================================
+   Language-Specific Accessibility (Bilingual Support)
+   ============================================================================= */
+
+/* Right-to-left language support preparation */
+[dir="rtl"] .skip-link,
+[dir="rtl"] .myds-skip-link {
+  left: auto;
+  right: var(--space-2);
+}
+
+[dir="rtl"] [aria-current="page"]::before,
+[dir="rtl"] [aria-current="location"]::before,
+[dir="rtl"] [aria-current="step"]::before {
+  left: auto;
+  right: 0;
+}
+
+/* =============================================================================
+   Toast and Notification Accessibility
+   ============================================================================= */
+
+/* Toast container positioning */
+.toast-container {
+  position: fixed;
+  z-index: 1050;
+  pointer-events: none;
+}
+
+/* Individual toast accessibility */
+.toast {
+  pointer-events: auto;
+  max-width: 20rem;
+  margin-bottom: var(--space-3);
+}
+
+.toast[role="alert"],
+.toast[role="status"] {
+  border: 2px solid var(--theme-border-primary);
+  border-left-width: 4px;
+}
+
+/* Toast focus management */
+.toast:focus-within {
+  outline: 2px solid var(--color-fr-primary-600);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   Mobile Accessibility Enhancements  
+   ============================================================================= */
+
+@media (max-width: 767px) {
+  /* Larger touch targets */
+  button,
+  [role="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--space-3) var(--space-4);
+  }
+  
+  /* Enhanced focus indicators for touch */
+  :focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+  
+  /* Mobile skip links positioning */
+  .skip-link,
+  .myds-skip-link {
+    font-size: var(--fontSize-body-base);
+    padding: var(--space-4) var(--space-5);
+  }
+}

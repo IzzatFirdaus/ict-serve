@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Exports;
 
+use App\Models\HelpdeskTicket;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -27,7 +28,7 @@ class HelpdeskTicketsExport implements FromCollection, WithHeadings, WithMapping
                 'ts.name as status_name',
                 'au.name as assigned_to_name',
                 'h.created_at',
-                'h.resolved_at',
+                'h.resolved_at'
             ])
             ->orderBy('h.created_at', 'desc')
             ->get();

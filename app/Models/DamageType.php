@@ -67,36 +67,15 @@ class DamageType extends Model
     }
 
     /**
-     * Scope to filter by severity
-     */
-    public function scopeBySeverity($query, string $severity)
-    {
-        return $query->where('severity', $severity);
-    }
-
-    /**
      * Get display name based on locale
      */
     public function getDisplayName(?string $locale = null): string
     {
-        // Default to English if no locale is provided (test compatibility)
-        if ($locale === null) {
-            return $this->name;
-        }
-
-        // $locale is guaranteed to be non-null at this point
+        $locale = $locale ?? app()->getLocale();
 
         return $locale === 'ms' || $locale === 'bm'
             ? $this->name_bm
             : $this->name;
-    }
-
-    /**
-     * Alias for name column - for backward compatibility.
-     */
-    public function getNameEnAttribute(): string
-    {
-        return $this->name;
     }
 
     /**
@@ -109,12 +88,6 @@ class DamageType extends Model
         return $locale === 'ms' || $locale === 'bm'
             ? ($this->description_bm ?? $this->description ?? '')
             : ($this->description ?? $this->description_bm ?? '');
-    }
-
-    // Alias used by some tests or legacy code
-    public function getDisplayDescriptionText(?string $locale = null): string
-    {
-        return $this->getDisplayDescription($locale);
     }
 
     /**

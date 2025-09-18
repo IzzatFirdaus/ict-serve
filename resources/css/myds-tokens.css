@@ -1,121 +1,233 @@
+/* MYDS Color Tokens - Light and Dark Mode Support */
+
 :root {
+  /* Light Mode Color Tokens */
+
   /* Text Tokens */
-  --txt-white: #fff;
-  --txt-black-900: #18181b;
-  --txt-black-700: #3f3f46;
-  --txt-black-600: #52525b;
-  --txt-black-500: #71717a;
-  --txt-primary: #2563eb;
-  --txt-danger: #dc2626;
-  --txt-success: #15803d;
-  --txt-warning: #a16207;
+  --txt-black-900: #18181B;
+  --txt-black-700: #3F3F46;
+  --txt-black-500: #71717A;
+  --txt-black-400: #A1A1AA;
+  --txt-black-300: #D4D4D8;
 
   /* Background Tokens */
-  --bg-white-0: #fff;
-  --bg-white-50: #fafafa;
-  --bg-white-100: #f4f4f5;
-  --bg-washed: #f4f4f5;
+  --bg-white-0: #FFFFFF;
+  --bg-white-50: #FAFAFA;
+  --bg-white-100: #F4F4F5;
+  --bg-washed: #F4F4F5;
 
-  /* Primary */
-  --primary-50: #eff6ff;
-  --primary-100: #dbeafe;
-  --primary-200: #c2d5ff;
-  --primary-300: #96b7ff;
-  --primary-400: #6394ff;
-  --primary-500: #3a75f6;
-  --primary-600: #2563eb;
-  --primary-700: #1d4ed8;
-  --primary-800: #1e40af;
-  --primary-900: #1e3a8a;
-  --primary-950: #172554;
+  /* Outline Tokens */
+  --otl-gray-200: #E4E4E7;
+  --otl-gray-300: #D4D4D8;
+  --otl-gray-400: #A1A1AA;
 
-  /* Danger */
-  --danger-50: #fef2f2;
-  --danger-100: #fee2e2;
-  --danger-200: #fecaca;
-  --danger-300: #fca5a5;
-  --danger-400: #f87171;
-  --danger-500: #ef4444;
-  --danger-600: #dc2626;
-  --danger-700: #b91c1c;
-  --danger-800: #991b1b;
-  --danger-900: #7f1d1d;
-  --danger-950: #450a0a;
-
-  /* Success */
-  --success-50: #f0fdf4;
-  --success-100: #dcfce7;
-  --success-200: #bbf7d0;
-  --success-300: #83daa3;
-  --success-400: #4ade80;
-  --success-500: #22c55e;
-  --success-600: #16a34a;
-  --success-700: #15803d;
-  --success-800: #166534;
-  --success-900: #14532d;
-  --success-950: #052e16;
-
-  /* Warning */
-  --warning-50: #fefce8;
-  --warning-100: #fef9c3;
-  --warning-200: #fef08a;
-  --warning-300: #fde047;
-  --warning-400: #facc15;
-  --warning-500: #eab308;
-  --warning-600: #ca8a04;
-  --warning-700: #a16207;
-  --warning-800: #854d0e;
-  --warning-900: #713f12;
-  --warning-950: #422006;
-
-  /* Outline */
-  --otl-divider: #f4f4f5;
-  --otl-gray-200: #e4e4e7;
-  --otl-gray-300: #d4d4d8;
-  --otl-primary-200: #c2d5ff;
-  --otl-primary-300: #96b7ff;
-  --otl-danger-200: #fecaca;
-  --otl-success-200: #bbf7d0;
-  --otl-warning-200: #fef08a;
-
-  /* Focus Ring */
-  --fr-primary-600: #2563eb;
-  --fr-danger-600: #dc2626;
-  --fr-success-600: #16a34a;
-  --fr-warning-600: #d97706;
+  /* Focus Ring Tokens */
+  --fr-primary-600: #2563EB;
+  --fr-danger-600: #DC2626;
+  --fr-success-600: #16A34A;
+  --fr-warning-600: #D97706;
 }
 
+/* Dark Mode Color Tokens */
 .dark {
-  /* Text Tokens */
-  --txt-white: #fff;
-  --txt-black-900: #fff;
-  --txt-black-700: #d4d4d8;
-  --txt-black-600: #a1a1aa;
-    --white: #FFF;
-  --txt-primary: #6394ff;
-  --txt-danger: #f87171;
-  --txt-success: #22c55e;
-  --txt-warning: #eab308;
+  /* Text Tokens - Dark Mode */
+  --txt-black-900: #FAFAFA;
+  --txt-black-700: #D4D4D8;
+  --txt-black-500: #A1A1AA;
+  --txt-black-400: #71717A;
+  --txt-black-300: #52525B;
 
-  /* Background Tokens */
-  --bg-white-0: #18181b;
-  --bg-white-50: #161619;
-  --bg-white-100: #27272a;
-  --bg-washed: #1d1d21;
+  /* Background Tokens - Dark Mode */
+  --bg-white-0: #09090B;
+  --bg-white-50: #18181B;
+  --bg-white-100: #27272A;
+  --bg-washed: #27272A;
 
-  /* Outline */
-  --otl-divider: #1d1d21;
-  --otl-gray-200: #27272a;
-  --otl-gray-300: #3f3f46;
-  --otl-primary-200: #1e40af;
-  --otl-primary-300: #1d4ed8;
-  --otl-danger-200: #991b1b;
-  --otl-success-200: #166534;
-  --otl-warning-200: #854d0e;
+  /* Outline Tokens - Dark Mode */
+  --otl-gray-200: #3F3F46;
+  --otl-gray-300: #52525B;
+  --otl-gray-400: #71717A;
 
-  /* Focus Ring */
-  --fr-primary-600: #3a75f6;
-  --fr-danger-600: #ef4444;
-  --fr-success-600: #22c55e;
-  --fr-warning-600: #f59e0b;
+  /* Focus Ring Tokens remain the same in dark mode */
+  --fr-primary-600: #3A75F6;
+  --fr-danger-600: #EF4444;
+  --fr-success-600: #22C55E;
+  --fr-warning-600: #F59E0B;
+}
+
+/* MYDS Typography Classes */
+.myds-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.myds-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.myds-rtf {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* MYDS Motion Classes */
+.myds-transition-short {
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-medium {
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-long {
+  transition-duration: 600ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.myds-transition-bounce {
+  transition-timing-function: cubic-bezier(0.4, 1.4, 0.2, 1);
+}
+
+/* MYDS Focus Styles */
+.myds-focus-visible:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-white-0), 0 0 0 4px var(--fr-primary-600);
+}
+
+.myds-focus-danger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-white-0), 0 0 0 4px var(--fr-danger-600);
+}
+
+/* MYDS Hover States */
+.myds-hover-underline:hover {
+  text-decoration: underline;
+}
+
+/* MYDS Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 50;
+  background: var(--bg-white-0);
+  color: var(--txt-black-900);
+  border: 1px solid var(--otl-gray-300);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-washed);
+  border-color: var(--otl-gray-400);
+}
+
+/* MYDS Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-white-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--otl-gray-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--otl-gray-400);
+}
+
+/* MYDS Responsive Text Sizes */
+@media (max-width: 767px) {
+  .myds-responsive-heading {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+  }
+
+  .myds-responsive-body {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .myds-responsive-heading {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.375rem; /* 38px */
+  }
+
+  .myds-responsive-body {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .myds-responsive-heading {
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.75rem; /* 44px */
+  }
+
+  .myds-responsive-body {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+  }
+}
+
+/* MYDS Toast Animation Classes */
+@keyframes toast-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-slide-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toast-slide-up 200ms cubic-bezier(0.4, 1.4, 0.2, 1);
+}
+
+.toast-exit {
+  animation: toast-slide-down 200ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+/* MYDS Progress Bar Animation */
+@keyframes progress-countdown {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.progress-bar-countdown {
+  animation: progress-countdown 3000ms linear;
 }

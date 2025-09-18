@@ -11,13 +11,6 @@ class DamageTypeTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * The user instance for tests.
-     *
-     * @var User
-     */
-    protected $user;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -104,9 +97,6 @@ class DamageTypeTest extends TestCase
 
     public function test_damage_type_display_methods(): void
     {
-        // Set locale to English for this test
-        app()->setLocale('en');
-
         $damageType = DamageType::create([
             'name' => 'Hardware Issue',
             'name_bm' => 'Masalah Perkakasan',

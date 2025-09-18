@@ -21,7 +21,7 @@ class DropdownManagerTest extends TestCase
 
         // Create and authenticate a user
         $user = User::factory()->create([
-            'role' => 'ict_admin',
+            'role' => 'admin',
         ]);
         $this->actingAs($user);
     }
@@ -38,7 +38,7 @@ class DropdownManagerTest extends TestCase
     {
         Livewire::test(DropdownManager::class)
             ->call('showCreateForm')
-            ->set('name', 'Hardware Failure')
+            ->set('name_en', 'Hardware Failure')
             ->set('name_bm', 'Kegagalan Perkakasan')
             ->set('is_active', true)
             ->call('save')
@@ -47,7 +47,7 @@ class DropdownManagerTest extends TestCase
             ->assertDispatched('damage-types-updated');
 
         $this->assertDatabaseHas('damage_types', [
-            'name' => 'Hardware Failure',
+            'name_en' => 'Hardware Failure',
             'name_bm' => 'Kegagalan Perkakasan',
             'is_active' => true,
         ]);
@@ -56,7 +56,7 @@ class DropdownManagerTest extends TestCase
     public function test_can_edit_existing_damage_type(): void
     {
         $damageType = DamageType::factory()->create([
-            'name' => 'Software Issue',
+            'name_en' => 'Software Issue',
             'name_bm' => 'Masalah Perisian',
             'is_active' => true,
         ]);
@@ -64,17 +64,17 @@ class DropdownManagerTest extends TestCase
         Livewire::test(DropdownManager::class)
             ->call('edit', $damageType->id)
             ->assertSet('editingId', $damageType->id)
-            ->assertSet('name', 'Software Issue')
+            ->assertSet('name_en', 'Software Issue')
             ->assertSet('name_bm', 'Masalah Perisian')
             ->assertSet('showForm', true)
-            ->set('name', 'Updated Software Issue')
+            ->set('name_en', 'Updated Software Issue')
             ->call('save')
             ->assertHasNoErrors()
             ->assertDispatched('damage-types-updated');
 
         $this->assertDatabaseHas('damage_types', [
             'id' => $damageType->id,
-            'name' => 'Updated Software Issue',
+            'name_en' => 'Updated Software Issue',
             'name_bm' => 'Masalah Perisian',
         ]);
     }
@@ -82,7 +82,7 @@ class DropdownManagerTest extends TestCase
     public function test_can_delete_damage_type(): void
     {
         $damageType = DamageType::factory()->create([
-            'name' => 'Network Problem',
+            'name_en' => 'Network Problem',
             'name_bm' => 'Masalah Rangkaian',
         ]);
 
@@ -99,14 +99,14 @@ class DropdownManagerTest extends TestCase
     {
         Livewire::test(DropdownManager::class)
             ->call('showCreateForm')
-            ->set('name', '')
+            ->set('name_en', '')
             ->set('name_bm', 'Nama Bahasa Malaysia')
             ->call('save')
-            ->assertHasErrors(['name']);
+            ->assertHasErrors(['name_en']);
 
         Livewire::test(DropdownManager::class)
             ->call('showCreateForm')
-            ->set('name', 'English Name')
+            ->set('name_en', 'English Name')
             ->set('name_bm', '')
             ->call('save')
             ->assertHasErrors(['name_bm']);
@@ -115,13 +115,13 @@ class DropdownManagerTest extends TestCase
     public function test_displays_existing_damage_types(): void
     {
         $damageType1 = DamageType::factory()->create([
-            'name' => 'Hardware Failure',
+            'name_en' => 'Hardware Failure',
             'name_bm' => 'Kegagalan Perkakasan',
             'is_active' => true,
         ]);
 
         $damageType2 = DamageType::factory()->create([
-            'name' => 'Software Issue',
+            'name_en' => 'Software Issue',
             'name_bm' => 'Masalah Perisian',
             'is_active' => false,
         ]);
@@ -139,10 +139,10 @@ class DropdownManagerTest extends TestCase
     {
         Livewire::test(DropdownManager::class)
             ->call('showCreateForm')
-            ->set('name', 'Some name')
+            ->set('name_en', 'Some name')
             ->call('cancel')
             ->assertSet('showForm', false)
-            ->assertSet('name', '')
+            ->assertSet('name_en', '')
             ->assertSet('editingId', null);
     }
 }

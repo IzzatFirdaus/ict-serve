@@ -29,10 +29,8 @@ class DamageTypeFactory extends Factory
         $randomType = fake()->randomElement($damageTypes);
 
         return [
-            'name' => $randomType[0],
+            'name_en' => $randomType[0],
             'name_bm' => $randomType[1],
-            'severity' => fake()->randomElement(['low', 'medium', 'high', 'critical']),
-            'sort_order' => fake()->numberBetween(1, 100),
             'is_active' => fake()->boolean(80), // 80% chance of being active
         ];
     }

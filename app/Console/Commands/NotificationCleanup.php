@@ -22,13 +22,13 @@ class NotificationCleanup extends Command
         $expiredCount = 0;
         $oldReadCount = 0;
 
-        if ($this->option('expired') || (!$this->option('old-read'))) {
+        if ($this->option('expired') || (! $this->option('old-read'))) {
             $this->info('Cleaning up expired notifications...');
             $expiredCount = $notificationService->cleanupExpired();
             $this->info("Cleaned up {$expiredCount} expired notifications.");
         }
 
-        if ($this->option('old-read') || (!$this->option('expired'))) {
+        if ($this->option('old-read') || (! $this->option('expired'))) {
             $this->info('Cleaning up old read notifications (>30 days)...');
             $oldReadCount = $notificationService->cleanupOldReadNotifications();
             $this->info("Cleaned up {$oldReadCount} old read notifications.");

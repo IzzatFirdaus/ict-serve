@@ -1,194 +1,364 @@
-# ICTServe (iServe) – Sistem Pengurusan Perkhidmatan ICT Berpaksikan Rakyat (MYDS & MyGovEA)
+# ICT Serve
 
-ICTServe (iServe) ialah sistem bersepadu untuk pengurusan pinjaman peralatan ICT dan aduan kerosakan ICT di Kementerian Pelancongan, Seni dan Budaya Malaysia (MOTAC). Sistem ini menggabungkan dua sistem warisan kepada satu platform moden berasaskan Laravel 12, dibangunkan mengikut prinsip Malaysia Government Design System (MYDS) dan prinsip reka bentuk MyGovEA.
+## Overview
 
----
+ICT Serve is a Laravel 12 application designed for equipment management, helpdesk ticketing, and loan modules. It leverages modern Laravel ecosystem packages and follows strict code quality and architectural conventions.
 
-| [![MYDS Logo](https://d2391uizq0pg2.cloudfront.net/common/logo.svg)](https://design.digital.gov.my/) | [![Jata Negara](https://d2391uizq0pg2.cloudfront.net/common/jata-negara.png)](https://www.digital.gov.my/) | [![Filament Logo](https://filamentphp.com/images/logo.svg)](https://filamentphp.com/) |
-|:--:|:--:|:--:|
-| [MYDS](https://design.digital.gov.my/) | [Kementerian Digital](https://www.digital.gov.my/) | [Filament](https://filamentphp.com/) |
+## Key Technologies & Packages
 
----
+- **PHP**: 8.2.12
+- **Laravel Framework**: v12
+- **Livewire**: v3
+- **Tailwind CSS**: v4
+- **PHPUnit**: v11
+- **Laravel Pint**: v1
+- **Laravel Sail**: v1
 
-## Objektif & Rasional
+### Notable Composer dependencies (from composer.json)
 
-- **Berpaksikan Rakyat (Citizen-Centric):** Setiap keputusan reka bentuk, pembangunan, dan proses sistem ini memudahkan urusan staf/pengguna awam, mengurangkan beban, dan memastikan akses inklusif.
-- **Pematuhan MYDS:** Mengguna pakai grid 12-8-4, tipografi, token warna semantik, komponen siap guna dan panduan aksesibiliti mengikut [MYDS-Design-Overview.md](docs/MYDS-Design-Overview.md) & [MYDS-Develop-Overview.md](docs/MYDS-Develop-Overview.md).
-- **Prinsip MyGovEA:** Minimalis, konsisten, mesra-kesilapan, terancang, dan seragam — rujuk [prinsip-reka-bentuk-mygovea.md](docs/prinsip-reka-bentuk-mygovea.md).
+- laravel/framework: ^12.0
+- livewire/livewire: ^3.6
+- laravel/tinker: ^2.10.1
+- laravel/ui: ^4.6
 
----
+Notable dev dependencies:
 
-## Teknologi Teras
+- laravel/boost: ^1.1
+- laravel/pail: ^1.2.2
+- laravel/pint: ^1.24
+- laravel/sail: ^1.41
+- phpunit/phpunit: ^11.5.3
 
-| ![Laravel](public/images/laravel-logomark.min.svg) | ![Filament](public/images/filament.png) | ![Livewire](public/images/livewire-logo.svg) | ![Vite](public/images/vite-logo.svg) |
-|:--:|:--:|:--:|:--:|
-| [Laravel 12](https://laravel.com/docs/12.x) | [Filament 4](https://filamentphp.com/docs/4.x/installation) | [Livewire 3](https://laravel-livewire.com/docs/3.x/installation) | [Vite](https://vite.dev/guide/) |
+### Node / npm dependencies (from package.json)
 
-| ![Tailwind CSS](public/images/tailwind-logo.svg) | ![Prettier](public/images/prettier-icon.png) | ![Stylelint](public/images/stylelint-logo.svg) | ![Laravel Auditing](public/images/laravel-auditing-logo.svg) |
-|:--:|:--:|:--:|:--:|
-| [Tailwind CSS](https://tailwindcss.com/docs/installation) | [Prettier](https://prettier.io/) | [Stylelint](https://stylelint.io/) | [owen-it/laravel-auditing](https://github.com/owen-it/laravel-auditing) |
+- tailwindcss: ^4.0.0
+- vite: ^7.0.4
+- @tailwindcss/vite: ^4.0.0
+- alpinejs: ^3.13.0
+- @playwright/test: ^1.55.0
 
----
+### Useful scripts
 
-## Ciri-ciri Utama
+Composer scripts (run with `composer run <name>`):
 
-- **Mesra Pengguna & Responsif:** Layout grid 12-8-4, antaramuka mengikuti hierarki visual, boleh digunakan di desktop/tablet/mobile.
-- **Aksesibiliti:** Pematuhan WCAG 2.1, navigasi papan kekunci, fokus jelas, kontras warna, serta skip link utama.
-- **Aduan Kerosakan ICT:** Borang Livewire dinamik dengan pengesahan masa nyata, dropdown jenis kerosakan yang diurus admin secara langsung.
-- **Pinjaman Peralatan ICT:** Borang multi-bahagian dengan aliran permohonan, kelulusan, pengesanan status, dan log audit.
-- **Komponen MYDS:** Menggunakan semantik token warna (cth. `bg-primary-600`, `txt-danger`), tipografi rasmi, ikon SVG MYDS, butang, panel, dialog, table, callout dan pill untuk status.
-- **Sokongan gelap/cerah:** Token warna automatik mengikut tema gelap/cerah.
-- **Pembangunan Laravel Terkini:** Livewire 3, Vite, Tailwind v4, composer/npm pipeline, kod terstruktur, serta standard Boost & Pint.
+- dev — runs the development supervisor which starts artisan serve, queue listener, pail and vite (see `composer.json` scripts).
+- test — clears config and runs `php artisan test`.
 
----
+NPM scripts (run with `npm run <name>`):
 
-## Dokumentasi & Rujukan
+- build — `vite build`
+- dev — `vite`
 
-**Rujuk folder `/docs` untuk:**
+### Database
 
-- [MYDS-Colour-Reference.md](docs/MYDS-Colour-Reference.md) — senarai penuh token warna & kod HEX.
-- [MYDS-Design-Overview.md](docs/MYDS-Design-Overview.md) — prinsip reka bentuk, grid, tipografi, komponen.
-- [MYDS-Develop-Overview.md](docs/MYDS-Develop-Overview.md) — panduan pembangunan, accessibility, penggunaan token.
-- [MYDS-Icons-Overview.md](docs/MYDS-Icons-Overview.md) — panduan ikon SVG, grid, penggunaan.
-- [prinsip-reka-bentuk-mygovea.md](docs/prinsip-reka-bentuk-mygovea.md) — prinsip MyGovEA (BM penuh).
+- A SQLite database is present at `database/database.sqlite` (the project creates/touches this file during post-create-project composer scripts).
 
----
+## Project Structure
 
-## Keperluan Sistem
-
-- **PHP:** ^8.2 (ext: pdo, mbstring, openssl, tokenizer, xml, ctype, json, bcmath)
-- **Composer:** versi stabil terkini
-- **Node.js & npm:** Node 18+ (untuk Vite/Tailwind)
-- **Database:** MySQL/MariaDB/PostgreSQL/SQLite (pembangunan tempatan digalakkan guna SQLite)
-
----
-
-## Langkah Pemasangan Pantas
-
-1. **Salin & Pasang kebergantungan PHP:**
-
-    ```sh
-    cp .env.example .env
-    composer install
-    ```
-
-2. **Hasilkan kunci aplikasi & migrasi:**
-
-    ```sh
-    php artisan key:generate
-    php artisan migrate
-    ```
-
-3. **Pasang kebergantungan JS & bina aset:**
-
-    ```sh
-    npm install
-    npm run dev
-    ```
-
-4. **Jalankan pelayan pembangunan:**
-
-    ```sh
-    php artisan serve
-    # atau
-    composer run dev
-    ```
-
-5. **Ujian automatik:**
-
-    ```sh
-    php artisan test
-    ```
-
----
-
-## Amalan Kod & Workflow MYDS/MyGovEA
-
-- **Cawangan & PR:** Guna cawangan `feature/`, `bugfix/`, PR mesti ada deskripsi, langkah ujian, tangkapan skrin (jika UI), nota migrasi, semakan accessibility.
-- **Komit:** Satu perubahan logik per komit, mesej ≤50 aksara, gunakan present tense.
-- **Lint & format:** Pint (PHP), Prettier/Stylelint (JS/CSS). Pastikan lulus sebelum merge.
-- **Aksesibiliti:** Setiap halaman/borang mesti ada skip link, ARIA, label jelas, kontras ≥4.5:1, navigasi papan kekunci, status bukan sekadar warna.
-- **Reka bentuk:** Guna komponen rasmi MYDS. Token warna diguna dalam CSS (bukan hardcoded HEX).
-- **Keselamatan:** Rahsiakan `.env`, jangan komit credential, guna secrets manager untuk produksi.
-- **Dokumentasi:** Sentiasa kemaskini README.md, CONTRIBUTING.md, dan fail setup. Semua borang, workflow, dan struktur data didokumenkan dalam `/docs`.
-- **Bebas ralat:** Borang dengan validasi masa nyata, pengesahan sebelum tindakan destruktif, mesej ralat jelas.
-
----
-
-## Contoh Token Warna MYDS
-
-```css
-:root {
-  --myds-primary-600: #2563EB;
-  --myds-danger-600: #DC2626;
-  --myds-bg: #FFFFFF;
-  --myds-gray-700: #3F3F46;
-}
-.btn-primary {
-  background: var(--myds-primary-600);
-  color: #fff;
-  border-radius: 6px;
-}
+```text
+app/
+ Console/Commands/
+ Http/Controllers/
+ Middleware/
+ Requests/
+ Resources/
+ Livewire/
+  App.php
+  Counter.php
+  ...
+  Admin/
+  Helpdesk/
+  Loan/
+  Notifications/
+  Profile/
+ Models/
+  AuditLog.php
+  DamageType.php
+  ...
+ Providers/
+  ...
+ Services/
+ Support/
+bootstrap/
+ app.php
+ providers.php
+config/
+ app.php
+ auth.php
+ ...
+database/
+ database.sqlite
+ factories/
+ migrations/
+ seeders/
+public/
+ index.php
+ build/
+resources/
+ css/
+ js/
+ views/
+routes/
+ api.php
+ console.php
+ web.php
+tests/
+ Feature/
+ Unit/
+vendor/
+ ...
 ```
 
-**Rujuk [MYDS-Colour-Reference.md](docs/MYDS-Colour-Reference.md) untuk jadual penuh token dan mapping tema gelap.**
+## Conventions
+
+- Follow Laravel Boost guidelines and code conventions.
+- Use descriptive names for variables and methods.
+- Prefer Eloquent relationships and API Resources.
+- Use Form Request classes for validation.
+- Use factories for model creation in tests.
+- Use Tailwind CSS v4 utilities for styling.
+- Do not change dependencies or base folders without approval.
+
+## Setup & Development
+
+1. Install dependencies:
+
+```powershell
+composer install
+npm install
+```
+
+1. Build frontend assets:
+
+```powershell
+npm run build
+```
+
+Or for development:
+
+```powershell
+npm run dev
+```
+
+1. Run tests:
+
+```powershell
+php artisan test
+```
+
+1. Code formatting:
+
+```powershell
+vendor/bin/pint --dirty
+```
+
+## Notes
+
+- All new features and fixes should follow the Laravel Boost and project-specific guidelines.
+- For more details, see `.github/copilot-instructions.md`.
 
 ---
 
-## Pautan Penting & Sumber Rasmi
-
-- [Dokumen Prinsip MYDS](https://design.digital.gov.my/en/docs/design)
-- [Panduan Pembangunan Komponen MYDS](https://design.digital.gov.my/en/docs/develop)
-- [Senarai Token Warna](https://design.digital.gov.my/en/docs/design/color)
-- [Grid 12-8-4](https://design.digital.gov.my/en/docs/design/12-8-4-grid)
-- [Tipografi](https://design.digital.gov.my/en/docs/design/typography)
-- [Komponen / Storybook](https://myds-storybook.vercel.app/)
-- [Figma Canvas MYDS](https://www.figma.com/file/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta))
-- [GitHub MYDS](https://github.com/govtechmy/myds)
-- [prinsip-reka-bentuk-mygovea.md](docs/prinsip-reka-bentuk-mygovea.md)
-- [design@tech.gov.my](mailto:design@tech.gov.my) — hubungi untuk pertanyaan atau cadangan berkaitan MYDS.
+For any issues or contributions, please follow the conventions outlined above.
 
 ---
 
-## Nota Aksesibiliti & UX
+## Implementation Plans (Historical Iterations)
 
-- **Skip link**: Di setiap halaman (selepas `<body>`), ID sasaran `#main-content`.
-- **ARIA & Semantik**: Penggunaan tag semantik, landmark, dan label yang jelas.
-- **Kontras**: Gunakan token warna; teks utama mesti capai kontras minimum 4.5:1.
-- **Status visual**: Sentiasa gunakan ikon/status pill/label bersama warna.
-- **Ujian**: Gunakan Lighthouse/axe atau alat lain untuk semakan automatik aksesibiliti.
+Below are the iterative iServe (ICT Serve) planning documents capturing the evolution of the unified ICT Loan + Helpdesk strategy. Each version builds on the previous with refinements in citizen-centric design, MYDS compliance, accessibility, dynamic configurability, and Livewire implementation detail.
+
+### Plan Version 1
+
+Robust, citizen-centric plan to combine ICT Loan and Helpdesk modules into ICT Serve (iServe), following Malaysia Government Design System (MYDS) and MyGOVEA principles.
+
+#### 1. Planning and Principles
+
+Core Principle: Berpaksikan Rakyat (Citizen-Centric) – All features, UI, and workflows designed for MOTAC staff needs.
+
+Design System:
+
+- MYDS Compliance: Use MYDS components (forms, buttons, navigation, tables). Accessibility, contrast, responsive 12-8-4 grid.
+- MyGOVEA Alignment: Minimalism, clarity, error prevention, documented standards.
+
+#### 2. Unified System Structure
+
+System Name: ICT Serve (iServe)
+
+Modules: ICT Loan (requests, approvals, tracking) & Helpdesk (damage reporting, tickets).
+
+Shared Features: Unified auth (SSO optional), dashboard, notifications, audit logs, reporting.
+
+#### 3. UI & Experience Blueprint
+
+Navigation: Global header, sidebar/tabs (ICT Loan, Helpdesk, My Requests, Admin/Management).
+
+Dashboard: Overview cards + quick actions.
+
+Forms: MYDS components, validation, confirmations.
+
+Accessibility: Skip links, ARIA, contrast, non-color status signals.
+
+Responsive: Grid adapts to device sizes.
+
+#### 4. Data Model & Workflow (High-Level)
+
+Shared user profile; Loan: catalogue, application workflow, statuses; Helpdesk: incident form, ticket lifecycle, assignment.
+
+#### 5. Technical Stack
+
+Laravel backend + REST API; React (initial assumption) + MYDS; Auth via Breeze/Fortify or SSO.
+
+#### 6. Error Prevention & Documentation
+
+Confirmations, inline validation, bilingual documentation.
+
+#### 7. Next Steps
+
+Stakeholder interviews → Wireframes → Iterative module build → Deployment & training.
 
 ---
 
-## Komitmen Pematuhan
+### Plan Version 2
 
-Sistem ini sentiasa dikemaskini untuk menepati garis panduan MYDS & MyGovEA. Setiap ciri dan penambahbaikan mesti diuji untuk aksesibiliti, kebolehgunaan, dan pematuhan dokumen rujukan rasmi.
+Refined plan shifting frontend to Laravel + Livewire + Blade (away from React) for cohesive stack.
+
+#### Key Changes
+
+- Frontend stack: Laravel 12, Livewire 3, Blade, Tailwind.
+- Defined user types (Regular, Approver, Admin, Superuser Admin) with access boundaries.
+
+#### Component Architecture
+
+Shared components (header, footer, status badge, notifications, pagination). Loan components (RequestForm, StatusTracker, Catalog, Approval, Return). Helpdesk components (DamageReportForm, TicketStatusTracker, TicketDetails, TicketResponse). Admin components (DashboardStats, EquipmentInventory, UserManagement, ReportGenerator).
+
+#### Pages
+
+Public: Landing, Loan Request, Damage Report, Status Tracking.
+
+Admin: Dashboard, Equipment, Ticket Management, Reports.
+
+#### Accessibility & MYDS
+
+WCAG 2.1 alignment, focus management, skip links, ARIA.
+
+#### Timeline (Phase Overview)
+
+Phase 1 Foundation → Phase 2 Core → Phase 3 Admin → Phase 4 Refinement.
 
 ---
 
-## Penyelenggaraan & Sumbangan
+### Plan Version 3
 
-- **Isu & PR:** Buka isu atau PR dengan deskripsi jelas, tangkapan skrin, dan langkah uji.
-- **Konvensyen:** Ikut garis panduan cawangan, komit, dan format kod.
-- **Perubahan komponen/token:** Cadangkan melalui PR mengikut proses sumbangan MYDS rasmi dan dapatkan semakan pihak reka bentuk.
+Adds explicit grounding in MYDS, MyGovEA, and accessibility references; more granular compliance emphasis.
+
+#### Enhancements
+
+- Explicit mapping to design artifacts (color tokens, grid, principle docs).
+- Expanded shared components: Skiplink, Panel, Pagination.
+- Stronger guidelines for Blade componentization (Button, Tag, Panel, Callout).
+
+#### Architecture & Layout
+
+Modular Livewire components grouped by domain; responsive grid enforcement; improved status indicators (icon + text).
+
+#### Accessibility
+
+ARIA attributes, non-color cues, keyboard traversal, error grouping, descriptive help text.
+
+#### Git & Quality
+
+Atomic commits, descriptive branches, stable main, review-driven merges.
+
+#### Timeline (Reaffirmed)
+
+Reaffirmed with phases tied to accessibility and documentation.
 
 ---
 
-## Pasukan & Hubungi
+### Plan Version 4
 
-Pemilik projek: Bahagian Pengurusan Maklumat (BPM), MOTAC  
-Teknikal: [Masukkan nama/nombor utama di sini jika perlu]  
-Reka bentuk/MYDS: <design@tech.gov.my>
+Introduces dynamic admin-managed Helpdesk dropdowns (e.g., Jenis Kerosakan) to eliminate rigid taxonomy issues.
+
+#### New Feature: Dynamic Dropdown Management
+
+- Admin/Superuser can CRUD Helpdesk category options in real time.
+- Immediate propagation to public forms (no cache/manual deployment).
+- Audit logging of changes.
+- Confirmation dialogs for destructive actions.
+
+#### Component Additions
+
+DropdownManagerComponent (Livewire) for CRUD and history.
+
+DamageReportForm consumes dynamic options; removes need for generic “Other”.
+
+#### UX Benefits
+
+Reduces user friction, supports continuous taxonomy evolution, prevents misclassification.
+
+#### Timeline Adjustments
+
+Adds dynamic dropdown tasks to early-mid phases (Weeks 3–5).
 
 ---
 
-## Hakcipta & Lesen
+### Plan Version 5
 
-&copy; 2025 Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.  
-Dibina berasaskan Laravel, Livewire, Filament, dan Malaysia Government Design System (MYDS).  
-[MIT License](LICENSE)
+Integrates Livewire 3 best practices (wire:model strategies, events, transitions) and codifies reactive dropdown updates.
+
+#### Livewire Best Practices Applied
+
+- wire:model vs .lazy for performance.
+- wire:loading states for feedback.
+- wire:confirm for destructive actions (where applicable).
+- Event-driven updates to broadcast dropdown changes system-wide.
+- Potential wire:poll fallback if event push isn’t implemented.
+
+#### Updated Component Behaviors
+
+DamageReportFormComponent: Fetches current options; re-renders on category update events.
+
+DropdownManagerComponent: Emits events after CRUD; provides inline validation + optimistic UI.
+
+#### Accessibility & Error Prevention Reinforced
+
+Persistent error messages + icons; focus return patterns after modal close; required indicators.
+
+#### Documentation Additions
+
+Guidance to test Livewire components (state assertions, event firing, accessibility paths).
+
+#### Implementation Timeline (Refined)
+
+Weeks 1–2: Foundation + Livewire install
+
+Weeks 3–5: Core forms + dynamic dropdown engine
+
+Weeks 6–8: Admin dashboards + reporting
+
+Weeks 9–10: Accessibility audit, performance tuning, bilingual manuals
 
 ---
 
-**Nota:**  
-Jika anda ingin menambah fail `myds-tokens.css` atau folder komponen MYDS blade/React, sila buka isu atau PR baharu.
+### Cross-Version Evolution Summary
+
+| Theme             | V1              | V2                    | V3                  | V4                   | V5                    |
+| ----------------- | --------------- | --------------------- | ------------------- | -------------------- | --------------------- |
+| Frontend Stack    | React (initial) | Livewire/Blade        | Livewire refined    | Dynamic dropdowns    | Livewire optimization |
+| Accessibility     | Baseline        | Structured            | Deep MYDS/WCAG      | Maintained           | Reinforced patterns   |
+| Admin Control     | Basic           | Structured dashboards | Expanded components | Dropdown CRUD        | Event-driven updates  |
+| Helpdesk Taxonomy | Static          | Static                | Static              | Dynamic categories   | Reactive live updates |
+| Documentation     | High-level      | Structured            | Principle-driven    | Adds configurability | Adds testing & events |
+
+---
+
+### Next Recommended Actions
+
+1. Finalize database schema for dynamic dropdown (e.g., damage_types / issue_categories).
+2. Scaffold Livewire components (Loan, Helpdesk, DropdownManager) with stub tests.
+3. Implement event broadcasting pattern for real-time dropdown updates (or centralized cache busting).
+4. Create Blade component library for MYDS wrappers (button, panel, callout, select, table).
+5. Add initial accessibility test checklist (focus order, keyboard traps, aria-live regions for async updates).
+6. Draft bilingual (BM/EN) end-user microcopy for forms and statuses.
+
+---

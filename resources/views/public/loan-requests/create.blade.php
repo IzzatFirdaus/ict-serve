@@ -41,7 +41,58 @@
                             {{ __('Full Name') }} <span class="text-danger-500">*</span>
                         </label>
                         <input type="text"
-                            <script src="{{ asset('js/myds/loan-request-create.js') }}" defer></script>
+                               id="borrower_name"
+                               name="borrower_name"
+                               value="{{ old('borrower_name') }}"
+                               required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('borrower_name') border-danger-500 @enderror">
+                        @error('borrower_name')
+                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="borrower_email" class="block text-sm font-medium text-gray-700 mb-1">
+                            {{ __('Email Address') }} <span class="text-danger-500">*</span>
+                        </label>
+                        <input type="email"
+                               id="borrower_email"
+                               name="borrower_email"
+                               value="{{ old('borrower_email') }}"
+                               required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('borrower_email') border-danger-500 @enderror">
+                        @error('borrower_email')
+                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="borrower_phone" class="block text-sm font-medium text-gray-700 mb-1">
+                            {{ __('Phone Number') }}
+                        </label>
+                        <input type="tel"
+                               id="borrower_phone"
+                               name="borrower_phone"
+                               value="{{ old('borrower_phone') }}"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('borrower_phone') border-danger-500 @enderror">
+                        @error('borrower_phone')
+                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="staff_id" class="block text-sm font-medium text-gray-700 mb-1">
+                            {{ __('Staff ID') }} <span class="text-danger-500">*</span>
+                        </label>
+                        <input type="text"
+                               id="staff_id"
+                               name="staff_id"
+                               value="{{ old('staff_id') }}"
+                               required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('staff_id') border-danger-500 @enderror">
+                        @error('staff_id')
+                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -268,4 +319,61 @@
     </div>
 </div>
 
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Category filter functionality
+    const categoryFilter = document.getElementById('category-filter');
+    const equipmentItems = document.querySelectorAll('.equipment-item');
+
+    categoryFilter.addEventListener('change', function() {
+        const selectedCategory = this.value;
+
+        equipmentItems.forEach(item => {
+            if (selectedCategory === '' || item.dataset.category === selectedCategory) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+
+    // Form validation and submission
+    const form = document.getElementById('loan-request-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', function(e) {
+        // Check if at least one equipment item is selected
+        const selectedItems = document.querySelectorAll('input[name="equipment_items[]"]:checked');
+
+        if (selectedItems.length === 0) {
+            e.preventDefault();
+            alert('{{ __("Please select at least one equipment item for your loan request.") }}');
+            return;
+        }
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.querySelector('.submit-text').classList.add('hidden');
+        submitBtn.querySelector('.loading-text').classList.remove('hidden');
+    });
+
+    // Date validation
+    const startDateInput = document.getElementById('loan_start_date');
+    const endDateInput = document.getElementById('loan_end_date');
+
+    startDateInput.addEventListener('change', function() {
+        const startDate = new Date(this.value);
+        const minEndDate = new Date(startDate);
+        minEndDate.setDate(minEndDate.getDate() + 1);
+
+        endDateInput.min = minEndDate.toISOString().split('T')[0];
+
+        if (endDateInput.value && new Date(endDateInput.value) <= startDate) {
+            endDateInput.value = minEndDate.toISOString().split('T')[0];
+        }
+    });
+});
+</script>
+@endpush
 @endsection

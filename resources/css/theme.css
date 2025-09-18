@@ -1,0 +1,306 @@
+/**
+ * MYDS Theme CSS Module
+ * Handles dark/light mode themes, color tokens, and theme-specific styling.
+ * Compliant with MYDS and MyGOVEA color standards.
+ */
+
+/* =============================================================================
+   MYDS Theme Variables and Color Tokens
+   ============================================================================= */
+
+:root {
+  /* MYDS Light Theme Colors (Default) */
+  
+  /* Primary Colors */
+  --theme-primary-50: var(--color-primary-50);
+  --theme-primary-100: var(--color-primary-100);
+  --theme-primary-600: var(--color-primary-600);
+  --theme-primary-700: var(--color-primary-700);
+  
+  /* Background Colors */
+  --theme-bg-primary: var(--color-bg-white-0);
+  --theme-bg-secondary: var(--color-bg-white-50);
+  --theme-bg-tertiary: var(--color-bg-white-100);
+  --theme-bg-washed: var(--color-bg-washed);
+  
+  /* Text Colors */
+  --theme-text-primary: var(--color-txt-black-900);
+  --theme-text-secondary: var(--color-txt-black-700);
+  --theme-text-tertiary: var(--color-txt-black-500);
+  --theme-text-muted: var(--color-txt-black-400);
+  
+  /* Border Colors */
+  --theme-border-primary: var(--color-otl-gray-200);
+  --theme-border-secondary: var(--color-otl-gray-300);
+  
+  /* Focus Ring Colors */
+  --theme-focus-ring: var(--color-fr-primary-600);
+  
+  /* Shadow Colors */
+  --theme-shadow-light: rgba(0, 0, 0, 0.05);
+  --theme-shadow-medium: rgba(0, 0, 0, 0.1);
+  --theme-shadow-dark: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Theme Colors */
+.dark {
+  --theme-bg-primary: var(--color-gray-900);
+  --theme-bg-secondary: var(--color-gray-850);
+  --theme-bg-tertiary: var(--color-gray-800);
+  --theme-bg-washed: var(--color-gray-800);
+  
+  --theme-text-primary: var(--color-gray-50);
+  --theme-text-secondary: var(--color-gray-200);
+  --theme-text-tertiary: var(--color-gray-300);
+  --theme-text-muted: var(--color-gray-400);
+  
+  --theme-border-primary: var(--color-gray-700);
+  --theme-border-secondary: var(--color-gray-600);
+  
+  --theme-shadow-light: rgba(0, 0, 0, 0.2);
+  --theme-shadow-medium: rgba(0, 0, 0, 0.3);
+  --theme-shadow-dark: rgba(0, 0, 0, 0.4);
+}
+
+/* =============================================================================
+   Theme Application Classes
+   ============================================================================= */
+
+/* Background Classes */
+.theme-bg-primary {
+  background-color: var(--theme-bg-primary);
+}
+
+.theme-bg-secondary {
+  background-color: var(--theme-bg-secondary);
+}
+
+.theme-bg-tertiary {
+  background-color: var(--theme-bg-tertiary);
+}
+
+.theme-bg-washed {
+  background-color: var(--theme-bg-washed);
+}
+
+/* Text Classes */
+.theme-text-primary {
+  color: var(--theme-text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--theme-text-secondary);
+}
+
+.theme-text-tertiary {
+  color: var(--theme-text-tertiary);
+}
+
+.theme-text-muted {
+  color: var(--theme-text-muted);
+}
+
+/* Border Classes */
+.theme-border {
+  border-color: var(--theme-border-primary);
+}
+
+.theme-border-secondary {
+  border-color: var(--theme-border-secondary);
+}
+
+/* =============================================================================
+   MYDS Focus Ring Styles
+   ============================================================================= */
+
+/* Enhanced focus styles for MYDS compliance */
+.myds-focus-visible:focus,
+.myds-focus-visible:focus-visible {
+  outline: 2px solid var(--theme-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+}
+
+/* Button focus styles */
+button:focus-visible,
+.btn:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--theme-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+}
+
+/* Link focus styles */
+a:focus-visible {
+  outline: 2px solid var(--theme-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Form element focus styles */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--theme-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+  border-color: var(--theme-focus-ring);
+}
+
+/* =============================================================================
+   Dark Mode Transition Styles
+   ============================================================================= */
+
+/* Smooth transitions for theme switching */
+html,
+body,
+*:not(.no-theme-transition) {
+  transition: background-color var(--transition-short), 
+              color var(--transition-short),
+              border-color var(--transition-short);
+}
+
+/* Prevent transitions on page load */
+.theme-transition-disabled * {
+  transition: none !important;
+}
+
+/* =============================================================================
+   Theme Toggle Button Styles
+   ============================================================================= */
+
+[data-theme-toggle] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: var(--radius-s);
+  background-color: var(--theme-bg-secondary);
+  color: var(--theme-text-secondary);
+  border: 1px solid var(--theme-border-primary);
+  cursor: pointer;
+  transition: all var(--transition-short);
+}
+
+[data-theme-toggle]:hover {
+  background-color: var(--theme-bg-tertiary);
+  color: var(--theme-text-primary);
+}
+
+[data-theme-toggle]:focus-visible {
+  outline: 2px solid var(--theme-focus-ring);
+  outline-offset: 2px;
+}
+
+[data-theme-toggle] svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--transition-short);
+}
+
+[data-theme-toggle]:hover svg {
+  transform: scale(1.1);
+}
+
+/* =============================================================================
+   High Contrast Mode Support
+   ============================================================================= */
+
+@media (prefers-contrast: high) {
+  :root {
+    --theme-focus-ring: #0000FF;
+    --theme-border-primary: #000000;
+    --theme-text-primary: #000000;
+  }
+  
+  .dark {
+    --theme-focus-ring: #FFFF00;
+    --theme-border-primary: #FFFFFF;
+    --theme-text-primary: #FFFFFF;
+  }
+  
+  /* Increase border thickness for high contrast */
+  .theme-border,
+  input,
+  button,
+  select,
+  textarea {
+    border-width: 2px;
+  }
+}
+
+/* =============================================================================
+   Reduced Motion Support
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  [data-theme-toggle] svg {
+    transition: none;
+  }
+}
+
+/* =============================================================================
+   Print Styles
+   ============================================================================= */
+
+@media print {
+  /* Force light theme for printing */
+  .dark {
+    --theme-bg-primary: white;
+    --theme-bg-secondary: white;
+    --theme-bg-tertiary: #f5f5f5;
+    --theme-text-primary: black;
+    --theme-text-secondary: #333;
+    --theme-text-tertiary: #666;
+    --theme-border-primary: #ccc;
+  }
+  
+  /* Hide theme toggle in print */
+  [data-theme-toggle] {
+    display: none !important;
+  }
+}
+
+/* =============================================================================
+   System Theme Detection Utilities
+   ============================================================================= */
+
+/* Classes for JavaScript to use */
+.theme-system-light {
+  color-scheme: light;
+}
+
+.theme-system-dark {
+  color-scheme: dark;
+}
+
+.theme-user-light {
+  color-scheme: light;
+}
+
+.theme-user-dark {
+  color-scheme: dark;
+}
+
+/* =============================================================================
+   MYDS Color Scheme Meta Theme Color Support
+   ============================================================================= */
+
+/* These classes can be used to indicate theme preference */
+.theme-meta-light {
+  --meta-theme-color: var(--color-bg-white-0);
+}
+
+.theme-meta-dark {
+  --meta-theme-color: var(--color-txt-black-900);
+}

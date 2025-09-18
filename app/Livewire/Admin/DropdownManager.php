@@ -223,27 +223,4 @@ class DropdownManager extends Component
             'damageTypes' => $damageTypes,
         ]);
     }
-
-    // Computed property for testing
-    public function getDamageTypesProperty()
-    {
-        return DamageType::query()
-            ->when($this->search, function ($query) {
-                $query->where(function ($q) {
-                    $q->where('name', 'like', '%'.$this->search.'%')
-                        ->orWhere('name_bm', 'like', '%'.$this->search.'%')
-                        ->orWhere('description', 'like', '%'.$this->search.'%')
-                        ->orWhere('description_bm', 'like', '%'.$this->search.'%');
-                });
-            })
-            ->when($this->severityFilter, function ($query) {
-                $query->where('severity', $this->severityFilter);
-            })
-            ->when($this->statusFilter !== '', function ($query) {
-                $query->where('is_active', $this->statusFilter === '1');
-            })
-            ->orderBy('sort_order', 'asc')
-            ->orderBy('name', 'asc')
-            ->get();
-    }
 }

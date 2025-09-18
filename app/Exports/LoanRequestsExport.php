@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace App\Exports;
 
 use App\Models\LoanRequest;
+use App\Models\HelpdeskTicket;
+use App\Models\EquipmentItem;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
+use Illuminate\Support\Collection;
 
 class LoanRequestsExport implements FromCollection, WithHeadings, WithMapping
 {

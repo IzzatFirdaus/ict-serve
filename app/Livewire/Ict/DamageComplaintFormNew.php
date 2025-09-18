@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Ict;
 
+use Livewire\Component;
+use Livewire\Attributes\Validate;
 use App\Models\HelpdeskTicket;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Validate;
-use Livewire\Component;
 
 class DamageComplaintFormNew extends Component
 {
@@ -17,7 +17,7 @@ class DamageComplaintFormNew extends Component
     #[Validate('required|string|min:2|max:255', message: [
         'required' => 'Nama penuh adalah wajib.',
         'min' => 'Nama penuh mestilah sekurang-kurangnya 2 aksara.',
-        'max' => 'Nama penuh tidak boleh melebihi 255 aksara.',
+        'max' => 'Nama penuh tidak boleh melebihi 255 aksara.'
     ])]
     public string $full_name = '';
 
@@ -32,7 +32,7 @@ class DamageComplaintFormNew extends Component
     #[Validate('required|email|max:255', message: [
         'required' => 'Alamat e-mel adalah wajib.',
         'email' => 'Format alamat e-mel tidak sah.',
-        'max' => 'Alamat e-mel tidak boleh melebihi 255 aksara.',
+        'max' => 'Alamat e-mel tidak boleh melebihi 255 aksara.'
     ])]
     public string $email = '';
 
@@ -40,7 +40,7 @@ class DamageComplaintFormNew extends Component
         'required' => 'Nombor telefon adalah wajib.',
         'min' => 'Nombor telefon mestilah sekurang-kurangnya 10 digit.',
         'max' => 'Nombor telefon tidak boleh melebihi 15 digit.',
-        'regex' => 'Format nombor telefon tidak sah.',
+        'regex' => 'Format nombor telefon tidak sah.'
     ])]
     public string $phone_number = '';
 
@@ -52,7 +52,7 @@ class DamageComplaintFormNew extends Component
     #[Validate('required|string|min:10|max:1000', message: [
         'required' => 'Maklumat kerosakan adalah wajib.',
         'min' => 'Maklumat kerosakan mestilah sekurang-kurangnya 10 aksara.',
-        'max' => 'Maklumat kerosakan tidak boleh melebihi 1000 aksara.',
+        'max' => 'Maklumat kerosakan tidak boleh melebihi 1000 aksara.'
     ])]
     public string $damage_information = '';
 
@@ -71,7 +71,7 @@ class DamageComplaintFormNew extends Component
         'Bahagian Sokongan Teknikal',
         'Bahagian Pembangunan Sistem',
         'Bahagian Infrastruktur',
-        'Lain-lain',
+        'Lain-lain'
     ];
 
     public array $damageTypes = [
@@ -81,7 +81,7 @@ class DamageComplaintFormNew extends Component
         'Masalah Printer/Pencetak',
         'Masalah Monitor/Skrin',
         'Masalah Sistem Operasi',
-        'Lain-lain',
+        'Lain-lain'
     ];
 
     // Loading states
@@ -131,7 +131,7 @@ class DamageComplaintFormNew extends Component
             $this->dispatch('show-toast', [
                 'type' => 'success',
                 'title' => 'Aduan Berjaya Dihantar',
-                'message' => "Kod rujukan anda: {$ticket->reference_code}. Anda akan menerima maklum balas dalam masa 24 jam.",
+                'message' => "Kod rujukan anda: {$ticket->reference_code}. Anda akan menerima maklum balas dalam masa 24 jam."
             ]);
 
             // Reset form
@@ -144,7 +144,7 @@ class DamageComplaintFormNew extends Component
             $this->dispatch('show-toast', [
                 'type' => 'error',
                 'title' => 'Ralat Validasi',
-                'message' => 'Sila semak maklumat yang dimasukkan dan cuba lagi.',
+                'message' => 'Sila semak maklumat yang dimasukkan dan cuba lagi.'
             ]);
         } catch (\Exception $e) {
             logger()->error('Damage complaint form submission failed', [
@@ -155,7 +155,7 @@ class DamageComplaintFormNew extends Component
             $this->dispatch('show-toast', [
                 'type' => 'error',
                 'title' => 'Ralat Sistem',
-                'message' => 'Maaf, terdapat masalah teknikal. Sila cuba lagi atau hubungi pentadbir sistem.',
+                'message' => 'Maaf, terdapat masalah teknikal. Sila cuba lagi atau hubungi pentadbir sistem.'
             ]);
         } finally {
             $this->isSubmitting = false;
@@ -166,8 +166,7 @@ class DamageComplaintFormNew extends Component
     {
         $prefix = 'ICT-DMG-';
         $date = now()->format('Ymd');
-        $count = HelpdeskTicket::query()->whereDate('created_at', today())->count();
-        $sequence = str_pad((string) ($count + 1), 4, '0', STR_PAD_LEFT);
+        $sequence = str_pad(HelpdeskTicket::whereDate('created_at', today())->count() + 1, 4, '0', STR_PAD_LEFT);
 
         return "{$prefix}{$date}-{$sequence}";
     }

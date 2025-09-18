@@ -1,0 +1,688 @@
+/**
+ * MYDS Components CSS Module
+ * Implements reusable UI components following MYDS design tokens.
+ * Includes buttons, forms, tables, navigation, cards, and other components.
+ */
+
+/* =============================================================================
+   MYDS Button Components
+   ============================================================================= */
+
+/* Base button styles */
+.myds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-inter);
+  font-size: var(--fontSize-body-sm);
+  font-weight: 500;
+  line-height: 1;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-short);
+  box-shadow: var(--shadow-button);
+  min-height: 44px; /* Accessibility: Minimum touch target */
+}
+
+.myds-btn:focus-visible {
+  outline: 2px solid var(--color-fr-primary-600);
+  outline-offset: 2px;
+}
+
+/* Button sizes */
+.myds-btn-sm {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fontSize-body-xs);
+  min-height: 36px;
+}
+
+.myds-btn-md {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--fontSize-body-sm);
+  min-height: 44px;
+}
+
+.myds-btn-lg {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--fontSize-body-base);
+  min-height: 52px;
+}
+
+/* Button variants */
+.myds-btn-primary {
+  background-color: var(--color-primary-600);
+  color: white;
+  border-color: var(--color-primary-600);
+}
+
+.myds-btn-primary:hover {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  transform: translateY(-1px);
+}
+
+.myds-btn-primary:active {
+  background-color: var(--color-primary-800);
+  transform: translateY(0);
+}
+
+.myds-btn-secondary {
+  background-color: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
+  border-color: var(--theme-border-primary);
+}
+
+.myds-btn-secondary:hover {
+  background-color: var(--theme-bg-tertiary);
+  border-color: var(--theme-border-secondary);
+}
+
+.myds-btn-tertiary {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border-color: transparent;
+}
+
+.myds-btn-tertiary:hover {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+}
+
+.myds-btn-danger {
+  background-color: var(--color-danger-600);
+  color: white;
+  border-color: var(--color-danger-600);
+}
+
+.myds-btn-danger:hover {
+  background-color: var(--color-danger-700);
+  border-color: var(--color-danger-700);
+}
+
+/* Disabled button state */
+.myds-btn:disabled,
+.myds-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  pointer-events: none;
+}
+
+/* =============================================================================
+   MYDS Form Components
+   ============================================================================= */
+
+/* Form groups */
+.myds-form-group {
+  margin-bottom: var(--space-4);
+}
+
+/* Form labels */
+.myds-label {
+  display: block;
+  font-size: var(--fontSize-body-sm);
+  font-weight: 500;
+  color: var(--theme-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.myds-label.required::after {
+  content: " *";
+  color: var(--color-danger-600);
+}
+
+/* Form inputs */
+.myds-input {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--fontSize-body-sm);
+  line-height: 1.5;
+  color: var(--theme-text-primary);
+  background-color: var(--theme-bg-primary);
+  border: 1px solid var(--theme-border-primary);
+  border-radius: var(--radius-s);
+  transition: all var(--transition-short);
+  min-height: 44px; /* Accessibility */
+}
+
+.myds-input:focus {
+  outline: 2px solid var(--color-fr-primary-600);
+  outline-offset: 2px;
+  border-color: var(--color-primary-600);
+}
+
+.myds-input:disabled {
+  background-color: var(--theme-bg-tertiary);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Textarea */
+.myds-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Select */
+.myds-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--space-3) center;
+  background-repeat: no-repeat;
+  background-size: 16px 12px;
+  padding-right: var(--space-10);
+  appearance: none;
+}
+
+/* Form help text */
+.myds-help-text {
+  font-size: var(--fontSize-body-xs);
+  color: var(--theme-text-tertiary);
+  margin-top: var(--space-1);
+}
+
+/* Form validation states */
+.myds-input.invalid,
+.myds-input[aria-invalid="true"] {
+  border-color: var(--color-danger-600);
+  background-color: var(--color-danger-50);
+}
+
+.myds-input.valid {
+  border-color: var(--color-success-600);
+  background-color: var(--color-success-50);
+}
+
+/* =============================================================================
+   MYDS Card Components
+   ============================================================================= */
+
+.myds-card {
+  background-color: var(--theme-bg-primary);
+  border: 1px solid var(--theme-border-primary);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.myds-card-header {
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--theme-border-primary);
+  background-color: var(--theme-bg-secondary);
+}
+
+.myds-card-body {
+  padding: var(--space-6);
+}
+
+.myds-card-footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--theme-border-primary);
+  background-color: var(--theme-bg-secondary);
+}
+
+/* Card variants */
+.myds-card-elevated {
+  box-shadow: var(--shadow-context-menu);
+  border: none;
+}
+
+.myds-card-interactive {
+  cursor: pointer;
+  transition: all var(--transition-short);
+}
+
+.myds-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-context-menu);
+}
+
+/* =============================================================================
+   MYDS Table Components
+   ============================================================================= */
+
+.myds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fontSize-body-sm);
+}
+
+.myds-table th,
+.myds-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--theme-border-primary);
+}
+
+.myds-table th {
+  font-weight: 600;
+  color: var(--theme-text-primary);
+  background-color: var(--theme-bg-secondary);
+  border-bottom: 2px solid var(--theme-border-secondary);
+}
+
+.myds-table tbody tr:hover {
+  background-color: var(--theme-bg-washed);
+}
+
+.myds-table-striped tbody tr:nth-child(even) {
+  background-color: var(--theme-bg-washed);
+}
+
+/* Table responsive wrapper */
+.myds-table-responsive {
+  overflow-x: auto;
+  border: 1px solid var(--theme-border-primary);
+  border-radius: var(--radius-s);
+}
+
+/* =============================================================================
+   MYDS Navigation Components
+   ============================================================================= */
+
+/* Navigation bar */
+.myds-navbar {
+  background-color: var(--theme-bg-primary);
+  border-bottom: 1px solid var(--theme-border-primary);
+  padding: var(--space-4) 0;
+}
+
+.myds-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.myds-nav-link {
+  color: var(--theme-text-secondary);
+  text-decoration: none;
+  font-size: var(--fontSize-body-sm);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-s);
+  transition: all var(--transition-short);
+}
+
+.myds-nav-link:hover {
+  color: var(--theme-text-primary);
+  background-color: var(--theme-bg-washed);
+}
+
+.myds-nav-link.active,
+.myds-nav-link[aria-current="page"] {
+  color: var(--color-primary-700);
+  background-color: var(--color-primary-50);
+  font-weight: 600;
+}
+
+/* Breadcrumb navigation */
+.myds-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fontSize-body-sm);
+  color: var(--theme-text-tertiary);
+}
+
+.myds-breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.myds-breadcrumb-separator {
+  color: var(--theme-text-muted);
+}
+
+.myds-breadcrumb a {
+  color: var(--color-primary-600);
+  text-decoration: none;
+}
+
+.myds-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* =============================================================================
+   MYDS Status Badge Components
+   ============================================================================= */
+
+.myds-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--fontSize-body-xs);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+}
+
+/* Badge variants */
+.myds-badge-success {
+  background-color: var(--color-success-100);
+  color: var(--color-success-800);
+  border-color: var(--color-success-200);
+}
+
+.myds-badge-warning {
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-800);
+  border-color: var(--color-warning-200);
+}
+
+.myds-badge-danger {
+  background-color: var(--color-danger-100);
+  color: var(--color-danger-800);
+  border-color: var(--color-danger-200);
+}
+
+.myds-badge-info {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-800);
+  border-color: var(--color-primary-200);
+}
+
+.myds-badge-neutral {
+  background-color: var(--theme-bg-tertiary);
+  color: var(--theme-text-primary);
+  border-color: var(--theme-border-primary);
+}
+
+/* =============================================================================
+   MYDS Alert Components  
+   ============================================================================= */
+
+.myds-alert {
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  border-left-width: 4px;
+  font-size: var(--fontSize-body-sm);
+  line-height: 1.5;
+}
+
+.myds-alert-success {
+  background-color: var(--color-success-50);
+  color: var(--color-success-800);
+  border-color: var(--color-success-200);
+  border-left-color: var(--color-success-600);
+}
+
+.myds-alert-warning {
+  background-color: var(--color-warning-50);
+  color: var(--color-warning-800);
+  border-color: var(--color-warning-200);
+  border-left-color: var(--color-warning-600);
+}
+
+.myds-alert-danger {
+  background-color: var(--color-danger-50);
+  color: var(--color-danger-800);
+  border-color: var(--color-danger-200);
+  border-left-color: var(--color-danger-600);
+}
+
+.myds-alert-info {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-800);
+  border-color: var(--color-primary-200);
+  border-left-color: var(--color-primary-600);
+}
+
+/* Alert with icon */
+.myds-alert-with-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.myds-alert-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+/* Dismissible alerts */
+.myds-alert-dismissible {
+  position: relative;
+  padding-right: var(--space-12);
+}
+
+.myds-alert-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-4);
+  background: none;
+  border: none;
+  font-size: var(--fontSize-body-lg);
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  padding: var(--space-1);
+  border-radius: var(--radius-xs);
+}
+
+.myds-alert-close:hover {
+  opacity: 1;
+}
+
+.myds-alert-close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   MYDS Dropdown Components
+   ============================================================================= */
+
+.myds-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.myds-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 200px;
+  background-color: var(--theme-bg-primary);
+  border: 1px solid var(--theme-border-primary);
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-context-menu);
+  padding: var(--space-2) 0;
+  margin-top: var(--space-1);
+}
+
+.myds-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--fontSize-body-sm);
+  color: var(--theme-text-primary);
+  text-decoration: none;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-short);
+}
+
+.myds-dropdown-item:hover,
+.myds-dropdown-item:focus {
+  background-color: var(--theme-bg-washed);
+  color: var(--theme-text-primary);
+}
+
+.myds-dropdown-divider {
+  height: 1px;
+  background-color: var(--theme-border-primary);
+  margin: var(--space-2) 0;
+}
+
+/* =============================================================================
+   MYDS Toast Components (Animations)
+   ============================================================================= */
+
+/* Toast enter animations */
+.toast-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.toast-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all var(--transition-short);
+}
+
+/* Toast exit animations */
+.toast-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all var(--transition-short);
+}
+
+/* Progress bar animation */
+@keyframes countdown {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.progress-bar-countdown {
+  width: 100%;
+  animation: countdown linear forwards;
+}
+
+/* =============================================================================
+   MYDS Mobile Menu Components
+   ============================================================================= */
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-short);
+}
+
+.mobile-menu.menu-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  background-color: var(--theme-bg-primary);
+  border-right: 1px solid var(--theme-border-primary);
+  transform: translateX(-100%);
+  transition: transform var(--transition-short);
+  overflow-y: auto;
+}
+
+.mobile-menu.menu-open .mobile-menu-panel {
+  transform: translateX(0);
+}
+
+/* =============================================================================
+   MYDS Utility Classes
+   ============================================================================= */
+
+/* Hover effects */
+.myds-hover-underline:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.myds-hover-lift:hover {
+  transform: translateY(-2px);
+  transition: transform var(--transition-short);
+}
+
+/* Loading states */
+.myds-loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.myds-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--color-primary-200);
+  border-top-color: var(--color-primary-600);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =============================================================================
+   Responsive Component Adjustments
+   ============================================================================= */
+
+@media (max-width: 767px) {
+  /* Mobile button adjustments */
+  .myds-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .myds-btn-group .myds-btn {
+    width: auto;
+  }
+  
+  /* Mobile table */
+  .myds-table-responsive {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  /* Mobile dropdown */
+  .myds-dropdown-menu {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-width: auto;
+    border-radius: var(--radius-m) var(--radius-m) 0 0;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Tablet and up adjustments */
+  .myds-btn-group {
+    display: flex;
+    gap: var(--space-2);
+  }
+}

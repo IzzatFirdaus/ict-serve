@@ -1,7 +1,4 @@
-# Ignore artifacts
-build
-coverage
-node_modules
+# Ignore artifacts:
 /public/build/
 /public/hot
 /storage/framework/
@@ -9,6 +6,7 @@ node_modules
 *.lock
 .env
 /vendor/
+/node_modules/
 
 # Ignore reports
 phpinsights-*.json

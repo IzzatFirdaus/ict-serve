@@ -52,20 +52,6 @@ class DamageReportForm extends Component
 
     public bool $showEquipmentSelector = false;
 
-    protected function rules()
-    {
-        return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:2000',
-            'damage_type_id' => 'required|integer|exists:damage_types,id',
-            'priority' => 'required|in:low,medium,high,critical',
-            'equipment_item_id' => 'nullable|integer|exists:equipment_items,id',
-            'location' => 'nullable|string|max:255',
-            'contact_phone' => 'nullable|string|max:20',
-            'attachments' => 'nullable|array|max:5',
-        ];
-    }
-
     public function mount(): void
     {
         $this->loadDamageTypes();
@@ -141,7 +127,14 @@ class DamageReportForm extends Component
 
     public function submit()
     {
-        $this->validate();
+        try {
+            $this->validate();
+        } catch (\Exception $e) {
+            logger('Validation error in damage report form: '.$e->getMessage());
+            $this->addError('submit', 'Ralat pengesahan: '.$e->getMessage().' / Validation error: '.$e->getMessage());
+
+            return;
+        }
 
         try {
             DB::transaction(function () {

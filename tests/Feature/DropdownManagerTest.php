@@ -13,13 +13,6 @@ class DropdownManagerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * The admin user instance for tests.
-     *
-     * @var User
-     */
-    protected $adminUser;
-
     protected function setUp(): void
     {
         parent::setUp();
