@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -7,11 +9,30 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
+ * @property int $id
  * @property string $code
+ * @property string $name
+ * @property string $name_bm
+ * @property string|null $description
+ * @property string|null $description_bm
+ * @property string|null $color
+ * @property bool $is_active
+ * @property int $sort_order
+ * @property-read string $label
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class LoanStatus extends Model
 {
     use HasFactory;
+
+    /**
+     * Public getter for id property.
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     protected $fillable = [
         'code',
@@ -24,6 +45,9 @@ class LoanStatus extends Model
         'sort_order',
     ];
 
+    /**
+     * {@inheritDoc}
+     */
     protected function casts(): array
     {
         return [
@@ -32,8 +56,13 @@ class LoanStatus extends Model
         ];
     }
 
+    public function getLabelAttribute(): string
+    {
+        return app()->getLocale() === 'ms' ? $this->name_bm : $this->name;
+    }
+
     /**
-     * Get loan requests with this status
+     * Get the loan requests with this status.
      */
     public function loanRequests(): HasMany
     {
@@ -41,26 +70,18 @@ class LoanStatus extends Model
     }
 
     /**
-     * Scope for active statuses only
+     * Check if loan requests with this status can be edited.
      */
-    public function scopeActive($query)
+    public function canBeEdited(): bool
     {
-        return $query->where('is_active', true);
+        return in_array($this->code, ['draft', 'pending', 'supervisor_approved']);
     }
 
     /**
-     * Scope to order by sort_order
+     * Check if loan requests with this status can be cancelled.
      */
-    public function scopeOrdered($query)
+    public function canBeCancelled(): bool
     {
-        return $query->orderBy('sort_order', 'asc');
-    }
-
-    /**
-     * Get status by code
-     */
-    public static function getByCode(string $code): ?self
-    {
-        return static::where('code', $code)->first();
+        return in_array($this->code, ['draft', 'pending', 'supervisor_approved']);
     }
 }

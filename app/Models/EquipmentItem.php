@@ -1,19 +1,46 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
+use App\Enums\EquipmentCondition;
+use App\Enums\EquipmentStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @property int $id
+ * @property int $category_id
+ * @property string|null $asset_tag
+ * @property string|null $serial_number
+ * @property string|null $brand
+ * @property string|null $model
+ * @property array|null $specifications
+ * @property string|null $description
+ * @property string $condition
+ * @property string $status
+ * @property float|null $purchase_price
+ * @property \Illuminate\Support\Carbon|null $purchase_date
+ * @property \Illuminate\Support\Carbon|null $warranty_expiry
+ * @property string|null $location
+ * @property string|null $notes
+ * @property bool $is_active
+ * @property string $name
+ * @property-read \App\Models\EquipmentCategory $category
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class EquipmentItem extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'category_id',
+        'name',
         'asset_tag',
         'serial_number',
         'brand',
@@ -30,18 +57,8 @@ class EquipmentItem extends Model
         'is_active',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'purchase_price' => 'decimal:2',
-            'purchase_date' => 'date',
-            'warranty_expiry' => 'date',
-        ];
-    }
-
     /**
-     * Get the category this equipment belongs to
+     * Get the category this equipment belongs to.
      */
     public function category(): BelongsTo
     {
@@ -49,85 +66,67 @@ class EquipmentItem extends Model
     }
 
     /**
-     * Get loan requests that include this equipment
+     * Get the loan requests for this equipment.
      */
-    public function loanRequests(): BelongsToMany
+    public function loanRequests(): HasMany
     {
-        return $this->belongsToMany(LoanRequest::class, 'loan_items', 'equipment_item_id', 'loan_request_id')
-            ->withPivot(['quantity', 'condition_out', 'condition_in', 'notes_out', 'notes_in', 'damage_reported'])
-            ->withTimestamps();
+        return $this->hasMany(LoanRequest::class, 'equipment_id');
     }
 
     /**
-     * Get loan items for this equipment
+     * Get the current active loan for this equipment.
      */
-    public function loanItems(): HasMany
+    public function currentLoan(): HasOne
     {
-        return $this->hasMany(LoanItem::class);
+        return $this->hasOne(LoanRequest::class, 'equipment_id')
+            ->whereIn('status', ['approved', 'collected'])
+            ->latest();
     }
 
     /**
-     * Get helpdesk tickets related to this equipment
+     * Get the helpdesk tickets related to this equipment.
      */
-    public function helpdeskTickets(): HasMany
+    public function tickets(): HasMany
     {
-        return $this->hasMany(HelpdeskTicket::class);
+        return $this->hasMany(HelpdeskTicket::class, 'equipment_id');
     }
 
     /**
-     * Scope for active equipment only
-     */
-    public function scopeActive($query)
-    {
-        return $query->where('is_active', true);
-    }
-
-    /**
-     * Scope for available equipment
-     */
-    public function scopeAvailable($query)
-    {
-        return $query->where('status', 'available')->where('is_active', true);
-    }
-
-    /**
-     * Scope for equipment on loan
-     */
-    public function scopeOnLoan($query)
-    {
-        return $query->where('status', 'on_loan');
-    }
-
-    /**
-     * Check if equipment is currently available for loan
+     * Check if equipment is available for loan.
      */
     public function isAvailable(): bool
     {
-        return $this->status === 'available' && $this->is_active;
+        return $this->status === EquipmentStatus::AVAILABLE
+            && $this->is_active
+            && $this->condition !== EquipmentCondition::DAMAGED;
     }
 
     /**
-     * Check if equipment is currently on loan
+     * Get the warranty status.
      */
-    public function isOnLoan(): bool
+    public function getWarrantyStatusAttribute(): string
     {
-        return $this->status === 'on_loan';
+        if (!$this->warranty_expiry) {
+            return 'Unknown';
+        }
+
+        if ($this->warranty_expiry > now()) {
+            return 'Under Warranty';
+        }
+
+        return 'Warranty Expired';
     }
 
-    /**
-     * Get the current active loan for this equipment
-     */
-    public function currentLoan(): ?LoanRequest
+    protected function casts(): array
     {
-        return LoanRequest::query()
-            ->whereHas('equipmentItems', function ($query) {
-                $query->where('equipment_item_id', $this->id);
-            })
-            ->whereIn('status_id', function ($query) {
-                $query->select('id')
-                    ->from('loan_statuses')
-                    ->whereIn('code', ['ict_approved', 'active']);
-            })
-            ->first();
+        return [
+            'specifications' => 'array',
+            'condition' => EquipmentCondition::class,
+            'status' => EquipmentStatus::class,
+            'purchase_price' => 'decimal:2',
+            'purchase_date' => 'date',
+            'warranty_expiry' => 'date',
+            'is_active' => 'boolean',
+        ];
     }
 }

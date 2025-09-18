@@ -1,11 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $name_bm
+ * @property string|null $description
+ * @property string|null $description_bm
+ * @property string|null $icon
+ * @property bool $is_active
+ * @property int $sort_order
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EquipmentItem[] $equipmentItems
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EquipmentItem[] $activeEquipmentItems
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EquipmentItem[] $availableEquipmentItems
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class EquipmentCategory extends Model
 {
     use HasFactory;
@@ -20,16 +39,8 @@ class EquipmentCategory extends Model
         'sort_order',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-            'sort_order' => 'integer',
-        ];
-    }
-
     /**
-     * Get all equipment items in this category
+     * Get the equipment items in this category.
      */
     public function equipmentItems(): HasMany
     {
@@ -69,5 +80,13 @@ class EquipmentCategory extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'sort_order' => 'integer',
+        ];
     }
 }

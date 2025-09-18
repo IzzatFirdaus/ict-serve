@@ -1,14 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string|null $staff_id
+ * @property string|null $department
+ * @property string|null $phone
+ * @property string|null $position
+ * @property string|null $profile_picture
+ * @property UserRole $role
+ * @property array|null $preferences
+ * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $loanRequests
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -24,14 +43,16 @@ class User extends Authenticatable
         'email',
         'password',
         'staff_id',
+        'role',
         'division',
         'department',
         'position',
         'phone',
-        'role',
         'supervisor_id',
         'is_active',
         'last_login_at',
+        'profile_picture',
+        'preferences',
     ];
 
     /**
@@ -54,120 +75,82 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => UserRole::class,
+            'preferences' => 'array',
             'is_active' => 'boolean',
             'last_login_at' => 'datetime',
         ];
     }
 
     /**
-     * Get the supervisor of this user
+     * Get the supervisor that this user reports to.
      */
-    public function supervisor(): BelongsTo
+    public function supervisor()
     {
         return $this->belongsTo(User::class, 'supervisor_id');
     }
 
     /**
-     * Get users supervised by this user
+     * Get the subordinates that report to this user.
      */
-    public function subordinates(): HasMany
+    public function subordinates()
     {
         return $this->hasMany(User::class, 'supervisor_id');
     }
 
     /**
-     * Get loan requests made by this user
+     * Get the loan requests created by this user.
      */
-    public function loanRequests(): HasMany
+    public function loanRequests()
     {
-        return $this->hasMany(LoanRequest::class);
+        return $this->hasMany(LoanRequest::class, 'user_id');
     }
 
     /**
-     * Get loan requests supervised by this user
+     * Get the loan requests supervised by this user.
      */
-    public function supervisedLoanRequests(): HasMany
+    public function supervisedLoanRequests()
     {
         return $this->hasMany(LoanRequest::class, 'supervisor_id');
     }
 
     /**
-     * Get loan requests approved by this user as ICT admin
+     * Get the helpdesk tickets created by this user.
      */
-    public function ictApprovedLoanRequests(): HasMany
+    public function tickets()
     {
-        return $this->hasMany(LoanRequest::class, 'ict_admin_id');
+        return $this->hasMany(HelpdeskTicket::class, 'user_id');
     }
 
     /**
-     * Get helpdesk tickets created by this user
+     * Get the helpdesk tickets assigned to this user.
      */
-    public function helpdeskTickets(): HasMany
-    {
-        return $this->hasMany(HelpdeskTicket::class);
-    }
-
-    /**
-     * Get helpdesk tickets assigned to this user
-     */
-    public function assignedTickets(): HasMany
+    public function assignedTickets()
     {
         return $this->hasMany(HelpdeskTicket::class, 'assigned_to');
     }
 
     /**
-     * Get audit logs for this user
+     * Get notifications for this user
      */
-    public function auditLogs(): HasMany
+    public function notifications(): HasMany
     {
-        return $this->hasMany(AuditLog::class);
+        return $this->hasMany(Notification::class);
     }
 
     /**
-     * Check if user has specific role
+     * Get unread notifications for this user
      */
-    public function hasRole(string $role): bool
+    public function unreadNotifications(): HasMany
     {
-        return $this->role === $role;
+        return $this->hasMany(Notification::class)->unread()->notExpired();
     }
 
     /**
-     * Check if user is supervisor
+     * Get the activity logs for this user.
      */
-    public function isSupervisor(): bool
+    public function activityLogs()
     {
-        return $this->role === 'supervisor';
-    }
-
-    /**
-     * Check if user is ICT admin
-     */
-    public function isIctAdmin(): bool
-    {
-        return $this->role === 'ict_admin';
-    }
-
-    /**
-     * Check if user is helpdesk staff
-     */
-    public function isHelpdeskStaff(): bool
-    {
-        return $this->role === 'helpdesk_staff';
-    }
-
-    /**
-     * Check if user is super admin
-     */
-    public function isSuperAdmin(): bool
-    {
-        return $this->role === 'super_admin';
-    }
-
-    /**
-     * Get full name with staff ID
-     */
-    public function getFullNameWithStaffIdAttribute(): string
-    {
-        return $this->name.' ('.$this->staff_id.')';
+        return $this->hasMany(ActivityLog::class, 'user_id');
     }
 }

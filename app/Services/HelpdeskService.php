@@ -1,0 +1,103 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services;
+
+use App\Models\HelpdeskTicket;
+use App\Models\TicketStatus;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
+class HelpdeskService
+{
+    public function __construct(public NotificationService $notifications) {}
+
+    /**
+     * Create a new helpdesk ticket with initial status = open.
+     */
+    public function createTicket(array $data, User $creator): HelpdeskTicket
+    {
+        return DB::transaction(function () use ($data, $creator): HelpdeskTicket {
+            $status = TicketStatus::where('code', 'open')->first();
+
+            $ticket = HelpdeskTicket::query()->create([
+                'ticket_number' => HelpdeskTicket::generateTicketNumber(),
+                'user_id' => $creator->id,
+                'category_id' => (int) $data['category_id'],
+                'status_id' => $status?->id,
+                'title' => (string) $data['title'],
+                'description' => (string) $data['description'],
+                'priority' => $data['priority'] ?? 'medium',
+                'urgency' => $data['urgency'] ?? 'medium',
+                'equipment_item_id' => $data['equipment_item_id'] ?? null,
+                'location' => $data['location'] ?? null,
+                'contact_phone' => $data['contact_phone'] ?? null,
+                'due_at' => $data['due_at'] ?? null,
+            ]);
+
+            $this->notifications->notifyTicketEvent($ticket, 'ticket_created');
+
+            return $ticket;
+        });
+    }
+
+    /**
+     * Assign a ticket to an agent and set status to in_progress.
+     */
+    public function assignTicket(HelpdeskTicket $ticket, User $agent, ?User $actor = null): HelpdeskTicket
+    {
+        return DB::transaction(function () use ($ticket, $agent): HelpdeskTicket {
+            $inProgress = TicketStatus::where('code', 'in_progress')->first();
+
+            $ticket->forceFill([
+                'assigned_to' => $agent->id,
+                'assigned_at' => now(),
+                'status_id' => $inProgress->id ?? $ticket->status_id,
+            ])->save();
+
+            $this->notifications->notifyTicketEvent($ticket, 'ticket_assigned');
+
+            return $ticket->fresh();
+        });
+    }
+
+    /**
+     * Update ticket status by status code (e.g., resolved, pending, closed).
+     */
+    public function updateStatus(HelpdeskTicket $ticket, string $statusCode, ?string $resolutionNotes = null, ?User $actor = null): HelpdeskTicket
+    {
+        return DB::transaction(function () use ($ticket, $statusCode, $resolutionNotes): HelpdeskTicket {
+            $status = TicketStatus::where('code', $statusCode)->first();
+
+            $attributes = [
+                'status_id' => $status->id ?? $ticket->status_id,
+            ];
+
+            if ($statusCode === 'resolved') {
+                $attributes['resolved_at'] = now();
+                if ($resolutionNotes !== null) {
+                    $attributes['resolution_notes'] = $resolutionNotes;
+                }
+            }
+
+            if ($statusCode === 'closed') {
+                $attributes['closed_at'] = now();
+            }
+
+            $ticket->forceFill($attributes)->save();
+
+            $this->notifications->notifyTicketEvent($ticket, 'ticket_status_'.$statusCode);
+
+            return $ticket->fresh();
+        });
+    }
+
+    /**
+     * Close a ticket explicitly (status = closed).
+     */
+    public function closeTicket(HelpdeskTicket $ticket, ?User $actor = null): HelpdeskTicket
+    {
+        return $this->updateStatus($ticket, 'closed');
+    }
+}

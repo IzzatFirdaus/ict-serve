@@ -1,15 +1,55 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
+use App\Enums\LoanRequestStatus;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property-read LoanStatus $status
+ * @property int $id
+ * @property string $request_number
+ * @property int $user_id
+ * @property int $status_id
+ * @property string $purpose
+ * @property \Illuminate\Support\Carbon $requested_from
+ * @property \Illuminate\Support\Carbon $requested_to
+ * @property \Illuminate\Support\Carbon|null $actual_from
+ * @property \Illuminate\Support\Carbon|null $actual_to
+ * @property string|null $notes
+ * @property string|null $rejection_reason
+ * @property int|null $supervisor_id
+ * @property \Illuminate\Support\Carbon|null $supervisor_approved_at
+ * @property string|null $supervisor_notes
+ * @property int|null $ict_admin_id
+ * @property \Illuminate\Support\Carbon|null $ict_approved_at
+ * @property string|null $ict_notes
+ * @property int|null $issued_by
+ * @property \Illuminate\Support\Carbon|null $issued_at
+ * @property string|null $pickup_signature_path
+ * @property int|null $received_by
+ * @property \Illuminate\Support\Carbon|null $returned_at
+ * @property string|null $return_signature_path
+ * @property string|null $return_condition_notes
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\LoanStatus $status
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\User|null $supervisor
+ * @property-read \App\Models\User|null $ictAdmin
+ * @property-read \App\Models\User|null $issuedBy
+ * @property-read \App\Models\User|null $receivedBy
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\EquipmentItem> $equipmentItems
+ * @property-read \App\Models\EquipmentItem|null $equipmentItem
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanItem> $loanItems
+ * @property LoanRequestStatus $status
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class LoanRequest extends Model
 {
@@ -17,11 +57,29 @@ class LoanRequest extends Model
 
     protected $fillable = [
         'request_number',
+        'reference_number',
         'user_id',
-        'status_id',
+        'applicant_name',
+        'applicant_position',
+        'applicant_department',
+        'applicant_phone',
+        'status',
         'purpose',
+        'location',
         'requested_from',
         'requested_to',
+        'loan_start_date',
+        'expected_return_date',
+        'responsible_officer_name',
+        'responsible_officer_position',
+        'responsible_officer_phone',
+        'same_as_applicant',
+        'equipment_requests',
+        'endorsing_officer_name',
+        'endorsing_officer_position',
+        'endorsement_status',
+        'endorsement_comments',
+        'submitted_at',
         'actual_from',
         'actual_to',
         'notes',
@@ -41,22 +99,8 @@ class LoanRequest extends Model
         'return_condition_notes',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'requested_from' => 'date',
-            'requested_to' => 'date',
-            'actual_from' => 'date',
-            'actual_to' => 'date',
-            'supervisor_approved_at' => 'datetime',
-            'ict_approved_at' => 'datetime',
-            'issued_at' => 'datetime',
-            'returned_at' => 'datetime',
-        ];
-    }
-
     /**
-     * Get the user who made this loan request
+     * Get the user who made the request.
      */
     public function user(): BelongsTo
     {
@@ -64,15 +108,7 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the current status of this loan request
-     */
-    public function status(): BelongsTo
-    {
-        return $this->belongsTo(LoanStatus::class, 'status_id');
-    }
-
-    /**
-     * Get the supervisor who approved this request
+     * Get the supervisor who needs to approve.
      */
     public function supervisor(): BelongsTo
     {
@@ -80,7 +116,7 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the ICT admin who approved this request
+     * Get the ICT admin who approved.
      */
     public function ictAdmin(): BelongsTo
     {
@@ -88,7 +124,7 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the user who issued the equipment
+     * Get the staff who issued the equipment.
      */
     public function issuedBy(): BelongsTo
     {
@@ -96,21 +132,11 @@ class LoanRequest extends Model
     }
 
     /**
-     * Get the user who received the returned equipment
+     * Get the person who received the equipment.
      */
     public function receivedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'received_by');
-    }
-
-    /**
-     * Get equipment items for this loan request
-     */
-    public function equipmentItems(): BelongsToMany
-    {
-        return $this->belongsToMany(EquipmentItem::class, 'loan_items', 'loan_request_id', 'equipment_item_id')
-            ->withPivot(['quantity', 'condition_out', 'condition_in', 'notes_out', 'notes_in', 'damage_reported'])
-            ->withTimestamps();
     }
 
     /**
@@ -122,15 +148,110 @@ class LoanRequest extends Model
     }
 
     /**
-     * Generate unique request number
+     * Scope a query to only include pending requests.
+     * "Pending" is defined as any status in the approval workflow.
+     */
+    public function scopePending(Builder $query): void
+    {
+        $query->whereIn('status', [
+            LoanRequestStatus::PENDING_BPM_REVIEW->value,
+            LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL->value,
+            LoanRequestStatus::PENDING_ICT_APPROVAL->value,
+        ]);
+    }
+
+    /**
+     * Scope a query to only include requests for a specific user.
+     */
+    public function scopeForUser(Builder $query, User $user): void
+    {
+        $query->where('user_id', $user->id);
+    }
+
+    /**
+     * Check if request is in an editable state.
+     * Editable if in any "pending" state.
+     */
+    public function canBeEdited(): bool
+    {
+        return in_array($this->status, [
+            LoanRequestStatus::PENDING_BPM_REVIEW->value,
+            LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL->value,
+            LoanRequestStatus::PENDING_ICT_APPROVAL->value,
+        ]);
+    }
+
+    /**
+     * Check if request can be cancelled.
+     * Not cancellable if already returned, cancelled, or rejected.
+     */
+    public function canBeCancelled(): bool
+    {
+        return !in_array($this->status, [
+            LoanRequestStatus::RETURNED->value,
+            LoanRequestStatus::CANCELLED->value,
+            LoanRequestStatus::REJECTED->value,
+        ]);
+    }
+
+    /**
+     * Check if request is overdue.
+     */
+    public function isOverdue(): bool
+    {
+        return $this->status === LoanRequestStatus::COLLECTED->value
+            && $this->expected_return_date
+            && $this->expected_return_date->isPast();
+    }
+
+    /**
+     * Get loan duration in days.
+     */
+    public function getLoanDurationAttribute(): ?int
+    {
+        if (! $this->requested_from || ! $this->requested_to) {
+            return null;
+        }
+
+        return (int) ($this->requested_from->diffInDays($this->requested_to) + 1);
+    }
+
+    /**
+     * Attribute casting for Eloquent.
+     */
+    protected function casts(): array
+    {
+        return [
+            'status' => LoanRequestStatus::class,
+            'equipment_requests' => 'array',
+            'same_as_applicant' => 'boolean',
+            'requested_from' => 'datetime',
+            'requested_to' => 'datetime',
+            'loan_start_date' => 'datetime',
+            'expected_return_date' => 'datetime',
+            'actual_from' => 'datetime',
+            'actual_to' => 'datetime',
+            'submitted_at' => 'datetime',
+            'supervisor_approved_at' => 'datetime',
+            'ict_approved_at' => 'datetime',
+            'issued_at' => 'datetime',
+            'returned_at' => 'datetime',
+        ];
+    }
+
+    /**
+     * Generate unique request numbers on creation.
      */
     protected static function boot(): void
     {
         parent::boot();
 
-        static::creating(function ($loanRequest) {
+        static::creating(function ($loanRequest): void {
             if (empty($loanRequest->request_number)) {
                 $loanRequest->request_number = static::generateRequestNumber();
+            }
+            if (empty($loanRequest->reference_number)) {
+                $loanRequest->reference_number = static::generateReferenceNumber();
             }
         });
     }
@@ -158,54 +279,23 @@ class LoanRequest extends Model
     }
 
     /**
-     * Check if request is pending approval
+     * Generate a unique reference number.
+     * Format: YYYY/MM/TYPE/SEQ
      */
-    public function isPending(): bool
+    public static function generateReferenceNumber(): string
     {
-        return $this->status->code === 'pending';
-    }
+        $year = date('Y');
+        $month = date('m');
+        $type = 'LOAN'; // Or derive from model context
 
-    /**
-     * Check if request is approved by supervisor
-     */
-    public function isSupervisorApproved(): bool
-    {
-        return $this->status->code === 'supervisor_approved';
-    }
+        // Find the last sequence number for the current year and month
+        $lastRequest = self::whereYear('created_at', $year)
+            ->whereMonth('created_at', $month)
+            ->orderBy('id', 'desc')
+            ->first();
 
-    /**
-     * Check if request is approved by ICT
-     */
-    public function isIctApproved(): bool
-    {
-        return $this->status->code === 'ict_approved';
-    }
+        $sequence = $lastRequest ? ((int) substr($lastRequest->reference_number, -4)) + 1 : 1;
 
-    /**
-     * Check if loan is currently active
-     */
-    public function isActive(): bool
-    {
-        return $this->status->code === 'active';
-    }
-
-    /**
-     * Check if loan is returned
-     */
-    public function isReturned(): bool
-    {
-        return $this->status->code === 'returned';
-    }
-
-    /**
-     * Check if loan is overdue
-     */
-    public function isOverdue(): bool
-    {
-        if (! $this->isActive()) {
-            return false;
-        }
-
-        return now()->isAfter($this->requested_to);
+        return sprintf('%s/%s/%s/%04d', $year, $month, $type, $sequence);
     }
 }

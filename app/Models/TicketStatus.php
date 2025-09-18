@@ -1,11 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $id
+ * @property string $code
+ * @property string $name
+ * @property string $name_bm
+ * @property string|null $description
+ * @property string|null $description_bm
+ * @property string|null $color
+ * @property bool $is_active
+ * @property bool $is_final
+ * @property int $sort_order
+ * @property-read string $label
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class TicketStatus extends Model
 {
     use HasFactory;
@@ -23,10 +40,6 @@ class TicketStatus extends Model
     ];
 
     protected function casts(): array
-        /**
-         * @property string $code
-         * @property bool $is_final
-         */
     {
         return [
             'is_active' => 'boolean',
@@ -35,10 +48,15 @@ class TicketStatus extends Model
         ];
     }
 
+    public function getLabelAttribute(): string
+    {
+        return app()->getLocale() === 'ms' ? $this->name_bm : $this->name;
+    }
+
     /**
-     * Get helpdesk tickets with this status
+     * Get the tickets with this status.
      */
-    public function helpdeskTickets(): HasMany
+    public function tickets(): HasMany
     {
         return $this->hasMany(HelpdeskTicket::class, 'status_id');
     }

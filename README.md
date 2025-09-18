@@ -1,61 +1,194 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ICTServe (iServe) – Sistem Pengurusan Perkhidmatan ICT Berpaksikan Rakyat (MYDS & MyGovEA)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+ICTServe (iServe) ialah sistem bersepadu untuk pengurusan pinjaman peralatan ICT dan aduan kerosakan ICT di Kementerian Pelancongan, Seni dan Budaya Malaysia (MOTAC). Sistem ini menggabungkan dua sistem warisan kepada satu platform moden berasaskan Laravel 12, dibangunkan mengikut prinsip Malaysia Government Design System (MYDS) dan prinsip reka bentuk MyGovEA.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| [![MYDS Logo](https://d2391uizq0pg2.cloudfront.net/common/logo.svg)](https://design.digital.gov.my/) | [![Jata Negara](https://d2391uizq0pg2.cloudfront.net/common/jata-negara.png)](https://www.digital.gov.my/) | [![Filament Logo](https://filamentphp.com/images/logo.svg)](https://filamentphp.com/) |
+|:--:|:--:|:--:|
+| [MYDS](https://design.digital.gov.my/) | [Kementerian Digital](https://www.digital.gov.my/) | [Filament](https://filamentphp.com/) |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Objektif & Rasional
 
-## Learning Laravel
+- **Berpaksikan Rakyat (Citizen-Centric):** Setiap keputusan reka bentuk, pembangunan, dan proses sistem ini memudahkan urusan staf/pengguna awam, mengurangkan beban, dan memastikan akses inklusif.
+- **Pematuhan MYDS:** Mengguna pakai grid 12-8-4, tipografi, token warna semantik, komponen siap guna dan panduan aksesibiliti mengikut [MYDS-Design-Overview.md](docs/MYDS-Design-Overview.md) & [MYDS-Develop-Overview.md](docs/MYDS-Develop-Overview.md).
+- **Prinsip MyGovEA:** Minimalis, konsisten, mesra-kesilapan, terancang, dan seragam — rujuk [prinsip-reka-bentuk-mygovea.md](docs/prinsip-reka-bentuk-mygovea.md).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Teknologi Teras
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| ![Laravel](public/images/laravel-logomark.min.svg) | ![Filament](public/images/filament.png) | ![Livewire](public/images/livewire-logo.svg) | ![Vite](public/images/vite-logo.svg) |
+|:--:|:--:|:--:|:--:|
+| [Laravel 12](https://laravel.com/docs/12.x) | [Filament 4](https://filamentphp.com/docs/4.x/installation) | [Livewire 3](https://laravel-livewire.com/docs/3.x/installation) | [Vite](https://vite.dev/guide/) |
 
-## Laravel Sponsors
+| ![Tailwind CSS](public/images/tailwind-logo.svg) | ![Prettier](public/images/prettier-icon.png) | ![Stylelint](public/images/stylelint-logo.svg) | ![Laravel Auditing](public/images/laravel-auditing-logo.svg) |
+|:--:|:--:|:--:|:--:|
+| [Tailwind CSS](https://tailwindcss.com/docs/installation) | [Prettier](https://prettier.io/) | [Stylelint](https://stylelint.io/) | [owen-it/laravel-auditing](https://github.com/owen-it/laravel-auditing) |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Ciri-ciri Utama
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- **Mesra Pengguna & Responsif:** Layout grid 12-8-4, antaramuka mengikuti hierarki visual, boleh digunakan di desktop/tablet/mobile.
+- **Aksesibiliti:** Pematuhan WCAG 2.1, navigasi papan kekunci, fokus jelas, kontras warna, serta skip link utama.
+- **Aduan Kerosakan ICT:** Borang Livewire dinamik dengan pengesahan masa nyata, dropdown jenis kerosakan yang diurus admin secara langsung.
+- **Pinjaman Peralatan ICT:** Borang multi-bahagian dengan aliran permohonan, kelulusan, pengesanan status, dan log audit.
+- **Komponen MYDS:** Menggunakan semantik token warna (cth. `bg-primary-600`, `txt-danger`), tipografi rasmi, ikon SVG MYDS, butang, panel, dialog, table, callout dan pill untuk status.
+- **Sokongan gelap/cerah:** Token warna automatik mengikut tema gelap/cerah.
+- **Pembangunan Laravel Terkini:** Livewire 3, Vite, Tailwind v4, composer/npm pipeline, kod terstruktur, serta standard Boost & Pint.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Dokumentasi & Rujukan
 
-## Code of Conduct
+**Rujuk folder `/docs` untuk:**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- [MYDS-Colour-Reference.md](docs/MYDS-Colour-Reference.md) — senarai penuh token warna & kod HEX.
+- [MYDS-Design-Overview.md](docs/MYDS-Design-Overview.md) — prinsip reka bentuk, grid, tipografi, komponen.
+- [MYDS-Develop-Overview.md](docs/MYDS-Develop-Overview.md) — panduan pembangunan, accessibility, penggunaan token.
+- [MYDS-Icons-Overview.md](docs/MYDS-Icons-Overview.md) — panduan ikon SVG, grid, penggunaan.
+- [prinsip-reka-bentuk-mygovea.md](docs/prinsip-reka-bentuk-mygovea.md) — prinsip MyGovEA (BM penuh).
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Keperluan Sistem
 
-## License
+- **PHP:** ^8.2 (ext: pdo, mbstring, openssl, tokenizer, xml, ctype, json, bcmath)
+- **Composer:** versi stabil terkini
+- **Node.js & npm:** Node 18+ (untuk Vite/Tailwind)
+- **Database:** MySQL/MariaDB/PostgreSQL/SQLite (pembangunan tempatan digalakkan guna SQLite)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Langkah Pemasangan Pantas
+
+1. **Salin & Pasang kebergantungan PHP:**
+
+    ```sh
+    cp .env.example .env
+    composer install
+    ```
+
+2. **Hasilkan kunci aplikasi & migrasi:**
+
+    ```sh
+    php artisan key:generate
+    php artisan migrate
+    ```
+
+3. **Pasang kebergantungan JS & bina aset:**
+
+    ```sh
+    npm install
+    npm run dev
+    ```
+
+4. **Jalankan pelayan pembangunan:**
+
+    ```sh
+    php artisan serve
+    # atau
+    composer run dev
+    ```
+
+5. **Ujian automatik:**
+
+    ```sh
+    php artisan test
+    ```
+
+---
+
+## Amalan Kod & Workflow MYDS/MyGovEA
+
+- **Cawangan & PR:** Guna cawangan `feature/`, `bugfix/`, PR mesti ada deskripsi, langkah ujian, tangkapan skrin (jika UI), nota migrasi, semakan accessibility.
+- **Komit:** Satu perubahan logik per komit, mesej ≤50 aksara, gunakan present tense.
+- **Lint & format:** Pint (PHP), Prettier/Stylelint (JS/CSS). Pastikan lulus sebelum merge.
+- **Aksesibiliti:** Setiap halaman/borang mesti ada skip link, ARIA, label jelas, kontras ≥4.5:1, navigasi papan kekunci, status bukan sekadar warna.
+- **Reka bentuk:** Guna komponen rasmi MYDS. Token warna diguna dalam CSS (bukan hardcoded HEX).
+- **Keselamatan:** Rahsiakan `.env`, jangan komit credential, guna secrets manager untuk produksi.
+- **Dokumentasi:** Sentiasa kemaskini README.md, CONTRIBUTING.md, dan fail setup. Semua borang, workflow, dan struktur data didokumenkan dalam `/docs`.
+- **Bebas ralat:** Borang dengan validasi masa nyata, pengesahan sebelum tindakan destruktif, mesej ralat jelas.
+
+---
+
+## Contoh Token Warna MYDS
+
+```css
+:root {
+  --myds-primary-600: #2563EB;
+  --myds-danger-600: #DC2626;
+  --myds-bg: #FFFFFF;
+  --myds-gray-700: #3F3F46;
+}
+.btn-primary {
+  background: var(--myds-primary-600);
+  color: #fff;
+  border-radius: 6px;
+}
+```
+
+**Rujuk [MYDS-Colour-Reference.md](docs/MYDS-Colour-Reference.md) untuk jadual penuh token dan mapping tema gelap.**
+
+---
+
+## Pautan Penting & Sumber Rasmi
+
+- [Dokumen Prinsip MYDS](https://design.digital.gov.my/en/docs/design)
+- [Panduan Pembangunan Komponen MYDS](https://design.digital.gov.my/en/docs/develop)
+- [Senarai Token Warna](https://design.digital.gov.my/en/docs/design/color)
+- [Grid 12-8-4](https://design.digital.gov.my/en/docs/design/12-8-4-grid)
+- [Tipografi](https://design.digital.gov.my/en/docs/design/typography)
+- [Komponen / Storybook](https://myds-storybook.vercel.app/)
+- [Figma Canvas MYDS](https://www.figma.com/file/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta))
+- [GitHub MYDS](https://github.com/govtechmy/myds)
+- [prinsip-reka-bentuk-mygovea.md](docs/prinsip-reka-bentuk-mygovea.md)
+- [design@tech.gov.my](mailto:design@tech.gov.my) — hubungi untuk pertanyaan atau cadangan berkaitan MYDS.
+
+---
+
+## Nota Aksesibiliti & UX
+
+- **Skip link**: Di setiap halaman (selepas `<body>`), ID sasaran `#main-content`.
+- **ARIA & Semantik**: Penggunaan tag semantik, landmark, dan label yang jelas.
+- **Kontras**: Gunakan token warna; teks utama mesti capai kontras minimum 4.5:1.
+- **Status visual**: Sentiasa gunakan ikon/status pill/label bersama warna.
+- **Ujian**: Gunakan Lighthouse/axe atau alat lain untuk semakan automatik aksesibiliti.
+
+---
+
+## Komitmen Pematuhan
+
+Sistem ini sentiasa dikemaskini untuk menepati garis panduan MYDS & MyGovEA. Setiap ciri dan penambahbaikan mesti diuji untuk aksesibiliti, kebolehgunaan, dan pematuhan dokumen rujukan rasmi.
+
+---
+
+## Penyelenggaraan & Sumbangan
+
+- **Isu & PR:** Buka isu atau PR dengan deskripsi jelas, tangkapan skrin, dan langkah uji.
+- **Konvensyen:** Ikut garis panduan cawangan, komit, dan format kod.
+- **Perubahan komponen/token:** Cadangkan melalui PR mengikut proses sumbangan MYDS rasmi dan dapatkan semakan pihak reka bentuk.
+
+---
+
+## Pasukan & Hubungi
+
+Pemilik projek: Bahagian Pengurusan Maklumat (BPM), MOTAC  
+Teknikal: [Masukkan nama/nombor utama di sini jika perlu]  
+Reka bentuk/MYDS: <design@tech.gov.my>
+
+---
+
+## Hakcipta & Lesen
+
+&copy; 2025 Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.  
+Dibina berasaskan Laravel, Livewire, Filament, dan Malaysia Government Design System (MYDS).  
+[MIT License](LICENSE)
+
+---
+
+**Nota:**  
+Jika anda ingin menambah fail `myds-tokens.css` atau folder komponen MYDS blade/React, sila buka isu atau PR baharu.
