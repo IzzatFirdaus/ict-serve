@@ -5,6 +5,9 @@ namespace Database\Factories;
 use App\Models\TicketCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<\App\Models\TicketCategory>
+ */
 class TicketCategoryFactory extends Factory
 {
     protected $model = TicketCategory::class;
@@ -13,14 +16,9 @@ class TicketCategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'name_bm' => $this->faker->word(),
             'description' => $this->faker->sentence(),
-            'description_bm' => $this->faker->sentence(),
-            'icon' => 'icon-default',
-            'priority' => 'medium',
-            'default_sla_hours' => 24,
-            'is_active' => true,
-            'sort_order' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
