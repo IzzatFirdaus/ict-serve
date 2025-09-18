@@ -1,3 +1,109 @@
+###
+# Default .gitignore for a Laravel + Node.js project
+# Generated / suggested by assistant for this repository
+###
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+/pids
+/*.pid
+/*.seed
+
+# Composer
+/vendor/
+/composer.lock
+/composer.phar
+
+# Node
+/node_modules/
+/public/node_modules/
+
+# Build outputs
+/public/build/
+/public/hot
+/public/mix-manifest.json
+/public/js/app.js
+/public/js/app.js.map
+/public/css/app.css
+/public/css/app.css.map
+/public/favicon.ico
+/public/robots.txt
+
+# Laravel
+/.env
+/.env.*
+/storage/
+/storage/*.key
+/bootstrap/cache/
+
+# Database
+/database/*.sqlite
+/database/*.sqlite3
+
+# PHPUnit & test results
+/phpunit.result.cache
+/.phpunit.cache
+/test-results/
+
+# IDEs and editors
+/.idea/
+/.vscode/
+/.phpactor.json
+/.phpunit.result.cache
+/.phpunit.cache
+/.zoekt
+/.cache
+/.DS_Store
+Thumbs.db
+
+# Documentation and generated docs
+/.phpdoc/
+.phpdoc/build/
+.phpdoc/cache/
+phpDocumentor.phar
+
+# QA / CI artifacts
+/qa-results/
+/tests-examples/
+
+# Misc configs & tooling
+/.env.backup
+/.env.production
+/auth.json
+Homestead.json
+Homestead.yaml
+
+# Playwright / E2E
+/playwright.config.ts
+/playwright.spec.js
+
+# Frontend configs
+/node_modules/
+/package-lock.json
+/yarn.lock
+/pnpm-lock.yaml
+
+# Project files that shouldn't be tracked (optional)
+# If you want to track these, remove the lines below
+/public/storage
+# /resources/sass/
+# /resources/js/
+# /resources/css/
+# /resources/views/
+# /app/Http/Controllers/
+# /app/Models/
+# /app/Providers/
+# /app/Livewire/
+# /routes/
+# /tests/
+
+# End of file
 *.log
 .DS_Store
 .env
@@ -9,9 +115,9 @@
 /bootstrap/cache/
 /database/*.sqlite
 /database/*.sqlite3
-/database/migrations/*.php~
-/database/factories/*.php~
-/database/seeders/*.php~
+# /database/migrations/*.php~
+# /database/factories/*.php~
+# /database/seeders/*.php~
 /test-results/
 /*.log
 /*.lock
@@ -21,55 +127,7 @@
 /composer.phar
 /composer.lock
 /package-lock.json
-/public/hot
-/public/build
-/public/mix-manifest.json
-/public/css/app.css
-/public/js/app.js
-/public/js/app.js.map
-/public/css/app.css.map
-/public/favicon.ico
-/public/robots.txt
-/public/index.php
-/public/.htaccess
-/public/storage/
-/resources/sass/
-/resources/js/
-/resources/css/
-/resources/views/
-/app/Http/Middleware/
-/app/Console/Kernel.php
-/app/Providers/
-/app/Exceptions/
-/app/Models/
-/app/Livewire/
-/app/Http/Controllers/
-/app/Http/Requests/
-/bootstrap/app.php
-/bootstrap/providers.php
-/bootstrap/cache/
-/config/
-/routes/
-/tests/
-/phpunit.xml
-/phpstan.neon
-/stylelint.config.cjs
-/vite.config.js
-/README.md
-/artisan
-/playwright.spec.js
-/docs/
 # IDE files
-.idea/
-.vscode/
-.DS_Store
-Thumbs.db
-.phpdoc/cache/
-.env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
-/.fleet
 /.idea
 /.nova
 /.phpunit.cache
