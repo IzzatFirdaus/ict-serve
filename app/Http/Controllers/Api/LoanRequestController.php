@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Controllers\Api;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLoanRequestRequest;
 use App\Models\LoanRequest;
 use App\Models\LoanStatus;
 use App\Services\NotificationService;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,19 +18,17 @@ class LoanRequestController extends Controller
     public function __construct(
         private NotificationService $notificationService
     ) {
-        $this->middleware('auth:sanctum');
+        // Middleware is handled in routes/api.php
     }
 
     /**
      * Display a listing of loan requests.
-    *
-    * @param \Illuminate\Http\Request $request
      */
     public function index(Request $request): JsonResponse
     {
-    /** @var \Illuminate\Http\Request $request */
-    $query = LoanRequest::with(['user', 'loanItems.equipmentItem', 'status'])
-            ->when(! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true), function ($q) {
+        /** @var \Illuminate\Http\Request $request */
+        $query = LoanRequest::with(['user', 'loanItems.equipmentItem', 'status'])
+            ->when(! Auth::user()?->hasRole(['ict_admin', 'super_admin']), function ($q) {
                 return $q->where('user_id', Auth::id());
             })
             ->when($request->status, function ($q, $status) {
@@ -92,7 +88,7 @@ class LoanRequestController extends Controller
                 'data' => $loanRequest->load(['loanItems.equipmentItem', 'status']),
             ], 201);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
 
             return response()->json([
@@ -108,8 +104,8 @@ class LoanRequestController extends Controller
      */
     public function show(Request $request, LoanRequest $loanRequest): JsonResponse
     {
-        // Check authorization
-        if (! in_array($request->user()->role, ['ict_admin', 'super_admin'], true) && $loanRequest->user->id !== $request->user()->id) {
+    // Check authorization
+    if (! $request->user()?->hasRole(['ict_admin', 'super_admin']) && $loanRequest->user->id !== $request->user()->id) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -131,8 +127,8 @@ class LoanRequestController extends Controller
      */
     public function update(Request $request, LoanRequest $loanRequest): JsonResponse
     {
-        // Only admins can update loan request status
-        if (! in_array($request->user()->role, ['ict_admin', 'super_admin'], true)) {
+    // Only admins can update loan request status
+    if (! $request->user()?->hasRole(['ict_admin', 'super_admin'])) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -174,7 +170,7 @@ class LoanRequestController extends Controller
                 'data' => $loanRequest->fresh(['user', 'loanItems.equipmentItem', 'status']),
             ]);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
 
             return response()->json([
@@ -191,7 +187,7 @@ class LoanRequestController extends Controller
     public function destroy(Request $request, LoanRequest $loanRequest): JsonResponse
     {
         // Check authorization - user can only delete their own pending requests
-        if ($loanRequest->user->id !== $request->user()->id || $loanRequest->status->name !== 'pending') {
+        if ($loanRequest->user->id !== $request->user()->id || $loanRequest->loanStatus?->code !== 'pending') {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan untuk memadam permohonan ini.',
@@ -206,7 +202,7 @@ class LoanRequestController extends Controller
                 'message' => 'Permohonan telah berjaya dipadam.',
             ]);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ralat berlaku semasa memadam permohonan.',
@@ -222,8 +218,9 @@ class LoanRequestController extends Controller
     {
         $ids = $request->input('ids', []);
         $updated = LoanRequest::whereIn('id', $ids)
-            ->whereHas('status', fn($q) => $q->where('name', 'pending'))
+            ->whereHas('status', fn ($q) => $q->where('name', 'pending'))
             ->update(['status_id' => LoanStatus::where('name', 'approved')->first()->id]);
+
         return response()->json(['success' => true, 'updated' => $updated]);
     }
 
@@ -234,8 +231,9 @@ class LoanRequestController extends Controller
     {
         $ids = $request->input('ids', []);
         $updated = LoanRequest::whereIn('id', $ids)
-            ->whereHas('status', fn($q) => $q->where('name', 'pending'))
+            ->whereHas('status', fn ($q) => $q->where('name', 'pending'))
             ->update(['status_id' => LoanStatus::where('name', 'rejected')->first()->id]);
+
         return response()->json(['success' => true, 'updated' => $updated]);
     }
 }

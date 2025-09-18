@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\TicketPriority;
+use App\Enums\TicketUrgency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -43,6 +45,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\User|null $assignedToUser
  * @property-read \App\Models\User|null $resolvedByUser
  * @property-read \App\Models\EquipmentItem|null $equipmentItem
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, TicketComment> $comments
+ * @property-read float|null $response_time
+ * @property-read float|null $resolution_time
+ * @property-read string $reference_code
  * @property-read mixed $activity_log
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -51,14 +57,15 @@ class HelpdeskTicket extends Model
 {
     use HasFactory;
 
-    /** @var list<string> */
-    protected array $fillable = [
+    protected $fillable = [
         'ticket_number',
         'user_id',
         'category_id',
         'status_id',
         'title',
         'description',
+        'damage_type',
+        'status',
         'priority',
         'urgency',
         'assigned_to',
@@ -74,13 +81,13 @@ class HelpdeskTicket extends Model
         'resolved_by',
         'satisfaction_rating',
         'feedback',
-    'attachments',
-    'file_attachments',
-    'activity_log',
+        'attachments',
+        'file_attachments',
+        'activity_log',
     ];
 
     /**
-     * Get the user who created this ticket
+     * Get the user who created the ticket.
      */
     public function user(): BelongsTo
     {
@@ -88,7 +95,7 @@ class HelpdeskTicket extends Model
     }
 
     /**
-     * Get the category of this ticket
+     * Get the ticket category.
      */
     public function category(): BelongsTo
     {
@@ -96,35 +103,35 @@ class HelpdeskTicket extends Model
     }
 
     /**
-     * Get the current status of this ticket
+     * Get the ticket status.
      */
-    public function status(): BelongsTo
+    public function ticketStatus(): BelongsTo
     {
         return $this->belongsTo(TicketStatus::class, 'status_id');
     }
 
     /**
-     * Get the user assigned to this ticket
+     * Get the assigned staff member.
      */
-    public function assignedToUser(): BelongsTo
+    public function assignedTo(): BelongsTo
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }
 
     /**
-     * Get the user who resolved this ticket
+     * Get the staff who resolved the ticket.
      */
-    public function resolvedByUser(): BelongsTo
+    public function resolvedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'resolved_by');
     }
 
     /**
-     * Get the related equipment item
+     * Get the equipment item related to this ticket.
      */
     public function equipmentItem(): BelongsTo
     {
-        return $this->belongsTo(EquipmentItem::class);
+        return $this->belongsTo(EquipmentItem::class, 'equipment_item_id');
     }
 
     /**
@@ -132,69 +139,54 @@ class HelpdeskTicket extends Model
      */
     public function isOverdue(): bool
     {
-        if ($this->status->is_final) {
-            return false;
-        }
-
-        return $this->due_at && now()->isAfter($this->due_at);
+        return $this->due_at && $this->due_at < now() && ! $this->resolved_at;
     }
 
     /**
-     * Check if ticket is new
-     */
-    public function isNew(): bool
-    {
-        return $this->status->code === 'new';
-    }
-
-    /**
-     * Check if ticket is assigned
-     */
-    public function isAssigned(): bool
-    {
-        return ! is_null($this->assigned_to);
-    }
-
-    /**
-     * Check if ticket is resolved
+     * Check if ticket is resolved.
      */
     public function isResolved(): bool
     {
-        return $this->status->code === 'resolved';
+        return ! is_null($this->resolved_at);
     }
 
     /**
-     * Check if ticket is closed
+     * Check if ticket is closed.
      */
     public function isClosed(): bool
     {
-        return $this->status->code === 'closed';
+        return ! is_null($this->closed_at);
     }
 
     /**
-     * Accessor for assignedTo (legacy property)
+     * Get the response time in hours.
      */
-    public function getAssignedToAttribute(): ?User
+    public function getResponseTimeAttribute(): ?float
     {
-        $user = $this->assignedToUser;
+        if (! $this->assigned_at) {
+            return null;
+        }
 
-        return $user instanceof User ? $user : null;
+        return $this->created_at->diffInHours($this->assigned_at);
     }
 
     /**
-     * Accessor for activity_log (stub for Larastan)
-     *
-     * @return mixed
+     * Get the resolution time in hours.
      */
-    public function getActivityLogAttribute()
+    public function getResolutionTimeAttribute(): ?float
     {
-        // Return null or actual activity log if implemented
-        return null;
+        if (! $this->resolved_at) {
+            return null;
+        }
+
+        return $this->created_at->diffInHours($this->resolved_at);
     }
 
     protected function casts(): array
     {
         return [
+            'priority' => TicketPriority::class,
+            'urgency' => TicketUrgency::class,
             'assigned_at' => 'datetime',
             'due_at' => 'datetime',
             'resolved_at' => 'datetime',
@@ -223,6 +215,27 @@ class HelpdeskTicket extends Model
                 $ticket->due_at = now()->addHours($ticket->category->default_sla_hours);
             }
         });
+    }
+
+    /**
+     * Accessor for assignedTo (legacy property)
+     */
+    public function getAssignedToAttribute(): ?User
+    {
+        $user = $this->assignedToUser;
+
+        return $user instanceof User ? $user : null;
+    }
+
+    /**
+     * Accessor for activity_log (stub for Larastan)
+     *
+     * @return mixed
+     */
+    public function getActivityLogAttribute()
+    {
+        // Return null or actual activity log if implemented
+        return null;
     }
 
     /**

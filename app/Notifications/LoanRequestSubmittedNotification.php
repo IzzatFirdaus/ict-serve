@@ -52,6 +52,7 @@ class LoanRequestSubmittedNotification extends Notification implements ShouldQue
             ->line("**Request Number:** {$this->loanRequest->request_number}")
             ->line("**Purpose:** {$this->loanRequest->purpose}")
             ->line("**Requested Period:** $period")
+            ->line("**Location:** {$this->loanRequest->location}")
             ->line('Your request will be reviewed by your supervisor and the ICT department.')
             ->action('View Request Details', route('dashboard'))
             ->line('Thank you for using ICTServe!')

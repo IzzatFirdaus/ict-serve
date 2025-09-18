@@ -1,9 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Middleware;
 
+use App\Enums\UserRole;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,11 +12,11 @@ class AdminMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user() || ! in_array($request->user()->role, ['ict_admin', 'super_admin'], true)) {
+    if (! $request->user() || ! $request->user()->hasRole(['ict_admin', 'super_admin'])) {
             return response()->json([
                 'success' => false,
                 'message' => 'Akses tidak dibenarkan. Hanya pentadbir yang boleh mengakses fungsi ini.',

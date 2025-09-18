@@ -4,16 +4,37 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\TicketPriority;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property int $id
+ * @property string $type
+ * @property int $user_id
+ * @property string $title
+ * @property string $message
+ * @property ?array $data
+ * @property string $category
+ * @property string $priority
+ * @property bool $is_read
+ * @property ?\Illuminate\Support\Carbon $read_at
+ * @property ?string $action_url
+ * @property ?string $icon
+ * @property ?string $color
+ * @property ?\Illuminate\Support\Carbon $expires_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property-read User $user
+ * @property-read string $time_ago
+ */
 class Notification extends Model
 {
     use HasFactory;
 
-    /** @var list<string> */
-    protected array $fillable = [
+    protected $fillable = [
         'type',
         'user_id',
         'title',
@@ -29,19 +50,20 @@ class Notification extends Model
         'expires_at',
     ];
 
-    protected $casts = [
-        'data' => 'array',
-        'is_read' => 'boolean',
-        'read_at' => 'datetime',
-        'expires_at' => 'datetime',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'data' => 'array',
+            'is_read' => 'boolean',
+            'read_at' => 'datetime',
+            'expires_at' => 'datetime',
+        ];
+    }
 
     // Relationships
     public function user(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(User::class);
     }
 
     // Scopes
@@ -133,7 +155,7 @@ class Notification extends Model
             'system_announcement' => 'speakerphone',
             'system_maintenance' => 'cog',
             'user_assigned' => 'user-group',
-            default => 'information-circle'
+            default => 'information-circle',
         };
     }
 
@@ -152,8 +174,8 @@ class Notification extends Model
                 'ticket' => 'blue',
                 'loan' => 'green',
                 'system' => 'purple',
-                default => 'gray'
-            }
+                default => 'gray',
+            },
         };
     }
 
@@ -211,10 +233,10 @@ class Notification extends Model
             'message' => $message ?: "Tiket #{$ticket->ticket_number} - {$ticket->title}",
             'category' => 'ticket',
             'priority' => match ($ticket->priority) {
-                'critical' => 'urgent',
-                'high' => 'high',
-                'medium' => 'medium',
-                'low' => 'low',
+                TicketPriority::CRITICAL => 'urgent',
+                TicketPriority::HIGH => 'high',
+                TicketPriority::MEDIUM => 'medium',
+                TicketPriority::LOW => 'low',
                 default => 'medium'
             },
             'action_url' => route('helpdesk.index-enhanced'),

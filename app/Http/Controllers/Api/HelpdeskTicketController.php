@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Controllers\Api;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHelpdeskTicketRequest;
 use App\Models\HelpdeskTicket;
 use App\Models\TicketStatus;
 use App\Services\NotificationService;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,19 +19,17 @@ class HelpdeskTicketController extends Controller
     public function __construct(
         private NotificationService $notificationService
     ) {
-        $this->middleware('auth:sanctum');
+        // Middleware is handled in routes/api.php
     }
 
     /**
      * Display a listing of tickets.
-    *
-    * @param \Illuminate\Http\Request $request
      */
     public function index(Request $request): JsonResponse
     {
         /** @var \Illuminate\Http\Request $request */
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser'])
-            ->when(! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true), function ($q) {
+            ->when(! Auth::user()?->hasRole(['ict_admin', 'super_admin']), function ($q) {
                 return $q->where('user_id', Auth::id());
             })
             ->when($request->status, function ($q, $status) {
@@ -64,8 +60,6 @@ class HelpdeskTicketController extends Controller
 
     /**
      * Store a newly created ticket.
-    *
-    * @param \App\Http\Requests\StoreHelpdeskTicketRequest $request
      */
     public function store(StoreHelpdeskTicketRequest $request): JsonResponse
     {
@@ -111,7 +105,7 @@ class HelpdeskTicketController extends Controller
                 'data' => $ticket->load(['category', 'status', 'user']),
             ], 201);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
 
             return response()->json([
@@ -127,8 +121,8 @@ class HelpdeskTicketController extends Controller
      */
     public function show(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-        // Check authorization
-    if (! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true) && $ticket->user->id !== Auth::id()) {
+    // Check authorization
+    if (! Auth::user()?->hasRole(['ict_admin', 'super_admin']) && $ticket->user->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -152,8 +146,8 @@ class HelpdeskTicketController extends Controller
      */
     public function update(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-        // Only admins or assigned users can update tickets
-    if (! in_array(Auth::user()->role, ['ict_admin', 'super_admin'], true) && $ticket->assignedToUser?->id !== Auth::id()) {
+    // Only admins or assigned users can update tickets
+    if (! Auth::user()?->hasRole(['ict_admin', 'super_admin']) && $ticket->assignedToUser?->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -217,7 +211,7 @@ class HelpdeskTicketController extends Controller
                 'data' => $ticket->fresh(['user', 'category', 'status', 'assignedToUser']),
             ]);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
 
             return response()->json([
@@ -233,8 +227,8 @@ class HelpdeskTicketController extends Controller
      */
     public function destroy(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-        // Check authorization - only ticket creator or admin can delete
-    if ($ticket->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
+    // Check authorization - only ticket creator or admin can delete
+    if ($ticket->user_id !== Auth::id() && ! Auth::user()?->hasRole(['ict_admin', 'super_admin'])) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan untuk memadam tiket ini.',
@@ -264,7 +258,7 @@ class HelpdeskTicketController extends Controller
                 'message' => 'Tiket telah berjaya dipadam.',
             ]);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ralat berlaku semasa memadam tiket.',
@@ -280,8 +274,9 @@ class HelpdeskTicketController extends Controller
     {
         $ids = $request->input('ids', []);
         $updated = HelpdeskTicket::whereIn('id', $ids)
-            ->whereHas('status', fn($q) => $q->where('name', 'new'))
+            ->whereHas('status', fn ($q) => $q->where('name', 'new'))
             ->update(['status_id' => TicketStatus::where('name', 'approved')->first()->id]);
+
         return response()->json(['success' => true, 'updated' => $updated]);
     }
 
@@ -292,8 +287,9 @@ class HelpdeskTicketController extends Controller
     {
         $ids = $request->input('ids', []);
         $updated = HelpdeskTicket::whereIn('id', $ids)
-            ->whereHas('status', fn($q) => $q->where('name', 'new'))
+            ->whereHas('status', fn ($q) => $q->where('name', 'new'))
             ->update(['status_id' => TicketStatus::where('name', 'rejected')->first()->id]);
+
         return response()->json(['success' => true, 'updated' => $updated]);
     }
 }

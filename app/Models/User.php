@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,7 +20,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $phone
  * @property string|null $position
  * @property string|null $profile_picture
- * @property string|null $role
+ * @property UserRole $role
  * @property array|null $preferences
  * @property \Illuminate\Support\Carbon|null $last_login_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
@@ -28,27 +28,26 @@ use Illuminate\Notifications\Notifiable;
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory;
-    use Notifiable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'name',
         'email',
         'password',
         'staff_id',
+        'role',
         'division',
         'department',
         'position',
         'phone',
-        'role',
         'supervisor_id',
         'is_active',
         'last_login_at',
@@ -61,73 +60,74 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected array $hidden = [
+    protected $hidden = [
         'password',
         'remember_token',
     ];
 
     /**
-     * Get the supervisor of this user
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
      */
-    public function supervisor(): BelongsTo
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'role' => UserRole::class,
+            'preferences' => 'array',
+            'is_active' => 'boolean',
+            'last_login_at' => 'datetime',
+        ];
+    }
+
+    /**
+     * Get the supervisor that this user reports to.
+     */
+    public function supervisor()
     {
         return $this->belongsTo(User::class, 'supervisor_id');
     }
 
     /**
-     * Get users supervised by this user
+     * Get the subordinates that report to this user.
      */
-    public function subordinates(): HasMany
+    public function subordinates()
     {
         return $this->hasMany(User::class, 'supervisor_id');
     }
 
     /**
-     * Get loan requests made by this user
+     * Get the loan requests created by this user.
      */
-    public function loanRequests(): HasMany
+    public function loanRequests()
     {
-        return $this->hasMany(LoanRequest::class);
+        return $this->hasMany(LoanRequest::class, 'user_id');
     }
 
     /**
-     * Get loan requests supervised by this user
+     * Get the loan requests supervised by this user.
      */
-    public function supervisedLoanRequests(): HasMany
+    public function supervisedLoanRequests()
     {
         return $this->hasMany(LoanRequest::class, 'supervisor_id');
     }
 
     /**
-     * Get loan requests approved by this user as ICT admin
+     * Get the helpdesk tickets created by this user.
      */
-    public function ictApprovedLoanRequests(): HasMany
+    public function tickets()
     {
-        return $this->hasMany(LoanRequest::class, 'ict_admin_id');
+        return $this->hasMany(HelpdeskTicket::class, 'user_id');
     }
 
     /**
-     * Get helpdesk tickets created by this user
+     * Get the helpdesk tickets assigned to this user.
      */
-    public function helpdeskTickets(): HasMany
-    {
-        return $this->hasMany(HelpdeskTicket::class);
-    }
-
-    /**
-     * Get helpdesk tickets assigned to this user
-     */
-    public function assignedTickets(): HasMany
+    public function assignedTickets()
     {
         return $this->hasMany(HelpdeskTicket::class, 'assigned_to');
-    }
-
-    /**
-     * Get audit logs for this user
-     */
-    public function auditLogs(): HasMany
-    {
-        return $this->hasMany(AuditLog::class);
     }
 
     /**
@@ -147,66 +147,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user has specific role
+     * Get the activity logs for this user.
      */
-    public function hasRole(string $role): bool
+    public function activityLogs()
     {
-        return $this->role === $role;
-    }
-
-    /**
-     * Check if user is supervisor
-     */
-    public function isSupervisor(): bool
-    {
-        return $this->role === 'supervisor';
-    }
-
-    /**
-     * Check if user is ICT admin
-     */
-    public function isIctAdmin(): bool
-    {
-        return $this->role === 'ict_admin';
-    }
-
-    /**
-     * Check if user is helpdesk staff
-     */
-    public function isHelpdeskStaff(): bool
-    {
-        return $this->role === 'helpdesk_staff';
-    }
-
-    /**
-     * Check if user is super admin
-     */
-    public function isSuperAdmin(): bool
-    {
-        return $this->role === 'super_admin';
-    }
-
-    /**
-     * Get full name with staff ID
-     */
-    public function getFullNameWithStaffIdAttribute(): string
-    {
-        return $this->name.' ('.$this->staff_id.')';
-    }
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'is_active' => 'boolean',
-            'last_login_at' => 'datetime',
-            'preferences' => 'array',
-        ];
+        return $this->hasMany(ActivityLog::class, 'user_id');
     }
 }
