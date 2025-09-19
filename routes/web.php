@@ -39,7 +39,7 @@ Route::prefix('public')->name('public.')->group(function () {
     })->name('track');
     Route::post('/track', function (\Illuminate\Http\Request $request) {
         $request->validate([
-            'tracking_number' => 'required|string'
+            'tracking_number' => 'required|string',
         ]);
 
         $trackingNumber = $request->tracking_number;
@@ -188,6 +188,22 @@ Route::middleware('auth')->group(function () {
         Route::get('/', \App\Livewire\Profile\UserProfile::class)->name('index');
     });
 
+    // User's own requests (loan requests + helpdesk tickets)
+    Route::get('/my-requests', function () {
+        $user = Auth::user();
+        $loanRequests = \App\Models\LoanRequest::with(['status', 'loanItems.equipmentItem.category'])
+            ->where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $helpdeskTickets = \App\Models\HelpdeskTicket::with(['status', 'category', 'equipmentItem'])
+            ->where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('my-requests', compact('loanRequests', 'helpdeskTickets'));
+    })->name('my-requests');
+
     // Test notification route (temporary)
     Route::get('/test-notifications', function () {
         return view('test-notifications');
@@ -198,9 +214,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () {
             // Reporting Dashboard for administrators
             $equipmentCount = \App\Models\EquipmentItem::count();
-            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn($q) => $q->where('code', 'active'))->count();
-            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'open'))->count();
-            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn($q) => $q->where('code', 'resolved'))->count();
+            $activeLoans = \App\Models\LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'active'))->count();
+            $openTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'open'))->count();
+            $resolvedTickets = \App\Models\HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'resolved'))->count();
+
             return view('admin.dashboard', compact('equipmentCount', 'activeLoans', 'openTickets', 'resolvedTickets'));
         })->name('dashboard');
 

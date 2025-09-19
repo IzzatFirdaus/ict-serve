@@ -8,21 +8,18 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
 $kernel->bootstrap();
 
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Carbon;
-use App\Models\User;
-use App\Models\HelpdeskTicket;
-use App\Models\TicketCategory;
-use App\Models\TicketStatus;
-use App\Models\EquipmentItem;
-use App\Models\LoanRequest;
-use App\Models\LoanStatus;
-use App\Models\LoanItem;
-use App\Models\EquipmentCategory;
 use App\Enums\TicketPriority;
-use App\Enums\LoanRequestStatus;
 use App\Mail\HelpdeskTicketConfirmationMail;
 use App\Mail\LoanRequestConfirmationMail;
+use App\Models\EquipmentCategory;
+use App\Models\EquipmentItem;
+use App\Models\LoanItem;
+use App\Models\LoanStatus;
+use App\Models\TicketCategory;
+use App\Models\TicketStatus;
+use App\Models\User;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 // --- Dummy Data Setup ---
 
@@ -43,7 +40,7 @@ $status = new TicketStatus(['name' => 'Open']);
 $equipment = new EquipmentItem(['brand' => 'Dell', 'model' => 'Latitude 5400']);
 
 // Helpdesk Ticket as stdClass
-$ticket = new \stdClass();
+$ticket = new \stdClass;
 $ticket->ticket_number = 'HD-2025-0916-001';
 $ticket->title = 'Internet Down';
 $ticket->description = 'Cannot connect to the internet.';
@@ -72,7 +69,7 @@ $loanEquipment->setRelation('category', $eqCategory);
 $loanItem = new LoanItem(['quantity' => 1]);
 $loanItem->setRelation('equipmentItem', $loanEquipment);
 // Loan Request as stdClass
-$loanRequest = new \stdClass();
+$loanRequest = new \stdClass;
 $loanRequest->request_number = 'LR20250001';
 $loanRequest->created_at = Carbon::now();
 $loanRequest->purpose = 'Official meeting';
