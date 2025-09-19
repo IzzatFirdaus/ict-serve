@@ -1,5 +1,6 @@
 {{--
   ICTServe (iServe) Signature Pad Component
+  Uses: signature_pad library for enhanced touch/mouse drawing support
   MYDS & MyGovEA Compliance:
     - Layout: Uses MYDS card (bg-bg-white, border-otl-divider, rounded-lg, shadow-card, p-6) for signature area.
     - Typography: Inter for body text, Poppins for headings. text-sm for label/hint, text-txt-black-900 for label.
@@ -43,13 +44,18 @@
 
     <div
         x-data="{
+            signaturePad: null, // reference to signature_pad library instance
             isDrawing: false,
             lastPoint: null,
             hasSignature: {{ $value ? 'true' : 'false' }},
             clearPad() {
-                const c = this.$refs.signaturePad;
-                const ctx = c.getContext('2d');
-                ctx.clearRect(0, 0, c.width, c.height);
+                if (this.signaturePad) {
+                    this.signaturePad.clear();
+                } else {
+                    const c = this.$refs.signaturePad;
+                    const ctx = c.getContext('2d');
+                    ctx.clearRect(0, 0, c.width, c.height);
+                }
                 this.hasSignature = false;
                 @this.set('{{ $name }}', '');
             },

@@ -21,7 +21,8 @@
 --}}
 
 @props([
-  'id',
+  'id' => null,
+  'name' => null,
   'label' => null,
   'hint' => null,
   'error' => null,
@@ -39,6 +40,8 @@
 ])
 
 @php
+  // Determine the id to use - use explicit id if provided, otherwise use name, or generate random
+  $fieldId = $id ?? $name ?? 'input-' . uniqid();
   // Sizing and spacing tokens per MYDS
   $sizeClass = match($size) {
     'sm' => 'myds-input-sm',
@@ -47,8 +50,8 @@
   };
   $isInvalid = filled($error);
   $invalidClass = $isInvalid ? 'invalid' : '';
-  $hintId = $hint ? $id.'-hint' : null;
-  $errorId = $isInvalid ? $id.'-error' : null;
+  $hintId = $hint ? $fieldId.'-hint' : null;
+  $errorId = $isInvalid ? $fieldId.'-error' : null;
   $describedBy = $isInvalid ? $errorId : ($hint ? $hintId : null);
   $inputPaddingLeft = $icon ? 'pl-10' : '';
   $inputPaddingRight = $trailingIcon ? 'pr-10' : '';
@@ -57,7 +60,7 @@
 <x-myds.tokens />
 
 @if($label)
-  <label for="{{ $id }}" class="myds-label">
+  <label for="{{ $fieldId }}" class="myds-label">
     {{ $label }} @if($required)<span class="txt-danger">*</span>@endif
   </label>
 @endif
@@ -69,10 +72,10 @@
     </span>
   @endif
   <input
-    id="{{ $id }}"
-    name="{{ $id }}"
+    id="{{ $fieldId }}"
+    name="{{ $name ?? $fieldId }}"
     type="{{ $type }}"
-    @if(!is_null($value)) value="{{ old($id, $value) }}" @endif
+    @if(!is_null($value)) value="{{ old($name ?? $fieldId, $value) }}" @endif
     @class([
       'myds-input', $sizeClass, $invalidClass, $inputPaddingLeft, $inputPaddingRight, $class,
       // For a11y, always show pointer unless disabled

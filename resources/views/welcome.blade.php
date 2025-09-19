@@ -96,7 +96,7 @@
             {{-- Form title --}}
             <h2 id="page-title" class="myds-heading-md font-medium text-txt-black-900 mb-6">Aduan Kerosakan ICT</h2>
             {{-- ICT Damage Complaint Form (MYDS form controls) --}}
-            <form action="{{ route('ict-complaint.submit') }}" method="POST" class="flex flex-col gap-5" autocomplete="on" novalidate aria-describedby="form-intro">
+            <form action="{{ route('public.helpdesk.store') }}" method="POST" class="flex flex-col gap-5" autocomplete="on" novalidate aria-describedby="form-intro">
                 @csrf
                 <p id="form-intro" class="myds-body-sm text-txt-black-500 mb-4">
                     Sila isikan borang aduan di bawah. Medan bertanda <span aria-hidden="true" class="text-danger-600">*</span> adalah wajib diisi.
