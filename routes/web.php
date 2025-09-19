@@ -142,8 +142,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/attachments/{ticket}', \App\Livewire\Helpdesk\AttachmentManager::class)->name('attachments');
         Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
 
-    // Detail view for a helpdesk ticket (used in Blade as helpdesk.ticket.detail)
-    Route::get('/ticket/{ticket}', \App\Livewire\Helpdesk\TicketDetail::class)->name('ticket.detail');
+        // Detail view for a helpdesk ticket (used in Blade as helpdesk.ticket.detail)
+        Route::get('/ticket/{ticket}', \App\Livewire\Helpdesk\TicketDetail::class)->name('ticket.detail');
 
         // New MYDS Components
         Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
@@ -151,12 +151,12 @@ Route::middleware('auth')->group(function () {
         // Legacy alias for older paths /ict/* used in tests and external links
         Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint');
 
-            // Additional aliases to maintain backward compatibility and satisfy tests
-            // Some views/tests reference these exact route names; provide aliases to avoid RouteNotFoundException
-            Route::get('/damage-complaint/create', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint.create');
-            Route::get('/public/damage-complaint/guest', function () {
-                return \App\Livewire\Ict\DamageComplaintForm::class;
-            })->name('public.damage-complaint.guest');
+        // Additional aliases to maintain backward compatibility and satisfy tests
+        // Some views/tests reference these exact route names; provide aliases to avoid RouteNotFoundException
+        Route::get('/damage-complaint/create', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint.create');
+        Route::get('/public/damage-complaint/guest', function () {
+            return \App\Livewire\Ict\DamageComplaintForm::class;
+        })->name('public.damage-complaint.guest');
     });
 
     // Ticket routes (legacy alias for helpdesk)

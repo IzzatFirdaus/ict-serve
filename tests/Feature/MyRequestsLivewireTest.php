@@ -94,12 +94,12 @@ class MyRequestsLivewireTest extends TestCase
         // Create loan requests with different statuses
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'status' => 'pending_supervisor',
+            'status' => \App\Enums\LoanRequestStatus::PENDING_SUPERVISOR->value,
         ]);
 
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'status' => 'approved_ict',
+            'status' => \App\Enums\LoanRequestStatus::READY_PICKUP->value,
         ]);
 
         Livewire::test(MyRequests::class)
@@ -171,7 +171,7 @@ class MyRequestsLivewireTest extends TestCase
 
         LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'status' => 'pending_supervisor',
+            'status' => \App\Enums\LoanRequestStatus::PENDING_SUPERVISOR->value,
             'purpose' => 'Test equipment request',
         ]);
 
@@ -214,7 +214,7 @@ class MyRequestsLivewireTest extends TestCase
         /** @var LoanRequest $loanRequest */
         $loanRequest = LoanRequest::factory()->create([
             'user_id' => $this->user->id,
-            'status' => 'in_use',
+            'status' => \App\Enums\LoanRequestStatus::IN_USE->value,
             'purpose' => 'Testing equipment tracking',
         ]);
 

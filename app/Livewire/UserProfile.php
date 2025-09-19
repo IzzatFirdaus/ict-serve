@@ -246,6 +246,7 @@ class UserProfile extends Component
             ->get()
             ->map(function ($loan) {
                 $status = is_object($loan->status) && method_exists($loan->status, 'value') ? $loan->status->value : (string) $loan->status;
+
                 return [
                     'type' => 'loan',
                     'title' => "Permohonan Pinjaman #{$loan->id}",

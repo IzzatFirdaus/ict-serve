@@ -499,6 +499,56 @@
         </div>
 
         <!-- Preferences -->
+        <!-- Privacy Controls (MYDS-compliant) -->
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg border border-gray-200 dark:border-gray-700 mt-8">
+          <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+              Privasi & Data / Privacy & Data
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Anda boleh memadam semua data memori anda yang disimpan oleh sistem. Tindakan ini tidak boleh diundur. / You may delete all your memory data stored by the system. This action is irreversible.
+            </p>
+          </div>
+          <div class="p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <x-icon name="info" class="w-5 h-5 text-warning-600" aria-hidden="true" />
+              <span class="text-sm text-gray-700 dark:text-gray-300">
+                Memadam memori akan menghapuskan semua data berkaitan anda dalam sistem pengetahuan. / Deleting memory will erase all your related data in the knowledge system.
+              </span>
+            </div>
+            <x-myds.button
+              variant="danger"
+              size="md"
+              wire:click="confirmDeleteMemory"
+              class="ml-auto"
+              aria-label="Padam Memori / Delete Memory"
+            >
+              <x-icon name="trash" class="w-4 h-4 mr-2" aria-hidden="true" />
+              Padam Memori / Delete Memory
+            </x-myds.button>
+          </div>
+
+          <!-- Confirmation Dialog -->
+          <x-myds.dialog
+            wire:model.defer="showDeleteMemoryDialog"
+            title="Padam Semua Memori? / Delete All Memory?"
+            aria-label="Padam Semua Memori? / Delete All Memory?"
+          >
+            <div class="space-y-2">
+              <x-icon name="warning" class="w-6 h-6 text-danger-600 inline-block align-middle mr-2" aria-hidden="true" />
+              <span class="text-danger-700 dark:text-danger-400 font-semibold">
+                Tindakan ini tidak boleh diundur. Semua data memori anda akan dipadam secara kekal. / This action cannot be undone. All your memory data will be permanently deleted.
+              </span>
+            </div>
+            <div class="mt-6 flex justify-end gap-2">
+              <x-myds.button variant="ghost" wire:click="cancelDeleteMemory">Batal / Cancel</x-myds.button>
+              <x-myds.button variant="danger" wire:click="deleteMemory" wire:loading.attr="disabled">
+                <x-icon name="trash" class="w-4 h-4 mr-2" aria-hidden="true" />
+                Ya, Padam / Yes, Delete
+              </x-myds.button>
+            </div>
+          </x-myds.dialog>
+        </div>
         <div
           class="bg-white dark:bg-gray-800 shadow-lg rounded-lg border border-gray-200 dark:border-gray-700"
         >

@@ -12,15 +12,16 @@ class LoanRequestFactory extends Factory
     public function definition(): array
     {
         $statusCode = $this->faker->randomElement([
-            'pending_supervisor_approval',
-            'pending_ict_approval',
-            'approved',
-            'rejected',
-            'collected',
-            'returned',
-            'overdue',
-            'cancelled',
+            \App\Enums\LoanRequestStatus::PENDING_SUPERVISOR->value,
+            \App\Enums\LoanRequestStatus::PENDING_ICT->value,
+            \App\Enums\LoanRequestStatus::READY_PICKUP->value,
+            \App\Enums\LoanRequestStatus::IN_USE->value,
+            \App\Enums\LoanRequestStatus::RETURNED->value,
+            \App\Enums\LoanRequestStatus::OVERDUE->value,
+            \App\Enums\LoanRequestStatus::REJECTED->value,
+            \App\Enums\LoanRequestStatus::CANCELLED->value,
         ]);
+
         /** @var \App\Models\LoanStatus $loanStatus */
         $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
 

@@ -70,7 +70,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // Protected API routes (requires authentication)
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth')->group(function () {
     // Bulk operations for helpdesk tickets
     Route::post('/helpdesk-tickets/bulk-approve', [HelpdeskTicketController::class, 'bulkApprove'])->middleware('throttle:30,1');
     Route::post('/helpdesk-tickets/bulk-reject', [HelpdeskTicketController::class, 'bulkReject'])->middleware('throttle:30,1');
@@ -86,6 +86,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Helpdesk Module API Routes
     Route::apiResource('helpdesk-tickets', HelpdeskTicketController::class)->middleware('throttle:60,1');
+
+    // Privacy endpoints
+    Route::delete('/privacy/memory', [\App\Http\Controllers\PrivacyController::class, 'destroy'])
+        ->middleware(['auth', 'throttle:10,1']);
 
     // Additional utility routes for frontend
     Route::prefix('utilities')->group(function () {

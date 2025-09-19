@@ -12,9 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            // Use auto-increment id for compatibility with app Notification model
+            $table->id();
             $table->string('type');
             $table->morphs('notifiable');
+            // Backwards-compatible user_id for legacy code/tests
+            $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->text('data');
             $table->timestamp('read_at')->nullable();
             $table->timestamps();

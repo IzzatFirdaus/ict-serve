@@ -181,9 +181,8 @@ class LoanRequest extends Model
     public function scopePending(Builder $query): void
     {
         $query->whereIn('status', [
-            LoanRequestStatus::PENDING_BPM_REVIEW->value,
-            LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL->value,
-            LoanRequestStatus::PENDING_ICT_APPROVAL->value,
+            LoanRequestStatus::PENDING_SUPERVISOR->value,
+            LoanRequestStatus::PENDING_ICT->value,
         ]);
     }
 
@@ -233,9 +232,8 @@ class LoanRequest extends Model
     public function canBeEdited(): bool
     {
         return in_array($this->status, [
-            LoanRequestStatus::PENDING_BPM_REVIEW,
-            LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL,
-            LoanRequestStatus::PENDING_ICT_APPROVAL,
+            LoanRequestStatus::PENDING_SUPERVISOR,
+            LoanRequestStatus::PENDING_ICT,
         ], true);
     }
 
@@ -257,7 +255,7 @@ class LoanRequest extends Model
      */
     public function isOverdue(): bool
     {
-        return $this->status === LoanRequestStatus::COLLECTED
+        return $this->status === LoanRequestStatus::IN_USE
             && $this->expected_return_date
             && $this->expected_return_date->isPast();
     }

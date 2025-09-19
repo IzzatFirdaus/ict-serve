@@ -9,8 +9,8 @@
           {{ __("My Requests") }}
         </h1>
 
-    {{-- Ensure the inline Livewire tag is present for tests that assert its existence. --}}
-    <!-- <livewire:my-requests /> -->
+  {{-- Ensure the inline Livewire tag is present for tests that assert its existence. --}}
+  <livewire:my-requests />
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Loan Requests -->
