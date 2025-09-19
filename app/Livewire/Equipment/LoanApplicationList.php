@@ -98,11 +98,11 @@ class LoanApplicationList extends Component
         $counts = [
             'total' => LoanRequest::count(),
             'pending' => LoanRequest::whereIn('status', [
-                LoanRequestStatus::PENDING_BPM_REVIEW,
-                LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL,
-                LoanRequestStatus::PENDING_ICT_APPROVAL,
+                LoanRequestStatus::PENDING_SUPERVISOR,
+                LoanRequestStatus::APPROVED_SUPERVISOR,
+                LoanRequestStatus::PENDING_ICT,
             ])->count(),
-            'approved' => LoanRequest::where('status', LoanRequestStatus::APPROVED)->count(),
+            'approved' => LoanRequest::where('status', LoanRequestStatus::APPROVED_ICT)->count(),
             'rejected' => LoanRequest::where('status', LoanRequestStatus::REJECTED)->count(),
             'completed' => LoanRequest::where('status', LoanRequestStatus::RETURNED)->count(),
         ];

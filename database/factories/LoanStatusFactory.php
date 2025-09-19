@@ -11,17 +11,20 @@ class LoanStatusFactory extends Factory
 
     public function definition(): array
     {
-        $code = $this->faker->unique()->randomElement([
-            'pending_bpm_review',
-            'pending_supervisor_approval',
-            'pending_ict_approval',
-            'approved',
-            'rejected',
-            'collected',
+        // Use only valid LoanRequestStatus enum values for code
+        $validCodes = [
+            'pending_supervisor',
+            'approved_supervisor',
+            'pending_ict',
+            'approved_ict',
+            'ready_pickup',
+            'in_use',
             'returned',
             'overdue',
+            'rejected',
             'cancelled',
-        ]);
+        ];
+        $code = $this->faker->unique()->randomElement($validCodes);
 
         return [
             'code' => $code,
