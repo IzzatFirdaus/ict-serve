@@ -10,14 +10,14 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Laravel\Telescope\Telescope;
 
-class TicketStatusUpdatedNotification extends Notification implements ShouldQueue
+use App\Notifications\Contracts\AppDatabaseNotificationInterface;
+
+class TicketStatusUpdatedNotification extends Notification implements ShouldQueue, AppDatabaseNotificationInterface
 {
     use Queueable;
 
     protected HelpdeskTicket $ticket;
-
     protected TicketStatus $oldStatus;
-
     protected TicketStatus $newStatus;
 
     public function __construct(HelpdeskTicket $ticket, TicketStatus $oldStatus, TicketStatus $newStatus)
@@ -42,6 +42,28 @@ class TicketStatusUpdatedNotification extends Notification implements ShouldQueu
                 'category:'.$categoryName,
             ];
         });
+    }
+
+    /**
+     * Get the app database representation of the notification.
+     */
+    public function toAppDatabase($notifiable): array
+    {
+        return [
+            'type' => 'ticket_status_updated',
+            'title' => 'Ticket Status Updated',
+            'message' => "Ticket #{$this->ticket->ticket_number} status updated from '{$this->oldStatus->name}' to '{$this->newStatus->name}'.",
+            'data' => [
+                'ticket_id' => $this->ticket->id,
+                'ticket_number' => $this->ticket->ticket_number,
+                'old_status' => $this->oldStatus->name,
+                'new_status' => $this->newStatus->name,
+                'action_url' => route('helpdesk.ticket.detail', $this->ticket->ticket_number),
+            ],
+            'category' => 'ticket',
+            'priority' => $this->ticket->priority->value,
+            'action_url' => route('helpdesk.ticket.detail', $this->ticket->ticket_number),
+        ];
     }
 
     /**

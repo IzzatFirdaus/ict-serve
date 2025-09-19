@@ -8,8 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Laravel\Telescope\Telescope;
+use App\Notifications\Contracts\AppDatabaseNotificationInterface;
 
-class TicketCreatedNotification extends Notification implements ShouldQueue
+class TicketCreatedNotification extends Notification implements ShouldQueue, AppDatabaseNotificationInterface
 {
     use Queueable;
 
@@ -32,6 +33,33 @@ class TicketCreatedNotification extends Notification implements ShouldQueue
             return ['notification:helpdesk', 'ticket:created', 'category:'.$categoryName];
         });
     }
+
+    /**
+     * Get the app database representation of the notification.
+     */
+    public function toAppDatabase($notifiable): array
+    {
+        $priority = $this->ticket->priority;
+        $priorityValue = $priority->value;
+
+        return [
+            'type' => 'ticket_created',
+            'title' => 'New Support Ticket Created',
+            'message' => "Your support ticket #{$this->ticket->ticket_number} has been created successfully.",
+            'data' => [
+                'ticket_id' => $this->ticket->id,
+                'ticket_number' => $this->ticket->ticket_number,
+                'title' => $this->ticket->title,
+                'priority' => $priorityValue,
+                'category' => $this->ticket->category->name ?? 'Unknown',
+                'action_url' => route('dashboard'),
+            ],
+            'category' => 'ticket',
+            'priority' => $priorityValue,
+            'action_url' => route('dashboard'),
+        ];
+    }
+
 
     /**
      * Get the notification's delivery channels.
