@@ -82,9 +82,8 @@ class TicketNotificationTest extends TestCase
 
         $user->notify(new TicketCreatedNotification($ticket));
 
-        $this->assertDatabaseHas('notifications', [
-            'notifiable_id' => $user->id,
-            'notifiable_type' => User::class,
+        $this->assertDatabaseHas('app_notifications', [
+            'user_id' => $user->id,
             'type' => TicketCreatedNotification::class,
         ]);
     }
@@ -104,9 +103,8 @@ class TicketNotificationTest extends TestCase
 
         $user->notify(new TicketStatusUpdatedNotification($ticket, $oldStatus, $newStatus));
 
-        $this->assertDatabaseHas('notifications', [
-            'notifiable_id' => $user->id,
-            'notifiable_type' => User::class,
+        $this->assertDatabaseHas('app_notifications', [
+            'user_id' => $user->id,
             'type' => TicketStatusUpdatedNotification::class,
         ]);
     }

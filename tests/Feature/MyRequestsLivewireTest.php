@@ -6,6 +6,7 @@ use App\Livewire\LoanRequestTracker;
 use App\Livewire\MyRequests;
 use App\Models\LoanRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -25,6 +26,12 @@ class MyRequestsLivewireTest extends TestCase
             'email' => 'test@motac.gov.my',
             'name' => 'Test User',
         ]);
+
+        // Safely clear and reseed loan_statuses to avoid unique constraint violations
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('loan_statuses')->delete();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        $this->seed(\Database\Seeders\LoanStatusSeeder::class);
     }
 
     /**
