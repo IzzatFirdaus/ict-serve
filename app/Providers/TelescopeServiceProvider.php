@@ -15,12 +15,12 @@ class TelescopeServiceProvider extends ServiceProvider
     {
         // Telescope::night();
 
-        if (class_exists(\Laravel\Telescope\Telescope::class)) {
+        if (class_exists(Telescope::class)) {
             $this->hideSensitiveRequestDetails();
 
             $isLocal = $this->app->environment('local');
 
-            \Laravel\Telescope\Telescope::filter(function (\Laravel\Telescope\IncomingEntry $entry) use ($isLocal) {
+            Telescope::filter(function (\Laravel\Telescope\IncomingEntry $entry) use ($isLocal) {
                 return $isLocal ||
                        $entry->isReportableException() ||
                        $entry->isFailedRequest() ||
