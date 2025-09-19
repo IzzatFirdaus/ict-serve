@@ -30,6 +30,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Notification extends Model
 {
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'app_notifications';
+
     use HasFactory;
 
     protected $fillable = [

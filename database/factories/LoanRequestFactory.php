@@ -12,13 +12,15 @@ class LoanRequestFactory extends Factory
     public function definition(): array
     {
         $statusCode = $this->faker->randomElement([
-            'pending_supervisor_approval',
-            'pending_ict_approval',
-            'approved',
-            'rejected',
-            'collected',
+            'pending_supervisor',
+            'approved_supervisor',
+            'pending_ict',
+            'approved_ict',
+            'ready_pickup',
+            'in_use',
             'returned',
             'overdue',
+            'rejected',
             'cancelled',
         ]);
         /** @var \App\Models\LoanStatus $loanStatus */

@@ -165,10 +165,22 @@
             {{ __("my_requests.filters.pending_supervisor") }}
           </button>
           <button
+            wire:click="$set('loanStatus', 'approved_supervisor')"
+            class="myds-filter-btn @if($loanStatus === 'approved_supervisor') myds-filter-btn-active @endif"
+          >
+            {{ __("my_requests.filters.approved_supervisor") }}
+          </button>
+          <button
             wire:click="$set('loanStatus', 'pending_ict')"
             class="myds-filter-btn @if($loanStatus === 'pending_ict') myds-filter-btn-active @endif"
           >
             {{ __("my_requests.filters.pending_ict") }}
+          </button>
+          <button
+            wire:click="$set('loanStatus', 'approved_ict')"
+            class="myds-filter-btn @if($loanStatus === 'approved_ict') myds-filter-btn-active @endif"
+          >
+            {{ __("my_requests.filters.approved_ict") }}
           </button>
           <button
             wire:click="$set('loanStatus', 'ready_pickup')"
@@ -242,18 +254,19 @@
                     </h3>
 
                     @php
-                      $statusConfig = match ($request->loanStatus->code ?? "pending") {
-                          "pending_supervisor" => ["bg" => "bg-warning-100", "text" => "text-warning-800", "pulse" => true],
-                          "approved_supervisor" => ["bg" => "bg-bg-primary-100", "text" => "text-txt-primary", "pulse" => false],
-                          "pending_ict" => ["bg" => "bg-warning-100", "text" => "text-warning-800", "pulse" => true],
-                          "approved_ict" => ["bg" => "bg-success-100", "text" => "text-success-800", "pulse" => false],
-                          "ready_pickup" => ["bg" => "bg-success-100", "text" => "text-success-800", "pulse" => true],
-                          "in_use" => ["bg" => "bg-success-100", "text" => "text-success-800", "pulse" => false],
-                          "overdue" => ["bg" => "bg-danger-100", "text" => "text-danger-800", "pulse" => true],
-                          "returned" => ["bg" => "bg-gray-100", "text" => "text-gray-800", "pulse" => false],
-                          "rejected" => ["bg" => "bg-danger-100", "text" => "text-danger-800", "pulse" => false],
-                          default => ["bg" => "bg-gray-100", "text" => "text-gray-800", "pulse" => false],
-                      };
+            $statusConfig = match ($request->loanStatus->code ?? "pending_supervisor") {
+              "pending_supervisor" => ["bg" => "bg-warning-100", "text" => "text-warning-800", "pulse" => true],
+              "approved_supervisor" => ["bg" => "bg-bg-primary-100", "text" => "text-txt-primary", "pulse" => false],
+              "pending_ict" => ["bg" => "bg-warning-100", "text" => "text-warning-800", "pulse" => true],
+              "approved_ict" => ["bg" => "bg-success-100", "text" => "text-success-800", "pulse" => false],
+              "ready_pickup" => ["bg" => "bg-success-100", "text" => "text-success-800", "pulse" => true],
+              "in_use" => ["bg" => "bg-success-100", "text" => "text-success-800", "pulse" => false],
+              "overdue" => ["bg" => "bg-danger-100", "text" => "text-danger-800", "pulse" => true],
+              "returned" => ["bg" => "bg-gray-100", "text" => "text-gray-800", "pulse" => false],
+              "rejected" => ["bg" => "bg-danger-100", "text" => "text-danger-800", "pulse" => false],
+              "cancelled" => ["bg" => "bg-gray-200", "text" => "text-gray-600", "pulse" => false],
+              default => ["bg" => "bg-gray-100", "text" => "text-gray-800", "pulse" => false],
+            };
                     @endphp
 
                     <span
