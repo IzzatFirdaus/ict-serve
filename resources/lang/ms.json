@@ -1,0 +1,59 @@
+{
+  "buttons": {
+    "remove": "Buang",
+    "add_equipment": "Tambah Peralatan",
+    "submit_complaint": "Hantar Aduan"
+  },
+  "help_panel": {
+    "title": "Maklumat Bantuan",
+    "processing_time": "Aduan akan diproses dalam tempoh 3 hari bekerja.",
+    "complaint_status": "Anda akan menerima maklum balas melalui e-mel yang didaftarkan.",
+    "emergency_contact": "Untuk isu kritikal, sila hubungi BPM di talian 03-XXXXXXX.",
+    "processing_label": "Masa pemprosesan:",
+    "status_label": "Status aduan:",
+    "emergency_label": "Kecemasan ICT:"
+  },
+  "literals": {
+    "equipment": "Peralatan"
+  },
+  "forms": {
+    "sections": {
+      "equipment_info": "Maklumat Peralatan",
+      "equipment_list": "Senarai Peralatan Diperlukan",
+      "equipment_attachments": "Peralatan & Lampiran",
+      "requested_equipment": "Peralatan yang Dipohon"
+    },
+    "labels": {
+      "select_equipment": "Pilih Peralatan",
+      "equipment": "Peralatan",
+      "equipment_item": "Item Peralatan",
+      "related_equipment": "Peralatan Berkaitan",
+      "related_equipment_optional": "Peralatan Berkaitan (Pilihan)",
+      "damaged_equipment": "Peralatan yang Rosak"
+    },
+    "placeholders": {
+      "select_equipment": "-- Pilih Peralatan --",
+      "search_equipment": "Cari peralatan (nama, tag, jenama, model)...",
+      "select_equipment_item": "Pilih item peralatan",
+      "select_related_equipment": "Pilih peralatan berkaitan (jika ada)",
+      "no_specific_equipment": "Tiada peralatan khusus",
+      "purpose_of_use": "Nyatakan tujuan penggunaan peralatan...",
+      "select_equipment_heading": "Pilih Peralatan"
+    },
+    "messages": {
+      "no_equipment_matches": "Tiada peralatan sepadan dengan carian :search",
+      "equipment_list_placeholder": "Senarai peralatan akan dipaparkan di sini.",
+      "manage_loan_applications": "Lihat dan urus permohonan pinjaman peralatan anda"
+    },
+    "titles": {
+      "loan_request": "Borang Permohonan Pinjaman Peralatan ICT"
+    }
+  },
+  "navigation": {
+    "equipment_catalog": "Katalog Peralatan",
+    "loan_applications": "Permohonan Pinjaman"
+  },
+  "status": {
+    "equipment_returned": "Peralatan Dipulangkan"
+  }
+}

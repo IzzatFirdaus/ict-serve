@@ -1,0 +1,38 @@
+:root {
+  --primary-600: #2563eb;
+  --primary-500: #3a75f6;
+  --danger-600: #dc2626;
+  --gray-100: #f4f4f5;
+  --gray-300: #d4d4d8;
+  --gray-500: #71717a;
+  --gray-900: #18181b;
+}
+
+body {
+  /* Add any additional body styles here if present in the original */
+}
+
+/* Styles for demo login page extracted from inline styles in demo/login.blade.php */
+.login-logo-circle {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-600);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.login-logo-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.login-demo-credentials {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--gray-500);
+  font-size: 0.75rem;
+}

@@ -32,9 +32,8 @@
             <div class="flex">
                 <div class="flex-shrink-0">
                     <x-icon name="check-circle" class="h-5 w-5 text-success-400" />
-                </div>
-                <div class="ml-3">
-                    <p class="text-sm font-medium text-success-800">
+                            <h3 class="text-lg font-semibold text-txt-black-900">{{ __('approval.header') }}</h3>
+                            <p class="text-sm text-txt-black-600 mt-1">{{ __('approval.subheader', []) }}</p>
                         {{ session('message') }}
                     </p>
                 </div>
@@ -71,7 +70,7 @@
                     @endphp
 
                                     class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-txt-white bg-bg-success-600 hover:bg-bg-success-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fr-success">
-                        <div class="relative flex items-center justify-center w-10 h-10 rounded-full border-2 bg-bg-white
+                        <h4 class="text-sm font-medium text-txt-black-900 mb-3">{{ __('approval.history') }}</h4>
                             @if($status === 'completed') border-success-500 bg-success-500
                             @elseif($status === 'current') border-otl-primary-300 bg-primary-500
                             @elseif($status === 'rejected') border-danger-500 bg-danger-500

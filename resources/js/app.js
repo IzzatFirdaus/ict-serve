@@ -18,6 +18,28 @@ document.addEventListener('DOMContentLoaded', function () {
   // window.Alpine is automatically available with Livewire 3
 });
 
+// Show loading indicator initially (for SPA/Livewire/JS hydration)
+document.addEventListener('DOMContentLoaded', function() {
+  const loading = document.getElementById('loading-indicator');
+  if (loading) loading.style.display = 'flex';
+});
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    const loading = document.getElementById('loading-indicator');
+    if (loading) loading.style.display = 'none';
+  }, 800); // Slight delay for perceived performance
+});
+
+// Accessibility: focus visible polyfill for better keyboard navigation
+(function() {
+  if (!document.querySelector('#myds-focus-visible')) {
+    var style = document.createElement('style');
+    style.id = 'myds-focus-visible';
+    style.innerHTML = `.js-focus-visible :focus:not([data-focus-visible-added]) { outline: none !important; }`;
+    document.head.appendChild(style);
+  }
+})();
+
 // Enhanced notification system with MYDS styling
 window.showNotification = function (message, type = 'info', duration = 5000) {
   const notification = document.createElement('div');
@@ -27,7 +49,7 @@ window.showNotification = function (message, type = 'info', duration = 5000) {
     success: 'bg-success-600 text-white border-success-600',
     error: 'bg-danger-600 text-white border-danger-600',
     warning: 'bg-warning-600 text-white border-warning-600',
-    info: 'bg-primary-600 text-white border-primary-600'
+    info: 'bg-primary-600 text-white border-primary-600',
   };
 
   notification.className = `
@@ -48,7 +70,7 @@ window.showNotification = function (message, type = 'info', duration = 5000) {
               </svg>`,
     info: `<svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-           </svg>`
+           </svg>`,
   };
 
   notification.innerHTML = `
@@ -112,3 +134,17 @@ if (!document.querySelector('#myds-animations')) {
   document.head.appendChild(style);
 }
 
+// Import extracted component helpers
+import { searchComponent } from './components/search';
+import { fileUpload } from './components/file-upload';
+import { toastContainer, registerGlobalToastHelpers } from './components/toast';
+import { userMenu } from './components/user-menu';
+
+// Register toast helpers globally
+registerGlobalToastHelpers();
+
+// Expose components to global scope so Blade x-data can reference them
+window.searchComponent = searchComponent;
+window.fileUpload = fileUpload;
+window.toastContainer = toastContainer;
+window.userMenu = userMenu;

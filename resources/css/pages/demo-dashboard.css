@@ -1,0 +1,193 @@
+/**
+ * Demo Dashboard Styles for ICTServe (iServe)
+ * MYDS-compliant styling and variables for demo pages
+ * Includes color variables, layout, and component styling
+ */
+
+/* MYDS Color Variables */
+:root {
+  --primary-600: #2563eb;
+  --primary-500: #3a75f6;
+  --primary-400: #6394ff;
+  --secondary-600: #6b7280;
+  --danger-600: #dc2626;
+  --success-600: #16a34a;
+  --warning-500: #eab308;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-700: #3f3f46;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+}
+
+/* Base styling */
+body {
+  font-family: Inter, sans-serif;
+  background-color: var(--gray-100);
+}
+
+.font-poppins {
+  font-family: Poppins, sans-serif;
+}
+
+/* Color utility classes */
+.bg-primary-600 {
+  background-color: var(--primary-600);
+}
+
+.text-primary-600 {
+  color: var(--primary-600);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+/* Layout utilities */
+.shadow-lg {
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 10%),
+    0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+/* Typography utilities */
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+/* Grid system */
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Toast styling for demo dashboard */
+.toast {
+  max-width: 400px;
+  border-radius: 0.5rem;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 10%),
+    0 4px 6px -2px rgb(0 0 0 / 5%);
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.toast-success {
+  background-color: var(--success-600);
+  border-color: var(--success-600);
+}
+
+.toast-error {
+  background-color: var(--danger-600);
+  border-color: var(--danger-600);
+}
+
+.toast-warning {
+  background-color: var(--warning-500);
+  border-color: var(--warning-500);
+}
+
+.toast-info {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+}
+
+/* Toast animations */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive breakpoints */
+@media (width >= 768px) {
+  .md-grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1024px) {
+  .lg-grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Focus management */
+.focus-outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring:focus {
+  box-shadow: 0 0 0 2px rgb(59 130 246 / 50%);
+}
+
+/* Button utilities */
+.close-button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+
+  @keyframes slide-in-right {
+    from,
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}

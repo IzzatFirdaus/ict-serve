@@ -12,45 +12,65 @@
       'name' => 'Facebook',
       'icon' => 'facebook',
       'href' => 'https://www.facebook.com/MyMOTAC/',
-      'aria' => 'Facebook MyMOTAC Malaysia'
+      'aria' => 'Facebook MyMOTAC Malaysia',
     ],
     [
       'name' => 'X',
       'icon' => 'x', // Use 'x' if available, fallback to 'twitter' if not
       'href' => 'https://twitter.com/MyMOTAC',
-      'aria' => 'X / Twitter MyMOTAC Malaysia'
+      'aria' => 'X / Twitter MyMOTAC Malaysia',
     ],
     [
       'name' => 'Instagram',
       'icon' => 'instagram',
       'href' => 'https://www.instagram.com/mymotac',
-      'aria' => 'Instagram MyMOTAC Malaysia'
+      'aria' => 'Instagram MyMOTAC Malaysia',
     ],
     [
       'name' => 'YouTube',
       'icon' => 'youtube',
       'href' => 'https://www.youtube.com/@MyMOTAC',
-      'aria' => 'YouTube MyMOTAC Malaysia'
+      'aria' => 'YouTube MyMOTAC Malaysia',
     ],
   ];
 @endphp
 
 <x-myds.tokens />
 
-<footer class="bg-black-50 border border-divider mt-8" aria-label="Maklumat Footer">
+<footer
+  class="bg-black-50 border border-divider mt-8"
+  aria-label="Maklumat Footer"
+>
   <div class="myds-container py-4">
-    <div class="grid grid-cols-12 md:grid-cols-8 sm:grid-cols-4 gap-4 items-center">
+    <div
+      class="grid grid-cols-12 md:grid-cols-8 sm:grid-cols-4 gap-4 items-center"
+    >
       {{-- Left: BPM Logo --}}
-      <div class="col-span-3 md:col-span-2 sm:col-span-4 flex items-center gap-3">
-        <img src="/img/bpm-logo.svg" alt="Logo Bahagian Pengurusan Maklumat MOTAC" height="40" width="40" loading="lazy" decoding="async" />
+      <div
+        class="col-span-3 md:col-span-2 sm:col-span-4 flex items-center gap-3"
+      >
+        <img
+          src="/img/bpm-logo.svg"
+          alt="Logo Bahagian Pengurusan Maklumat MOTAC"
+          height="40"
+          width="40"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       {{-- Center: Copyright --}}
-      <div class="col-span-6 md:col-span-4 sm:col-span-4 txt-black-700 text-sm text-center font-inter">
-        © {{ date('Y') }} Hakcipta Terpelihara Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.
+      <div
+        class="col-span-6 md:col-span-4 sm:col-span-4 txt-black-700 text-sm text-center font-inter"
+      >
+        © {{ date('Y') }} Hakcipta Terpelihara Bahagian Pengurusan Maklumat
+        (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.
       </div>
       {{-- Right: Social Media --}}
-      <div class="col-span-3 md:col-span-2 sm:col-span-4 flex justify-end gap-3 min-w-0 myds-footer-social" aria-label="Pautan Media Sosial MOTAC">
-        @foreach($motac_social as $soc)
+      <div
+        class="col-span-3 md:col-span-2 sm:col-span-4 flex justify-end gap-3 min-w-0 myds-footer-social"
+        aria-label="Pautan Media Sosial MOTAC"
+      >
+        @foreach ($motac_social as $soc)
           <a
             href="{{ $soc['href'] }}"
             target="_blank"

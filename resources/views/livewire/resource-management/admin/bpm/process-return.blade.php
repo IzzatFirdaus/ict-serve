@@ -155,7 +155,7 @@
                             <!-- Equipment Return -->
                             <div>
                                 <label class="font-inter text-xs font-medium text-black-700 dark:text-black-300 block mb-2">
-                                    Peralatan Dipulangkan
+                                    {{ __('status.equipment_returned') }}
                                 </label>
                                 <div class="space-y-3">
                                     @foreach($selectedLoan->loanItems as $item)

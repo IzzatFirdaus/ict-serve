@@ -11,7 +11,7 @@ services:
     volumes:
       - ./:/var/www
     ports:
-      - "8000:8000"
+      - '8000:8000'
     environment:
       - APP_ENV=local
       - APP_DEBUG=true
@@ -33,7 +33,7 @@ services:
       MYSQL_PASSWORD: ictpass
       MYSQL_ROOT_PASSWORD: rootpass
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
       - dbdata:/var/lib/mysql
 volumes:

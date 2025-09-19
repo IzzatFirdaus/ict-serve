@@ -11,11 +11,7 @@ const { readFileSync, readdirSync, statSync } = require('node:fs');
 const { join, extname } = require('node:path');
 
 const ROOT = process.cwd();
-const TARGET_DIRS = [
-  'resources/views',
-  'resources/css',
-  'resources/js',
-];
+const TARGET_DIRS = ['resources/views', 'resources/css', 'resources/js'];
 
 const HEX_COLOR = /#[0-9a-fA-F]{3,8}\b/;
 // Detect inline style attributes, but ignore Alpine bindings like :style and x-bind:style
@@ -25,9 +21,18 @@ const INLINE_STYLE_ALPINE = /(^|\s)(?::style|x-bind:style)\s*=\s*"[^"]*"/i;
 const BOOTSTRAP_BTN = /(^|\s)btn(?:-[a-z]+)?(\s|$)/;
 // Allow bg-* color utilities and gradients; only flag text|ring|border using primary-* (with optional variant prefixes like hover: or md:)
 // But exclude our MYDS semantic tokens like border-otl-primary-*, text-txt-primary, focus:ring-fr-primary
-const TAILWIND_PRIMARY = /\b(?:[a-z0-9-]+:)*(?:text-primary-|ring-primary-|border-primary-)(?:50|100|200|300|400|500|600|700|800|900|950)\b/;
+const TAILWIND_PRIMARY =
+  /\b(?:[a-z0-9-]+:)*(?:text-primary-|ring-primary-|border-primary-)(?:50|100|200|300|400|500|600|700|800|900|950)\b/;
 
-const ALLOWED_EXTS = new Set(['.blade.php', '.php', '.html', '.css', '.js', '.ts', '.vue']);
+const ALLOWED_EXTS = new Set([
+  '.blade.php',
+  '.php',
+  '.html',
+  '.css',
+  '.js',
+  '.ts',
+  '.vue',
+]);
 
 /** @param {string} dir */
 function* walk(dir) {
@@ -52,13 +57,19 @@ for (const base of TARGET_DIRS) {
       const fileIssues = [];
 
       if (file.endsWith('.blade.php') || file.endsWith('.html')) {
-        let textWithoutAlpine = text.replace(/(?::style|x-bind:style)\s*=\s*"[^"]*"/gi, '');
+        let textWithoutAlpine = text.replace(
+          /(?::style|x-bind:style)\s*=\s*"[^"]*"/gi,
+          ''
+        );
         if (INLINE_STYLE_RAW.test(textWithoutAlpine)) {
           fileIssues.push('Inline style attribute found (use classes/tokens)');
         }
       }
       if (file.endsWith('.blade.php') || file.endsWith('.html')) {
-        const textWithoutStyleBlocks = text.replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, '');
+        const textWithoutStyleBlocks = text.replace(
+          /<style[\s\S]*?>[\s\S]*?<\/style>/gi,
+          ''
+        );
         const textWithoutEntities = textWithoutStyleBlocks
           .replace(/&#[0-9]+;/g, '')
           .replace(/&#x[0-9a-fA-F]+;/g, '');
@@ -66,11 +77,16 @@ for (const base of TARGET_DIRS) {
           fileIssues.push('Hex color detected in markup (use MYDS tokens)');
         }
       }
-      if ((file.endsWith('.blade.php') || file.endsWith('.html')) && BOOTSTRAP_BTN.test(text)) {
+      if (
+        (file.endsWith('.blade.php') || file.endsWith('.html')) &&
+        BOOTSTRAP_BTN.test(text)
+      ) {
         fileIssues.push('Bootstrap-like btn class found (use <x-myds.button>)');
       }
       if (file.endsWith('.blade.php') && TAILWIND_PRIMARY.test(text)) {
-        fileIssues.push('Tailwind primary-* utility used (prefer MYDS token utilities)');
+        fileIssues.push(
+          'Tailwind primary-* utility used (prefer MYDS token utilities)'
+        );
       }
 
       if (fileIssues.length) {

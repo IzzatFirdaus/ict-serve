@@ -1,0 +1,18 @@
+/* System notification and toast related styles */
+.myds-system-notification {
+  display: block; /* default is controlled by x-show; remove inline display none */
+}
+
+.myds-dropdown-panel {
+  display: block; /* visibility controlled by x-show/x-transition */
+}
+
+/* toast progress track smoothing and accessibility */
+.toast-progress-track {
+  transition: width 0.05s linear;
+}
+
+/* ensure toast progress fill can animate smoothly */
+.toast-progress-fill {
+  transition: width 0.05s linear;
+}

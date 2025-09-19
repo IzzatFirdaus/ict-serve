@@ -41,7 +41,7 @@
                             {{ __('Full Name') }} <span class="text-danger-500">*</span>
                         </label>
                         <input type="text"
-                            <script src="{{ asset('js/myds/loan-request-create.js') }}" defer></script>
+@vite('resources/js/myds/loan-request-create.js')
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                                            <button class="btn">{{ __('buttons.add_equipment') }}</button>
                         @endforeach
                     @endforeach
                 </div>

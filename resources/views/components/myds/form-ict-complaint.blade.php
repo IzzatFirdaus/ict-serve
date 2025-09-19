@@ -6,45 +6,78 @@
 --}}
 
 @props([
-  'divisions' => [],      // [['value'=>'bpm','label'=>'Bahagian Pengurusan Maklumat'], ...]
-  'damageTypes' => [],    // [['value'=>'network','label'=>'Rangkaian'], ...]
+  'divisions' => [], // [['value'=>'bpm','label'=>'Bahagian Pengurusan Maklumat'], ...]
+  'damageTypes' => [], // [['value'=>'network','label'=>'Rangkaian'], ...]
   'values' => [],
   'errorsBag' => [],
 ])
 
 @php
   // Value/old helper
-  $v = fn($k, $d = '') => $values[$k] ?? old($k, $d);
+  $v = fn ($k, $d = '') => $values[$k] ?? old($k, $d);
   // Error helper
-  $err = fn($k) => $errorsBag[$k] ?? null;
+  $err = fn ($k) => $errorsBag[$k] ?? null;
 @endphp
 
 <x-myds.tokens />
 
 <section class="bg-gray-50 dark:bg-black-100 py-8">
   <div class="myds-container">
-    <div class="bg-white dark:bg-dialog radius-l shadow-card border border-divider p-6" aria-labelledby="ict-complaint-title">
+    <div
+      class="bg-white dark:bg-dialog radius-l shadow-card border border-divider p-6"
+      aria-labelledby="ict-complaint-title"
+    >
       <div class="grid grid-12 sm:grid-4">
         <div class="col-span-9 sm:col-span-4">
-          <h1 id="ict-complaint-title" class="text-2xl font-semibold txt-black-900 m-0 font-poppins">Borang Aduan Kerosakan ICT</h1>
+          <h1
+            id="ict-complaint-title"
+            class="text-2xl font-semibold txt-black-900 m-0 font-poppins"
+          >
+            Borang Aduan Kerosakan ICT
+          </h1>
           <nav aria-label="Breadcrumb" class="mt-2 mb-4">
-            <ol class="flex text-sm txt-black-500 gap-2" aria-label="Jejak Laluan">
-              <li><a href="{{ route('home') }}" class="myds-footer-link">Utama</a></li>
+            <ol
+              class="flex text-sm txt-black-500 gap-2"
+              aria-label="Jejak Laluan"
+            >
+              <li>
+                <a href="{{ route('home') }}" class="myds-footer-link">
+                  Utama
+                </a>
+              </li>
               <li><span>/</span></li>
-              <li aria-current="page" class="font-medium txt-black-700">ServiceDesk ICT</li>
+              <li aria-current="page" class="font-medium txt-black-700">
+                ServiceDesk ICT
+              </li>
             </ol>
           </nav>
-          <p class="txt-black-500 mt-2 text-base">Sila lengkapkan borang di bawah. Ruangan bertanda <span class="txt-danger">*</span> adalah wajib.</p>
+          <p class="txt-black-500 mt-2 text-base">
+            Sila lengkapkan borang di bawah. Ruangan bertanda
+            <span class="txt-danger">*</span>
+            adalah wajib.
+          </p>
         </div>
         <div class="col-span-3 sm:col-span-4 flex justify-end items-start">
-          <span class="txt-black-500 text-sm font-inter">PK.(S).MOTAC.07.(L1)</span>
+          <span class="txt-black-500 text-sm font-inter">
+            PK.(S).MOTAC.07.(L1)
+          </span>
         </div>
       </div>
 
-      <form method="POST" action="{{ route('ictserve.complaint.submit') }}" class="mt-4" novalidate autocomplete="off" aria-describedby="ict-complaint-desc">
+      <form
+        method="POST"
+        action="{{ route('ictserve.complaint.submit') }}"
+        class="mt-4"
+        novalidate
+        autocomplete="off"
+        aria-describedby="ict-complaint-desc"
+      >
         @csrf
 
-        <div id="ict-complaint-desc" class="sr-only">Borang aduan kerosakan peralatan ICT dalaman MOTAC. Semua maklumat mesti diisi dengan betul.</div>
+        <div id="ict-complaint-desc" class="sr-only">
+          Borang aduan kerosakan peralatan ICT dalaman MOTAC. Semua maklumat
+          mesti diisi dengan betul.
+        </div>
 
         <div class="grid grid-12 sm:grid-4 gap-4">
           <div class="col-span-6 sm:col-span-4">
@@ -131,7 +164,9 @@
               :invalid="!!$err('maklumat_kerosakan')"
               :hint="$err('maklumat_kerosakan')"
               autocomplete="off"
-            >{{ $v('maklumat_kerosakan') }}</x-myds.textarea>
+            >
+              {{ $v('maklumat_kerosakan') }}
+            </x-myds.textarea>
           </div>
           <div class="col-span-12 sm:col-span-4">
             <x-myds.checkbox
@@ -148,7 +183,9 @@
         </div>
 
         <div class="mt-4 flex gap-3">
-          <x-myds.button variant="primary" type="submit">Hantar Aduan</x-myds.button>
+          <x-myds.button variant="primary" type="submit">
+            Hantar Aduan
+          </x-myds.button>
           <x-myds.button variant="secondary" type="reset">Padam</x-myds.button>
         </div>
       </form>

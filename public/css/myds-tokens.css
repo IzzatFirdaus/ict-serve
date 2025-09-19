@@ -1,0 +1,97 @@
+/* Copied from resources/css/myds-tokens.css */
+
+/**
+ * Malaysia Government Design System (MYDS) Tokens for ICTServe (iServe) (Corrected)
+ * =================================================================================
+ * CORRECTIONS:
+ * 1. color-hex-length: Changed long-form hex codes like `#ffffff` to the shorter `#fff`.
+ * 2. color-function-notation: Updated `rgba(r, g, b, a)` to the modern `rgb(r g b / a%)` syntax.
+ * 3. alpha-value-notation: Converted decimal alpha values (e.g., 0.07) to percentages (e.g., 7%).
+ */
+
+:root {
+  /* --- Light Mode Tokens --- */
+
+  /* Text Colors */
+  --txt-white: #fff;
+  --txt-black-900: #18181b;
+  --txt-black-700: #3f3f46;
+  --txt-black-600: #52525b;
+  --txt-black-500: #71717a;
+  --txt-primary: #2563eb;
+  --txt-danger: #dc2626;
+  --txt-success: #15803d;
+  --txt-warning: #a16207;
+
+  /* Background Colors */
+  --bg-white: #fff;
+  --bg-washed: #f4f4f5;
+  --bg-gray-50: #fafafa;
+  --bg-primary-50: #eff6ff;
+  --bg-success-50: #f0fdf4;
+  --bg-danger-50: #fef2f2;
+  --bg-warning-50: #fefce8;
+  --bg-primary-600: #2563eb;
+  --bg-danger-600: #dc2626;
+
+  /* Outline & Border Colors */
+  --otl-divider: #f4f4f5;
+  --otl-gray-200: #e4e4e7;
+  --otl-gray-300: #d4d4d8;
+  --otl-primary-300: #96b7ff;
+  --otl-danger-300: #fca5a5;
+
+  /* Focus Ring Colors (Accessibility) */
+  --fr-primary: #96b7ff;
+  --fr-danger: #fca5a5;
+
+  /* Radius Tokens */
+  --radius-s: 6px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+  --radius-full: 9999px;
+
+  /* Shadow Tokens (Corrected with modern RGB syntax) */
+  --shadow-button: 0px 1px 3px 0px rgb(0 0 0 / 7%);
+  --shadow-card:
+    0px 2px 6px 0px rgb(0 0 0 / 5%), 0px 6px 24px 0px rgb(0 0 0 / 5%);
+  --shadow-context-menu:
+    0px 2px 6px 0px rgb(0 0 0 / 5%), 0px 12px 50px 0px rgb(0 0 0 / 10%);
+}
+
+.dark {
+  /* --- Dark Mode Tokens --- */
+
+  /* Text Colors */
+  --txt-white: #18181b;
+  --txt-black-900: #fff;
+  --txt-black-700: #d4d4d8;
+  --txt-black-600: #a1a1aa;
+  --txt-black-500: #a1a1aa;
+  --txt-primary: #6394ff;
+  --txt-danger: #f87171;
+  --txt-success: #22c55e;
+  --txt-warning: #eab308;
+
+  /* Background Colors */
+  --bg-white: #18181b;
+  --bg-washed: #1d1d21;
+  --bg-gray-50: #161619;
+  --bg-primary-50: #172554;
+  --bg-success-50: #052e16;
+  --bg-danger-50: #450a0a;
+  --bg-warning-50: #422006;
+  --bg-primary-600: #3a75f6;
+  --bg-danger-600: #ef4444;
+
+  /* Outline & Border Colors */
+  --otl-divider: #1d1d21;
+  --otl-gray-200: #27272a;
+  --otl-gray-300: #3f3f46;
+  --otl-primary-300: #1d4ed8;
+  --otl-danger-300: #b91c1c;
+
+  /* Focus Ring Colors (Accessibility) */
+  --fr-primary: #1d4ed8;
+  --fr-danger: #b91c1c;
+}

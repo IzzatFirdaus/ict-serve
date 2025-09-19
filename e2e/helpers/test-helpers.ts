@@ -9,7 +9,10 @@ export class ICTServeTestHelpers {
   /**
    * Login with test user credentials
    */
-  async login(email: string = 'test@example.com', password: string = 'password') {
+  async login(
+    email: string = 'test@example.com',
+    password: string = 'password'
+  ) {
     await this.page.goto('/login');
     await this.page.waitForLoadState('networkidle');
 
@@ -73,7 +76,9 @@ export class ICTServeTestHelpers {
    * Wait for Livewire component to load
    */
   async waitForLivewire() {
-    await this.page.waitForFunction(() => (window as any).Livewire !== undefined);
+    await this.page.waitForFunction(
+      () => (window as any).Livewire !== undefined
+    );
     await this.page.waitForLoadState('networkidle');
   }
 
@@ -92,11 +97,17 @@ export class ICTServeTestHelpers {
     const buttons = await this.page.locator('button').all();
 
     for (const button of buttons) {
-      const classList = await button.getAttribute('class') || '';
+      const classList = (await button.getAttribute('class')) || '';
 
       // Check if button uses MYDS classes
-      if (!classList.includes('myds-btn') && !classList.includes('bg-primary')) {
-        console.warn('Button may not be MYDS compliant:', await button.textContent());
+      if (
+        !classList.includes('myds-btn') &&
+        !classList.includes('bg-primary')
+      ) {
+        console.warn(
+          'Button may not be MYDS compliant:',
+          await button.textContent()
+        );
       }
     }
   }
@@ -149,7 +160,9 @@ export class ICTServeTestHelpers {
   /**
    * Test responsive design at different breakpoints
    */
-  async testResponsive(customViewports?: Array<{width: number, height: number}>) {
+  async testResponsive(
+    customViewports?: Array<{ width: number; height: number }>
+  ) {
     const breakpoints = customViewports || [
       { width: 375, height: 667 }, // Mobile
       { width: 768, height: 1024 }, // Tablet
@@ -160,16 +173,20 @@ export class ICTServeTestHelpers {
     for (const breakpoint of breakpoints) {
       await this.page.setViewportSize({
         width: breakpoint.width,
-        height: breakpoint.height
+        height: breakpoint.height,
       });
 
       await this.page.waitForTimeout(500); // Allow layout to settle
 
       // Check if content is visible and properly arranged
-      const content = await this.page.locator('main, .container, [role="main"]').first();
+      const content = await this.page
+        .locator('main, .container, [role="main"]')
+        .first();
       await expect(content).toBeVisible();
 
-      console.log(`✓ Viewport (${breakpoint.width}x${breakpoint.height}) layout verified`);
+      console.log(
+        `✓ Viewport (${breakpoint.width}x${breakpoint.height}) layout verified`
+      );
     }
   }
 
@@ -182,8 +199,10 @@ export class ICTServeTestHelpers {
 
     // Check if validation errors are displayed
     for (const field of requiredFields) {
-      const error = await this.page.locator(`[data-testid="${field}-error"], .error-message`).first();
-      if (await error.count() > 0) {
+      const error = await this.page
+        .locator(`[data-testid="${field}-error"], .error-message`)
+        .first();
+      if ((await error.count()) > 0) {
         await expect(error).toBeVisible();
       }
     }
@@ -201,10 +220,15 @@ export class ICTServeTestHelpers {
 
     // Wait for content to change
     if (initialContent) {
-      await this.page.locator(target).filter({ hasText: initialContent }).waitFor({ state: 'detached', timeout: 5000 });
+      await this.page
+        .locator(target)
+        .filter({ hasText: initialContent })
+        .waitFor({ state: 'detached', timeout: 5000 });
     } else {
       // If no initial content, just wait for content to appear
-      await this.page.locator(target).waitFor({ state: 'visible', timeout: 5000 });
+      await this.page
+        .locator(target)
+        .waitFor({ state: 'visible', timeout: 5000 });
     }
 
     // Verify content has changed
@@ -262,14 +286,20 @@ export class ICTServeTestHelpers {
     await this.page.waitForTimeout(1000);
 
     // Verify upload success (this depends on your UI implementation)
-    const success = await this.page.locator('.upload-success, .file-uploaded').count();
+    const success = await this.page
+      .locator('.upload-success, .file-uploaded')
+      .count();
     expect(success).toBeGreaterThan(0);
   }
 
   /**
    * Test search functionality
    */
-  async testSearch(searchInput: string, searchTerm: string, resultSelector: string) {
+  async testSearch(
+    searchInput: string,
+    searchTerm: string,
+    resultSelector: string
+  ) {
     await this.page.fill(searchInput, searchTerm);
     await this.page.waitForTimeout(500); // Debounce delay
 
@@ -289,15 +319,21 @@ export class ICTServeTestHelpers {
    */
   async checkMyGovEACompliance() {
     // Check for proper government branding
-    const logo = await this.page.locator('img[alt*="MOTAC"], img[alt*="Malaysia"]').count();
+    const logo = await this.page
+      .locator('img[alt*="MOTAC"], img[alt*="Malaysia"]')
+      .count();
     expect(logo).toBeGreaterThan(0);
 
     // Check for proper language support (English/Malay)
-    const langElements = await this.page.locator('[lang="en"], [lang="ms"]').count();
+    const langElements = await this.page
+      .locator('[lang="en"], [lang="ms"]')
+      .count();
     expect(langElements).toBeGreaterThan(0);
 
     // Check for proper government color scheme (MYDS Blue)
-    const primaryElements = await this.page.locator('[class*="primary-600"], [class*="bg-primary"]').count();
+    const primaryElements = await this.page
+      .locator('[class*="primary-600"], [class*="bg-primary"]')
+      .count();
     expect(primaryElements).toBeGreaterThan(0);
   }
 
@@ -316,11 +352,15 @@ export class ICTServeTestHelpers {
     await this.checkMYDSButtonCompliance();
 
     // Check for MYDS color compliance
-    const primaryElements = await this.page.locator('[class*="primary-600"], [class*="bg-primary"]').count();
+    const primaryElements = await this.page
+      .locator('[class*="primary-600"], [class*="bg-primary"]')
+      .count();
     expect(primaryElements).toBeGreaterThan(0);
 
     // Check for proper typography (Poppins/Inter fonts)
-    const bodyText = await this.page.locator('body').evaluate(el => window.getComputedStyle(el).fontFamily);
+    const bodyText = await this.page
+      .locator('body')
+      .evaluate((el) => window.getComputedStyle(el).fontFamily);
     expect(bodyText.toLowerCase()).toMatch(/inter|poppins/);
   }
 
@@ -341,7 +381,9 @@ export class ICTServeTestHelpers {
   /**
    * Test form validation with detailed error checking
    */
-  async testFormValidationDetailed(fields: Array<{field: string, value: string, expectedError: string}>) {
+  async testFormValidationDetailed(
+    fields: Array<{ field: string; value: string; expectedError: string }>
+  ) {
     for (const test of fields) {
       // Clear field and set invalid value
       await this.page.fill(`[name="${test.field}"]`, '');
@@ -365,7 +407,7 @@ export class ICTServeTestHelpers {
 
     // Test search functionality
     const searchInput = table.locator('input[placeholder*="Cari"]');
-    if (await searchInput.count() > 0) {
+    if ((await searchInput.count()) > 0) {
       await searchInput.fill('test');
       await this.page.waitForTimeout(500);
       await searchInput.fill('');
@@ -387,16 +429,19 @@ export class ICTServeTestHelpers {
     }
 
     return {
-      hasSearch: await searchInput.count() > 0,
+      hasSearch: (await searchInput.count()) > 0,
       hasSorting: headerCount > 0,
-      hasPagination: await nextButton.isVisible()
+      hasPagination: await nextButton.isVisible(),
     };
   }
 
   /**
    * Test modal functionality
    */
-  async testModal(triggerSelector: string, modalSelector: string = '.modal-backdrop') {
+  async testModal(
+    triggerSelector: string,
+    modalSelector: string = '.modal-backdrop'
+  ) {
     // Open modal
     await this.page.click(triggerSelector);
     await expect(this.page.locator(modalSelector)).toBeVisible();
@@ -420,13 +465,13 @@ export class ICTServeTestHelpers {
   async testToastNotifications() {
     // Trigger different types of toasts if available
     const toastTypes = ['success', 'error', 'warning', 'info'];
-    
+
     for (const type of toastTypes) {
       const triggerButton = this.page.locator(`[data-testid="toast-${type}"]`);
-      if (await triggerButton.count() > 0) {
+      if ((await triggerButton.count()) > 0) {
         await triggerButton.click();
         await expect(this.page.locator(`.toast-${type}`)).toBeVisible();
-        
+
         // Wait for auto-dismiss or manually close
         await this.page.waitForTimeout(1000);
         const closeButton = this.page.locator('.toast .close-button');
@@ -451,7 +496,7 @@ export class ICTServeTestHelpers {
     for (let i = 0; i < 5; i++) {
       await this.page.keyboard.press('Tab');
       const focused = this.page.locator(':focus');
-      if (await focused.count() > 0) {
+      if ((await focused.count()) > 0) {
         await expect(focused).toBeVisible();
       }
     }
@@ -460,14 +505,17 @@ export class ICTServeTestHelpers {
   /**
    * Test component state management
    */
-  async testComponentState(componentSelector: string, stateTests: Array<{action: string, expectedState: string}>) {
+  async testComponentState(
+    componentSelector: string,
+    stateTests: Array<{ action: string; expectedState: string }>
+  ) {
     const component = this.page.locator(componentSelector);
     await expect(component).toBeVisible();
 
     for (const test of stateTests) {
       // Perform action
       await this.page.click(`${componentSelector} ${test.action}`);
-      
+
       // Check expected state
       await expect(component).toHaveAttribute('data-state', test.expectedState);
     }
@@ -482,12 +530,14 @@ export class ICTServeTestHelpers {
 
     // Simulate drag and drop
     await uploadArea.setInputFiles(filePath);
-    
+
     // Wait for upload processing
     await this.page.waitForTimeout(1000);
-    
+
     // Check for success indicators
-    const successIndicator = this.page.locator('.upload-success, .file-uploaded, .upload-complete');
+    const successIndicator = this.page.locator(
+      '.upload-success, .file-uploaded, .upload-complete'
+    );
     await expect(successIndicator).toBeVisible();
   }
 
@@ -505,7 +555,9 @@ export class ICTServeTestHelpers {
     if (stepCount > 1) {
       // Test next navigation
       for (let i = 0; i < stepCount - 1; i++) {
-        const nextButton = wizard.locator('button:has-text("Seterusnya"), button:has-text("Next")');
+        const nextButton = wizard.locator(
+          'button:has-text("Seterusnya"), button:has-text("Next")'
+        );
         if (await nextButton.isVisible()) {
           await nextButton.click();
           await this.page.waitForTimeout(500);
@@ -514,7 +566,9 @@ export class ICTServeTestHelpers {
 
       // Test previous navigation
       for (let i = stepCount - 1; i > 0; i--) {
-        const prevButton = wizard.locator('button:has-text("Sebelumnya"), button:has-text("Previous")');
+        const prevButton = wizard.locator(
+          'button:has-text("Sebelumnya"), button:has-text("Previous")'
+        );
         if (await prevButton.isVisible()) {
           await prevButton.click();
           await this.page.waitForTimeout(500);
@@ -529,17 +583,21 @@ export class ICTServeTestHelpers {
    * Test status indicators
    */
   async testStatusIndicators() {
-    const statusElements = this.page.locator('.status-badge, [data-status], .badge');
+    const statusElements = this.page.locator(
+      '.status-badge, [data-status], .badge'
+    );
     const count = await statusElements.count();
 
     for (let i = 0; i < count; i++) {
       const element = statusElements.nth(i);
-      const status = await element.getAttribute('data-status') || await element.textContent();
-      
+      const status =
+        (await element.getAttribute('data-status')) ||
+        (await element.textContent());
+
       // Verify status has proper styling
-      const classList = await element.getAttribute('class') || '';
+      const classList = (await element.getAttribute('class')) || '';
       expect(classList).toBeTruthy();
-      
+
       console.log(`Status indicator ${i + 1}: ${status}`);
     }
 
@@ -553,18 +611,20 @@ export class ICTServeTestHelpers {
     // Test desktop navigation
     await this.page.setViewportSize({ width: 1280, height: 720 });
     const desktopNav = this.page.locator('.desktop-nav, .sidebar');
-    if (await desktopNav.count() > 0) {
+    if ((await desktopNav.count()) > 0) {
       await expect(desktopNav).toBeVisible();
     }
 
     // Test mobile navigation
     await this.page.setViewportSize({ width: 375, height: 667 });
-    const mobileMenuButton = this.page.locator('.mobile-menu-button, .hamburger-menu');
-    if (await mobileMenuButton.count() > 0) {
+    const mobileMenuButton = this.page.locator(
+      '.mobile-menu-button, .hamburger-menu'
+    );
+    if ((await mobileMenuButton.count()) > 0) {
       await mobileMenuButton.click();
       const mobileNav = this.page.locator('.mobile-nav, .mobile-menu');
       await expect(mobileNav).toBeVisible();
-      
+
       // Close mobile menu
       await mobileMenuButton.click();
       await expect(mobileNav).not.toBeVisible();
@@ -584,33 +644,46 @@ export class ICTServeTestHelpers {
 
     // Get performance metrics
     const performanceMetrics = await this.page.evaluate(() => {
-      const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+      const navigation = performance.getEntriesByType(
+        'navigation'
+      )[0] as PerformanceNavigationTiming;
       return {
-        domContentLoaded: navigation.domContentLoadedEventEnd - navigation.fetchStart,
+        domContentLoaded:
+          navigation.domContentLoadedEventEnd - navigation.fetchStart,
         loadComplete: navigation.loadEventEnd - navigation.fetchStart,
-        firstPaint: performance.getEntriesByType('paint').find(entry => entry.name === 'first-paint')?.startTime || 0,
-        firstContentfulPaint: performance.getEntriesByType('paint').find(entry => entry.name === 'first-contentful-paint')?.startTime || 0
+        firstPaint:
+          performance
+            .getEntriesByType('paint')
+            .find((entry) => entry.name === 'first-paint')?.startTime || 0,
+        firstContentfulPaint:
+          performance
+            .getEntriesByType('paint')
+            .find((entry) => entry.name === 'first-contentful-paint')
+            ?.startTime || 0,
       };
     });
 
     return {
       loadTime,
-      ...performanceMetrics
+      ...performanceMetrics,
     };
   }
 
   /**
    * Test component loading states
    */
-  async testLoadingStates(triggerSelector: string, loadingSelector: string = '.loading, .skeleton') {
+  async testLoadingStates(
+    triggerSelector: string,
+    loadingSelector: string = '.loading, .skeleton'
+  ) {
     // Trigger action that should show loading state
     await this.page.click(triggerSelector);
-    
+
     // Check if loading state appears
     const loadingElement = this.page.locator(loadingSelector);
-    if (await loadingElement.count() > 0) {
+    if ((await loadingElement.count()) > 0) {
       await expect(loadingElement).toBeVisible();
-      
+
       // Wait for loading to complete
       await loadingElement.waitFor({ state: 'detached', timeout: 10000 });
     }
@@ -620,16 +693,18 @@ export class ICTServeTestHelpers {
    * Test error handling
    */
   async testErrorHandling() {
-    const errorMessages = this.page.locator('.error-message, .alert-danger, .toast-error');
+    const errorMessages = this.page.locator(
+      '.error-message, .alert-danger, .toast-error'
+    );
     const count = await errorMessages.count();
 
     for (let i = 0; i < count; i++) {
       const error = errorMessages.nth(i);
       await expect(error).toBeVisible();
-      
+
       // Check if error can be dismissed
       const closeButton = error.locator('.close, .dismiss');
-      if (await closeButton.count() > 0) {
+      if ((await closeButton.count()) > 0) {
         await closeButton.click();
         await expect(error).not.toBeVisible();
       }

@@ -1,21 +1,21 @@
-.myds-skip-link {
-  position: fixed;
-  top: -1000px;
-  left: -1000px;
-  background: var(--bg-white);
-  color: var(--txt-black-900);
-  border: 1px solid var(--otl-gray-200);
-  box-shadow: var(--shadow-context-menu);
-  padding: 8px 12px;
-  border-radius: var(--radius-m);
-  z-index: 10000;
+/**
+ * MYDS Component Style: Skip Link (Accessibility)
+ * ================================================
+ * Styles for the "Skip to main content" link, crucial for keyboard navigation.
+ *
+ */
+@layer components {
+  .myds-skip-link {
+    @apply absolute p-4 rounded-md bg-white text-txt-black-900 shadow-context-menu z-[1000] transition-all;
 
-}
+    left: -9999px;
+    top: -9999px;
+  }
 
-.myds-skip-link:focus,
-.myds-skip-link:focus-visible {
-  top: 12px;
-  left: 12px;
-  outline: 2px solid var(--fr-primary);
-  outline-offset: 2px;
+  .myds-skip-link:focus {
+    @apply ring-2 ring-offset-2 ring-fr-primary;
+
+    left: 1rem;
+    top: 1rem;
+  }
 }

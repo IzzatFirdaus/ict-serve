@@ -41,4 +41,5 @@ vendor/bin/pint
 - PHPStan: <https://phpstan.org>
 
 ---
+
 PR created from branch: `feature/larastan-fix-initial-config`.

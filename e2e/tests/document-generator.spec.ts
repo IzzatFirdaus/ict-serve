@@ -20,28 +20,36 @@ test.describe('Document Generator', () => {
     await helpers.checkMYDSCompliance();
 
     // Check document generator interface
-    await expect(helpers.page.locator('[data-testid="document-generator"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="document-generator"]')
+    ).toBeVisible();
 
     // Select loan application document type
-    await helpers.page.selectOption('[data-testid="document-type"]', 'loan_application');
+    await helpers.page.selectOption(
+      '[data-testid="document-type"]',
+      'loan_application'
+    );
 
     // Fill application details for PDF generation
     await helpers.fillForm({
-      'applicant_name': 'John Doe Test',
-      'ic_number': '901234567890',
-      'department': 'ICT Department',
-      'position': 'System Administrator',
-      'email': 'john.doe@motac.gov.my',
-      'phone': '0123456789',
-      'loan_purpose': 'Official project implementation',
-      'start_date': '2024-12-15',
-      'end_date': '2024-12-20',
-      'event_location': 'Putrajaya Office'
+      applicant_name: 'John Doe Test',
+      ic_number: '901234567890',
+      department: 'ICT Department',
+      position: 'System Administrator',
+      email: 'john.doe@motac.gov.my',
+      phone: '0123456789',
+      loan_purpose: 'Official project implementation',
+      start_date: '2024-12-15',
+      end_date: '2024-12-20',
+      event_location: 'Putrajaya Office',
     });
 
     // Add equipment to the application
     await helpers.page.click('[data-testid="add-equipment"]');
-    await helpers.page.selectOption('[data-testid="equipment-select"]', 'laptop_001');
+    await helpers.page.selectOption(
+      '[data-testid="equipment-select"]',
+      'laptop_001'
+    );
     await helpers.page.click('[data-testid="confirm-equipment"]');
 
     // Generate PDF document
@@ -56,23 +64,28 @@ test.describe('Document Generator', () => {
     expect(download.url()).toBeTruthy();
 
     // Check success notification
-    await expect(helpers.page.locator('[data-testid="pdf-generated-success"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="pdf-generated-success"]')
+    ).toBeVisible();
   });
 
   test('should generate equipment return form', async () => {
     await helpers.navigateToPage('/documents/generate');
 
     // Select return form document type
-    await helpers.page.selectOption('[data-testid="document-type"]', 'return_form');
+    await helpers.page.selectOption(
+      '[data-testid="document-type"]',
+      'return_form'
+    );
 
     // Fill return form details
     await helpers.fillForm({
-      'loan_reference': 'LN2024001',
-      'borrower_name': 'Jane Smith',
-      'return_date': '2024-12-20',
-      'equipment_condition': 'good',
-      'return_location': 'ICT Store Room',
-      'verified_by': 'John Admin'
+      loan_reference: 'LN2024001',
+      borrower_name: 'Jane Smith',
+      return_date: '2024-12-20',
+      equipment_condition: 'good',
+      return_location: 'ICT Store Room',
+      verified_by: 'John Admin',
     });
 
     // Add equipment return details
@@ -80,7 +93,10 @@ test.describe('Document Generator', () => {
     await helpers.page.fill('[data-testid="equipment-id"]', 'LAP001');
     await helpers.page.fill('[data-testid="equipment-name"]', 'Dell Laptop');
     await helpers.page.selectOption('[data-testid="return-condition"]', 'good');
-    await helpers.page.fill('[data-testid="return-remarks"]', 'No issues, returned in good condition');
+    await helpers.page.fill(
+      '[data-testid="return-remarks"]',
+      'No issues, returned in good condition'
+    );
 
     // Generate return form PDF
     const downloadPromise = helpers.page.waitForEvent('download');
@@ -91,7 +107,9 @@ test.describe('Document Generator', () => {
     expect(download.suggestedFilename()).toMatch(/return-form.*\.pdf/i);
 
     // Check success notification
-    await expect(helpers.page.locator('[data-testid="return-pdf-generated"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="return-pdf-generated"]')
+    ).toBeVisible();
   });
 
   test('should generate inventory report', async () => {
@@ -128,17 +146,25 @@ test.describe('Document Generator', () => {
     expect(download.suggestedFilename()).toMatch(/inventory-report.*\.pdf/i);
 
     // Check generation success
-    await expect(helpers.page.locator('[data-testid="report-generated"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="report-generated"]')
+    ).toBeVisible();
   });
 
   test('should generate loan analytics report', async () => {
     await helpers.navigateToPage('/documents/reports');
 
     // Select analytics report
-    await helpers.page.selectOption('[data-testid="report-type"]', 'loan_analytics');
+    await helpers.page.selectOption(
+      '[data-testid="report-type"]',
+      'loan_analytics'
+    );
 
     // Set date range
-    await helpers.page.fill('[data-testid="analytics-start-date"]', '2024-01-01');
+    await helpers.page.fill(
+      '[data-testid="analytics-start-date"]',
+      '2024-01-01'
+    );
     await helpers.page.fill('[data-testid="analytics-end-date"]', '2024-12-31');
 
     // Select analytics metrics
@@ -161,27 +187,33 @@ test.describe('Document Generator', () => {
     expect(download.suggestedFilename()).toMatch(/loan-analytics.*\.pdf/i);
 
     // Check success message
-    await expect(helpers.page.locator('[data-testid="analytics-report-success"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="analytics-report-success"]')
+    ).toBeVisible();
   });
 
   test('should generate damage complaint form', async () => {
     await helpers.navigateToPage('/documents/generate');
 
     // Select damage complaint form
-    await helpers.page.selectOption('[data-testid="document-type"]', 'damage_complaint');
+    await helpers.page.selectOption(
+      '[data-testid="document-type"]',
+      'damage_complaint'
+    );
 
     // Fill complaint details
     await helpers.fillForm({
-      'complainant_name': 'Staff Member',
-      'complainant_ic': '901234567890',
-      'complainant_department': 'HR Department',
-      'complainant_phone': '0123456789',
-      'equipment_id': 'LAP001',
-      'equipment_name': 'Dell Laptop',
-      'damage_description': 'Screen has visible crack, keyboard keys not responding',
-      'incident_date': '2024-12-10',
-      'incident_location': 'Meeting Room A',
-      'incident_cause': 'Accidental drop during transport'
+      complainant_name: 'Staff Member',
+      complainant_ic: '901234567890',
+      complainant_department: 'HR Department',
+      complainant_phone: '0123456789',
+      equipment_id: 'LAP001',
+      equipment_name: 'Dell Laptop',
+      damage_description:
+        'Screen has visible crack, keyboard keys not responding',
+      incident_date: '2024-12-10',
+      incident_location: 'Meeting Room A',
+      incident_cause: 'Accidental drop during transport',
     });
 
     // Add damage photos/evidence
@@ -189,7 +221,7 @@ test.describe('Document Generator', () => {
     await fileInput.setInputFiles({
       name: 'damage-photo.jpg',
       mimeType: 'image/jpeg',
-      buffer: Buffer.from('Mock image content for testing damage photo')
+      buffer: Buffer.from('Mock image content for testing damage photo'),
     });
 
     // Generate damage complaint PDF
@@ -201,41 +233,56 @@ test.describe('Document Generator', () => {
     expect(download.suggestedFilename()).toMatch(/damage-complaint.*\.pdf/i);
 
     // Check success notification
-    await expect(helpers.page.locator('[data-testid="damage-form-generated"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="damage-form-generated"]')
+    ).toBeVisible();
   });
 
   test('should test document preview functionality', async () => {
     await helpers.navigateToPage('/documents/generate');
 
     // Select document type
-    await helpers.page.selectOption('[data-testid="document-type"]', 'loan_application');
+    await helpers.page.selectOption(
+      '[data-testid="document-type"]',
+      'loan_application'
+    );
 
     // Fill basic information
     await helpers.fillForm({
-      'applicant_name': 'Preview Test User',
-      'ic_number': '901234567890',
-      'department': 'ICT',
-      'email': 'preview@motac.gov.my'
+      applicant_name: 'Preview Test User',
+      ic_number: '901234567890',
+      department: 'ICT',
+      email: 'preview@motac.gov.my',
     });
 
     // Generate preview
     await helpers.page.click('[data-testid="preview-document"]');
 
     // Verify preview modal opens
-    await expect(helpers.page.locator('[data-testid="document-preview"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="document-preview"]')
+    ).toBeVisible();
 
     // Check preview content
-    await expect(helpers.page.locator('[data-testid="preview-content"]')).toBeVisible();
-    await expect(helpers.page.locator('[data-testid="preview-content"]')).toContainText('Preview Test User');
+    await expect(
+      helpers.page.locator('[data-testid="preview-content"]')
+    ).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="preview-content"]')
+    ).toContainText('Preview Test User');
 
     // Test preview navigation if multi-page
-    const nextPageBtn = helpers.page.locator('[data-testid="preview-next-page"]');
+    const nextPageBtn = helpers.page.locator(
+      '[data-testid="preview-next-page"]'
+    );
     if (await nextPageBtn.isVisible()) {
       await nextPageBtn.click();
       await helpers.page.waitForTimeout(500);
     }
 
-    const prevPageBtn = helpers.page.locator('[data-testid="preview-prev-page"]');
+    const prevPageBtn = helpers.page.locator(
+      '[data-testid="preview-prev-page"]'
+    );
     if (await prevPageBtn.isVisible()) {
       await prevPageBtn.click();
       await helpers.page.waitForTimeout(500);
@@ -243,43 +290,61 @@ test.describe('Document Generator', () => {
 
     // Close preview
     await helpers.page.click('[data-testid="close-preview"]');
-    await expect(helpers.page.locator('[data-testid="document-preview"]')).not.toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="document-preview"]')
+    ).not.toBeVisible();
   });
 
   test('should validate document generation with missing information', async () => {
     await helpers.navigateToPage('/documents/generate');
 
     // Select document type without filling required fields
-    await helpers.page.selectOption('[data-testid="document-type"]', 'loan_application');
+    await helpers.page.selectOption(
+      '[data-testid="document-type"]',
+      'loan_application'
+    );
 
     // Try to generate without required information
     await helpers.page.click('[data-testid="generate-pdf"]');
 
     // Verify validation errors are displayed
-    await expect(helpers.page.locator('[data-testid="validation-errors"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="validation-errors"]')
+    ).toBeVisible();
 
     // Check specific field errors
-    await expect(helpers.page.locator('[data-testid="error-applicant_name"]')).toBeVisible();
-    await expect(helpers.page.locator('[data-testid="error-ic_number"]')).toBeVisible();
-    await expect(helpers.page.locator('[data-testid="error-department"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="error-applicant_name"]')
+    ).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="error-ic_number"]')
+    ).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="error-department"]')
+    ).toBeVisible();
 
     // Fill required fields progressively and verify errors disappear
     await helpers.page.fill('[data-testid="applicant_name"]', 'Test User');
     await helpers.page.click('[data-testid="generate-pdf"]');
 
     // Verify specific error disappears
-    await expect(helpers.page.locator('[data-testid="error-applicant_name"]')).not.toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="error-applicant_name"]')
+    ).not.toBeVisible();
 
     // Complete remaining required fields
     await helpers.fillForm({
-      'ic_number': '901234567890',
-      'department': 'ICT Department',
-      'email': 'test@motac.gov.my'
+      ic_number: '901234567890',
+      department: 'ICT Department',
+      email: 'test@motac.gov.my',
     });
 
     // Add required equipment
     await helpers.page.click('[data-testid="add-equipment"]');
-    await helpers.page.selectOption('[data-testid="equipment-select"]', 'laptop_001');
+    await helpers.page.selectOption(
+      '[data-testid="equipment-select"]',
+      'laptop_001'
+    );
     await helpers.page.click('[data-testid="confirm-equipment"]');
 
     // Now generation should succeed
@@ -294,55 +359,77 @@ test.describe('Document Generator', () => {
     await helpers.navigateToPage('/documents/templates');
 
     // Check template management interface
-    await expect(helpers.page.locator('[data-testid="template-manager"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="template-manager"]')
+    ).toBeVisible();
 
     // Verify available templates
     const templates = [
       'loan_application_standard',
       'loan_application_simplified',
       'return_form_detailed',
-      'damage_complaint_official'
+      'damage_complaint_official',
     ];
 
     for (const template of templates) {
-      const templateCard = helpers.page.locator(`[data-testid="template-${template}"]`);
+      const templateCard = helpers.page.locator(
+        `[data-testid="template-${template}"]`
+      );
       if (await templateCard.isVisible()) {
-        await expect(templateCard.locator('[data-testid="template-name"]')).toBeVisible();
-        await expect(templateCard.locator('[data-testid="template-preview"]')).toBeVisible();
+        await expect(
+          templateCard.locator('[data-testid="template-name"]')
+        ).toBeVisible();
+        await expect(
+          templateCard.locator('[data-testid="template-preview"]')
+        ).toBeVisible();
       }
     }
 
     // Select a template for customization
-    await helpers.page.click('[data-testid="template-loan_application_standard"]');
+    await helpers.page.click(
+      '[data-testid="template-loan_application_standard"]'
+    );
     await helpers.page.click('[data-testid="customize-template"]');
 
     // Check customization options
-    await expect(helpers.page.locator('[data-testid="template-customizer"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="template-customizer"]')
+    ).toBeVisible();
 
     // Test header customization
-    await helpers.page.fill('[data-testid="header-text"]', 'MINISTRY OF TOURISM, ARTS AND CULTURE MALAYSIA');
-    await helpers.page.fill('[data-testid="sub-header"]', 'ICT Equipment Loan Application Form');
+    await helpers.page.fill(
+      '[data-testid="header-text"]',
+      'MINISTRY OF TOURISM, ARTS AND CULTURE MALAYSIA'
+    );
+    await helpers.page.fill(
+      '[data-testid="sub-header"]',
+      'ICT Equipment Loan Application Form'
+    );
 
     // Test logo upload
     const logoInput = helpers.page.locator('[data-testid="logo-upload"]');
     await logoInput.setInputFiles({
       name: 'motac-logo.png',
       mimeType: 'image/png',
-      buffer: Buffer.from('Mock logo image data')
+      buffer: Buffer.from('Mock logo image data'),
     });
 
     // Save template changes
     await helpers.page.click('[data-testid="save-template"]');
 
     // Verify save success
-    await expect(helpers.page.locator('[data-testid="template-saved"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="template-saved"]')
+    ).toBeVisible();
   });
 
   test('should test batch document generation', async () => {
     await helpers.navigateToPage('/documents/batch');
 
     // Check batch generation interface
-    await expect(helpers.page.locator('[data-testid="batch-generator"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="batch-generator"]')
+    ).toBeVisible();
 
     // Select multiple applications for batch processing
     await helpers.page.check('[data-testid="batch-app-001"]');
@@ -350,7 +437,10 @@ test.describe('Document Generator', () => {
     await helpers.page.check('[data-testid="batch-app-003"]');
 
     // Select document type for batch generation
-    await helpers.page.selectOption('[data-testid="batch-document-type"]', 'approval_letters');
+    await helpers.page.selectOption(
+      '[data-testid="batch-document-type"]',
+      'approval_letters'
+    );
 
     // Configure batch settings
     await helpers.page.check('[data-testid="include-attachments"]');
@@ -360,10 +450,14 @@ test.describe('Document Generator', () => {
     await helpers.page.click('[data-testid="start-batch-generation"]');
 
     // Verify batch process indicator
-    await expect(helpers.page.locator('[data-testid="batch-progress"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="batch-progress"]')
+    ).toBeVisible();
 
     // Wait for batch completion
-    await expect(helpers.page.locator('[data-testid="batch-completed"]')).toBeVisible({ timeout: 30000 });
+    await expect(
+      helpers.page.locator('[data-testid="batch-completed"]')
+    ).toBeVisible({ timeout: 30000 });
 
     // Download batch results
     const downloadPromise = helpers.page.waitForEvent('download');
@@ -377,12 +471,15 @@ test.describe('Document Generator', () => {
     await helpers.navigateToPage('/documents/generate');
 
     // Generate a sample document
-    await helpers.page.selectOption('[data-testid="document-type"]', 'loan_application');
+    await helpers.page.selectOption(
+      '[data-testid="document-type"]',
+      'loan_application'
+    );
     await helpers.fillForm({
-      'applicant_name': 'Accessibility Test',
-      'ic_number': '901234567890',
-      'department': 'ICT',
-      'email': 'accessibility@motac.gov.my'
+      applicant_name: 'Accessibility Test',
+      ic_number: '901234567890',
+      department: 'ICT',
+      email: 'accessibility@motac.gov.my',
     });
 
     // Test preview with accessibility features
@@ -398,7 +495,7 @@ test.describe('Document Generator', () => {
     await helpers.testResponsive([
       { width: 375, height: 667 }, // Mobile
       { width: 768, height: 1024 }, // Tablet
-      { width: 1920, height: 1080 } // Desktop
+      { width: 1920, height: 1080 }, // Desktop
     ]);
 
     // Test keyboard navigation
@@ -407,7 +504,9 @@ test.describe('Document Generator', () => {
     await helpers.page.keyboard.press('Enter');
 
     // Verify focus management
-    const focusedElement = await helpers.page.evaluate(() => document.activeElement?.tagName);
+    const focusedElement = await helpers.page.evaluate(
+      () => document.activeElement?.tagName
+    );
     expect(['BUTTON', 'INPUT', 'SELECT', 'A']).toContain(focusedElement);
   });
 
@@ -434,14 +533,17 @@ test.describe('Document Generator', () => {
 
     // Verify no JavaScript errors during interactions
     const jsErrors: string[] = [];
-    helpers.page.on('console', msg => {
+    helpers.page.on('console', (msg) => {
       if (msg.type() === 'error') {
         jsErrors.push(msg.text());
       }
     });
 
     // Perform various interactions
-    await helpers.page.selectOption('[data-testid="document-type"]', 'return_form');
+    await helpers.page.selectOption(
+      '[data-testid="document-type"]',
+      'return_form'
+    );
     await helpers.page.fill('[data-testid="borrower_name"]', 'Test User');
     await helpers.page.click('[data-testid="add-return-item"]');
 

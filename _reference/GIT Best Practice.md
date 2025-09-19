@@ -8,9 +8,9 @@ Why? Helps track why changes were made.
 
 Guidelines:
 
-* Present tense ("Fix bug", not "Fixed bug").
-* Keep the subject line under 50 characters; add detail in the body.
-* Link to related tickets/issues.
+- Present tense ("Fix bug", not "Fixed bug").
+- Keep the subject line under 50 characters; add detail in the body.
+- Link to related tickets/issues.
 
 Example:
 
@@ -47,9 +47,9 @@ git commit -m "Update .gitignore"
 
 ## Cleaning Up Commit History
 
-* Squash commits: `git rebase -i HEAD~3`
-* Remove commits: `git reset --soft HEAD~n` or `git reset --hard HEAD~n`
-* Avoid committing debug or temporary code.
+- Squash commits: `git rebase -i HEAD~3`
+- Remove commits: `git reset --soft HEAD~n` or `git reset --hard HEAD~n`
+- Avoid committing debug or temporary code.
 
 ---
 
@@ -57,11 +57,11 @@ git commit -m "Update .gitignore"
 
 #### Undoing Changes
 
-* Reset:
-  * Soft: keep changes (`git reset --soft HEAD~1`)
-  * Hard: discard changes (`git reset --hard HEAD~1`)
-* Revert: safe undo (`git revert <commit_id>`)
-* Checkout: restore files or switch branches
+- Reset:
+  - Soft: keep changes (`git reset --soft HEAD~1`)
+  - Hard: discard changes (`git reset --hard HEAD~1`)
+- Revert: safe undo (`git revert <commit_id>`)
+- Checkout: restore files or switch branches
 
 #### Stashing Changes
 
@@ -77,15 +77,15 @@ git stash apply
 
 ##### Merge
 
-* Keeps merge commits
-* Safe for collaboration
-* `git merge branch`
+- Keeps merge commits
+- Safe for collaboration
+- `git merge branch`
 
 ##### Rebase
 
-* Creates a linear history
-* Cleaner history but risky if shared
-* `git rebase main`
+- Creates a linear history
+- Cleaner history but risky if shared
+- `git rebase main`
 
 ---
 
@@ -103,23 +103,23 @@ git stash apply
 
 ### Pull Requests
 
-* Used in GitHub/GitLab to propose changes before merging.
-* Allows discussion, code review, and CI checks.
+- Used in GitHub/GitLab to propose changes before merging.
+- Allows discussion, code review, and CI checks.
 
 ### Code Reviews & Approvals
 
 Process:
 
-* Developer opens a PR/MR
-* Reviewer checks code quality, functionality, and security
-* Approvals required before merge
+- Developer opens a PR/MR
+- Reviewer checks code quality, functionality, and security
+- Approvals required before merge
 
 ### Collaborative Workflows
 
-* Gitflow
-  * Branch types: `main`, `develop`, `feature/*`, `release/*`, `hotfix/*`.
-* Feature Branch Workflow
-  * Each feature is developed on its own branch and merged via PR.
+- Gitflow
+  - Branch types: `main`, `develop`, `feature/*`, `release/*`, `hotfix/*`.
+- Feature Branch Workflow
+  - Each feature is developed on its own branch and merged via PR.
 
 Command example:
 
@@ -134,8 +134,8 @@ git push origin feature/new-login
 
 ### Resolving Merge Conflicts
 
-* Occurs when changes overlap.
-* Steps:
+- Occurs when changes overlap.
+- Steps:
   1. Identify conflicts in the file.
   2. Edit to keep the correct version.
   3. Mark resolved:
@@ -164,24 +164,24 @@ git reset --hard HEAD~1
 
 ## Handling Repository Corruption
 
-* Clone a fresh copy from remote.
-* Run an integrity check:
+- Clone a fresh copy from remote.
+- Run an integrity check:
 
 ```bash
 git fsck
 ```
 
-* Restore from backup if needed.
+- Restore from backup if needed.
 
 ---
 
 ## Key Takeaways
 
-* Commit messages should tell the "story" of the change.
-* Use `.gitignore` to keep the repo clean.
-* Merge for safety; rebase for cleaner history when appropriate.
-* PRs and code reviews are essential for team workflows.
-* Learn to resolve conflicts calmly and keep backups.
+- Commit messages should tell the "story" of the change.
+- Use `.gitignore` to keep the repo clean.
+- Merge for safety; rebase for cleaner history when appropriate.
+- PRs and code reviews are essential for team workflows.
+- Learn to resolve conflicts calmly and keep backups.
 
 ---
 

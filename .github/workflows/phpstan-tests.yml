@@ -2,14 +2,14 @@ name: PHPStan Static Analysis & Tests
 
 on:
   push:
-    branches: [ master, 'feature/**' ]
+    branches: [master, 'feature/**']
     paths:
       - '**/*.php'
       - 'composer.json'
       - 'composer.lock'
       - '.github/workflows/phpstan-tests.yml'
   pull_request:
-    branches: [ master ]
+    branches: [master]
     paths:
       - '**/*.php'
       - 'composer.json'

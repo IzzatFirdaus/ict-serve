@@ -1,0 +1,23 @@
+/* MYDS Skip Link Component Styles (hidden by default, visible on focus) */
+.myds-skip-link {
+  position: absolute;
+  left: 24px;
+  top: -40px;
+  background: #2563eb;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  z-index: 10001;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow:
+    0 2px 6px 0 rgb(0 0 0 / 5%),
+    0 12px 50px 0 rgb(0 0 0 / 10%);
+  text-decoration: none;
+  transition: top 0.3s;
+}
+
+.myds-skip-link:focus {
+  top: 24px;
+}

@@ -24,18 +24,18 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
       await helpers.page.keyboard.press('Tab');
 
       const activeElement = helpers.page.locator(':focus');
-      if (await activeElement.count() > 0) {
+      if ((await activeElement.count()) > 0) {
         // Verify focused element is visible
         await expect(activeElement).toBeVisible();
 
         // Check if element has proper focus styling
-        const focusOutline = await activeElement.evaluate(el => {
+        const focusOutline = await activeElement.evaluate((el) => {
           const styles = getComputedStyle(el);
           return {
             outline: styles.outline,
             outlineColor: styles.outlineColor,
             outlineWidth: styles.outlineWidth,
-            boxShadow: styles.boxShadow
+            boxShadow: styles.boxShadow,
           };
         });
 
@@ -49,7 +49,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         expect(hasFocusIndicator).toBeTruthy();
 
         // Test Element type-specific keyboard interactions
-        const tagName = await activeElement.evaluate(el => el.tagName.toLowerCase());
+        const tagName = await activeElement.evaluate((el) =>
+          el.tagName.toLowerCase()
+        );
         const role = await activeElement.getAttribute('role');
 
         if (tagName === 'button' || role === 'button') {
@@ -94,7 +96,7 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     for (let i = 0; i < 5; i++) {
       await helpers.page.keyboard.press('Shift+Tab');
       const activeElement = helpers.page.locator(':focus');
-      if (await activeElement.count() > 0) {
+      if ((await activeElement.count()) > 0) {
         await expect(activeElement).toBeVisible();
       }
     }
@@ -103,11 +105,15 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     await helpers.page.reload();
     await helpers.page.keyboard.press('Tab');
 
-    const skipLink = helpers.page.locator('a[href*="#main"], a[href*="#content"], .skip-link');
+    const skipLink = helpers.page.locator(
+      'a[href*="#main"], a[href*="#content"], .skip-link'
+    );
     if (await skipLink.first().isVisible()) {
       await skipLink.first().press('Enter');
 
-      const mainContent = helpers.page.locator('#main, #content, main, [role="main"]');
+      const mainContent = helpers.page.locator(
+        '#main, #content, main, [role="main"]'
+      );
       if (await mainContent.first().isVisible()) {
         const focused = helpers.page.locator(':focus');
         // Should focus on main content area
@@ -131,7 +137,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
 
     for (const heading of headings) {
       if (await heading.isVisible()) {
-        const tagName = await heading.evaluate(el => el.tagName.toLowerCase());
+        const tagName = await heading.evaluate((el) =>
+          el.tagName.toLowerCase()
+        );
         const level = parseInt(tagName.substring(1));
 
         if (level === 1) {
@@ -158,16 +166,18 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
       main: helpers.page.locator('main, [role="main"]'),
       navigation: helpers.page.locator('nav, [role="navigation"]'),
       banner: helpers.page.locator('header, [role="banner"]'),
-      contentinfo: helpers.page.locator('footer, [role="contentinfo"]')
+      contentinfo: helpers.page.locator('footer, [role="contentinfo"]'),
     };
 
     for (const [landmarkName, locator] of Object.entries(landmarks)) {
       if (await locator.first().isVisible()) {
         // Landmarks should be properly labeled
         const ariaLabel = await locator.first().getAttribute('aria-label');
-        const ariaLabelledby = await locator.first().getAttribute('aria-labelledby');
+        const ariaLabelledby = await locator
+          .first()
+          .getAttribute('aria-labelledby');
 
-        if (landmarkName === 'navigation' && await locator.count() > 1) {
+        if (landmarkName === 'navigation' && (await locator.count()) > 1) {
           // Multiple navigation landmarks should be labeled
           expect(ariaLabel || ariaLabelledby).toBeTruthy();
         }
@@ -187,7 +197,7 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         // Input should have accessible name
         if (inputId) {
           const label = helpers.page.locator(`label[for="${inputId}"]`);
-          const hasLabel = await label.count() > 0;
+          const hasLabel = (await label.count()) > 0;
 
           if (!hasLabel && !ariaLabel && !ariaLabelledby) {
             // If no label, should at least have meaningful placeholder
@@ -227,7 +237,7 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
       if (!rgbMatch) return 1;
 
       const [, r, g, b] = rgbMatch.map(Number);
-      const [rs, gs, bs] = [r, g, b].map(c => {
+      const [rs, gs, bs] = [r, g, b].map((c) => {
         c = c / 255;
         return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
       });
@@ -245,16 +255,25 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     };
 
     // Check text elements for contrast
-    const textElements = await helpers.page.locator('p, h1, h2, h3, h4, h5, h6, span, a, button, label').all();
+    const textElements = await helpers.page
+      .locator('p, h1, h2, h3, h4, h5, h6, span, a, button, label')
+      .all();
 
-    for (const element of textElements.slice(0, 20)) { // Check first 20 to avoid performance issues
+    for (const element of textElements.slice(0, 20)) {
+      // Check first 20 to avoid performance issues
       if (await element.isVisible()) {
-        const textColor = await element.evaluate(el => getComputedStyle(el).color);
-        const fontSize = await element.evaluate(el => parseFloat(getComputedStyle(el).fontSize));
-        const fontWeight = await element.evaluate(el => getComputedStyle(el).fontWeight);
+        const textColor = await element.evaluate(
+          (el) => getComputedStyle(el).color
+        );
+        const fontSize = await element.evaluate((el) =>
+          parseFloat(getComputedStyle(el).fontSize)
+        );
+        const fontWeight = await element.evaluate(
+          (el) => getComputedStyle(el).fontWeight
+        );
 
         // Get background color (traverse up DOM if transparent)
-        const bgColor = await element.evaluate(el => {
+        const bgColor = await element.evaluate((el) => {
           let bg = getComputedStyle(el).backgroundColor;
           let parent = el.parentElement;
 
@@ -270,15 +289,20 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
           const contrast = calculateContrast(textColor, bgColor);
 
           // WCAG AA requirements
-          const isLargeText = fontSize >= 18 || (fontSize >= 14 && parseInt(fontWeight) >= 700);
+          const isLargeText =
+            fontSize >= 18 || (fontSize >= 14 && parseInt(fontWeight) >= 700);
           const minContrast = isLargeText ? 3.0 : 4.5;
 
           if (contrast < minContrast) {
-            console.warn(`Low contrast detected: ${contrast.toFixed(2)} (min: ${minContrast}) for element with text "${await element.textContent()}"`);
+            console.warn(
+              `Low contrast detected: ${contrast.toFixed(2)} (min: ${minContrast}) for element with text "${await element.textContent()}"`
+            );
           }
 
           // For critical elements, enforce stricter requirements
-          const tagName = await element.evaluate(el => el.tagName.toLowerCase());
+          const tagName = await element.evaluate((el) =>
+            el.tagName.toLowerCase()
+          );
           if (['button', 'a', 'h1', 'h2'].includes(tagName)) {
             expect(contrast).toBeGreaterThan(minContrast * 0.9); // Allow slight tolerance for computed values
           }
@@ -287,15 +311,19 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     }
 
     // Check button focus states
-    const buttons = await helpers.page.locator('button, input[type="button"], input[type="submit"]').all();
+    const buttons = await helpers.page
+      .locator('button, input[type="button"], input[type="submit"]')
+      .all();
 
     for (const button of buttons.slice(0, 10)) {
       if (await button.isVisible()) {
         // Test focus state contrast
         await button.focus();
 
-        const focusColor = await button.evaluate(el => getComputedStyle(el).outlineColor);
-        const bgColor = await button.evaluate(el => {
+        const focusColor = await button.evaluate(
+          (el) => getComputedStyle(el).outlineColor
+        );
+        const bgColor = await button.evaluate((el) => {
           let bg = getComputedStyle(el).backgroundColor;
           if (bg === 'rgba(0, 0, 0, 0)') {
             bg = 'rgb(255, 255, 255)';
@@ -325,15 +353,23 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         const ariaDescribedby = await form.getAttribute('aria-describedby');
 
         // Check if form has a heading or legend that describes it
-        const formHeading = await form.locator('h1, h2, h3, h4, legend').first();
-        const hasFormIdentifier = ariaLabel || ariaLabelledby || ariaDescribedby || await formHeading.isVisible();
+        const formHeading = await form
+          .locator('h1, h2, h3, h4, legend')
+          .first();
+        const hasFormIdentifier =
+          ariaLabel ||
+          ariaLabelledby ||
+          ariaDescribedby ||
+          (await formHeading.isVisible());
 
         expect(hasFormIdentifier).toBeTruthy();
       }
     }
 
     // Check form controls
-    const formControls = await helpers.page.locator('input, select, textarea').all();
+    const formControls = await helpers.page
+      .locator('input, select, textarea')
+      .all();
 
     for (const control of formControls) {
       if (await control.isVisible()) {
@@ -374,7 +410,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     await helpers.page.click('button[type="submit"]');
 
     // Check for error messages
-    const errorMessages = await helpers.page.locator('.error, .invalid, [role="alert"], .text-red-600').all();
+    const errorMessages = await helpers.page
+      .locator('.error, .invalid, [role="alert"], .text-red-600')
+      .all();
 
     for (const error of errorMessages) {
       if (await error.isVisible()) {
@@ -385,7 +423,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         expect(errorText?.trim()).toBeTruthy();
 
         if (errorId) {
-          const associatedField = helpers.page.locator(`[aria-describedby*="${errorId}"]`);
+          const associatedField = helpers.page.locator(
+            `[aria-describedby*="${errorId}"]`
+          );
           expect(await associatedField.count()).toBeGreaterThan(0);
         }
       }
@@ -418,9 +458,7 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         const ariaLabelledby = await table.getAttribute('aria-labelledby');
 
         const hasAccessibleName =
-          await caption.isVisible() ||
-          ariaLabel ||
-          ariaLabelledby;
+          (await caption.isVisible()) || ariaLabel || ariaLabelledby;
 
         expect(hasAccessibleName).toBeTruthy();
 
@@ -464,14 +502,18 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         }
 
         // Check for sortable table accessibility
-        const sortableHeaders = await table.locator('th[aria-sort], th[role="columnheader"]').all();
+        const sortableHeaders = await table
+          .locator('th[aria-sort], th[role="columnheader"]')
+          .all();
 
         for (const sortHeader of sortableHeaders) {
           if (await sortHeader.isVisible()) {
             const ariaSort = await sortHeader.getAttribute('aria-sort');
             const role = await sortHeader.getAttribute('role');
 
-            expect(['ascending', 'descending', 'none', null]).toContain(ariaSort);
+            expect(['ascending', 'descending', 'none', null]).toContain(
+              ariaSort
+            );
 
             if (role === 'columnheader') {
               // Should be interactive
@@ -488,31 +530,46 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     await helpers.navigateToPage('/equipment');
 
     // Try to open a modal/dialog
-    const modalTriggers = await helpers.page.locator('[data-testid*="modal"], [data-testid*="dialog"], .modal-trigger, .dialog-trigger').all();
+    const modalTriggers = await helpers.page
+      .locator(
+        '[data-testid*="modal"], [data-testid*="dialog"], .modal-trigger, .dialog-trigger'
+      )
+      .all();
 
     for (const trigger of modalTriggers.slice(0, 3)) {
       if (await trigger.isVisible()) {
         await trigger.click();
 
         // Look for modal/dialog
-        const modal = helpers.page.locator('[role="dialog"], [role="alertdialog"], .modal, .dialog');
+        const modal = helpers.page.locator(
+          '[role="dialog"], [role="alertdialog"], .modal, .dialog'
+        );
 
         if (await modal.first().isVisible()) {
           const activeModal = modal.first();
 
           // Modal should have accessible name
           const ariaLabel = await activeModal.getAttribute('aria-label');
-          const ariaLabelledby = await activeModal.getAttribute('aria-labelledby');
-          const modalTitle = activeModal.locator('h1, h2, h3, .modal-title, .dialog-title');
+          const ariaLabelledby =
+            await activeModal.getAttribute('aria-labelledby');
+          const modalTitle = activeModal.locator(
+            'h1, h2, h3, .modal-title, .dialog-title'
+          );
 
-          expect(ariaLabel || ariaLabelledby || await modalTitle.isVisible()).toBeTruthy();
+          expect(
+            ariaLabel || ariaLabelledby || (await modalTitle.isVisible())
+          ).toBeTruthy();
 
           // Modal should have aria-modal="true"
           const ariaModal = await activeModal.getAttribute('aria-modal');
           expect(ariaModal).toBe('true');
 
           // Focus should be trapped in modal
-          const focusableElements = await activeModal.locator('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])').all();
+          const focusableElements = await activeModal
+            .locator(
+              'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            )
+            .all();
 
           if (focusableElements.length > 0) {
             // First focusable element should be focused
@@ -527,7 +584,7 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
 
             // Should still be in modal
             const currentFocus = helpers.page.locator(':focus');
-            const isInModal = await activeModal.locator(':focus').count() > 0;
+            const isInModal = (await activeModal.locator(':focus').count()) > 0;
             expect(isInModal).toBeTruthy();
           }
 
@@ -549,7 +606,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     await helpers.page.click('button[type="submit"]');
 
     // Check for error messages with proper ARIA
-    const errorMessages = await helpers.page.locator('[role="alert"], .alert-error, .error-message, .text-red-600').all();
+    const errorMessages = await helpers.page
+      .locator('[role="alert"], .alert-error, .error-message, .text-red-600')
+      .all();
 
     for (const error of errorMessages) {
       if (await error.isVisible()) {
@@ -558,7 +617,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         const ariaAtomic = await error.getAttribute('aria-atomic');
 
         // Error messages should announce to screen readers
-        expect(role === 'alert' || ariaLive === 'assertive' || ariaLive === 'polite').toBeTruthy();
+        expect(
+          role === 'alert' || ariaLive === 'assertive' || ariaLive === 'polite'
+        ).toBeTruthy();
 
         // Error should have meaningful text
         const errorText = await error.textContent();
@@ -567,7 +628,11 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     }
 
     // Check success messages
-    const successMessages = await helpers.page.locator('[role="status"], .alert-success, .success-message, .text-green-600').all();
+    const successMessages = await helpers.page
+      .locator(
+        '[role="status"], .alert-success, .success-message, .text-green-600'
+      )
+      .all();
 
     for (const success of successMessages) {
       if (await success.isVisible()) {
@@ -589,7 +654,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         if (ariaLive === 'assertive') {
           // Assertive regions should be for critical messages
           const content = await region.textContent();
-          expect(content?.toLowerCase()).toMatch(/error|alert|warning|critical/);
+          expect(content?.toLowerCase()).toMatch(
+            /error|alert|warning|critical/
+          );
         }
       }
     }
@@ -599,7 +666,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     await helpers.navigateToPage('/equipment');
 
     // Check custom dropdown/combobox components
-    const customDropdowns = await helpers.page.locator('[role="combobox"], [role="listbox"], .dropdown, .select-custom').all();
+    const customDropdowns = await helpers.page
+      .locator('[role="combobox"], [role="listbox"], .dropdown, .select-custom')
+      .all();
 
     for (const dropdown of customDropdowns) {
       if (await dropdown.isVisible()) {
@@ -626,7 +695,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     }
 
     // Check custom button groups
-    const buttonGroups = await helpers.page.locator('[role="group"], .btn-group, .button-group').all();
+    const buttonGroups = await helpers.page
+      .locator('[role="group"], .btn-group, .button-group')
+      .all();
 
     for (const group of buttonGroups) {
       if (await group.isVisible()) {
@@ -697,7 +768,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
         expect(controls !== null).toBeTruthy();
 
         // Check for captions
-        const tracks = await video.locator('track[kind="captions"], track[kind="subtitles"]').all();
+        const tracks = await video
+          .locator('track[kind="captions"], track[kind="subtitles"]')
+          .all();
         expect(tracks.length).toBeGreaterThan(0);
 
         // Video should have title or aria-label
@@ -722,7 +795,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     }
 
     // Check for auto-playing content
-    const autoplayElements = await helpers.page.locator('video[autoplay], audio[autoplay]').all();
+    const autoplayElements = await helpers.page
+      .locator('video[autoplay], audio[autoplay]')
+      .all();
 
     for (const element of autoplayElements) {
       if (await element.isVisible()) {
@@ -751,7 +826,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
       expect(await main.count()).toBe(1); // Should have exactly one main element
 
       // Check for proper document outline
-      const sections = await helpers.page.locator('section, article, aside, nav').all();
+      const sections = await helpers.page
+        .locator('section, article, aside, nav')
+        .all();
 
       for (const section of sections.slice(0, 5)) {
         if (await section.isVisible()) {
@@ -761,7 +838,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
 
           // Sections should have accessible names when there are multiple
           if (sections.length > 1) {
-            expect(ariaLabel || ariaLabelledby || await heading.isVisible()).toBeTruthy();
+            expect(
+              ariaLabel || ariaLabelledby || (await heading.isVisible())
+            ).toBeTruthy();
           }
         }
       }
@@ -771,7 +850,9 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
       expect(textContent?.length).toBeGreaterThan(100);
 
       // Check meta information
-      const metaDescription = await helpers.page.locator('meta[name="description"]').getAttribute('content');
+      const metaDescription = await helpers.page
+        .locator('meta[name="description"]')
+        .getAttribute('content');
       if (metaDescription) {
         expect(metaDescription.length).toBeGreaterThan(20);
         expect(metaDescription.length).toBeLessThan(160);
@@ -785,7 +866,11 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     await helpers.navigateToPage('/equipment');
 
     // Check touch target sizes
-    const interactiveElements = await helpers.page.locator('button, a, input, select, textarea, [role="button"], [role="link"]').all();
+    const interactiveElements = await helpers.page
+      .locator(
+        'button, a, input, select, textarea, [role="button"], [role="link"]'
+      )
+      .all();
 
     for (const element of interactiveElements.slice(0, 10)) {
       if (await element.isVisible()) {
@@ -799,9 +884,10 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
           if (actualSize < minSize) {
             // Check if element has adequate spacing around it
             const parentBox = await element.locator('..').boundingBox();
-            const hasSpacing = parentBox &&
+            const hasSpacing =
+              parentBox &&
               (parentBox.width - boundingBox.width >= minSize - actualSize ||
-               parentBox.height - boundingBox.height >= minSize - actualSize);
+                parentBox.height - boundingBox.height >= minSize - actualSize);
 
             expect(hasSpacing || actualSize >= minSize * 0.9).toBeTruthy();
           }
@@ -810,23 +896,33 @@ test.describe('Accessibility Compliance (WCAG 2.1)', () => {
     }
 
     // Test mobile navigation
-    const mobileMenu = helpers.page.locator('.mobile-menu, .nav-mobile, [aria-label*="mobile"], [aria-label*="menu"]');
+    const mobileMenu = helpers.page.locator(
+      '.mobile-menu, .nav-mobile, [aria-label*="mobile"], [aria-label*="menu"]'
+    );
 
     if (await mobileMenu.first().isVisible()) {
       // Mobile menu should be accessible
-      const menuButton = helpers.page.locator('button[aria-expanded], .menu-toggle, .hamburger');
+      const menuButton = helpers.page.locator(
+        'button[aria-expanded], .menu-toggle, .hamburger'
+      );
 
       if (await menuButton.first().isVisible()) {
-        const ariaExpanded = await menuButton.first().getAttribute('aria-expanded');
+        const ariaExpanded = await menuButton
+          .first()
+          .getAttribute('aria-expanded');
         expect(['true', 'false']).toContain(ariaExpanded);
 
         // Test menu toggle
         await menuButton.first().click();
-        const expandedAfter = await menuButton.first().getAttribute('aria-expanded');
+        const expandedAfter = await menuButton
+          .first()
+          .getAttribute('aria-expanded');
         expect(expandedAfter).toBe('true');
 
         // Menu content should be visible
-        const menuContent = helpers.page.locator('[role="menu"], .menu-content, .nav-items');
+        const menuContent = helpers.page.locator(
+          '[role="menu"], .menu-content, .nav-items'
+        );
         expect(await menuContent.first().isVisible()).toBeTruthy();
       }
     }

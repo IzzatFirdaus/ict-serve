@@ -2,9 +2,9 @@
 
 ## DOCUMENT IDENTIFICATION
 
-* **Form Title**: Borang Aduan Kerosakan ICT *(ICT Damage Complaint Form)*
-* **Platform**: MOTAC Intranet - ServiceDesk ICT
-* **Reference Code**: PK.(S).MOTAC.07.(L1)
+- **Form Title**: Borang Aduan Kerosakan ICT _(ICT Damage Complaint Form)_
+- **Platform**: MOTAC Intranet - ServiceDesk ICT
+- **Reference Code**: PK.(S).MOTAC.07.(L1)
 
 ---
 
@@ -12,81 +12,80 @@
 
 A persistent navigation bar at the top of the page for accessing main intranet sections. It includes:
 
-* MOTAC Intranet Logo
+- MOTAC Intranet Logo
 
-* Navigation Links: `Utama` (Home), `Informasi` (Information), `Muat Turun` (Download), `Direktori` (Directory), `ServiceDesk ICT`, `Webmail MyGovUC 3.0`, and `MY Integriti`.
+- Navigation Links: `Utama` (Home), `Informasi` (Information), `Muat Turun` (Download), `Direktori` (Directory), `ServiceDesk ICT`, `Webmail MyGovUC 3.0`, and `MY Integriti`.
 
-* A search icon.
+- A search icon.
 
 ### **2. CONTENT BANNER**
 
 The page's title area, located below the header.
 
-* **Title**: Borang Aduan Kerosakan ICT
+- **Title**: Borang Aduan Kerosakan ICT
 
-* **Breadcrumb Trail**: Utama / ServiceDesk ICT
+- **Breadcrumb Trail**: Utama / ServiceDesk ICT
 
-* **Visuals**: A decorative background image with a faint graphic of a telephone receiver.
+- **Visuals**: A decorative background image with a faint graphic of a telephone receiver.
 
 ### **3. MAIN CONTENT: THE COMPLAINT FORM**
 
-The primary interactive section, presented in a single-column white container. Fields marked with an asterisk (*) are mandatory.
+The primary interactive section, presented in a single-column white container. Fields marked with an asterisk (\*) are mandatory.
 
-* **Nama Penuh ***: *(Full Name)*
-    A required text input field for the user's name.
+- **Nama Penuh \***: _(Full Name)_
+  A required text input field for the user's name.
 
-* **Bahagian ***: *(Division)*
-    A required dropdown menu with a comprehensive list of all MOTAC divisions, offices, and units.
+- **Bahagian \***: _(Division)_
+  A required dropdown menu with a comprehensive list of all MOTAC divisions, offices, and units.
 
-* **Gred Jawatan**: *(Position Grade)*
-    An optional text input field for the user's grade.
+- **Gred Jawatan**: _(Position Grade)_
+  An optional text input field for the user's grade.
 
-* **E-Mel ***: *(E-Mail)*
-    A required text input field for the user's email address.
+- **E-Mel \***: _(E-Mail)_
+  A required text input field for the user's email address.
 
-* **No. Telefon ***: *(Telephone No.)*
-    A required text input field for the user's contact number.
+- **No. Telefon \***: _(Telephone No.)_
+  A required text input field for the user's contact number.
 
-* **Jenis Kerosakan ***: *(Type of Damage)*
-    A required dropdown menu to categorize the technical problem. The available options are:
+- **Jenis Kerosakan \***: _(Type of Damage)_
+  A required dropdown menu to categorize the technical problem. The available options are:
+  - Perkakasan - PC, Laptop, Printer, Scanner, Projektor _(Hardware - PC, Laptop, etc.)_
+  - Perkakasan - iPad _(Hardware - iPad)_
+  - Perkakasan - Permohonan Toner _(Hardware - Toner Request)_
+  - Aplikasi - E-Mail, Anti Virus _(Application - E-Mail, Anti Virus)_
+  - Aplikasi - iGFMAS, HRMIS, ePerolehan, GPKI _(Application - iGFMAS, etc.)_
+  - Aplikasi - Laman Web, INTRAnet _(Application - Website, INTRAnet)_
+  - Aplikasi - Sistem Kehadiran (e-Jari) _(Application - Attendance System)_
+  - Aplikasi - Lain-lain _(Application - Others)_
+  - Network - Ibu Pejabat _(Network - Headquarters)_
+  - Network - Pejabat Negeri _(Network - State Office)_
+  - Lain-lain Aduan _(Other Complaints)_
 
-  * Perkakasan - PC, Laptop, Printer, Scanner, Projektor *(Hardware - PC, Laptop, etc.)*
-  * Perkakasan - iPad *(Hardware - iPad)*
-  * Perkakasan - Permohonan Toner *(Hardware - Toner Request)*
-  * Aplikasi - E-Mail, Anti Virus *(Application - E-Mail, Anti Virus)*
-  * Aplikasi - iGFMAS, HRMIS, ePerolehan, GPKI *(Application - iGFMAS, etc.)*
-  * Aplikasi - Laman Web, INTRAnet *(Application - Website, INTRAnet)*
-  * Aplikasi - Sistem Kehadiran (e-Jari) *(Application - Attendance System)*
-  * Aplikasi - Lain-lain *(Application - Others)*
-  * Network - Ibu Pejabat *(Network - Headquarters)*
-  * Network - Pejabat Negeri *(Network - State Office)*
-  * Lain-lain Aduan *(Other Complaints)*
+- **Maklumat Kerosakan \***: _(Damage Information)_
+  A required large text area for the user to provide a detailed description of the issue.
 
-* **Maklumat Kerosakan ***: *(Damage Information)*
-    A required large text area for the user to provide a detailed description of the issue.
+- **No. Aset / Printer ID \***: _(Asset No. / Printer ID)_
+  A **conditional field** that is hidden by default. It becomes visible and required only if the user selects one of the following hardware-related options under `Jenis Kerosakan`:
+  - Perkakasan - PC, Laptop, Printer, Scanner, Projektor
+  - Perkakasan - iPad
+  - Perkakasan - Permohonan Toner
 
-* **No. Aset / Printer ID ***: *(Asset No. / Printer ID)*
-    A **conditional field** that is hidden by default. It becomes visible and required only if the user selects one of the following hardware-related options under `Jenis Kerosakan`:
+- **Perakuan \***: _(Declaration)_
+  A mandatory section requiring the user to tick a checkbox to confirm the following statement:
 
-  * Perkakasan - PC, Laptop, Printer, Scanner, Projektor
-  * Perkakasan - iPad
-  * Perkakasan - Permohonan Toner
+  > "Saya memperakui dan mengesahkan bahawa semua maklumat yang diberikan di dalam eBorang Laporan Kerosakan ini adalah benar, dan bersetuju menerima perkhidmatan Bahagian Pengurusan Maklumat (BPM) berdasarkan Piagam Pelanggan sedia ada."
+  >
+  > _(Translation: "I certify and confirm that all information provided in this ICT Damage Report eForm is true, and agree to receive services from the Information Management Division (BPM) based on the existing Customer Charter.")_
 
-* **Perakuan ***: *(Declaration)*
-    A mandatory section requiring the user to tick a checkbox to confirm the following statement:
-    > "Saya memperakui dan mengesahkan bahawa semua maklumat yang diberikan di dalam eBorang Laporan Kerosakan ini adalah benar, dan bersetuju menerima perkhidmatan Bahagian Pengurusan Maklumat (BPM) berdasarkan Piagam Pelanggan sedia ada."
-    >
-    > *(Translation: "I certify and confirm that all information provided in this ICT Damage Report eForm is true, and agree to receive services from the Information Management Division (BPM) based on the existing Customer Charter.")*
-
-* **Action Buttons**
-    The "Submit" (`Hantar`) and "Reset" (`Reset`) buttons are initially hidden. They appear only after the user ticks the `Perakuan` checkbox, confirming the declaration.
+- **Action Buttons**
+  The "Submit" (`Hantar`) and "Reset" (`Reset`) buttons are initially hidden. They appear only after the user ticks the `Perakuan` checkbox, confirming the declaration.
 
 ### **4. FOOTER**
 
 The footer is located at the very bottom of the page.
 
-* **Left Side**: Displays the logo of the `Bahagian Pengurusan Maklumat (BPM)`.
+- **Left Side**: Displays the logo of the `Bahagian Pengurusan Maklumat (BPM)`.
 
-* **Center**: Contains the copyright notice. The year is dynamically generated by JavaScript to always show the current year (e.g., © 2025 Hakcipta Terpelihara...).
+- **Center**: Contains the copyright notice. The year is dynamically generated by JavaScript to always show the current year (e.g., © 2025 Hakcipta Terpelihara...).
 
-* **Right Side**: Features social media icons linking to MOTAC's official pages on Facebook, Twitter, Instagram, and YouTube.
+- **Right Side**: Features social media icons linking to MOTAC's official pages on Facebook, Twitter, Instagram, and YouTube.

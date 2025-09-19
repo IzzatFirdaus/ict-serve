@@ -20,7 +20,9 @@ test.describe('Admin Dashboard', () => {
     await helpers.checkMYDSCompliance();
 
     // Check main dashboard container
-    await expect(helpers.page.locator('[data-testid="admin-dashboard"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="admin-dashboard"]')
+    ).toBeVisible();
 
     // Verify key metric cards are displayed
     const metricCards = [
@@ -29,7 +31,7 @@ test.describe('Admin Dashboard', () => {
       'pending-approvals',
       'available-equipment',
       'overdue-returns',
-      'maintenance-requests'
+      'maintenance-requests',
     ];
 
     for (const metric of metricCards) {
@@ -40,26 +42,34 @@ test.describe('Admin Dashboard', () => {
     }
 
     // Check that metric values are numeric
-    const totalEquipment = await helpers.page.locator('[data-testid="metric-total-equipment"] [data-testid="metric-value"]').textContent();
+    const totalEquipment = await helpers.page
+      .locator(
+        '[data-testid="metric-total-equipment"] [data-testid="metric-value"]'
+      )
+      .textContent();
     expect(totalEquipment).toMatch(/\d+/);
 
     // Verify dashboard refresh functionality
     await helpers.page.click('[data-testid="refresh-dashboard"]');
-    await expect(helpers.page.locator('[data-testid="dashboard-updated"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="dashboard-updated"]')
+    ).toBeVisible();
   });
 
   test('should display and interact with analytics charts', async () => {
     await helpers.navigateToPage('/admin/dashboard');
 
     // Check analytics section
-    await expect(helpers.page.locator('[data-testid="analytics-section"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="analytics-section"]')
+    ).toBeVisible();
 
     // Verify chart containers are present
     const charts = [
       'loan-trends-chart',
       'equipment-utilization-chart',
       'department-usage-chart',
-      'monthly-stats-chart'
+      'monthly-stats-chart',
     ];
 
     for (const chart of charts) {
@@ -69,22 +79,29 @@ test.describe('Admin Dashboard', () => {
 
         // Check for chart legend if present
         const legend = chartElement.locator('[data-testid="chart-legend"]');
-        if (await legend.count() > 0) {
+        if ((await legend.count()) > 0) {
           await expect(legend).toBeVisible();
         }
       }
     }
 
     // Test date range selection for analytics
-    await helpers.page.fill('[data-testid="analytics-start-date"]', '2024-01-01');
+    await helpers.page.fill(
+      '[data-testid="analytics-start-date"]',
+      '2024-01-01'
+    );
     await helpers.page.fill('[data-testid="analytics-end-date"]', '2024-12-31');
     await helpers.page.click('[data-testid="update-analytics"]');
 
     // Verify charts update
-    await expect(helpers.page.locator('[data-testid="analytics-updated"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="analytics-updated"]')
+    ).toBeVisible();
 
     // Test chart type switching
-    const chartTypeSelector = helpers.page.locator('[data-testid="chart-type-selector"]');
+    const chartTypeSelector = helpers.page.locator(
+      '[data-testid="chart-type-selector"]'
+    );
     if (await chartTypeSelector.isVisible()) {
       await chartTypeSelector.selectOption('bar');
       await helpers.page.waitForTimeout(1000);
@@ -98,10 +115,14 @@ test.describe('Admin Dashboard', () => {
     await helpers.navigateToPage('/admin/equipment');
 
     // Check equipment management interface
-    await expect(helpers.page.locator('[data-testid="equipment-management"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="equipment-management"]')
+    ).toBeVisible();
 
     // Test equipment listing with filters
-    const equipmentTable = helpers.page.locator('[data-testid="equipment-table"]');
+    const equipmentTable = helpers.page.locator(
+      '[data-testid="equipment-table"]'
+    );
     await expect(equipmentTable).toBeVisible();
 
     // Test search functionality
@@ -109,54 +130,72 @@ test.describe('Admin Dashboard', () => {
     await helpers.page.waitForTimeout(500);
 
     // Verify search results
-    const searchResults = helpers.page.locator('[data-testid="equipment-row"]:visible');
-    if (await searchResults.count() > 0) {
+    const searchResults = helpers.page.locator(
+      '[data-testid="equipment-row"]:visible'
+    );
+    if ((await searchResults.count()) > 0) {
       const firstResult = await searchResults.first().textContent();
       expect(firstResult?.toLowerCase()).toContain('laptop');
     }
 
     // Test category filtering
-    await helpers.page.selectOption('[data-testid="category-filter"]', 'Laptop');
+    await helpers.page.selectOption(
+      '[data-testid="category-filter"]',
+      'Laptop'
+    );
     await helpers.page.waitForTimeout(500);
 
     // Test status filtering
-    await helpers.page.selectOption('[data-testid="status-filter"]', 'available');
+    await helpers.page.selectOption(
+      '[data-testid="status-filter"]',
+      'available'
+    );
     await helpers.page.waitForTimeout(500);
 
     // Test add new equipment
     await helpers.page.click('[data-testid="add-equipment"]');
-    await expect(helpers.page.locator('[data-testid="add-equipment-modal"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="add-equipment-modal"]')
+    ).toBeVisible();
 
     // Fill new equipment form
     await helpers.fillForm({
-      'equipment_name': 'Test Laptop',
-      'category': 'Laptop',
-      'brand': 'Dell',
-      'model': 'Latitude 5520',
-      'serial_number': 'DL123456789',
-      'purchase_date': '2024-01-15',
-      'warranty_expiry': '2027-01-15',
-      'location': 'ICT Store Room',
-      'condition': 'excellent'
+      equipment_name: 'Test Laptop',
+      category: 'Laptop',
+      brand: 'Dell',
+      model: 'Latitude 5520',
+      serial_number: 'DL123456789',
+      purchase_date: '2024-01-15',
+      warranty_expiry: '2027-01-15',
+      location: 'ICT Store Room',
+      condition: 'excellent',
     });
 
     // Save new equipment
     await helpers.page.click('[data-testid="save-equipment"]');
-    await expect(helpers.page.locator('[data-testid="equipment-saved"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="equipment-saved"]')
+    ).toBeVisible();
 
     // Close modal
     await helpers.page.click('[data-testid="close-modal"]');
-    await expect(helpers.page.locator('[data-testid="add-equipment-modal"]')).not.toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="add-equipment-modal"]')
+    ).not.toBeVisible();
   });
 
   test('should manage user accounts and permissions', async () => {
     await helpers.navigateToPage('/admin/users');
 
     // Check user management interface
-    await expect(helpers.page.locator('[data-testid="user-management"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="user-management"]')
+    ).toBeVisible();
 
     // Verify user table
-    await expect(helpers.page.locator('[data-testid="users-table"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="users-table"]')
+    ).toBeVisible();
 
     // Test user search
     await helpers.page.fill('[data-testid="user-search"]', 'admin');
@@ -168,17 +207,19 @@ test.describe('Admin Dashboard', () => {
 
     // Test add new user
     await helpers.page.click('[data-testid="add-user"]');
-    await expect(helpers.page.locator('[data-testid="add-user-modal"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="add-user-modal"]')
+    ).toBeVisible();
 
     // Fill user form
     await helpers.fillForm({
-      'full_name': 'Test User Admin',
-      'email': 'testuser@motac.gov.my',
-      'ic_number': '901234567890',
-      'phone': '0123456789',
-      'department': 'ICT Department',
-      'position': 'System Administrator',
-      'grade': 'UD48'
+      full_name: 'Test User Admin',
+      email: 'testuser@motac.gov.my',
+      ic_number: '901234567890',
+      phone: '0123456789',
+      department: 'ICT Department',
+      position: 'System Administrator',
+      grade: 'UD48',
     });
 
     // Set user role and permissions
@@ -188,58 +229,80 @@ test.describe('Admin Dashboard', () => {
 
     // Save user
     await helpers.page.click('[data-testid="save-user"]');
-    await expect(helpers.page.locator('[data-testid="user-saved"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="user-saved"]')
+    ).toBeVisible();
 
     // Test edit user
     const userRow = helpers.page.locator('[data-testid="user-row"]').first();
     await userRow.locator('[data-testid="edit-user"]').click();
 
     // Verify edit modal opens
-    await expect(helpers.page.locator('[data-testid="edit-user-modal"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="edit-user-modal"]')
+    ).toBeVisible();
 
     // Update user information
     await helpers.page.fill('[data-testid="user-phone"]', '0123456780');
     await helpers.page.click('[data-testid="update-user"]');
 
     // Verify update success
-    await expect(helpers.page.locator('[data-testid="user-updated"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="user-updated"]')
+    ).toBeVisible();
   });
 
   test('should display system notifications and alerts', async () => {
     await helpers.navigateToPage('/admin/dashboard');
 
     // Check notifications panel
-    await expect(helpers.page.locator('[data-testid="notifications-panel"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="notifications-panel"]')
+    ).toBeVisible();
 
     // Verify notification types
     const notificationTypes = [
       'overdue-returns',
       'equipment-maintenance',
       'approval-requests',
-      'system-alerts'
+      'system-alerts',
     ];
 
     for (const type of notificationTypes) {
-      const notification = helpers.page.locator(`[data-testid="notification-${type}"]`);
-      if (await notification.count() > 0) {
+      const notification = helpers.page.locator(
+        `[data-testid="notification-${type}"]`
+      );
+      if ((await notification.count()) > 0) {
         await expect(notification).toBeVisible();
-        await expect(notification.locator('[data-testid="notification-message"]')).toBeVisible();
-        await expect(notification.locator('[data-testid="notification-timestamp"]')).toBeVisible();
+        await expect(
+          notification.locator('[data-testid="notification-message"]')
+        ).toBeVisible();
+        await expect(
+          notification.locator('[data-testid="notification-timestamp"]')
+        ).toBeVisible();
       }
     }
 
     // Test mark notification as read
-    const firstNotification = helpers.page.locator('[data-testid^="notification-"]').first();
+    const firstNotification = helpers.page
+      .locator('[data-testid^="notification-"]')
+      .first();
     if (await firstNotification.isVisible()) {
       await firstNotification.locator('[data-testid="mark-read"]').click();
-      await expect(firstNotification.locator('[data-testid="read-indicator"]')).toBeVisible();
+      await expect(
+        firstNotification.locator('[data-testid="read-indicator"]')
+      ).toBeVisible();
     }
 
     // Test clear all notifications
-    const clearAllBtn = helpers.page.locator('[data-testid="clear-all-notifications"]');
+    const clearAllBtn = helpers.page.locator(
+      '[data-testid="clear-all-notifications"]'
+    );
     if (await clearAllBtn.isVisible()) {
       await clearAllBtn.click();
-      await expect(helpers.page.locator('[data-testid="notifications-cleared"]')).toBeVisible();
+      await expect(
+        helpers.page.locator('[data-testid="notifications-cleared"]')
+      ).toBeVisible();
     }
   });
 
@@ -247,37 +310,62 @@ test.describe('Admin Dashboard', () => {
     await helpers.navigateToPage('/admin/approvals');
 
     // Check approvals management interface
-    await expect(helpers.page.locator('[data-testid="approvals-management"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="approvals-management"]')
+    ).toBeVisible();
 
     // Verify approval statistics
-    await expect(helpers.page.locator('[data-testid="approval-stats"]')).toBeVisible();
-    await expect(helpers.page.locator('[data-testid="pending-count"]')).toBeVisible();
-    await expect(helpers.page.locator('[data-testid="approved-count"]')).toBeVisible();
-    await expect(helpers.page.locator('[data-testid="rejected-count"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="approval-stats"]')
+    ).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="pending-count"]')
+    ).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="approved-count"]')
+    ).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="rejected-count"]')
+    ).toBeVisible();
 
     // Test approval queue management
-    const approvalQueue = helpers.page.locator('[data-testid="approval-queue"]');
+    const approvalQueue = helpers.page.locator(
+      '[data-testid="approval-queue"]'
+    );
     await expect(approvalQueue).toBeVisible();
 
     // Test bulk approval actions
     const approvalItems = helpers.page.locator('[data-testid="approval-item"]');
-    if (await approvalItems.count() > 0) {
+    if ((await approvalItems.count()) > 0) {
       // Select multiple items
-      await approvalItems.nth(0).locator('[data-testid="select-approval"]').check();
-      await approvalItems.nth(1).locator('[data-testid="select-approval"]').check();
+      await approvalItems
+        .nth(0)
+        .locator('[data-testid="select-approval"]')
+        .check();
+      await approvalItems
+        .nth(1)
+        .locator('[data-testid="select-approval"]')
+        .check();
 
       // Test bulk approve
       await helpers.page.click('[data-testid="bulk-approve"]');
-      await helpers.page.fill('[data-testid="bulk-approval-comment"]', 'Bulk approved by admin');
+      await helpers.page.fill(
+        '[data-testid="bulk-approval-comment"]',
+        'Bulk approved by admin'
+      );
       await helpers.page.click('[data-testid="confirm-bulk-approve"]');
 
       // Verify bulk approval success
-      await expect(helpers.page.locator('[data-testid="bulk-approval-success"]')).toBeVisible();
+      await expect(
+        helpers.page.locator('[data-testid="bulk-approval-success"]')
+      ).toBeVisible();
     }
 
     // Test approval workflow settings
     await helpers.page.click('[data-testid="approval-settings"]');
-    await expect(helpers.page.locator('[data-testid="approval-settings-modal"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="approval-settings-modal"]')
+    ).toBeVisible();
 
     // Configure auto-approval settings
     await helpers.page.fill('[data-testid="auto-approval-threshold"]', '5');
@@ -285,14 +373,18 @@ test.describe('Admin Dashboard', () => {
 
     // Save settings
     await helpers.page.click('[data-testid="save-approval-settings"]');
-    await expect(helpers.page.locator('[data-testid="settings-saved"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="settings-saved"]')
+    ).toBeVisible();
   });
 
   test('should generate and view reports', async () => {
     await helpers.navigateToPage('/admin/reports');
 
     // Check reports interface
-    await expect(helpers.page.locator('[data-testid="reports-dashboard"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="reports-dashboard"]')
+    ).toBeVisible();
 
     // Test different report types
     const reportTypes = [
@@ -300,21 +392,29 @@ test.describe('Admin Dashboard', () => {
       'loan-statistics',
       'user-activity',
       'department-summary',
-      'maintenance-reports'
+      'maintenance-reports',
     ];
 
     for (const reportType of reportTypes) {
-      await helpers.page.selectOption('[data-testid="report-type"]', reportType);
+      await helpers.page.selectOption(
+        '[data-testid="report-type"]',
+        reportType
+      );
 
       // Set date range
-      await helpers.page.fill('[data-testid="report-start-date"]', '2024-01-01');
+      await helpers.page.fill(
+        '[data-testid="report-start-date"]',
+        '2024-01-01'
+      );
       await helpers.page.fill('[data-testid="report-end-date"]', '2024-12-31');
 
       // Generate report
       await helpers.page.click('[data-testid="generate-report"]');
 
       // Verify report generation
-      await expect(helpers.page.locator('[data-testid="report-generated"]')).toBeVisible();
+      await expect(
+        helpers.page.locator('[data-testid="report-generated"]')
+      ).toBeVisible();
 
       // Test report export
       const exportBtn = helpers.page.locator('[data-testid="export-report"]');
@@ -329,43 +429,55 @@ test.describe('Admin Dashboard', () => {
 
     // Test scheduled reports
     await helpers.page.click('[data-testid="schedule-report"]');
-    await expect(helpers.page.locator('[data-testid="schedule-modal"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="schedule-modal"]')
+    ).toBeVisible();
 
     // Configure scheduled report
-    await helpers.page.selectOption('[data-testid="schedule-frequency"]', 'weekly');
+    await helpers.page.selectOption(
+      '[data-testid="schedule-frequency"]',
+      'weekly'
+    );
     await helpers.page.selectOption('[data-testid="schedule-day"]', 'monday');
-    await helpers.page.fill('[data-testid="schedule-email"]', 'admin@motac.gov.my');
+    await helpers.page.fill(
+      '[data-testid="schedule-email"]',
+      'admin@motac.gov.my'
+    );
 
     // Save schedule
     await helpers.page.click('[data-testid="save-schedule"]');
-    await expect(helpers.page.locator('[data-testid="schedule-saved"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="schedule-saved"]')
+    ).toBeVisible();
   });
 
   test('should manage system settings and configuration', async () => {
     await helpers.navigateToPage('/admin/settings');
 
     // Check settings interface
-    await expect(helpers.page.locator('[data-testid="system-settings"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="system-settings"]')
+    ).toBeVisible();
 
     // Test general settings
     await helpers.page.click('[data-testid="general-settings-tab"]');
 
     await helpers.fillForm({
-      'system_name': 'ICTServe - MOTAC Equipment Management',
-      'admin_email': 'admin@motac.gov.my',
-      'support_phone': '03-88882000',
-      'max_loan_duration': '14',
-      'advance_booking_days': '30'
+      system_name: 'ICTServe - MOTAC Equipment Management',
+      admin_email: 'admin@motac.gov.my',
+      support_phone: '03-88882000',
+      max_loan_duration: '14',
+      advance_booking_days: '30',
     });
 
     // Test email settings
     await helpers.page.click('[data-testid="email-settings-tab"]');
 
     await helpers.fillForm({
-      'smtp_host': 'smtp.motac.gov.my',
-      'smtp_port': '587',
-      'smtp_username': 'noreply@motac.gov.my',
-      'from_name': 'ICTServe System'
+      smtp_host: 'smtp.motac.gov.my',
+      smtp_port: '587',
+      smtp_username: 'noreply@motac.gov.my',
+      from_name: 'ICTServe System',
     });
 
     // Test notification settings
@@ -379,17 +491,24 @@ test.describe('Admin Dashboard', () => {
     // Test backup settings
     await helpers.page.click('[data-testid="backup-settings-tab"]');
 
-    await helpers.page.selectOption('[data-testid="backup-frequency"]', 'daily');
+    await helpers.page.selectOption(
+      '[data-testid="backup-frequency"]',
+      'daily'
+    );
     await helpers.page.fill('[data-testid="backup-retention"]', '30');
     await helpers.page.check('[data-testid="enable-auto-backup"]');
 
     // Save all settings
     await helpers.page.click('[data-testid="save-settings"]');
-    await expect(helpers.page.locator('[data-testid="settings-saved"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="settings-saved"]')
+    ).toBeVisible();
 
     // Test manual backup
     await helpers.page.click('[data-testid="manual-backup"]');
-    await expect(helpers.page.locator('[data-testid="backup-started"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="backup-started"]')
+    ).toBeVisible();
   });
 
   test('should handle admin dashboard responsiveness and accessibility', async () => {
@@ -398,16 +517,19 @@ test.describe('Admin Dashboard', () => {
     // Test responsive design across different screen sizes
     await helpers.testResponsive([
       { width: 1920, height: 1080 }, // Large Desktop
-      { width: 1366, height: 768 },  // Standard Desktop
-      { width: 1024, height: 768 },  // Small Desktop/Large Tablet
-      { width: 768, height: 1024 }   // Tablet
+      { width: 1366, height: 768 }, // Standard Desktop
+      { width: 1024, height: 768 }, // Small Desktop/Large Tablet
+      { width: 768, height: 1024 }, // Tablet
     ]);
 
     // Test accessibility compliance
     await helpers.checkAccessibility();
 
     // Verify MYDS compliance across different viewports
-    for (const viewport of [{ width: 1920, height: 1080 }, { width: 1024, height: 768 }]) {
+    for (const viewport of [
+      { width: 1920, height: 1080 },
+      { width: 1024, height: 768 },
+    ]) {
       await helpers.page.setViewportSize(viewport);
       await helpers.page.waitForTimeout(500);
       await helpers.checkMYDSCompliance();
@@ -419,7 +541,9 @@ test.describe('Admin Dashboard', () => {
     await helpers.page.keyboard.press('Enter');
 
     // Verify focus management
-    const focusedElement = await helpers.page.evaluate(() => document.activeElement?.tagName);
+    const focusedElement = await helpers.page.evaluate(
+      () => document.activeElement?.tagName
+    );
     expect(['BUTTON', 'INPUT', 'SELECT', 'A', 'DIV']).toContain(focusedElement);
   });
 
@@ -460,7 +584,7 @@ test.describe('Admin Dashboard', () => {
 
     // Verify no JavaScript errors during interactions
     const jsErrors: string[] = [];
-    helpers.page.on('console', msg => {
+    helpers.page.on('console', (msg) => {
       if (msg.type() === 'error') {
         jsErrors.push(msg.text());
       }
@@ -469,7 +593,10 @@ test.describe('Admin Dashboard', () => {
     // Perform various admin operations
     await helpers.navigateToPage('/admin/dashboard');
     await helpers.page.click('[data-testid="refresh-dashboard"]');
-    await helpers.page.fill('[data-testid="analytics-start-date"]', '2024-01-01');
+    await helpers.page.fill(
+      '[data-testid="analytics-start-date"]',
+      '2024-01-01'
+    );
 
     // Check for JavaScript errors
     expect(jsErrors.length).toBe(0);
@@ -479,22 +606,35 @@ test.describe('Admin Dashboard', () => {
     await helpers.navigateToPage('/admin/audit');
 
     // Check audit trail interface
-    await expect(helpers.page.locator('[data-testid="audit-trail"]')).toBeVisible();
+    await expect(
+      helpers.page.locator('[data-testid="audit-trail"]')
+    ).toBeVisible();
 
     // Test audit log filtering
-    await helpers.page.selectOption('[data-testid="audit-action-filter"]', 'user_created');
+    await helpers.page.selectOption(
+      '[data-testid="audit-action-filter"]',
+      'user_created'
+    );
     await helpers.page.fill('[data-testid="audit-start-date"]', '2024-01-01');
     await helpers.page.fill('[data-testid="audit-end-date"]', '2024-12-31');
     await helpers.page.click('[data-testid="apply-audit-filter"]');
 
     // Verify audit entries
     const auditEntries = helpers.page.locator('[data-testid="audit-entry"]');
-    if (await auditEntries.count() > 0) {
+    if ((await auditEntries.count()) > 0) {
       const firstEntry = auditEntries.first();
-      await expect(firstEntry.locator('[data-testid="audit-timestamp"]')).toBeVisible();
-      await expect(firstEntry.locator('[data-testid="audit-user"]')).toBeVisible();
-      await expect(firstEntry.locator('[data-testid="audit-action"]')).toBeVisible();
-      await expect(firstEntry.locator('[data-testid="audit-details"]')).toBeVisible();
+      await expect(
+        firstEntry.locator('[data-testid="audit-timestamp"]')
+      ).toBeVisible();
+      await expect(
+        firstEntry.locator('[data-testid="audit-user"]')
+      ).toBeVisible();
+      await expect(
+        firstEntry.locator('[data-testid="audit-action"]')
+      ).toBeVisible();
+      await expect(
+        firstEntry.locator('[data-testid="audit-details"]')
+      ).toBeVisible();
     }
 
     // Test audit export

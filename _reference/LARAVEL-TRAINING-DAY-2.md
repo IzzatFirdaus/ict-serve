@@ -49,7 +49,6 @@ Laravel is a PHP framework for web development. It follows the MVC (Model-View-C
 1. Start local server: open Laragon and click "Start All".
 1. Create project: use the "Quick app" feature to create a new Laravel project.
 1. Configure environment (.env):
-
    - Open the `.env` file in your project root.
    - Uncomment the `DB_*` variables.
    - Set `DB_CONNECTION` to `mysql`.

@@ -1,6 +1,7 @@
 ---
 applyTo: '**'
 ---
+
 # Memory Instructions
 
 This file contains important context and instructions for Assistant Agents when working with this Laravel project.

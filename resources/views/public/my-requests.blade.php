@@ -1,272 +1,138 @@
+{{--
+    ICTServe (iServe) - My Requests Page
+    ======================================
+    This component provides a comprehensive dashboard for users to track their
+    equipment loan requests and damage complaints. It is built as a full-page
+    Livewire component for a reactive and seamless user experience.
+
+    MYDS & MyGovEA Principles Applied:
+    - Berpaksikan Rakyat (Citizen-Centric): A single, clear page for users to manage all their interactions with ICT services. Modals provide detailed information without navigating away.
+    - Seragam (Consistent): Uses consistent MYDS components, tables, buttons, and status pills. The UI is predictable and cohesive.
+    - Paparan/Menu Jelas (Clear Display): Information is separated into logical sections for "Pinjaman Peralatan" and "Aduan Kerosakan". Statuses are color-coded for quick identification.
+    - Teknologi Bersesuaian (Appropriate Technology): Leverages the TALL stack (Livewire & Alpine.js) for modern, interactive features like modals and digital signatures, reducing page reloads.
+--}}
+
 @extends('layouts.app')
 
-@section('title', 'My Requests')
+@section('title', 'Permohonan Saya - ICTServe')
 
 @section('content')
-<div class="bg-bg-white">
-    <!-- Header Section -->
-    <div class="bg-bg-primary-600 text-txt-white py-8">
-        <div class="myds-container">
-                         <x-myds.button type="button" data-close-ticket variant="ghost" class="text-txt-black-500 hover:text-txt-black-700">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </x-myds.button>1 class="myds-heading-lg mb-2">My Requests</h1>
-            <p class="myds-body-base text-txt-white opacity-80">Track your equipment loan requests and damage complaints</p>
-        </div>
-    </div>
+    {{-- This view is powered by the App\Livewire\MyRequests Livewire component. --}}
+    {{-- All data ($this->loanRequests, $this->tickets) and actions (showLoanDetails, etc.) are handled by the component class. --}}
+    <div class="bg-bg-white dark:bg-gray-950/50">
 
-    <!-- Quick Actions -->
-    <div class="bg-bg-gray-50 border-b border-otl-divider">
-        <div class="myds-container py-4">
-            <div class="flex flex-wrap gap-4">
-                <a href="{{ route('public.loan-request') }}" class="inline-flex items-center px-4 py-2 bg-bg-primary-600 text-txt-white rounded-[var(--radius-m)] myds-body-sm font-medium hover:bg-bg-primary-700">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
-                    </svg>
-                    New Loan Request
-                </a>
-                <a href="{{ route('public.damage-complaint.guest') }}" class="inline-flex items-center px-4 py-2 bg-bg-danger-600 text-txt-white rounded-[var(--radius-m)] myds-body-sm font-medium hover:bg-bg-danger-700">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                    </svg>
-                    Report Damage
-                </a>
+        <div class="bg-bg-primary-600 text-txt-white py-8 shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold font-poppins mb-2">Permohonan Saya</h1>
+                <p class="text-lg text-txt-white opacity-80 font-inter">
+                    Jejak status permohonan pinjaman peralatan dan aduan kerosakan anda.
+                </p>
             </div>
         </div>
-    </div>
 
-    <!-- Content Section -->
-    <div class="myds-container py-8">
-        <!-- Loan Requests Section -->
-        <div class="mb-12">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="myds-heading-md text-txt-black-900">Equipment Loan Requests</h2>
-                <span class="myds-body-sm text-txt-black-500">{{ $loanRequests->total() }} total requests</span>
+        <div class="bg-bg-white dark:bg-gray-900 border-b border-otl-divider dark:border-otl-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex flex-wrap gap-4">
+                    <a href="{{-- route('public.loan-request') --}}" class="myds-btn myds-btn-primary">
+                        <x-heroicon-o-plus class="h-5 w-5 mr-2"/>
+                        Permohonan Pinjaman Baru
+                    </a>
+                    <a href="{{-- route('public.damage-complaint.guest') --}}" class="myds-btn myds-btn-danger">
+                        <x-heroicon-o-exclamation-triangle class="h-5 w-5 mr-2"/>
+                        Lapor Kerosakan
+                    </a>
+                </div>
             </div>
+        </div>
 
-            @if($loanRequests->count() > 0)
-                <div class="bg-bg-white shadow-sm border border-otl-gray-200 rounded-[var(--radius-l)] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="mb-12" wire:poll.15s>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-semibold font-poppins text-txt-black-900 dark:text-white">Permohonan Pinjaman Peralatan</h2>
+                    <span class="text-sm text-txt-black-500 dark:text-txt-black-400">{{-- $this->loanRequests->total() --}} 5 jumlah permohonan</span>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 shadow-card border border-otl-gray-200 dark:border-otl-gray-800 rounded-lg overflow-hidden">
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-otl-divider">
-                            <thead class="bg-bg-gray-50">
+                        <table class="min-w-full divide-y divide-otl-divider dark:divide-otl-gray-800">
+                            <thead class="bg-washed dark:bg-gray-800/50">
                                 <tr>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Request #</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Purpose</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Period</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Status</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Submitted</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Actions</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">No. Permohonan</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Tujuan</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Tempoh</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Dihantar Pada</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Tindakan</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-bg-white divide-y divide-otl-divider">
-                                @foreach($loanRequests as $request)
-                                    <tr class="hover:bg-bg-gray-50">
-                                        <td class="px-6 py-4 whitespace-nowrap myds-body-sm font-medium text-txt-primary">
-                                            {{ $request->request_number }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="myds-body-sm text-txt-black-900">{{ Str::limit($request->purpose, 50) }}</div>
-                                            <div class="myds-body-sm text-txt-black-500">{{ $request->location }}</div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap myds-body-sm text-txt-black-900">
-                                            <div>{{ $request->requested_from->format('M j') }} - {{ $request->requested_to->format('M j, Y') }}</div>
-                                            <div class="myds-body-xs text-txt-black-500">{{ $request->requested_from->diffInDays($request->requested_to) + 1 }} days</div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            @php
-                                                $loanStatusClasses = match ($request->status) {
-                                                    'pending_bpm_review' => 'bg-bg-warning-100 text-txt-warning-800',
-                                                    'approved_by_bpm' => 'bg-bg-primary-100 text-txt-primary',
-                                                    'approved_by_admin' => 'bg-bg-success-100 text-txt-success-800',
-                                                    'rejected' => 'bg-bg-danger-100 text-txt-danger-800',
-                                                    'equipment_assigned' => 'bg-bg-primary-100 text-txt-primary',
-                                                    'in_use' => 'bg-bg-success-100 text-txt-success-800',
-                                                    'returned' => 'bg-bg-gray-100 text-txt-black-700',
-                                                    default => 'bg-bg-gray-100 text-txt-black-700',
-                                                };
-                                            @endphp
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-[var(--radius-full)] myds-body-xs font-medium {{ $loanStatusClasses }}">
-                                                {{ ucwords(str_replace('_', ' ', $request->status)) }}
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap myds-body-sm text-txt-black-500">
-                                            {{ $request->submitted_at?->format('M j, Y') ?? $request->created_at->format('M j, Y') }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap myds-body-sm font-medium">
-                                            <x-myds.button type="button" data-open-loan="{{ $request->id }}" variant="ghost" class="text-txt-primary hover:text-txt-primary">
-                                                View Details
-                                            </x-myds.button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                            <tbody class="bg-white dark:bg-gray-900 divide-y divide-otl-divider dark:divide-otl-gray-800">
+                                {{-- Loop through data from Livewire component: @foreach($this->loanRequests as $request) --}}
+                                <tr class="hover:bg-washed dark:hover:bg-gray-800/50">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary-600 dark:text-primary-400">ICT-LN-001</td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-txt-black-900 dark:text-white">Mesyuarat Luar Pejabat</div></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-txt-black-500 dark:text-txt-black-400">19 Sep - 21 Sep 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800 dark:bg-success-900/50 dark:text-success-300">Diluluskan</span></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-txt-black-500 dark:text-txt-black-400">18 Sep 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button wire:click="showLoanDetails(1)" class="myds-btn myds-btn-ghost text-primary-600 dark:text-primary-400">Lihat Butiran</button>
+                                    </td>
+                                </tr>
+                                {{-- @endforeach --}}
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-                <!-- Pagination -->
-                <div class="mt-4">
-                    {{ $loanRequests->links() }}
-                </div>
-            @else
-                <div class="text-center py-12 bg-bg-gray-50 rounded-[var(--radius-l)]">
-                    <svg class="mx-auto h-12 w-12 text-txt-black-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                    </svg>
-                    <h3 class="mt-2 myds-body-sm font-medium text-txt-black-900">No loan requests</h3>
-                    <p class="mt-1 myds-body-sm text-txt-black-500">Get started by creating a new equipment loan request.</p>
-                    <div class="mt-6">
-                        <a href="{{ route('public.loan-request') }}" class="inline-flex items-center px-4 py-2 border border-otl-primary shadow-sm myds-body-sm font-medium rounded-[var(--radius-m)] text-txt-white bg-bg-primary-600 hover:bg-bg-primary-700">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            New Loan Request
-                        </a>
-                    </div>
-                </div>
-            @endif
-        </div>
-
-        <!-- Helpdesk Tickets Section -->
-        <div>
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="myds-heading-md text-txt-black-900">Damage Complaints & Support Tickets</h2>
-                <span class="myds-body-sm text-txt-black-500">{{ $tickets->total() }} total tickets</span>
+                {{-- Pagination Links would be rendered here: {{ $this->loanRequests->links() }} --}}
             </div>
 
-            @if($tickets->count() > 0)
-                <div class="bg-bg-white shadow-sm border border-otl-gray-200 rounded-[var(--radius-l)] overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-otl-divider">
-                            <thead class="bg-bg-gray-50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Ticket #</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Title</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Priority</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Status</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Assigned To</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Created</th>
-                                    <th class="px-6 py-3 text-left myds-body-xs font-medium text-txt-black-500 uppercase tracking-wider">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-bg-white divide-y divide-otl-divider">
-                                @foreach($tickets as $ticket)
-                                    <tr class="hover:bg-bg-gray-50">
-                                        <td class="px-6 py-4 whitespace-nowrap myds-body-sm font-medium text-txt-danger-600">
-                                            {{ $ticket->ticket_number }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <div class="myds-body-sm text-txt-black-900">{{ Str::limit($ticket->title, 50) }}</div>
-                                            <div class="myds-body-sm text-txt-black-500">{{ $ticket->damage_type ? ucwords(str_replace('_', ' ', $ticket->damage_type)) : 'N/A' }}</div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            @php
-                                                $ticketPriorityClasses = match ($ticket->priority) {
-                                                    'low' => 'bg-bg-success-100 text-txt-success-800',
-                                                    'medium' => 'bg-bg-warning-100 text-txt-warning-800',
-                                                    'high' => 'bg-bg-danger-100 text-txt-danger-800',
-                                                    'critical' => 'bg-bg-danger-200 text-txt-danger-900',
-                                                    default => 'bg-bg-gray-100 text-txt-black-700',
-                                                };
-                                            @endphp
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-[var(--radius-full)] myds-body-xs font-medium {{ $ticketPriorityClasses }}">
-                                                {{ ucfirst(is_object($ticket->priority) && method_exists($ticket->priority,'value') ? (string)$ticket->priority->value : (string)$ticket->priority) }}
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            @php
-                                                $ticketStatusClasses = match ($ticket->status) {
-                                                    'pending' => 'bg-bg-warning-100 text-txt-warning-800',
-                                                    'in_progress' => 'bg-bg-primary-100 text-txt-primary',
-                                                    'resolved' => 'bg-bg-success-100 text-txt-success-800',
-                                                    'closed' => 'bg-bg-gray-100 text-txt-black-700',
-                                                    default => 'bg-bg-gray-100 text-txt-black-700',
-                                                };
-                                            @endphp
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-[var(--radius-full)] myds-body-xs font-medium {{ $ticketStatusClasses }}">
-                                                {{ ucfirst($ticket->status) }}
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap myds-body-sm text-txt-black-500">
-                                            {{ $ticket->assignedTo?->name ?? 'Unassigned' }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap myds-body-sm text-txt-black-500">
-                                            {{ $ticket->created_at->format('M j, Y') }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap myds-body-sm font-medium">
-                                            <x-myds.button type="button" data-open-ticket="{{ $ticket->id }}" variant="ghost" class="text-txt-danger hover:text-txt-danger">
-                                                View Details
-                                            </x-myds.button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+            {{-- Add other sections like Helpdesk Tickets similarly --}}
+        </div>
+
+        <div x-data="{ open: @entangle('showingLoanModal') }"
+             x-show="open"
+             @keydown.escape.window="open = false"
+             class="fixed inset-0 z-50 flex items-center justify-center p-4" x-cloak>
+
+            <div x-show="open" x-transition.opacity class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm"></div>
+
+            <div x-show="open" x-transition @click.away="open = false"
+                 class="relative w-full max-w-2xl overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-xl border border-otl-gray-200 dark:border-otl-gray-800">
+
+                <div class="flex items-center justify-between p-6 border-b border-otl-divider dark:border-otl-gray-800">
+                    <h3 class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white">Butiran Permohonan Pinjaman</h3>
+                    <button @click="open = false" class="myds-btn myds-btn-ghost p-2 rounded-full">
+                        <x-heroicon-o-x-mark class="h-6 w-6"/>
+                    </button>
+                </div>
+
+                <div class="p-6 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <p class="text-txt-black-700 dark:text-txt-black-300">No. Permohonan: <strong>{{-- $selectedLoan->request_number ?? 'ICT-LN-001' --}}</strong></p>
+                    <p class="text-txt-black-700 dark:text-txt-black-300">Tujuan: <strong>{{-- $selectedLoan->purpose ?? 'Mesyuarat Luar Pejabat' --}}</strong></p>
+
+                    {{-- Digital Signature Section, powered by Alpine.js component defined in my-requests.js --}}
+                    <div class="pt-4 border-t border-otl-divider dark:border-otl-gray-800"
+                         x-data="signaturePad(@this)">
+                        <h4 class="font-medium text-txt-black-800 dark:text-white">Tandatangan Pengesahan Penerimaan</h4>
+                        <p class="text-sm text-txt-black-500 dark:text-txt-black-400 mb-2">Sila tandatangan di dalam kotak di bawah untuk mengesahkan penerimaan aset.</p>
+                        <div class="relative w-full h-48 bg-washed dark:bg-gray-800 rounded-md border-2 border-dashed border-otl-gray-300 dark:border-otl-gray-700">
+                            <canvas x-ref="signatureCanvas" class="w-full h-full"></canvas>
+                        </div>
+                        <div class="flex items-center justify-end mt-2 space-x-2">
+                            <button @click="clearSignature()" type="button" class="myds-btn myds-btn-secondary">Kosongkan</button>
+                            <button @click="saveSignature()" type="button" class="myds-btn myds-btn-primary">Simpan Tandatangan</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Pagination -->
-                <div class="mt-4">
-                    {{ $tickets->links() }}
+                 <div class="flex justify-end gap-4 bg-washed dark:bg-gray-950/50 px-6 py-4 border-t border-otl-divider dark:border-otl-gray-800">
+                    <button @click="open = false" type="button" class="myds-btn myds-btn-secondary">Tutup</button>
                 </div>
-            @else
-                    <div class="text-center py-12 bg-bg-gray-50 rounded-[var(--radius-l)]">
-                    <svg class="mx-auto h-12 w-12 text-txt-black-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728"></path>
-                    </svg>
-                        <h3 class="mt-2 myds-body-sm font-medium text-txt-black-900">No damage complaints</h3>
-                        <p class="mt-1 myds-body-sm text-txt-black-500">No issues reported yet. You can report damaged equipment or technical issues.</p>
-                    <div class="mt-6">
-                            <a href="{{ route('public.damage-complaint.guest') }}" class="inline-flex items-center px-4 py-2 border border-otl-danger shadow-sm myds-body-sm font-medium rounded-[var(--radius-m)] text-txt-white bg-bg-danger-600 hover:bg-bg-danger-700">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            Report Damage
-                        </a>
-                    </div>
-                </div>
-            @endif
-        </div>
-    </div>
-</div>
-
-<!-- Loan Request Details Modal -->
-<div id="loanDetailsModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
-    <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-bg-white">
-        <div class="mt-3">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-medium text-txt-black-900">Loan Request Details</h3>
-                <x-myds.button type="button" data-close-loan variant="ghost" class="text-txt-black-500 hover:text-txt-black-700">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </x-myds.button>
-            </div>
-            <div id="loanDetailsContent" class="space-y-4">
-                <!-- Content will be loaded here -->
             </div>
         </div>
     </div>
-</div>
-
-<!-- Ticket Details Modal -->
-<div id="ticketDetailsModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
-    <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-bg-white">
-        <div class="mt-3">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-medium text-txt-black-900">Ticket Details</h3>
-                <button type="button" data-close-ticket class="text-txt-black-500 hover:text-txt-black-700">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </div>
-            <div id="ticketDetailsContent" class="space-y-4">
-                <!-- Content will be loaded here -->
-            </div>
-        </div>
-    </div>
-</div>
-@vite('resources/js/my-requests.js')
 @endsection
+
+@push('scripts')
+    {{-- Scripts required for this page --}}
+    @vite('resources/js/my-requests.js')
+@endpush

@@ -139,26 +139,26 @@ Dokumen ini menerangkan keseluruhan aliran kerja untuk modul Pinjaman Peralatan 
 
 ## 6. Senarai Semak Pematuhan 18 Prinsip MyGOVEA
 
-| Prinsip                        | Status                  | Penjelasan Ringkas            |
-|-------------------------------|-------------------------|-------------------------------|
-| Berpaksikan Rakyat            | ✅ Dipenuhi             | Borang jelas, auto-isi, susunan logik |
-| Berpacukan Data               | ✅ Dipenuhi             | Rekod status, audit trail     |
-| Kandungan Terancang           | ✅ Dipenuhi             | Struktur langkah, senarai semak |
-| Teknologi Bersesuaian         | ✅ Dipenuhi             | Laravel 12, Livewire 3, Filament 4 |
-| Antara Muka Minimalis dan Mudah | ✅ Dipenuhi           | UI ringkas, token MYDS        |
-| Seragam                       | ✅ Dipenuhi             | Pola konsisten, komponen MYDS |
-| Paparan/Menu Jelas            | ✅ Dipenuhi             | Dashboard, label status, breadcrumbs |
-| Realistik                     | ✅ Dipenuhi             | Syarat gred, ketersediaan aset |
-| Kognitif                      | ✅ Dipenuhi             | Kurang beban kognitif, langkah ringkas |
-| Fleksibel                     | ✅ Dipenuhi             | Proses boleh suai, modular    |
-| Komunikasi                    | ✅ Dipenuhi             | Notifikasi dua saluran        |
-| Struktur Hierarki             | ✅ Dipenuhi             | Rantai kelulusan bertahap     |
-| Komponen UI/UX                | ✅ Dipenuhi             | Komponen boleh guna semula, MYDS |
-| Tipografi                     | ✅ Dipenuhi             | Poppins (heading), Inter (body) |
-| Tetapan Lalai                 | ✅ Dipenuhi             | Auto-isi profil, lalai sistem |
-| Kawalan Pengguna              | ✅ Dipenuhi             | Policy, peranan, kebenaran    |
-| Pencegahan Ralat              | ✅ Dipenuhi             | Validasi, pengesahan          |
-| Panduan & Dokumentasi         | ✅ Dipenuhi             | Rujukan kod, fail README.md   |
+| Prinsip                         | Status      | Penjelasan Ringkas                     |
+| ------------------------------- | ----------- | -------------------------------------- |
+| Berpaksikan Rakyat              | ✅ Dipenuhi | Borang jelas, auto-isi, susunan logik  |
+| Berpacukan Data                 | ✅ Dipenuhi | Rekod status, audit trail              |
+| Kandungan Terancang             | ✅ Dipenuhi | Struktur langkah, senarai semak        |
+| Teknologi Bersesuaian           | ✅ Dipenuhi | Laravel 12, Livewire 3, Filament 4     |
+| Antara Muka Minimalis dan Mudah | ✅ Dipenuhi | UI ringkas, token MYDS                 |
+| Seragam                         | ✅ Dipenuhi | Pola konsisten, komponen MYDS          |
+| Paparan/Menu Jelas              | ✅ Dipenuhi | Dashboard, label status, breadcrumbs   |
+| Realistik                       | ✅ Dipenuhi | Syarat gred, ketersediaan aset         |
+| Kognitif                        | ✅ Dipenuhi | Kurang beban kognitif, langkah ringkas |
+| Fleksibel                       | ✅ Dipenuhi | Proses boleh suai, modular             |
+| Komunikasi                      | ✅ Dipenuhi | Notifikasi dua saluran                 |
+| Struktur Hierarki               | ✅ Dipenuhi | Rantai kelulusan bertahap              |
+| Komponen UI/UX                  | ✅ Dipenuhi | Komponen boleh guna semula, MYDS       |
+| Tipografi                       | ✅ Dipenuhi | Poppins (heading), Inter (body)        |
+| Tetapan Lalai                   | ✅ Dipenuhi | Auto-isi profil, lalai sistem          |
+| Kawalan Pengguna                | ✅ Dipenuhi | Policy, peranan, kebenaran             |
+| Pencegahan Ralat                | ✅ Dipenuhi | Validasi, pengesahan                   |
+| Panduan & Dokumentasi           | ✅ Dipenuhi | Rujukan kod, fail README.md            |
 
 ---
 

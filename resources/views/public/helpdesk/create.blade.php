@@ -7,10 +7,10 @@
     <!-- Header -->
     <div class="text-center mb-8">
         <h1 class="text-3xl font-bold text-primary-700 mb-2">
-            {{ __('Report ICT Issue') }}
+              {{ __('help_panel.title') }}
         </h1>
         <p class="text-gray-600 max-w-2xl mx-auto">
-            {{ __('Report technical issues, request ICT support, or get help with equipment. No login required - you will receive email updates about your ticket status.') }}
+              {{ __('help_panel.processing_time') }}
         </p>
     </div>
 
@@ -366,7 +366,6 @@
 </div>
 
 @push('scripts')
-<script src="{{ asset('js/public/helpdesk-create.js') }}" defer></script>
-</script>
+@vite('resources/js/public/helpdesk-create.js')
 @endpush
 @endsection

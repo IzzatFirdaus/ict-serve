@@ -1,0 +1,59 @@
+{
+  "buttons": {
+    "remove": "Remove",
+    "add_equipment": "Add equipment",
+    "submit_complaint": "Submit complaint"
+  },
+  "help_panel": {
+    "title": "Help information",
+    "processing_time": "Complaints are processed within 3 working days.",
+    "complaint_status": "You will receive feedback via the registered email.",
+    "emergency_contact": "For critical issues, contact BPM at 03-XXXXXXX.",
+    "processing_label": "Processing time:",
+    "status_label": "Complaint status:",
+    "emergency_label": "ICT emergency:"
+  },
+  "literals": {
+    "equipment": "Equipment"
+  },
+  "forms": {
+    "sections": {
+      "equipment_info": "Equipment information",
+      "equipment_list": "List of required equipment",
+      "equipment_attachments": "Equipment & Attachments",
+      "requested_equipment": "Requested equipment"
+    },
+    "labels": {
+      "select_equipment": "Select equipment",
+      "equipment": "Equipment",
+      "equipment_item": "Equipment item",
+      "related_equipment": "Related equipment",
+      "related_equipment_optional": "Related equipment (optional)",
+      "damaged_equipment": "Damaged equipment"
+    },
+    "placeholders": {
+      "select_equipment": "-- Select equipment --",
+      "search_equipment": "Search equipment (name, tag, brand, model)...",
+      "select_equipment_item": "Select equipment item",
+      "select_related_equipment": "Select related equipment (if any)",
+      "no_specific_equipment": "No specific equipment",
+      "purpose_of_use": "Specify the purpose of equipment usage...",
+      "select_equipment_heading": "Select Equipment"
+    },
+    "messages": {
+      "no_equipment_matches": "No equipment matches your search :search",
+      "equipment_list_placeholder": "The list of equipment will be displayed here.",
+      "manage_loan_applications": "View and manage your equipment loan applications"
+    },
+    "titles": {
+      "loan_request": "Equipment Loan Request"
+    }
+  },
+  "navigation": {
+    "equipment_catalog": "Equipment Catalog",
+    "loan_applications": "Loan applications"
+  },
+  "status": {
+    "equipment_returned": "Equipment returned"
+  }
+}

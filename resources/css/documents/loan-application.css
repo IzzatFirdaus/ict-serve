@@ -1,0 +1,54 @@
+/* MYDS-aligned colour tokens (light mode). Values taken from MYDS-Colour-Reference.md (primary, gray scale, semantic tokens). These are used in the PDF/web export to keep consistent branding. */
+:root {
+  --color-primary-600: #2563eb; /* MYDS Blue */
+  --color-primary-500: #3a75f6;
+  --color-gray-900: #18181b;
+  --color-gray-800: #27272a;
+  --color-gray-700: #3f3f46;
+  --color-gray-600: #52525b;
+  --color-gray-500: #71717a;
+  --color-gray-400: #a1a1aa;
+  --color-gray-300: #d4d4d8;
+  --color-gray-200: #e4e4e7;
+  --color-gray-100: #f4f4f5;
+  --color-gray-50: #fafafa;
+  --color-black: #000;
+  --color-white: #fff;
+
+  /* Spacing / rhythm */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --max-width: 920px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--color-gray-800);
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 24px;
+}
+
+.doc {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 4%);
+  padding: 24px;
+}

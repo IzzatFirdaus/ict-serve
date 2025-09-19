@@ -1,0 +1,47 @@
+/* Styles extracted from resources/views/app.blade.php <noscript> block and loading indicator
+   Follow MYDS tokens where possible and maintain accessibility.
+*/
+
+.myds-noscript-container {
+  text-align: center;
+  padding: 48px 16px;
+  font-family: Inter, Arial, sans-serif;
+  background: #FEE2E2; /* danger-50 */
+}
+
+.myds-noscript-title {
+  color: #2563EB; /* primary-600 */
+  font-family: Poppins, Arial, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.myds-noscript-subtitle {
+  font-size: 1.125rem;
+  color: #18181B; /* txt-black-900 */
+  margin-bottom: 20px;
+}
+
+.myds-noscript-strong {
+  color: #DC2626; /* danger-600 */
+  margin-bottom: 20px;
+}
+
+.myds-noscript-contact a {
+  color: #2563EB; /* primary-600 */
+  text-decoration: underline;
+}
+
+.myds-noscript-contact {
+  margin-top: 20px;
+}
+
+/* Loading indicator visibility helper */
+#loading-indicator[hidden],
+#loading-indicator[style*="display:none"] {
+  display: none !important;
+}
+
+#loading-indicator.show {
+  display: flex !important;
+}
