@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHelpdeskTicketRequest;
 use App\Models\HelpdeskTicket;
@@ -121,8 +120,8 @@ class HelpdeskTicketController extends Controller
      */
     public function show(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-    // Check authorization
-    if (! Auth::user()?->hasRole(['ict_admin', 'super_admin']) && $ticket->user->id !== Auth::id()) {
+        // Check authorization
+        if (! Auth::user()?->hasRole(['ict_admin', 'super_admin']) && $ticket->user->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -146,8 +145,8 @@ class HelpdeskTicketController extends Controller
      */
     public function update(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-    // Only admins or assigned users can update tickets
-    if (! Auth::user()?->hasRole(['ict_admin', 'super_admin']) && $ticket->assignedToUser?->id !== Auth::id()) {
+        // Only admins or assigned users can update tickets
+        if (! Auth::user()?->hasRole(['ict_admin', 'super_admin']) && $ticket->assignedToUser?->id !== Auth::id()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -227,8 +226,8 @@ class HelpdeskTicketController extends Controller
      */
     public function destroy(Request $request, HelpdeskTicket $ticket): JsonResponse
     {
-    // Check authorization - only ticket creator or admin can delete
-    if ($ticket->user_id !== Auth::id() && ! Auth::user()?->hasRole(['ict_admin', 'super_admin'])) {
+        // Check authorization - only ticket creator or admin can delete
+        if ($ticket->user_id !== Auth::id() && ! Auth::user()?->hasRole(['ict_admin', 'super_admin'])) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan untuk memadam tiket ini.',

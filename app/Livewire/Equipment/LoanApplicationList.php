@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Equipment;
 
-use App\Models\LoanRequest;
 use App\Enums\LoanRequestStatus;
 use App\Enums\TicketPriority;
+use App\Models\LoanRequest;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,9 +13,13 @@ class LoanApplicationList extends Component
     use WithPagination;
 
     public $search = '';
+
     public $filterStatus = '';
+
     public $filterPriority = '';
+
     public $sortField = 'created_at';
+
     public $sortDirection = 'desc';
 
     protected $queryString = [
@@ -67,11 +71,11 @@ class LoanApplicationList extends Component
         // Apply search filter
         if ($this->search) {
             $query->where(function ($q) {
-                $q->where('loan_number', 'like', '%' . $this->search . '%')
-                  ->orWhere('purpose', 'like', '%' . $this->search . '%')
-                  ->orWhereHas('user', function ($userQuery) {
-                      $userQuery->where('name', 'like', '%' . $this->search . '%');
-                  });
+                $q->where('loan_number', 'like', '%'.$this->search.'%')
+                    ->orWhere('purpose', 'like', '%'.$this->search.'%')
+                    ->orWhereHas('user', function ($userQuery) {
+                        $userQuery->where('name', 'like', '%'.$this->search.'%');
+                    });
             });
         }
 
@@ -96,7 +100,7 @@ class LoanApplicationList extends Component
             'pending' => LoanRequest::whereIn('status', [
                 LoanRequestStatus::PENDING_BPM_REVIEW,
                 LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL,
-                LoanRequestStatus::PENDING_ICT_APPROVAL
+                LoanRequestStatus::PENDING_ICT_APPROVAL,
             ])->count(),
             'approved' => LoanRequest::where('status', LoanRequestStatus::APPROVED)->count(),
             'rejected' => LoanRequest::where('status', LoanRequestStatus::REJECTED)->count(),

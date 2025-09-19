@@ -44,7 +44,8 @@ class LoanRequestSubmittedNotification extends Notification implements ShouldQue
     {
         $from = $this->loanRequest->requested_from;
         $to = $this->loanRequest->requested_to;
-        $period = ($from ? $from->format('M j, Y') : 'N/A') . ' to ' . ($to ? $to->format('M j, Y') : 'N/A');
+        $period = ($from ? $from->format('M j, Y') : 'N/A').' to '.($to ? $to->format('M j, Y') : 'N/A');
+
         return (new MailMessage)
             ->subject("Loan Request Submitted - {$this->loanRequest->request_number}")
             ->greeting("Hello {$notifiable->name},")

@@ -148,7 +148,6 @@ class LoanRequest extends Model
         return $this->hasMany(LoanItem::class);
     }
 
-
     /**
      * Scope a query to only include pending requests.
      * "Pending" is defined as any status in the approval workflow.
@@ -220,7 +219,7 @@ class LoanRequest extends Model
      */
     public function canBeCancelled(): bool
     {
-        return !in_array($this->status, [
+        return ! in_array($this->status, [
             LoanRequestStatus::RETURNED->value,
             LoanRequestStatus::CANCELLED->value,
             LoanRequestStatus::REJECTED->value,

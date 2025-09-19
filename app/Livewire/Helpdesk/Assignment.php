@@ -261,6 +261,7 @@ class Assignment extends Component
 
         if (! $user->hasRole(['technician', 'ict_admin', 'supervisor'])) {
             session()->flash('error', 'Tiada kebenaran / No permission');
+
             return;
         }
 

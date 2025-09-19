@@ -34,9 +34,10 @@ class PublicHelpdeskController extends Controller
             ->get()
             ->groupBy('category.name');
 
-    /** @var view-string $view */
-    $view = 'public.helpdesk.create';
-    return view($view, compact('categories', 'equipment'));
+        /** @var view-string $view */
+        $view = 'public.helpdesk.create';
+
+        return view($view, compact('categories', 'equipment'));
     }
 
     public function store(Request $request)
@@ -177,9 +178,10 @@ class PublicHelpdeskController extends Controller
             return back()->with('error', __('Ticket number not found. Please check and try again.'));
         }
 
-    /** @var view-string $view */
-    $view = 'public.track-result';
-    return view($view, compact('ticket'));
+        /** @var view-string $view */
+        $view = 'public.track-result';
+
+        return view($view, compact('ticket'));
     }
 
     private function calculateUrgency(string $priority, int $categoryId): string
@@ -200,7 +202,7 @@ class PublicHelpdeskController extends Controller
     private function calculateDueDate(string $priority, int $categoryId): \Carbon\Carbon
     {
         $category = TicketCategory::find($categoryId);
-    $slaHours = $category?->default_sla_hours ?? 24;
+        $slaHours = $category?->default_sla_hours ?? 24;
 
         // Adjust SLA based on priority
         $priorityMultiplier = match ($priority) {

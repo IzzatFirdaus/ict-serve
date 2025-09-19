@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLoanRequestRequest;
 use App\Models\LoanRequest;
@@ -104,8 +103,8 @@ class LoanRequestController extends Controller
      */
     public function show(Request $request, LoanRequest $loanRequest): JsonResponse
     {
-    // Check authorization
-    if (! $request->user()?->hasRole(['ict_admin', 'super_admin']) && $loanRequest->user->id !== $request->user()->id) {
+        // Check authorization
+        if (! $request->user()?->hasRole(['ict_admin', 'super_admin']) && $loanRequest->user->id !== $request->user()->id) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',
@@ -127,8 +126,8 @@ class LoanRequestController extends Controller
      */
     public function update(Request $request, LoanRequest $loanRequest): JsonResponse
     {
-    // Only admins can update loan request status
-    if (! $request->user()?->hasRole(['ict_admin', 'super_admin'])) {
+        // Only admins can update loan request status
+        if (! $request->user()?->hasRole(['ict_admin', 'super_admin'])) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan.',

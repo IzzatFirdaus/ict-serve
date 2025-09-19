@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @property-read array $statusProgress
  */
@@ -22,6 +23,7 @@ class TicketDetail extends Component
 
     /**
      * @var array|null
+     *
      * @internal Only for static analysis. Real value is provided by computed property accessor.
      */
     protected $statusProgress = null;

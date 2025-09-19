@@ -76,6 +76,7 @@ class LoanApplicationForm extends Component
 
     // Test compatibility properties for tests
     public string $applicantDivision = '';
+
     public string $programDescription = '';
 
     // Data Collections
@@ -383,6 +384,7 @@ class LoanApplicationForm extends Component
         if ($this->programDescription) {
             $this->purpose = $this->programDescription;
         }
+
         return $this->submit();
     }
 

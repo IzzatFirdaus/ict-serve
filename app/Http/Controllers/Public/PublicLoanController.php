@@ -29,9 +29,10 @@ class PublicLoanController extends Controller
             ->get()
             ->groupBy('category.name');
 
-    /** @var view-string $view */
-    $view = 'public.loan.create';
-    return view($view, compact('availableEquipment'));
+        /** @var view-string $view */
+        $view = 'public.loan.create';
+
+        return view($view, compact('availableEquipment'));
     }
 
     public function store(Request $request)
@@ -146,16 +147,18 @@ class PublicLoanController extends Controller
             return redirect()->route('public.loan.create');
         }
 
-    /** @var view-string $view */
-    $view = 'public.loan.success';
-    return view($view);
+        /** @var view-string $view */
+        $view = 'public.loan.success';
+
+        return view($view);
     }
 
     public function track()
     {
-    /** @var view-string $view */
-    $view = 'public.track';
-    return view($view);
+        /** @var view-string $view */
+        $view = 'public.track';
+
+        return view($view);
     }
 
     public function trackStatus(Request $request)
@@ -172,9 +175,10 @@ class PublicLoanController extends Controller
             return back()->with('error', __('Reference number not found. Please check and try again.'));
         }
 
-    /** @var view-string $view */
-    $view = 'public.track-result';
-    return view($view, compact('loanRequest'));
+        /** @var view-string $view */
+        $view = 'public.track-result';
+
+        return view($view, compact('loanRequest'));
     }
 
     private function sendNotifications(LoanRequest $loanRequest, Request $request): void

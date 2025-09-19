@@ -106,7 +106,7 @@ class EquipmentItem extends Model
      */
     public function getWarrantyStatusAttribute(): string
     {
-        if (!$this->warranty_expiry) {
+        if (! $this->warranty_expiry) {
             return 'Unknown';
         }
 
