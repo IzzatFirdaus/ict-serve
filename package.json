@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@govtechmy/myds-style": "^1.0.0",
-    "alpinejs": "^3.13.0"
+    "alpinejs": "^3.13.0",
+    "signature_pad": "^5.1.1"
   }
 }
