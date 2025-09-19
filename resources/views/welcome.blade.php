@@ -49,7 +49,7 @@
                 <li><a href="/my-integriti" class="focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700">MY Integriti</a></li>
             </ul>
             {{-- Search Icon (Accessible Button) --}}
-            <button type="button" class="ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-600"
+            <button type="button" class="ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600"
                 aria-label="Cari dalam laman (Search)">
                 {{-- MYDS: Use SVG for search icon (20x20, 1.5px stroke) --}}
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" aria-hidden="true" class="text-primary-600">

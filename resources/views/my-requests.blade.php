@@ -20,11 +20,11 @@
                                 <div class="p-4 border border-gray-200 rounded-lg">
                                     <div class="flex justify-between items-start mb-2">
                                         <h3 class="font-medium text-gray-900">{{ $request->request_number }}</h3>
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                            @if($request->status->code === 'approved') bg-green-100 text-green-800
-                                            @elseif($request->status->code === 'pending') bg-yellow-100 text-yellow-800
-                                            @elseif($request->status->code === 'rejected') bg-red-100 text-red-800
-                                            @else bg-gray-100 text-gray-800
+                                        <span class="myds-badge text-xs font-medium
+                                            @if($request->status->code === 'approved') myds-badge-approved
+                                            @elseif($request->status->code === 'pending') myds-badge-pending
+                                            @elseif($request->status->code === 'rejected') myds-badge-rejected
+                                            @else myds-badge-in-progress
                                             @endif">
                                             {{ $request->status->name }}
                                         </span>
@@ -62,12 +62,12 @@
                                 <div class="p-4 border border-gray-200 rounded-lg">
                                     <div class="flex justify-between items-start mb-2">
                                         <h3 class="font-medium text-gray-900">{{ $ticket->ticket_number }}</h3>
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                            @if($ticket->status->code === 'resolved') bg-green-100 text-green-800
-                                            @elseif($ticket->status->code === 'open') bg-blue-100 text-blue-800
-                                            @elseif($ticket->status->code === 'in_progress') bg-yellow-100 text-yellow-800
-                                            @elseif($ticket->status->code === 'closed') bg-gray-100 text-gray-800
-                                            @else bg-gray-100 text-gray-800
+                                        <span class="myds-badge text-xs font-medium
+                                            @if($ticket->status->code === 'resolved') myds-badge-approved
+                                            @elseif($ticket->status->code === 'open') myds-badge-in-progress
+                                            @elseif($ticket->status->code === 'in_progress') myds-badge-pending
+                                            @elseif($ticket->status->code === 'closed') myds-badge-rejected
+                                            @else myds-badge-in-progress
                                             @endif">
                                             {{ $ticket->status->name }}
                                         </span>
