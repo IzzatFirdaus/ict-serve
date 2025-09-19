@@ -21,8 +21,8 @@ class LoanRequestFactory extends Factory
             'overdue',
             'cancelled',
         ]);
-    /** @var \App\Models\LoanStatus $loanStatus */
-    $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
+        /** @var \App\Models\LoanStatus $loanStatus */
+        $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
 
         return [
             'reference_number' => $this->faker->unique()->numerify('REF-####'),
@@ -47,7 +47,7 @@ class LoanRequestFactory extends Factory
             'endorsing_officer_position' => $this->faker->jobTitle(),
             'endorsement_status' => 'pending',
             'endorsement_comments' => $this->faker->sentence(),
-    'status' => $statusCode,
+            'status' => $statusCode,
             'requested_to' => $this->faker->dateTimeBetween('now', '+2 weeks'),
             'actual_from' => null,
             'actual_to' => null,

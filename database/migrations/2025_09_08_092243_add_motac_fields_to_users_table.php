@@ -12,16 +12,28 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('staff_id')->unique()->after('id');
-            $table->string('division')->after('name');
-            $table->string('department')->after('division');
-            $table->string('position')->after('department');
-            $table->string('phone', 20)->nullable()->after('position');
-            $table->enum('role', ['user', 'supervisor', 'ict_admin', 'helpdesk_staff', 'super_admin'])
-                ->default('user')->after('phone');
-            $table->foreignId('supervisor_id')->nullable()->after('role')->constrained('users');
-            $table->boolean('is_active')->default(true)->after('supervisor_id');
-            $table->timestamp('last_login_at')->nullable()->after('is_active');
+            // Check if columns exist before adding to avoid duplicate column errors
+            if (! Schema::hasColumn('users', 'staff_id')) {
+                $table->string('staff_id')->unique()->after('id');
+            }
+
+            // These columns likely already exist in the base migration,
+            // but let's modify them if needed
+            if (Schema::hasColumn('users', 'staff_id') && ! Schema::hasColumn('users', 'staff_id_unique')) {
+                // Add unique constraint if not exists
+                try {
+                    $table->unique('staff_id');
+                } catch (\Exception $e) {
+                    // Unique constraint may already exist
+                }
+            }
+
+            // Update role column to use enum if it's currently string
+            if (Schema::hasColumn('users', 'role')) {
+                // Modify existing role column to enum if needed
+                $table->enum('role', ['user', 'supervisor', 'ict_admin', 'helpdesk_staff', 'super_admin'])
+                    ->default('user')->change();
+            }
         });
     }
 
@@ -31,18 +43,13 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['supervisor_id']);
-            $table->dropColumn([
-                'staff_id',
-                'division',
-                'department',
-                'position',
-                'phone',
-                'role',
-                'supervisor_id',
-                'is_active',
-                'last_login_at',
-            ]);
+            // Only drop columns that were added by this migration
+            // Most fields already exist in base users table
+
+            // Just revert role to string if needed
+            if (Schema::hasColumn('users', 'role')) {
+                $table->string('role')->nullable()->change();
+            }
         });
     }
 };

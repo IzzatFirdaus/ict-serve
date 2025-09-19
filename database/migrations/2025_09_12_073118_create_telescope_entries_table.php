@@ -19,41 +19,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $schema = Schema::connection($this->getConnection());
-
-        $schema->create('telescope_entries', function (Blueprint $table) {
-            $table->bigIncrements('sequence');
-            $table->uuid('uuid');
-            $table->uuid('batch_id');
-            $table->string('family_hash')->nullable();
-            $table->boolean('should_display_on_index')->default(true);
-            $table->string('type', 20);
-            $table->longText('content');
-            $table->dateTime('created_at')->nullable();
-
-            $table->unique('uuid');
-            $table->index('batch_id');
-            $table->index('family_hash');
-            $table->index('created_at');
-            $table->index(['type', 'should_display_on_index']);
-        });
-
-        $schema->create('telescope_entries_tags', function (Blueprint $table) {
-            $table->uuid('entry_uuid');
-            $table->string('tag');
-
-            $table->primary(['entry_uuid', 'tag']);
-            $table->index('tag');
-
-            $table->foreign('entry_uuid')
-                ->references('uuid')
-                ->on('telescope_entries')
-                ->onDelete('cascade');
-        });
-
-        $schema->create('telescope_monitoring', function (Blueprint $table) {
-            $table->string('tag')->primary();
-        });
+        // No-op: telescope_entries tables already exist in the original create_telescope_entries_table migration (2025_09_09_163558)
+        // This migration was generated during the larastan branch merge and would create duplicate tables.
     }
 
     /**
@@ -61,10 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        $schema = Schema::connection($this->getConnection());
-
-        $schema->dropIfExists('telescope_entries_tags');
-        $schema->dropIfExists('telescope_entries');
-        $schema->dropIfExists('telescope_monitoring');
+        // No-op: telescope_entries tables managed by the original create_telescope_entries_table migration (2025_09_09_163558)
     }
 };

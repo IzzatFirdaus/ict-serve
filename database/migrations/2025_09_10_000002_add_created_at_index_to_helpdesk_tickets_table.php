@@ -8,15 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('helpdesk_tickets', function (Blueprint $table) {
-            $table->index('created_at', 'helpdesk_tickets_created_at_index');
-        });
+        // No-op: index already exists in create_helpdesk_tickets_table.php migration
+        // This migration was attempting to add helpdesk_tickets_created_at_index but it already exists
     }
 
     public function down(): void
     {
-        Schema::table('helpdesk_tickets', function (Blueprint $table) {
-            $table->dropIndex('helpdesk_tickets_created_at_index');
-        });
+        // No-op: index is part of the main table creation and should not be dropped here
     }
 };
