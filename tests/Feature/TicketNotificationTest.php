@@ -30,9 +30,9 @@ class TicketNotificationTest extends TestCase
     {
         Notification::fake();
 
-    $user = User::factory()->create(['email' => 'papercut@localhost']);
-    /** @var \App\Models\HelpdeskTicket $ticket */
-    $ticket = HelpdeskTicket::factory()->create(['user_id' => $user->id]);
+        $user = User::factory()->create(['email' => 'papercut@localhost']);
+        /** @var \App\Models\HelpdeskTicket $ticket */
+        $ticket = HelpdeskTicket::factory()->create(['user_id' => $user->id]);
 
         $user->notify(new TicketCreatedNotification($ticket));
 
@@ -52,13 +52,13 @@ class TicketNotificationTest extends TestCase
     {
         Notification::fake();
 
-    $user = User::factory()->create(['email' => 'papercut@localhost']);
-    /** @var \App\Models\HelpdeskTicket $ticket */
-    $ticket = HelpdeskTicket::factory()->create(['user_id' => $user->id]);
-    /** @var \App\Models\TicketStatus $oldStatus */
-    $oldStatus = TicketStatus::factory()->create(['name' => 'Open']);
-    /** @var \App\Models\TicketStatus $newStatus */
-    $newStatus = TicketStatus::factory()->create(['name' => 'Resolved']);
+        $user = User::factory()->create(['email' => 'papercut@localhost']);
+        /** @var \App\Models\HelpdeskTicket $ticket */
+        $ticket = HelpdeskTicket::factory()->create(['user_id' => $user->id]);
+        /** @var \App\Models\TicketStatus $oldStatus */
+        $oldStatus = TicketStatus::factory()->create(['name' => 'Open']);
+        /** @var \App\Models\TicketStatus $newStatus */
+        $newStatus = TicketStatus::factory()->create(['name' => 'Resolved']);
 
         $user->notify(new TicketStatusUpdatedNotification($ticket, $oldStatus, $newStatus));
 
@@ -76,9 +76,9 @@ class TicketNotificationTest extends TestCase
      */
     public function test_ticket_created_database_notification_is_stored_without_fake(): void
     {
-    $user = User::factory()->create(['email' => 'papercut@localhost']);
-    /** @var \App\Models\HelpdeskTicket $ticket */
-    $ticket = HelpdeskTicket::factory()->create(['user_id' => $user->id]);
+        $user = User::factory()->create(['email' => 'papercut@localhost']);
+        /** @var \App\Models\HelpdeskTicket $ticket */
+        $ticket = HelpdeskTicket::factory()->create(['user_id' => $user->id]);
 
         $user->notify(new TicketCreatedNotification($ticket));
 
@@ -94,13 +94,13 @@ class TicketNotificationTest extends TestCase
      */
     public function test_ticket_status_updated_database_notification_is_stored_without_fake(): void
     {
-    $user = User::factory()->create(['email' => 'papercut@localhost']);
-    /** @var \App\Models\HelpdeskTicket $ticket */
-    $ticket = HelpdeskTicket::factory()->create(['user_id' => $user->id]);
-    /** @var \App\Models\TicketStatus $oldStatus */
-    $oldStatus = TicketStatus::factory()->create(['name' => 'Open']);
-    /** @var \App\Models\TicketStatus $newStatus */
-    $newStatus = TicketStatus::factory()->create(['name' => 'Resolved']);
+        $user = User::factory()->create(['email' => 'papercut@localhost']);
+        /** @var \App\Models\HelpdeskTicket $ticket */
+        $ticket = HelpdeskTicket::factory()->create(['user_id' => $user->id]);
+        /** @var \App\Models\TicketStatus $oldStatus */
+        $oldStatus = TicketStatus::factory()->create(['name' => 'Open']);
+        /** @var \App\Models\TicketStatus $newStatus */
+        $newStatus = TicketStatus::factory()->create(['name' => 'Resolved']);
 
         $user->notify(new TicketStatusUpdatedNotification($ticket, $oldStatus, $newStatus));
 

@@ -28,8 +28,6 @@ class LoanRequestTrackerTest extends TestCase
      */
     /**
      * Creates and returns a single LoanRequest instance for a given user.
-     *
-     * @return LoanRequest
      */
     protected function createTestLoanRequest(User $user, array $attributes = []): LoanRequest
     {
@@ -132,8 +130,8 @@ class LoanRequestTrackerTest extends TestCase
 
         $this->actingAs($user);
 
-    /** @var \Livewire\Features\SupportTesting\Testable $component */
-    $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $overdueLoanRequest]);
+        /** @var \Livewire\Features\SupportTesting\Testable $component */
+        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $overdueLoanRequest]);
 
         // Check that the component recognizes the overdue status
         $this->assertTrue($overdueLoanRequest->fresh()->isOverdue());

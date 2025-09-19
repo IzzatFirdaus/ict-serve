@@ -44,8 +44,8 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-    /** @var \Livewire\Features\SupportTesting\Testable $component */
-    $component = Livewire::test(MyRequests::class);
+        /** @var \Livewire\Features\SupportTesting\Testable $component */
+        $component = Livewire::test(MyRequests::class);
         $component->assertStatus(200);
         $component->assertSet('activeTab', 'loans')
             ->assertSet('autoRefresh', false)
@@ -131,8 +131,8 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-    /** @var LoanRequest $loanRequest */
-    $loanRequest = LoanRequest::factory()->create([
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = LoanRequest::factory()->create([
             'user_id' => $this->user->id,
         ]);
 
@@ -149,8 +149,8 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-    /** @var LoanRequest $loanRequest */
-    $loanRequest = LoanRequest::factory()->create([
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = LoanRequest::factory()->create([
             'user_id' => $this->user->id,
         ]);
 
@@ -211,15 +211,15 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-    /** @var LoanRequest $loanRequest */
-    $loanRequest = LoanRequest::factory()->create([
+        /** @var LoanRequest $loanRequest */
+        $loanRequest = LoanRequest::factory()->create([
             'user_id' => $this->user->id,
             'status' => 'in_use',
             'purpose' => 'Testing equipment tracking',
         ]);
 
-    /** @var \Livewire\Features\SupportTesting\Testable $component */
-    $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
+        /** @var \Livewire\Features\SupportTesting\Testable $component */
+        $component = Livewire::test(LoanRequestTracker::class, ['loanRequest' => $loanRequest]);
         $component->assertStatus(200);
         $component->assertSee('Testing equipment tracking')
             ->assertSet('loanRequest.id', $loanRequest->id);
@@ -243,7 +243,7 @@ class MyRequestsLivewireTest extends TestCase
     {
         $this->actingAs($this->user);
 
-    Livewire::test(MyRequests::class)
+        Livewire::test(MyRequests::class)
             ->call('toggleAutoRefresh')
             ->assertDispatched('auto-refresh-enabled');
     }

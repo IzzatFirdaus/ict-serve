@@ -38,7 +38,7 @@ class ICTServeFormsTest extends TestCase
         $response = $this->actingAs($this->user)
             ->get('/ict/damage-complaint');
         $response->assertOk();
-    $response->assertSee('<livewire:ict.damage-complaint-form');
+        $response->assertSee('<livewire:ict.damage-complaint-form');
     }
 
     /** @test */
@@ -71,7 +71,7 @@ class ICTServeFormsTest extends TestCase
         $response = $this->actingAs($this->user)
             ->get('/equipment/loan-application');
         $response->assertOk();
-    $response->assertSee('<livewire:equipment.loan-application-form');
+        $response->assertSee('<livewire:equipment.loan-application-form');
     }
 
     /**
