@@ -2,7 +2,12 @@
   "buttons": {
     "remove": "Remove",
     "add_equipment": "Add equipment",
-    "submit_complaint": "Submit complaint"
+    "submit_complaint": "Submit complaint",
+    "create_new_application": "Create New Application"
+  },
+  "ui": {
+    "no_activity_title": "No recent activity",
+    "no_activity_subtitle": "You have not submitted any loan requests or helpdesk tickets yet."
   },
   "help_panel": {
     "title": "Help information",
@@ -14,7 +19,11 @@
     "emergency_label": "ICT emergency:"
   },
   "literals": {
-    "equipment": "Equipment"
+  "equipment": "Equipment",
+    "helpdesk.issue_reported_success": "Issue reported successfully! Your ticket number is: :ticket",
+    "helpdesk.error_occurred": "An error occurred while submitting your report. Please try again.",
+    "helpdesk.ticket_not_found": "Ticket number not found. Please check and try again.",
+    "helpdesk.ticket_confirmation": "Ticket Confirmation - :ticket"
   },
   "forms": {
     "sections": {
@@ -51,9 +60,103 @@
   },
   "navigation": {
     "equipment_catalog": "Equipment Catalog",
-    "loan_applications": "Loan applications"
+    "loan_applications": "Loan applications",
+    "open_menu": {
+      "sr_only": "Open menu"
+    }
   },
   "status": {
     "equipment_returned": "Equipment returned"
+  },
+  "public": {
+    "loan-request": "Equipment Loan Request",
+    "damage-complaint": "Damage Complaint"
   }
+  ,
+  "user_profile": {
+    "change_password": "Change password",
+    "changing": "Changing...",
+    "save_settings": "Save settings",
+    "saving": "Saving..."
+  },
+  "profile": {
+    "title": "User profile",
+    "subtitle": "Manage your personal information and account settings",
+    "tabs": {
+      "personal": "Personal information",
+      "security": "Security",
+      "notifications": "Notifications",
+      "activity": "Recent activity"
+    },
+    "buttons": {
+      "choose_new_avatar": "Choose new avatar",
+      "remove_avatar": "Remove avatar"
+    }
+  },
+  "loan_application": {
+    "submit": "Submit application",
+    "submitting": "Submitting..."
+  },
+  "realtime": {
+    "auto_refresh": "Auto Refresh"
+  },
+  "loan": {
+    "module_title": "Loan module",
+    "active_requests": "Active requests",
+    "borrowed": "Borrowed"
+  },
+  "search": {
+    "placeholder_equipment": "Search equipment..."
+  },
+  "helpdesk": {
+    "ticket": {
+      "success_submitted": "Complaint submitted successfully",
+      "error": "An error occurred"
+    },
+    "status": {
+      "open": "Open",
+      "completed": "Completed"
+    }
+  },
+
+  "For Emergency ICT Issues:": "For Emergency ICT Issues:",
+  "If you are experiencing critical system outages, security incidents, or urgent issues affecting operations, please call our emergency hotline: +60 3-xxxx xxxx (24/7)": "If you are experiencing critical system outages, security incidents, or urgent issues affecting operations, please call our emergency hotline: +60 3-xxxx xxxx (24/7)",
+  "Reporter Information": "Reporter Information",
+  "Full Name": "Full Name",
+  "Email Address": "Email Address",
+  "Phone Number": "Phone Number",
+  "Contact Phone (if different)": "Contact Phone (if different)",
+  "Staff ID": "Staff ID",
+  "Department": "Department",
+  "Division": "Division",
+  "Position": "Position",
+  "Issue Information": "Issue Information",
+  "Issue Category": "Issue Category",
+  "Select a category...": "Select a category...",
+  "Priority Level": "Priority Level",
+  "Select priority level...": "Select priority level...",
+  "Low - Can wait, not blocking work": "Low - Can wait, not blocking work",
+  "Medium - Some impact on work": "Medium - Some impact on work",
+  "High - Significantly affecting work": "High - Significantly affecting work",
+  "Urgent - Critical issue, work stopped": "Urgent - Critical issue, work stopped",
+  "Issue Title": "Issue Title",
+  "Brief description of the issue...": "Brief description of the issue...",
+  "Detailed Description": "Detailed Description",
+  "Please provide detailed information about the issue:\n* What happened?\n* When did it start occurring?\n* What were you trying to do?\n* Have you tried any solutions?\n* Any error messages received?": "Please provide detailed information about the issue:\n* What happened?\n* When did it start occurring?\n* What were you trying to do?\n* Have you tried any solutions?\n* Any error messages received?",
+  "Location": "Location",
+  "Building, Floor, Room number...": "Building, Floor, Room number...",
+  "Related Equipment (if applicable)": "Related Equipment (if applicable)",
+  "None / Not applicable": "None / Not applicable",
+  "Attachments": "Attachments",
+  "Upload files": "Upload files",
+  "or drag and drop": "or drag and drop",
+  "Screenshots, documents, error messages (Max 5 files, 10MB each)": "Screenshots, documents, error messages (Max 5 files, 10MB each)",
+  "Supported: JPG, PNG, PDF, DOC, DOCX, TXT": "Supported: JPG, PNG, PDF, DOC, DOCX, TXT",
+  "Data Processing Consent": "Data Processing Consent",
+  "I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.": "I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.",
+  "Cancel": "Cancel",
+  "Submit Report": "Submit Report",
+  "Processing...": "Processing..."
+  ,
+  "Request/Ticket number not found. Please check and try again.": "Request/Ticket number not found. Please check and try again."
 }

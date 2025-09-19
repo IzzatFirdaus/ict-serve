@@ -211,7 +211,7 @@
                 >
                   <div class="flex items-center justify-between mb-4">
                     <x-myds.text weight="semibold">
-                      {{ __('literals.equipment') }} {{ $index + 1 }}
+                        {{ __('literals.equipment') }} {{ $index + 1 }}
                     </x-myds.text>
                     @if ($index > 0)
                       <x-myds.button

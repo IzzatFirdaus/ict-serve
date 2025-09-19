@@ -170,7 +170,7 @@
                   @php
                     $equipmentOptions = [];
                     foreach ($categories as $category) {
-                      foreach ($category->equipments as $equipment) {
+                      foreach ($category->equipmentItems as $equipment) {
                         $equipmentOptions[$equipment->id] = $category->name . ' - ' . $equipment->name;
                       }
                     }

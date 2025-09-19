@@ -25,6 +25,8 @@ Route::post('/logout', function () {
 Route::prefix('public')->name('public.')->group(function () {
     // Equipment Loan Requests
     Route::get('/loan-requests/create', [\App\Http\Controllers\Public\PublicLoanController::class, 'create'])->name('loan-requests.create');
+    // Alias for legacy or alternate route name used in Blade: public.loan-request
+    Route::get('/loan-request', [\App\Http\Controllers\Public\PublicLoanController::class, 'create'])->name('loan-request');
     Route::post('/loan-requests', [\App\Http\Controllers\Public\PublicLoanController::class, 'store'])->name('loan-requests.store');
     Route::get('/loan-requests/success', [\App\Http\Controllers\Public\PublicLoanController::class, 'success'])->name('loan-requests.success');
 
@@ -126,6 +128,9 @@ Route::middleware('auth')->group(function () {
         })->name('show');
     });
 
+    // Alias for legacy or alternate route name used in Blade: equipment-loan.create
+    Route::get('/equipment-loan/create', \App\Livewire\Loan\Create::class)->name('equipment-loan.create');
+
     // Helpdesk routes
     Route::prefix('helpdesk')->name('helpdesk.')->group(function () {
         Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
@@ -137,11 +142,21 @@ Route::middleware('auth')->group(function () {
         Route::get('/attachments/{ticket}', \App\Livewire\Helpdesk\AttachmentManager::class)->name('attachments');
         Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
 
+    // Detail view for a helpdesk ticket (used in Blade as helpdesk.ticket.detail)
+    Route::get('/ticket/{ticket}', \App\Livewire\Helpdesk\TicketDetail::class)->name('ticket.detail');
+
         // New MYDS Components
         Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
 
         // Legacy alias for older paths /ict/* used in tests and external links
         Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint');
+
+            // Additional aliases to maintain backward compatibility and satisfy tests
+            // Some views/tests reference these exact route names; provide aliases to avoid RouteNotFoundException
+            Route::get('/damage-complaint/create', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint.create');
+            Route::get('/public/damage-complaint/guest', function () {
+                return \App\Livewire\Ict\DamageComplaintForm::class;
+            })->name('public.damage-complaint.guest');
     });
 
     // Ticket routes (legacy alias for helpdesk)
@@ -186,6 +201,11 @@ Route::middleware('auth')->group(function () {
     // Profile routes
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/', \App\Livewire\Profile\UserProfile::class)->name('index');
+
+        // Backwards-compatible profile actions used by navigation and controllers
+        Route::get('/edit', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('edit');
+        Route::patch('/edit', [\App\Http\Controllers\ProfileController::class, 'update'])->name('update');
+        Route::delete('/destroy', [\App\Http\Controllers\ProfileController::class, 'destroy'])->name('destroy');
     });
 
     // User's own requests (loan requests + helpdesk tickets)
@@ -254,3 +274,29 @@ Route::get('/language/{locale}', function ($locale) {
 
     return redirect()->back();
 })->name('language.switch');
+
+// Backwards-compatible route aliases (top-level names expected by tests/views)
+// These routes intentionally redirect to the canonical helpdesk/create route so
+// templates that call route('damage-complaint.create') or route('public.damage-complaint.guest')
+// resolve without returning Livewire component instances directly.
+Route::get('/damage-complaint/create', function () {
+    return redirect()->route('helpdesk.create');
+})->name('damage-complaint.create');
+
+Route::get('/public/damage-complaint/guest', function () {
+    return redirect()->route('helpdesk.create');
+})->name('public.damage-complaint.guest');
+
+// Backwards-compatible alias for user's requests used in templates/tests.
+// Many templates call route('public.my-requests') — provide a public-prefixed
+// URL that redirects to the canonical authenticated '/my-requests' route.
+Route::get('/public/my-requests', function () {
+    return redirect()->route('my-requests');
+})->name('public.my-requests');
+
+// Backwards-compatible public MOTAC information page
+// Some templates reference route('public.motac-info') — provide a simple view-backed
+// alias so navigation and tests resolve without requiring refactors now.
+Route::get('/motac-info', function () {
+    return view('public.motac-info');
+})->name('public.motac-info');

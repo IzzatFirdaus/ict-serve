@@ -21,8 +21,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string|null $model
  * @property array|null $specifications
  * @property string|null $description
- * @property string $condition
- * @property string $status
+ * @property EquipmentCondition $condition
+ * @property EquipmentStatus $status
  * @property float|null $purchase_price
  * @property \Illuminate\Support\Carbon|null $purchase_date
  * @property \Illuminate\Support\Carbon|null $warranty_expiry
@@ -97,7 +97,7 @@ class EquipmentItem extends Model
     public function isAvailable(): bool
     {
         return $this->status === EquipmentStatus::AVAILABLE
-            && $this->is_active
+            && (bool) $this->is_active === true
             && $this->condition !== EquipmentCondition::DAMAGED;
     }
 

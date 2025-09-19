@@ -69,7 +69,7 @@ class SlaTracker extends Component
     public function loadSlaMetrics(): void
     {
         $user = Auth::user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+        $isAdmin = $user->hasRole(['ict_admin', 'supervisor']);
 
         $query = $this->getBaseQuery($isAdmin);
 
@@ -111,7 +111,7 @@ class SlaTracker extends Component
     public function loadCategoryBreakdown(): void
     {
         $user = Auth::user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+        $isAdmin = $user->hasRole(['ict_admin', 'supervisor']);
 
         $categories = TicketCategory::withCount([
             'helpdeskTickets as total' => function ($query) use ($isAdmin) {
@@ -168,7 +168,7 @@ class SlaTracker extends Component
     public function loadRecentBreaches(): void
     {
         $user = Auth::user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+        $isAdmin = $user->hasRole(['ict_admin', 'supervisor']);
 
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser']);
 
@@ -208,7 +208,7 @@ class SlaTracker extends Component
     public function loadAtRiskTickets(): void
     {
         $user = Auth::user();
-        $isAdmin = in_array($user->role, ['ict_admin', 'supervisor']);
+        $isAdmin = $user->hasRole(['ict_admin', 'supervisor']);
 
         $query = HelpdeskTicket::with(['user', 'category', 'status', 'assignedToUser']);
 

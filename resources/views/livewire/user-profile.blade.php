@@ -2,10 +2,10 @@
   <!-- Page Header -->
   <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 dark:text-white font-poppins">
-      {{ __('profile.title') ?? 'Profil Pengguna' }}
+  {{ __('profile.title') ?? 'Profil Pengguna' }}
     </h1>
     <p class="mt-2 text-gray-600 dark:text-gray-400">
-      {{ __('profile.subtitle') ?? 'Uruskan maklumat peribadi dan tetapan akaun anda' }}
+  {{ __('profile.subtitle') ?? 'Uruskan maklumat peribadi dan tetapan akaun anda' }}
     </p>
   </div>
 
@@ -38,13 +38,13 @@
   <!-- Tab Navigation -->
   <div class="border-b border-otl-divider mb-6">
     <nav class="-mb-px flex space-x-8">
-      <x-myds.button
+  <x-myds.button
         wire:click="setActiveTab('profile')"
         variant="{{ $activeTab === 'profile' ? 'primary' : 'ghost' }}"
         class="py-2 px-1 border-b-2 {{ $activeTab === 'profile' ? 'border-otl-primary-300' : 'border-transparent' }}"
       >
         <x-icon name="user" class="w-4 h-4 inline-block mr-2" />
-        Maklumat Peribadi
+  {{ __('profile.tabs.personal') ?? 'Maklumat Peribadi' }}
       </x-myds.button>
 
       <x-myds.button
@@ -53,7 +53,7 @@
         class="py-2 px-1 border-b-2 {{ $activeTab === 'security' ? 'border-otl-primary-300' : 'border-transparent' }}"
       >
         <x-icon name="lock-closed" class="w-4 h-4 inline-block mr-2" />
-        Keselamatan
+  {{ __('profile.tabs.security') ?? 'Keselamatan' }}
       </x-myds.button>
 
       <x-myds.button
@@ -62,7 +62,7 @@
         class="py-2 px-1 border-b-2 {{ $activeTab === 'notifications' ? 'border-otl-primary-300' : 'border-transparent' }}"
       >
         <x-icon name="bell" class="w-4 h-4 inline-block mr-2" />
-        Notifikasi
+  {{ __('profile.tabs.notifications') ?? 'Notifikasi' }}
       </x-myds.button>
 
       <x-myds.button
@@ -71,7 +71,7 @@
         class="py-2 px-1 border-b-2 {{ $activeTab === 'activity' ? 'border-otl-primary-300' : 'border-transparent' }}"
       >
         <x-icon name="clock" class="w-4 h-4 inline-block mr-2" />
-        Aktiviti Terkini
+  {{ __('profile.tabs.activity') ?? 'Aktiviti Terkini' }}
       </x-myds.button>
     </nav>
   </div>
@@ -562,7 +562,7 @@
 
           <div class="mt-6 text-center">
             <a
-              href="{{ route('loan-applications.index') }}"
+              href="{{ route('loan.index') }}"
               class="text-txt-primary hover:text-txt-primary dark:text-txt-primary text-sm font-medium"
             >
               Lihat Semua Permohonan →
@@ -578,7 +578,7 @@
               {{ __('ui.no_activity_subtitle') }}
             </p>
             <x-myds.button
-              href="{{ route('loan-applications.create') }}"
+              href="{{ route('loan.create') }}"
               variant="primary"
             >
               {{ __('buttons.create_new_application') }}

@@ -9,6 +9,7 @@ use App\Enums\TicketUrgency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -18,8 +19,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $status_id
  * @property string $title
  * @property string $description
- * @property string $priority
- * @property string $urgency
+ * @property TicketPriority $priority
+ * @property TicketUrgency $urgency
  * @property int|null $assigned_to
  * @property \Illuminate\Support\Carbon|null $assigned_at
  * @property int|null $equipment_item_id
@@ -103,11 +104,19 @@ class HelpdeskTicket extends Model
     }
 
     /**
-     * Get the ticket status.
+     * Get the ticket status (alias: status).
+     */
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(TicketStatus::class, 'status_id');
+    }
+
+    /**
+     * Backwards compatible relation name used in some places.
      */
     public function ticketStatus(): BelongsTo
     {
-        return $this->belongsTo(TicketStatus::class, 'status_id');
+        return $this->status();
     }
 
     /**
@@ -119,6 +128,14 @@ class HelpdeskTicket extends Model
     }
 
     /**
+     * Alias for assigned user relation used across the codebase.
+     */
+    public function assignedToUser(): BelongsTo
+    {
+        return $this->assignedTo();
+    }
+
+    /**
      * Get the staff who resolved the ticket.
      */
     public function resolvedBy(): BelongsTo
@@ -127,11 +144,27 @@ class HelpdeskTicket extends Model
     }
 
     /**
+     * Alias for resolver relation used across the codebase.
+     */
+    public function resolvedByUser(): BelongsTo
+    {
+        return $this->resolvedBy();
+    }
+
+    /**
      * Get the equipment item related to this ticket.
      */
     public function equipmentItem(): BelongsTo
     {
         return $this->belongsTo(EquipmentItem::class, 'equipment_item_id');
+    }
+
+    /**
+     * Ticket comments relation.
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(TicketComment::class, 'ticket_id');
     }
 
     /**
@@ -241,7 +274,7 @@ class HelpdeskTicket extends Model
     /**
      * Generate ticket number in format: HD-YYYY-MMDD-XXX
      */
-    protected static function generateTicketNumber(): string
+    public static function generateTicketNumber(): string
     {
         $date = now();
         $prefix = 'HD-'.$date->format('Y-md');

@@ -16,9 +16,14 @@ use Illuminate\Notifications\Notifiable;
  * @property string $name
  * @property string $email
  * @property string|null $staff_id
+ * @property string|null $employee_id
+ * @property string|null $office_location
+ * @property string|null $avatar_url
+ * @property array|null $notification_preferences
  * @property string|null $department
  * @property string|null $phone
  * @property string|null $position
+ * @property int|null $supervisor_id
  * @property string|null $profile_picture
  * @property UserRole $role
  * @property array|null $preferences
@@ -43,6 +48,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'staff_id',
+        'employee_id',
+        'office_location',
         'role',
         'division',
         'department',
@@ -52,7 +59,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_active',
         'last_login_at',
         'profile_picture',
+        'avatar_url',
         'preferences',
+        'notification_preferences',
     ];
 
     /**
@@ -77,6 +86,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
             'role' => UserRole::class,
             'preferences' => 'array',
+            'notification_preferences' => 'array',
             'is_active' => 'boolean',
             'last_login_at' => 'datetime',
         ];
@@ -123,6 +133,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Alias for tickets relation used across codebase.
+     */
+    public function helpdeskTickets(): HasMany
+    {
+        return $this->tickets();
+    }
+
+    /**
      * Get the helpdesk tickets assigned to this user.
      */
     public function assignedTickets()
@@ -152,5 +170,53 @@ class User extends Authenticatable implements MustVerifyEmail
     public function activityLogs()
     {
         return $this->hasMany(ActivityLog::class, 'user_id');
+    }
+
+    /**
+     * Alias used by some components.
+     */
+    public function activities(): HasMany
+    {
+        return $this->activityLogs();
+    }
+
+    /**
+     * Alias for activityLogs used by admin audit log viewer.
+     */
+    public function auditLogs(): HasMany
+    {
+        return $this->activityLogs();
+    }
+
+    /**
+     * Simple role checker supporting string, enum and array of roles.
+     * This project uses a role enum on the users table instead of Spatie roles.
+     *
+     * @param  string|array<int,string>|\App\Enums\UserRole|array<int,\App\Enums\UserRole>  $roles
+     */
+    public function hasRole(string|array|UserRole $roles): bool
+    {
+        $roleValues = [];
+        if ($roles instanceof UserRole) {
+            $roleValues = [$roles->value];
+        } elseif (is_array($roles)) {
+            foreach ($roles as $r) {
+                $roleValues[] = $r instanceof UserRole ? $r->value : (string) $r;
+            }
+        } else {
+            $roleValues = [(string) $roles];
+        }
+
+        return in_array($this->role->value, $roleValues, true);
+    }
+
+    /**
+     * Check if the user has any of the given roles.
+     *
+     * @param  array<int,string|\App\Enums\UserRole>  $roles
+     */
+    public function hasAnyRole(array $roles): bool
+    {
+        return $this->hasRole($roles);
     }
 }

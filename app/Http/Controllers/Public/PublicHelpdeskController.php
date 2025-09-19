@@ -202,7 +202,7 @@ class PublicHelpdeskController extends Controller
     private function calculateDueDate(string $priority, int $categoryId): \Carbon\Carbon
     {
         $category = TicketCategory::find($categoryId);
-        $slaHours = $category?->default_sla_hours ?? 24;
+        $slaHours = ($category ? $category->default_sla_hours : null) ?? 24;
 
         // Adjust SLA based on priority
         $priorityMultiplier = match ($priority) {

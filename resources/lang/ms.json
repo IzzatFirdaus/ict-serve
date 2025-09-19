@@ -2,7 +2,12 @@
   "buttons": {
     "remove": "Buang",
     "add_equipment": "Tambah Peralatan",
-    "submit_complaint": "Hantar Aduan"
+    "submit_complaint": "Hantar Aduan",
+    "create_new_application": "Permohonan Baru"
+  },
+  "ui": {
+    "no_activity_title": "Tiada aktiviti terkini",
+    "no_activity_subtitle": "Anda belum menghantar sebarang permohonan pinjaman atau tiket helpdesk."
   },
   "help_panel": {
     "title": "Maklumat Bantuan",
@@ -14,6 +19,10 @@
     "emergency_label": "Kecemasan ICT:"
   },
   "literals": {
+    "helpdesk.issue_reported_success": "Aduan berjaya dihantar! Nombor tiket anda ialah: :ticket",
+    "helpdesk.error_occurred": "Ralat berlaku semasa menghantar laporan anda. Sila cuba lagi.",
+    "helpdesk.ticket_not_found": "Nombor tiket tidak dijumpai. Sila semak dan cuba lagi.",
+    "helpdesk.ticket_confirmation": "Pengesahan Tiket - :ticket",
     "equipment": "Peralatan"
   },
   "forms": {
@@ -51,9 +60,103 @@
   },
   "navigation": {
     "equipment_catalog": "Katalog Peralatan",
-    "loan_applications": "Permohonan Pinjaman"
+    "loan_applications": "Permohonan Pinjaman",
+    "open_menu": {
+      "sr_only": "Buka menu"
+    }
   },
   "status": {
     "equipment_returned": "Peralatan Dipulangkan"
+  },
+  "public": {
+    "loan-request": "Permohonan Pinjaman Peralatan",
+    "damage-complaint": "Aduan Kerosakan"
   }
+  ,
+  "user_profile": {
+    "change_password": "Tukar Kata Laluan",
+    "changing": "Menukar...",
+    "save_settings": "Simpan Tetapan",
+    "saving": "Menyimpan..."
+  },
+  "profile": {
+    "title": "Profil Pengguna",
+    "subtitle": "Uruskan maklumat peribadi dan tetapan akaun anda",
+    "tabs": {
+      "personal": "Maklumat Peribadi",
+      "security": "Keselamatan",
+      "notifications": "Notifikasi",
+      "activity": "Aktiviti Terkini"
+    },
+    "buttons": {
+      "choose_new_avatar": "Pilih Avatar Baharu",
+      "remove_avatar": "Padam Avatar"
+    }
+  },
+  "loan_application": {
+    "submit": "Hantar Permohonan",
+    "submitting": "Menghantar..."
+  },
+  "realtime": {
+    "auto_refresh": "Auto Refresh"
+  },
+  "loan": {
+    "module_title": "Modul Peminjaman",
+    "active_requests": "Permohonan Aktif",
+    "borrowed": "Sedang Dipinjam"
+  },
+  "search": {
+    "placeholder_equipment": "Cari peralatan..."
+  },
+  "helpdesk": {
+    "ticket": {
+      "success_submitted": "Aduan berjaya dihantar",
+      "error": "Ralat berlaku"
+    },
+    "status": {
+      "open": "Terbuka",
+      "completed": "Selesai"
+    }
+  },
+
+  "For Emergency ICT Issues:": "Untuk Kecemasan ICT:",
+  "If you are experiencing critical system outages, security incidents, or urgent issues affecting operations, please call our emergency hotline: +60 3-xxxx xxxx (24/7)": "Sekiranya anda mengalami gangguan sistem kritikal, insiden keselamatan, atau isu mendesak yang menjejaskan operasi, sila hubungi talian kecemasan kami: +60 3-xxxx xxxx (24/7)",
+  "Reporter Information": "Maklumat Pelapor",
+  "Full Name": "Nama Penuh",
+  "Email Address": "Alamat E-mel",
+  "Phone Number": "Nombor Telefon",
+  "Contact Phone (if different)": "Telefon (jika berbeza)",
+  "Staff ID": "ID Staf",
+  "Department": "Jabatan",
+  "Division": "Bahagian",
+  "Position": "Jawatan",
+  "Issue Information": "Maklumat Isu",
+  "Issue Category": "Kategori Isu",
+  "Select a category...": "Pilih kategori...",
+  "Priority Level": "Tahap Keutamaan",
+  "Select priority level...": "Pilih tahap keutamaan...",
+  "Low - Can wait, not blocking work": "Rendah - Boleh tunggu, tidak menghalang kerja",
+  "Medium - Some impact on work": "Sederhana - Ada kesan pada kerja",
+  "High - Significantly affecting work": "Tinggi - Menjejaskan kerja dengan ketara",
+  "Urgent - Critical issue, work stopped": "Segera - Isu kritikal, kerja terhenti",
+  "Issue Title": "Tajuk Isu",
+  "Brief description of the issue...": "Ringkasan isu...",
+  "Detailed Description": "Huraian Terperinci",
+  "Please provide detailed information about the issue:\n* What happened?\n* When did it start occurring?\n* What were you trying to do?\n* Have you tried any solutions?\n* Any error messages received?": "Sila berikan maklumat terperinci tentang isu:\n* Apa yang berlaku?\n* Bila ia mula berlaku?\n* Apa yang anda cuba lakukan?\n* Adakah anda telah mencuba sebarang penyelesaian?\n* Ada mesej ralat diterima?",
+  "Location": "Lokasi",
+  "Building, Floor, Room number...": "Bangunan, Tingkat, Nombor bilik...",
+  "Related Equipment (if applicable)": "Peralatan Berkaitan (jika ada)",
+  "None / Not applicable": "Tiada / Tidak berkenaan",
+  "Attachments": "Lampiran",
+  "Upload files": "Muat naik fail",
+  "or drag and drop": "atau seret dan lepas",
+  "Screenshots, documents, error messages (Max 5 files, 10MB each)": "Tangkapan skrin, dokumen, mesej ralat (Maks 5 fail, 10MB setiap satu)",
+  "Supported: JPG, PNG, PDF, DOC, DOCX, TXT": "Disokong: JPG, PNG, PDF, DOC, DOCX, TXT",
+  "Data Processing Consent": "Persetujuan Pemprosesan Data",
+  "I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.": "Saya bersetuju untuk pengumpulan, pemprosesan, dan penyimpanan data peribadi saya bagi tujuan pengurusan tiket sokongan ICT. Data ini akan digunakan untuk memproses permintaan sokongan saya, menghantar notifikasi status tiket, dan menyimpan rekod sokongan mengikut peraturan perlindungan data yang berkenaan.",
+  "Cancel": "Batal",
+  "Submit Report": "Hantar Laporan",
+  "Processing...": "Sedang diproses..."
+  ,
+  "Request/Ticket number not found. Please check and try again.": "Nombor Permintaan/Tiket tidak ditemui. Sila semak dan cuba lagi."
 }

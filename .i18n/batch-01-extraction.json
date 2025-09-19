@@ -1,0 +1,96 @@
+{
+  "batch": 1,
+  "description": "Initial extraction batch with representative hardcoded user-facing strings found in Blade views. This is a starting point — further batches will expand coverage to PHP, JS/TS, and remaining views.",
+  "items": [
+    {
+      "file": "resources/views/livewire/user-profile.blade.php",
+      "line_excerpt": "<span wire:loading.remove>Tukar Kata Laluan</span>",
+      "string": "Tukar Kata Laluan",
+      "suggested_key": "user_profile.change_password"
+    },
+    {
+      "file": "resources/views/livewire/user-profile.blade.php",
+      "line_excerpt": "<span wire:loading>Menukar...</span>",
+      "string": "Menukar...",
+      "suggested_key": "user_profile.changing"
+    },
+    {
+      "file": "resources/views/livewire/resource-management/loan-application/application-form.blade.php",
+      "line_excerpt": "<span wire:loading.remove>Hantar Permohonan</span>",
+      "string": "Hantar Permohonan",
+      "suggested_key": "loan_application.submit"
+    },
+    {
+      "file": "resources/views/livewire/resource-management/loan-application/application-form.blade.php",
+      "line_excerpt": "<span wire:loading>Menghantar...</span>",
+      "string": "Menghantar...",
+      "suggested_key": "loan_application.submitting"
+    },
+    {
+      "file": "resources/views/livewire/components/real-time-status.blade.php",
+      "line_excerpt": "<span class=\"text-sm text-black-500 font-inter\">Auto Refresh</span>",
+      "string": "Auto Refresh",
+      "suggested_key": "realtime.auto_refresh"
+    },
+    {
+      "file": "resources/views/livewire/loan/index.blade.php",
+      "line_excerpt": "<h2 class=\"text-2xl font-bold text-gray-900\">Modul Peminjaman</h2>",
+      "string": "Modul Peminjaman",
+      "suggested_key": "loan.module_title"
+    },
+    {
+      "file": "resources/views/livewire/loan/index.blade.php",
+      "line_excerpt": "<p class=\"text-sm text-gray-600\">Permohonan Aktif</p>",
+      "string": "Permohonan Aktif",
+      "suggested_key": "loan.active_requests"
+    },
+    {
+      "file": "resources/views/livewire/loan/index.blade.php",
+      "line_excerpt": "<p class=\"text-sm text-gray-600\">Sedang Dipinjam</p>",
+      "string": "Sedang Dipinjam",
+      "suggested_key": "loan.borrowed"
+    },
+    {
+      "file": "resources/views/livewire/loan/index.blade.php",
+      "line_excerpt": "placeholder=\"Cari peralatan...\"",
+      "string": "Cari peralatan...",
+      "suggested_key": "search.placeholder_equipment"
+    },
+    {
+      "file": "resources/views/livewire/helpdesk/ticket-form.blade.php",
+      "line_excerpt": "<h4 class=\"font-inter text-sm font-medium\">Aduan Berjaya Dihantar</h4>",
+      "string": "Aduan Berjaya Dihantar",
+      "suggested_key": "helpdesk.ticket.success_submitted"
+    },
+    {
+      "file": "resources/views/livewire/helpdesk/ticket-form.blade.php",
+      "line_excerpt": "<h4 class=\"font-inter text-sm font-medium\">Ralat Berlaku</h4>",
+      "string": "Ralat Berlaku",
+      "suggested_key": "generic.error_occurred"
+    },
+    {
+      "file": "resources/views/livewire/helpdesk/partials/damage-fields.blade.php",
+      "line_excerpt": "<option value=\"physical\">Fizikal / Physical</option>",
+      "string": "Fizikal / Physical",
+      "suggested_key": "damage.type.physical"
+    },
+    {
+      "file": "resources/views/livewire/helpdesk/ticket-detail.blade.php",
+      "line_excerpt": "<span>Terbuka</span>",
+      "string": "Terbuka",
+      "suggested_key": "helpdesk.status.open"
+    },
+    {
+      "file": "resources/views/livewire/helpdesk/ticket-detail.blade.php",
+      "line_excerpt": "<span>Selesai</span>",
+      "string": "Selesai",
+      "suggested_key": "helpdesk.status.completed"
+    },
+    {
+      "file": "resources/views/livewire/navigation.blade.php",
+      "line_excerpt": "<span class=\"sr-only\">Buka menu</span>",
+      "string": "Buka menu",
+      "suggested_key": "navigation.open_menu.sr_only"
+    }
+  ]
+}

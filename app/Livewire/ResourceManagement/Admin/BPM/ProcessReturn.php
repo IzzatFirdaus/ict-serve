@@ -62,7 +62,7 @@ class ProcessReturn extends Component
 
         /** @var \App\Models\LoanItem $item */
         foreach ($issuedItems as $item) {
-            if ($item->equipmentItem) {
+            if ($item->equipmentItem !== null) {
                 $this->returnedEquipment[] = $item->equipmentItem->id;
                 $this->equipmentConditions[$item->equipmentItem->id] = 'good';
                 $this->equipmentNotes[$item->equipmentItem->id] = '';

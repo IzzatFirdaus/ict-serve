@@ -47,7 +47,8 @@
                                name="reporter_name"
                                value="{{ old('reporter_name') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('reporter_name') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('reporter_name'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('reporter_name')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -62,7 +63,8 @@
                                name="reporter_email"
                                value="{{ old('reporter_email') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('reporter_email') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('reporter_email'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('reporter_email')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -76,7 +78,8 @@
                                id="reporter_phone"
                                name="reporter_phone"
                                value="{{ old('reporter_phone') }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('reporter_phone') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('reporter_phone'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('reporter_phone')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -90,7 +93,8 @@
                                id="contact_phone"
                                name="contact_phone"
                                value="{{ old('contact_phone') }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('contact_phone') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('contact_phone'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('contact_phone')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -107,7 +111,8 @@
                                name="staff_id"
                                value="{{ old('staff_id') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('staff_id') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('staff_id'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('staff_id')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -122,7 +127,8 @@
                                name="department"
                                value="{{ old('department') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('department') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('department'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('department')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -137,7 +143,8 @@
                                name="division"
                                value="{{ old('division') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('division') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('division'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('division')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -152,7 +159,8 @@
                                name="position"
                                value="{{ old('position') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('position') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('position'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('position')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -174,7 +182,8 @@
                         <select id="category_id"
                                 name="category_id"
                                 required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('category_id') border-danger-500 @enderror">
+                                @php $hasError = $errors->has('category_id'); @endphp
+                                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                             <option value="">{{ __('Select a category...') }}</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}"
@@ -195,7 +204,8 @@
                         <select id="priority"
                                 name="priority"
                                 required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('priority') border-danger-500 @enderror">
+                                @php $hasError = $errors->has('priority'); @endphp
+                                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                             <option value="">{{ __('Select priority level...') }}</option>
                             <option value="low" {{ old('priority') == 'low' ? 'selected' : '' }}>
                                 {{ __('Low - Can wait, not blocking work') }}
@@ -226,7 +236,8 @@
                            value="{{ old('title') }}"
                            required
                            placeholder="{{ __('Brief description of the issue...') }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('title') border-danger-500 @enderror">
+                           @php $hasError = $errors->has('title'); @endphp
+                           class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                     @error('title')
                         <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                     @enderror
@@ -246,7 +257,8 @@
 • What were you trying to do?
 • Have you tried any solutions?
 • Any error messages received?') }}"
-                              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('description') border-danger-500 @enderror">{{ old('description') }}</textarea>
+                              @php $hasError = $errors->has('description'); @endphp
+                              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}">{{ old('description') }}</textarea>
                     @error('description')
                         <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                     @enderror
@@ -263,7 +275,8 @@
                                value="{{ old('location') }}"
                                required
                                placeholder="{{ __('Building, Floor, Room number...') }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('location') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('location'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('location')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -275,7 +288,8 @@
                         </label>
                         <select id="equipment_item_id"
                                 name="equipment_item_id"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('equipment_item_id') border-danger-500 @enderror">
+                                @php $hasError = $errors->has('equipment_item_id'); @endphp
+                                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                             <option value="">{{ __('None / Not applicable') }}</option>
                             @foreach($equipment as $categoryName => $items)
                                 <optgroup label="{{ $categoryName }}">

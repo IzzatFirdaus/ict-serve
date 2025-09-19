@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo as EloquentBelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
@@ -37,9 +38,15 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  * @property \Illuminate\Support\Carbon|null $returned_at
  * @property string|null $return_signature_path
  * @property string|null $return_condition_notes
+ * @property string|null $reference_number
+ * @property \Illuminate\Support\Carbon|null $expected_return_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\LoanStatus $status
+ * @property string|null $location
+ * @property string|null $approval_token
+ * @property string|null $supervisor_email
+ * @property string|null $supervisor_name
+ * @property-read \App\Models\LoanStatus $loanStatus
  * @property-read \App\Models\User $user
  * @property-read \App\Models\User|null $supervisor
  * @property-read \App\Models\User|null $ictAdmin
@@ -60,6 +67,7 @@ class LoanRequest extends Model
         'request_number',
         'reference_number',
         'user_id',
+        'approval_token',
         'applicant_name',
         'applicant_position',
         'applicant_department',
@@ -71,6 +79,8 @@ class LoanRequest extends Model
         'requested_to',
         'loan_start_date',
         'expected_return_date',
+        'supervisor_email',
+        'supervisor_name',
         'responsible_officer_name',
         'responsible_officer_position',
         'responsible_officer_phone',
@@ -99,6 +109,22 @@ class LoanRequest extends Model
         'return_signature_path',
         'return_condition_notes',
     ];
+
+    /**
+     * Loan status relation via status_id foreign key.
+     */
+    public function status(): EloquentBelongsTo
+    {
+        return $this->belongsTo(LoanStatus::class, 'status_id');
+    }
+
+    /**
+     * Backwards compatible alias used in some parts of the app.
+     */
+    public function loanStatus(): EloquentBelongsTo
+    {
+        return $this->status();
+    }
 
     /**
      * Get the user who made the request.
@@ -207,10 +233,10 @@ class LoanRequest extends Model
     public function canBeEdited(): bool
     {
         return in_array($this->status, [
-            LoanRequestStatus::PENDING_BPM_REVIEW->value,
-            LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL->value,
-            LoanRequestStatus::PENDING_ICT_APPROVAL->value,
-        ]);
+            LoanRequestStatus::PENDING_BPM_REVIEW,
+            LoanRequestStatus::PENDING_SUPERVISOR_APPROVAL,
+            LoanRequestStatus::PENDING_ICT_APPROVAL,
+        ], true);
     }
 
     /**
@@ -220,10 +246,10 @@ class LoanRequest extends Model
     public function canBeCancelled(): bool
     {
         return ! in_array($this->status, [
-            LoanRequestStatus::RETURNED->value,
-            LoanRequestStatus::CANCELLED->value,
-            LoanRequestStatus::REJECTED->value,
-        ]);
+            LoanRequestStatus::RETURNED,
+            LoanRequestStatus::CANCELLED,
+            LoanRequestStatus::REJECTED,
+        ], true);
     }
 
     /**
@@ -231,7 +257,7 @@ class LoanRequest extends Model
      */
     public function isOverdue(): bool
     {
-        return $this->status === LoanRequestStatus::COLLECTED->value
+        return $this->status === LoanRequestStatus::COLLECTED
             && $this->expected_return_date
             && $this->expected_return_date->isPast();
     }
@@ -291,7 +317,7 @@ class LoanRequest extends Model
     /**
      * Generate request number in format: LR-YYYY-MMDD-XXX
      */
-    protected static function generateRequestNumber(): string
+    public static function generateRequestNumber(): string
     {
         $date = now();
         $prefix = 'LR-'.$date->format('Y-md');

@@ -6,9 +6,10 @@
   'iconColor' => 'primary',
   'trend' => null,
   'trendDirection' => null,
-  //'up',
+  // 'up',
   'down',
-  'neutral''href' => null,
+  'neutral',
+  'href' => null,
   'loading' => false,
 ])
 

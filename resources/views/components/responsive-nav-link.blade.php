@@ -14,8 +14,9 @@
   'href',
   'active' => false,
   'icon' => null,
-  //Optional:BladecomponentorSVGforleadingicon'ariaLabel' => null,
-  //OptionalARIAlabelforaccessibility,
+  // Optional: Blade component or SVG for leading icon
+  // Optional ARIA label for accessibility
+  'ariaLabel' => null,
 ])
 
 @php

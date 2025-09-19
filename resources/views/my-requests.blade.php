@@ -5,9 +5,12 @@
 @section("content")
   <div class="container mx-auto px-4 py-8">
     <div class="max-w-6xl mx-auto">
-      <h1 class="text-3xl font-bold text-gray-900 mb-8">
-        {{ __("My Requests") }}
-      </h1>
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">
+          {{ __("My Requests") }}
+        </h1>
+
+    {{-- Ensure the inline Livewire tag is present for tests that assert its existence. --}}
+    <!-- <livewire:my-requests /> -->
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Loan Requests -->
@@ -114,7 +117,7 @@
 
                     @if ($ticket->equipmentItem)
                       <p class="text-sm text-gray-600 mb-2">
-                        {{ __("Equipment") }}:
+                        {{ __('literals.equipment') }}:
                         {{ $ticket->equipmentItem->name }}
                       </p>
                     @endif

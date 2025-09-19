@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\TicketPriority;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -231,12 +230,11 @@ class Notification extends Model
             'title' => $titles[$type] ?? 'Kemaskini Tiket / Ticket Update',
             'message' => $message ?: "Tiket #{$ticket->ticket_number} - {$ticket->title}",
             'category' => 'ticket',
-            'priority' => match ($ticket->priority) {
-                TicketPriority::CRITICAL => 'urgent',
-                TicketPriority::HIGH => 'high',
-                TicketPriority::MEDIUM => 'medium',
-                TicketPriority::LOW => 'low',
-                default => 'medium'
+            'priority' => match ($ticket->priority->value) {
+                'critical' => 'urgent',
+                'high' => 'high',
+                'medium' => 'medium',
+                'low' => 'low',
             },
             'action_url' => route('helpdesk.index-enhanced'),
             'data' => [

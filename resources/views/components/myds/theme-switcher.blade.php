@@ -1,23 +1,19 @@
+
+{{--
+    MYDS Theme Switcher (Alpine.js) for ICTServe (iServe)
+    - Props: position (left|right), size (sm|md|lg)
+    - A11y: aria-expanded, aria-label, focus ring
+    - No dependency on icon components (inline SVG for portability)
+--}}
+
 @props(['position' => 'right', 'size' => 'md'])
 
 @php
-$buttonSizes = [
-    'sm' => 'p-1',
-    'md' => 'p-2',
-    {{--
-        MYDS Theme Switcher (Alpine.js) for ICTServe (iServe)
-        - Props: position (left|right), size (sm|md|lg)
-        - A11y: aria-expanded, aria-label, focus ring
-        - No dependency on icon components (inline SVG for portability)
-    --}}
-    @props(['position' => 'right', 'size' => 'md'])
-
-    @php
-        $buttonSizes = ['sm' => 'p-1', 'md' => 'p-2', 'lg' => 'p-3'];
-        $dropdownPositions = ['left' => 'right-0 origin-top-right', 'right' => 'left-0 origin-top-left'];
-        $buttonSize = $buttonSizes[$size] ?? $buttonSizes['md'];
-        $dropdownPosition = $dropdownPositions[$position] ?? $dropdownPositions['right'];
-    @endphp
+    $buttonSizes = ['sm' => 'p-1', 'md' => 'p-2', 'lg' => 'p-3'];
+    $dropdownPositions = ['left' => 'right-0 origin-top-right', 'right' => 'left-0 origin-top-left'];
+    $buttonSize = $buttonSizes[$size] ?? $buttonSizes['md'];
+    $dropdownPosition = $dropdownPositions[$position] ?? $dropdownPositions['right'];
+@endphp
 
     <div class="relative"
              x-data="{

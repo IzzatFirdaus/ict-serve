@@ -47,9 +47,7 @@ class TicketCreatedNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         $priority = $this->ticket->priority;
-        $priorityLabel = is_object($priority) && method_exists($priority, 'label')
-            ? $priority->label()
-            : ucfirst((string) $priority);
+        $priorityLabel = $priority->label();
 
         return (new MailMessage)
             ->subject("New Support Ticket Created - #{$this->ticket->ticket_number}")
@@ -78,9 +76,7 @@ Ministry of Tourism, Arts and Culture (MOTAC)');
     public function toArray(object $notifiable): array
     {
         $priority = $this->ticket->priority;
-        $priorityValue = is_object($priority) && property_exists($priority, 'value')
-            ? $priority->value
-            : (string) $priority;
+        $priorityValue = $priority->value;
 
         return [
             'ticket_id' => $this->ticket->id,

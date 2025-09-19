@@ -3,64 +3,74 @@
 declare(strict_types=1);
 
 return [
-    'lastFullAnalysisTime' => 1758217880,
+    'lastFullAnalysisTime' => 1758259304,
     'meta' => [
         'cacheVersion' => 'v12-linesToIgnore',
-        'phpstanVersion' => '2.1.27',
+        'phpstanVersion' => '2.1.22',
         'metaExtensions' => [
         ],
         'phpVersion' => 80212,
-        'projectConfig' => '{conditionalTags: {Larastan\\Larastan\\Rules\\NoEnvCallsOutsideOfConfigRule: {phpstan.rules.rule: %noEnvCallsOutsideOfConfig%}, Larastan\\Larastan\\Rules\\NoModelMakeRule: {phpstan.rules.rule: %noModelMake%}, Larastan\\Larastan\\Rules\\NoUnnecessaryCollectionCallRule: {phpstan.rules.rule: %noUnnecessaryCollectionCall%}, Larastan\\Larastan\\Rules\\NoUnnecessaryEnumerableToArrayCallsRule: {phpstan.rules.rule: %noUnnecessaryEnumerableToArrayCalls%}, Larastan\\Larastan\\Rules\\OctaneCompatibilityRule: {phpstan.rules.rule: %checkOctaneCompatibility%}, Larastan\\Larastan\\Rules\\UnusedViewsRule: {phpstan.rules.rule: %checkUnusedViews%}, Larastan\\Larastan\\Rules\\NoMissingTranslationsRule: {phpstan.rules.rule: %checkMissingTranslations%}, Larastan\\Larastan\\Rules\\ModelAppendsRule: {phpstan.rules.rule: %checkModelAppends%}, Larastan\\Larastan\\Rules\\NoPublicModelScopeAndAccessorRule: {phpstan.rules.rule: %checkModelMethodVisibility%}, Larastan\\Larastan\\Rules\\NoAuthFacadeInRequestScopeRule: {phpstan.rules.rule: %checkAuthCallsWhenInRequestScope%}, Larastan\\Larastan\\Rules\\NoAuthHelperInRequestScopeRule: {phpstan.rules.rule: %checkAuthCallsWhenInRequestScope%}, Larastan\\Larastan\\ReturnTypes\\Helpers\\EnvFunctionDynamicFunctionReturnTypeExtension: {phpstan.broker.dynamicFunctionReturnTypeExtension: %generalizeEnvReturnType%}, Larastan\\Larastan\\ReturnTypes\\Helpers\\ConfigFunctionDynamicFunctionReturnTypeExtension: {phpstan.broker.dynamicFunctionReturnTypeExtension: %checkConfigTypes%}, Larastan\\Larastan\\ReturnTypes\\ConfigRepositoryDynamicMethodReturnTypeExtension: {phpstan.broker.dynamicMethodReturnTypeExtension: %checkConfigTypes%}, Larastan\\Larastan\\ReturnTypes\\ConfigFacadeCollectionDynamicStaticMethodReturnTypeExtension: {phpstan.broker.dynamicStaticMethodReturnTypeExtension: %checkConfigTypes%}, Larastan\\Larastan\\Rules\\ConfigCollectionRule: {phpstan.rules.rule: %checkConfigTypes%}}, parameters: {universalObjectCratesClasses: [Illuminate\\Http\\Request, Illuminate\\Support\\Optional], earlyTerminatingFunctionCalls: [abort, dd], mixinExcludeClasses: [Eloquent], bootstrapFiles: [bootstrap.php], checkOctaneCompatibility: false, noEnvCallsOutsideOfConfig: true, noModelMake: true, noUnnecessaryCollectionCall: true, noUnnecessaryCollectionCallOnly: [], noUnnecessaryCollectionCallExcept: [], noUnnecessaryEnumerableToArrayCalls: false, squashedMigrationsPath: [], databaseMigrationsPath: [], disableMigrationScan: false, disableSchemaScan: false, configDirectories: [], viewDirectories: [], translationDirectories: [], checkModelProperties: false, checkUnusedViews: false, checkMissingTranslations: false, checkModelAppends: true, checkModelMethodVisibility: false, generalizeEnvReturnType: false, checkConfigTypes: false, checkAuthCallsWhenInRequestScope: false, level: 5, paths: [C:\\XAMPP\\htdocs\\ict-serve\\app, C:\\XAMPP\\htdocs\\ict-serve\\database, C:\\XAMPP\\htdocs\\ict-serve\\routes, C:\\XAMPP\\htdocs\\ict-serve\\tests], excludePaths: {analyseAndScan: [*.blade.php], analyse: []}, tmpDir: C:\\XAMPP\\htdocs\\ict-serve\\tmp}, rules: [Larastan\\Larastan\\Rules\\UselessConstructs\\NoUselessWithFunctionCallsRule, Larastan\\Larastan\\Rules\\UselessConstructs\\NoUselessValueFunctionCallsRule, Larastan\\Larastan\\Rules\\DeferrableServiceProviderMissingProvidesRule, Larastan\\Larastan\\Rules\\ConsoleCommand\\UndefinedArgumentOrOptionRule], services: [{class: Larastan\\Larastan\\Methods\\RelationForwardsCallsExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\ModelForwardsCallsExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\EloquentBuilderForwardsCallsExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\HigherOrderTapProxyExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\HigherOrderCollectionProxyExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\StorageMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\Extension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\ModelFactoryMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\RedirectResponseMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\MacroMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\ViewWithMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Properties\\ModelAccessorExtension, tags: [phpstan.broker.propertiesClassReflectionExtension]}, {class: Larastan\\Larastan\\Properties\\ModelPropertyExtension, tags: [phpstan.broker.propertiesClassReflectionExtension]}, {class: Larastan\\Larastan\\Properties\\HigherOrderCollectionProxyPropertyExtension, tags: [phpstan.broker.propertiesClassReflectionExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\HigherOrderTapProxyExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerArrayAccessDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {className: Illuminate\\Contracts\\Container\\Container}}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerArrayAccessDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {className: Illuminate\\Container\\Container}}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerArrayAccessDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {className: Illuminate\\Foundation\\Application}}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerArrayAccessDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {className: Illuminate\\Contracts\\Foundation\\Application}}, {class: Larastan\\Larastan\\Properties\\ModelRelationsExtension, tags: [phpstan.broker.propertiesClassReflectionExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ModelOnlyDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ModelFactoryDynamicStaticMethodReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ModelDynamicStaticMethodReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AppMakeDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AuthExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\GuardDynamicStaticMethodReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AuthManagerExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\DateExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\GuardExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\RequestFileExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\RequestRouteExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\RequestUserExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\EloquentBuilderExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\RelationCollectionExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ModelFindExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\BuilderModelFindExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\TestCaseExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Support\\CollectionHelper}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\AuthExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\CollectExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\NowAndTodayExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\ResponseExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\ValidatorExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\LiteralExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\CollectionFilterRejectDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\CollectionWhereNotNullDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\NewModelQueryDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\FactoryDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Types\\AbortIfFunctionTypeSpecifyingExtension, tags: [phpstan.typeSpecifier.functionTypeSpecifyingExtension], arguments: {methodName: abort, negate: false}}, {class: Larastan\\Larastan\\Types\\AbortIfFunctionTypeSpecifyingExtension, tags: [phpstan.typeSpecifier.functionTypeSpecifyingExtension], arguments: {methodName: abort, negate: true}}, {class: Larastan\\Larastan\\Types\\AbortIfFunctionTypeSpecifyingExtension, tags: [phpstan.typeSpecifier.functionTypeSpecifyingExtension], arguments: {methodName: throw, negate: false}}, {class: Larastan\\Larastan\\Types\\AbortIfFunctionTypeSpecifyingExtension, tags: [phpstan.typeSpecifier.functionTypeSpecifyingExtension], arguments: {methodName: throw, negate: true}}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\AppExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\ValueExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\StrExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\TapExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\StorageDynamicStaticMethodReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Types\\GenericEloquentCollectionTypeNodeResolverExtension, tags: [phpstan.phpDoc.typeNodeResolverExtension]}, {class: Larastan\\Larastan\\Types\\ViewStringTypeNodeResolverExtension, tags: [phpstan.phpDoc.typeNodeResolverExtension]}, {class: Larastan\\Larastan\\Rules\\OctaneCompatibilityRule}, {class: Larastan\\Larastan\\Rules\\NoEnvCallsOutsideOfConfigRule, arguments: {configDirectories: %configDirectories%}}, {class: Larastan\\Larastan\\Rules\\NoModelMakeRule}, {class: Larastan\\Larastan\\Rules\\NoUnnecessaryCollectionCallRule, arguments: {onlyMethods: %noUnnecessaryCollectionCallOnly%, excludeMethods: %noUnnecessaryCollectionCallExcept%}}, {class: Larastan\\Larastan\\Rules\\NoUnnecessaryEnumerableToArrayCallsRule}, {class: Larastan\\Larastan\\Rules\\ModelAppendsRule}, {class: Larastan\\Larastan\\Rules\\NoPublicModelScopeAndAccessorRule}, {class: Larastan\\Larastan\\Types\\GenericEloquentBuilderTypeNodeResolverExtension, tags: [phpstan.phpDoc.typeNodeResolverExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AppEnvironmentReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {class: Illuminate\\Foundation\\Application}}, {class: Larastan\\Larastan\\ReturnTypes\\AppEnvironmentReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {class: Illuminate\\Contracts\\Foundation\\Application}}, {class: Larastan\\Larastan\\ReturnTypes\\AppFacadeEnvironmentReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Types\\ModelProperty\\ModelPropertyTypeNodeResolverExtension, tags: [phpstan.phpDoc.typeNodeResolverExtension], arguments: {active: %checkModelProperties%}}, {class: Larastan\\Larastan\\Properties\\MigrationHelper, arguments: {databaseMigrationPath: %databaseMigrationsPath%, disableMigrationScan: %disableMigrationScan%, parser: @currentPhpVersionSimpleDirectParser, reflectionProvider: @reflectionProvider}}, {class: Larastan\\Larastan\\Properties\\SquashedMigrationHelper, arguments: {schemaPaths: %squashedMigrationsPath%, disableSchemaScan: %disableSchemaScan%}}, {class: Larastan\\Larastan\\Properties\\ModelCastHelper}, {class: Larastan\\Larastan\\Properties\\ModelPropertyHelper}, {class: Larastan\\Larastan\\Rules\\ModelRuleHelper}, {class: Larastan\\Larastan\\Methods\\BuilderHelper, arguments: {checkProperties: %checkModelProperties%}}, {class: Larastan\\Larastan\\Rules\\RelationExistenceRule, tags: [phpstan.rules.rule]}, {class: Larastan\\Larastan\\Rules\\CheckDispatchArgumentTypesCompatibleWithClassConstructorRule, arguments: {dispatchableClass: Illuminate\\Foundation\\Bus\\Dispatchable}, tags: [phpstan.rules.rule]}, {class: Larastan\\Larastan\\Rules\\CheckDispatchArgumentTypesCompatibleWithClassConstructorRule, arguments: {dispatchableClass: Illuminate\\Foundation\\Events\\Dispatchable}, tags: [phpstan.rules.rule]}, {class: Larastan\\Larastan\\Properties\\Schema\\MySqlDataTypeToPhpTypeConverter}, {class: Larastan\\Larastan\\LarastanStubFilesExtension, tags: [phpstan.stubFilesExtension]}, {class: Larastan\\Larastan\\Rules\\UnusedViewsRule}, {class: Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedEmailViewCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedViewMakeCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedViewFacadeMakeCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedRouteFacadeViewCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedViewInAnotherViewCollector}, {class: Larastan\\Larastan\\Support\\ViewFileHelper, arguments: {viewDirectories: %viewDirectories%}}, {class: Larastan\\Larastan\\Support\\ViewParser, arguments: {parser: @currentPhpVersionSimpleDirectParser}}, {class: Larastan\\Larastan\\Rules\\NoMissingTranslationsRule, arguments: {translationDirectories: %translationDirectories%}}, {class: Larastan\\Larastan\\Collectors\\UsedTranslationFunctionCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedTranslationTranslatorCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedTranslationFacadeCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedTranslationViewCollector}, {class: Larastan\\Larastan\\ReturnTypes\\ApplicationMakeDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerMakeDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ConsoleCommand\\ArgumentDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ConsoleCommand\\HasArgumentDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ConsoleCommand\\OptionDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ConsoleCommand\\HasOptionDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\TranslatorGetReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\LangGetReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\TransHelperReturnTypeExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\DoubleUnderscoreHelperReturnTypeExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AppMakeHelper}, {class: Larastan\\Larastan\\Internal\\ConsoleApplicationResolver}, {class: Larastan\\Larastan\\Internal\\ConsoleApplicationHelper}, {class: Larastan\\Larastan\\Support\\HigherOrderCollectionProxyHelper}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\ConfigFunctionDynamicFunctionReturnTypeExtension}, {class: Larastan\\Larastan\\ReturnTypes\\ConfigRepositoryDynamicMethodReturnTypeExtension}, {class: Larastan\\Larastan\\ReturnTypes\\ConfigFacadeCollectionDynamicStaticMethodReturnTypeExtension}, {class: Larastan\\Larastan\\Support\\ConfigParser, arguments: {parser: @currentPhpVersionSimpleDirectParser, configPaths: %configDirectories%}}, {class: Larastan\\Larastan\\Internal\\ConfigHelper}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\EnvFunctionDynamicFunctionReturnTypeExtension}, {class: Larastan\\Larastan\\ReturnTypes\\FormRequestSafeDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Rules\\NoAuthFacadeInRequestScopeRule}, {class: Larastan\\Larastan\\Rules\\NoAuthHelperInRequestScopeRule}, {class: Larastan\\Larastan\\Rules\\ConfigCollectionRule}, {class: Illuminate\\Filesystem\\Filesystem}]}',
+        'projectConfig' => '{conditionalTags: {Larastan\\Larastan\\Rules\\NoEnvCallsOutsideOfConfigRule: {phpstan.rules.rule: %noEnvCallsOutsideOfConfig%}, Larastan\\Larastan\\Rules\\NoModelMakeRule: {phpstan.rules.rule: %noModelMake%}, Larastan\\Larastan\\Rules\\NoUnnecessaryCollectionCallRule: {phpstan.rules.rule: %noUnnecessaryCollectionCall%}, Larastan\\Larastan\\Rules\\NoUnnecessaryEnumerableToArrayCallsRule: {phpstan.rules.rule: %noUnnecessaryEnumerableToArrayCalls%}, Larastan\\Larastan\\Rules\\OctaneCompatibilityRule: {phpstan.rules.rule: %checkOctaneCompatibility%}, Larastan\\Larastan\\Rules\\UnusedViewsRule: {phpstan.rules.rule: %checkUnusedViews%}, Larastan\\Larastan\\Rules\\ModelAppendsRule: {phpstan.rules.rule: %checkModelAppends%}, Larastan\\Larastan\\Rules\\NoAuthFacadeInRequestScopeRule: {phpstan.rules.rule: %checkAuthCallsWhenInRequestScope%}, Larastan\\Larastan\\Rules\\NoAuthHelperInRequestScopeRule: {phpstan.rules.rule: %checkAuthCallsWhenInRequestScope%}, Larastan\\Larastan\\ReturnTypes\\Helpers\\EnvFunctionDynamicFunctionReturnTypeExtension: {phpstan.broker.dynamicFunctionReturnTypeExtension: %generalizeEnvReturnType%}, Larastan\\Larastan\\ReturnTypes\\Helpers\\ConfigFunctionDynamicFunctionReturnTypeExtension: {phpstan.broker.dynamicFunctionReturnTypeExtension: %checkConfigTypes%}, Larastan\\Larastan\\ReturnTypes\\ConfigRepositoryDynamicMethodReturnTypeExtension: {phpstan.broker.dynamicMethodReturnTypeExtension: %checkConfigTypes%}, Larastan\\Larastan\\ReturnTypes\\ConfigFacadeCollectionDynamicStaticMethodReturnTypeExtension: {phpstan.broker.dynamicStaticMethodReturnTypeExtension: %checkConfigTypes%}, Larastan\\Larastan\\Rules\\ConfigCollectionRule: {phpstan.rules.rule: %checkConfigTypes%}}, parameters: {universalObjectCratesClasses: [Illuminate\\Http\\Request, Illuminate\\Support\\Optional], earlyTerminatingFunctionCalls: [abort, dd], mixinExcludeClasses: [Eloquent], bootstrapFiles: [bootstrap.php], checkOctaneCompatibility: false, noEnvCallsOutsideOfConfig: true, noModelMake: true, noUnnecessaryCollectionCall: true, noUnnecessaryCollectionCallOnly: [], noUnnecessaryCollectionCallExcept: [], noUnnecessaryEnumerableToArrayCalls: false, squashedMigrationsPath: [], databaseMigrationsPath: [], disableMigrationScan: false, disableSchemaScan: false, configDirectories: [], viewDirectories: [], checkModelProperties: false, checkUnusedViews: false, checkModelAppends: true, generalizeEnvReturnType: false, checkConfigTypes: false, checkAuthCallsWhenInRequestScope: false, level: 5, paths: [C:\\xampp\\htdocs\\ict-serve\\app, C:\\xampp\\htdocs\\ict-serve\\database, C:\\xampp\\htdocs\\ict-serve\\routes, C:\\xampp\\htdocs\\ict-serve\\tests], excludePaths: {analyseAndScan: [*.blade.php], analyse: []}, tmpDir: C:\\xampp\\htdocs\\ict-serve\\tmp}, rules: [Larastan\\Larastan\\Rules\\UselessConstructs\\NoUselessWithFunctionCallsRule, Larastan\\Larastan\\Rules\\UselessConstructs\\NoUselessValueFunctionCallsRule, Larastan\\Larastan\\Rules\\DeferrableServiceProviderMissingProvidesRule, Larastan\\Larastan\\Rules\\ConsoleCommand\\UndefinedArgumentOrOptionRule], services: [{class: Larastan\\Larastan\\Methods\\RelationForwardsCallsExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\ModelForwardsCallsExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\EloquentBuilderForwardsCallsExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\HigherOrderTapProxyExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\HigherOrderCollectionProxyExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\StorageMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\Extension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\ModelFactoryMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\RedirectResponseMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\MacroMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Methods\\ViewWithMethodsClassReflectionExtension, tags: [phpstan.broker.methodsClassReflectionExtension]}, {class: Larastan\\Larastan\\Properties\\ModelAccessorExtension, tags: [phpstan.broker.propertiesClassReflectionExtension]}, {class: Larastan\\Larastan\\Properties\\ModelPropertyExtension, tags: [phpstan.broker.propertiesClassReflectionExtension]}, {class: Larastan\\Larastan\\Properties\\HigherOrderCollectionProxyPropertyExtension, tags: [phpstan.broker.propertiesClassReflectionExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\HigherOrderTapProxyExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerArrayAccessDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {className: Illuminate\\Contracts\\Container\\Container}}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerArrayAccessDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {className: Illuminate\\Container\\Container}}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerArrayAccessDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {className: Illuminate\\Foundation\\Application}}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerArrayAccessDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {className: Illuminate\\Contracts\\Foundation\\Application}}, {class: Larastan\\Larastan\\Properties\\ModelRelationsExtension, tags: [phpstan.broker.propertiesClassReflectionExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ModelOnlyDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ModelFactoryDynamicStaticMethodReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ModelDynamicStaticMethodReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AppMakeDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AuthExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\GuardDynamicStaticMethodReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AuthManagerExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\DateExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\GuardExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\RequestFileExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\RequestRouteExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\RequestUserExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\EloquentBuilderExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\RelationCollectionExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ModelFindExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\BuilderModelFindExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\TestCaseExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Support\\CollectionHelper}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\AuthExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\CollectExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\NowAndTodayExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\ResponseExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\ValidatorExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\LiteralExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\CollectionFilterRejectDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\CollectionWhereNotNullDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\NewModelQueryDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\FactoryDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Types\\AbortIfFunctionTypeSpecifyingExtension, tags: [phpstan.typeSpecifier.functionTypeSpecifyingExtension], arguments: {methodName: abort, negate: false}}, {class: Larastan\\Larastan\\Types\\AbortIfFunctionTypeSpecifyingExtension, tags: [phpstan.typeSpecifier.functionTypeSpecifyingExtension], arguments: {methodName: abort, negate: true}}, {class: Larastan\\Larastan\\Types\\AbortIfFunctionTypeSpecifyingExtension, tags: [phpstan.typeSpecifier.functionTypeSpecifyingExtension], arguments: {methodName: throw, negate: false}}, {class: Larastan\\Larastan\\Types\\AbortIfFunctionTypeSpecifyingExtension, tags: [phpstan.typeSpecifier.functionTypeSpecifyingExtension], arguments: {methodName: throw, negate: true}}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\AppExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\ValueExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\StrExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\TapExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\StorageDynamicStaticMethodReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Types\\GenericEloquentCollectionTypeNodeResolverExtension, tags: [phpstan.phpDoc.typeNodeResolverExtension]}, {class: Larastan\\Larastan\\Types\\ViewStringTypeNodeResolverExtension, tags: [phpstan.phpDoc.typeNodeResolverExtension]}, {class: Larastan\\Larastan\\Rules\\OctaneCompatibilityRule}, {class: Larastan\\Larastan\\Rules\\NoEnvCallsOutsideOfConfigRule, arguments: {configDirectories: %configDirectories%}}, {class: Larastan\\Larastan\\Rules\\NoModelMakeRule}, {class: Larastan\\Larastan\\Rules\\NoUnnecessaryCollectionCallRule, arguments: {onlyMethods: %noUnnecessaryCollectionCallOnly%, excludeMethods: %noUnnecessaryCollectionCallExcept%}}, {class: Larastan\\Larastan\\Rules\\NoUnnecessaryEnumerableToArrayCallsRule}, {class: Larastan\\Larastan\\Rules\\ModelAppendsRule}, {class: Larastan\\Larastan\\Types\\GenericEloquentBuilderTypeNodeResolverExtension, tags: [phpstan.phpDoc.typeNodeResolverExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AppEnvironmentReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {class: Illuminate\\Foundation\\Application}}, {class: Larastan\\Larastan\\ReturnTypes\\AppEnvironmentReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension], arguments: {class: Illuminate\\Contracts\\Foundation\\Application}}, {class: Larastan\\Larastan\\ReturnTypes\\AppFacadeEnvironmentReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Types\\ModelProperty\\ModelPropertyTypeNodeResolverExtension, tags: [phpstan.phpDoc.typeNodeResolverExtension], arguments: {active: %checkModelProperties%}}, {class: Larastan\\Larastan\\Properties\\MigrationHelper, arguments: {databaseMigrationPath: %databaseMigrationsPath%, disableMigrationScan: %disableMigrationScan%, parser: @currentPhpVersionSimpleDirectParser, reflectionProvider: @reflectionProvider}}, {class: Larastan\\Larastan\\Properties\\SquashedMigrationHelper, arguments: {schemaPaths: %squashedMigrationsPath%, disableSchemaScan: %disableSchemaScan%}}, {class: Larastan\\Larastan\\Properties\\ModelCastHelper}, {class: Larastan\\Larastan\\Properties\\ModelPropertyHelper}, {class: Larastan\\Larastan\\Rules\\ModelRuleHelper}, {class: Larastan\\Larastan\\Methods\\BuilderHelper, arguments: {checkProperties: %checkModelProperties%}}, {class: Larastan\\Larastan\\Rules\\RelationExistenceRule, tags: [phpstan.rules.rule]}, {class: Larastan\\Larastan\\Rules\\CheckDispatchArgumentTypesCompatibleWithClassConstructorRule, arguments: {dispatchableClass: Illuminate\\Foundation\\Bus\\Dispatchable}, tags: [phpstan.rules.rule]}, {class: Larastan\\Larastan\\Rules\\CheckDispatchArgumentTypesCompatibleWithClassConstructorRule, arguments: {dispatchableClass: Illuminate\\Foundation\\Events\\Dispatchable}, tags: [phpstan.rules.rule]}, {class: Larastan\\Larastan\\Properties\\Schema\\MySqlDataTypeToPhpTypeConverter}, {class: Larastan\\Larastan\\LarastanStubFilesExtension, tags: [phpstan.stubFilesExtension]}, {class: Larastan\\Larastan\\Rules\\UnusedViewsRule}, {class: Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedEmailViewCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedViewMakeCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedViewFacadeMakeCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedRouteFacadeViewCollector, tags: [phpstan.collector]}, {class: Larastan\\Larastan\\Collectors\\UsedViewInAnotherViewCollector, arguments: {parser: @currentPhpVersionSimpleDirectParser}}, {class: Larastan\\Larastan\\Support\\ViewFileHelper, arguments: {viewDirectories: %viewDirectories%}}, {class: Larastan\\Larastan\\ReturnTypes\\ApplicationMakeDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ContainerMakeDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ConsoleCommand\\ArgumentDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ConsoleCommand\\HasArgumentDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ConsoleCommand\\OptionDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\ConsoleCommand\\HasOptionDynamicReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\TranslatorGetReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\LangGetReturnTypeExtension, tags: [phpstan.broker.dynamicStaticMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\TransHelperReturnTypeExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\DoubleUnderscoreHelperReturnTypeExtension, tags: [phpstan.broker.dynamicFunctionReturnTypeExtension]}, {class: Larastan\\Larastan\\ReturnTypes\\AppMakeHelper}, {class: Larastan\\Larastan\\Internal\\ConsoleApplicationResolver}, {class: Larastan\\Larastan\\Internal\\ConsoleApplicationHelper}, {class: Larastan\\Larastan\\Support\\HigherOrderCollectionProxyHelper}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\ConfigFunctionDynamicFunctionReturnTypeExtension}, {class: Larastan\\Larastan\\ReturnTypes\\ConfigRepositoryDynamicMethodReturnTypeExtension}, {class: Larastan\\Larastan\\ReturnTypes\\ConfigFacadeCollectionDynamicStaticMethodReturnTypeExtension}, {class: Larastan\\Larastan\\Support\\ConfigParser, arguments: {parser: @currentPhpVersionSimpleDirectParser, configPaths: %configDirectories%}}, {class: Larastan\\Larastan\\Internal\\ConfigHelper}, {class: Larastan\\Larastan\\ReturnTypes\\Helpers\\EnvFunctionDynamicFunctionReturnTypeExtension}, {class: Larastan\\Larastan\\ReturnTypes\\FormRequestSafeDynamicMethodReturnTypeExtension, tags: [phpstan.broker.dynamicMethodReturnTypeExtension]}, {class: Larastan\\Larastan\\Rules\\NoAuthFacadeInRequestScopeRule}, {class: Larastan\\Larastan\\Rules\\NoAuthHelperInRequestScopeRule}, {class: Larastan\\Larastan\\Rules\\ConfigCollectionRule}]}',
         'analysedPaths' => [
-            0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app',
-            1 => 'C:\\XAMPP\\htdocs\\ict-serve\\database',
-            2 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes',
-            3 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests',
+            0 => 'C:\\xampp\\htdocs\\ict-serve\\app',
+            1 => 'C:\\xampp\\htdocs\\ict-serve\\database',
+            2 => 'C:\\xampp\\htdocs\\ict-serve\\routes',
+            3 => 'C:\\xampp\\htdocs\\ict-serve\\tests',
         ],
         'scannedFiles' => [
         ],
         'composerLocks' => [
-            'C:/XAMPP/htdocs/ict-serve/composer.lock' => '9cbf20739ad3f887b19d6271a8f96b469419aa14',
+            'C:/xampp/htdocs/ict-serve/composer.lock' => '9cbf20739ad3f887b19d6271a8f96b469419aa14',
         ],
         'composerInstalled' => [
-            'C:/XAMPP/htdocs/ict-serve/vendor/composer/installed.php' => [
+            'C:/xampp/htdocs/ict-serve/vendor/composer/installed.php' => [
                 'versions' => [
                     'anourvalar/eloquent-serialize' => [
                         'pretty_version' => '1.3.4',
                         'version' => '1.3.4.0',
                         'reference' => '0934a98866e02b73e38696961a9d7984b834c9d9',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../anourvalar/eloquent-serialize',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../anourvalar/eloquent-serialize',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
+                    ],
+                    'barryvdh/laravel-dompdf' => [
+                        'pretty_version' => 'v3.1.1',
+                        'version' => '3.1.1.0',
+                        'reference' => '8e71b99fc53bb8eb77f316c3c452dd74ab7cb25d',
+                        'type' => 'library',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../barryvdh/laravel-dompdf',
+                        'aliases' => [
+                        ],
+                        'dev_requirement' => true,
                     ],
                     'blade-ui-kit/blade-heroicons' => [
                         'pretty_version' => '2.6.0',
                         'version' => '2.6.0.0',
                         'reference' => '4553b2a1f6c76f0ac7f3bc0de4c0cfa06a097d19',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../blade-ui-kit/blade-heroicons',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../blade-ui-kit/blade-heroicons',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'blade-ui-kit/blade-icons' => [
                         'pretty_version' => '1.8.0',
                         'version' => '1.8.0.0',
                         'reference' => '7b743f27476acb2ed04cb518213d78abe096e814',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../blade-ui-kit/blade-icons',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../blade-ui-kit/blade-icons',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'brick/math' => [
                         'pretty_version' => '0.14.0',
                         'version' => '0.14.0.0',
                         'reference' => '113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../brick/math',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../brick/math',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -70,7 +80,7 @@ return [
                         'version' => '3.2.0.0',
                         'reference' => '18ba5ddfec8976260ead6e866180bd5d2f71aa1d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../carbonphp/carbon-doctrine-types',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../carbonphp/carbon-doctrine-types',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -80,27 +90,27 @@ return [
                         'version' => '5.0.3.0',
                         'reference' => '42e215640e9ebdd857570c9e4e52245d1ee51de2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../chillerlan/php-qrcode',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../chillerlan/php-qrcode',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'chillerlan/php-settings-container' => [
                         'pretty_version' => '3.2.1',
                         'version' => '3.2.1.0',
                         'reference' => '95ed3e9676a1d47cab2e3174d19b43f5dbf52681',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../chillerlan/php-settings-container',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../chillerlan/php-settings-container',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'clue/ndjson-react' => [
                         'pretty_version' => 'v1.3.0',
                         'version' => '1.3.0.0',
                         'reference' => '392dc165fce93b5bb5c637b67e59619223c931b0',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../clue/ndjson-react',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../clue/ndjson-react',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -110,7 +120,7 @@ return [
                         'version' => '8.0.6.0',
                         'reference' => '5d785f8fc8b891483cdbee3fb25f2b348c50c03f',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../cmgmyr/phploc',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../cmgmyr/phploc',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -120,7 +130,7 @@ return [
                         'version' => '1.6.2.0',
                         'reference' => 'ba9f089655d4cdd64e762a6044f411ccdaec0076',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/./class-map-generator',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/./class-map-generator',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -130,27 +140,27 @@ return [
                         'version' => '3.3.2.0',
                         'reference' => 'b2bed4734f0cc156ee1fe9c0da2550420d99a21e',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/./pcre',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/./pcre',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'composer/semver' => [
                         'pretty_version' => '3.4.4',
                         'version' => '3.4.4.0',
                         'reference' => '198166618906cb2de69b95d7d47e5fa8aa1b2b95',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/./semver',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/./semver',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'composer/xdebug-handler' => [
                         'pretty_version' => '3.0.5',
                         'version' => '3.0.5.0',
                         'reference' => '6c1925561632e83d60a44492e0b344cf48ab85ef',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/./xdebug-handler',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/./xdebug-handler',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -166,20 +176,20 @@ return [
                         'version' => '0.3.1.0',
                         'reference' => '7c31171bc981e48726729a5f3a05a2d2b63f0b1e',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../danharrin/date-format-converter',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../danharrin/date-format-converter',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'danharrin/livewire-rate-limiting' => [
                         'pretty_version' => 'v2.1.0',
                         'version' => '2.1.0.0',
                         'reference' => '14dde653a9ae8f38af07a0ba4921dc046235e1a0',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../danharrin/livewire-rate-limiting',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../danharrin/livewire-rate-limiting',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'davedevelopment/hamcrest-php' => [
                         'dev_requirement' => true,
@@ -192,7 +202,7 @@ return [
                         'version' => '1.1.2.0',
                         'reference' => 'e9cf5e4bbf7eeaf9ef5db34938942602838fc2b1',
                         'type' => 'composer-plugin',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../dealerdirect/phpcodesniffer-composer-installer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dealerdirect/phpcodesniffer-composer-installer',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -202,7 +212,7 @@ return [
                         'version' => '3.0.3.0',
                         'reference' => 'a23a2bf4f31d3518f3ecb38660c95715dfead60f',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../dflydev/dot-access-data',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dflydev/dot-access-data',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -212,7 +222,7 @@ return [
                         'version' => '1.1.5.0',
                         'reference' => '459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../doctrine/deprecations',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../doctrine/deprecations',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -222,7 +232,7 @@ return [
                         'version' => '2.1.0.0',
                         'reference' => '6d6c96277ea252fc1304627204c3d5e6e15faa3b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../doctrine/inflector',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../doctrine/inflector',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -232,17 +242,47 @@ return [
                         'version' => '3.0.1.0',
                         'reference' => '31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../doctrine/lexer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../doctrine/lexer',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
+                    ],
+                    'dompdf/dompdf' => [
+                        'pretty_version' => 'v3.1.0',
+                        'version' => '3.1.0.0',
+                        'reference' => 'a51bd7a063a65499446919286fb18b518177155a',
+                        'type' => 'library',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dompdf/dompdf',
+                        'aliases' => [
+                        ],
+                        'dev_requirement' => true,
+                    ],
+                    'dompdf/php-font-lib' => [
+                        'pretty_version' => '1.0.1',
+                        'version' => '1.0.1.0',
+                        'reference' => '6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d',
+                        'type' => 'library',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dompdf/php-font-lib',
+                        'aliases' => [
+                        ],
+                        'dev_requirement' => true,
+                    ],
+                    'dompdf/php-svg-lib' => [
+                        'pretty_version' => '1.0.0',
+                        'version' => '1.0.0.0',
+                        'reference' => 'eb045e518185298eb6ff8d80d0d0c6b17aecd9af',
+                        'type' => 'library',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dompdf/php-svg-lib',
+                        'aliases' => [
+                        ],
+                        'dev_requirement' => true,
                     ],
                     'dragonmantank/cron-expression' => [
                         'pretty_version' => 'v3.4.0',
                         'version' => '3.4.0.0',
                         'reference' => '8c784d071debd117328803d86b2097615b457500',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../dragonmantank/cron-expression',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../dragonmantank/cron-expression',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -252,7 +292,7 @@ return [
                         'version' => '4.0.4.0',
                         'reference' => 'd42c8731f0624ad6bdc8d3e5e9a4524f68801cfa',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../egulias/email-validator',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../egulias/email-validator',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -262,7 +302,7 @@ return [
                         'version' => '3.0.2.0',
                         'reference' => '0a16b0d71ab13284339abb99d9d2bd813640efbc',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../evenement/evenement',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../evenement/evenement',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -272,17 +312,17 @@ return [
                         'version' => '4.18.0.0',
                         'reference' => 'cb56001e54359df7ae76dc522d08845dc741621b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../ezyang/htmlpurifier',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../ezyang/htmlpurifier',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'fakerphp/faker' => [
                         'pretty_version' => 'v1.24.1',
                         'version' => '1.24.1.0',
                         'reference' => 'e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../fakerphp/faker',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../fakerphp/faker',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -292,117 +332,117 @@ return [
                         'version' => '1.3.0.0',
                         'reference' => 'db9508f7b1474469d9d3c53b86f817e344732678',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../fidry/cpu-core-counter',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../fidry/cpu-core-counter',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'filament/actions' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => 'ebc3c61c8675200c1b3efb4c3a5e758f6c549f6e',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => '8b8eef43e31f86681d7c8f1a8d8400afa9172442',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/actions',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/actions',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filament/filament' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => '394b3bc8d2e64c605d665fa1e8ebebe967d92519',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => 'dc8306c984d0d52b0b8365b5e66bb7c43b81784b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/filament',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/filament',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filament/forms' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => 'c29b10ab8f46bf9ce963afbdd9ccd2955ac56f4e',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => 'cb06cbd7855a178fd9c1db88ad5f3ecad7d993a1',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/forms',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/forms',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filament/infolists' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => '881bc4899d87604ffb49ff3611685f520658d469',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => '43acef5a76da2b6dd05ee480caaca9d3ba4edcd1',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/infolists',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/infolists',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filament/notifications' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => '969244177249d9c79bcf9137c54288b74984a74d',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => '9b9022c6f682755317092b289a61928348310737',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/notifications',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/notifications',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filament/schemas' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => '9e38ba8bd847525fb4c6463ad4d33beba6f5ad5d',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => '407e656aab02840781161648ea4a3f4c96de6570',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/schemas',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/schemas',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filament/support' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => '1ff388fe4cbcbeb9ded80f56d18f8f3b479e6628',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => '1c6ed2b3697600f5213bee6760e0f709a746a968',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/support',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/support',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filament/tables' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => 'b8f8309b7295e243cad5c4182f4352ce94e24f74',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => '55b96c365ec5d50dcadb996515557ced08ce7b27',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/tables',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/tables',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filament/widgets' => [
-                        'pretty_version' => 'v4.0.17',
-                        'version' => '4.0.17.0',
-                        'reference' => '35e245262210a944a1a1707fb0ec9857362f527e',
+                        'pretty_version' => 'v4.0.0',
+                        'version' => '4.0.0.0',
+                        'reference' => 'ec65855e6b572900eefbb514608fb2ce92abb8d0',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filament/widgets',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filament/widgets',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'filp/whoops' => [
                         'pretty_version' => '2.18.4',
                         'version' => '2.18.4.0',
                         'reference' => 'd2102955e48b9fd9ab24280a7ad12ed552752c4d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../filp/whoops',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../filp/whoops',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'friendsofphp/php-cs-fixer' => [
-                        'pretty_version' => 'v3.87.2',
-                        'version' => '3.87.2.0',
-                        'reference' => 'da5f0a7858c79b56fc0b8c36d3efcfe5f37f0992',
+                        'pretty_version' => 'v3.87.1',
+                        'version' => '3.87.1.0',
+                        'reference' => '2f5170365e2a422d0c5421f9c8818b2c078105f6',
                         'type' => 'application',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../friendsofphp/php-cs-fixer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../friendsofphp/php-cs-fixer',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -412,7 +452,7 @@ return [
                         'version' => '1.3.0.0',
                         'reference' => '3d158f36e7875e2f040f37bc0573956240a5a38b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../fruitcake/php-cors',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../fruitcake/php-cors',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -422,7 +462,7 @@ return [
                         'version' => '1.1.3.0',
                         'reference' => '3ba905c11371512af9d9bdd27d99b782216b6945',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../graham-campbell/result-type',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../graham-campbell/result-type',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -438,7 +478,7 @@ return [
                         'version' => '7.10.0.0',
                         'reference' => 'b51ac707cfa420b7bfd4e4d5e510ba8008e822b4',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../guzzlehttp/guzzle',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../guzzlehttp/guzzle',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -448,7 +488,7 @@ return [
                         'version' => '2.3.0.0',
                         'reference' => '481557b130ef3790cf82b713667b43030dc9c957',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../guzzlehttp/promises',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../guzzlehttp/promises',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -458,7 +498,7 @@ return [
                         'version' => '2.8.0.0',
                         'reference' => '21dc724a0583619cd1652f673303492272778051',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../guzzlehttp/psr7',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../guzzlehttp/psr7',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -468,7 +508,7 @@ return [
                         'version' => '1.0.5.0',
                         'reference' => '4f4bbd4e7172148801e76e3decc1e559bdee34e1',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../guzzlehttp/uri-template',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../guzzlehttp/uri-template',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -478,7 +518,7 @@ return [
                         'version' => '2.1.1.0',
                         'reference' => 'f8b1c0173b22fa6ec77a81fe63e5b01eba7e6487',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../hamcrest/hamcrest-php',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../hamcrest/hamcrest-php',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -488,7 +528,7 @@ return [
                         'version' => '0.6.0.0',
                         'reference' => '947083e2dca211a6f12fb1beb67a01e387de9b62',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../iamcal/sql-parser',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../iamcal/sql-parser',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -496,211 +536,211 @@ return [
                     'illuminate/auth' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/broadcasting' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/bus' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/cache' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/collections' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/concurrency' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/conditionable' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/config' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/console' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/container' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/contracts' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/cookie' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/database' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/encryption' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/events' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/filesystem' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/hashing' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/http' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/json-schema' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/log' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/macroable' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/mail' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/notifications' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/pagination' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/pipeline' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/process' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/queue' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/redis' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/routing' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/session' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/support' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/testing' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/translation' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/validation' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'illuminate/view' => [
                         'dev_requirement' => false,
                         'replaced' => [
-                            0 => 'v12.30.0',
+                            0 => 'v12.28.1',
                         ],
                     ],
                     'imanghafoori/composer-json' => [
@@ -708,17 +748,17 @@ return [
                         'version' => '2.1.0.0',
                         'reference' => 'dfb6145c5508cef15c050883052543705a222657',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/composer-json',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/composer-json',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'imanghafoori/laravel-microscope' => [
-                        'pretty_version' => 'v1.0.420',
-                        'version' => '1.0.420.0',
-                        'reference' => 'c4ab0471c3538727b583999a2fe0694d4e11a3c7',
+                        'pretty_version' => 'v1.0.417',
+                        'version' => '1.0.417.0',
+                        'reference' => 'fc43427ac81fc3b52f437eb89f57938d5e3dd43d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/laravel-microscope',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/laravel-microscope',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -728,7 +768,7 @@ return [
                         'version' => '0.1.6.0',
                         'reference' => 'c5c5be59250ebf71af4cb8b0d8e964fbd84cabdc',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/php-abstract-filesystem',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/php-abstract-filesystem',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -738,7 +778,7 @@ return [
                         'version' => '1.1.0.0',
                         'reference' => '332cd7bf7f4537adb5bd430abf96aad42a97bc97',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/php-imports-analyzer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/php-imports-analyzer',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -748,17 +788,17 @@ return [
                         'version' => '1.1.16.0',
                         'reference' => '435eb099adac1205316f2b0f2f3ac440b801fee8',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/php-search-replace',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/php-search-replace',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'imanghafoori/php-token-analyzer' => [
-                        'pretty_version' => 'v0.1.87',
-                        'version' => '0.1.87.0',
-                        'reference' => '3c3dab38d29073ee9d8b17ac5cded6829534f1a6',
+                        'pretty_version' => 'v0.1.86',
+                        'version' => '0.1.86.0',
+                        'reference' => '27b0dd02e0e356fafd1138effdc76a3dc53bef16',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/php-token-analyzer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/php-token-analyzer',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -768,7 +808,7 @@ return [
                         'version' => '1.1.9.0',
                         'reference' => '66739a11c68b6a886a0ae1059674518b6835e4ea',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/smart-realtime-facades',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../imanghafoori/smart-realtime-facades',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -779,32 +819,22 @@ return [
                             0 => '*',
                         ],
                     ],
-                    'jean85/pretty-package-versions' => [
-                        'pretty_version' => '2.1.1',
-                        'version' => '2.1.1.0',
-                        'reference' => '4d7aa5dab42e2a76d99559706022885de0e18e1a',
-                        'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../jean85/pretty-package-versions',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => false,
-                    ],
                     'jetbrains/phpstorm-attributes' => [
                         'pretty_version' => '1.2',
                         'version' => '1.2.0.0',
                         'reference' => '64de815a4509c29e00d5e3474087fd24c171afc2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../jetbrains/phpstorm-attributes',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../jetbrains/phpstorm-attributes',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'justinrainbow/json-schema' => [
-                        'pretty_version' => '6.5.2',
-                        'version' => '6.5.2.0',
-                        'reference' => 'ac0d369c09653cf7af561f6d91a705bc617a87b8',
+                        'pretty_version' => '6.5.1',
+                        'version' => '6.5.1.0',
+                        'reference' => 'b5ab21e431594897e5bb86343c01f140ba862c26',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../justinrainbow/json-schema',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../justinrainbow/json-schema',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -814,10 +844,10 @@ return [
                         'version' => '4.2.8.0',
                         'reference' => 'd67c7e2efa886d2ef8bb29e86c3ddb9438ac6390',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../kirschbaum-development/eloquent-power-joins',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../kirschbaum-development/eloquent-power-joins',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'kodova/hamcrest-php' => [
                         'dev_requirement' => true,
@@ -826,51 +856,41 @@ return [
                         ],
                     ],
                     'larastan/larastan' => [
-                        'pretty_version' => 'v3.7.1',
-                        'version' => '3.7.1.0',
-                        'reference' => '2e653fd19585a825e283b42f38378b21ae481cc7',
+                        'pretty_version' => 'v3.6.1',
+                        'version' => '3.6.1.0',
+                        'reference' => '3c223047e374befd1b64959784685d6ecccf66aa',
                         'type' => 'phpstan-extension',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../larastan/larastan',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../larastan/larastan',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'laravel/boost' => [
-                        'pretty_version' => 'v1.2.0',
-                        'version' => '1.2.0.0',
-                        'reference' => '85f7de54a6b60f684fc9f7f6df5ad94f4f7d0d24',
+                        'pretty_version' => 'v1.1.4',
+                        'version' => '1.1.4.0',
+                        'reference' => '70f909465bf73dad7e791fad8b7716b3b2712076',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/boost',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => true,
-                    ],
-                    'laravel/breeze' => [
-                        'pretty_version' => 'v2.3.8',
-                        'version' => '2.3.8.0',
-                        'reference' => '1a29c5792818bd4cddf70b5f743a227e02fbcfcd',
-                        'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/breeze',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/boost',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'laravel/framework' => [
-                        'pretty_version' => 'v12.30.0',
-                        'version' => '12.30.0.0',
-                        'reference' => '943603722fe95b69f216bdcda7d060c9a55f18fd',
+                        'pretty_version' => 'v12.28.1',
+                        'version' => '12.28.1.0',
+                        'reference' => '868c1f2d3dba4df6d21e3a8d818479f094cfd942',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/framework',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/framework',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
                     ],
                     'laravel/mcp' => [
-                        'pretty_version' => 'v0.2.0',
-                        'version' => '0.2.0.0',
-                        'reference' => '56fade6882756d5828cc90b86611d29616c2d754',
+                        'pretty_version' => 'v0.1.1',
+                        'version' => '0.1.1.0',
+                        'reference' => '6d6284a491f07c74d34f48dfd999ed52c567c713',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/mcp',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/mcp',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -880,17 +900,17 @@ return [
                         'version' => '1.2.3.0',
                         'reference' => '8cc3d575c1f0e57eeb923f366a37528c50d2385a',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/pail',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/pail',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'laravel/pint' => [
-                        'pretty_version' => 'v1.25.0',
-                        'version' => '1.25.0.0',
-                        'reference' => '595de38458c6b0ab4cae4bcc769c2e5c5d5b8e96',
+                        'pretty_version' => 'v1.24.0',
+                        'version' => '1.24.0.0',
+                        'reference' => '0345f3b05f136801af8c339f9d16ef29e6b4df8a',
                         'type' => 'project',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/pint',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/pint',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -900,17 +920,17 @@ return [
                         'version' => '0.3.6.0',
                         'reference' => '86a8b692e8661d0fb308cec64f3d176821323077',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/prompts',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/prompts',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
                     ],
                     'laravel/roster' => [
-                        'pretty_version' => 'v0.2.7',
-                        'version' => '0.2.7.0',
-                        'reference' => '9de07bfb52cfe4e5a1fec10b8a446d6add8376cd',
+                        'pretty_version' => 'v0.2.6',
+                        'version' => '0.2.6.0',
+                        'reference' => '5615acdf860c5a5c61d04aba44f2d3312550c514',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/roster',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/roster',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -920,7 +940,7 @@ return [
                         'version' => '1.45.0.0',
                         'reference' => '019a2933ff4a9199f098d4259713f9bc266a874e',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/sail',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/sail',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -930,7 +950,7 @@ return [
                         'version' => '2.0.4.0',
                         'reference' => 'b352cf0534aa1ae6b4d825d1e762e35d43f8a841',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/serializable-closure',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/serializable-closure',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -940,17 +960,17 @@ return [
                         'version' => '5.11.4.0',
                         'reference' => '8b7bd77857d6b1b8c9362560cde74911cee68ab8',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/telescope',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/telescope',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'laravel/tinker' => [
                         'pretty_version' => 'v2.10.1',
                         'version' => '2.10.1.0',
                         'reference' => '22177cc71807d38f2810c6204d8f7183d88a57d3',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/tinker',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/tinker',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -960,7 +980,7 @@ return [
                         'version' => '4.6.1.0',
                         'reference' => '7d6ffa38d79f19c9b3e70a751a9af845e8f41d88',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../laravel/ui',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../laravel/ui',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -970,7 +990,7 @@ return [
                         'version' => '2.7.1.0',
                         'reference' => '10732241927d3971d28e7ea7b5712721fa2296ca',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/commonmark',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/commonmark',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -980,7 +1000,7 @@ return [
                         'version' => '1.2.0.0',
                         'reference' => '754b3604fb2984c71f4af4a9cbe7b57f346ec1f3',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/config',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/config',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -990,7 +1010,7 @@ return [
                         'version' => '5.1.0.0',
                         'reference' => '041c52d266763887fff2256fb5dc9392d808f8f3',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/container',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/container',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1000,17 +1020,17 @@ return [
                         'version' => '9.25.0.0',
                         'reference' => 'f856f532866369fb1debe4e7c5a1db185f40ef86',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/csv',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/csv',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'league/flysystem' => [
                         'pretty_version' => '3.30.0',
                         'version' => '3.30.0.0',
                         'reference' => '2203e3151755d874bb2943649dae1eb8533ac93e',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/flysystem',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/flysystem',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1020,7 +1040,7 @@ return [
                         'version' => '3.30.0.0',
                         'reference' => '6691915f77c7fb69adfb87dcd550052dc184ee10',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/flysystem-local',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/flysystem-local',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1030,7 +1050,7 @@ return [
                         'version' => '1.16.0.0',
                         'reference' => '2d6702ff215bf922936ccc1ad31007edc76451b9',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/mime-type-detection',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/mime-type-detection',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1040,7 +1060,7 @@ return [
                         'version' => '7.5.1.0',
                         'reference' => '81fb5145d2644324614cc532b28efd0215bda430',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/uri',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/uri',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1050,17 +1070,17 @@ return [
                         'version' => '7.5.1.0',
                         'reference' => '4aabf0e2f2f9421ffcacab35be33e4fb5e63c44f',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/uri-components',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/uri-components',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'league/uri-interfaces' => [
                         'pretty_version' => '7.5.0',
                         'version' => '7.5.0.0',
                         'reference' => '08cfc6c4f3d811584fb09c37e2849e6a7f9b0742',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../league/uri-interfaces',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../league/uri-interfaces',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1070,7 +1090,7 @@ return [
                         'version' => '3.6.4.0',
                         'reference' => 'ef04be759da41b14d2d129e670533180a44987dc',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../livewire/livewire',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../livewire/livewire',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1080,27 +1100,27 @@ return [
                         'version' => '3.1.67.0',
                         'reference' => 'e508e34a502a3acc3329b464dad257378a7edb4d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../maatwebsite/excel',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../maatwebsite/excel',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'maennchen/zipstream-php' => [
                         'pretty_version' => '3.1.2',
                         'version' => '3.1.2.0',
                         'reference' => 'aeadcf5c412332eb426c0f9b4485f6accba2a99f',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../maennchen/zipstream-php',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../maennchen/zipstream-php',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'marc-mabe/php-enum' => [
-                        'pretty_version' => 'v4.7.2',
-                        'version' => '4.7.2.0',
-                        'reference' => 'bb426fcdd65c60fb3638ef741e8782508fda7eef',
+                        'pretty_version' => 'v4.7.1',
+                        'version' => '4.7.1.0',
+                        'reference' => '7159809e5cfa041dca28e61f7f7ae58063aae8ed',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../marc-mabe/php-enum',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../marc-mabe/php-enum',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1110,37 +1130,37 @@ return [
                         'version' => '3.0.2.0',
                         'reference' => '95c56caa1cf5c766ad6d65b6344b807c1e8405b9',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../markbaker/complex',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../markbaker/complex',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'markbaker/matrix' => [
                         'pretty_version' => '3.0.1',
                         'version' => '3.0.1.0',
                         'reference' => '728434227fe21be27ff6d86621a1b13107a2562c',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../markbaker/matrix',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../markbaker/matrix',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'masterminds/html5' => [
                         'pretty_version' => '2.10.0',
                         'version' => '2.10.0.0',
                         'reference' => 'fcf91eb64359852f00d921887b219479b4f21251',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../masterminds/html5',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../masterminds/html5',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'mockery/mockery' => [
                         'pretty_version' => '1.6.12',
                         'version' => '1.6.12.0',
                         'reference' => '1f4efdd7d3beafe9807b08156dfcb176d18f1699',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../mockery/mockery',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../mockery/mockery',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1150,7 +1170,7 @@ return [
                         'version' => '3.9.0.0',
                         'reference' => '10d85740180ecba7896c87e06a166e0c95a0e3b6',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../monolog/monolog',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../monolog/monolog',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1166,7 +1186,7 @@ return [
                         'version' => '1.13.4.0',
                         'reference' => '07d290f0c47959fd5eed98c95ee5602db07e0b6a',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../myclabs/deep-copy',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../myclabs/deep-copy',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1176,7 +1196,7 @@ return [
                         'version' => '3.10.3.0',
                         'reference' => '8e3643dcd149ae0fe1d2ff4f2c8e4bbfad7c165f',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nesbot/carbon',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../nesbot/carbon',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1186,17 +1206,17 @@ return [
                         'version' => '4.2.0.0',
                         'reference' => '4707546a1f11badd72f5d82af4f8a6bc64bd56ac',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nette/php-generator',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../nette/php-generator',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'nette/schema' => [
                         'pretty_version' => 'v1.3.2',
                         'version' => '1.3.2.0',
                         'reference' => 'da801d52f0354f70a638673c4a0f04e16529431d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nette/schema',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../nette/schema',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1206,7 +1226,7 @@ return [
                         'version' => '4.0.8.0',
                         'reference' => 'c930ca4e3cf4f17dcfb03037703679d2396d2ede',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nette/utils',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../nette/utils',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1216,7 +1236,7 @@ return [
                         'version' => '5.6.1.0',
                         'reference' => 'f103601b29efebd7ff4a1ca7b3eeea9e3336a2a2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nikic/php-parser',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../nikic/php-parser',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1226,17 +1246,7 @@ return [
                         'version' => '8.8.2.0',
                         'reference' => '60207965f9b7b7a4ce15a0f75d57f9dadb105bdb',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nunomaduro/collision',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => true,
-                    ],
-                    'nunomaduro/larastan' => [
-                        'pretty_version' => 'v3.7.1',
-                        'version' => '3.7.1.0',
-                        'reference' => '2e653fd19585a825e283b42f38378b21ae481cc7',
-                        'type' => 'phpstan-extension',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nunomaduro/larastan',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../nunomaduro/collision',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1246,7 +1256,7 @@ return [
                         'version' => '2.13.1.0',
                         'reference' => '77572bb0d3a6fbbd36aa000a619fd5c89b10d3df',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nunomaduro/phpinsights',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../nunomaduro/phpinsights',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1256,17 +1266,7 @@ return [
                         'version' => '2.3.1.0',
                         'reference' => 'dfa08f390e509967a15c22493dc0bac5733d9123',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nunomaduro/termwind',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => false,
-                    ],
-                    'nyholm/psr7' => [
-                        'pretty_version' => '1.8.2',
-                        'version' => '1.8.2.0',
-                        'reference' => 'a71f2b11690f4b24d099d6b16690a90ae14fc6f3',
-                        'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../nyholm/psr7',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../nunomaduro/termwind',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1276,10 +1276,10 @@ return [
                         'version' => '4.28.5.0',
                         'reference' => 'ab05a09fe6fce57c90338f83280648a9786ce36b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../openspout/openspout',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../openspout/openspout',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'orno/di' => [
                         'dev_requirement' => true,
@@ -1287,32 +1287,22 @@ return [
                             0 => '~2.0',
                         ],
                     ],
-                    'owen-it/laravel-auditing' => [
-                        'pretty_version' => 'v14.0.0',
-                        'version' => '14.0.0.0',
-                        'reference' => 'f92602d1b3f53df29ddd577290e9d735ea707c53',
-                        'type' => 'package',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../owen-it/laravel-auditing',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => false,
-                    ],
                     'paragonie/constant_time_encoding' => [
                         'pretty_version' => 'v3.0.0',
                         'version' => '3.0.0.0',
                         'reference' => 'df1e7fde177501eee2037dd159cf04f5f301a512',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../paragonie/constant_time_encoding',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../paragonie/constant_time_encoding',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'phar-io/composer-distributor' => [
                         'pretty_version' => '1.0.2',
                         'version' => '1.0.2.0',
                         'reference' => 'dd7d936290b2a42b0c64bfe08090b5c597c280c9',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phar-io/composer-distributor',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phar-io/composer-distributor',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1322,7 +1312,7 @@ return [
                         'version' => '1.0.1.0',
                         'reference' => '5bfb7400224a0c1cf83343660af85c7f5a073473',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phar-io/executor',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phar-io/executor',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1332,7 +1322,7 @@ return [
                         'version' => '2.0.1.0',
                         'reference' => '222e3ea432262a05706b7066697c21257664d9d1',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phar-io/filesystem',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phar-io/filesystem',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1342,7 +1332,7 @@ return [
                         'version' => '1.0.3.0',
                         'reference' => 'ed8ab1740ac4e9db99500e7252911f2821357093',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phar-io/gnupg',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phar-io/gnupg',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1352,7 +1342,7 @@ return [
                         'version' => '2.0.4.0',
                         'reference' => '54750ef60c58e43759730615a392c31c80e23176',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phar-io/manifest',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phar-io/manifest',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1362,20 +1352,30 @@ return [
                         'version' => '3.2.1.0',
                         'reference' => '4f7fd7836c6f332bb2933569e566a0d6c4cbed74',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phar-io/version',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phar-io/version',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
-                    'phiki/phiki' => [
-                        'pretty_version' => 'v2.0.2',
-                        'version' => '2.0.2.0',
-                        'reference' => '6d735108238c03daaaef571448d8dee8187cab5e',
+                    'phootwork/collection' => [
+                        'pretty_version' => 'v3.2.3',
+                        'version' => '3.2.3.0',
+                        'reference' => '46dde20420fba17766c89200bc3ff91d3e58eafa',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phiki/phiki',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phootwork/collection',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
+                    ],
+                    'phootwork/lang' => [
+                        'pretty_version' => 'v3.2.3',
+                        'version' => '3.2.3.0',
+                        'reference' => '52ec8cce740ce1c424eef02f43b43d5ddfec7b5e',
+                        'type' => 'library',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phootwork/lang',
+                        'aliases' => [
+                        ],
+                        'dev_requirement' => true,
                     ],
                     'php-http/async-client-implementation' => [
                         'dev_requirement' => true,
@@ -1389,18 +1389,12 @@ return [
                             0 => '*',
                         ],
                     ],
-                    'php-http/message-factory-implementation' => [
-                        'dev_requirement' => false,
-                        'provided' => [
-                            0 => '1.0',
-                        ],
-                    ],
                     'php-parallel-lint/php-parallel-lint' => [
                         'pretty_version' => 'v1.4.0',
                         'version' => '1.4.0.0',
                         'reference' => '6db563514f27e19595a19f45a4bf757b6401194e',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../php-parallel-lint/php-parallel-lint',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../php-parallel-lint/php-parallel-lint',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1410,7 +1404,7 @@ return [
                         'version' => '2.2.0.0',
                         'reference' => '1d01c49d4ed62f25aa84a747ad35d5a16924662b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/reflection-common',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/reflection-common',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1420,7 +1414,7 @@ return [
                         'version' => '5.6.3.0',
                         'reference' => '94f8051919d1b0369a6bcc7931d679a511c03fe9',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/reflection-docblock',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/reflection-docblock',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1430,7 +1424,7 @@ return [
                         'version' => '3.8.1.0',
                         'reference' => '9a74290f4acca84361589ecd052878243f064333',
                         'type' => 'composer-plugin',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/shim',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/shim',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1440,7 +1434,7 @@ return [
                         'version' => '1.10.0.0',
                         'reference' => '679e3ce485b99e84c775d28e2e96fade9a7fb50a',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/type-resolver',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpdocumentor/type-resolver',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1450,37 +1444,47 @@ return [
                         'version' => '1.30.0.0',
                         'reference' => '2f39286e0136673778b7a142b3f0d141e43d1714',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpoffice/phpspreadsheet',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpoffice/phpspreadsheet',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'phpoption/phpoption' => [
                         'pretty_version' => '1.9.4',
                         'version' => '1.9.4.0',
                         'reference' => '638a154f8d4ee6a5cfa96d6a34dfbe0cffa9566d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpoption/phpoption',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpoption/phpoption',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
+                    ],
+                    'phpowermove/docblock' => [
+                        'pretty_version' => 'v4.0',
+                        'version' => '4.0.0.0',
+                        'reference' => 'a73f6e17b7d4e1b92ca5378c248c952c9fae7826',
+                        'type' => 'library',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpowermove/docblock',
+                        'aliases' => [
+                        ],
+                        'dev_requirement' => true,
                     ],
                     'phpstan/phpdoc-parser' => [
                         'pretty_version' => '2.3.0',
                         'version' => '2.3.0.0',
                         'reference' => '1e0cd5370df5dd2e556a36b9c62f62e555870495',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpstan/phpdoc-parser',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpstan/phpdoc-parser',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'phpstan/phpstan' => [
-                        'pretty_version' => '2.1.27',
-                        'version' => '2.1.27.0',
-                        'reference' => '25da374959afa391992792691093550b3098ef1e',
+                        'pretty_version' => '2.1.22',
+                        'version' => '2.1.22.0',
+                        'reference' => '41600c8379eb5aee63e9413fe9e97273e25d57e4',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpstan/phpstan',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpstan/phpstan',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1490,7 +1494,7 @@ return [
                         'version' => '11.0.11.0',
                         'reference' => '4f7722aa9a7b76aa775e2d9d4e95d1ea16eeeef4',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-code-coverage',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-code-coverage',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1500,7 +1504,7 @@ return [
                         'version' => '5.1.0.0',
                         'reference' => '118cfaaa8bc5aef3287bf315b6060b1174754af6',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-file-iterator',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-file-iterator',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1510,7 +1514,7 @@ return [
                         'version' => '5.0.1.0',
                         'reference' => 'c1ca3814734c07492b3d4c5f794f4b0995333da2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-invoker',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-invoker',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1520,7 +1524,7 @@ return [
                         'version' => '4.0.1.0',
                         'reference' => '3e0404dc6b300e6bf56415467ebcb3fe4f33e964',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-text-template',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-text-template',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1530,17 +1534,17 @@ return [
                         'version' => '7.0.1.0',
                         'reference' => '3b415def83fbcb41f991d9ebf16ae4ad8b7837b3',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-timer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpunit/php-timer',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
                     'phpunit/phpunit' => [
-                        'pretty_version' => '11.5.39',
-                        'version' => '11.5.39.0',
-                        'reference' => 'ad5597f79d8489d2870073ac0bc0dd0ad1fa9931',
+                        'pretty_version' => '11.5.36',
+                        'version' => '11.5.36.0',
+                        'reference' => '264a87c7ef68b1ab9af7172357740dc266df5957',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../phpunit/phpunit',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../phpunit/phpunit',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1550,27 +1554,27 @@ return [
                         'version' => '8.0.3.0',
                         'reference' => '6f8d87ebd5afbf7790bde1ffc7579c7c705e0fad',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../pragmarx/google2fa',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../pragmarx/google2fa',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'pragmarx/google2fa-qrcode' => [
                         'pretty_version' => 'v3.0.0',
                         'version' => '3.0.0.0',
                         'reference' => 'ce4d8a729b6c93741c607cfb2217acfffb5bf76b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../pragmarx/google2fa-qrcode',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../pragmarx/google2fa-qrcode',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'psr/cache' => [
                         'pretty_version' => '3.0.0',
                         'version' => '3.0.0.0',
                         'reference' => 'aa5030cfa5405eccfdcb1083ce040c2cb8d253bf',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/cache',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/cache',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1586,7 +1590,7 @@ return [
                         'version' => '1.0.0.0',
                         'reference' => 'e41a24703d4560fd0acb709162f73b8adfc3aa0d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/clock',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/clock',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1602,7 +1606,7 @@ return [
                         'version' => '2.0.2.0',
                         'reference' => 'c71ecc56dfe541dbd90c5360474fbc405f8d5963',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/container',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/container',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1619,7 +1623,7 @@ return [
                         'version' => '1.0.0.0',
                         'reference' => 'dbefd12671e8a14ec7f180cab83036ed26714bb0',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/event-dispatcher',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/event-dispatcher',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1635,7 +1639,7 @@ return [
                         'version' => '1.0.3.0',
                         'reference' => 'bb5906edc1c324c9a05aa0873d40117941e5fa90',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/http-client',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/http-client',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1651,7 +1655,7 @@ return [
                         'version' => '1.1.0.0',
                         'reference' => '2b4765fddfe3b508ac62f829e852b1501d3f6e8a',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/http-factory',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/http-factory',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1667,7 +1671,7 @@ return [
                         'version' => '2.0.0.0',
                         'reference' => '402d35bcb92c70c026d1a6a9883f06b2ead23d71',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/http-message',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/http-message',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1683,7 +1687,7 @@ return [
                         'version' => '3.0.2.0',
                         'reference' => 'f16e1d5863e37f8d8c2a01719f5b34baa2b714d3',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/log',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/log',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1700,7 +1704,7 @@ return [
                         'version' => '3.0.0.0',
                         'reference' => '764e0b3939f5ca87cb904f570ef9be2d78a07865',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psr/simple-cache',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psr/simple-cache',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1716,7 +1720,7 @@ return [
                         'version' => '0.12.10.0',
                         'reference' => '6e80abe6f2257121f1eb9a4c55bf29d921025b22',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../psy/psysh',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../psy/psysh',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1726,7 +1730,7 @@ return [
                         'version' => '3.0.3.0',
                         'reference' => '120b605dfeb996808c31b6477290a714d356e822',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../ralouphie/getallheaders',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../ralouphie/getallheaders',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1736,7 +1740,7 @@ return [
                         'version' => '2.1.1.0',
                         'reference' => '344572933ad0181accbf4ba763e85a0306a8c5e2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../ramsey/collection',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../ramsey/collection',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1746,7 +1750,7 @@ return [
                         'version' => '4.9.1.0',
                         'reference' => '81f941f6f729b1e3ceea61d9d014f8b6c6800440',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../ramsey/uuid',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../ramsey/uuid',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -1756,7 +1760,7 @@ return [
                         'version' => '1.2.0.0',
                         'reference' => 'd47c472b64aa5608225f47965a484b75c7817d5b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../react/cache',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../react/cache',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1766,7 +1770,7 @@ return [
                         'version' => '0.6.6.0',
                         'reference' => '1721e2b93d89b745664353b9cfc8f155ba8a6159',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../react/child-process',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../react/child-process',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1776,7 +1780,7 @@ return [
                         'version' => '1.13.0.0',
                         'reference' => 'eb8ae001b5a455665c89c1df97f6fb682f8fb0f5',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../react/dns',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../react/dns',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1786,7 +1790,7 @@ return [
                         'version' => '1.5.0.0',
                         'reference' => 'bbe0bd8c51ffc05ee43f1729087ed3bdf7d53354',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../react/event-loop',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../react/event-loop',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1796,7 +1800,7 @@ return [
                         'version' => '3.3.0.0',
                         'reference' => '23444f53a813a3296c1368bb104793ce8d88f04a',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../react/promise',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../react/promise',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1806,7 +1810,7 @@ return [
                         'version' => '1.16.0.0',
                         'reference' => '23e4ff33ea3e160d2d1f59a0e6050e4b0fb0eac1',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../react/socket',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../react/socket',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1816,7 +1820,7 @@ return [
                         'version' => '1.4.0.0',
                         'reference' => '1e5b0acb8fe55143b5b426817155190eb6f5b18d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../react/stream',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../react/stream',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1827,32 +1831,52 @@ return [
                             0 => '4.9.1',
                         ],
                     ],
+                    'romanzipp/laravel-model-doc' => [
+                        'pretty_version' => '3.3.0',
+                        'version' => '3.3.0.0',
+                        'reference' => '046ec6ef45b5e88700067dbd797b286a765d3920',
+                        'type' => 'library',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../romanzipp/laravel-model-doc',
+                        'aliases' => [
+                        ],
+                        'dev_requirement' => true,
+                    ],
                     'ryangjchandler/blade-capture-directive' => [
                         'pretty_version' => 'v1.1.0',
                         'version' => '1.1.0.0',
                         'reference' => 'bbb1513dfd89eaec87a47fe0c449a7e3d4a1976d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../ryangjchandler/blade-capture-directive',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../ryangjchandler/blade-capture-directive',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
+                    ],
+                    'sabberworm/php-css-parser' => [
+                        'pretty_version' => 'v8.9.0',
+                        'version' => '8.9.0.0',
+                        'reference' => 'd8e916507b88e389e26d4ab03c904a082aa66bb9',
+                        'type' => 'library',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sabberworm/php-css-parser',
+                        'aliases' => [
+                        ],
+                        'dev_requirement' => true,
                     ],
                     'scrivo/highlight.php' => [
                         'pretty_version' => 'v9.18.1.10',
                         'version' => '9.18.1.10',
                         'reference' => '850f4b44697a2552e892ffe71490ba2733c2fc6e',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../scrivo/highlight.php',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../scrivo/highlight.php',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'sebastian/cli-parser' => [
                         'pretty_version' => '3.0.2',
                         'version' => '3.0.2.0',
                         'reference' => '15c5dd40dc4f38794d383bb95465193f5e0ae180',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/cli-parser',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/cli-parser',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1862,7 +1886,7 @@ return [
                         'version' => '3.0.3.0',
                         'reference' => '54391c61e4af8078e5b276ab082b6d3c54c9ad64',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/code-unit',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/code-unit',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1872,7 +1896,7 @@ return [
                         'version' => '4.0.1.0',
                         'reference' => '183a9b2632194febd219bb9246eee421dad8d45e',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/code-unit-reverse-lookup',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/code-unit-reverse-lookup',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1882,7 +1906,7 @@ return [
                         'version' => '6.3.2.0',
                         'reference' => '85c77556683e6eee4323e4c5468641ca0237e2e8',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/comparator',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/comparator',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1892,7 +1916,7 @@ return [
                         'version' => '4.0.1.0',
                         'reference' => 'ee41d384ab1906c68852636b6de493846e13e5a0',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/complexity',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/complexity',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1902,7 +1926,7 @@ return [
                         'version' => '6.0.2.0',
                         'reference' => 'b4ccd857127db5d41a5b676f24b51371d76d8544',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/diff',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/diff',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1912,7 +1936,7 @@ return [
                         'version' => '7.2.1.0',
                         'reference' => 'a5c75038693ad2e8d4b6c15ba2403532647830c4',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/environment',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/environment',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1922,7 +1946,7 @@ return [
                         'version' => '6.3.0.0',
                         'reference' => '3473f61172093b2da7de1fb5782e1f24cc036dc3',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/exporter',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/exporter',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1932,7 +1956,7 @@ return [
                         'version' => '7.0.2.0',
                         'reference' => '3be331570a721f9a4b5917f4209773de17f747d7',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/global-state',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/global-state',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1942,7 +1966,7 @@ return [
                         'version' => '3.0.1.0',
                         'reference' => 'd36ad0d782e5756913e42ad87cb2890f4ffe467a',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/lines-of-code',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/lines-of-code',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1952,7 +1976,7 @@ return [
                         'version' => '6.0.1.0',
                         'reference' => 'f5b498e631a74204185071eb41f33f38d64608aa',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/object-enumerator',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/object-enumerator',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1962,7 +1986,7 @@ return [
                         'version' => '4.0.1.0',
                         'reference' => '6e1a43b411b2ad34146dee7524cb13a068bb35f9',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/object-reflector',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/object-reflector',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1972,7 +1996,7 @@ return [
                         'version' => '6.0.3.0',
                         'reference' => 'f6458abbf32a6c8174f8f26261475dc133b3d9dc',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/recursion-context',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/recursion-context',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1982,7 +2006,7 @@ return [
                         'version' => '5.1.3.0',
                         'reference' => 'f77d2d4e78738c98d9a68d2596fe5e8fa380f449',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/type',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/type',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -1992,37 +2016,17 @@ return [
                         'version' => '5.0.2.0',
                         'reference' => 'c687e3387b99f5b03b6caa64c74b63e2936ff874',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sebastian/version',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../sebastian/version',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
                     ],
-                    'sentry/sentry' => [
-                        'pretty_version' => '4.15.2',
-                        'version' => '4.15.2.0',
-                        'reference' => '61a2d918e8424b6de4a2e265c15133a00c17db51',
-                        'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sentry/sentry',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => false,
-                    ],
-                    'sentry/sentry-laravel' => [
-                        'pretty_version' => '4.16.0',
-                        'version' => '4.16.0.0',
-                        'reference' => 'b33b2e487b02db02d92988228f142d7fa2be2bfa',
-                        'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../sentry/sentry-laravel',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => false,
-                    ],
                     'slevomat/coding-standard' => [
-                        'pretty_version' => '8.22.1',
-                        'version' => '8.22.1.0',
-                        'reference' => '1dd80bf3b93692bedb21a6623c496887fad05fec',
+                        'pretty_version' => '8.22.0',
+                        'version' => '8.22.0.0',
+                        'reference' => 'a4cef983bad2e70125612d22b2f6e2bd1333d5c2',
                         'type' => 'phpcodesniffer-standard',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../slevomat/coding-standard',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../slevomat/coding-standard',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2032,30 +2036,20 @@ return [
                         'version' => '2.1.0.0',
                         'reference' => 'b920f6411d21df4e8610a138e2e87ae4957d7f63',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../spatie/invade',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../spatie/invade',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
-                    ],
-                    'spatie/laravel-activitylog' => [
-                        'pretty_version' => '4.10.2',
-                        'version' => '4.10.2.0',
-                        'reference' => 'bb879775d487438ed9a99e64f09086b608990c10',
-                        'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../spatie/laravel-activitylog',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'spatie/laravel-package-tools' => [
                         'pretty_version' => '1.92.7',
                         'version' => '1.92.7.0',
                         'reference' => 'f09a799850b1ed765103a4f0b4355006360c49a5',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../spatie/laravel-package-tools',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../spatie/laravel-package-tools',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'spatie/once' => [
                         'dev_requirement' => false,
@@ -2068,17 +2062,17 @@ return [
                         'version' => '2.3.2.0',
                         'reference' => 'a2e78a9ff8a1290b25d550be8fbf8285c13175c5',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../spatie/shiki-php',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../spatie/shiki-php',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'squizlabs/php_codesniffer' => [
                         'pretty_version' => '3.13.4',
                         'version' => '3.13.4.0',
                         'reference' => 'ad545ea9c1b7d270ce0fc9cbfb884161cd706119',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../squizlabs/php_codesniffer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../squizlabs/php_codesniffer',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2088,7 +2082,7 @@ return [
                         'version' => '1.0.5.0',
                         'reference' => 'd8334211a140ce329c13726d4a715adbddd0a163',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../staabm/side-effects-detector',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../staabm/side-effects-detector',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2098,7 +2092,7 @@ return [
                         'version' => '7.3.2.0',
                         'reference' => '6621a2bee5373e3e972b2ae5dbedd5ac899d8cb6',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/cache',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/cache',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2108,7 +2102,7 @@ return [
                         'version' => '3.6.0.0',
                         'reference' => '5d68a57d66910405e5c0b63d6f0af941e66fc868',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/cache-contracts',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/cache-contracts',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2124,7 +2118,7 @@ return [
                         'version' => '7.3.0.0',
                         'reference' => 'b81435fbd6648ea425d1ee96a2d8e68f4ceacd24',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/clock',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/clock',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2134,7 +2128,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => 'cb0102a1c5ac3807cf3fdf8bea96007df7fdbea7',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/console',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/console',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2144,7 +2138,7 @@ return [
                         'version' => '7.3.0.0',
                         'reference' => '601a5ce9aaad7bf10797e3663faefce9e26c24e2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/css-selector',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/css-selector',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2154,7 +2148,7 @@ return [
                         'version' => '3.6.0.0',
                         'reference' => '63afe740e99a13ba87ec199bb07bbdee937a5b62',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/deprecation-contracts',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/deprecation-contracts',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2164,7 +2158,7 @@ return [
                         'version' => '7.3.2.0',
                         'reference' => '0b31a944fcd8759ae294da4d2808cbc53aebd0c3',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/error-handler',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/error-handler',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2174,7 +2168,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => 'b7dc69e71de420ac04bc9ab830cf3ffebba48191',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/event-dispatcher',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/event-dispatcher',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2184,7 +2178,7 @@ return [
                         'version' => '3.6.0.0',
                         'reference' => '59eb412e93815df44f05f342958efa9f46b1e586',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/event-dispatcher-contracts',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/event-dispatcher-contracts',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2200,7 +2194,7 @@ return [
                         'version' => '7.3.2.0',
                         'reference' => 'edcbb768a186b5c3f25d0643159a787d3e63b7fd',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/filesystem',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/filesystem',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2210,7 +2204,7 @@ return [
                         'version' => '7.3.2.0',
                         'reference' => '2a6614966ba1074fa93dae0bc804227422df4dfe',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/finder',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/finder',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2220,17 +2214,17 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => '8740fc48979f649dee8b8fc51a2698e5c190bf12',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/html-sanitizer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/html-sanitizer',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'symfony/http-client' => [
                         'pretty_version' => 'v7.3.3',
                         'version' => '7.3.3.0',
                         'reference' => '333b9bd7639cbdaecd25a3a48a9d2dcfaa86e019',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/http-client',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/http-client',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2240,7 +2234,7 @@ return [
                         'version' => '3.6.0.0',
                         'reference' => '75d7043853a42837e68111812f4d964b01e5101c',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/http-client-contracts',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/http-client-contracts',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2256,7 +2250,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => '7475561ec27020196c49bb7c4f178d33d7d3dc00',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/http-foundation',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/http-foundation',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2266,7 +2260,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => '72c304de37e1a1cec6d5d12b81187ebd4850a17b',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/http-kernel',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/http-kernel',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2276,7 +2270,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => 'a32f3f45f1990db8c4341d5122a7d3a381c7e575',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/mailer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/mailer',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2286,7 +2280,7 @@ return [
                         'version' => '7.3.2.0',
                         'reference' => 'e0a0f859148daf1edf6c60b398eb40bfc96697d1',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/mime',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/mime',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2296,17 +2290,17 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => '0ff2f5c3df08a395232bbc3c2eb7e84912df911d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/options-resolver',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/options-resolver',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'symfony/polyfill-ctype' => [
                         'pretty_version' => 'v1.33.0',
                         'version' => '1.33.0.0',
                         'reference' => 'a3cc8b044a6ea513310cbd48ef7333b384945638',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-ctype',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-ctype',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2316,7 +2310,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => '380872130d3a5dd3ace2f4010d95125fde5d5c70',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-intl-grapheme',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-intl-grapheme',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2326,7 +2320,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => '9614ac4d8061dc257ecc64cba1b140873dce8ad3',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-intl-idn',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-intl-idn',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2336,7 +2330,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => '3833d7255cc303546435cb650316bff708a1c75c',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-intl-normalizer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-intl-normalizer',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2346,7 +2340,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => '6d857f4d76bd4b343eac26d6b539585d2bc56493',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-mbstring',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-mbstring',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2356,7 +2350,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => '0cc9dd0f17f61d8131e7df6b84bd344899fe2608',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php80',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php80',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2366,7 +2360,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => '4a4cfc2d253c21a5ad0e53071df248ed48c6ce5c',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php81',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php81',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2376,7 +2370,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => '17f6f9a6b1735c0f163024d959f700cfbc5155e5',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php83',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php83',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2386,7 +2380,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => 'd8ced4d875142b6a7426000426b8abc631d6b191',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php84',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php84',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2396,7 +2390,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => 'd4e5fcd4ab3d998ab16c0db48e6cbb9a01993f91',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php85',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-php85',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2406,7 +2400,7 @@ return [
                         'version' => '1.33.0.0',
                         'reference' => '21533be36c24be3f4b1669c4725c7d1d2bab4ae2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-uuid',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/polyfill-uuid',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2416,17 +2410,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => '32241012d521e2e8a9d713adb0812bb773b907f1',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/process',
-                        'aliases' => [
-                        ],
-                        'dev_requirement' => false,
-                    ],
-                    'symfony/psr-http-message-bridge' => [
-                        'pretty_version' => 'v7.3.0',
-                        'version' => '7.3.0.0',
-                        'reference' => '03f2f72319e7acaf2a9f6fcbe30ef17eec51594f',
-                        'type' => 'symfony-bridge',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/psr-http-message-bridge',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/process',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2436,7 +2420,7 @@ return [
                         'version' => '7.3.2.0',
                         'reference' => '7614b8ca5fa89b9cd233e21b627bfc5774f586e4',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/routing',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/routing',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2446,7 +2430,7 @@ return [
                         'version' => '3.6.0.0',
                         'reference' => 'f021b05a130d35510bd6b25fe9053c2a8a15d5d4',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/service-contracts',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/service-contracts',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2456,7 +2440,7 @@ return [
                         'version' => '7.3.0.0',
                         'reference' => '5a49289e2b308214c8b9c2fda4ea454d8b8ad7cd',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/stopwatch',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/stopwatch',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2466,7 +2450,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => '17a426cce5fd1f0901fefa9b2a490d0038fd3c9c',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/string',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/string',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2476,7 +2460,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => 'e0837b4cbcef63c754d89a4806575cada743a38d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/translation',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/translation',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2486,7 +2470,7 @@ return [
                         'version' => '3.6.0.0',
                         'reference' => 'df210c7a2573f1913b2d17cc95f90f53a73d8f7d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/translation-contracts',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/translation-contracts',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2502,7 +2486,7 @@ return [
                         'version' => '7.3.1.0',
                         'reference' => 'a69f69f3159b852651a6bf45a9fdd149520525bb',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/uid',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/uid',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2512,7 +2496,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => '34d8d4c4b9597347306d1ec8eb4e1319b1e6986f',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/var-dumper',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/var-dumper',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2522,7 +2506,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => 'd4dfcd2a822cbedd7612eb6fbd260e46f87b7137',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/var-exporter',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/var-exporter',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2532,7 +2516,7 @@ return [
                         'version' => '7.3.3.0',
                         'reference' => 'd4f4a66866fe2451f61296924767280ab5732d9d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../symfony/yaml',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../symfony/yaml',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2542,7 +2526,7 @@ return [
                         'version' => '1.2.3.0',
                         'reference' => '737eda637ed5e28c3413cb1ebe8bb52cbf1ca7a2',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../theseer/tokenizer',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../theseer/tokenizer',
                         'aliases' => [
                         ],
                         'dev_requirement' => true,
@@ -2552,7 +2536,7 @@ return [
                         'version' => '2.3.0.0',
                         'reference' => '0d72ac1c00084279c1816675284073c5a337c20d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../tijsverkoyen/css-to-inline-styles',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../tijsverkoyen/css-to-inline-styles',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2562,17 +2546,17 @@ return [
                         'version' => '2.0.0.0',
                         'reference' => '458194ad0f8b0cf616fecdf451a84f9a6c1f3056',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../ueberdosis/tiptap-php',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../ueberdosis/tiptap-php',
                         'aliases' => [
                         ],
-                        'dev_requirement' => false,
+                        'dev_requirement' => true,
                     ],
                     'vlucas/phpdotenv' => [
                         'pretty_version' => 'v5.6.2',
                         'version' => '5.6.2.0',
                         'reference' => '24ac4c74f91ee2c193fa1aaa5c249cb0822809af',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../vlucas/phpdotenv',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../vlucas/phpdotenv',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2582,7 +2566,7 @@ return [
                         'version' => '2.0.3.0',
                         'reference' => 'b1d923f88091c6bf09699efcd7c8a1b1bfd7351d',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../voku/portable-ascii',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../voku/portable-ascii',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2592,7 +2576,7 @@ return [
                         'version' => '1.11.0.0',
                         'reference' => '11cb2199493b2f8a3b53e7f19068fc6aac760991',
                         'type' => 'library',
-                        'install_path' => 'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\composer/../webmozart/assert',
+                        'install_path' => 'C:\\xampp\\htdocs\\ict-serve\\vendor\\composer/../webmozart/assert',
                         'aliases' => [
                         ],
                         'dev_requirement' => false,
@@ -2601,11 +2585,11 @@ return [
             ],
         ],
         'executedFilesHashes' => [
-            'C:\\XAMPP\\htdocs\\ict-serve\\vendor\\larastan\\larastan\\bootstrap.php' => '28392079817075879815f110287690e80398fe5e',
-            'phar://C:\\XAMPP\\htdocs\\ict-serve\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\Attribute85.php' => '123dcd45f03f2463904087a66bfe2bc139760df0',
-            'phar://C:\\XAMPP\\htdocs\\ict-serve\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionAttribute.php' => '0b4b78277eb6545955d2ce5e09bff28f1f8052c8',
-            'phar://C:\\XAMPP\\htdocs\\ict-serve\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionIntersectionType.php' => 'a3e6299b87ee5d407dae7651758edfa11a74cb11',
-            'phar://C:\\XAMPP\\htdocs\\ict-serve\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionUnionType.php' => '1b349aa997a834faeafe05fa21bc31cae22bf2e2',
+            'C:\\xampp\\htdocs\\ict-serve\\vendor\\larastan\\larastan\\bootstrap.php' => '28392079817075879815f110287690e80398fe5e',
+            'phar://C:\\xampp\\htdocs\\ict-serve\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\Attribute85.php' => '123dcd45f03f2463904087a66bfe2bc139760df0',
+            'phar://C:\\xampp\\htdocs\\ict-serve\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionAttribute.php' => '0b4b78277eb6545955d2ce5e09bff28f1f8052c8',
+            'phar://C:\\xampp\\htdocs\\ict-serve\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionIntersectionType.php' => 'a3e6299b87ee5d407dae7651758edfa11a74cb11',
+            'phar://C:\\xampp\\htdocs\\ict-serve\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionUnionType.php' => '1b349aa997a834faeafe05fa21bc31cae22bf2e2',
         ],
         'phpExtensions' => [
             0 => 'Core',
@@ -2641,15 +2625,14 @@ return [
             30 => 'pdo_sqlite',
             31 => 'random',
             32 => 'readline',
-            33 => 'redis',
-            34 => 'session',
-            35 => 'standard',
-            36 => 'tokenizer',
-            37 => 'xml',
-            38 => 'xmlreader',
-            39 => 'xmlwriter',
-            40 => 'zip',
-            41 => 'zlib',
+            33 => 'session',
+            34 => 'standard',
+            35 => 'tokenizer',
+            36 => 'xml',
+            37 => 'xmlreader',
+            38 => 'xmlwriter',
+            39 => 'zip',
+            40 => 'zlib',
         ],
         'stubFiles' => [
         ],
@@ -2659,2157 +2642,51 @@ return [
     ],
     'errorsCallback' => static function (): array {
         return [
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                    'line' => 93,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 93,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                    'line' => 94,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 94,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                    'line' => 106,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 106,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                    'line' => 123,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 123,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 31,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 31,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 31,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 31,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 32,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 32,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 36,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 36,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 125,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 125,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                5 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 150,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 150,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                6 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 231,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 231,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                7 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 276,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 276,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                8 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'line' => 289,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 289,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'line' => 31,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 31,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'line' => 35,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 35,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'line' => 108,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 108,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'line' => 131,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 131,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Access to an undefined property App\\Models\\LoanRequest::$loanStatus.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'line' => 190,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-                    'nodeLine' => 190,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                5 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'line' => 220,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 220,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                6 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'line' => 233,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 233,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to protected static method generateRequestNumber() of class App\\Models\\LoanRequest.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                    'line' => 57,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 57,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'staticMethod.protected',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to protected static method generateTicketNumber() of class App\\Models\\HelpdeskTicket.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                    'line' => 139,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 139,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'staticMethod.protected',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                    'line' => 172,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 172,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Using nullsafe property access "?->default_sla_hours" on left side of ?? is unnecessary. Use -> instead.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                    'line' => 203,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 203,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Coalesce',
-                    'identifier' => 'nullsafe.neverNull',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Access to an undefined property App\\Models\\LoanRequest::$approval_token.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                    'line' => 194,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-                    'nodeLine' => 194,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Access to an undefined property App\\Models\\LoanRequest::$approval_token.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                    'line' => 199,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-                    'nodeLine' => 199,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
-                    'line' => 19,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 19,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                    'line' => 86,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 86,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'auditLogs\' is not found in App\\Models\\User model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
-                    'line' => 157,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 157,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                    'line' => 18,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 18,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                    'line' => 19,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 19,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                    'line' => 20,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 20,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                    'line' => 21,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 21,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'line' => 19,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 19,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'line' => 20,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 20,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'line' => 21,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 21,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'line' => 22,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 22,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'line' => 23,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 23,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                    'line' => 101,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 101,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to static method loadView() on an unknown class Barryvdh\\DomPDF\\Facade\\Pdf.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                    'line' => 100,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-                    'nodeLine' => 100,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'class.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasAnyRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                    'line' => 77,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 77,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'line' => 70,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 70,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'resolvedByUser\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'line' => 70,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 70,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'line' => 70,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 70,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'line' => 80,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 80,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Instanceof between string and App\\Enums\\TicketPriority will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'line' => 91,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 91,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\Instanceof_',
-                    'identifier' => 'instanceof.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                5 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::hasRole().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'line' => 262,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 262,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                    'line' => 171,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 171,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                    'line' => 246,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 246,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                    'line' => 46,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 46,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                    'line' => 55,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 55,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 199,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 199,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\', \'technician\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 231,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 231,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Unreachable statement - code above always terminates.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 237,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 237,
-                    'nodeType' => 'PHPStan\\Node\\UnreachableStatementNode',
-                    'identifier' => 'deadCode.unreachable',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 283,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 283,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Negated boolean expression is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 287,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 287,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-                    'identifier' => 'booleanNot.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                5 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 293,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 293,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                6 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 294,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 294,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                7 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 295,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 295,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                8 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 296,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 296,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                9 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 304,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 304,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                10 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 306,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 306,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                11 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 306,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 306,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                12 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 318,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 318,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                13 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 347,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 347,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                14 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Negated boolean expression is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'line' => 357,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 357,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-                    'identifier' => 'booleanNot.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 72,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 72,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 114,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 114,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Negated boolean expression is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 118,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 118,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-                    'identifier' => 'booleanNot.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Negated boolean expression is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 124,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 124,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-                    'identifier' => 'booleanNot.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Negated boolean expression is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 138,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 138,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-                    'identifier' => 'booleanNot.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                5 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 171,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 171,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                6 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 173,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 173,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                7 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 173,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 173,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                8 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Negated boolean expression is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 175,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 175,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-                    'identifier' => 'booleanNot.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                9 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 180,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 180,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                10 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function in_array() with App\\Enums\\UserRole and array{\'ict_admin\', \'supervisor\'} will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 211,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 211,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                11 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'assignedToUser\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 213,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 213,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                12 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 213,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 213,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                13 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Negated boolean expression is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 215,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 215,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BooleanNot',
-                    'identifier' => 'booleanNot.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                14 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 219,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 219,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                15 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 244,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 244,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                16 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 255,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 255,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                17 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Match arm comparison between string and App\\Enums\\TicketPriority::LOW is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 343,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 342,
-                    'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
-                    'identifier' => 'match.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                18 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Match arm comparison between string and App\\Enums\\TicketPriority::MEDIUM is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 344,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 342,
-                    'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
-                    'identifier' => 'match.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                19 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Match arm comparison between string and App\\Enums\\TicketPriority::HIGH is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'line' => 345,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 342,
-                    'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
-                    'identifier' => 'match.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Access to an undefined property App\\Models\\LoanRequest::$reference_number.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                    'line' => 400,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-                    'nodeLine' => 400,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'comments\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                    'line' => 83,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 83,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::activities().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
-                    'line' => 145,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 145,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::helpdeskTickets().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                    'line' => 292,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 292,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::helpdeskTickets().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                    'line' => 293,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 293,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::helpdeskTickets().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                    'line' => 302,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 302,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to an undefined method App\\Models\\User::helpdeskTickets().',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                    'line' => 318,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 318,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'method.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Left side of && is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                    'line' => 52,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 52,
-                    'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
-                    'identifier' => 'booleanAnd.leftAlwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Strict comparison using === between string and App\\Enums\\EquipmentStatus::AVAILABLE will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                    'line' => 52,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 52,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Identical',
-                    'identifier' => 'identical.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                    'line' => 105,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 105,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'If condition is always true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                    'line' => 65,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 65,
-                    'nodeType' => 'PhpParser\\Node\\Stmt\\If_',
-                    'identifier' => 'if.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                    'line' => 120,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 120,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'line' => 78,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 78,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'line' => 95,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 95,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'line' => 96,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 96,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'line' => 97,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 97,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'line' => 98,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 98,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                5 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'line' => 99,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 99,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Access to an undefined property App\\Models\\User::$avatar_url.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
-                    'line' => 224,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-                    'nodeLine' => 224,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Result of && is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                    'line' => 99,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 99,
-                    'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
-                    'identifier' => 'booleanAnd.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Result of && is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                    'line' => 99,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 99,
-                    'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
-                    'identifier' => 'booleanAnd.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Strict comparison using === between string and App\\Enums\\EquipmentStatus::AVAILABLE will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                    'line' => 99,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 99,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Identical',
-                    'identifier' => 'identical.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Strict comparison using !== between string and App\\Enums\\EquipmentCondition::DAMAGED will always evaluate to true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                    'line' => 101,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 101,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\NotIdentical',
-                    'identifier' => 'notIdentical.alwaysTrue',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Result of && is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'line' => 235,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 235,
-                    'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
-                    'identifier' => 'booleanAnd.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Result of && is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'line' => 235,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 235,
-                    'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
-                    'identifier' => 'booleanAnd.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Strict comparison using === between App\\Models\\LoanStatus and \'collected\' will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'line' => 235,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 235,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Identical',
-                    'identifier' => 'identical.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Access to an undefined property App\\Models\\LoanRequest::$expected_return_date.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'line' => 236,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-                    'nodeLine' => 236,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Access to an undefined property App\\Models\\LoanRequest::$reference_number.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'line' => 330,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-                    'nodeLine' => 330,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Match arm comparison between string and App\\Enums\\TicketPriority::CRITICAL is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                    'line' => 236,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 235,
-                    'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
-                    'identifier' => 'match.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Match arm comparison between string and App\\Enums\\TicketPriority::HIGH is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                    'line' => 237,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 235,
-                    'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
-                    'identifier' => 'match.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Match arm comparison between string and App\\Enums\\TicketPriority::MEDIUM is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                    'line' => 238,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 235,
-                    'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
-                    'identifier' => 'match.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Match arm comparison between string and App\\Enums\\TicketPriority::LOW is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                    'line' => 239,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 235,
-                    'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
-                    'identifier' => 'match.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Cannot access property $value on string.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                    'line' => 38,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 38,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.nonObject',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Cannot access property $value on string.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                    'line' => 57,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 57,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.nonObject',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Instanceof between string and App\\Enums\\TicketPriority will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                    'line' => 62,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 62,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\Instanceof_',
-                    'identifier' => 'instanceof.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Access to an undefined property App\\Models\\LoanRequest::$location.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-                    'line' => 55,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-                    'nodeLine' => 55,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-                    'identifier' => 'property.notFound',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function is_object() with string will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'line' => 50,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 50,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function method_exists() with *NEVER* and \'label\' will always evaluate to true.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'line' => 50,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 50,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.alreadyNarrowedType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Result of && is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'line' => 50,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 50,
-                    'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
-                    'identifier' => 'booleanAnd.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to function is_object() with string will always evaluate to false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'line' => 81,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 81,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-                    'identifier' => 'function.impossibleType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Result of && is always false.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'line' => 81,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                    'traitFilePath' => null,
-                    'tip' => 'Because the type is coming from a PHPDoc, you can turn off this check by setting <fg=cyan>treatPhpDocTypesAsCertain: false</> in your <fg=cyan>%configurationFile%</>.',
-                    'nodeLine' => 81,
-                    'nodeType' => 'PHPStan\\Node\\BooleanAndNode',
-                    'identifier' => 'booleanAnd.alwaysFalse',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to protected static method generateTicketNumber() of class App\\Models\\HelpdeskTicket.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                    'line' => 25,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 25,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'staticMethod.protected',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Call to protected static method generateRequestNumber() of class App\\Models\\LoanRequest.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                    'line' => 27,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 27,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'staticMethod.protected',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'PHPDoc type string of property Database\\Factories\\EquipmentCategoryFactory::$model is not covariant with PHPDoc type class-string<App\\Models\\EquipmentCategory> of overridden property Illuminate\\Database\\Eloquent\\Factories\\Factory<App\\Models\\EquipmentCategory>::$model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php',
-                    'line' => 18,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php',
-                    'traitFilePath' => null,
-                    'tip' => 'You can fix 3rd party PHPDoc types with stub files:
-   <fg=cyan>https://phpstan.org/user-guide/stub-files</>',
-                    'nodeLine' => 18,
-                    'nodeType' => 'PHPStan\\Node\\ClassPropertyNode',
-                    'identifier' => 'property.phpDocType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'PHPDoc type string of property Database\\Factories\\EquipmentItemFactory::$model is not covariant with PHPDoc type class-string<App\\Models\\EquipmentItem> of overridden property Illuminate\\Database\\Eloquent\\Factories\\Factory<App\\Models\\EquipmentItem>::$model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
-                    'line' => 21,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
-                    'traitFilePath' => null,
-                    'tip' => 'You can fix 3rd party PHPDoc types with stub files:
-   <fg=cyan>https://phpstan.org/user-guide/stub-files</>',
-                    'nodeLine' => 21,
-                    'nodeType' => 'PHPStan\\Node\\ClassPropertyNode',
-                    'identifier' => 'property.phpDocType',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php' => [
-                0 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'line' => 60,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 60,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                1 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'line' => 78,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 78,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                2 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\LoanRequest model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'line' => 201,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 201,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                3 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'line' => 202,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 202,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-                4 => \PHPStan\Analyser\Error::__set_state([
-                    'message' => 'Relation \'status\' is not found in App\\Models\\HelpdeskTicket model.',
-                    'file' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'line' => 203,
-                    'canBeIgnored' => true,
-                    'filePath' => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                    'traitFilePath' => null,
-                    'tip' => null,
-                    'nodeLine' => 203,
-                    'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-                    'identifier' => 'larastan.relationExistence',
-                    'metadata' => [
-                    ],
-                    'fixedErrorDiff' => null,
-                ]),
-            ],
         ];
     },
     'locallyIgnoredErrorsCallback' => static function (): array {
         return [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
+                0 => \PHPStan\Analyser\Error::__set_state([
+                    'message' => 'Parameter #1 $callback of method Illuminate\\Database\\Eloquent\\Collection<int,Illuminate\\Database\\Eloquent\\Model>::map() expects callable(Illuminate\\Database\\Eloquent\\Model, int): array{type: \'ticket\', title: string, description: non-falsy-string, status: string, created_at: Illuminate\\Support\\Carbon|null, url: string}, Closure(App\\Models\\HelpdeskTicket): array{type: \'ticket\', title: string, description: non-falsy-string, status: string, created_at: Illuminate\\Support\\Carbon|null, url: string} given.',
+                    'file' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                    'line' => 325,
+                    'canBeIgnored' => true,
+                    'filePath' => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                    'traitFilePath' => null,
+                    'tip' => null,
+                    'nodeLine' => 325,
+                    'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
+                    'identifier' => 'argument.type',
+                    'metadata' => [
+                    ],
+                    'fixedErrorDiff' => null,
+                ]),
+            ],
         ];
     },
     'linesToIgnore' => [
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
                 182 => null,
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
                 325 => null,
             ],
         ],
     ],
     'unmatchedLineIgnores' => [
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
                 182 => null,
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
-                325 => null,
             ],
         ],
     ],
     'collectedDataCallback' => static function (): array {
         return [
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\EquipmentCondition.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\EquipmentCondition.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Enums\\EquipmentCondition',
@@ -4823,7 +2700,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\EquipmentStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\EquipmentStatus.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Enums\\EquipmentStatus',
@@ -4837,7 +2714,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\LoanRequestStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\LoanRequestStatus.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Enums\\LoanRequestStatus',
@@ -4851,7 +2728,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\TicketPriority.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\TicketPriority.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Enums\\TicketPriority',
@@ -4875,7 +2752,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\TicketUrgency.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\TicketUrgency.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Enums\\TicketUrgency',
@@ -4899,7 +2776,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\UserRole.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\UserRole.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Enums\\UserRole',
@@ -4913,7 +2790,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Exports\\DashboardReportExport',
@@ -4922,7 +2799,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Exports\\EquipmentExport',
@@ -4931,7 +2808,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Exports\\HelpdeskTicketsExport',
@@ -4940,7 +2817,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Exports\\LoanRequestsExport',
@@ -4949,12 +2826,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\ReportsExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\ReportsExport.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Exports\\ReportsExport',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Filament\\Resources\\Assets\\AssetResource',
@@ -4963,7 +2840,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource',
@@ -4972,7 +2849,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource',
@@ -4981,7 +2858,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource',
@@ -4990,7 +2867,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource',
@@ -4999,7 +2876,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Filament\\Resources\\LoanRequests\\LoanRequestResource',
@@ -5008,7 +2885,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Http\\Controllers\\Api\\DashboardController',
@@ -5017,22 +2894,22 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Http\\Controllers\\Api\\HelpdeskTicketController',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Http\\Controllers\\Api\\LoanRequestController',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'auth.login',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmPasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmPasswordController.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Http\\Controllers\\Auth\\ConfirmPasswordController',
                 ],
@@ -5042,30 +2919,24 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php' => [
-                'Larastan\\Larastan\\Collectors\\UsedTranslationFunctionCollector' => [
-                    0 => [
-                        0 => 'auth.password',
-                        1 => 32,
-                    ],
-                ],
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'auth.confirm-password',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'auth.verify-email',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ForgotPasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ForgotPasswordController.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Auth\\SendsPasswordResetEmails',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\LoginController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\LoginController.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Http\\Controllers\\Auth\\LoginController',
                 ],
@@ -5075,7 +2946,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'auth.reset-password',
                 ],
@@ -5086,12 +2957,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordResetLinkController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordResetLinkController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'auth.forgot-password',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Http\\Controllers\\Auth\\RegisterController',
                 ],
@@ -5101,7 +2972,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'auth.register',
                 ],
@@ -5112,14 +2983,14 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ResetPasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ResetPasswordController.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Auth\\ResetsPasswords',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerificationController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerificationController.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Http\\Controllers\\Auth\\VerificationController',
                 ],
@@ -5129,7 +3000,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureFuncCallCollector' => [
                     0 => [
                         0 => 'event',
@@ -5137,7 +3008,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\HomeController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\HomeController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'home',
                 ],
@@ -5145,16 +3016,15 @@ return [
                     0 => 'App\\Http\\Controllers\\HomeController',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'profile.edit',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'public.loan-request',
                     1 => 'public.damage-complaint',
-                    2 => 'public.my-requests-enhanced',
                 ],
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
@@ -5169,25 +3039,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => [
-                'Larastan\\Larastan\\Collectors\\UsedTranslationFunctionCollector' => [
-                    0 => [
-                        0 => 'Issue reported successfully! Your ticket number is: :ticket',
-                        1 => 143,
-                    ],
-                    1 => [
-                        0 => 'An error occurred while submitting your report. Please try again.',
-                        1 => 153,
-                    ],
-                    2 => [
-                        0 => 'Ticket number not found. Please check and try again.',
-                        1 => 177,
-                    ],
-                    3 => [
-                        0 => 'Ticket Confirmation - :ticket',
-                        1 => 228,
-                    ],
-                ],
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'public.helpdesk.success',
                 ],
@@ -5195,57 +3047,25 @@ return [
                     0 => [
                         0 => 'Illuminate\\Support\\Facades\\Mail',
                         1 => 'send',
-                        2 => 223,
+                        2 => 225,
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => [
-                'Larastan\\Larastan\\Collectors\\UsedTranslationFunctionCollector' => [
-                    0 => [
-                        0 => 'Loan request submitted successfully! Your reference number is: :ref',
-                        1 => 129,
-                    ],
-                    1 => [
-                        0 => 'An error occurred while submitting your request. Please try again.',
-                        1 => 139,
-                    ],
-                    2 => [
-                        0 => 'Reference number not found. Please check and try again.',
-                        1 => 172,
-                    ],
-                    3 => [
-                        0 => 'Loan Request Confirmation - :ref',
-                        1 => 189,
-                    ],
-                    4 => [
-                        0 => 'Approval Required - Loan Request :ref',
-                        1 => 211,
-                    ],
-                ],
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Support\\Facades\\Mail',
                         1 => 'send',
-                        2 => 184,
+                        2 => 188,
                     ],
                     1 => [
                         0 => 'Illuminate\\Support\\Facades\\Mail',
                         1 => 'send',
-                        2 => 203,
+                        2 => 207,
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\Auth\\LoginRequest.php' => [
-                'Larastan\\Larastan\\Collectors\\UsedTranslationFunctionCollector' => [
-                    0 => [
-                        0 => 'auth.failed',
-                        1 => 48,
-                    ],
-                    1 => [
-                        0 => 'auth.throttle',
-                        1 => 71,
-                    ],
-                ],
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\Auth\\LoginRequest.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Http\\Requests\\Auth\\LoginRequest',
@@ -5272,7 +3092,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\CreateLoanRequestRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\CreateLoanRequestRequest.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Http\\Requests\\CreateLoanRequestRequest',
@@ -5286,7 +3106,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreHelpdeskTicketRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreHelpdeskTicketRequest.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
@@ -5310,7 +3130,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreLoanRequestRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreLoanRequestRequest.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Http\\Requests\\StoreLoanRequestRequest',
@@ -5334,7 +3154,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Http\\Resources\\HelpdeskTicketResource',
@@ -5353,7 +3173,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Http\\Resources\\LoanRequestResource',
@@ -5362,7 +3182,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.admin-dashboard',
                 ],
@@ -5394,7 +3214,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.admin.audit-log-viewer',
                 ],
@@ -5411,7 +3231,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.admin.dropdown-manager',
                 ],
@@ -5457,7 +3277,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Helpdesk\\DropdownManager.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Helpdesk\\DropdownManager.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.admin.helpdesk.dropdown-manager',
                 ],
@@ -5469,32 +3289,32 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.admin.report.equipment-utilization',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.admin.report.export-widget',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.admin.report.helpdesk-performance',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.admin.report.loan-metrics',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\App.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\App.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.app',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.approval-workflow',
                 ],
@@ -5511,17 +3331,17 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Components\\RealTimeStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Components\\RealTimeStatus.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.components.real-time-status',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Counter.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Counter.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.counter',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageComplaintForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageComplaintForm.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.damage-complaint-form',
                 ],
@@ -5543,7 +3363,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.damage-report-form',
                 ],
@@ -5590,7 +3410,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.dashboard',
                 ],
@@ -5617,32 +3437,32 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\Main.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\Main.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.dashboard.main',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\NotificationWidget.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\NotificationWidget.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.dashboard.notification-widget',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\QuickAccessWidget.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\QuickAccessWidget.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.dashboard.quick-access-widget',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\StatusWidget.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\StatusWidget.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.dashboard.status-widget',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.document-generator',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\EquipmentLoanForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentLoanForm.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.equipment-loan-form',
                 ],
@@ -5659,7 +3479,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.equipment-selector',
                 ],
@@ -5706,7 +3526,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.equipment.loan-application-form',
                 ],
@@ -5751,11 +3571,11 @@ return [
                     0 => [
                         0 => 'Illuminate\\Database\\Eloquent\\Builder',
                         1 => 'create',
-                        2 => 331,
+                        2 => 332,
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.equipment.loan-application-form-new',
                 ],
@@ -5799,7 +3619,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.equipment.loan-application-list',
                 ],
@@ -5809,12 +3629,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ExampleComponent.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ExampleComponent.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.example-component',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.admin.ticket-management',
                 ],
@@ -5846,7 +3666,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.assignment',
                 ],
@@ -5857,15 +3677,15 @@ return [
                     ],
                     1 => [
                         0 => 'logger',
-                        1 => 195,
+                        1 => 194,
                     ],
                     2 => [
                         0 => 'logger',
-                        1 => 234,
+                        1 => 233,
                     ],
                     3 => [
                         0 => 'logger',
-                        1 => 253,
+                        1 => 252,
                     ],
                     4 => [
                         0 => 'logger',
@@ -5880,11 +3700,11 @@ return [
                     0 => [
                         0 => 'Illuminate\\Database\\Connection',
                         1 => 'transaction',
-                        2 => 160,
+                        2 => 159,
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.attachment-manager',
                 ],
@@ -5912,7 +3732,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.create',
                 ],
@@ -5939,7 +3759,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.create-enhanced',
                 ],
@@ -5962,7 +3782,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.index',
                 ],
@@ -5972,7 +3792,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.index-enhanced',
                 ],
@@ -6003,7 +3823,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.sla-tracker',
                 ],
@@ -6014,12 +3834,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.ticket-detail',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.helpdesk.ticket-form',
                 ],
@@ -6045,7 +3865,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\AdminDropdownManager.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\AdminDropdownManager.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.ict.admin-dropdown-manager',
                 ],
@@ -6055,25 +3875,25 @@ return [
                             0 => 'App\\Livewire\\Ict\\AdminDropdownManager',
                         ],
                         1 => 'createCategoryTable',
-                        2 => 132,
+                        2 => 131,
                     ],
                     1 => [
                         0 => [
                             0 => 'App\\Livewire\\Ict\\AdminDropdownManager',
                         ],
                         1 => 'resetForm',
-                        2 => 227,
+                        2 => 226,
                     ],
                     2 => [
                         0 => [
                             0 => 'App\\Livewire\\Ict\\AdminDropdownManager',
                         ],
                         1 => 'createCategoryTable',
-                        2 => 339,
+                        2 => 338,
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.ict.damage-complaint-form',
                 ],
@@ -6096,12 +3916,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.ict.damage-complaint-form',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.loan-application-wizard',
                 ],
@@ -6134,17 +3954,17 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.loan-request-tracker',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.loan.create',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.loan.index',
                 ],
@@ -6158,12 +3978,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Login.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Login.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.login',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.my-requests',
                 ],
@@ -6173,12 +3993,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Navigation.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Navigation.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.navigation',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.notifications.activity-feed',
                 ],
@@ -6205,7 +4025,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.notifications.notification-bell',
                 ],
@@ -6222,7 +4042,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.notifications.notification-center',
                 ],
@@ -6259,7 +4079,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\SystemNotificationBar.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\SystemNotificationBar.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.notifications.system-notification-bar',
                 ],
@@ -6286,12 +4106,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ToastContainer.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ToastContainer.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.notifications.toast-container',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.profile.user-profile',
                 ],
@@ -6334,12 +4154,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Register.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Register.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.register',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.resource-management.admin.bpm.process-issuance',
                 ],
@@ -6349,7 +4169,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.resource-management.admin.bpm.process-return',
                 ],
@@ -6359,7 +4179,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.resource-management.approval.dashboard',
                 ],
@@ -6369,12 +4189,12 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.resource-management.loan-application.application-form',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'livewire.user-profile',
                 ],
@@ -6391,7 +4211,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Mail\\HelpdeskTicketConfirmationMail.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Mail\\HelpdeskTicketConfirmationMail.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Mail\\HelpdeskTicketConfirmationMail',
                 ],
@@ -6409,7 +4229,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Mail\\LoanRequestConfirmationMail.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Mail\\LoanRequestConfirmationMail.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Mail\\LoanRequestConfirmationMail',
                 ],
@@ -6427,7 +4247,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\ActivityLog',
@@ -6441,14 +4261,14 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Asset.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Asset.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\AuditLog.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\AuditLog.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\AuditLog',
@@ -6462,7 +4282,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\DamageComplaint',
@@ -6491,7 +4311,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageType.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageType.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\DamageType',
@@ -6523,7 +4343,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\EquipmentCategory',
@@ -6537,7 +4357,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\EquipmentItem',
@@ -6556,7 +4376,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentLoan.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentLoan.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\EquipmentLoan',
@@ -6575,7 +4395,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\HelpdeskTicket',
@@ -6599,7 +4419,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\LoanApproval',
@@ -6613,7 +4433,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\LoanItem',
@@ -6627,7 +4447,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\LoanRequest',
@@ -6641,7 +4461,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\LoanStatus',
@@ -6660,7 +4480,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\Notification',
@@ -6684,7 +4504,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\TicketCategory',
@@ -6698,14 +4518,14 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\TicketStatus',
@@ -6719,7 +4539,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Models\\User',
@@ -6734,7 +4554,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Notifications\\DamageComplaintSubmittedNotification',
@@ -6755,7 +4575,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Notifications\\HelpdeskTicketSubmitted',
                 ],
@@ -6772,49 +4592,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php' => [
-                'Larastan\\Larastan\\Collectors\\UsedTranslationFunctionCollector' => [
-                    0 => [
-                        0 => 'New Loan Request Submitted - :ref',
-                        1 => 28,
-                    ],
-                    1 => [
-                        0 => 'Hello :name',
-                        1 => 29,
-                    ],
-                    2 => [
-                        0 => 'A new equipment loan request has been submitted.',
-                        1 => 30,
-                    ],
-                    3 => [
-                        0 => 'Request Number: :ref',
-                        1 => 31,
-                    ],
-                    4 => [
-                        0 => 'Requester: :name',
-                        1 => 32,
-                    ],
-                    5 => [
-                        0 => 'Department: :dept',
-                        1 => 33,
-                    ],
-                    6 => [
-                        0 => 'Purpose: :purpose',
-                        1 => 34,
-                    ],
-                    7 => [
-                        0 => 'View Request',
-                        1 => 35,
-                    ],
-                    8 => [
-                        0 => 'Please review and process this request accordingly.',
-                        1 => 36,
-                    ],
-                    9 => [
-                        0 => 'New loan request :ref submitted by :name',
-                        1 => 46,
-                    ],
-                ],
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Notifications\\LoanRequestSubmitted',
                 ],
@@ -6831,7 +4609,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Notifications\\LoanRequestSubmittedNotification',
@@ -6852,7 +4630,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Notifications\\TicketCreatedNotification',
@@ -6873,7 +4651,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'App\\Notifications\\TicketStatusUpdatedNotification',
@@ -6894,7 +4672,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Support\\Facades\\Gate',
@@ -6908,41 +4686,41 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\TelescopeServiceProvider.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\TelescopeServiceProvider.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Laravel\\Telescope\\Telescope',
                         1 => 'filter',
-                        2 => 24,
+                        2 => 23,
                     ],
                     1 => [
                         0 => 'Laravel\\Telescope\\Telescope',
                         1 => 'hideRequestParameters',
-                        2 => 44,
+                        2 => 43,
                     ],
                     2 => [
                         0 => 'Laravel\\Telescope\\Telescope',
                         1 => 'hideRequestHeaders',
-                        2 => 46,
+                        2 => 45,
                     ],
                     3 => [
                         0 => 'Illuminate\\Support\\Facades\\Gate',
                         1 => 'define',
-                        2 => 60,
+                        2 => 59,
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Services\\HelpdeskService',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => [
                 'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => [
                     0 => 'App\\Services\\LoanApplicationService',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Database\\Eloquent\\Builder',
@@ -6966,7 +4744,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Support\\ForPsr4LoadedClasses.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Support\\ForPsr4LoadedClasses.php' => [
                 'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
                     0 => [
                         0 => 'Imanghafoori\\LaravelMicroscope\\ForPsr4LoadedClasses',
@@ -6975,17 +4753,45 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\View\\Components\\AppLayout.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\View\\Components\\AppLayout.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'layouts.app',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\View\\Components\\GuestLayout.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\View\\Components\\GuestLayout.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'layouts.guest',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DamageTypeSeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005304_add_event_column_to_activity_log_table.php' => [
+                'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
+                    0 => [
+                        0 => 'AddEventColumnToActivityLogTable',
+                        1 => 'up',
+                        2 => 'AddEventColumnToActivityLogTable',
+                    ],
+                    1 => [
+                        0 => 'AddEventColumnToActivityLogTable',
+                        1 => 'down',
+                        2 => 'AddEventColumnToActivityLogTable',
+                    ],
+                ],
+            ],
+            'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005305_add_batch_uuid_column_to_activity_log_table.php' => [
+                'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => [
+                    0 => [
+                        0 => 'AddBatchUuidColumnToActivityLogTable',
+                        1 => 'up',
+                        2 => 'AddBatchUuidColumnToActivityLogTable',
+                    ],
+                    1 => [
+                        0 => 'AddBatchUuidColumnToActivityLogTable',
+                        1 => 'down',
+                        2 => 'AddBatchUuidColumnToActivityLogTable',
+                    ],
+                ],
+            ],
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DamageTypeSeeder.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Database\\Eloquent\\Builder',
@@ -6994,7 +4800,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Database\\Eloquent\\Builder',
@@ -7003,7 +4809,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Support\\Facades\\Route',
@@ -7032,7 +4838,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Support\\Facades\\Route',
@@ -7051,13 +4857,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php' => [
-                'Larastan\\Larastan\\Collectors\\UsedTranslationFunctionCollector' => [
-                    0 => [
-                        0 => 'Request/Ticket number not found. Please check and try again.',
-                        1 => 86,
-                    ],
-                ],
+            'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'public.track',
                     1 => 'public.track-result',
@@ -7066,13 +4866,14 @@ return [
                     4 => 'public.track-result',
                     5 => 'app',
                     6 => 'welcome',
-                    7 => 'test-notifications',
-                    8 => 'admin.dashboard',
+                    7 => 'my-requests',
+                    8 => 'test-notifications',
+                    9 => 'admin.dashboard',
                 ],
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureFuncCallCollector' => [
                     0 => [
                         0 => 'session',
-                        1 => 234,
+                        1 => 251,
                     ],
                 ],
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
@@ -7089,18 +4890,18 @@ return [
                     2 => [
                         0 => 'Illuminate\\Support\\Facades\\Route',
                         1 => 'get',
-                        2 => 229,
+                        2 => 246,
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Support\\Facades\\Event',
@@ -7114,14 +4915,14 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Support\\Facades\\Notification',
@@ -7145,21 +4946,21 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\RegistrationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\RegistrationTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Database\\Eloquent\\Builder',
@@ -7193,7 +4994,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Database\\Eloquent\\Builder',
@@ -7222,49 +5023,49 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\LoanApplicationWorkflowTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\LoanApplicationWorkflowTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php' => [
                 'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Console\\Kernel',
@@ -7288,7 +5089,7 @@ return [
                     ],
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Ui\\LayoutPrimitivesTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Ui\\LayoutPrimitivesTest.php' => [
                 'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => [
                     0 => 'components.myds.skiplink',
                     1 => 'components.myds.announce-bar',
@@ -7296,7 +5097,7 @@ return [
                     3 => 'components.myds.cookie-banner',
                 ],
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php' => [
                 'PHPStan\\Rules\\Traits\\TraitUseCollector' => [
                     0 => [
                         0 => 'Illuminate\\Foundation\\Testing\\RefreshDatabase',
@@ -7306,2319 +5107,2457 @@ return [
         ];
     },
     'dependencies' => [
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Console\\Commands\\CheckEquipmentDue.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Console\\Commands\\CheckEquipmentDue.php' => [
             'fileHash' => '7c0f6db1f1ebacc8e1dfb25a947c0ecd90e9a041',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Console\\Commands\\NotificationCleanup.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Console\\Commands\\NotificationCleanup.php' => [
             'fileHash' => '117d3a4a1811a3d5720f7c43f5a00bdb8936f144',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\EquipmentCondition.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\EquipmentCondition.php' => [
             'fileHash' => 'c0ff274b55fc142b2492d2b588c0798aacbb959f',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\EquipmentStatus.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\EquipmentStatus.php' => [
             'fileHash' => '7aab5369b1909694de21d86ab7683b5866fff652',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\LoanRequestStatus.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\LoanRequestStatus.php' => [
             'fileHash' => 'a47ea2ba1dbd20461c48c9ea7915677337058110',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Schemas\\LoanRequestForm.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Schemas\\LoanRequestForm.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\TicketPriority.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\TicketPriority.php' => [
             'fileHash' => 'f4ec751418e5c5ee892af09364c1126727e165db',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                40 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\TicketUrgency.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\TicketUrgency.php' => [
             'fileHash' => '1f53ae85edd1c2f8d9d9f9261075feebd8423250',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\UserRole.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\UserRole.php' => [
             'fileHash' => '23fc2ce4da4498586ce401b7bc707c0a5c5b62a9',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\App.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                40 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php',
-                41 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                42 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
-                43 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
-                44 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
-                45 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                46 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Register.php',
-                47 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                48 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                49 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                50 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                51 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
-                52 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php',
-                53 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Approval.php',
-                54 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\AuditLog.php',
-                55 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                56 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php',
-                57 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                58 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                59 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
-                60 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                61 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                62 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
-                63 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-                64 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
-                65 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
-                66 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                67 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                68 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                69 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                70 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
-                71 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
-                72 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
-                73 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\test.php',
-                74 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
-                75 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
-                76 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
-                77 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
-                78 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
-                79 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
-                80 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
-                81 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-                82 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-                83 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                84 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-                85 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-                86 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
-                87 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\App.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                40 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php',
+                41 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                42 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
+                43 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
+                44 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
+                45 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                46 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Register.php',
+                47 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                48 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                49 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                50 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                51 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
+                52 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php',
+                53 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Approval.php',
+                54 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\AuditLog.php',
+                55 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                56 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php',
+                57 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                58 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                59 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                60 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                61 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                62 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
+                63 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                64 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                65 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
+                66 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                67 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                68 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                69 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                70 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
+                71 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
+                72 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                73 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\test.php',
+                74 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                75 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
+                76 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
+                77 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
+                78 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
+                79 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
+                80 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
+                81 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
+                82 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                83 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                84 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                85 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+                86 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                87 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
+                88 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php' => [
             'fileHash' => '0484dc89d80a1c4d885a2b69427d5ebfe1c7d5ac',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php' => [
             'fileHash' => '162bbbe13470fea7aa04a6045b206aee8171e0a7',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php' => [
             'fileHash' => '704fec5eea7ea792ea97a594065d3133e5d76f1e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php' => [
             'fileHash' => '4300f10386d5a1c52a321538da4a31a19870edc2',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\ReportsExport.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\ReportsExport.php' => [
             'fileHash' => '2f8dbd8f432e955949484e5de0aab00517a37126',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php' => [
             'fileHash' => 'e2df7d37e92aec81b041fcaae2d3c1c9a705927f',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\CreateAsset.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\EditAsset.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\ListAssets.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\CreateAsset.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\EditAsset.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\ListAssets.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\CreateAsset.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\CreateAsset.php' => [
             'fileHash' => '8f80de82a0ec975100b7dbc76b7c4c68d26b61bd',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\EditAsset.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\EditAsset.php' => [
             'fileHash' => '20e5d6648898956b6c4f0e51c81321b56da343fb',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\ListAssets.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\ListAssets.php' => [
             'fileHash' => '79566f04ad09830f1ddf733624383a54aaf45548',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Schemas\\AssetForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Schemas\\AssetForm.php' => [
             'fileHash' => '15813c50574a451ef6010157dea7519571220eba',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Tables\\AssetsTable.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Tables\\AssetsTable.php' => [
             'fileHash' => 'a50f11daa8cd02aa479b7050785622c2c12185e2',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php' => [
             'fileHash' => 'cb324d44bb40fe22ca564bb1c609a65f745df32a',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\CreateDamageComplaint.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\EditDamageComplaint.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\ListDamageComplaints.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\CreateDamageComplaint.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\EditDamageComplaint.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\ListDamageComplaints.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\CreateDamageComplaint.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\CreateDamageComplaint.php' => [
             'fileHash' => 'c4d421742c3ff764aa3c64ce6701679b7bf7ec98',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\EditDamageComplaint.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\EditDamageComplaint.php' => [
             'fileHash' => '285125d357525011bd385580cb22cceeeb79517d',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\ListDamageComplaints.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\ListDamageComplaints.php' => [
             'fileHash' => 'a734fb06c37beb4e5e3d5fcaca84417a00efecaa',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Schemas\\DamageComplaintForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Schemas\\DamageComplaintForm.php' => [
             'fileHash' => 'a2469524bfda630fb97d7d8f6dbaaa6efdb453f1',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Tables\\DamageComplaintsTable.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Tables\\DamageComplaintsTable.php' => [
             'fileHash' => '1882e5d87fd23f354048d1dd618912d8310d2c8e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php' => [
             'fileHash' => 'f0efa757500fc34de9124045502d561dcda66f08',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\CreateEquipmentItem.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\EditEquipmentItem.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\ListEquipmentItems.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\CreateEquipmentItem.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\EditEquipmentItem.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\ListEquipmentItems.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\CreateEquipmentItem.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\CreateEquipmentItem.php' => [
             'fileHash' => 'dd4d608e845af08e82ae47251c44a6c5b4e0c99e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\EditEquipmentItem.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\EditEquipmentItem.php' => [
             'fileHash' => '3a5f0c852c5cbef3e3113bacd019b676db68dc77',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\ListEquipmentItems.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\ListEquipmentItems.php' => [
             'fileHash' => 'c5a83f186eb3f749b2325364ff3a67c59b7a5376',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm.php' => [
             'fileHash' => '6b149b8c140bf85dc64f04e599f6a59f1943034b',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable.php' => [
             'fileHash' => '1519cd42388ec63da4ad12b56bda9f46413dee22',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php' => [
             'fileHash' => '5403d9313fc18681a2a7268d45cabcd3b9c002de',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\CreateEquipmentLoan.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\EditEquipmentLoan.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\ListEquipmentLoans.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\CreateEquipmentLoan.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\EditEquipmentLoan.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\ListEquipmentLoans.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\CreateEquipmentLoan.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\CreateEquipmentLoan.php' => [
             'fileHash' => '1bf6f17872be75db2e4d7ce3038baf4a2be6f464',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\EditEquipmentLoan.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\EditEquipmentLoan.php' => [
             'fileHash' => 'f81849c1ca772cd71930bcd0683db03211744a4d',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\ListEquipmentLoans.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\ListEquipmentLoans.php' => [
             'fileHash' => '3c2c45ee98ac55952b7f4008a1fd28debe68e467',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Schemas\\EquipmentLoanForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Schemas\\EquipmentLoanForm.php' => [
             'fileHash' => 'b31fb8da0ee7bf4a1c204c376c5ff13cfc64885f',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Tables\\EquipmentLoansTable.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Tables\\EquipmentLoansTable.php' => [
             'fileHash' => '4f26222318865266d531a18d1163c0365d8bc929',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php' => [
             'fileHash' => '0d70bedc607e6eb867bddfd32aa101996f217bf6',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\CreateHelpdeskTicket.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\EditHelpdeskTicket.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\ListHelpdeskTickets.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\CreateHelpdeskTicket.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\EditHelpdeskTicket.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\ListHelpdeskTickets.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\CreateHelpdeskTicket.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\CreateHelpdeskTicket.php' => [
             'fileHash' => '03be08f03a76a7b66ac53030d54d9167cce5beaa',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\EditHelpdeskTicket.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\EditHelpdeskTicket.php' => [
             'fileHash' => '85037ecf390c9b62c3d95718f7b4cafe03bb1437',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\ListHelpdeskTickets.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\ListHelpdeskTickets.php' => [
             'fileHash' => 'ad54fad66228ceb7f2a82c534072527c4c6ac0e7',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm.php' => [
             'fileHash' => '7d1d9025b4491a294ba4813462149951a5ed312f',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Tables\\HelpdeskTicketsTable.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Tables\\HelpdeskTicketsTable.php' => [
             'fileHash' => '73dd3fa24d48a81ddc8b00cffc91f3f46cd6e1ee',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php' => [
             'fileHash' => 'a4c2bc9fde5a989f3e7a6ce07ff7b5ce9c09b959',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\CreateLoanRequest.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\EditLoanRequest.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\ListLoanRequests.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\CreateLoanRequest.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\EditLoanRequest.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\ListLoanRequests.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\CreateLoanRequest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\CreateLoanRequest.php' => [
             'fileHash' => '1ce10a4507eb0c45a47720868bab2013c0a277ae',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\EditLoanRequest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\EditLoanRequest.php' => [
             'fileHash' => 'e50c637fbbcbccc38db06152355d8c90852f2b18',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\ListLoanRequests.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\ListLoanRequests.php' => [
             'fileHash' => '2309a8e00fbb71828a2edf9c157a98def1d3e87e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Schemas\\LoanRequestForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Schemas\\LoanRequestForm.php' => [
             'fileHash' => 'c9b0b4cdd46e8ab971aec1014ebec1046eb0f713',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Tables\\LoanRequestsTable.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Tables\\LoanRequestsTable.php' => [
             'fileHash' => '21bbf31f0ce3567555eb0d9d94aa674eb9e2062b',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php' => [
             'fileHash' => '64a4a50e20052e13c29c078f8a7755d8fcc78dce',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => [
-            'fileHash' => 'a1a1baf68b456a7c602e731a47f8ede6cf11d9ef',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => [
+            'fileHash' => 'c47960ea9d5760f90c76a5ab53d065e2f51dc031',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => [
-            'fileHash' => 'd413834694fcb501055d0a3f2c9d0d130bc0cbe6',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => [
+            'fileHash' => 'ed7cc854077668dc1bdf6b0e2a9f14c95a1df4f0',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php' => [
             'fileHash' => 'cf83b6bbd07baea2c730f9eaf7e8ad005aa98dcb',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmPasswordController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmPasswordController.php' => [
             'fileHash' => '7624f428393930c366dfa104489320c068942b70',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php' => [
             'fileHash' => 'eeee46cbb7476df5ee853590bf87a6e51b80cc74',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php' => [
             'fileHash' => 'e66bf11b7a3ce9260d5ae7a6a3cd916df11805d6',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php' => [
             'fileHash' => '606dc87bb9232f15e67d9f2a30f66e3dd1a8b4b6',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ForgotPasswordController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ForgotPasswordController.php' => [
             'fileHash' => '81c1321e8b26baa03a1e9a7ae00b4350aa6c7f14',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\LoginController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\LoginController.php' => [
             'fileHash' => '253ab8a3d80c3f278ca7e62c35f0823898603640',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php' => [
             'fileHash' => 'a8ea1d9956cf870f9aa5f356e5eff537b01c1469',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php' => [
             'fileHash' => '155d64155609df7f8b323a8b1f17322b6abdcdbb',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordResetLinkController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordResetLinkController.php' => [
             'fileHash' => '086bdd57ec44918d3a2bfe98a098c1cbd8d16b9a',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php' => [
             'fileHash' => '413143a2c29b5883b98c5d983252ed5bc86c34d0',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php' => [
             'fileHash' => '215c5544be1d51654e957fe55907b5693bcc1356',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ResetPasswordController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ResetPasswordController.php' => [
             'fileHash' => '883730c6cc0b167d7c0856988696f4d86bc8194b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerificationController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerificationController.php' => [
             'fileHash' => '678540d43c8506afcd6e203a2d58be28434e359e',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php' => [
             'fileHash' => '2937923504829824c6405ec9ff5513db3d8194b5',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Controller.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Controller.php' => [
             'fileHash' => '75cadca8afa5982965d1ac316df3c693271b4902',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmPasswordController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ForgotPasswordController.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\LoginController.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordResetLinkController.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ResetPasswordController.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerificationController.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\HomeController.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\InventoryController.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmPasswordController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ForgotPasswordController.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\LoginController.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordResetLinkController.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ResetPasswordController.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerificationController.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\HomeController.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\InventoryController.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\HomeController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\HomeController.php' => [
             'fileHash' => '762fa7df9440b9bbc071210c65d5fe9c44c1963e',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\InventoryController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\InventoryController.php' => [
             'fileHash' => '9487c4386cf2ba5c42b4682f4f3f00c8e6819c1e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php' => [
             'fileHash' => 'ca4ff8832cf9fc0e922be7f8af5cc8fc7fc5017f',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => [
-            'fileHash' => '35038b2a0819a43d44ce64b162cbb8a0b2b2d6fb',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => [
+            'fileHash' => 'a5f366de27506d837ca1a31921647d4f8284505c',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => [
-            'fileHash' => '6283603fbee2284d55e11cb7eeddde0585bc4fe6',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => [
+            'fileHash' => '944c37af35826640922dc1be79ca94c17c55aeae',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => [
-            'fileHash' => '2087cb69fb0b3ac23c3f552dc2aeba921523e157',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => [
+            'fileHash' => '04c80311fac24c2533d3f14da518e388b0a31675',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php' => [
-            'fileHash' => '31a5e3004c296ac75f97042bd52c117584fdeece',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php' => [
+            'fileHash' => 'b20705894e3a0496fdfa782cdd5db43eda6fb3ff',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\Auth\\LoginRequest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\Auth\\LoginRequest.php' => [
             'fileHash' => '52ec4b8a5bbd802539e609d80623c0134148f37f',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\CreateLoanRequestRequest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\CreateLoanRequestRequest.php' => [
             'fileHash' => 'a28a490d07308839b591b360b093dc240cdaedb7',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php' => [
             'fileHash' => '188a4d234043c5b62c57387f89e132b5f3aa01cb',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreHelpdeskTicketRequest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreHelpdeskTicketRequest.php' => [
             'fileHash' => 'f28e851b8d7965bde4ec9f4c2eb0f176d25a3ab6',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreLoanRequestRequest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreLoanRequestRequest.php' => [
             'fileHash' => 'bd777c0aa3c51c183a4f3d6cc8fbc659f7a182c1',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => [
             'fileHash' => '76c8fa646e4821e0727bad318b02c30bb8a275e2',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php' => [
             'fileHash' => 'ee49d275525c93ca93ad04fe7c553f9ca9e7d3fd',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php' => [
             'fileHash' => '1e9a4aa9bd21639b8bd8c3c699cc751632589f9b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php' => [
             'fileHash' => '45097913abc9ee989f7c2c098f0cfd96e2d4c239',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php' => [
             'fileHash' => 'a28edf913786291759f332112cee178cb0325120',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Helpdesk\\DropdownManager.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Helpdesk\\DropdownManager.php' => [
             'fileHash' => '5da6601e9095355c83388eac76710244a2b68c4f',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php' => [
             'fileHash' => 'ce1853f8c81f462da3c986233527d1f054db2fb8',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php' => [
             'fileHash' => 'ffd66435449eed9f92300bfb70127e84e73042d9',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php' => [
             'fileHash' => '085fad8890f31efbf07951da45fcdec91f1bd873',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php' => [
             'fileHash' => '1699399bb0a0eff73d396f81c7f41f71ddbcf71e',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\App.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\App.php' => [
             'fileHash' => 'b4d84b24c2ae9e180e7cc3a7d1d35395cbec24df',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php' => [
             'fileHash' => '02e96b55004d35a264b58ca703104b1d9847a395',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Components\\RealTimeStatus.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Components\\RealTimeStatus.php' => [
             'fileHash' => '66e4a27c233f9462e53d9dc012d577fce9193bf8',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Counter.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Counter.php' => [
             'fileHash' => '8c0a95daec48c8e2b38c82a4ef307d23d62e375e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageComplaintForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageComplaintForm.php' => [
             'fileHash' => 'a0962705be0a4dc38df054a1fccb784970d4a77f',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php' => [
             'fileHash' => '8953ca9e4681c02e90d4fbde2d46db82e1f3f1c1',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php' => [
             'fileHash' => '7ced91001461f9f4ddadb9479f9560c6690cd6bc',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\Main.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\Main.php' => [
             'fileHash' => '0a9a44de8a49685b5b817d48083fa3a0685a936b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\NotificationWidget.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\NotificationWidget.php' => [
             'fileHash' => '508bc26ddd37bf64bf43690c968d5da4b0fa1995',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\QuickAccessWidget.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\QuickAccessWidget.php' => [
             'fileHash' => '59c67128f4c353df03913e58d8030c8be4d5414b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\StatusWidget.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\StatusWidget.php' => [
             'fileHash' => '341359d308964e3bb2fbd1fc619d2451adcb2be2',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php' => [
             'fileHash' => 'dbb29e780000df8c4bda21b9bea6a343553127ee',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\EquipmentLoanForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentLoanForm.php' => [
             'fileHash' => 'f3b0cefcb6b4b1a5c168332357f08162e9c95155',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php' => [
             'fileHash' => 'd5c8acc079bfbc1b226ecc62465886ee101ec606',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php' => [
-            'fileHash' => '326ff6fa2738274649d15e46f64bda1c3bba04cf',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php' => [
+            'fileHash' => '4c21f993ee3b0f4e73abb15d1a25f5d41c052ffd',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => [
             'fileHash' => '4cabf67d4b1bf2d5461b36a301e951297ad30411',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php' => [
-            'fileHash' => 'ba7edbea9089680a84ab75d4b1970d2cd5054a27',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php' => [
+            'fileHash' => '62b9ac54632addf369146d8d0602dc5569348a94',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ExampleComponent.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ExampleComponent.php' => [
             'fileHash' => '880d9f8a2a08e500decf1a6c2ccc5507810403df',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php' => [
             'fileHash' => 'e08f8b839e51b28135d12bb9ed19a972f47c049f',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php' => [
-            'fileHash' => '010828a6592270ca1d1e470dca157aefed76f30a',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php' => [
+            'fileHash' => '6d185fc3bb009e7f46a6f81f6c360324386153b3',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => [
-            'fileHash' => 'b66bd377289e85795708f1d771f59c2f1ea7d87c',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => [
+            'fileHash' => '20472bccdbf1ecfe68b6897f78129fea187db0b9',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php' => [
             'fileHash' => '16a9cc31e6035d9bbd5ade5bdf4406dffc057797',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php' => [
             'fileHash' => '1470e223e2410eb4746581c321be0c6ca3da60ef',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php' => [
             'fileHash' => '63247abe5863009a7e3cb9c6cd4bd10123d375ee',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => [
-            'fileHash' => 'bc48d7b19ecad2ea1c710e19f199a03764f1a6be',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => [
+            'fileHash' => '560d8b2ebfb63308301ba981a032bd666d81036e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => [
-            'fileHash' => '198a061ed166a9dc995da16d531016b8270f2417',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => [
+            'fileHash' => '8e63689dbcca6ca35e5dc9b112b5c4ebab4ad99e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php' => [
-            'fileHash' => '2793078497bc485eeb31c2ae250a08c903f89e52',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php' => [
+            'fileHash' => 'd9540173d7c7e29e0bdbead4c776f36d9ed9cdaf',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
             'fileHash' => 'a7cb26813cea37ec719a0eb312bdc7568301f0bb',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketList.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketList.php' => [
             'fileHash' => '778766f36b31e27636842e391b95d4915aea6c39',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\AdminDropdownManager.php' => [
-            'fileHash' => '119fc5119334a582e45c3ed3593e936ed81f89f1',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\AdminDropdownManager.php' => [
+            'fileHash' => '25387b696fa7fd69b0a00a0e5768da65a5f0efc2',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php' => [
             'fileHash' => '4a7b3e99346a66ae2a4f3c7f3052e1d10590267f',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php' => [
             'fileHash' => '71cab4676e1d01e30efba0c6543645453c6e18c3',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php' => [
             'fileHash' => '9fedc344a640b69dedbc852d2da0cf0fe7d3e761',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php' => [
             'fileHash' => 'ab569229e34a4711b40592117d0ec277de5dc7ae',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php' => [
             'fileHash' => 'f7499614d43615a174d439c233051adc400f7cfc',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php' => [
             'fileHash' => '6e8093cd6f83d79e615cbdc44770167a191529bd',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Login.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Login.php' => [
             'fileHash' => 'ceafa109b54220e798f6e7e6e683821f1818d982',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php' => [
             'fileHash' => 'b761e1236a602e61adbfc731b3e6e45a065190f4',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Navigation.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Navigation.php' => [
             'fileHash' => '28463d6dcfa7001cb214bc453c6362927d41c414',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php' => [
             'fileHash' => 'aeb17c8f3c392e9b258c8c2542bb65456a8ebc42',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php' => [
             'fileHash' => 'a6e11a977d342d01d3a6cdb4dc6d82726c0badce',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php' => [
             'fileHash' => 'ccc68257be2598aabebae1a9319fd4c3c774cc21',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\SystemNotificationBar.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\SystemNotificationBar.php' => [
             'fileHash' => '1e5219af34cb8e159369526886df76a72f468504',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ToastContainer.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ToastContainer.php' => [
             'fileHash' => '0886e101de3c874820d5d94865403a6403d25a29',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
             'fileHash' => 'ae6a4343e0fdfec9e178eb28ec3047b8fccedf14',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Register.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Register.php' => [
             'fileHash' => 'cc2e23aa44af0319ed398fa695845a929a264bbb',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php' => [
-            'fileHash' => '86f5ec6f723ffce0c499c6eb845e4d21ea3bcdec',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php' => [
+            'fileHash' => '7fa57647ff3ea980ee8127cfc3942c3297a4caa5',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => [
-            'fileHash' => 'eb502639290fb52916471bf8ae5d3a60c39dffe1',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => [
+            'fileHash' => '06366d649c1a42e2650ddbd777adc15c60c8b8c8',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php' => [
             'fileHash' => 'e1a03258840223d5963af847eb5be9df81787484',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php' => [
             'fileHash' => '0fb43cf55f41278c98564abdb14ce439e54ac792',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php' => [
             'fileHash' => '0452b7cd0a01f859d5320de602ff590e5cf48ba3',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Mail\\HelpdeskTicketConfirmationMail.php' => [
-            'fileHash' => '0ae9a533599e62faf469d1dd4dcf392826d9e5b2',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Mail\\HelpdeskTicketConfirmationMail.php' => [
+            'fileHash' => '5c0045fb2d67c314b286b4e39adaab88622804ba',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Mail\\LoanRequestConfirmationMail.php' => [
-            'fileHash' => 'd6ac059ba2e9bbe0148bdb18c3d29539269fa2cf',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Mail\\LoanRequestConfirmationMail.php' => [
+            'fileHash' => '1d36263f275baa75b78ae2c3d8dd71a252b8d207',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php' => [
             'fileHash' => '19a3d687ed73cd80d2e4c80e3f3ae71eff9cb080',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Approval.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Approval.php' => [
             'fileHash' => 'b88047597ddc1f3ac2f37147f1cbfcb13c5822b0',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Asset.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Asset.php' => [
             'fileHash' => '61471b7679c9fab887dfb079a6c72d2c176f6aa4',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\AuditLog.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\AuditLog.php' => [
             'fileHash' => '510143e1665ee9bc8571fed377a4b4b6fd919dfc',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageType.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageType.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php' => [
             'fileHash' => '999bd8d44a2c542f6472b6cd362d3749f60d2b2d',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Asset.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Asset.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageType.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageType.php' => [
             'fileHash' => 'a93a39c5dc891c1c6f2133551f24467d16876c55',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Helpdesk\\DropdownManager.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\DamageTypeFactory.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DamageTypeSeeder.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Helpdesk\\DropdownManager.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\DamageTypeFactory.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DamageTypeSeeder.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php' => [
             'fileHash' => '0f931a6c899d2c3de1afc117985486fe9e9a35a6',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php' => [
-            'fileHash' => '00c965f40ec34001e499f90cde4caa7fe522d126',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php' => [
+            'fileHash' => '7678e31696df31cb62df1b58344e06a6f1f639dc',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                40 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                41 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                42 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                43 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                44 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                45 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                46 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php',
-                47 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                48 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
-                49 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                50 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
-                51 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                52 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
-                53 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
-                54 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
-                55 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                56 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                57 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
-                58 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-                59 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                60 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-                61 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
-                62 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
-                63 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                64 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                65 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                66 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                67 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php',
-                68 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
-                69 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
-                70 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                71 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
-                72 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                73 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-                74 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                75 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-                76 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                40 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                41 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                42 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                43 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                44 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                45 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                46 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php',
+                47 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                48 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
+                49 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                50 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
+                51 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                52 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
+                53 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                54 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
+                55 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                56 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                57 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
+                58 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
+                59 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
+                60 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                61 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                62 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
+                63 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                64 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                65 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                66 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                67 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php',
+                68 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
+                69 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                70 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                71 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                72 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                73 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                74 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                75 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                76 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentLoan.php' => [
-            'fileHash' => 'db788e998a67e93d2869516b2002280785879bff',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentLoan.php' => [
+            'fileHash' => '4ab49040f20dc79968e639e629c92a77a74f65ec',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => [
-            'fileHash' => 'c0dabf4abcb00b04290f1be20429a36373895c6a',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => [
+            'fileHash' => 'f2e358828aed300bf9fc63c16adbafa7f19f2d46',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\App.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                40 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                41 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
-                42 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                43 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                44 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php',
-                45 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                46 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
-                47 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
-                48 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
-                49 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                50 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Register.php',
-                51 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                52 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                53 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                54 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                55 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
-                56 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php',
-                57 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Approval.php',
-                58 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\AuditLog.php',
-                59 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                60 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php',
-                61 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                62 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                63 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
-                64 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
-                65 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
-                66 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                67 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                68 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
-                69 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                70 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-                71 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
-                72 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
-                73 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                74 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                75 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                76 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                77 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
-                78 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                79 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
-                80 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
-                81 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
-                82 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\test.php',
-                83 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                84 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
-                85 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
-                86 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
-                87 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
-                88 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
-                89 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
-                90 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
-                91 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-                92 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-                93 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                94 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-                95 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-                96 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
-                97 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\App.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                40 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                41 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                42 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
+                43 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                44 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php',
+                45 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                46 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
+                47 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
+                48 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
+                49 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                50 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Register.php',
+                51 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                52 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                53 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                54 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                55 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
+                56 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php',
+                57 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Approval.php',
+                58 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\AuditLog.php',
+                59 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                60 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php',
+                61 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                62 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                63 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
+                64 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                65 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
+                66 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                67 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                68 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
+                69 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
+                70 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                71 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                72 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
+                73 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                74 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                75 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                76 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                77 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                78 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                79 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
+                80 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
+                81 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                82 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\test.php',
+                83 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                84 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
+                85 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
+                86 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
+                87 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
+                88 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
+                89 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
+                90 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
+                91 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                92 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                93 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                94 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+                95 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                96 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
+                97 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php' => [
             'fileHash' => '4376bcd611ce4fdffd8000087da908ae2cc66248',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php' => [
             'fileHash' => '267ca49e56e41ad80ce0fdfb79e4aa1076b361ce',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => [
-            'fileHash' => 'b2f1779be198a4bd4554aac9c98174ade4c16d6f',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => [
+            'fileHash' => '7f64f1a1d323583893e5d1fd82e4b280aa8c8b93',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\App.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                40 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                41 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
-                42 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                43 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
-                44 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                45 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php',
-                46 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                47 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
-                48 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
-                49 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
-                50 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                51 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Register.php',
-                52 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                53 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                54 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                55 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                56 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
-                57 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php',
-                58 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Approval.php',
-                59 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\AuditLog.php',
-                60 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                61 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                62 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php',
-                63 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
-                64 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
-                65 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                66 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
-                67 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                68 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                69 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
-                70 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-                71 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-                72 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
-                73 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
-                74 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                75 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                76 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                77 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                78 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                79 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
-                80 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
-                81 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
-                82 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\test.php',
-                83 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                84 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
-                85 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
-                86 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
-                87 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
-                88 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
-                89 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
-                90 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
-                91 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-                92 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-                93 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                94 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-                95 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-                96 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
-                97 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\App.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                40 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                41 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                42 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
+                43 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
+                44 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                45 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php',
+                46 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                47 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
+                48 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
+                49 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
+                50 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                51 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Register.php',
+                52 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                53 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                54 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                55 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                56 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
+                57 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php',
+                58 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Approval.php',
+                59 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\AuditLog.php',
+                60 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                61 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                62 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php',
+                63 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
+                64 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
+                65 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                66 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                67 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                68 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                69 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
+                70 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
+                71 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                72 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                73 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
+                74 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                75 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                76 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                77 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                78 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                79 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
+                80 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
+                81 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                82 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\test.php',
+                83 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                84 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
+                85 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
+                86 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
+                87 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
+                88 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
+                89 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
+                90 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
+                91 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                92 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                93 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                94 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+                95 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                96 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
+                97 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php' => [
             'fileHash' => '7bcc799551614f9614422980bdb79bf93bc76883',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanStatusFactory.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanStatusFactory.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php' => [
-            'fileHash' => '5b57cfa2574c5095652d824befdcba8b6d8a23c6',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php' => [
+            'fileHash' => 'cbf59ef5b6ea99031cde540052050fc771382804',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php' => [
             'fileHash' => 'cf94022028e746a8b90555f51169ab7a43256eeb',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\TicketCategoryFactory.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\test.php',
-                40 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                41 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\TicketCategoryFactory.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\test.php',
+                40 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                41 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php' => [
             'fileHash' => 'c0bce0063c15cd27fee9a01a0fbd58850edd636d',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php' => [
             'fileHash' => '86595675f45f7fdc81e1ac342f63ba3f7ca95540',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\TicketStatusFactory.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\test.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                40 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\TicketStatusFactory.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\test.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                40 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php' => [
-            'fileHash' => 'cd8580f7d03a8e073a41f0f5e77f480e71f6f346',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php' => [
+            'fileHash' => '5223a4dfd4d5c77d539ccfaf9579cb37d36cbeb6',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
-                19 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
-                20 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php',
-                21 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
-                22 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
-                23 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
-                24 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
-                25 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
-                26 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
-                27 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\App.php',
-                28 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
-                29 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
-                30 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
-                31 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
-                32 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
-                33 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
-                34 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
-                35 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                36 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                37 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
-                38 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
-                39 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
-                40 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
-                41 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
-                42 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
-                43 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
-                44 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                45 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
-                46 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
-                47 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
-                48 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
-                49 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
-                50 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php',
-                51 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
-                52 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
-                53 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
-                54 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
-                55 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
-                56 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Register.php',
-                57 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                58 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                59 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                60 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
-                61 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
-                62 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php',
-                63 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Approval.php',
-                64 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Asset.php',
-                65 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\AuditLog.php',
-                66 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php',
-                67 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
-                68 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
-                69 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php',
-                70 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
-                71 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
-                72 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
-                73 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php',
-                74 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
-                75 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
-                76 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
-                77 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php',
-                78 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
-                79 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
-                80 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
-                81 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
-                82 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
-                83 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
-                84 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
-                85 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
-                86 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                87 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
-                88 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
-                89 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
-                90 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                91 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\UserFactory.php',
-                92 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
-                93 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
-                94 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php',
-                95 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\test.php',
-                96 => 'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php',
-                97 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
-                98 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
-                99 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
-                100 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
-                101 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
-                102 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
-                103 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
-                104 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-                105 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-                106 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                107 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-                108 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-                109 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
-                110 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                19 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php',
+                20 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php',
+                21 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php',
+                22 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php',
+                23 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php',
+                24 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php',
+                25 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php',
+                26 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php',
+                27 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\App.php',
+                28 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php',
+                29 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php',
+                30 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php',
+                31 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php',
+                32 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php',
+                33 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php',
+                34 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php',
+                35 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                36 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                37 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php',
+                38 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php',
+                39 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php',
+                40 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php',
+                41 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php',
+                42 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php',
+                43 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php',
+                44 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                45 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php',
+                46 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php',
+                47 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php',
+                48 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php',
+                49 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php',
+                50 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php',
+                51 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php',
+                52 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php',
+                53 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php',
+                54 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php',
+                55 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php',
+                56 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Register.php',
+                57 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                58 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                59 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                60 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                61 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php',
+                62 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php',
+                63 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Approval.php',
+                64 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Asset.php',
+                65 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\AuditLog.php',
+                66 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php',
+                67 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php',
+                68 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php',
+                69 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php',
+                70 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php',
+                71 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php',
+                72 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php',
+                73 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php',
+                74 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php',
+                75 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php',
+                76 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php',
+                77 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php',
+                78 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php',
+                79 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php',
+                80 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php',
+                81 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php',
+                82 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php',
+                83 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php',
+                84 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php',
+                85 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                86 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                87 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                88 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php',
+                89 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                90 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                91 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\UserFactory.php',
+                92 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
+                93 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php',
+                94 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php',
+                95 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\test.php',
+                96 => 'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php',
+                97 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
+                98 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
+                99 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
+                100 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
+                101 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
+                102 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
+                103 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
+                104 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                105 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                106 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                107 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+                108 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                109 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php',
+                110 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php' => [
             'fileHash' => '2eda81d3cb6ad0e828fab90e41b6857ecef9ce6a',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => [
-            'fileHash' => '35b6368f131e29632b3f4d4812c2e140cff38f0a',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => [
+            'fileHash' => '825f887c2521251bfdde23a4c50ee60afb13f049',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php' => [
             'fileHash' => '85cc395ba4d49ea665cf305749be9ea723f37576',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => [
-            'fileHash' => '0b34a4d98350f28c690ab0ceb07ed97015428ec0',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => [
+            'fileHash' => '5beb8268c5928c5f5111dab13d0886aba5ae2269',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php' => [
-            'fileHash' => '8ac3db40281d9be2dc3336f3cab017a6cf5c491b',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php' => [
+            'fileHash' => 'a00d8641f360fd9bd41f100fdfa4e30f06ec6c94',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php' => [
             'fileHash' => '87b786cf3e39bfafd9ba7c074ba8de5131fb7533',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php' => [
             'fileHash' => 'e4a6bc8d6b7265935826998b5975fec9f0532398',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php' => [
             'fileHash' => '9052d99e5986e4e79fa4e59caa471a8f0114e082',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php' => [
-            'fileHash' => '26d3346442f9d77a87c8197ec19258c78d228b90',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php' => [
+            'fileHash' => '216978b15309808f42a16453663b73b23378b214',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\Filament\\AdminPanelProvider.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\Filament\\AdminPanelProvider.php' => [
             'fileHash' => '9d7c12e40138b514e0e6623085108d5279adfe25',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\TelescopeServiceProvider.php' => [
-            'fileHash' => 'c55ef109743377bc527eb1b423751410b0824ea5',
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\TelescopeServiceProvider.php' => [
+            'fileHash' => 'c5e2fc84e20b4e3c9049e9acb3b440473fb17d94',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => [
             'fileHash' => 'f21db2107ee7772283aeab08493ae59624b26150',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => [
             'fileHash' => '81250b8cbda15eac99a54e40f23ed481ea91f8e3',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php' => [
             'fileHash' => '08bc56a6485fc94212379a3bb13a83cd347af5f0',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Console\\Commands\\CheckEquipmentDue.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Console\\Commands\\NotificationCleanup.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Console\\Commands\\CheckEquipmentDue.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Console\\Commands\\NotificationCleanup.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Support\\ForPsr4LoadedClasses.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\Support\\ForPsr4LoadedClasses.php' => [
             'fileHash' => 'd2b64b298130ac398274904e9dabc6cf21541915',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\View\\Components\\AppLayout.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\View\\Components\\AppLayout.php' => [
             'fileHash' => '70a0e0d946bc58e7b0e04d6d3d08ce854cc82be7',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\app\\View\\Components\\GuestLayout.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\app\\View\\Components\\GuestLayout.php' => [
             'fileHash' => '18d31703058edf2f03018c5e3e257eb84aab4c3d',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\AuditLogFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\AuditLogFactory.php' => [
             'fileHash' => 'da39a3ee5e6b4b0d3255bfef95601890afd80709',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\DamageTypeFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\DamageTypeFactory.php' => [
             'fileHash' => 'd9daa7d2a47af42271e31a85d9b192f9a33d971e',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php' => [
-            'fileHash' => 'd7ab0f77d6e2c394237ba06b82d6bbcc79d7f55e',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php' => [
+            'fileHash' => '721cca44c854a8ca210fbc3c798bec493e19d4f7',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php' => [
-            'fileHash' => '8a8995d33bc0470e31fb854747e3a4f6fa5990cd',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php' => [
+            'fileHash' => 'a012d093ef3ba43997199879ca2c28d5902f99d0',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php' => [
             'fileHash' => '8a1b682753d2303aa648dea51bf89aa6b18878c1',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanItemFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanItemFactory.php' => [
             'fileHash' => 'da39a3ee5e6b4b0d3255bfef95601890afd80709',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php' => [
-            'fileHash' => 'c9a4fa7bc4d2975c2a5644608bc6f757242cfc28',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php' => [
+            'fileHash' => 'cd4576a01c246f81bab0a7293eb510cf4ce64abc',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanStatusFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanStatusFactory.php' => [
             'fileHash' => '247c6e08fbf6a20e90ed2ef2f253b0d96b8eb645',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\NotificationFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\NotificationFactory.php' => [
             'fileHash' => 'da39a3ee5e6b4b0d3255bfef95601890afd80709',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\TicketCategoryFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\TicketCategoryFactory.php' => [
             'fileHash' => '06b03b1bb426dc55e9c60654f6ab51a54ffa0ae6',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\TicketStatusFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\TicketStatusFactory.php' => [
             'fileHash' => 'e6d11238d4df51e721adb02d23e9e7d2bfbf6c7c',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\UserFactory.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\UserFactory.php' => [
             'fileHash' => '7ac74334b97dded2308b4265ca46014b317a82f9',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000000_create_departments_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000000_create_departments_table.php' => [
             'fileHash' => 'c92216b8f1ffb43fab517a9404c17a274acbb38c',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000001_create_cache_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000001_create_cache_table.php' => [
             'fileHash' => '1e63143baede25661ec2075259ba517cbf2c2400',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000001_create_grades_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000001_create_grades_table.php' => [
             'fileHash' => '0bb41b293d3a26e5c68c982a57a1956fa7dab40a',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000002_create_jobs_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000002_create_jobs_table.php' => [
             'fileHash' => '61d635023428eaa5cc6f27e5b7f9683817125a50',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000002_create_positions_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000002_create_positions_table.php' => [
             'fileHash' => '88169c7fd2f79108fdf5349d62c9cbcc67cb797a',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000003_create_users_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000003_create_users_table.php' => [
             'fileHash' => '9acd8544bb402f0a6776eefec297d5f171f1e15a',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092243_add_motac_fields_to_users_table.php' => [
-            'fileHash' => 'b56b7129b1888c55fe14228e265a03c436ebc50b',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092243_add_motac_fields_to_users_table.php' => [
+            'fileHash' => '4306a802cb26df112bf8e07a221ad547c28f1b07',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092329_create_equipment_categories_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092329_create_equipment_categories_table.php' => [
             'fileHash' => 'b65ef236c484dfec4bbbc7902e7990281e34e5d8',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092343_create_equipment_items_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092343_create_equipment_items_table.php' => [
             'fileHash' => '06f3ce0b1a3a9e073e58d5d4036b26d820413bde',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092402_create_loan_statuses_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092402_create_loan_statuses_table.php' => [
             'fileHash' => 'b2998e63c34ed9ddf1ef4b59fc57a6bd3f93cdd6',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092419_create_loan_requests_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092419_create_loan_requests_table.php' => [
             'fileHash' => '0fc0426bbd32f45d32f4fa30913809c83e70f9e1',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092435_create_loan_items_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092435_create_loan_items_table.php' => [
             'fileHash' => 'f34b6febb64cdc1021ebf91f1618284b3d9a389c',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092449_create_ticket_categories_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092449_create_ticket_categories_table.php' => [
             'fileHash' => '8c42a1565ed9235b1f16c6e4db0fdb8f3b915211',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092503_create_ticket_statuses_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092503_create_ticket_statuses_table.php' => [
             'fileHash' => '39b12dc6b0fbb27b9b07da52fdcb06c007b3b0c6',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092519_create_helpdesk_tickets_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092519_create_helpdesk_tickets_table.php' => [
             'fileHash' => '2b524e7235239c872e4ba0970f876ba052b4c681',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092538_create_audit_logs_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092538_create_audit_logs_table.php' => [
             'fileHash' => 'b1a09fc85bfb5182550566607693dc920c88cf0e',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_170615_create_notifications_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_170615_create_notifications_table.php' => [
             'fileHash' => '1c14fd987c11e0ec836f0145c48f20947fc15731',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_09_145038_create_damage_types_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_09_145038_create_damage_types_table.php' => [
             'fileHash' => '4b0295c9814ad436adee34db3dc1b2ecab5b1989',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_09_163558_create_telescope_entries_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_09_163558_create_telescope_entries_table.php' => [
             'fileHash' => 'd867c55e53f3d43219474d2e7d97c6339bb79e4e',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_000001_add_created_at_index_to_loan_requests_table.php' => [
-            'fileHash' => '08cee3f2e7ca1d9a9e6040256e3d738da970d0ec',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_000001_add_created_at_index_to_loan_requests_table.php' => [
+            'fileHash' => '5f7e03ba6257ecf9e9fb7edb48eec8a36f5d304a',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_000002_add_created_at_index_to_helpdesk_tickets_table.php' => [
-            'fileHash' => 'c8a6cccb83166a936bd75018069a0503038346b9',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_000002_add_created_at_index_to_helpdesk_tickets_table.php' => [
+            'fileHash' => '6055463e99e6b254561e781d5316d0f0d07223f1',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005303_create_activity_log_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005303_create_activity_log_table.php' => [
             'fileHash' => '98d9d045b79b1133cb652e0910eb76798cab9fd3',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005304_add_event_column_to_activity_log_table.php' => [
-            'fileHash' => '08a0f379052dd0ed0b4538112e12cc99fd5784db',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005304_add_event_column_to_activity_log_table.php' => [
+            'fileHash' => 'd47cdbd0b4392fcb92564c8d663557da60839711',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005305_add_batch_uuid_column_to_activity_log_table.php' => [
-            'fileHash' => '1f8453811012917c226c47e3740d567489594212',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005305_add_batch_uuid_column_to_activity_log_table.php' => [
+            'fileHash' => '6b688080881c7f6db22430526fdd1db0db022267',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_11_142547_create_audits_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_11_142547_create_audits_table.php' => [
             'fileHash' => 'a5f4531426be8d31bff4ba27eb386b3d4da9fff3',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_11_224517_create_assets_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_11_224517_create_assets_table.php' => [
             'fileHash' => 'ed43c8fc37870cf75c1630f3d51e8a9ffee429cb',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_11_224539_create_damage_complaints_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_11_224539_create_damage_complaints_table.php' => [
             'fileHash' => 'dbf4f6faa20b1da7ff6a1bf489345febc208f3ff',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_11_224543_create_equipment_loans_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_11_224543_create_equipment_loans_table.php' => [
             'fileHash' => '0959fe1997bf3f4d06fed32cb4f6a5f6569abbbc',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_073118_create_telescope_entries_table.php' => [
-            'fileHash' => 'd867c55e53f3d43219474d2e7d97c6339bb79e4e',
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_073118_create_telescope_entries_table.php' => [
+            'fileHash' => 'dc7f039d623772a6d2fc451cc2d4492321952958',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_130332_create_notifications_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_130332_create_notifications_table.php' => [
             'fileHash' => '1afc274fa3ee907b42da59ce88e859496e0a998b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_130500_create_app_notifications_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_130500_create_app_notifications_table.php' => [
             'fileHash' => '6703d86f957873a611dbc77b77bb0949d2e2bd18',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_133832_create_loan_statuses_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_133832_create_loan_statuses_table.php' => [
             'fileHash' => '2bc88bb6f19dca717fa13d624b605ae02cfd7c65',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_133839_create_loan_requests_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_133839_create_loan_requests_table.php' => [
             'fileHash' => '14d313a94ee8ff793b5ec2840ea4c715b248032d',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000001_create_departments_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000001_create_departments_table.php' => [
             'fileHash' => '330a2f9156292212360f180ccea0be3bda466cb3',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000002_create_grades_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000002_create_grades_table.php' => [
             'fileHash' => 'ede573610dd1213166c3151f92cff6578bf2d924',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000003_create_positions_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000003_create_positions_table.php' => [
             'fileHash' => '43d0bc122810d0286453e82d6468ba33a55d7c28',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_15_090000_create_ticket_comments_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_15_090000_create_ticket_comments_table.php' => [
             'fileHash' => '8d4d0e47d95faea808e912b0deb5404d546add88',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_15_090100_create_approvals_table.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_15_090100_create_approvals_table.php' => [
             'fileHash' => '13f29466398c0498b99e36dc2c6f51f76c323d22',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DamageTypeSeeder.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_19_050834_add_profile_fields_to_users_table.php' => [
+            'fileHash' => '4ee053fef672d43455bd0d42190b89e33e88b05d',
+            'dependentFiles' => [
+            ],
+        ],
+        'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DamageTypeSeeder.php' => [
             'fileHash' => '3c73f2feb57bf6564e79f0b2264c92982e5c694e',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php' => [
             'fileHash' => '236a134dfcbb745a5a54b19f9647c3734106fd87',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\EquipmentCategorySeeder.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\EquipmentCategorySeeder.php' => [
             'fileHash' => 'b9a31472dcabbc2a169f08c9ef0da6906272ac66',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\LoanStatusSeeder.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\LoanStatusSeeder.php' => [
             'fileHash' => '100eaad0548446b2ccf74f8e1a82a07e41d10a1b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php' => [
             'fileHash' => 'c92f87011a22c0abc981d4adae7f5fed2169b322',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\TicketCategorySeeder.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\TicketCategorySeeder.php' => [
             'fileHash' => '5b79048f9fc3fabf596195d44d3e8e791ecfd67b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\TicketStatusSeeder.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\TicketStatusSeeder.php' => [
             'fileHash' => '463cd67b40f74c92677ac55d0c15327ce4fbddd3',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\routes\\api.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\routes\\api.php' => [
             'fileHash' => 'e137522da4b878837180a6c0c3d02976131933d5',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\routes\\auth.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\routes\\auth.php' => [
             'fileHash' => 'eb3ed6380065029a2b012488e018cbef472331b8',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\routes\\console.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\routes\\console.php' => [
             'fileHash' => '07b77c6afc0aa7b564129fbb8de8f9d9f667cf50',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\routes\\test.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\routes\\test.php' => [
             'fileHash' => '41dea10aae783ff55b35896efa9f46129dbc71a6',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\routes\\web.php' => [
-            'fileHash' => '1e0d3398d1d46ba27a5a4f081931c1da6fe81e83',
+        'C:\\xampp\\htdocs\\ict-serve\\routes\\web.php' => [
+            'fileHash' => '7866e469839d8929c7ff3baf57699a4a1a67b89c',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php' => [
             'fileHash' => '8cb7c27e9128bdf3b5142204a20ed20832b52a9b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php' => [
             'fileHash' => 'd33b8f42dca60762195b89b911ceb7ef9c2a0fb5',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php' => [
             'fileHash' => '660a59810a80276ef20b88463d56b27037ec7487',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php' => [
             'fileHash' => 'a82ae52525e81f529319cb29ff8bb8da9b6920c5',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php' => [
             'fileHash' => '3e89b48d56efb3571141f7cd27883064a55c4c7a',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\RegistrationTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\RegistrationTest.php' => [
             'fileHash' => '912528bb6fa569d7c8c2f9f5776d5718d418bc4c',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageReportFormTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageReportFormTest.php' => [
             'fileHash' => 'd34dbf24a121b0f6e0c84a3bbde6bb2e889805e4',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php' => [
             'fileHash' => '8e362098345e2e321a1dd8309a4d58f614442daa',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php' => [
             'fileHash' => '009d784322c71977fcdd6146725c7488d4942804',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ExampleTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ExampleTest.php' => [
             'fileHash' => '20fb4281ed2dc142624c4b61bf49e5ab347b73ff',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php' => [
             'fileHash' => 'a428a00412c7901ff6ba1fb935050f67d36a7df7',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php' => [
-            'fileHash' => 'bacf10ef2372c4ef209390a32446d74d8b86c799',
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php' => [
+            'fileHash' => '8a0e9a14d27fbbdcb9c1bca38b70c36e25e54f21',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php' => [
             'fileHash' => 'c62e26da92b60ea6fa6adda9f7c42d2e23fee6e4',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php' => [
             'fileHash' => 'fe0e11ecdfe978a8003dd12a6a7e45bc9fedf42b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\LoanApplicationWorkflowTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\LoanApplicationWorkflowTest.php' => [
             'fileHash' => '03a0212b90a48161d8a405ada2ea7a30636acc9b',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php' => [
-            'fileHash' => '2b45ac703b1cb713d9869007edc5b7d179ab7882',
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php' => [
+            'fileHash' => 'd5fe001bdf24ad10c21817ec9811cfce6314fe81',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php' => [
             'fileHash' => '97b57f41e6b09aff90ff9e0633d270e1d3d6b696',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php' => [
-            'fileHash' => '493603e92c7abb0b9a20346e83353219993429e4',
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php' => [
+            'fileHash' => '2bf53d5578be0c9bc8bca503bdcafa369482aced',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Ui\\LayoutPrimitivesTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Ui\\LayoutPrimitivesTest.php' => [
             'fileHash' => '44cc91daea51169f6e2a47ae1518ed89fb7847bd',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\TestCase.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\TestCase.php' => [
             'fileHash' => '5f6caea662bb5a5fc2e674f9cffcc9e5fff09a94',
             'dependentFiles' => [
-                0 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
-                1 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
-                2 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
-                3 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
-                4 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
-                5 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\RegistrationTest.php',
-                6 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
-                7 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
-                8 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ExampleTest.php',
-                9 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php',
-                10 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
-                11 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php',
-                12 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
-                13 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\LoanApplicationWorkflowTest.php',
-                14 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
-                15 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
-                16 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
-                17 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Ui\\LayoutPrimitivesTest.php',
-                18 => 'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
+                0 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php',
+                1 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php',
+                2 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php',
+                3 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php',
+                4 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php',
+                5 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\RegistrationTest.php',
+                6 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php',
+                7 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php',
+                8 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ExampleTest.php',
+                9 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php',
+                10 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php',
+                11 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php',
+                12 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php',
+                13 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\LoanApplicationWorkflowTest.php',
+                14 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php',
+                15 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php',
+                16 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php',
+                17 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Ui\\LayoutPrimitivesTest.php',
+                18 => 'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php',
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php' => [
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php' => [
             'fileHash' => 'df7a5820e40b9ee8f0a3a4ab79a98d0abc1a505c',
             'dependentFiles' => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php' => [
-            'fileHash' => '0f6852ac11b16abe8e89e74e5275dd194f9afe12',
+        'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php' => [
+            'fileHash' => '4f9d483e495c71f47787bedc9f7bc6d8e1fbf06d',
             'dependentFiles' => [
             ],
         ],
     ],
     'exportedNodesCallback' => static function (): array {
         return [
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Console\\Commands\\CheckEquipmentDue.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Console\\Commands\\CheckEquipmentDue.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Console\\Commands\\CheckEquipmentDue',
                     'phpDoc' => null,
@@ -9703,7 +7642,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Console\\Commands\\NotificationCleanup.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Console\\Commands\\NotificationCleanup.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Console\\Commands\\NotificationCleanup',
                     'phpDoc' => null,
@@ -9788,7 +7727,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\EquipmentCondition.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\EquipmentCondition.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedEnumNode::__set_state([
                     'name' => 'App\\Enums\\EquipmentCondition',
                     'scalarType' => 'string',
@@ -9856,7 +7795,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\EquipmentStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\EquipmentStatus.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedEnumNode::__set_state([
                     'name' => 'App\\Enums\\EquipmentStatus',
                     'scalarType' => 'string',
@@ -9919,7 +7858,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\LoanRequestStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\LoanRequestStatus.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedEnumNode::__set_state([
                     'name' => 'App\\Enums\\LoanRequestStatus',
                     'scalarType' => 'string',
@@ -10037,7 +7976,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\TicketPriority.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\TicketPriority.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedEnumNode::__set_state([
                     'name' => 'App\\Enums\\TicketPriority',
                     'scalarType' => 'string',
@@ -10130,7 +8069,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\TicketUrgency.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\TicketUrgency.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedEnumNode::__set_state([
                     'name' => 'App\\Enums\\TicketUrgency',
                     'scalarType' => 'string',
@@ -10223,7 +8162,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\UserRole.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Enums\\UserRole.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedEnumNode::__set_state([
                     'name' => 'App\\Enums\\UserRole',
                     'scalarType' => 'string',
@@ -10311,7 +8250,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\DashboardReportExport.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Exports\\DashboardReportExport',
                     'phpDoc' => null,
@@ -10346,7 +8285,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\EquipmentExport.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Exports\\EquipmentExport',
                     'phpDoc' => null,
@@ -10422,7 +8361,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\HelpdeskTicketsExport.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Exports\\HelpdeskTicketsExport',
                     'phpDoc' => null,
@@ -10498,7 +8437,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\LoanRequestsExport.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Exports\\LoanRequestsExport',
                     'phpDoc' => null,
@@ -10574,7 +8513,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Exports\\ReportsExport.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Exports\\ReportsExport.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Exports\\ReportsExport',
                     'phpDoc' => null,
@@ -10617,7 +8556,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\AssetResource.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\Assets\\AssetResource',
                     'phpDoc' => null,
@@ -10756,7 +8695,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\CreateAsset.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\CreateAsset.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\Assets\\Pages\\CreateAsset',
                     'phpDoc' => null,
@@ -10796,7 +8735,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\EditAsset.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\EditAsset.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\Assets\\Pages\\EditAsset',
                     'phpDoc' => null,
@@ -10851,7 +8790,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\ListAssets.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Pages\\ListAssets.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\Assets\\Pages\\ListAssets',
                     'phpDoc' => null,
@@ -10906,7 +8845,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Schemas\\AssetForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Schemas\\AssetForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\Assets\\Schemas\\AssetForm',
                     'phpDoc' => null,
@@ -10949,7 +8888,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Tables\\AssetsTable.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\Assets\\Tables\\AssetsTable.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\Assets\\Tables\\AssetsTable',
                     'phpDoc' => null,
@@ -10992,7 +8931,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\DamageComplaints\\DamageComplaintResource',
                     'phpDoc' => null,
@@ -11131,7 +9070,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\CreateDamageComplaint.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\CreateDamageComplaint.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\DamageComplaints\\Pages\\CreateDamageComplaint',
                     'phpDoc' => null,
@@ -11171,7 +9110,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\EditDamageComplaint.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\EditDamageComplaint.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\DamageComplaints\\Pages\\EditDamageComplaint',
                     'phpDoc' => null,
@@ -11226,7 +9165,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\ListDamageComplaints.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Pages\\ListDamageComplaints.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\DamageComplaints\\Pages\\ListDamageComplaints',
                     'phpDoc' => null,
@@ -11281,7 +9220,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Schemas\\DamageComplaintForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Schemas\\DamageComplaintForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\DamageComplaints\\Schemas\\DamageComplaintForm',
                     'phpDoc' => null,
@@ -11324,7 +9263,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Tables\\DamageComplaintsTable.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\DamageComplaints\\Tables\\DamageComplaintsTable.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\DamageComplaints\\Tables\\DamageComplaintsTable',
                     'phpDoc' => null,
@@ -11367,7 +9306,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentItems\\EquipmentItemResource',
                     'phpDoc' => null,
@@ -11590,7 +9529,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\CreateEquipmentItem.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\CreateEquipmentItem.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentItems\\Pages\\CreateEquipmentItem',
                     'phpDoc' => null,
@@ -11630,7 +9569,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\EditEquipmentItem.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\EditEquipmentItem.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentItems\\Pages\\EditEquipmentItem',
                     'phpDoc' => null,
@@ -11685,7 +9624,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\ListEquipmentItems.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Pages\\ListEquipmentItems.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentItems\\Pages\\ListEquipmentItems',
                     'phpDoc' => null,
@@ -11740,7 +9679,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentItems\\Schemas\\EquipmentItemForm',
                     'phpDoc' => null,
@@ -11783,7 +9722,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentItems\\Tables\\EquipmentItemsTable',
                     'phpDoc' => null,
@@ -11826,7 +9765,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentLoans\\EquipmentLoanResource',
                     'phpDoc' => null,
@@ -11965,7 +9904,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\CreateEquipmentLoan.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\CreateEquipmentLoan.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentLoans\\Pages\\CreateEquipmentLoan',
                     'phpDoc' => null,
@@ -12005,7 +9944,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\EditEquipmentLoan.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\EditEquipmentLoan.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentLoans\\Pages\\EditEquipmentLoan',
                     'phpDoc' => null,
@@ -12060,7 +9999,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\ListEquipmentLoans.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Pages\\ListEquipmentLoans.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentLoans\\Pages\\ListEquipmentLoans',
                     'phpDoc' => null,
@@ -12115,7 +10054,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Schemas\\EquipmentLoanForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Schemas\\EquipmentLoanForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentLoans\\Schemas\\EquipmentLoanForm',
                     'phpDoc' => null,
@@ -12158,7 +10097,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Tables\\EquipmentLoansTable.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\EquipmentLoans\\Tables\\EquipmentLoansTable.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\EquipmentLoans\\Tables\\EquipmentLoansTable',
                     'phpDoc' => null,
@@ -12201,7 +10140,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\HelpdeskTickets\\HelpdeskTicketResource',
                     'phpDoc' => null,
@@ -12340,7 +10279,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\CreateHelpdeskTicket.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\CreateHelpdeskTicket.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\HelpdeskTickets\\Pages\\CreateHelpdeskTicket',
                     'phpDoc' => null,
@@ -12380,7 +10319,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\EditHelpdeskTicket.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\EditHelpdeskTicket.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\HelpdeskTickets\\Pages\\EditHelpdeskTicket',
                     'phpDoc' => null,
@@ -12435,7 +10374,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\ListHelpdeskTickets.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Pages\\ListHelpdeskTickets.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\HelpdeskTickets\\Pages\\ListHelpdeskTickets',
                     'phpDoc' => null,
@@ -12490,7 +10429,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\HelpdeskTickets\\Schemas\\HelpdeskTicketForm',
                     'phpDoc' => null,
@@ -12533,7 +10472,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Tables\\HelpdeskTicketsTable.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\HelpdeskTickets\\Tables\\HelpdeskTicketsTable.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\HelpdeskTickets\\Tables\\HelpdeskTicketsTable',
                     'phpDoc' => null,
@@ -12576,7 +10515,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\LoanRequestResource.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\LoanRequests\\LoanRequestResource',
                     'phpDoc' => null,
@@ -12799,7 +10738,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\CreateLoanRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\CreateLoanRequest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\LoanRequests\\Pages\\CreateLoanRequest',
                     'phpDoc' => null,
@@ -12839,7 +10778,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\EditLoanRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\EditLoanRequest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\LoanRequests\\Pages\\EditLoanRequest',
                     'phpDoc' => null,
@@ -12894,7 +10833,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\ListLoanRequests.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Pages\\ListLoanRequests.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\LoanRequests\\Pages\\ListLoanRequests',
                     'phpDoc' => null,
@@ -12949,7 +10888,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Schemas\\LoanRequestForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Schemas\\LoanRequestForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\LoanRequests\\Schemas\\LoanRequestForm',
                     'phpDoc' => null,
@@ -12992,7 +10931,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Tables\\LoanRequestsTable.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Filament\\Resources\\LoanRequests\\Tables\\LoanRequestsTable.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Filament\\Resources\\LoanRequests\\Tables\\LoanRequestsTable',
                     'phpDoc' => null,
@@ -13035,7 +10974,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\DashboardController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Api\\DashboardController',
                     'phpDoc' => null,
@@ -13095,7 +11034,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Api\\HelpdeskTicketController',
                     'phpDoc' => null,
@@ -13141,7 +11080,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storehelpdeskticketrequest' => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
                                     'helpdeskticket' => 'App\\Models\\HelpdeskTicket',
@@ -13185,7 +11123,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storehelpdeskticketrequest' => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
                                     'helpdeskticket' => 'App\\Models\\HelpdeskTicket',
@@ -13229,7 +11166,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storehelpdeskticketrequest' => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
                                     'helpdeskticket' => 'App\\Models\\HelpdeskTicket',
@@ -13282,7 +11218,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storehelpdeskticketrequest' => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
                                     'helpdeskticket' => 'App\\Models\\HelpdeskTicket',
@@ -13335,7 +11270,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storehelpdeskticketrequest' => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
                                     'helpdeskticket' => 'App\\Models\\HelpdeskTicket',
@@ -13388,7 +11322,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storehelpdeskticketrequest' => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
                                     'helpdeskticket' => 'App\\Models\\HelpdeskTicket',
@@ -13432,7 +11365,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storehelpdeskticketrequest' => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
                                     'helpdeskticket' => 'App\\Models\\HelpdeskTicket',
@@ -13473,7 +11405,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Api\\LoanRequestController',
                     'phpDoc' => null,
@@ -13519,7 +11451,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storeloanrequestrequest' => 'App\\Http\\Requests\\StoreLoanRequestRequest',
                                     'loanrequest' => 'App\\Models\\LoanRequest',
@@ -13562,7 +11493,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storeloanrequestrequest' => 'App\\Http\\Requests\\StoreLoanRequestRequest',
                                     'loanrequest' => 'App\\Models\\LoanRequest',
@@ -13605,7 +11535,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storeloanrequestrequest' => 'App\\Http\\Requests\\StoreLoanRequestRequest',
                                     'loanrequest' => 'App\\Models\\LoanRequest',
@@ -13657,7 +11586,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storeloanrequestrequest' => 'App\\Http\\Requests\\StoreLoanRequestRequest',
                                     'loanrequest' => 'App\\Models\\LoanRequest',
@@ -13709,7 +11637,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storeloanrequestrequest' => 'App\\Http\\Requests\\StoreLoanRequestRequest',
                                     'loanrequest' => 'App\\Models\\LoanRequest',
@@ -13761,7 +11688,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storeloanrequestrequest' => 'App\\Http\\Requests\\StoreLoanRequestRequest',
                                     'loanrequest' => 'App\\Models\\LoanRequest',
@@ -13804,7 +11730,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Controllers\\Api',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'controller' => 'App\\Http\\Controllers\\Controller',
                                     'storeloanrequestrequest' => 'App\\Http\\Requests\\StoreLoanRequestRequest',
                                     'loanrequest' => 'App\\Models\\LoanRequest',
@@ -13844,7 +11769,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController',
                     'phpDoc' => null,
@@ -13971,7 +11896,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmPasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmPasswordController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\ConfirmPasswordController',
                     'phpDoc' => null,
@@ -14051,7 +11976,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ConfirmablePasswordController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController',
                     'phpDoc' => null,
@@ -14139,7 +12064,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationNotificationController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController',
                     'phpDoc' => null,
@@ -14194,7 +12119,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\EmailVerificationPromptController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\EmailVerificationPromptController',
                     'phpDoc' => null,
@@ -14250,7 +12175,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ForgotPasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ForgotPasswordController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\ForgotPasswordController',
                     'phpDoc' => null,
@@ -14270,7 +12195,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\LoginController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\LoginController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\LoginController',
                     'phpDoc' => null,
@@ -14350,7 +12275,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\NewPasswordController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\NewPasswordController',
                     'phpDoc' => null,
@@ -14457,7 +12382,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\PasswordController',
                     'phpDoc' => null,
@@ -14514,7 +12439,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordResetLinkController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\PasswordResetLinkController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\PasswordResetLinkController',
                     'phpDoc' => null,
@@ -14602,7 +12527,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisterController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\RegisterController',
                     'phpDoc' => null,
@@ -14764,7 +12689,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\RegisteredUserController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\RegisteredUserController',
                     'phpDoc' => null,
@@ -14860,7 +12785,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ResetPasswordController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\ResetPasswordController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\ResetPasswordController',
                     'phpDoc' => null,
@@ -14912,7 +12837,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerificationController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerificationController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\VerificationController',
                     'phpDoc' => null,
@@ -14992,7 +12917,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Auth\\VerifyEmailController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Auth\\VerifyEmailController',
                     'phpDoc' => null,
@@ -15048,7 +12973,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Controller.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Controller.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Controller',
                     'phpDoc' => null,
@@ -15067,7 +12992,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\HomeController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\HomeController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\HomeController',
                     'phpDoc' => null,
@@ -15136,7 +13061,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\InventoryController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\InventoryController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\InventoryController',
                     'phpDoc' => null,
@@ -15155,7 +13080,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\ProfileController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\ProfileController',
                     'phpDoc' => null,
@@ -15291,7 +13216,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\PublicController',
                     'phpDoc' => null,
@@ -15478,7 +13403,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Public\\PublicHelpdeskController',
                     'phpDoc' => null,
@@ -15575,7 +13500,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Controllers\\Public\\PublicLoanController',
                     'phpDoc' => null,
@@ -15687,7 +13612,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Middleware\\AdminMiddleware',
                     'phpDoc' => null,
@@ -15711,7 +13636,6 @@ return [
      */',
                                 'namespace' => 'App\\Http\\Middleware',
                                 'uses' => [
-                                    'userrole' => 'App\\Enums\\UserRole',
                                     'closure' => 'Closure',
                                     'request' => 'Illuminate\\Http\\Request',
                                     'response' => 'Symfony\\Component\\HttpFoundation\\Response',
@@ -15754,7 +13678,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\Auth\\LoginRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\Auth\\LoginRequest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Requests\\Auth\\LoginRequest',
                     'phpDoc' => null,
@@ -15929,7 +13853,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\CreateLoanRequestRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\CreateLoanRequestRequest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Requests\\CreateLoanRequestRequest',
                     'phpDoc' => null,
@@ -16000,7 +13924,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\ProfileUpdateRequest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Requests\\ProfileUpdateRequest',
                     'phpDoc' => null,
@@ -16048,7 +13972,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreHelpdeskTicketRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreHelpdeskTicketRequest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Requests\\StoreHelpdeskTicketRequest',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -16180,7 +14104,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreLoanRequestRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Requests\\StoreLoanRequestRequest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Requests\\StoreLoanRequestRequest',
                     'phpDoc' => null,
@@ -16301,7 +14225,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\HelpdeskTicketResource.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Resources\\HelpdeskTicketResource',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -16384,7 +14308,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Http\\Resources\\LoanRequestResource.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Http\\Resources\\LoanRequestResource',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -16466,7 +14390,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\AdminDashboard.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\AdminDashboard',
                     'phpDoc' => null,
@@ -17041,7 +14965,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\AuditLogViewer.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Admin\\AuditLogViewer',
                     'phpDoc' => null,
@@ -17592,7 +15516,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\DropdownManager.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Admin\\DropdownManager',
                     'phpDoc' => null,
@@ -18209,7 +16133,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Helpdesk\\DropdownManager.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Helpdesk\\DropdownManager.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Admin\\Helpdesk\\DropdownManager',
                     'phpDoc' => null,
@@ -18723,7 +16647,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\EquipmentUtilization.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Admin\\Report\\EquipmentUtilization',
                     'phpDoc' => null,
@@ -18793,7 +16717,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\ExportWidget.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Admin\\Report\\ExportWidget',
                     'phpDoc' => null,
@@ -18884,7 +16808,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\HelpdeskPerformance.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Admin\\Report\\HelpdeskPerformance',
                     'phpDoc' => null,
@@ -18954,7 +16878,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Admin\\Report\\LoanMetrics.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Admin\\Report\\LoanMetrics',
                     'phpDoc' => null,
@@ -19024,7 +16948,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\App.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\App.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\App',
                     'phpDoc' => null,
@@ -19154,7 +17078,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ApprovalWorkflow.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\ApprovalWorkflow',
                     'phpDoc' => null,
@@ -19560,7 +17484,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Components\\RealTimeStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Components\\RealTimeStatus.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Components\\RealTimeStatus',
                     'phpDoc' => null,
@@ -19846,7 +17770,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Counter.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Counter.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Counter',
                     'phpDoc' => null,
@@ -19931,7 +17855,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageComplaintForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageComplaintForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\DamageComplaintForm',
                     'phpDoc' => null,
@@ -20385,7 +18309,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DamageReportForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\DamageReportForm',
                     'phpDoc' => null,
@@ -20816,7 +18740,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Dashboard',
                     'phpDoc' => null,
@@ -20976,7 +18900,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\Main.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\Main.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Dashboard\\Main',
                     'phpDoc' => null,
@@ -21010,7 +18934,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\NotificationWidget.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\NotificationWidget.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Dashboard\\NotificationWidget',
                     'phpDoc' => null,
@@ -21080,7 +19004,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\QuickAccessWidget.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\QuickAccessWidget.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Dashboard\\QuickAccessWidget',
                     'phpDoc' => null,
@@ -21144,7 +19068,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\StatusWidget.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Dashboard\\StatusWidget.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Dashboard\\StatusWidget',
                     'phpDoc' => null,
@@ -21256,7 +19180,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\DocumentGenerator.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\DocumentGenerator',
                     'phpDoc' => null,
@@ -21536,7 +19460,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\EquipmentLoanForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentLoanForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\EquipmentLoanForm',
                     'phpDoc' => null,
@@ -22077,7 +20001,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\EquipmentSelector.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\EquipmentSelector',
                     'phpDoc' => null,
@@ -22700,7 +20624,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Equipment\\LoanApplicationForm',
                     'phpDoc' => null,
@@ -23589,7 +21513,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationFormNew.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Equipment\\LoanApplicationFormNew',
                     'phpDoc' => null,
@@ -24370,7 +22294,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Equipment\\LoanApplicationList',
                     'phpDoc' => null,
@@ -24615,7 +22539,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ExampleComponent.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ExampleComponent.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\ExampleComponent',
                     'phpDoc' => null,
@@ -24649,7 +22573,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Admin\\TicketManagement.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\Admin\\TicketManagement',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -25378,7 +23302,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\Assignment',
                     'phpDoc' => null,
@@ -25940,7 +23864,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\AttachmentManager',
                     'phpDoc' => null,
@@ -26263,7 +24187,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Create.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\Create',
                     'phpDoc' => null,
@@ -26658,7 +24582,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\CreateEnhanced.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\CreateEnhanced',
                     'phpDoc' => null,
@@ -27488,7 +25412,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Index.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\Index',
                     'phpDoc' => null,
@@ -27673,7 +25597,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\IndexEnhanced',
                     'phpDoc' => null,
@@ -28368,7 +26292,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\SlaTracker',
                     'phpDoc' => null,
@@ -28735,7 +26659,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\TicketDetail',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -28792,6 +26716,7 @@ return [
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
      * @var array|null
+     *
      * @internal Only for static analysis. Real value is provided by computed property accessor.
      */',
                                 'namespace' => 'App\\Livewire\\Helpdesk',
@@ -28947,7 +26872,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Helpdesk\\TicketForm',
                     'phpDoc' => null,
@@ -29489,7 +27414,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\AdminDropdownManager.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\AdminDropdownManager.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Ict\\AdminDropdownManager',
                     'phpDoc' => null,
@@ -30039,7 +27964,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Ict\\DamageComplaintForm',
                     'phpDoc' => null,
@@ -30809,7 +28734,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Ict\\DamageComplaintFormNew.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Ict\\DamageComplaintFormNew',
                     'phpDoc' => null,
@@ -31216,7 +29141,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanApplicationWizard.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\LoanApplicationWizard',
                     'phpDoc' => null,
@@ -32460,7 +30385,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\LoanRequestTracker.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\LoanRequestTracker',
                     'phpDoc' => null,
@@ -32701,7 +30626,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Create.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Loan\\Create',
                     'phpDoc' => null,
@@ -33155,7 +31080,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Loan\\Index.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Loan\\Index',
                     'phpDoc' => null,
@@ -33225,7 +31150,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Login.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Login.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Login',
                     'phpDoc' => null,
@@ -33316,7 +31241,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\MyRequests.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\MyRequests',
                     'phpDoc' => null,
@@ -33794,7 +31719,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Navigation.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Navigation.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Navigation',
                     'phpDoc' => null,
@@ -33828,7 +31753,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ActivityFeed.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Notifications\\ActivityFeed',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -34239,7 +32164,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationBell.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Notifications\\NotificationBell',
                     'phpDoc' => null,
@@ -34517,7 +32442,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\NotificationCenter.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Notifications\\NotificationCenter',
                     'phpDoc' => null,
@@ -35068,7 +32993,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\SystemNotificationBar.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\SystemNotificationBar.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Notifications\\SystemNotificationBar',
                     'phpDoc' => null,
@@ -35462,7 +33387,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ToastContainer.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Notifications\\ToastContainer.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Notifications\\ToastContainer',
                     'phpDoc' => null,
@@ -35601,7 +33526,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Profile\\UserProfile.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Profile\\UserProfile',
                     'phpDoc' => null,
@@ -36188,7 +34113,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Register.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\Register.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\Register',
                     'phpDoc' => null,
@@ -36300,7 +34225,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance',
                     'phpDoc' => null,
@@ -36572,7 +34497,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn',
                     'phpDoc' => null,
@@ -36886,7 +34811,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Approval\\Dashboard.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\ResourceManagement\\Approval\\Dashboard',
                     'phpDoc' => null,
@@ -37101,7 +35026,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\ResourceManagement\\LoanApplication\\ApplicationForm',
                     'phpDoc' => null,
@@ -37474,7 +35399,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Livewire\\UserProfile',
                     'phpDoc' => null,
@@ -38163,7 +36088,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Mail\\HelpdeskTicketConfirmationMail.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Mail\\HelpdeskTicketConfirmationMail.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Mail\\HelpdeskTicketConfirmationMail',
                     'phpDoc' => null,
@@ -38251,7 +36176,6 @@ return [
                                 'namespace' => 'App\\Mail',
                                 'uses' => [
                                     'queueable' => 'Illuminate\\Bus\\Queueable',
-                                    'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
                                     'mailable' => 'Illuminate\\Mail\\Mailable',
                                     'content' => 'Illuminate\\Mail\\Mailables\\Content',
                                     'envelope' => 'Illuminate\\Mail\\Mailables\\Envelope',
@@ -38308,7 +36232,6 @@ return [
                                 'namespace' => 'App\\Mail',
                                 'uses' => [
                                     'queueable' => 'Illuminate\\Bus\\Queueable',
-                                    'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
                                     'mailable' => 'Illuminate\\Mail\\Mailable',
                                     'content' => 'Illuminate\\Mail\\Mailables\\Content',
                                     'envelope' => 'Illuminate\\Mail\\Mailables\\Envelope',
@@ -38338,7 +36261,6 @@ return [
                                 'namespace' => 'App\\Mail',
                                 'uses' => [
                                     'queueable' => 'Illuminate\\Bus\\Queueable',
-                                    'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
                                     'mailable' => 'Illuminate\\Mail\\Mailable',
                                     'content' => 'Illuminate\\Mail\\Mailables\\Content',
                                     'envelope' => 'Illuminate\\Mail\\Mailables\\Envelope',
@@ -38370,7 +36292,6 @@ return [
                                 'namespace' => 'App\\Mail',
                                 'uses' => [
                                     'queueable' => 'Illuminate\\Bus\\Queueable',
-                                    'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
                                     'mailable' => 'Illuminate\\Mail\\Mailable',
                                     'content' => 'Illuminate\\Mail\\Mailables\\Content',
                                     'envelope' => 'Illuminate\\Mail\\Mailables\\Envelope',
@@ -38396,7 +36317,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Mail\\LoanRequestConfirmationMail.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Mail\\LoanRequestConfirmationMail.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Mail\\LoanRequestConfirmationMail',
                     'phpDoc' => null,
@@ -38463,7 +36384,6 @@ return [
                                 'namespace' => 'App\\Mail',
                                 'uses' => [
                                     'queueable' => 'Illuminate\\Bus\\Queueable',
-                                    'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
                                     'mailable' => 'Illuminate\\Mail\\Mailable',
                                     'content' => 'Illuminate\\Mail\\Mailables\\Content',
                                     'envelope' => 'Illuminate\\Mail\\Mailables\\Envelope',
@@ -38511,7 +36431,6 @@ return [
                                 'namespace' => 'App\\Mail',
                                 'uses' => [
                                     'queueable' => 'Illuminate\\Bus\\Queueable',
-                                    'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
                                     'mailable' => 'Illuminate\\Mail\\Mailable',
                                     'content' => 'Illuminate\\Mail\\Mailables\\Content',
                                     'envelope' => 'Illuminate\\Mail\\Mailables\\Envelope',
@@ -38541,7 +36460,6 @@ return [
                                 'namespace' => 'App\\Mail',
                                 'uses' => [
                                     'queueable' => 'Illuminate\\Bus\\Queueable',
-                                    'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
                                     'mailable' => 'Illuminate\\Mail\\Mailable',
                                     'content' => 'Illuminate\\Mail\\Mailables\\Content',
                                     'envelope' => 'Illuminate\\Mail\\Mailables\\Envelope',
@@ -38573,7 +36491,6 @@ return [
                                 'namespace' => 'App\\Mail',
                                 'uses' => [
                                     'queueable' => 'Illuminate\\Bus\\Queueable',
-                                    'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
                                     'mailable' => 'Illuminate\\Mail\\Mailable',
                                     'content' => 'Illuminate\\Mail\\Mailables\\Content',
                                     'envelope' => 'Illuminate\\Mail\\Mailables\\Envelope',
@@ -38599,7 +36516,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\ActivityLog.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\ActivityLog',
                     'phpDoc' => null,
@@ -38707,7 +36624,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Approval.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Approval.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\Approval',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -38815,7 +36732,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Asset.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Asset.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\Asset',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -38989,7 +36906,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\AuditLog.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\AuditLog.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\AuditLog',
                     'phpDoc' => null,
@@ -39183,7 +37100,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageComplaint.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\DamageComplaint',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -39414,7 +37331,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\DamageType.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\DamageType.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\DamageType',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -39826,7 +37743,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentCategory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\EquipmentCategory',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -40061,7 +37978,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\EquipmentItem',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -40074,8 +37991,8 @@ return [
  * @property string|null $model
  * @property array|null $specifications
  * @property string|null $description
- * @property string $condition
- * @property string $status
+ * @property EquipmentCondition $condition
+ * @property EquipmentStatus $status
  * @property float|null $purchase_price
  * @property \\Illuminate\\Support\\Carbon|null $purchase_date
  * @property \\Illuminate\\Support\\Carbon|null $warranty_expiry
@@ -40338,7 +38255,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentLoan.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\EquipmentLoan.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\EquipmentLoan',
                     'phpDoc' => null,
@@ -40589,7 +38506,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\HelpdeskTicket',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -40601,8 +38518,8 @@ return [
  * @property int $status_id
  * @property string $title
  * @property string $description
- * @property string $priority
- * @property string $urgency
+ * @property TicketPriority $priority
+ * @property TicketUrgency $urgency
  * @property int|null $assigned_to
  * @property \\Illuminate\\Support\\Carbon|null $assigned_at
  * @property int|null $equipment_item_id
@@ -40643,6 +38560,7 @@ return [
                             'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                             'model' => 'Illuminate\\Database\\Eloquent\\Model',
                             'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                            'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                         ],
                         'constUses' => [
                         ],
@@ -40692,6 +38610,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40721,6 +38640,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40738,10 +38658,10 @@ return [
                             ],
                         ]),
                         3 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'ticketStatus',
+                            'name' => 'status',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the ticket status.
+     * Get the ticket status (alias: status).
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
@@ -40750,6 +38670,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40767,10 +38688,10 @@ return [
                             ],
                         ]),
                         4 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'assignedTo',
+                            'name' => 'ticketStatus',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the assigned staff member.
+     * Backwards compatible relation name used in some places.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
@@ -40779,6 +38700,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40796,10 +38718,10 @@ return [
                             ],
                         ]),
                         5 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'resolvedBy',
+                            'name' => 'assignedTo',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the staff who resolved the ticket.
+     * Get the assigned staff member.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
@@ -40808,6 +38730,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40825,10 +38748,10 @@ return [
                             ],
                         ]),
                         6 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'equipmentItem',
+                            'name' => 'assignedToUser',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the equipment item related to this ticket.
+     * Alias for assigned user relation used across the codebase.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
@@ -40837,6 +38760,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40854,6 +38778,126 @@ return [
                             ],
                         ]),
                         7 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'resolvedBy',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Get the staff who resolved the ticket.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'ticketpriority' => 'App\\Enums\\TicketPriority',
+                                    'ticketurgency' => 'App\\Enums\\TicketUrgency',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
+                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        8 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'resolvedByUser',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Alias for resolver relation used across the codebase.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'ticketpriority' => 'App\\Enums\\TicketPriority',
+                                    'ticketurgency' => 'App\\Enums\\TicketUrgency',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
+                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        9 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'equipmentItem',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Get the equipment item related to this ticket.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'ticketpriority' => 'App\\Enums\\TicketPriority',
+                                    'ticketurgency' => 'App\\Enums\\TicketUrgency',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
+                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        10 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'comments',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Ticket comments relation.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'ticketpriority' => 'App\\Enums\\TicketPriority',
+                                    'ticketurgency' => 'App\\Enums\\TicketUrgency',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
+                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        11 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'isOverdue',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -40866,6 +38910,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40882,7 +38927,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        8 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        12 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'isResolved',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -40895,6 +38940,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40911,7 +38957,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        9 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        13 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'isClosed',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -40924,6 +38970,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40940,7 +38987,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        10 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        14 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'getResponseTimeAttribute',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -40953,6 +39000,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40969,7 +39017,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        11 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        15 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'getResolutionTimeAttribute',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -40982,6 +39030,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -40998,7 +39047,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        12 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        16 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'casts',
                             'phpDoc' => null,
                             'byRef' => false,
@@ -41013,7 +39062,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        13 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        17 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'boot',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41026,6 +39075,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -41042,7 +39092,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        14 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        18 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'getAssignedToAttribute',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41055,6 +39105,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -41071,7 +39122,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        15 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        19 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'getActivityLogAttribute',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41086,6 +39137,7 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
@@ -41102,7 +39154,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        16 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        20 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'generateTicketNumber',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41115,12 +39167,13 @@ return [
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
                                     'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                 ],
                                 'constUses' => [
                                 ],
                             ]),
                             'byRef' => false,
-                            'public' => false,
+                            'public' => true,
                             'private' => false,
                             'abstract' => false,
                             'final' => false,
@@ -41136,7 +39189,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanApproval.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\LoanApproval',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -41225,7 +39278,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanItem.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\LoanItem',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -41359,7 +39412,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\LoanRequest',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -41388,9 +39441,15 @@ return [
  * @property \\Illuminate\\Support\\Carbon|null $returned_at
  * @property string|null $return_signature_path
  * @property string|null $return_condition_notes
+ * @property string|null $reference_number
+ * @property \\Illuminate\\Support\\Carbon|null $expected_return_date
  * @property \\Illuminate\\Support\\Carbon|null $created_at
  * @property \\Illuminate\\Support\\Carbon|null $updated_at
- * @property-read \\App\\Models\\LoanStatus $status
+ * @property string|null $location
+ * @property string|null $approval_token
+ * @property string|null $supervisor_email
+ * @property string|null $supervisor_name
+ * @property-read \\App\\Models\\LoanStatus $loanStatus
  * @property-read \\App\\Models\\User $user
  * @property-read \\App\\Models\\User|null $supervisor
  * @property-read \\App\\Models\\User|null $ictAdmin
@@ -41406,6 +39465,7 @@ return [
                         'namespace' => 'App\\Models',
                         'uses' => [
                             'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                            'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                             'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                             'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                             'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41449,14 +39509,15 @@ return [
                             ],
                         ]),
                         1 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'user',
+                            'name' => 'status',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the user who made the request.
+     * Loan status relation via status_id foreign key.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41480,14 +39541,15 @@ return [
                             ],
                         ]),
                         2 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'supervisor',
+                            'name' => 'loanStatus',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the supervisor who needs to approve.
+     * Backwards compatible alias used in some parts of the app.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41511,14 +39573,15 @@ return [
                             ],
                         ]),
                         3 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'ictAdmin',
+                            'name' => 'user',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the ICT admin who approved.
+     * Get the user who made the request.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41542,14 +39605,15 @@ return [
                             ],
                         ]),
                         4 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'issuedBy',
+                            'name' => 'supervisor',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the staff who issued the equipment.
+     * Get the supervisor who needs to approve.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41573,14 +39637,15 @@ return [
                             ],
                         ]),
                         5 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'receivedBy',
+                            'name' => 'ictAdmin',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the person who received the equipment.
+     * Get the ICT admin who approved.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41604,6 +39669,70 @@ return [
                             ],
                         ]),
                         6 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'issuedBy',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Get the staff who issued the equipment.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
+                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        7 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'receivedBy',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Get the person who received the equipment.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
+                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        8 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'loanItems',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41612,6 +39741,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41634,7 +39764,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        7 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        9 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'scopePending',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41644,6 +39774,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41675,7 +39806,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        8 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        10 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'equipmentItems',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41684,6 +39815,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41706,7 +39838,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        9 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        11 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'approvals',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41715,6 +39847,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41737,7 +39870,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        10 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        12 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'getEquipmentItemAttribute',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41746,6 +39879,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41768,7 +39902,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        11 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        13 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'scopeForUser',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41777,6 +39911,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41817,7 +39952,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        12 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        14 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'canBeEdited',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41827,69 +39962,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
-                                    'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
-                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
-                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
-                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
-                                    'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
-                                ],
-                                'constUses' => [
-                                ],
-                            ]),
-                            'byRef' => false,
-                            'public' => true,
-                            'private' => false,
-                            'abstract' => false,
-                            'final' => false,
-                            'static' => false,
-                            'returnType' => 'bool',
-                            'parameters' => [
-                            ],
-                            'attributes' => [
-                            ],
-                        ]),
-                        13 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'canBeCancelled',
-                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
-                                'phpDocString' => '/**
-     * Check if request can be cancelled.
-     * Not cancellable if already returned, cancelled, or rejected.
-     */',
-                                'namespace' => 'App\\Models',
-                                'uses' => [
-                                    'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
-                                    'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
-                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
-                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
-                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
-                                    'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
-                                ],
-                                'constUses' => [
-                                ],
-                            ]),
-                            'byRef' => false,
-                            'public' => true,
-                            'private' => false,
-                            'abstract' => false,
-                            'final' => false,
-                            'static' => false,
-                            'returnType' => 'bool',
-                            'parameters' => [
-                            ],
-                            'attributes' => [
-                            ],
-                        ]),
-                        14 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'isOverdue',
-                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
-                                'phpDocString' => '/**
-     * Check if request is overdue.
-     */',
-                                'namespace' => 'App\\Models',
-                                'uses' => [
-                                    'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41913,6 +39986,71 @@ return [
                             ],
                         ]),
                         15 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'canBeCancelled',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Check if request can be cancelled.
+     * Not cancellable if already returned, cancelled, or rejected.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
+                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'bool',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        16 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'isOverdue',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Check if request is overdue.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'model' => 'Illuminate\\Database\\Eloquent\\Model',
+                                    'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'bool',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        17 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'getLoanDurationAttribute',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41921,6 +40059,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41943,7 +40082,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        16 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        18 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'casts',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41952,6 +40091,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -41974,7 +40114,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        17 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        19 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'boot',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -41983,6 +40123,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -42005,7 +40146,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        18 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        20 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'generateRequestNumber',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -42014,6 +40155,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -42025,7 +40167,7 @@ return [
                                 ],
                             ]),
                             'byRef' => false,
-                            'public' => false,
+                            'public' => true,
                             'private' => false,
                             'abstract' => false,
                             'final' => false,
@@ -42036,7 +40178,7 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        19 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                        21 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'generateReferenceNumber',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -42046,6 +40188,7 @@ return [
                                 'namespace' => 'App\\Models',
                                 'uses' => [
                                     'loanrequeststatus' => 'App\\Enums\\LoanRequestStatus',
+                                    'eloquentbelongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
                                     'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'model' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -42073,7 +40216,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\LoanStatus.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\LoanStatus',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -42287,7 +40430,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\Notification.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\Notification',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -42892,7 +41035,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketCategory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\TicketCategory',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -43073,7 +41216,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketComment.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketComment.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\TicketComment',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -43208,7 +41351,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\TicketStatus.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\TicketStatus',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -43438,7 +41581,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Models\\User.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Models\\User',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -43447,6 +41590,10 @@ return [
  * @property string $name
  * @property string $email
  * @property string|null $staff_id
+ * @property string|null $employee_id
+ * @property string|null $office_location
+ * @property string|null $avatar_url
+ * @property array|null $notification_preferences
  * @property string|null $department
  * @property string|null $phone
  * @property string|null $position
@@ -43461,12 +41608,13 @@ return [
  */',
                         'namespace' => 'App\\Models',
                         'uses' => [
-                            'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                             'userrole' => 'App\\Enums\\UserRole',
+                            'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                             'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                             'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                             'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                             'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                            'gate' => 'Illuminate\\Support\\Facades\\Gate',
                         ],
                         'constUses' => [
                         ],
@@ -43496,12 +41644,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43534,12 +41683,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43570,12 +41720,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43600,12 +41751,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43630,12 +41782,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43660,12 +41813,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43690,12 +41844,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43720,12 +41875,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43743,49 +41899,20 @@ return [
                             ],
                         ]),
                         8 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'assignedTickets',
+                            'name' => 'helpdeskTickets',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get the helpdesk tickets assigned to this user.
+     * Alias for tickets relation used across codebase.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
-                                ],
-                                'constUses' => [
-                                ],
-                            ]),
-                            'byRef' => false,
-                            'public' => true,
-                            'private' => false,
-                            'abstract' => false,
-                            'final' => false,
-                            'static' => false,
-                            'returnType' => null,
-                            'parameters' => [
-                            ],
-                            'attributes' => [
-                            ],
-                        ]),
-                        9 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'notifications',
-                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
-                                'phpDocString' => '/**
-     * Get notifications for this user
-     */',
-                                'namespace' => 'App\\Models',
-                                'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
-                                    'userrole' => 'App\\Enums\\UserRole',
-                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
-                                    'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
-                                    'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43802,20 +41929,52 @@ return [
                             'attributes' => [
                             ],
                         ]),
-                        10 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
-                            'name' => 'unreadNotifications',
+                        9 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'assignedTickets',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
-     * Get unread notifications for this user
+     * Get the helpdesk tickets assigned to this user.
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => null,
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        10 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'notifications',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Get notifications for this user
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
+                                    'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43833,6 +41992,37 @@ return [
                             ],
                         ]),
                         11 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'unreadNotifications',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Get unread notifications for this user
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
+                                    'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        12 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
                             'name' => 'activityLogs',
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
@@ -43840,12 +42030,13 @@ return [
      */',
                                 'namespace' => 'App\\Models',
                                 'uses' => [
-                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
                                     'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
                                     'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
                                     'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
                                     'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
                                 ],
                                 'constUses' => [
                                 ],
@@ -43862,12 +42053,159 @@ return [
                             'attributes' => [
                             ],
                         ]),
+                        13 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'activities',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Alias used by some components.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
+                                    'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        14 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'auditLogs',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Alias for activityLogs used by admin audit log viewer.
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
+                                    'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                            'parameters' => [
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        15 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'hasRole',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Simple role checker supporting string, enum and array of roles.
+     * This project uses a role enum on the users table instead of Spatie roles.
+     *
+     * @param  string|array<int,string>|\\App\\Enums\\UserRole|array<int,\\App\\Enums\\UserRole>  $roles
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
+                                    'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'bool',
+                            'parameters' => [
+                                0 => \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state([
+                                    'name' => 'roles',
+                                    'type' => 'string|array|App\\Enums\\UserRole',
+                                    'byRef' => false,
+                                    'variadic' => false,
+                                    'hasDefault' => false,
+                                    'attributes' => [
+                                    ],
+                                ]),
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
+                        16 => \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state([
+                            'name' => 'hasAnyRole',
+                            'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
+                                'phpDocString' => '/**
+     * Check if the user has any of the given roles.
+     *
+     * @param  array<int,string|\\App\\Enums\\UserRole>  $roles
+     */',
+                                'namespace' => 'App\\Models',
+                                'uses' => [
+                                    'userrole' => 'App\\Enums\\UserRole',
+                                    'mustverifyemail' => 'Illuminate\\Contracts\\Auth\\MustVerifyEmail',
+                                    'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+                                    'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+                                    'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
+                                    'notifiable' => 'Illuminate\\Notifications\\Notifiable',
+                                    'gate' => 'Illuminate\\Support\\Facades\\Gate',
+                                ],
+                                'constUses' => [
+                                ],
+                            ]),
+                            'byRef' => false,
+                            'public' => true,
+                            'private' => false,
+                            'abstract' => false,
+                            'final' => false,
+                            'static' => false,
+                            'returnType' => 'bool',
+                            'parameters' => [
+                                0 => \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state([
+                                    'name' => 'roles',
+                                    'type' => 'array',
+                                    'byRef' => false,
+                                    'variadic' => false,
+                                    'hasDefault' => false,
+                                    'attributes' => [
+                                    ],
+                                ]),
+                            ],
+                            'attributes' => [
+                            ],
+                        ]),
                     ],
                     'attributes' => [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\DamageComplaintSubmittedNotification.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Notifications\\DamageComplaintSubmittedNotification',
                     'phpDoc' => null,
@@ -44050,7 +42388,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Notifications\\HelpdeskTicketSubmitted',
                     'phpDoc' => null,
@@ -44167,7 +42505,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmitted.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Notifications\\LoanRequestSubmitted',
                     'phpDoc' => null,
@@ -44284,7 +42622,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Notifications\\LoanRequestSubmittedNotification',
                     'phpDoc' => null,
@@ -44467,7 +42805,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Notifications\\TicketCreatedNotification',
                     'phpDoc' => null,
@@ -44650,7 +42988,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Notifications\\TicketStatusUpdatedNotification',
                     'phpDoc' => null,
@@ -44896,7 +43234,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\HelpdeskTicketPolicy.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Policies\\HelpdeskTicketPolicy',
                     'phpDoc' => null,
@@ -45014,7 +43352,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Policies\\LoanRequestPolicy.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Policies\\LoanRequestPolicy',
                     'phpDoc' => null,
@@ -45132,7 +43470,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Providers\\AppServiceProvider',
                     'phpDoc' => null,
@@ -45211,7 +43549,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\Filament\\AdminPanelProvider.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\Filament\\AdminPanelProvider.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Providers\\Filament\\AdminPanelProvider',
                     'phpDoc' => null,
@@ -45254,7 +43592,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\TelescopeServiceProvider.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Providers\\TelescopeServiceProvider.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Providers\\TelescopeServiceProvider',
                     'phpDoc' => null,
@@ -45277,9 +43615,8 @@ return [
                                 'namespace' => 'App\\Providers',
                                 'uses' => [
                                     'gate' => 'Illuminate\\Support\\Facades\\Gate',
-                                    'incomingentry' => 'Laravel\\Telescope\\IncomingEntry',
-                                    'telescope' => 'Laravel\\Telescope\\Telescope',
                                     'serviceprovider' => 'Illuminate\\Support\\ServiceProvider',
+                                    'telescope' => 'Laravel\\Telescope\\Telescope',
                                 ],
                                 'constUses' => [
                                 ],
@@ -45305,9 +43642,8 @@ return [
                                 'namespace' => 'App\\Providers',
                                 'uses' => [
                                     'gate' => 'Illuminate\\Support\\Facades\\Gate',
-                                    'incomingentry' => 'Laravel\\Telescope\\IncomingEntry',
-                                    'telescope' => 'Laravel\\Telescope\\Telescope',
                                     'serviceprovider' => 'Illuminate\\Support\\ServiceProvider',
+                                    'telescope' => 'Laravel\\Telescope\\Telescope',
                                 ],
                                 'constUses' => [
                                 ],
@@ -45335,9 +43671,8 @@ return [
                                 'namespace' => 'App\\Providers',
                                 'uses' => [
                                     'gate' => 'Illuminate\\Support\\Facades\\Gate',
-                                    'incomingentry' => 'Laravel\\Telescope\\IncomingEntry',
-                                    'telescope' => 'Laravel\\Telescope\\Telescope',
                                     'serviceprovider' => 'Illuminate\\Support\\ServiceProvider',
+                                    'telescope' => 'Laravel\\Telescope\\Telescope',
                                 ],
                                 'constUses' => [
                                 ],
@@ -45359,7 +43694,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\HelpdeskService.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Services\\HelpdeskService',
                     'phpDoc' => null,
@@ -45613,7 +43948,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\LoanApplicationService.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Services\\LoanApplicationService',
                     'phpDoc' => null,
@@ -45893,7 +44228,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Services\\NotificationService.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Services\\NotificationService.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\Services\\NotificationService',
                     'phpDoc' => null,
@@ -46475,7 +44810,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\Support\\ForPsr4LoadedClasses.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\Support\\ForPsr4LoadedClasses.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Imanghafoori\\LaravelMicroscope\\ForPsr4LoadedClasses',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -46558,7 +44893,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\View\\Components\\AppLayout.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\View\\Components\\AppLayout.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\View\\Components\\AppLayout',
                     'phpDoc' => null,
@@ -46603,7 +44938,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\app\\View\\Components\\GuestLayout.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\app\\View\\Components\\GuestLayout.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'App\\View\\Components\\GuestLayout',
                     'phpDoc' => null,
@@ -46648,7 +44983,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\DamageTypeFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\DamageTypeFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\DamageTypeFactory',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -46704,7 +45039,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\EquipmentCategoryFactory',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -46737,7 +45072,7 @@ return [
                                 'phpDocString' => '/**
      * The name of the factory\'s corresponding model.
      *
-     * @var string
+     * @var class-string<EquipmentCategory>
      */',
                                 'namespace' => 'Database\\Factories',
                                 'uses' => [
@@ -46848,7 +45183,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\EquipmentItemFactory',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -46884,7 +45219,7 @@ return [
                                 'phpDocString' => '/**
      * The name of the factory\'s corresponding model.
      *
-     * @var string
+     * @var class-string<EquipmentItem>
      */',
                                 'namespace' => 'Database\\Factories',
                                 'uses' => [
@@ -47065,7 +45400,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\HelpdeskTicketFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\HelpdeskTicketFactory',
                     'phpDoc' => null,
@@ -47120,7 +45455,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\LoanRequestFactory',
                     'phpDoc' => null,
@@ -47175,7 +45510,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanStatusFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\LoanStatusFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\LoanStatusFactory',
                     'phpDoc' => null,
@@ -47230,7 +45565,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\TicketCategoryFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\TicketCategoryFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\TicketCategoryFactory',
                     'phpDoc' => null,
@@ -47285,7 +45620,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\TicketStatusFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\TicketStatusFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\TicketStatusFactory',
                     'phpDoc' => null,
@@ -47340,7 +45675,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\UserFactory.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\factories\\UserFactory.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Factories\\UserFactory',
                     'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
@@ -47460,7 +45795,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005303_create_activity_log_table.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005303_create_activity_log_table.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'CreateActivityLogTable',
                     'phpDoc' => null,
@@ -47509,7 +45844,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005304_add_event_column_to_activity_log_table.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005304_add_event_column_to_activity_log_table.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'AddEventColumnToActivityLogTable',
                     'phpDoc' => null,
@@ -47558,7 +45893,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005305_add_batch_uuid_column_to_activity_log_table.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005305_add_batch_uuid_column_to_activity_log_table.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'AddBatchUuidColumnToActivityLogTable',
                     'phpDoc' => null,
@@ -47607,7 +45942,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DamageTypeSeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DamageTypeSeeder.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Seeders\\DamageTypeSeeder',
                     'phpDoc' => null,
@@ -47652,7 +45987,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\DatabaseSeeder.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Seeders\\DatabaseSeeder',
                     'phpDoc' => null,
@@ -47697,7 +46032,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\EquipmentCategorySeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\EquipmentCategorySeeder.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Seeders\\EquipmentCategorySeeder',
                     'phpDoc' => null,
@@ -47742,7 +46077,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\LoanStatusSeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\LoanStatusSeeder.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Seeders\\LoanStatusSeeder',
                     'phpDoc' => null,
@@ -47787,7 +46122,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\NotificationSeeder.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Seeders\\NotificationSeeder',
                     'phpDoc' => null,
@@ -47821,7 +46156,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\TicketCategorySeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\TicketCategorySeeder.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Seeders\\TicketCategorySeeder',
                     'phpDoc' => null,
@@ -47866,7 +46201,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\database\\seeders\\TicketStatusSeeder.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\database\\seeders\\TicketStatusSeeder.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Database\\Seeders\\TicketStatusSeeder',
                     'phpDoc' => null,
@@ -47911,7 +46246,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\AuthenticationTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\Auth\\AuthenticationTest',
                     'phpDoc' => null,
@@ -47991,7 +46326,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\EmailVerificationTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\Auth\\EmailVerificationTest',
                     'phpDoc' => null,
@@ -48056,7 +46391,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordConfirmationTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\Auth\\PasswordConfirmationTest',
                     'phpDoc' => null,
@@ -48121,7 +46456,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordResetTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\Auth\\PasswordResetTest',
                     'phpDoc' => null,
@@ -48201,7 +46536,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\PasswordUpdateTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\Auth\\PasswordUpdateTest',
                     'phpDoc' => null,
@@ -48251,7 +46586,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Auth\\RegistrationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Auth\\RegistrationTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\Auth\\RegistrationTest',
                     'phpDoc' => null,
@@ -48301,7 +46636,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DamageTypeTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\DamageTypeTest',
                     'phpDoc' => null,
@@ -48462,7 +46797,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\DropdownManagerTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\DropdownManagerTest',
                     'phpDoc' => null,
@@ -48670,7 +47005,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ExampleTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ExampleTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\ExampleTest',
                     'phpDoc' => null,
@@ -48714,7 +47049,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeEnhancedTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\ICTServeEnhancedTest',
                     'phpDoc' => null,
@@ -48942,7 +47277,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\ICTServeFormsTest',
                     'phpDoc' => null,
@@ -49261,7 +47596,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ICTServeTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\ICTServeTest',
                     'phpDoc' => null,
@@ -49405,7 +47740,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\Livewire\\Admin\\Helpdesk\\DropdownManagerTest',
                     'phpDoc' => null,
@@ -49545,7 +47880,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\LoanApplicationWorkflowTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\LoanApplicationWorkflowTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\LoanApplicationWorkflowTest',
                     'phpDoc' => null,
@@ -49593,7 +47928,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\MyRequestsLivewireTest',
                     'phpDoc' => null,
@@ -50062,7 +48397,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\ProfileTest',
                     'phpDoc' => null,
@@ -50157,7 +48492,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\TicketNotificationTest',
                     'phpDoc' => null,
@@ -50324,7 +48659,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\Ui\\LayoutPrimitivesTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Feature\\Ui\\LayoutPrimitivesTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Feature\\Ui\\LayoutPrimitivesTest',
                     'phpDoc' => null,
@@ -50403,7 +48738,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\TestCase.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\TestCase.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\TestCase',
                     'phpDoc' => null,
@@ -50422,7 +48757,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\ExampleTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Unit\\ExampleTest',
                     'phpDoc' => null,
@@ -50466,7 +48801,7 @@ return [
                     ],
                 ]),
             ],
-            'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php' => [
+            'C:\\xampp\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php' => [
                 0 => \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state([
                     'name' => 'Tests\\Unit\\LoanRequestTrackerTest',
                     'phpDoc' => null,
@@ -50517,8 +48852,6 @@ return [
                             'phpDoc' => \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state([
                                 'phpDocString' => '/**
      * Creates and returns a single LoanRequest instance for a given user.
-     *
-     * @return LoanRequest
      */',
                                 'namespace' => 'Tests\\Unit',
                                 'uses' => [

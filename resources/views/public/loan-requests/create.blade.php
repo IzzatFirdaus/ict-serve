@@ -55,7 +55,8 @@
                                name="department"
                                value="{{ old('department') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('department') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('department'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('department')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -70,7 +71,8 @@
                                name="division"
                                value="{{ old('division') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('division') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('division'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('division')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -85,7 +87,8 @@
                                name="position"
                                value="{{ old('position') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('position') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('position'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('position')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -174,7 +177,8 @@
                                value="{{ old('loan_start_date') }}"
                                min="{{ date('Y-m-d') }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('loan_start_date') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('loan_start_date'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('loan_start_date')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -190,7 +194,8 @@
                                value="{{ old('loan_end_date') }}"
                                min="{{ date('Y-m-d', strtotime('+1 day')) }}"
                                required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('loan_end_date') border-danger-500 @enderror">
+                               @php $hasError = $errors->has('loan_end_date'); @endphp
+                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                         @error('loan_end_date')
                             <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                         @enderror
@@ -201,12 +206,13 @@
                     <label for="purpose" class="block text-sm font-medium text-gray-700 mb-1">
                         {{ __('Purpose of Loan') }} <span class="text-danger-500">*</span>
                     </label>
+                    @php $hasError = $errors->has('purpose'); @endphp
                     <textarea id="purpose"
                               name="purpose"
                               rows="3"
                               required
                               placeholder="{{ __('Please describe the purpose and intended use of the equipment...') }}"
-                              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('purpose') border-danger-500 @enderror">{{ old('purpose') }}</textarea>
+                              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}">{{ old('purpose') }}</textarea>
                     @error('purpose')
                         <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                     @enderror
@@ -222,7 +228,8 @@
                            value="{{ old('location') }}"
                            required
                            placeholder="{{ __('Where will the equipment be used?') }}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('location') border-danger-500 @enderror">
+                           @php $hasError = $errors->has('location'); @endphp
+                           class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
                     @error('location')
                         <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                     @enderror

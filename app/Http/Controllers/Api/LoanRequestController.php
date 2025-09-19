@@ -186,7 +186,7 @@ class LoanRequestController extends Controller
     public function destroy(Request $request, LoanRequest $loanRequest): JsonResponse
     {
         // Check authorization - user can only delete their own pending requests
-        if ($loanRequest->user->id !== $request->user()->id || $loanRequest->loanStatus?->code !== 'pending') {
+        if ($loanRequest->user->id !== $request->user()->id || $loanRequest->loanStatus->code !== 'pending') {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dibenarkan untuk memadam permohonan ini.',

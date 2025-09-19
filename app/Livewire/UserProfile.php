@@ -245,13 +245,14 @@ class UserProfile extends Component
             ->limit(5)
             ->get()
             ->map(function ($loan) {
+                $status = is_object($loan->status) && method_exists($loan->status, 'value') ? $loan->status->value : (string) $loan->status;
                 return [
                     'type' => 'loan',
                     'title' => "Permohonan Pinjaman #{$loan->id}",
-                    'description' => 'Status: '.ucfirst($loan->status),
+                    'description' => 'Status: '.ucfirst($status),
                     'date' => $loan->created_at->format('d/m/Y H:i'),
                     'icon' => 'clipboard-list',
-                    'color' => $this->getStatusColor($loan->status),
+                    'color' => $this->getStatusColor($status),
                 ];
             });
 

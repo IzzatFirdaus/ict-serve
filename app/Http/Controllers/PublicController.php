@@ -165,6 +165,9 @@ class PublicController extends Controller
     public function myRequests()
     {
         // Return the enhanced Livewire component view
-        return view('public.my-requests-enhanced');
+        /** @var view-string $view */
+        $view = 'public.my-requests-enhanced';
+
+        return view($view);
     }
 }

@@ -168,7 +168,7 @@ class AttachmentManager extends Component
             // Check permissions
             $user = Auth::user();
             $canDelete = $user->id === ($attachment['uploaded_by'] ?? 0) ||
-                        in_array($user->role, ['ict_admin', 'supervisor']) ||
+                        $user->hasRole(['ict_admin', 'supervisor']) ||
                         $user->id === ($this->ticket->user_id ?? 0);
 
             if (! $canDelete) {
@@ -242,8 +242,8 @@ class AttachmentManager extends Component
         // Check if user can upload files
         $user = Auth::user();
         $canUpload = $user->id === $this->ticket->user_id ||
-                    $user->id === $this->ticket->getOriginal('assigned_to') ||
-                    in_array($user->role, ['ict_admin', 'supervisor']);
+                $user->id === $this->ticket->getOriginal('assigned_to') ||
+                $user->hasRole(['ict_admin', 'supervisor']);
 
         return view('livewire.helpdesk.attachment-manager', compact('canUpload'));
     }
