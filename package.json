@@ -5,12 +5,15 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "playwright:install": "npx playwright install --with-deps",
+    "test:ui": "npx playwright test --config=playwright.config.ts",
     "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,css,scss,json,md,html,vue}\"",
     "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,json,md,html,vue}\"",
     "stylelint": "stylelint \"**/*.{css,scss,vue,html}\"",
     "stylelint:fix": "stylelint --fix \"**/*.{css,scss,vue,html}\""
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.2.0",
     "@playwright/test": "^1.55.0",
     "@popperjs/core": "^2.11.6",
     "@tailwindcss/forms": "^0.5.2",
@@ -38,6 +41,10 @@
   "dependencies": {
     "@govtechmy/myds-style": "^1.0.0",
     "alpinejs": "^3.13.0",
-    "signature_pad": "^5.1.1"
+    "firecrawl": "^4.3.5",
+    "jsdom": "^27.0.0",
+    "node-fetch": "^3.3.2",
+    "signature_pad": "^5.1.1",
+    "undici": "^7.16.0"
   }
 }
