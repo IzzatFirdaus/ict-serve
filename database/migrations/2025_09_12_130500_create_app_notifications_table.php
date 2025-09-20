@@ -12,10 +12,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('type')->nullable();
-            $table->string('title');
-            $table->text('message');
+            $table->string('title')->nullable();
+            $table->text('message')->nullable();
             $table->string('action_url')->nullable();
             $table->json('data')->nullable();
+            $table->string('category')->default('general');
+            $table->string('priority')->default('medium');
+            $table->string('icon')->nullable();
+            $table->string('color')->nullable();
+            $table->timestamp('expires_at')->nullable();
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });

@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('division')->nullable();
             $table->string('department')->nullable();
             $table->string('position')->nullable();
+            $table->string('employee_id')->nullable();
+            $table->string('office_location')->nullable();
             $table->string('phone')->nullable();
             $table->unsignedBigInteger('supervisor_id')->nullable();
             $table->string('status')->default('active');
@@ -36,7 +38,9 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->timestamp('last_login_at')->nullable();
             $table->string('profile_picture')->nullable();
+            $table->string('avatar_url')->nullable();
             $table->json('preferences')->nullable();
+            $table->json('notification_preferences')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
