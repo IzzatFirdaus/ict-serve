@@ -282,7 +282,7 @@ View: render the pagination links:
 
 ```blade
 <div class="mt-6">
-    {{ $inventories->links() }}
+  {{ $inventories->links() }}
 </div>
 ```
 
@@ -322,8 +322,8 @@ public function store(Request $request)
 Displaying errors in views: use the `@error` directive in Blade files:
 
 ```blade
-<input type="text" name="name">
+<input type="text" name="name" />
 @error('name')
-    <span class="text-danger">{{ $message }}</span>
+  <span class="text-danger">{{ $message }}</span>
 @enderror
 ```

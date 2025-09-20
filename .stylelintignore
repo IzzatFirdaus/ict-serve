@@ -1,10 +1,14 @@
-/vendor
-/docs
-/public/build
-/storage
+ # Ignore generated test UI reports and temporary files
+ tests/ui/**
+ playwright-report/**
+ tmp/**
 
-# Ignore large generated/vendor folders
-node_modules/
-public/fonts/
-resources/views/vendor/
-qa-results/
+ # Ignore compiled / vendor assets and large generated folders
+ vendor/
+ node_modules/
+ public/css/
+ public/build/
+ public/fonts/
+ resources/views/vendor/
+ storage/
+ qa-results/

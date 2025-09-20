@@ -103,11 +103,11 @@ In Blade views use `@can` to conditionally show buttons:
 
 ```blade
 @can('update', $inventory)
-    {{-- Button here --}}
+  {{-- Button here --}}
 @endcan
 
 @can('delete', $inventory)
-    {{-- Button here --}}
+  {{-- Button here --}}
 @endcan
 ```
 
@@ -320,19 +320,19 @@ Create view HTML example (`create.blade.php`):
 
 ```blade
 <div class="mb-3">
-    <label for="warehouse" class="form-label">Warehouse</label>
-    <select id="warehouse" name="warehouse_id" class="form-control" required>
-        <option value="">-- Select Warehouse --</option>
-        @foreach($warehouses as $warehouse)
-            <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
-        @endforeach
-    </select>
+  <label for="warehouse" class="form-label">Warehouse</label>
+  <select id="warehouse" name="warehouse_id" class="form-control" required>
+    <option value="">-- Select Warehouse --</option>
+    @foreach ($warehouses as $warehouse)
+      <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
+    @endforeach
+  </select>
 </div>
 <div class="mb-3">
-    <label for="shelf" class="form-label">Shelf</label>
-    <select id="shelf" name="shelf_id" class="form-control" required>
-        <option value="">-- Select Shelf --</option>
-    </select>
+  <label for="shelf" class="form-label">Shelf</label>
+  <select id="shelf" name="shelf_id" class="form-control" required>
+    <option value="">-- Select Shelf --</option>
+  </select>
 </div>
 ```
 
@@ -601,23 +601,28 @@ In `resources/views/api-posts.blade.php`:
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-4">
+  <div class="container mt-4">
     <h1 class="text-center mb-4">Posts from API</h1>
     <div class="row">
-        @forelse ($posts as $post)
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Title: {{ $post->title }}</h5>
-                        <p class="card-text"><strong>Body:</strong> {{ $post->body }}</p>
-                    </div>
-                </div>
+      @forelse ($posts as $post)
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="card-title text-primary">
+                Title: {{ $post->title }}
+              </h5>
+              <p class="card-text">
+                <strong>Body:</strong>
+                {{ $post->body }}
+              </p>
             </div>
-        @empty
-            <p class="text-center text-muted">No posts available.</p>
-        @endforelse
+          </div>
+        </div>
+      @empty
+        <p class="text-center text-muted">No posts available.</p>
+      @endforelse
     </div>
-</div>
+  </div>
 @endsection
 ```
 

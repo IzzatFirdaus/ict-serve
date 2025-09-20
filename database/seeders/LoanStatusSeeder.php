@@ -88,10 +88,13 @@ class LoanStatusSeeder extends Seeder
         ];
 
         foreach ($statuses as $status) {
-            DB::table('loan_statuses')->insert(array_merge($status, [
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]));
+            DB::table('loan_statuses')->updateOrInsert(
+                ['code' => $status['code']],
+                array_merge($status, [
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ])
+            );
         }
     }
 }

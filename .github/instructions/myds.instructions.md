@@ -67,9 +67,10 @@ Usage notes:
 - Article content typically constrains to a readable max width (about 640px).
 - Images and visualisations can extend slightly beyond the article width for impact (up to ~740px) where appropriate.
 
+
 ### MYDS Colour System (overview)
 
-Colour guidance in MYDS defines primary, semantic, and primitive tokens for light and dark modes. Use the colour tokens in `MYDS-Colour-Reference.md` and prefer semantic tokens (e.g., `bg-primary-600`, `txt-danger`) in code so themes map correctly.
+Colour guidance in MYDS defines primary, semantic, and primitive tokens for light and dark modes. Use the colour tokens in **MYDS-Colour-Reference.md** (see `_reference/MYDS-Colour-Reference.md` in this repo, or [official docs](https://design.digital.gov.my/en/docs/design/color)) and prefer semantic tokens (e.g., `bg-primary-600`, `txt-danger`) in code so themes map correctly.
 
 Key points:
 
@@ -92,7 +93,7 @@ Key points:
 
 ### MYDS Icon System
 
-The MYDS Icon System provides a comprehensive set of visual symbols for Malaysian government digital services, ensuring consistency, accessibility, and clear communication across all platforms. See the dedicated [Icon System](#icon-system) section below for complete guidelines, implementation details, and the full icon reference.
+The MYDS Icon System provides a comprehensive set of visual symbols for Malaysian government digital services, ensuring consistency, accessibility, and clear communication across all platforms. See the dedicated Icon System section below for complete guidelines, implementation details, and the full icon reference.
 
 ### Component Guidance (high-level)
 
@@ -100,13 +101,13 @@ The design overview contains detailed component examples; agents should referenc
 
 - Prefer MYDS components (`@govtechmy/myds-react`) when available.
 - Keep components accessible: keyboard focus, ARIA attributes, and colour contrast.
-- Use official MYDS icons from the [Icon System](#icon-system) section - never use generic or non-standard icons.
+- Use official MYDS icons from the Icon System section below - never use generic or non-standard icons.
 - Ensure proper icon accessibility with ARIA labels and text alternatives.
 - Reuse tokens and avoid hard-coded hex values unless implementing a new primitive that must be added to the token list.
 
 ### Notes
 
-- This overview is a concise reference; the full design details are available in `MYDS-Design-Overview.md` and in the official docs at https://design.digital.gov.my/en/docs/design.
+- This overview is a concise reference; the full design details are available in **MYDS-Design-Overview.md** (see `_reference/MYDS-Design-Overview.md` in this repo) and in the [official docs](https://design.digital.gov.my/en/docs/design).
 
 ## Development Overview
 
@@ -139,7 +140,7 @@ This section provides implementation-focused guidance for developers working wit
 
 - Preferred package: `@govtechmy/myds-react` (import components from the package or local wrappers).
 - Component composition: follow the official component anatomy (for example: `AlertDialog` must use `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`).
-- Icon usage: Always use official MYDS icons from the comprehensive [Icon System](#icon-system) reference with proper accessibility attributes.
+- Icon usage: Always use official MYDS icons from the comprehensive Icon System section below with proper accessibility attributes.
 - Accessibility: provide `aria-*` attributes, keyboard handlers, and focus management exactly as in the docs.
 
 ### 3. Implementation Patterns
@@ -161,7 +162,7 @@ This section provides implementation-focused guidance for developers working wit
 - Keyboard navigation: ensure all interactive elements are reachable and operable via keyboard.
 - ARIA: use role, aria-label, aria-describedby and other attributes where appropriate and follow component docs for required attributes.
 - Color: do not rely on colour alone; use icons, text, and ARIA to indicate state.
-- Icons: Follow comprehensive accessibility guidelines in the [Icon System](#icon-system) section - ensure proper ARIA labels, contrast ratios, and text alternatives for all icons.
+- Icons: Follow comprehensive accessibility guidelines in the Icon System section below - ensure proper ARIA labels, contrast ratios, and text alternatives for all icons.
 
 ### 6. Design Patterns & Best Practices
 
@@ -172,7 +173,7 @@ This section provides implementation-focused guidance for developers working wit
 ### 7. Resources for Developers
 
 - Figma and component sources: use the official MYDS design files for reference and exact token values.
-- Example imports are available in the `MYDS-Develop-Overview.md` file inside the repo.
+- Example imports are available in **MYDS-Develop-Overview.md** (see `_reference/MYDS-Develop-Overview.md` in this repo).
 
 ### 8. Compliance & Governance (Developer notes)
 
@@ -181,18 +182,18 @@ This section provides implementation-focused guidance for developers working wit
 
 ### Notes & Where to Look Next
 
-- For API-level details, props, and code examples, consult `MYDS-Develop-Overview.md` and the live developer docs at https://design.digital.gov.my/en/docs/develop.
+- For API-level details, props, and code examples, consult **MYDS-Develop-Overview.md** (see `_reference/MYDS-Develop-Overview.md` in this repo) and the [live developer docs](https://design.digital.gov.my/en/docs/develop).
 
 ## MyGovEA Design Principles (moved)
 
-The MyGovEA design principles were moved to a standalone file for clarity and reuse: see `mygovea.principles.md`.
+The MyGovEA design principles were moved to a standalone file for clarity and reuse: see **mygovea.principles.instructions.md** (in `.github/instructions/`), or [official MyGovEA Principles](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/).
 
 ## Core Mandate: Strict Adherence to MYDS
 
 You are an expert AI assistant specializing in the Malaysia Government Design System (MYDS). Your primary goal is to build digital services that are accessible, consistent, and user-centric, strictly following the MYDS guidelines.
 
 - Do not use generic UI/UX patterns. All design and development choices must be justified by the official MYDS documentation.
-- Use only official MYDS icons from the comprehensive [Icon System](#icon-system) reference - never use external icon libraries or custom icons.
+- Use only official MYDS icons from the comprehensive Icon System section below - never use external icon libraries or custom icons.
 - Align designs to the MyGovEA Design Principles, especially "Berpaksikan Rakyat" (Citizen-Centric).
 - Always fetch and reference the official docs for component anatomy, tokens, and accessibility rules rather than relying on memory.
 
