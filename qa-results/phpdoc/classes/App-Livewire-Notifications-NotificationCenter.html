@@ -120,19 +120,55 @@
                 <a href="namespaces/app-console.html" class="">Console</a>
               </li>
               <li>
+                <a href="namespaces/app-enums.html" class="">Enums</a>
+              </li>
+              <li>
+                <a href="namespaces/app-exports.html" class="">Exports</a>
+              </li>
+              <li>
+                <a href="namespaces/app-filament.html" class="">Filament</a>
+              </li>
+              <li>
                 <a href="namespaces/app-http.html" class="">Http</a>
               </li>
               <li>
                 <a href="namespaces/app-livewire.html" class="">Livewire</a>
               </li>
               <li>
+                <a href="namespaces/app-mail.html" class="">Mail</a>
+              </li>
+              <li>
                 <a href="namespaces/app-models.html" class="">Models</a>
+              </li>
+              <li>
+                <a href="namespaces/app-notifications.html" class=""
+                  >Notifications</a
+                >
+              </li>
+              <li>
+                <a href="namespaces/app-policies.html" class="">Policies</a>
               </li>
               <li>
                 <a href="namespaces/app-providers.html" class="">Providers</a>
               </li>
               <li>
                 <a href="namespaces/app-services.html" class="">Services</a>
+              </li>
+              <li>
+                <a href="namespaces/app-view.html" class="">View</a>
+              </li>
+            </ul>
+
+            <h4 class="phpdocumentor-sidebar__root-namespace">
+              <a href="namespaces/imanghafoori.html" class="">Imanghafoori</a>
+            </h4>
+            <ul class="phpdocumentor-list">
+              <li>
+                <a
+                  href="namespaces/imanghafoori-laravelmicroscope.html"
+                  class=""
+                  >LaravelMicroscope</a
+                >
               </li>
             </ul>
           </section>
@@ -218,8 +254,35 @@
                   ></abbr
                 >
                 :
-                <span class="phpdocumentor-element-found-in__line">11</span>
+                <span class="phpdocumentor-element-found-in__line">15</span>
               </aside>
+
+              <section class="phpdocumentor-attributes">
+                <h5 class="phpdocumentor-elements__header" id="attributes">
+                  Attributes
+                  <a
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#attributes"
+                    class="headerlink"
+                    ><i class="fas fa-link"></i
+                  ></a>
+                </h5>
+                <dl class="phpdocumentor-argument-list">
+                  <dt class="phpdocumentor-argument-list__entry">
+                    #[<abbr title="\Livewire\Attributes\Layout">Layout</abbr>]
+                  </dt>
+                  <dd class="phpdocumentor-argument-list__entry">
+                    &#039;layouts.app&#039;
+                  </dd>
+                </dl>
+                <dl class="phpdocumentor-argument-list">
+                  <dt class="phpdocumentor-argument-list__entry">
+                    #[<abbr title="\Livewire\Attributes\Title">Title</abbr>]
+                  </dt>
+                  <dd class="phpdocumentor-argument-list__entry">
+                    &#039;Pusat Notifikasi - ICTServe&#039;
+                  </dd>
+                </dl>
+              </section>
 
               <h3 id="toc">
                 Table of Contents
@@ -284,6 +347,17 @@
                 </dt>
 
                 <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#property_showMarkAllModal"
+                    >$showMarkAllModal</a
+                  >
+                  <span> &nbsp;: bool </span>
+                </dt>
+
+                <dt
                   class="phpdocumentor-table-of-contents__entry -property -protected"
                 >
                   <a
@@ -309,10 +383,10 @@
                 >
                   <a
                     class=""
-                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method___invoke"
-                    >__invoke()</a
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_clearAllRead"
+                    >clearAllRead()</a
                   >
-                  <span> &nbsp;: mixed </span>
+                  <span> &nbsp;: void </span>
                 </dt>
 
                 <dt
@@ -320,10 +394,10 @@
                 >
                   <a
                     class=""
-                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_clearAllRead"
-                    >clearAllRead()</a
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_closeMarkAllModal"
+                    >closeMarkAllModal()</a
                   >
-                  <span> &nbsp;: void </span>
+                  <span> &nbsp;: mixed </span>
                 </dt>
 
                 <dt
@@ -397,6 +471,17 @@
                 >
                   <a
                     class=""
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_handleNewNotification"
+                    >handleNewNotification()</a
+                  >
+                  <span> &nbsp;: mixed </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
                     href="classes/App-Livewire-Notifications-NotificationCenter.html#method_markAllAsRead"
                     >markAllAsRead()</a
                   >
@@ -423,6 +508,17 @@
                     >mount()</a
                   >
                   <span> &nbsp;: void </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_openMarkAllModal"
+                    >openMarkAllModal()</a
+                  >
+                  <span> &nbsp;: mixed </span>
                 </dt>
 
                 <dt
@@ -478,6 +574,50 @@
                     >toggleDropdown()</a
                   >
                   <span> &nbsp;: void </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingCategory"
+                    >updatingCategory()</a
+                  >
+                  <span> &nbsp;: mixed </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingFilter"
+                    >updatingFilter()</a
+                  >
+                  <span> &nbsp;: mixed </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingPriority"
+                    >updatingPriority()</a
+                  >
+                  <span> &nbsp;: mixed </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -private"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Livewire-Notifications-NotificationCenter.html#method_currentUserId"
+                    >currentUserId()</a
+                  >
+                  <span> &nbsp;: int|null </span>
                 </dt>
 
                 <dt
@@ -550,7 +690,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">17</span>
+                    <span class="phpdocumentor-element-found-in__line">23</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -589,7 +729,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">15</span>
+                    <span class="phpdocumentor-element-found-in__line">21</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -631,7 +771,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">19</span>
+                    <span class="phpdocumentor-element-found-in__line">25</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -673,7 +813,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">21</span>
+                    <span class="phpdocumentor-element-found-in__line">27</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -683,6 +823,50 @@
                     <span class="phpdocumentor-signature__type">bool</span>
                     <span class="phpdocumentor-signature__name"
                       >$showDropdown</span
+                    >
+                    =
+                    <span class="phpdocumentor-signature__default-value"
+                      >false</span
+                    ></code
+                  >
+                </article>
+                <article class="phpdocumentor-element -property -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_showMarkAllModal"
+                  >
+                    $showMarkAllModal
+                    <a
+                      href="classes/App-Livewire-Notifications-NotificationCenter.html#property_showMarkAllModal"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers"> </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Livewire/Notifications/NotificationCenter.php"
+                      ><a
+                        href="files/app-livewire-notifications-notificationcenter.html"
+                        ><abbr
+                          title="app/Livewire/Notifications/NotificationCenter.php"
+                          >NotificationCenter.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">29</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type">bool</span>
+                    <span class="phpdocumentor-signature__name"
+                      >$showMarkAllModal</span
                     >
                     =
                     <span class="phpdocumentor-signature__default-value"
@@ -717,7 +901,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">23</span>
+                    <span class="phpdocumentor-element-found-in__line">31</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -736,7 +920,8 @@
                       &#039;deleteNotification&#039; =&gt;
                       &#039;deleteNotification&#039;,
                       &#039;refreshNotifications&#039; =&gt;
-                      &#039;$refresh&#039;]</span
+                      &#039;$refresh&#039;, &#039;notificationReceived&#039;
+                      =&gt; &#039;handleNewNotification&#039;]</span
                     ></code
                   >
                 </article>
@@ -751,44 +936,6 @@
                     ><i class="fas fa-link"></i
                   ></a>
                 </h3>
-                <article class="phpdocumentor-element -method -public">
-                  <h4 class="phpdocumentor-element__name" id="method___invoke">
-                    __invoke()
-                    <a
-                      href="classes/App-Livewire-Notifications-NotificationCenter.html#method___invoke"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Livewire/Notifications/NotificationCenter.php"
-                      ><a
-                        href="files/app-livewire-notifications-notificationcenter.html"
-                        ><abbr
-                          title="app/Livewire/Notifications/NotificationCenter.php"
-                          >NotificationCenter.php</abbr
-                        ></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line">35</span>
-                  </aside>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name">__invoke</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >mixed</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-                </article>
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
@@ -815,7 +962,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >159</span
+                      >239</span
                     >
                   </aside>
 
@@ -828,6 +975,48 @@
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
                       >void</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_closeMarkAllModal"
+                  >
+                    closeMarkAllModal()
+                    <a
+                      href="classes/App-Livewire-Notifications-NotificationCenter.html#method_closeMarkAllModal"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Livewire/Notifications/NotificationCenter.php"
+                      ><a
+                        href="files/app-livewire-notifications-notificationcenter.html"
+                        ><abbr
+                          title="app/Livewire/Notifications/NotificationCenter.php"
+                          >NotificationCenter.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">79</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >closeMarkAllModal</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
                     ></code
                   >
 
@@ -859,7 +1048,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >146</span
+                      >220</span
                     >
                   </aside>
 
@@ -928,7 +1117,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >211</span
+                      >305</span
                     >
                   </aside>
 
@@ -1006,7 +1195,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >178</span
+                      >272</span
                     >
                   </aside>
 
@@ -1059,7 +1248,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >169</span
+                      >263</span
                     >
                   </aside>
 
@@ -1112,7 +1301,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >200</span
+                      >294</span
                     >
                   </aside>
 
@@ -1190,7 +1379,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >189</span
+                      >283</span
                     >
                   </aside>
 
@@ -1220,6 +1409,92 @@
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
+                    id="method_handleNewNotification"
+                  >
+                    handleNewNotification()
+                    <a
+                      href="classes/App-Livewire-Notifications-NotificationCenter.html#method_handleNewNotification"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Livewire/Notifications/NotificationCenter.php"
+                      ><a
+                        href="files/app-livewire-notifications-notificationcenter.html"
+                        ><abbr
+                          title="app/Livewire/Notifications/NotificationCenter.php"
+                          >NotificationCenter.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">62</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >handleNewNotification</span
+                    ><span>(</span
+                    ><span class="phpdocumentor-signature__argument"
+                      ><span
+                        class="phpdocumentor-signature__argument__return-type"
+                        >mixed&nbsp;</span
+                      ><span class="phpdocumentor-signature__argument__name"
+                        >$data</span
+                      ></span
+                    ><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <h5 class="phpdocumentor-argument-list__heading">
+                    Parameters
+                  </h5>
+                  <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                      <span class="phpdocumentor-signature__argument__name"
+                        >$data</span
+                      >
+                      :
+                      <span
+                        class="phpdocumentor-signature__argument__return-type"
+                        >mixed</span
+                      >
+                    </dt>
+                    <dd class="phpdocumentor-argument-list__definition"></dd>
+                  </dl>
+
+                  <section class="phpdocumentor-attributes">
+                    <h5 class="phpdocumentor-elements__header" id="attributes">
+                      Attributes
+                      <a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_handleNewNotification#attributes"
+                        class="headerlink"
+                        ><i class="fas fa-link"></i
+                      ></a>
+                    </h5>
+                    <dl class="phpdocumentor-argument-list">
+                      <dt class="phpdocumentor-argument-list__entry">
+                        #[<abbr title="\Livewire\Attributes\On">On</abbr>]
+                      </dt>
+                      <dd class="phpdocumentor-argument-list__entry">
+                        &#039;notificationReceived&#039;
+                      </dd>
+                    </dl>
+                  </section>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
                     id="method_markAllAsRead"
                   >
                     markAllAsRead()
@@ -1243,7 +1518,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >135</span
+                      >192</span
                     >
                   </aside>
 
@@ -1287,7 +1562,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >123</span
+                      >174</span
                     >
                   </aside>
 
@@ -1352,7 +1627,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">30</span>
+                    <span class="phpdocumentor-element-found-in__line">39</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1363,6 +1638,48 @@
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
                       >void</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_openMarkAllModal"
+                  >
+                    openMarkAllModal()
+                    <a
+                      href="classes/App-Livewire-Notifications-NotificationCenter.html#method_openMarkAllModal"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Livewire/Notifications/NotificationCenter.php"
+                      ><a
+                        href="files/app-livewire-notifications-notificationcenter.html"
+                        ><abbr
+                          title="app/Livewire/Notifications/NotificationCenter.php"
+                          >NotificationCenter.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">74</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >openMarkAllModal</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
                     ></code
                   >
 
@@ -1390,7 +1707,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">40</span>
+                    <span class="phpdocumentor-element-found-in__line">84</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1432,7 +1749,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >106</span
+                      >157</span
                     >
                   </aside>
 
@@ -1498,7 +1815,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >100</span
+                      >151</span
                     >
                   </aside>
 
@@ -1566,7 +1883,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >112</span
+                      >163</span
                     >
                   </aside>
 
@@ -1635,7 +1952,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >118</span
+                      >169</span
                     >
                   </aside>
 
@@ -1652,6 +1969,185 @@
                   >
 
                   <div class="phpdocumentor-label-line"></div>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_updatingCategory"
+                  >
+                    updatingCategory()
+                    <a
+                      href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingCategory"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Livewire/Notifications/NotificationCenter.php"
+                      ><a
+                        href="files/app-livewire-notifications-notificationcenter.html"
+                        ><abbr
+                          title="app/Livewire/Notifications/NotificationCenter.php"
+                          >NotificationCenter.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">52</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >updatingCategory</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_updatingFilter"
+                  >
+                    updatingFilter()
+                    <a
+                      href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingFilter"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Livewire/Notifications/NotificationCenter.php"
+                      ><a
+                        href="files/app-livewire-notifications-notificationcenter.html"
+                        ><abbr
+                          title="app/Livewire/Notifications/NotificationCenter.php"
+                          >NotificationCenter.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">47</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >updatingFilter</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_updatingPriority"
+                  >
+                    updatingPriority()
+                    <a
+                      href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingPriority"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Livewire/Notifications/NotificationCenter.php"
+                      ><a
+                        href="files/app-livewire-notifications-notificationcenter.html"
+                        ><abbr
+                          title="app/Livewire/Notifications/NotificationCenter.php"
+                          >NotificationCenter.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">57</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >updatingPriority</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+                </article>
+                <article class="phpdocumentor-element -method -private">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_currentUserId"
+                  >
+                    currentUserId()
+                    <a
+                      href="classes/App-Livewire-Notifications-NotificationCenter.html#method_currentUserId"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Livewire/Notifications/NotificationCenter.php"
+                      ><a
+                        href="files/app-livewire-notifications-notificationcenter.html"
+                        ><abbr
+                          title="app/Livewire/Notifications/NotificationCenter.php"
+                          >NotificationCenter.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >255</span
+                    >
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >private</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >currentUserId</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >int|null</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      >int|null</span
+                    >
+                  </section>
                 </article>
                 <article class="phpdocumentor-element -method -private">
                   <h4
@@ -1678,7 +2174,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">53</span>
+                    <span class="phpdocumentor-element-found-in__line">97</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1720,7 +2216,9 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">86</span>
+                    <span class="phpdocumentor-element-found-in__line"
+                      >134</span
+                    >
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1771,7 +2269,9 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">78</span>
+                    <span class="phpdocumentor-element-found-in__line"
+                      >124</span
+                    >
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1979,6 +2479,12 @@
                     </li>
                     <li class="">
                       <a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#property_showMarkAllModal"
+                        >$showMarkAllModal</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
                         href="classes/App-Livewire-Notifications-NotificationCenter.html#property_listeners"
                         >$listeners</a
                       >
@@ -1993,14 +2499,14 @@
                   <ul class="phpdocumentor-list -clean">
                     <li class="">
                       <a
-                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method___invoke"
-                        >__invoke()</a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_clearAllRead"
+                        >clearAllRead()</a
                       >
                     </li>
                     <li class="">
                       <a
-                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_clearAllRead"
-                        >clearAllRead()</a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_closeMarkAllModal"
+                        >closeMarkAllModal()</a
                       >
                     </li>
                     <li class="">
@@ -2041,6 +2547,12 @@
                     </li>
                     <li class="">
                       <a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_handleNewNotification"
+                        >handleNewNotification()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
                         href="classes/App-Livewire-Notifications-NotificationCenter.html#method_markAllAsRead"
                         >markAllAsRead()</a
                       >
@@ -2055,6 +2567,12 @@
                       <a
                         href="classes/App-Livewire-Notifications-NotificationCenter.html#method_mount"
                         >mount()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_openMarkAllModal"
+                        >openMarkAllModal()</a
                       >
                     </li>
                     <li class="">
@@ -2085,6 +2603,30 @@
                       <a
                         href="classes/App-Livewire-Notifications-NotificationCenter.html#method_toggleDropdown"
                         >toggleDropdown()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingCategory"
+                        >updatingCategory()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingFilter"
+                        >updatingFilter()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_updatingPriority"
+                        >updatingPriority()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Livewire-Notifications-NotificationCenter.html#method_currentUserId"
+                        >currentUserId()</a
                       >
                     </li>
                     <li class="">

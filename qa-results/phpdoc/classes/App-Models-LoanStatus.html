@@ -120,19 +120,55 @@
                 <a href="namespaces/app-console.html" class="">Console</a>
               </li>
               <li>
+                <a href="namespaces/app-enums.html" class="">Enums</a>
+              </li>
+              <li>
+                <a href="namespaces/app-exports.html" class="">Exports</a>
+              </li>
+              <li>
+                <a href="namespaces/app-filament.html" class="">Filament</a>
+              </li>
+              <li>
                 <a href="namespaces/app-http.html" class="">Http</a>
               </li>
               <li>
                 <a href="namespaces/app-livewire.html" class="">Livewire</a>
               </li>
               <li>
+                <a href="namespaces/app-mail.html" class="">Mail</a>
+              </li>
+              <li>
                 <a href="namespaces/app-models.html" class="">Models</a>
+              </li>
+              <li>
+                <a href="namespaces/app-notifications.html" class=""
+                  >Notifications</a
+                >
+              </li>
+              <li>
+                <a href="namespaces/app-policies.html" class="">Policies</a>
               </li>
               <li>
                 <a href="namespaces/app-providers.html" class="">Providers</a>
               </li>
               <li>
                 <a href="namespaces/app-services.html" class="">Services</a>
+              </li>
+              <li>
+                <a href="namespaces/app-view.html" class="">View</a>
+              </li>
+            </ul>
+
+            <h4 class="phpdocumentor-sidebar__root-namespace">
+              <a href="namespaces/imanghafoori.html" class="">Imanghafoori</a>
+            </h4>
+            <ul class="phpdocumentor-list">
+              <li>
+                <a
+                  href="namespaces/imanghafoori-laravelmicroscope.html"
+                  class=""
+                  >LaravelMicroscope</a
+                >
               </li>
             </ul>
           </section>
@@ -387,12 +423,38 @@
                 >
                   <a
                     class=""
-                    href="classes/App-Models-LoanStatus.html#method_getByCode"
-                    >getByCode()</a
+                    href="classes/App-Models-LoanStatus.html#method_canBeCancelled"
+                    >canBeCancelled()</a
                   >
-                  <span> &nbsp;: self|null </span>
+                  <span> &nbsp;: bool </span>
                 </dt>
-                <dd>Get status by code</dd>
+                <dd>
+                  Check if loan requests with this status can be cancelled.
+                </dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-LoanStatus.html#method_canBeEdited"
+                    >canBeEdited()</a
+                  >
+                  <span> &nbsp;: bool </span>
+                </dt>
+                <dd>Check if loan requests with this status can be edited.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-LoanStatus.html#method_getId"
+                    >getId()</a
+                  >
+                  <span> &nbsp;: int </span>
+                </dt>
+                <dd>Public getter for id property.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -421,31 +483,7 @@
                     >
                   </span>
                 </dt>
-                <dd>Get loan requests with this status</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-LoanStatus.html#method_scopeActive"
-                    >scopeActive()</a
-                  >
-                  <span> &nbsp;: mixed </span>
-                </dt>
-                <dd>Scope for active statuses only</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-LoanStatus.html#method_scopeOrdered"
-                    >scopeOrdered()</a
-                  >
-                  <span> &nbsp;: mixed </span>
-                </dt>
-                <dd>Scope to order by sort_order</dd>
+                <dd>Get the loan requests with this status.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -protected"
@@ -856,7 +894,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">29</span>
+                    <span class="phpdocumentor-element-found-in__line">37</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -885,11 +923,14 @@
                     ><i class="fas fa-link"></i
                   ></a>
                 </h3>
-                <article class="phpdocumentor-element -method -public -static">
-                  <h4 class="phpdocumentor-element__name" id="method_getByCode">
-                    getByCode()
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_canBeCancelled"
+                  >
+                    canBeCancelled()
                     <a
-                      href="classes/App-Models-LoanStatus.html#method_getByCode"
+                      href="classes/App-Models-LoanStatus.html#method_canBeCancelled"
                       class="headerlink"
                       ><i class="fas fa-link"></i
                     ></a>
@@ -908,53 +949,132 @@
                     <span class="phpdocumentor-element-found-in__line">83</span>
                   </aside>
 
-                  <p class="phpdocumentor-summary">Get status by code</p>
+                  <p class="phpdocumentor-summary">
+                    Check if loan requests with this status can be cancelled.
+                  </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__static">static</span>
-                    <span class="phpdocumentor-signature__name">getByCode</span
-                    ><span>(</span
-                    ><span class="phpdocumentor-signature__argument"
-                      ><span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >string&nbsp;</span
-                      ><span class="phpdocumentor-signature__argument__name"
-                        >$code</span
-                      ></span
-                    ><span>)</span><span> : </span
+                    <span class="phpdocumentor-signature__name"
+                      >canBeCancelled</span
+                    ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      >self|null</span
+                      >bool</span
                     ></code
                   >
 
                   <div class="phpdocumentor-label-line"></div>
-
-                  <h5 class="phpdocumentor-argument-list__heading">
-                    Parameters
-                  </h5>
-                  <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                      <span class="phpdocumentor-signature__argument__name"
-                        >$code</span
-                      >
-                      :
-                      <span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >string</span
-                      >
-                    </dt>
-                    <dd class="phpdocumentor-argument-list__definition"></dd>
-                  </dl>
 
                   <section>
                     <h5 class="phpdocumentor-return-value__heading">
                       Return values
                     </h5>
                     <span class="phpdocumentor-signature__response_type"
-                      >self|null</span
+                      >bool</span
+                    >
+                  </section>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_canBeEdited"
+                  >
+                    canBeEdited()
+                    <a
+                      href="classes/App-Models-LoanStatus.html#method_canBeEdited"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/LoanStatus.php"
+                      ><a href="files/app-models-loanstatus.html"
+                        ><abbr title="app/Models/LoanStatus.php"
+                          >LoanStatus.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">75</span>
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Check if loan requests with this status can be edited.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >canBeEdited</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >bool</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      >bool</span
+                    >
+                  </section>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4 class="phpdocumentor-element__name" id="method_getId">
+                    getId()
+                    <a
+                      href="classes/App-Models-LoanStatus.html#method_getId"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/LoanStatus.php"
+                      ><a href="files/app-models-loanstatus.html"
+                        ><abbr title="app/Models/LoanStatus.php"
+                          >LoanStatus.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">32</span>
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Public getter for id property.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name">getId</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >int</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      >int</span
                     >
                   </section>
                 </article>
@@ -981,7 +1101,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">51</span>
+                    <span class="phpdocumentor-element-found-in__line">59</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1030,11 +1150,11 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">59</span>
+                    <span class="phpdocumentor-element-found-in__line">67</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get loan requests with this status
+                    Get the loan requests with this status.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1066,144 +1186,6 @@
                     >
                   </section>
                 </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_scopeActive"
-                  >
-                    scopeActive()
-                    <a
-                      href="classes/App-Models-LoanStatus.html#method_scopeActive"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/LoanStatus.php"
-                      ><a href="files/app-models-loanstatus.html"
-                        ><abbr title="app/Models/LoanStatus.php"
-                          >LoanStatus.php</abbr
-                        ></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line">67</span>
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Scope for active statuses only
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name"
-                      >scopeActive</span
-                    ><span>(</span
-                    ><span class="phpdocumentor-signature__argument"
-                      ><span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed&nbsp;</span
-                      ><span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      ></span
-                    ><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >mixed</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <h5 class="phpdocumentor-argument-list__heading">
-                    Parameters
-                  </h5>
-                  <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                      <span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      >
-                      :
-                      <span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed</span
-                      >
-                    </dt>
-                    <dd class="phpdocumentor-argument-list__definition"></dd>
-                  </dl>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_scopeOrdered"
-                  >
-                    scopeOrdered()
-                    <a
-                      href="classes/App-Models-LoanStatus.html#method_scopeOrdered"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/LoanStatus.php"
-                      ><a href="files/app-models-loanstatus.html"
-                        ><abbr title="app/Models/LoanStatus.php"
-                          >LoanStatus.php</abbr
-                        ></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line">75</span>
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Scope to order by sort_order
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name"
-                      >scopeOrdered</span
-                    ><span>(</span
-                    ><span class="phpdocumentor-signature__argument"
-                      ><span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed&nbsp;</span
-                      ><span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      ></span
-                    ><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >mixed</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <h5 class="phpdocumentor-argument-list__heading">
-                    Parameters
-                  </h5>
-                  <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                      <span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      >
-                      :
-                      <span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed</span
-                      >
-                    </dt>
-                    <dd class="phpdocumentor-argument-list__definition"></dd>
-                  </dl>
-                </article>
                 <article class="phpdocumentor-element -method -protected">
                   <h4 class="phpdocumentor-element__name" id="method_casts">
                     casts()
@@ -1224,7 +1206,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">43</span>
+                    <span class="phpdocumentor-element-found-in__line">51</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">{@inheritDoc}</p>
@@ -1479,8 +1461,19 @@
                   <ul class="phpdocumentor-list -clean">
                     <li class="">
                       <a
-                        href="classes/App-Models-LoanStatus.html#method_getByCode"
-                        >getByCode()</a
+                        href="classes/App-Models-LoanStatus.html#method_canBeCancelled"
+                        >canBeCancelled()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-LoanStatus.html#method_canBeEdited"
+                        >canBeEdited()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a href="classes/App-Models-LoanStatus.html#method_getId"
+                        >getId()</a
                       >
                     </li>
                     <li class="">
@@ -1493,18 +1486,6 @@
                       <a
                         href="classes/App-Models-LoanStatus.html#method_loanRequests"
                         >loanRequests()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-LoanStatus.html#method_scopeActive"
-                        >scopeActive()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-LoanStatus.html#method_scopeOrdered"
-                        >scopeOrdered()</a
                       >
                     </li>
                     <li class="">

@@ -120,19 +120,55 @@
                 <a href="namespaces/app-console.html" class="">Console</a>
               </li>
               <li>
+                <a href="namespaces/app-enums.html" class="">Enums</a>
+              </li>
+              <li>
+                <a href="namespaces/app-exports.html" class="">Exports</a>
+              </li>
+              <li>
+                <a href="namespaces/app-filament.html" class="">Filament</a>
+              </li>
+              <li>
                 <a href="namespaces/app-http.html" class="">Http</a>
               </li>
               <li>
                 <a href="namespaces/app-livewire.html" class="">Livewire</a>
               </li>
               <li>
+                <a href="namespaces/app-mail.html" class="">Mail</a>
+              </li>
+              <li>
                 <a href="namespaces/app-models.html" class="">Models</a>
+              </li>
+              <li>
+                <a href="namespaces/app-notifications.html" class=""
+                  >Notifications</a
+                >
+              </li>
+              <li>
+                <a href="namespaces/app-policies.html" class="">Policies</a>
               </li>
               <li>
                 <a href="namespaces/app-providers.html" class="">Providers</a>
               </li>
               <li>
                 <a href="namespaces/app-services.html" class="">Services</a>
+              </li>
+              <li>
+                <a href="namespaces/app-view.html" class="">View</a>
+              </li>
+            </ul>
+
+            <h4 class="phpdocumentor-sidebar__root-namespace">
+              <a href="namespaces/imanghafoori.html" class="">Imanghafoori</a>
+            </h4>
+            <ul class="phpdocumentor-list">
+              <li>
+                <a
+                  href="namespaces/imanghafoori-laravelmicroscope.html"
+                  class=""
+                  >LaravelMicroscope</a
+                >
               </li>
             </ul>
           </section>
@@ -215,7 +251,7 @@
                   ></abbr
                 >
                 :
-                <span class="phpdocumentor-element-found-in__line">35</span>
+                <span class="phpdocumentor-element-found-in__line">37</span>
               </aside>
 
               <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -310,7 +346,14 @@
                     href="classes/App-Models-EquipmentItem.html#property_condition"
                     >$condition</a
                   >
-                  <span> &nbsp;: string </span>
+                  <span>
+                    &nbsp;:
+                    <a href="classes/App-Enums-EquipmentCondition.html"
+                      ><abbr title="\App\Enums\EquipmentCondition"
+                        >EquipmentCondition</abbr
+                      ></a
+                    >
+                  </span>
                 </dt>
 
                 <dt
@@ -445,7 +488,14 @@
                     href="classes/App-Models-EquipmentItem.html#property_status"
                     >$status</a
                   >
-                  <span> &nbsp;: string </span>
+                  <span>
+                    &nbsp;:
+                    <a href="classes/App-Enums-EquipmentStatus.html"
+                      ><abbr title="\App\Enums\EquipmentStatus"
+                        >EquipmentStatus</abbr
+                      ></a
+                    >
+                  </span>
                 </dt>
 
                 <dt
@@ -499,7 +549,7 @@
                     >
                   </span>
                 </dt>
-                <dd>Get the category this equipment belongs to</dd>
+                <dd>Get the category this equipment belongs to.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -511,32 +561,24 @@
                   >
                   <span>
                     &nbsp;:
-                    <a href="classes/App-Models-LoanRequest.html"
-                      ><abbr title="\App\Models\LoanRequest"
-                        >LoanRequest</abbr
-                      ></a
-                    >|null
+                    <abbr title="\Illuminate\Database\Eloquent\Relations\HasOne"
+                      >HasOne</abbr
+                    >
                   </span>
                 </dt>
-                <dd>Get the current active loan for this equipment</dd>
+                <dd>Get the current active loan for this equipment.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
                 >
                   <a
                     class=""
-                    href="classes/App-Models-EquipmentItem.html#method_helpdeskTickets"
-                    >helpdeskTickets()</a
+                    href="classes/App-Models-EquipmentItem.html#method_getWarrantyStatusAttribute"
+                    >getWarrantyStatusAttribute()</a
                   >
-                  <span>
-                    &nbsp;:
-                    <abbr
-                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                      >HasMany</abbr
-                    >
-                  </span>
+                  <span> &nbsp;: string </span>
                 </dt>
-                <dd>Get helpdesk tickets related to this equipment</dd>
+                <dd>Get the warranty status.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -548,37 +590,7 @@
                   >
                   <span> &nbsp;: bool </span>
                 </dt>
-                <dd>Check if equipment is currently available for loan</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-EquipmentItem.html#method_isOnLoan"
-                    >isOnLoan()</a
-                  >
-                  <span> &nbsp;: bool </span>
-                </dt>
-                <dd>Check if equipment is currently on loan</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-EquipmentItem.html#method_loanItems"
-                    >loanItems()</a
-                  >
-                  <span>
-                    &nbsp;:
-                    <abbr
-                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                      >HasMany</abbr
-                    >
-                  </span>
-                </dt>
-                <dd>Get loan items for this equipment</dd>
+                <dd>Check if equipment is available for loan.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -591,48 +603,30 @@
                   <span>
                     &nbsp;:
                     <abbr
-                      title="\Illuminate\Database\Eloquent\Relations\BelongsToMany"
-                      >BelongsToMany</abbr
+                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                      >HasMany</abbr
                     >
                   </span>
                 </dt>
-                <dd>Get loan requests that include this equipment</dd>
+                <dd>Get the loan requests for this equipment.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
                 >
                   <a
                     class=""
-                    href="classes/App-Models-EquipmentItem.html#method_scopeActive"
-                    >scopeActive()</a
+                    href="classes/App-Models-EquipmentItem.html#method_tickets"
+                    >tickets()</a
                   >
-                  <span> &nbsp;: mixed </span>
+                  <span>
+                    &nbsp;:
+                    <abbr
+                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                      >HasMany</abbr
+                    >
+                  </span>
                 </dt>
-                <dd>Scope for active equipment only</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-EquipmentItem.html#method_scopeAvailable"
-                    >scopeAvailable()</a
-                  >
-                  <span> &nbsp;: mixed </span>
-                </dt>
-                <dd>Scope for available equipment</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-EquipmentItem.html#method_scopeOnLoan"
-                    >scopeOnLoan()</a
-                  >
-                  <span> &nbsp;: mixed </span>
-                </dt>
-                <dd>Scope for equipment on loan</dd>
+                <dd>Get the helpdesk tickets related to this equipment.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -protected"
@@ -848,7 +842,13 @@
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__type">string</span>
+                    <span class="phpdocumentor-signature__type"
+                      ><a href="classes/App-Enums-EquipmentCondition.html"
+                        ><abbr title="\App\Enums\EquipmentCondition"
+                          >EquipmentCondition</abbr
+                        ></a
+                      ></span
+                    >
                     <span class="phpdocumentor-signature__name"
                       >$condition</span
                     >
@@ -1296,7 +1296,13 @@
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__type">string</span>
+                    <span class="phpdocumentor-signature__type"
+                      ><a href="classes/App-Enums-EquipmentStatus.html"
+                        ><abbr title="\App\Enums\EquipmentStatus"
+                          >EquipmentStatus</abbr
+                        ></a
+                      ></span
+                    >
                     <span class="phpdocumentor-signature__name">$status</span>
                   </code>
                 </article>
@@ -1366,7 +1372,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">39</span>
+                    <span class="phpdocumentor-element-found-in__line">41</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1419,11 +1425,11 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">61</span>
+                    <span class="phpdocumentor-element-found-in__line">63</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get the category this equipment belongs to
+                    Get the category this equipment belongs to.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1477,13 +1483,11 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >135</span
-                    >
+                    <span class="phpdocumentor-element-found-in__line">79</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get the current active loan for this equipment
+                    Get the current active loan for this equipment.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1494,11 +1498,10 @@
                       >currentLoan</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      ><a href="classes/App-Models-LoanRequest.html"
-                        ><abbr title="\App\Models\LoanRequest"
-                          >LoanRequest</abbr
-                        ></a
-                      >|null</span
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\HasOne"
+                        >HasOne</abbr
+                      ></span
                     ></code
                   >
 
@@ -1509,22 +1512,21 @@
                       Return values
                     </h5>
                     <span class="phpdocumentor-signature__response_type"
-                      ><a href="classes/App-Models-LoanRequest.html"
-                        ><abbr title="\App\Models\LoanRequest"
-                          >LoanRequest</abbr
-                        ></a
-                      >|null</span
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\HasOne"
+                        >HasOne</abbr
+                      ></span
                     >
                   </section>
                 </article>
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
-                    id="method_helpdeskTickets"
+                    id="method_getWarrantyStatusAttribute"
                   >
-                    helpdeskTickets()
+                    getWarrantyStatusAttribute()
                     <a
-                      href="classes/App-Models-EquipmentItem.html#method_helpdeskTickets"
+                      href="classes/App-Models-EquipmentItem.html#method_getWarrantyStatusAttribute"
                       class="headerlink"
                       ><i class="fas fa-link"></i
                     ></a>
@@ -1540,25 +1542,22 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">87</span>
+                    <span class="phpdocumentor-element-found-in__line"
+                      >107</span
+                    >
                   </aside>
 
-                  <p class="phpdocumentor-summary">
-                    Get helpdesk tickets related to this equipment
-                  </p>
+                  <p class="phpdocumentor-summary">Get the warranty status.</p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
                     <span class="phpdocumentor-signature__name"
-                      >helpdeskTickets</span
+                      >getWarrantyStatusAttribute</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
+                      >string</span
                     ></code
                   >
 
@@ -1569,10 +1568,7 @@
                       Return values
                     </h5>
                     <span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
+                      >string</span
                     >
                   </section>
                 </article>
@@ -1599,13 +1595,11 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >119</span
-                    >
+                    <span class="phpdocumentor-element-found-in__line">97</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Check if equipment is currently available for loan
+                    Check if equipment is available for loan.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1632,112 +1626,6 @@
                   </section>
                 </article>
                 <article class="phpdocumentor-element -method -public">
-                  <h4 class="phpdocumentor-element__name" id="method_isOnLoan">
-                    isOnLoan()
-                    <a
-                      href="classes/App-Models-EquipmentItem.html#method_isOnLoan"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/EquipmentItem.php"
-                      ><a href="files/app-models-equipmentitem.html"
-                        ><abbr title="app/Models/EquipmentItem.php"
-                          >EquipmentItem.php</abbr
-                        ></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >127</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Check if equipment is currently on loan
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name">isOnLoan</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    >
-                  </section>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4 class="phpdocumentor-element__name" id="method_loanItems">
-                    loanItems()
-                    <a
-                      href="classes/App-Models-EquipmentItem.html#method_loanItems"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/EquipmentItem.php"
-                      ><a href="files/app-models-equipmentitem.html"
-                        ><abbr title="app/Models/EquipmentItem.php"
-                          >EquipmentItem.php</abbr
-                        ></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line">79</span>
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Get loan items for this equipment
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name">loanItems</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
-                    >
-                  </section>
-                </article>
-                <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
                     id="method_loanRequests"
@@ -1760,11 +1648,11 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">69</span>
+                    <span class="phpdocumentor-element-found-in__line">71</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get loan requests that include this equipment
+                    Get the loan requests for this equipment.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1776,8 +1664,8 @@
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
                       ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\BelongsToMany"
-                        >BelongsToMany</abbr
+                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                        >HasMany</abbr
                       ></span
                     ></code
                   >
@@ -1790,20 +1678,17 @@
                     </h5>
                     <span class="phpdocumentor-signature__response_type"
                       ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\BelongsToMany"
-                        >BelongsToMany</abbr
+                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                        >HasMany</abbr
                       ></span
                     >
                   </section>
                 </article>
                 <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_scopeActive"
-                  >
-                    scopeActive()
+                  <h4 class="phpdocumentor-element__name" id="method_tickets">
+                    tickets()
                     <a
-                      href="classes/App-Models-EquipmentItem.html#method_scopeActive"
+                      href="classes/App-Models-EquipmentItem.html#method_tickets"
                       class="headerlink"
                       ><i class="fas fa-link"></i
                     ></a>
@@ -1819,193 +1704,40 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">95</span>
+                    <span class="phpdocumentor-element-found-in__line">89</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Scope for active equipment only
+                    Get the helpdesk tickets related to this equipment.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__name"
-                      >scopeActive</span
-                    ><span>(</span
-                    ><span class="phpdocumentor-signature__argument"
-                      ><span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed&nbsp;</span
-                      ><span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      ></span
-                    ><span>)</span><span> : </span
+                    <span class="phpdocumentor-signature__name">tickets</span
+                    ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      >mixed</span
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                        >HasMany</abbr
+                      ></span
                     ></code
                   >
 
                   <div class="phpdocumentor-label-line"></div>
 
-                  <h5 class="phpdocumentor-argument-list__heading">
-                    Parameters
-                  </h5>
-                  <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                      <span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      >
-                      :
-                      <span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed</span
-                      >
-                    </dt>
-                    <dd class="phpdocumentor-argument-list__definition"></dd>
-                  </dl>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_scopeAvailable"
-                  >
-                    scopeAvailable()
-                    <a
-                      href="classes/App-Models-EquipmentItem.html#method_scopeAvailable"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/EquipmentItem.php"
-                      ><a href="files/app-models-equipmentitem.html"
-                        ><abbr title="app/Models/EquipmentItem.php"
-                          >EquipmentItem.php</abbr
-                        ></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >103</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Scope for available equipment
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name"
-                      >scopeAvailable</span
-                    ><span>(</span
-                    ><span class="phpdocumentor-signature__argument"
-                      ><span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed&nbsp;</span
-                      ><span class="phpdocumentor-signature__argument__name"
-                        >$query</span
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                        >HasMany</abbr
                       ></span
-                    ><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >mixed</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <h5 class="phpdocumentor-argument-list__heading">
-                    Parameters
-                  </h5>
-                  <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                      <span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      >
-                      :
-                      <span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed</span
-                      >
-                    </dt>
-                    <dd class="phpdocumentor-argument-list__definition"></dd>
-                  </dl>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_scopeOnLoan"
-                  >
-                    scopeOnLoan()
-                    <a
-                      href="classes/App-Models-EquipmentItem.html#method_scopeOnLoan"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/EquipmentItem.php"
-                      ><a href="files/app-models-equipmentitem.html"
-                        ><abbr title="app/Models/EquipmentItem.php"
-                          >EquipmentItem.php</abbr
-                        ></a
-                      ></abbr
                     >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >111</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Scope for equipment on loan
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name"
-                      >scopeOnLoan</span
-                    ><span>(</span
-                    ><span class="phpdocumentor-signature__argument"
-                      ><span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed&nbsp;</span
-                      ><span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      ></span
-                    ><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >mixed</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <h5 class="phpdocumentor-argument-list__heading">
-                    Parameters
-                  </h5>
-                  <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                      <span class="phpdocumentor-signature__argument__name"
-                        >$query</span
-                      >
-                      :
-                      <span
-                        class="phpdocumentor-signature__argument__return-type"
-                        >mixed</span
-                      >
-                    </dt>
-                    <dd class="phpdocumentor-argument-list__definition"></dd>
-                  </dl>
+                  </section>
                 </article>
                 <article class="phpdocumentor-element -method -protected">
                   <h4 class="phpdocumentor-element__name" id="method_casts">
@@ -2028,7 +1760,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >149</span
+                      >120</span
                     >
                   </aside>
 
@@ -2346,8 +2078,8 @@
                     </li>
                     <li class="">
                       <a
-                        href="classes/App-Models-EquipmentItem.html#method_helpdeskTickets"
-                        >helpdeskTickets()</a
+                        href="classes/App-Models-EquipmentItem.html#method_getWarrantyStatusAttribute"
+                        >getWarrantyStatusAttribute()</a
                       >
                     </li>
                     <li class="">
@@ -2358,38 +2090,14 @@
                     </li>
                     <li class="">
                       <a
-                        href="classes/App-Models-EquipmentItem.html#method_isOnLoan"
-                        >isOnLoan()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-EquipmentItem.html#method_loanItems"
-                        >loanItems()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
                         href="classes/App-Models-EquipmentItem.html#method_loanRequests"
                         >loanRequests()</a
                       >
                     </li>
                     <li class="">
                       <a
-                        href="classes/App-Models-EquipmentItem.html#method_scopeActive"
-                        >scopeActive()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-EquipmentItem.html#method_scopeAvailable"
-                        >scopeAvailable()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-EquipmentItem.html#method_scopeOnLoan"
-                        >scopeOnLoan()</a
+                        href="classes/App-Models-EquipmentItem.html#method_tickets"
+                        >tickets()</a
                       >
                     </li>
                     <li class="">

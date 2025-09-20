@@ -120,19 +120,55 @@
                 <a href="namespaces/app-console.html" class="">Console</a>
               </li>
               <li>
+                <a href="namespaces/app-enums.html" class="">Enums</a>
+              </li>
+              <li>
+                <a href="namespaces/app-exports.html" class="">Exports</a>
+              </li>
+              <li>
+                <a href="namespaces/app-filament.html" class="">Filament</a>
+              </li>
+              <li>
                 <a href="namespaces/app-http.html" class="">Http</a>
               </li>
               <li>
                 <a href="namespaces/app-livewire.html" class="">Livewire</a>
               </li>
               <li>
+                <a href="namespaces/app-mail.html" class="">Mail</a>
+              </li>
+              <li>
                 <a href="namespaces/app-models.html" class="">Models</a>
+              </li>
+              <li>
+                <a href="namespaces/app-notifications.html" class=""
+                  >Notifications</a
+                >
+              </li>
+              <li>
+                <a href="namespaces/app-policies.html" class="">Policies</a>
               </li>
               <li>
                 <a href="namespaces/app-providers.html" class="">Providers</a>
               </li>
               <li>
                 <a href="namespaces/app-services.html" class="">Services</a>
+              </li>
+              <li>
+                <a href="namespaces/app-view.html" class="">View</a>
+              </li>
+            </ul>
+
+            <h4 class="phpdocumentor-sidebar__root-namespace">
+              <a href="namespaces/imanghafoori.html" class="">Imanghafoori</a>
+            </h4>
+            <ul class="phpdocumentor-list">
+              <li>
+                <a
+                  href="namespaces/imanghafoori-laravelmicroscope.html"
+                  class=""
+                  >LaravelMicroscope</a
+                >
               </li>
             </ul>
           </section>
@@ -215,7 +251,7 @@
                   ></abbr
                 >
                 :
-                <span class="phpdocumentor-element-found-in__line">48</span>
+                <span class="phpdocumentor-element-found-in__line">57</span>
               </aside>
 
               <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -259,7 +295,7 @@
                     href="classes/App-Models-HelpdeskTicket.html#property_activity_log"
                     >$activity_log</a
                   >
-                  <span> &nbsp;: mixed </span>
+                  <span> &nbsp;: array&lt;string|int, mixed&gt;|null </span>
                 </dt>
 
                 <dt
@@ -378,6 +414,27 @@
                 >
                   <a
                     class=""
+                    href="classes/App-Models-HelpdeskTicket.html#property_comments"
+                    >$comments</a
+                  >
+                  <span>
+                    &nbsp;:
+                    <abbr title="\Illuminate\Database\Eloquent\Collection"
+                      >Collection</abbr
+                    >&lt;int,
+                    <a href="classes/App-Models-TicketComment.html"
+                      ><abbr title="\App\Models\TicketComment"
+                        >TicketComment</abbr
+                      ></a
+                    >&gt;
+                  </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
                     href="classes/App-Models-HelpdeskTicket.html#property_contact_phone"
                     >$contact_phone</a
                   >
@@ -468,6 +525,17 @@
                 >
                   <a
                     class=""
+                    href="classes/App-Models-HelpdeskTicket.html#property_file_attachments"
+                    >$file_attachments</a
+                  >
+                  <span> &nbsp;: array&lt;string|int, mixed&gt;|null </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
                     href="classes/App-Models-HelpdeskTicket.html#property_id"
                     >$id</a
                   >
@@ -493,6 +561,24 @@
                     href="classes/App-Models-HelpdeskTicket.html#property_priority"
                     >$priority</a
                   >
+                  <span>
+                    &nbsp;:
+                    <a href="classes/App-Enums-TicketPriority.html"
+                      ><abbr title="\App\Enums\TicketPriority"
+                        >TicketPriority</abbr
+                      ></a
+                    >
+                  </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-HelpdeskTicket.html#property_reference_code"
+                    >$reference_code</a
+                  >
                   <span> &nbsp;: string </span>
                 </dt>
 
@@ -516,6 +602,17 @@
                     >$resolution_notes</a
                   >
                   <span> &nbsp;: string|null </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-HelpdeskTicket.html#property_resolution_time"
+                    >$resolution_time</a
+                  >
+                  <span> &nbsp;: float|null </span>
                 </dt>
 
                 <dt
@@ -557,6 +654,17 @@
                       ><abbr title="\App\Models\User">User</abbr></a
                     >|null
                   </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-HelpdeskTicket.html#property_response_time"
+                    >$response_time</a
+                  >
+                  <span> &nbsp;: float|null </span>
                 </dt>
 
                 <dt
@@ -643,7 +751,14 @@
                     href="classes/App-Models-HelpdeskTicket.html#property_urgency"
                     >$urgency</a
                   >
-                  <span> &nbsp;: string </span>
+                  <span>
+                    &nbsp;:
+                    <a href="classes/App-Enums-TicketUrgency.html"
+                      ><abbr title="\App\Enums\TicketUrgency"
+                        >TicketUrgency</abbr
+                      ></a
+                    >
+                  </span>
                 </dt>
 
                 <dt
@@ -699,6 +814,24 @@
                 >
                   <a
                     class=""
+                    href="classes/App-Models-HelpdeskTicket.html#method_assignedTo"
+                    >assignedTo()</a
+                  >
+                  <span>
+                    &nbsp;:
+                    <abbr
+                      title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                      >BelongsTo</abbr
+                    >
+                  </span>
+                </dt>
+                <dd>Get the assigned staff member.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
                     href="classes/App-Models-HelpdeskTicket.html#method_assignedToUser"
                     >assignedToUser()</a
                   >
@@ -710,7 +843,9 @@
                     >
                   </span>
                 </dt>
-                <dd>Get the user assigned to this ticket</dd>
+                <dd>
+                  Alias for assigned user relation used across the codebase.
+                </dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -728,7 +863,25 @@
                     >
                   </span>
                 </dt>
-                <dd>Get the category of this ticket</dd>
+                <dd>Get the ticket category.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-HelpdeskTicket.html#method_comments"
+                    >comments()</a
+                  >
+                  <span>
+                    &nbsp;:
+                    <abbr
+                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                      >HasMany</abbr
+                    >
+                  </span>
+                </dt>
+                <dd>Ticket comments relation.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -746,7 +899,19 @@
                     >
                   </span>
                 </dt>
-                <dd>Get the related equipment item</dd>
+                <dd>Get the equipment item related to this ticket.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-HelpdeskTicket.html#method_generateTicketNumber"
+                    >generateTicketNumber()</a
+                  >
+                  <span> &nbsp;: string </span>
+                </dt>
+                <dd>Generate ticket number in format: HD-YYYY-MMDD-XXX</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -782,12 +947,24 @@
                 >
                   <a
                     class=""
-                    href="classes/App-Models-HelpdeskTicket.html#method_isAssigned"
-                    >isAssigned()</a
+                    href="classes/App-Models-HelpdeskTicket.html#method_getResolutionTimeAttribute"
+                    >getResolutionTimeAttribute()</a
                   >
-                  <span> &nbsp;: bool </span>
+                  <span> &nbsp;: float|null </span>
                 </dt>
-                <dd>Check if ticket is assigned</dd>
+                <dd>Get the resolution time in hours.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-HelpdeskTicket.html#method_getResponseTimeAttribute"
+                    >getResponseTimeAttribute()</a
+                  >
+                  <span> &nbsp;: float|null </span>
+                </dt>
+                <dd>Get the response time in hours.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -799,19 +976,7 @@
                   >
                   <span> &nbsp;: bool </span>
                 </dt>
-                <dd>Check if ticket is closed</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-HelpdeskTicket.html#method_isNew"
-                    >isNew()</a
-                  >
-                  <span> &nbsp;: bool </span>
-                </dt>
-                <dd>Check if ticket is new</dd>
+                <dd>Check if ticket is closed.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -835,7 +1000,25 @@
                   >
                   <span> &nbsp;: bool </span>
                 </dt>
-                <dd>Check if ticket is resolved</dd>
+                <dd>Check if ticket is resolved.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-HelpdeskTicket.html#method_resolvedBy"
+                    >resolvedBy()</a
+                  >
+                  <span>
+                    &nbsp;:
+                    <abbr
+                      title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                      >BelongsTo</abbr
+                    >
+                  </span>
+                </dt>
+                <dd>Get the staff who resolved the ticket.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -853,7 +1036,7 @@
                     >
                   </span>
                 </dt>
-                <dd>Get the user who resolved this ticket</dd>
+                <dd>Alias for resolver relation used across the codebase.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -871,7 +1054,25 @@
                     >
                   </span>
                 </dt>
-                <dd>Get the current status of this ticket</dd>
+                <dd>Get the ticket status (alias: status).</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-HelpdeskTicket.html#method_ticketStatus"
+                    >ticketStatus()</a
+                  >
+                  <span>
+                    &nbsp;:
+                    <abbr
+                      title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                      >BelongsTo</abbr
+                    >
+                  </span>
+                </dt>
+                <dd>Backwards compatible relation name used in some places.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -889,7 +1090,7 @@
                     >
                   </span>
                 </dt>
-                <dd>Get the user who created this ticket</dd>
+                <dd>Get the user who created the ticket.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -protected"
@@ -913,18 +1114,6 @@
                   >
                   <span> &nbsp;: array&lt;string|int, mixed&gt; </span>
                 </dt>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -protected"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-HelpdeskTicket.html#method_generateTicketNumber"
-                    >generateTicketNumber()</a
-                  >
-                  <span> &nbsp;: string </span>
-                </dt>
-                <dd>Generate ticket number in format: HD-YYYY-MMDD-XXX</dd>
               </dl>
 
               <section class="phpdocumentor-properties">
@@ -936,9 +1125,7 @@
                     ><i class="fas fa-link"></i
                   ></a>
                 </h3>
-                <article
-                  class="phpdocumentor-element -property -public -read-only"
-                >
+                <article class="phpdocumentor-element -property -public">
                   <h4
                     class="phpdocumentor-element__name"
                     id="property_activity_log"
@@ -950,11 +1137,7 @@
                       ><i class="fas fa-link"></i
                     ></a>
 
-                    <span class="phpdocumentor-element__modifiers">
-                      <small class="phpdocumentor-element__modifier"
-                        >read-only</small
-                      >
-                    </span>
+                    <span class="phpdocumentor-element__modifiers"> </span>
                   </h4>
                   <aside class="phpdocumentor-element-found-in">
                     <abbr
@@ -974,7 +1157,9 @@
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__type">mixed</span>
+                    <span class="phpdocumentor-signature__type"
+                      >array&lt;string|int, mixed&gt;|null</span
+                    >
                     <span class="phpdocumentor-signature__name"
                       >$activity_log</span
                     >
@@ -1322,6 +1507,57 @@
                     >
                   </code>
                 </article>
+                <article
+                  class="phpdocumentor-element -property -public -read-only"
+                >
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_comments"
+                  >
+                    $comments
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#property_comments"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers">
+                      <small class="phpdocumentor-element__modifier"
+                        >read-only</small
+                      >
+                    </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      ><abbr title="\Illuminate\Database\Eloquent\Collection"
+                        >Collection</abbr
+                      >&lt;int,
+                      <a href="classes/App-Models-TicketComment.html"
+                        ><abbr title="\App\Models\TicketComment"
+                          >TicketComment</abbr
+                        ></a
+                      >&gt;</span
+                    >
+                    <span class="phpdocumentor-signature__name">$comments</span>
+                  </code>
+                </article>
                 <article class="phpdocumentor-element -property -public">
                   <h4
                     class="phpdocumentor-element__name"
@@ -1604,6 +1840,46 @@
                   </code>
                 </article>
                 <article class="phpdocumentor-element -property -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_file_attachments"
+                  >
+                    $file_attachments
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#property_file_attachments"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers"> </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      >array&lt;string|int, mixed&gt;|null</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >$file_attachments</span
+                    >
+                  </code>
+                </article>
+                <article class="phpdocumentor-element -property -public">
                   <h4 class="phpdocumentor-element__name" id="property_id">
                     $id
                     <a
@@ -1706,8 +1982,58 @@
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__type">string</span>
+                    <span class="phpdocumentor-signature__type"
+                      ><a href="classes/App-Enums-TicketPriority.html"
+                        ><abbr title="\App\Enums\TicketPriority"
+                          >TicketPriority</abbr
+                        ></a
+                      ></span
+                    >
                     <span class="phpdocumentor-signature__name">$priority</span>
+                  </code>
+                </article>
+                <article
+                  class="phpdocumentor-element -property -public -read-only"
+                >
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_reference_code"
+                  >
+                    $reference_code
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#property_reference_code"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers">
+                      <small class="phpdocumentor-element__modifier"
+                        >read-only</small
+                      >
+                    </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type">string</span>
+                    <span class="phpdocumentor-signature__name"
+                      >$reference_code</span
+                    >
                   </code>
                 </article>
                 <article class="phpdocumentor-element -property -public">
@@ -1787,6 +2113,52 @@
                     >
                     <span class="phpdocumentor-signature__name"
                       >$resolution_notes</span
+                    >
+                  </code>
+                </article>
+                <article
+                  class="phpdocumentor-element -property -public -read-only"
+                >
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_resolution_time"
+                  >
+                    $resolution_time
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#property_resolution_time"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers">
+                      <small class="phpdocumentor-element__modifier"
+                        >read-only</small
+                      >
+                    </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      >float|null</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >$resolution_time</span
                     >
                   </code>
                 </article>
@@ -1914,6 +2286,52 @@
                     >
                     <span class="phpdocumentor-signature__name"
                       >$resolvedByUser</span
+                    >
+                  </code>
+                </article>
+                <article
+                  class="phpdocumentor-element -property -public -read-only"
+                >
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_response_time"
+                  >
+                    $response_time
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#property_response_time"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers">
+                      <small class="phpdocumentor-element__modifier"
+                        >read-only</small
+                      >
+                    </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      >float|null</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >$response_time</span
                     >
                   </code>
                 </article>
@@ -2179,7 +2597,13 @@
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__type">string</span>
+                    <span class="phpdocumentor-signature__type"
+                      ><a href="classes/App-Enums-TicketUrgency.html"
+                        ><abbr title="\App\Enums\TicketUrgency"
+                          >TicketUrgency</abbr
+                        ></a
+                      ></span
+                    >
                     <span class="phpdocumentor-signature__name">$urgency</span>
                   </code>
                 </article>
@@ -2284,7 +2708,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">52</span>
+                    <span class="phpdocumentor-element-found-in__line">61</span>
                   </aside>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -2298,6 +2722,7 @@
                       >[&#039;ticket_number&#039;, &#039;user_id&#039;,
                       &#039;category_id&#039;, &#039;status_id&#039;,
                       &#039;title&#039;, &#039;description&#039;,
+                      &#039;damage_type&#039;, &#039;status&#039;,
                       &#039;priority&#039;, &#039;urgency&#039;,
                       &#039;assigned_to&#039;, &#039;assigned_at&#039;,
                       &#039;equipment_item_id&#039;, &#039;location&#039;,
@@ -2305,7 +2730,9 @@
                       &#039;resolved_at&#039;, &#039;closed_at&#039;,
                       &#039;resolution&#039;, &#039;resolution_notes&#039;,
                       &#039;resolved_by&#039;, &#039;satisfaction_rating&#039;,
-                      &#039;feedback&#039;, &#039;attachments&#039;]</span
+                      &#039;feedback&#039;, &#039;attachments&#039;,
+                      &#039;file_attachments&#039;,
+                      &#039;activity_log&#039;]</span
                     ></code
                   >
                 </article>
@@ -2320,6 +2747,66 @@
                     ><i class="fas fa-link"></i
                   ></a>
                 </h3>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_assignedTo"
+                  >
+                    assignedTo()
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#method_assignedTo"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >125</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Get the assigned staff member.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name">assignedTo</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                        >BelongsTo</abbr
+                      ></span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                        >BelongsTo</abbr
+                      ></span
+                    >
+                  </section>
+                </article>
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
@@ -2344,12 +2831,12 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >104</span
+                      >133</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get the user assigned to this ticket
+                    Alias for assigned user relation used across the codebase.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -2401,12 +2888,12 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">88</span>
+                    <span class="phpdocumentor-element-found-in__line"
+                      >101</span
+                    >
                   </aside>
 
-                  <p class="phpdocumentor-summary">
-                    Get the category of this ticket
-                  </p>
+                  <p class="phpdocumentor-summary">Get the ticket category.</p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
                     <span class="phpdocumentor-signature__visibility"
@@ -2437,6 +2924,61 @@
                   </section>
                 </article>
                 <article class="phpdocumentor-element -method -public">
+                  <h4 class="phpdocumentor-element__name" id="method_comments">
+                    comments()
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#method_comments"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >165</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">Ticket comments relation.</p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name">comments</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                        >HasMany</abbr
+                      ></span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
+                        >HasMany</abbr
+                      ></span
+                    >
+                  </section>
+                </article>
+                <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
                     id="method_equipmentItem"
@@ -2460,12 +3002,12 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >120</span
+                      >157</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get the related equipment item
+                    Get the equipment item related to this ticket.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -2497,6 +3039,62 @@
                     >
                   </section>
                 </article>
+                <article class="phpdocumentor-element -method -public -static">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_generateTicketNumber"
+                  >
+                    generateTicketNumber()
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#method_generateTicketNumber"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >277</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Generate ticket number in format: HD-YYYY-MMDD-XXX
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__static">static</span>
+                    <span class="phpdocumentor-signature__name"
+                      >generateTicketNumber</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >string</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      >string</span
+                    >
+                  </section>
+                </article>
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
@@ -2521,7 +3119,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >215</span
+                      >268</span
                     >
                   </aside>
 
@@ -2567,7 +3165,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >203</span
+                      >256</span
                     >
                   </aside>
 
@@ -2605,11 +3203,11 @@
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
-                    id="method_isAssigned"
+                    id="method_getResolutionTimeAttribute"
                   >
-                    isAssigned()
+                    getResolutionTimeAttribute()
                     <a
-                      href="classes/App-Models-HelpdeskTicket.html#method_isAssigned"
+                      href="classes/App-Models-HelpdeskTicket.html#method_getResolutionTimeAttribute"
                       class="headerlink"
                       ><i class="fas fa-link"></i
                     ></a>
@@ -2626,22 +3224,23 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >148</span
+                      >209</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Check if ticket is assigned
+                    Get the resolution time in hours.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__name">isAssigned</span
+                    <span class="phpdocumentor-signature__name"
+                      >getResolutionTimeAttribute</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      >bool</span
+                      >float|null</span
                     ></code
                   >
 
@@ -2652,7 +3251,62 @@
                       Return values
                     </h5>
                     <span class="phpdocumentor-signature__response_type"
-                      >bool</span
+                      >float|null</span
+                    >
+                  </section>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_getResponseTimeAttribute"
+                  >
+                    getResponseTimeAttribute()
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#method_getResponseTimeAttribute"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >197</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Get the response time in hours.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >getResponseTimeAttribute</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >float|null</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      >float|null</span
                     >
                   </section>
                 </article>
@@ -2677,66 +3331,19 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >164</span
+                      >189</span
                     >
                   </aside>
 
-                  <p class="phpdocumentor-summary">Check if ticket is closed</p>
+                  <p class="phpdocumentor-summary">
+                    Check if ticket is closed.
+                  </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
                     <span class="phpdocumentor-signature__name">isClosed</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    >
-                  </section>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4 class="phpdocumentor-element__name" id="method_isNew">
-                    isNew()
-                    <a
-                      href="classes/App-Models-HelpdeskTicket.html#method_isNew"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/HelpdeskTicket.php"
-                      ><a href="files/app-models-helpdeskticket.html"
-                        ><abbr title="app/Models/HelpdeskTicket.php"
-                          >HelpdeskTicket.php</abbr
-                        ></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >140</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">Check if ticket is new</p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name">isNew</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
                       >bool</span
@@ -2775,7 +3382,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >128</span
+                      >173</span
                     >
                   </aside>
 
@@ -2829,12 +3436,12 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >156</span
+                      >181</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Check if ticket is resolved
+                    Check if ticket is resolved.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -2862,6 +3469,66 @@
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
+                    id="method_resolvedBy"
+                  >
+                    resolvedBy()
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#method_resolvedBy"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >141</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Get the staff who resolved the ticket.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name">resolvedBy</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                        >BelongsTo</abbr
+                      ></span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                        >BelongsTo</abbr
+                      ></span
+                    >
+                  </section>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
                     id="method_resolvedByUser"
                   >
                     resolvedByUser()
@@ -2883,12 +3550,12 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >112</span
+                      >149</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get the user who resolved this ticket
+                    Alias for resolver relation used across the codebase.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -2940,11 +3607,13 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">96</span>
+                    <span class="phpdocumentor-element-found-in__line"
+                      >109</span
+                    >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get the current status of this ticket
+                    Get the ticket status (alias: status).
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -2952,6 +3621,67 @@
                       >public</span
                     >
                     <span class="phpdocumentor-signature__name">status</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                        >BelongsTo</abbr
+                      ></span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+
+                  <section>
+                    <h5 class="phpdocumentor-return-value__heading">
+                      Return values
+                    </h5>
+                    <span class="phpdocumentor-signature__response_type"
+                      ><abbr
+                        title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
+                        >BelongsTo</abbr
+                      ></span
+                    >
+                  </section>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_ticketStatus"
+                  >
+                    ticketStatus()
+                    <a
+                      href="classes/App-Models-HelpdeskTicket.html#method_ticketStatus"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/HelpdeskTicket.php"
+                      ><a href="files/app-models-helpdeskticket.html"
+                        ><abbr title="app/Models/HelpdeskTicket.php"
+                          >HelpdeskTicket.php</abbr
+                        ></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >117</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Backwards compatible relation name used in some places.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >ticketStatus</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
                       ><abbr
@@ -2995,11 +3725,11 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">80</span>
+                    <span class="phpdocumentor-element-found-in__line">93</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get the user who created this ticket
+                    Get the user who created the ticket.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -3053,7 +3783,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >184</span
+                      >237</span
                     >
                   </aside>
 
@@ -3096,7 +3826,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >169</span
+                      >218</span
                     >
                   </aside>
 
@@ -3119,64 +3849,6 @@
                     </h5>
                     <span class="phpdocumentor-signature__response_type"
                       >array&lt;string|int, mixed&gt;</span
-                    >
-                  </section>
-                </article>
-                <article
-                  class="phpdocumentor-element -method -protected -static"
-                >
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_generateTicketNumber"
-                  >
-                    generateTicketNumber()
-                    <a
-                      href="classes/App-Models-HelpdeskTicket.html#method_generateTicketNumber"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/HelpdeskTicket.php"
-                      ><a href="files/app-models-helpdeskticket.html"
-                        ><abbr title="app/Models/HelpdeskTicket.php"
-                          >HelpdeskTicket.php</abbr
-                        ></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >224</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Generate ticket number in format: HD-YYYY-MMDD-XXX
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >protected</span
-                    >
-                    <span class="phpdocumentor-signature__static">static</span>
-                    <span class="phpdocumentor-signature__name"
-                      >generateTicketNumber</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >string</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      >string</span
                     >
                   </section>
                 </article>
@@ -3392,6 +4064,12 @@
                     </li>
                     <li class="">
                       <a
+                        href="classes/App-Models-HelpdeskTicket.html#property_comments"
+                        >$comments</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
                         href="classes/App-Models-HelpdeskTicket.html#property_contact_phone"
                         >$contact_phone</a
                       >
@@ -3434,6 +4112,12 @@
                     </li>
                     <li class="">
                       <a
+                        href="classes/App-Models-HelpdeskTicket.html#property_file_attachments"
+                        >$file_attachments</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
                         href="classes/App-Models-HelpdeskTicket.html#property_id"
                         >$id</a
                       >
@@ -3452,6 +4136,12 @@
                     </li>
                     <li class="">
                       <a
+                        href="classes/App-Models-HelpdeskTicket.html#property_reference_code"
+                        >$reference_code</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
                         href="classes/App-Models-HelpdeskTicket.html#property_resolution"
                         >$resolution</a
                       >
@@ -3460,6 +4150,12 @@
                       <a
                         href="classes/App-Models-HelpdeskTicket.html#property_resolution_notes"
                         >$resolution_notes</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-HelpdeskTicket.html#property_resolution_time"
+                        >$resolution_time</a
                       >
                     </li>
                     <li class="">
@@ -3478,6 +4174,12 @@
                       <a
                         href="classes/App-Models-HelpdeskTicket.html#property_resolvedByUser"
                         >$resolvedByUser</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-HelpdeskTicket.html#property_response_time"
+                        >$response_time</a
                       >
                     </li>
                     <li class="">
@@ -3550,6 +4252,12 @@
                   <ul class="phpdocumentor-list -clean">
                     <li class="">
                       <a
+                        href="classes/App-Models-HelpdeskTicket.html#method_assignedTo"
+                        >assignedTo()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
                         href="classes/App-Models-HelpdeskTicket.html#method_assignedToUser"
                         >assignedToUser()</a
                       >
@@ -3562,8 +4270,20 @@
                     </li>
                     <li class="">
                       <a
+                        href="classes/App-Models-HelpdeskTicket.html#method_comments"
+                        >comments()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
                         href="classes/App-Models-HelpdeskTicket.html#method_equipmentItem"
                         >equipmentItem()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-HelpdeskTicket.html#method_generateTicketNumber"
+                        >generateTicketNumber()</a
                       >
                     </li>
                     <li class="">
@@ -3580,20 +4300,20 @@
                     </li>
                     <li class="">
                       <a
-                        href="classes/App-Models-HelpdeskTicket.html#method_isAssigned"
-                        >isAssigned()</a
+                        href="classes/App-Models-HelpdeskTicket.html#method_getResolutionTimeAttribute"
+                        >getResolutionTimeAttribute()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-HelpdeskTicket.html#method_getResponseTimeAttribute"
+                        >getResponseTimeAttribute()</a
                       >
                     </li>
                     <li class="">
                       <a
                         href="classes/App-Models-HelpdeskTicket.html#method_isClosed"
                         >isClosed()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-HelpdeskTicket.html#method_isNew"
-                        >isNew()</a
                       >
                     </li>
                     <li class="">
@@ -3610,6 +4330,12 @@
                     </li>
                     <li class="">
                       <a
+                        href="classes/App-Models-HelpdeskTicket.html#method_resolvedBy"
+                        >resolvedBy()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
                         href="classes/App-Models-HelpdeskTicket.html#method_resolvedByUser"
                         >resolvedByUser()</a
                       >
@@ -3618,6 +4344,12 @@
                       <a
                         href="classes/App-Models-HelpdeskTicket.html#method_status"
                         >status()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-HelpdeskTicket.html#method_ticketStatus"
+                        >ticketStatus()</a
                       >
                     </li>
                     <li class="">
@@ -3636,12 +4368,6 @@
                       <a
                         href="classes/App-Models-HelpdeskTicket.html#method_casts"
                         >casts()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-HelpdeskTicket.html#method_generateTicketNumber"
-                        >generateTicketNumber()</a
                       >
                     </li>
                   </ul>

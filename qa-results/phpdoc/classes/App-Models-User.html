@@ -120,19 +120,55 @@
                 <a href="namespaces/app-console.html" class="">Console</a>
               </li>
               <li>
+                <a href="namespaces/app-enums.html" class="">Enums</a>
+              </li>
+              <li>
+                <a href="namespaces/app-exports.html" class="">Exports</a>
+              </li>
+              <li>
+                <a href="namespaces/app-filament.html" class="">Filament</a>
+              </li>
+              <li>
                 <a href="namespaces/app-http.html" class="">Http</a>
               </li>
               <li>
                 <a href="namespaces/app-livewire.html" class="">Livewire</a>
               </li>
               <li>
+                <a href="namespaces/app-mail.html" class="">Mail</a>
+              </li>
+              <li>
                 <a href="namespaces/app-models.html" class="">Models</a>
+              </li>
+              <li>
+                <a href="namespaces/app-notifications.html" class=""
+                  >Notifications</a
+                >
+              </li>
+              <li>
+                <a href="namespaces/app-policies.html" class="">Policies</a>
               </li>
               <li>
                 <a href="namespaces/app-providers.html" class="">Providers</a>
               </li>
               <li>
                 <a href="namespaces/app-services.html" class="">Services</a>
+              </li>
+              <li>
+                <a href="namespaces/app-view.html" class="">View</a>
+              </li>
+            </ul>
+
+            <h4 class="phpdocumentor-sidebar__root-namespace">
+              <a href="namespaces/imanghafoori.html" class="">Imanghafoori</a>
+            </h4>
+            <ul class="phpdocumentor-list">
+              <li>
+                <a
+                  href="namespaces/imanghafoori-laravelmicroscope.html"
+                  class=""
+                  >LaravelMicroscope</a
+                >
               </li>
             </ul>
           </section>
@@ -193,6 +229,13 @@
                   </ul>
                 </div>
 
+                <span class="phpdocumentor-element__implements">
+                  implements
+                  <abbr title="\Illuminate\Contracts\Auth\MustVerifyEmail"
+                    >MustVerifyEmail</abbr
+                  >
+                </span>
+
                 <span class="phpdocumentor-element__extends">
                   uses
                   <abbr
@@ -216,7 +259,7 @@
                   ></abbr
                 >
                 :
-                <span class="phpdocumentor-element-found-in__line">30</span>
+                <span class="phpdocumentor-element-found-in__line">36</span>
               </aside>
 
               <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -239,6 +282,22 @@
                 ></a>
               </h3>
 
+              <h4 id="toc-interfaces">
+                Interfaces
+                <a
+                  href="classes/App-Models-User.html#toc-interfaces"
+                  class="headerlink"
+                  ><i class="fas fa-link"></i
+                ></a>
+              </h4>
+              <dl class="phpdocumentor-table-of-contents">
+                <dt class="phpdocumentor-table-of-contents__entry -interface">
+                  <abbr title="\Illuminate\Contracts\Auth\MustVerifyEmail"
+                    >MustVerifyEmail</abbr
+                  >
+                </dt>
+              </dl>
+
               <h4 id="toc-properties">
                 Properties
                 <a
@@ -248,6 +307,17 @@
                 ></a>
               </h4>
               <dl class="phpdocumentor-table-of-contents">
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-User.html#property_avatar_url"
+                    >$avatar_url</a
+                  >
+                  <span> &nbsp;: string|null </span>
+                </dt>
+
                 <dt
                   class="phpdocumentor-table-of-contents__entry -property -public"
                 >
@@ -266,6 +336,17 @@
                     >$email</a
                   >
                   <span> &nbsp;: string </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-User.html#property_employee_id"
+                    >$employee_id</a
+                  >
+                  <span> &nbsp;: string|null </span>
                 </dt>
 
                 <dt
@@ -345,6 +426,28 @@
                 <dt
                   class="phpdocumentor-table-of-contents__entry -property -public"
                 >
+                  <a
+                    class=""
+                    href="classes/App-Models-User.html#property_notification_preferences"
+                    >$notification_preferences</a
+                  >
+                  <span> &nbsp;: array&lt;string|int, mixed&gt;|null </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-User.html#property_office_location"
+                    >$office_location</a
+                  >
+                  <span> &nbsp;: string|null </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
                   <a class="" href="classes/App-Models-User.html#property_phone"
                     >$phone</a
                   >
@@ -387,12 +490,37 @@
                 <dt
                   class="phpdocumentor-table-of-contents__entry -property -public"
                 >
+                  <a class="" href="classes/App-Models-User.html#property_role"
+                    >$role</a
+                  >
+                  <span>
+                    &nbsp;:
+                    <a href="classes/App-Enums-UserRole.html"
+                      ><abbr title="\App\Enums\UserRole">UserRole</abbr></a
+                    >
+                  </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
                   <a
                     class=""
                     href="classes/App-Models-User.html#property_staff_id"
                     >$staff_id</a
                   >
                   <span> &nbsp;: string|null </span>
+                </dt>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -property -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-User.html#property_supervisor_id"
+                    >$supervisor_id</a
+                  >
+                  <span> &nbsp;: int|null </span>
                 </dt>
 
                 <dt
@@ -434,8 +562,8 @@
                 >
                   <a
                     class=""
-                    href="classes/App-Models-User.html#method_assignedTickets"
-                    >assignedTickets()</a
+                    href="classes/App-Models-User.html#method_activities"
+                    >activities()</a
                   >
                   <span>
                     &nbsp;:
@@ -445,7 +573,31 @@
                     >
                   </span>
                 </dt>
-                <dd>Get helpdesk tickets assigned to this user</dd>
+                <dd>Alias used by some components.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-User.html#method_activityLogs"
+                    >activityLogs()</a
+                  >
+                  <span> &nbsp;: mixed </span>
+                </dt>
+                <dd>Get the activity logs for this user.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a
+                    class=""
+                    href="classes/App-Models-User.html#method_assignedTickets"
+                    >assignedTickets()</a
+                  >
+                  <span> &nbsp;: mixed </span>
+                </dt>
+                <dd>Get the helpdesk tickets assigned to this user.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -463,19 +615,19 @@
                     >
                   </span>
                 </dt>
-                <dd>Get audit logs for this user</dd>
+                <dd>Alias for activityLogs used by admin audit log viewer.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
                 >
                   <a
                     class=""
-                    href="classes/App-Models-User.html#method_getFullNameWithStaffIdAttribute"
-                    >getFullNameWithStaffIdAttribute()</a
+                    href="classes/App-Models-User.html#method_hasAnyRole"
+                    >hasAnyRole()</a
                   >
-                  <span> &nbsp;: string </span>
+                  <span> &nbsp;: bool </span>
                 </dt>
-                <dd>Get full name with staff ID</dd>
+                <dd>Check if the user has any of the given roles.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -485,7 +637,10 @@
                   >
                   <span> &nbsp;: bool </span>
                 </dt>
-                <dd>Check if user has specific role</dd>
+                <dd>
+                  Simple role checker supporting string, enum and array of
+                  roles.
+                </dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -503,73 +658,7 @@
                     >
                   </span>
                 </dt>
-                <dd>Get helpdesk tickets created by this user</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-User.html#method_ictApprovedLoanRequests"
-                    >ictApprovedLoanRequests()</a
-                  >
-                  <span>
-                    &nbsp;:
-                    <abbr
-                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                      >HasMany</abbr
-                    >
-                  </span>
-                </dt>
-                <dd>Get loan requests approved by this user as ICT admin</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-User.html#method_isHelpdeskStaff"
-                    >isHelpdeskStaff()</a
-                  >
-                  <span> &nbsp;: bool </span>
-                </dt>
-                <dd>Check if user is helpdesk staff</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-User.html#method_isIctAdmin"
-                    >isIctAdmin()</a
-                  >
-                  <span> &nbsp;: bool </span>
-                </dt>
-                <dd>Check if user is ICT admin</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-User.html#method_isSuperAdmin"
-                    >isSuperAdmin()</a
-                  >
-                  <span> &nbsp;: bool </span>
-                </dt>
-                <dd>Check if user is super admin</dd>
-
-                <dt
-                  class="phpdocumentor-table-of-contents__entry -method -public"
-                >
-                  <a
-                    class=""
-                    href="classes/App-Models-User.html#method_isSupervisor"
-                    >isSupervisor()</a
-                  >
-                  <span> &nbsp;: bool </span>
-                </dt>
-                <dd>Check if user is supervisor</dd>
+                <dd>Alias for tickets relation used across codebase.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -579,15 +668,9 @@
                     href="classes/App-Models-User.html#method_loanRequests"
                     >loanRequests()</a
                   >
-                  <span>
-                    &nbsp;:
-                    <abbr
-                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                      >HasMany</abbr
-                    >
-                  </span>
+                  <span> &nbsp;: mixed </span>
                 </dt>
-                <dd>Get loan requests made by this user</dd>
+                <dd>Get the loan requests created by this user.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -615,15 +698,9 @@
                     href="classes/App-Models-User.html#method_subordinates"
                     >subordinates()</a
                   >
-                  <span>
-                    &nbsp;:
-                    <abbr
-                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                      >HasMany</abbr
-                    >
-                  </span>
+                  <span> &nbsp;: mixed </span>
                 </dt>
-                <dd>Get users supervised by this user</dd>
+                <dd>Get the subordinates that report to this user.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -633,15 +710,9 @@
                     href="classes/App-Models-User.html#method_supervisedLoanRequests"
                     >supervisedLoanRequests()</a
                   >
-                  <span>
-                    &nbsp;:
-                    <abbr
-                      title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                      >HasMany</abbr
-                    >
-                  </span>
+                  <span> &nbsp;: mixed </span>
                 </dt>
-                <dd>Get loan requests supervised by this user</dd>
+                <dd>Get the loan requests supervised by this user.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -651,15 +722,19 @@
                     href="classes/App-Models-User.html#method_supervisor"
                     >supervisor()</a
                   >
-                  <span>
-                    &nbsp;:
-                    <abbr
-                      title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
-                      >BelongsTo</abbr
-                    >
-                  </span>
+                  <span> &nbsp;: mixed </span>
                 </dt>
-                <dd>Get the supervisor of this user</dd>
+                <dd>Get the supervisor that this user reports to.</dd>
+
+                <dt
+                  class="phpdocumentor-table-of-contents__entry -method -public"
+                >
+                  <a class="" href="classes/App-Models-User.html#method_tickets"
+                    >tickets()</a
+                  >
+                  <span> &nbsp;: mixed </span>
+                </dt>
+                <dd>Get the helpdesk tickets created by this user.</dd>
 
                 <dt
                   class="phpdocumentor-table-of-contents__entry -method -public"
@@ -699,6 +774,44 @@
                     ><i class="fas fa-link"></i
                   ></a>
                 </h3>
+                <article class="phpdocumentor-element -property -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_avatar_url"
+                  >
+                    $avatar_url
+                    <a
+                      href="classes/App-Models-User.html#property_avatar_url"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers"> </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      >string|null</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >$avatar_url</span
+                    >
+                  </code>
+                </article>
                 <article class="phpdocumentor-element -property -public">
                   <h4
                     class="phpdocumentor-element__name"
@@ -766,6 +879,44 @@
                     >
                     <span class="phpdocumentor-signature__type">string</span>
                     <span class="phpdocumentor-signature__name">$email</span>
+                  </code>
+                </article>
+                <article class="phpdocumentor-element -property -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_employee_id"
+                  >
+                    $employee_id
+                    <a
+                      href="classes/App-Models-User.html#property_employee_id"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers"> </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      >string|null</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >$employee_id</span
+                    >
                   </code>
                 </article>
                 <article
@@ -972,6 +1123,82 @@
                   </code>
                 </article>
                 <article class="phpdocumentor-element -property -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_notification_preferences"
+                  >
+                    $notification_preferences
+                    <a
+                      href="classes/App-Models-User.html#property_notification_preferences"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers"> </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      >array&lt;string|int, mixed&gt;|null</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >$notification_preferences</span
+                    >
+                  </code>
+                </article>
+                <article class="phpdocumentor-element -property -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_office_location"
+                  >
+                    $office_location
+                    <a
+                      href="classes/App-Models-User.html#property_office_location"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers"> </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      >string|null</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >$office_location</span
+                    >
+                  </code>
+                </article>
+                <article class="phpdocumentor-element -property -public">
                   <h4 class="phpdocumentor-element__name" id="property_phone">
                     $phone
                     <a
@@ -1117,6 +1344,41 @@
                   </code>
                 </article>
                 <article class="phpdocumentor-element -property -public">
+                  <h4 class="phpdocumentor-element__name" id="property_role">
+                    $role
+                    <a
+                      href="classes/App-Models-User.html#property_role"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers"> </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type"
+                      ><a href="classes/App-Enums-UserRole.html"
+                        ><abbr title="\App\Enums\UserRole">UserRole</abbr></a
+                      ></span
+                    >
+                    <span class="phpdocumentor-signature__name">$role</span>
+                  </code>
+                </article>
+                <article class="phpdocumentor-element -property -public">
                   <h4
                     class="phpdocumentor-element__name"
                     id="property_staff_id"
@@ -1152,6 +1414,42 @@
                     <span class="phpdocumentor-signature__name">$staff_id</span>
                   </code>
                 </article>
+                <article class="phpdocumentor-element -property -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="property_supervisor_id"
+                  >
+                    $supervisor_id
+                    <a
+                      href="classes/App-Models-User.html#property_supervisor_id"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+
+                    <span class="phpdocumentor-element__modifiers"> </span>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line">0</span>
+                  </aside>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__type">int|null</span>
+                    <span class="phpdocumentor-signature__name"
+                      >$supervisor_id</span
+                    >
+                  </code>
+                </article>
                 <article class="phpdocumentor-element -property -protected">
                   <h4
                     class="phpdocumentor-element__name"
@@ -1175,7 +1473,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">40</span>
+                    <span class="phpdocumentor-element-found-in__line">46</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
@@ -1194,11 +1492,14 @@
                     <span class="phpdocumentor-signature__default-value"
                       >[&#039;name&#039;, &#039;email&#039;,
                       &#039;password&#039;, &#039;staff_id&#039;,
-                      &#039;division&#039;, &#039;department&#039;,
-                      &#039;position&#039;, &#039;phone&#039;, &#039;role&#039;,
-                      &#039;supervisor_id&#039;, &#039;is_active&#039;,
-                      &#039;last_login_at&#039;, &#039;profile_picture&#039;,
-                      &#039;preferences&#039;]</span
+                      &#039;employee_id&#039;, &#039;office_location&#039;,
+                      &#039;role&#039;, &#039;division&#039;,
+                      &#039;department&#039;, &#039;position&#039;,
+                      &#039;phone&#039;, &#039;supervisor_id&#039;,
+                      &#039;is_active&#039;, &#039;last_login_at&#039;,
+                      &#039;profile_picture&#039;, &#039;avatar_url&#039;,
+                      &#039;preferences&#039;,
+                      &#039;notification_preferences&#039;]</span
                     ></code
                   >
                 </article>
@@ -1222,7 +1523,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">62</span>
+                    <span class="phpdocumentor-element-found-in__line">72</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
@@ -1257,11 +1558,11 @@
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
-                    id="method_assignedTickets"
+                    id="method_activities"
                   >
-                    assignedTickets()
+                    activities()
                     <a
-                      href="classes/App-Models-User.html#method_assignedTickets"
+                      href="classes/App-Models-User.html#method_activities"
                       class="headerlink"
                       ><i class="fas fa-link"></i
                     ></a>
@@ -1276,20 +1577,19 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >118</span
+                      >178</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get helpdesk tickets assigned to this user
+                    Alias used by some components.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__name"
-                      >assignedTickets</span
+                    <span class="phpdocumentor-signature__name">activities</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
                       ><abbr
@@ -1314,6 +1614,94 @@
                   </section>
                 </article>
                 <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_activityLogs"
+                  >
+                    activityLogs()
+                    <a
+                      href="classes/App-Models-User.html#method_activityLogs"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >170</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Get the activity logs for this user.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >activityLogs</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4
+                    class="phpdocumentor-element__name"
+                    id="method_assignedTickets"
+                  >
+                    assignedTickets()
+                    <a
+                      href="classes/App-Models-User.html#method_assignedTickets"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
+                    >
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >146</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Get the helpdesk tickets assigned to this user.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name"
+                      >assignedTickets</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
+                </article>
+                <article class="phpdocumentor-element -method -public">
                   <h4 class="phpdocumentor-element__name" id="method_auditLogs">
                     auditLogs()
                     <a
@@ -1332,12 +1720,12 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >126</span
+                      >186</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get audit logs for this user
+                    Alias for activityLogs used by admin audit log viewer.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1371,11 +1759,11 @@
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
-                    id="method_getFullNameWithStaffIdAttribute"
+                    id="method_hasAnyRole"
                   >
-                    getFullNameWithStaffIdAttribute()
+                    hasAnyRole()
                     <a
-                      href="classes/App-Models-User.html#method_getFullNameWithStaffIdAttribute"
+                      href="classes/App-Models-User.html#method_hasAnyRole"
                       class="headerlink"
                       ><i class="fas fa-link"></i
                     ></a>
@@ -1390,34 +1778,64 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >190</span
+                      >218</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get full name with staff ID
+                    Check if the user has any of the given roles.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
                     <span class="phpdocumentor-signature__visibility"
                       >public</span
                     >
-                    <span class="phpdocumentor-signature__name"
-                      >getFullNameWithStaffIdAttribute</span
-                    ><span>(</span><span>)</span><span> : </span
+                    <span class="phpdocumentor-signature__name">hasAnyRole</span
+                    ><span>(</span
+                    ><span class="phpdocumentor-signature__argument"
+                      ><span
+                        class="phpdocumentor-signature__argument__return-type"
+                        >array&lt;int, string|<a
+                          href="classes/App-Enums-UserRole.html"
+                          ><abbr title="\App\Enums\UserRole">UserRole</abbr></a
+                        >&gt;&nbsp;</span
+                      ><span class="phpdocumentor-signature__argument__name"
+                        >$roles</span
+                      ></span
+                    ><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      >string</span
+                      >bool</span
                     ></code
                   >
 
                   <div class="phpdocumentor-label-line"></div>
+
+                  <h5 class="phpdocumentor-argument-list__heading">
+                    Parameters
+                  </h5>
+                  <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                      <span class="phpdocumentor-signature__argument__name"
+                        >$roles</span
+                      >
+                      :
+                      <span
+                        class="phpdocumentor-signature__argument__return-type"
+                        >array&lt;int, string|<a
+                          href="classes/App-Enums-UserRole.html"
+                          ><abbr title="\App\Enums\UserRole">UserRole</abbr></a
+                        >&gt;</span
+                      >
+                    </dt>
+                    <dd class="phpdocumentor-argument-list__definition"></dd>
+                  </dl>
 
                   <section>
                     <h5 class="phpdocumentor-return-value__heading">
                       Return values
                     </h5>
                     <span class="phpdocumentor-signature__response_type"
-                      >string</span
+                      >bool</span
                     >
                   </section>
                 </article>
@@ -1440,12 +1858,13 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >150</span
+                      >197</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Check if user has specific role
+                    Simple role checker supporting string, enum and array of
+                    roles.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1457,9 +1876,15 @@
                     ><span class="phpdocumentor-signature__argument"
                       ><span
                         class="phpdocumentor-signature__argument__return-type"
-                        >string&nbsp;</span
+                        >string|array&lt;int, string&gt;|<a
+                          href="classes/App-Enums-UserRole.html"
+                          ><abbr title="\App\Enums\UserRole">UserRole</abbr></a
+                        >|array&lt;int,
+                        <a href="classes/App-Enums-UserRole.html"
+                          ><abbr title="\App\Enums\UserRole">UserRole</abbr></a
+                        >&gt;&nbsp;</span
                       ><span class="phpdocumentor-signature__argument__name"
-                        >$role</span
+                        >$roles</span
                       ></span
                     ><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
@@ -1469,18 +1894,31 @@
 
                   <div class="phpdocumentor-label-line"></div>
 
+                  <section class="phpdocumentor-description">
+                    <p>
+                      This project uses a role enum on the users table instead
+                      of Spatie roles.
+                    </p>
+                  </section>
+
                   <h5 class="phpdocumentor-argument-list__heading">
                     Parameters
                   </h5>
                   <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                       <span class="phpdocumentor-signature__argument__name"
-                        >$role</span
+                        >$roles</span
                       >
                       :
                       <span
                         class="phpdocumentor-signature__argument__return-type"
-                        >string</span
+                        >string|array&lt;int, string&gt;|<a
+                          href="classes/App-Enums-UserRole.html"
+                          ><abbr title="\App\Enums\UserRole">UserRole</abbr></a
+                        >|array&lt;int,
+                        <a href="classes/App-Enums-UserRole.html"
+                          ><abbr title="\App\Enums\UserRole">UserRole</abbr></a
+                        >&gt;</span
                       >
                     </dt>
                     <dd class="phpdocumentor-argument-list__definition"></dd>
@@ -1517,12 +1955,12 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >110</span
+                      >138</span
                     >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get helpdesk tickets created by this user
+                    Alias for tickets relation used across codebase.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1557,276 +1995,6 @@
                 <article class="phpdocumentor-element -method -public">
                   <h4
                     class="phpdocumentor-element__name"
-                    id="method_ictApprovedLoanRequests"
-                  >
-                    ictApprovedLoanRequests()
-                    <a
-                      href="classes/App-Models-User.html#method_ictApprovedLoanRequests"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/User.php"
-                      ><a href="files/app-models-user.html"
-                        ><abbr title="app/Models/User.php">User.php</abbr></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >102</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Get loan requests approved by this user as ICT admin
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name"
-                      >ictApprovedLoanRequests</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
-                    >
-                  </section>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_isHelpdeskStaff"
-                  >
-                    isHelpdeskStaff()
-                    <a
-                      href="classes/App-Models-User.html#method_isHelpdeskStaff"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/User.php"
-                      ><a href="files/app-models-user.html"
-                        ><abbr title="app/Models/User.php">User.php</abbr></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >174</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Check if user is helpdesk staff
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name"
-                      >isHelpdeskStaff</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    >
-                  </section>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_isIctAdmin"
-                  >
-                    isIctAdmin()
-                    <a
-                      href="classes/App-Models-User.html#method_isIctAdmin"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/User.php"
-                      ><a href="files/app-models-user.html"
-                        ><abbr title="app/Models/User.php">User.php</abbr></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >166</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Check if user is ICT admin
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name">isIctAdmin</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    >
-                  </section>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_isSuperAdmin"
-                  >
-                    isSuperAdmin()
-                    <a
-                      href="classes/App-Models-User.html#method_isSuperAdmin"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/User.php"
-                      ><a href="files/app-models-user.html"
-                        ><abbr title="app/Models/User.php">User.php</abbr></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >182</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Check if user is super admin
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name"
-                      >isSuperAdmin</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    >
-                  </section>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
-                    id="method_isSupervisor"
-                  >
-                    isSupervisor()
-                    <a
-                      href="classes/App-Models-User.html#method_isSupervisor"
-                      class="headerlink"
-                      ><i class="fas fa-link"></i
-                    ></a>
-                  </h4>
-                  <aside class="phpdocumentor-element-found-in">
-                    <abbr
-                      class="phpdocumentor-element-found-in__file"
-                      title="app/Models/User.php"
-                      ><a href="files/app-models-user.html"
-                        ><abbr title="app/Models/User.php">User.php</abbr></a
-                      ></abbr
-                    >
-                    :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >158</span
-                    >
-                  </aside>
-
-                  <p class="phpdocumentor-summary">
-                    Check if user is supervisor
-                  </p>
-
-                  <code class="phpdocumentor-code phpdocumentor-signature">
-                    <span class="phpdocumentor-signature__visibility"
-                      >public</span
-                    >
-                    <span class="phpdocumentor-signature__name"
-                      >isSupervisor</span
-                    ><span>(</span><span>)</span><span> : </span
-                    ><span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    ></code
-                  >
-
-                  <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      >bool</span
-                    >
-                  </section>
-                </article>
-                <article class="phpdocumentor-element -method -public">
-                  <h4
-                    class="phpdocumentor-element__name"
                     id="method_loanRequests"
                   >
                     loanRequests()
@@ -1845,11 +2013,13 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">86</span>
+                    <span class="phpdocumentor-element-found-in__line"
+                      >114</span
+                    >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get loan requests made by this user
+                    Get the loan requests created by this user.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1860,26 +2030,11 @@
                       >loanRequests</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
+                      >mixed</span
                     ></code
                   >
 
                   <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
-                    >
-                  </section>
                 </article>
                 <article class="phpdocumentor-element -method -public">
                   <h4
@@ -1903,7 +2058,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >134</span
+                      >154</span
                     >
                   </aside>
 
@@ -1961,11 +2116,13 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">78</span>
+                    <span class="phpdocumentor-element-found-in__line"
+                      >106</span
+                    >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get users supervised by this user
+                    Get the subordinates that report to this user.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -1976,26 +2133,11 @@
                       >subordinates</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
+                      >mixed</span
                     ></code
                   >
 
                   <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
-                    >
-                  </section>
                 </article>
                 <article class="phpdocumentor-element -method -public">
                   <h4
@@ -2018,11 +2160,13 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">94</span>
+                    <span class="phpdocumentor-element-found-in__line"
+                      >122</span
+                    >
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get loan requests supervised by this user
+                    Get the loan requests supervised by this user.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -2033,26 +2177,11 @@
                       >supervisedLoanRequests</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
+                      >mixed</span
                     ></code
                   >
 
                   <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\HasMany"
-                        >HasMany</abbr
-                      ></span
-                    >
-                  </section>
                 </article>
                 <article class="phpdocumentor-element -method -public">
                   <h4
@@ -2075,11 +2204,11 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line">70</span>
+                    <span class="phpdocumentor-element-found-in__line">98</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
-                    Get the supervisor of this user
+                    Get the supervisor that this user reports to.
                   </p>
 
                   <code class="phpdocumentor-code phpdocumentor-signature">
@@ -2089,26 +2218,51 @@
                     <span class="phpdocumentor-signature__name">supervisor</span
                     ><span>(</span><span>)</span><span> : </span
                     ><span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
-                        >BelongsTo</abbr
-                      ></span
+                      >mixed</span
                     ></code
                   >
 
                   <div class="phpdocumentor-label-line"></div>
-
-                  <section>
-                    <h5 class="phpdocumentor-return-value__heading">
-                      Return values
-                    </h5>
-                    <span class="phpdocumentor-signature__response_type"
-                      ><abbr
-                        title="\Illuminate\Database\Eloquent\Relations\BelongsTo"
-                        >BelongsTo</abbr
-                      ></span
+                </article>
+                <article class="phpdocumentor-element -method -public">
+                  <h4 class="phpdocumentor-element__name" id="method_tickets">
+                    tickets()
+                    <a
+                      href="classes/App-Models-User.html#method_tickets"
+                      class="headerlink"
+                      ><i class="fas fa-link"></i
+                    ></a>
+                  </h4>
+                  <aside class="phpdocumentor-element-found-in">
+                    <abbr
+                      class="phpdocumentor-element-found-in__file"
+                      title="app/Models/User.php"
+                      ><a href="files/app-models-user.html"
+                        ><abbr title="app/Models/User.php">User.php</abbr></a
+                      ></abbr
                     >
-                  </section>
+                    :
+                    <span class="phpdocumentor-element-found-in__line"
+                      >130</span
+                    >
+                  </aside>
+
+                  <p class="phpdocumentor-summary">
+                    Get the helpdesk tickets created by this user.
+                  </p>
+
+                  <code class="phpdocumentor-code phpdocumentor-signature">
+                    <span class="phpdocumentor-signature__visibility"
+                      >public</span
+                    >
+                    <span class="phpdocumentor-signature__name">tickets</span
+                    ><span>(</span><span>)</span><span> : </span
+                    ><span class="phpdocumentor-signature__response_type"
+                      >mixed</span
+                    ></code
+                  >
+
+                  <div class="phpdocumentor-label-line"></div>
                 </article>
                 <article class="phpdocumentor-element -method -public">
                   <h4
@@ -2132,7 +2286,7 @@
                     >
                     :
                     <span class="phpdocumentor-element-found-in__line"
-                      >142</span
+                      >162</span
                     >
                   </aside>
 
@@ -2187,9 +2341,7 @@
                       ></abbr
                     >
                     :
-                    <span class="phpdocumentor-element-found-in__line"
-                      >200</span
-                    >
+                    <span class="phpdocumentor-element-found-in__line">82</span>
                   </aside>
 
                   <p class="phpdocumentor-summary">
@@ -2373,6 +2525,11 @@
                 <li>
                   <ul class="phpdocumentor-list -clean">
                     <li class="">
+                      <a href="classes/App-Models-User.html#property_avatar_url"
+                        >$avatar_url</a
+                      >
+                    </li>
+                    <li class="">
                       <a href="classes/App-Models-User.html#property_department"
                         >$department</a
                       >
@@ -2380,6 +2537,12 @@
                     <li class="">
                       <a href="classes/App-Models-User.html#property_email"
                         >$email</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-User.html#property_employee_id"
+                        >$employee_id</a
                       >
                     </li>
                     <li class="">
@@ -2409,6 +2572,18 @@
                       >
                     </li>
                     <li class="">
+                      <a
+                        href="classes/App-Models-User.html#property_notification_preferences"
+                        >$notification_preferences</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-User.html#property_office_location"
+                        >$office_location</a
+                      >
+                    </li>
+                    <li class="">
                       <a href="classes/App-Models-User.html#property_phone"
                         >$phone</a
                       >
@@ -2431,8 +2606,19 @@
                       >
                     </li>
                     <li class="">
+                      <a href="classes/App-Models-User.html#property_role"
+                        >$role</a
+                      >
+                    </li>
+                    <li class="">
                       <a href="classes/App-Models-User.html#property_staff_id"
                         >$staff_id</a
+                      >
+                    </li>
+                    <li class="">
+                      <a
+                        href="classes/App-Models-User.html#property_supervisor_id"
+                        >$supervisor_id</a
                       >
                     </li>
                     <li class="">
@@ -2454,6 +2640,16 @@
                 <li>
                   <ul class="phpdocumentor-list -clean">
                     <li class="">
+                      <a href="classes/App-Models-User.html#method_activities"
+                        >activities()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a href="classes/App-Models-User.html#method_activityLogs"
+                        >activityLogs()</a
+                      >
+                    </li>
+                    <li class="">
                       <a
                         href="classes/App-Models-User.html#method_assignedTickets"
                         >assignedTickets()</a
@@ -2465,9 +2661,8 @@
                       >
                     </li>
                     <li class="">
-                      <a
-                        href="classes/App-Models-User.html#method_getFullNameWithStaffIdAttribute"
-                        >getFullNameWithStaffIdAttribute()</a
+                      <a href="classes/App-Models-User.html#method_hasAnyRole"
+                        >hasAnyRole()</a
                       >
                     </li>
                     <li class="">
@@ -2479,33 +2674,6 @@
                       <a
                         href="classes/App-Models-User.html#method_helpdeskTickets"
                         >helpdeskTickets()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-User.html#method_ictApprovedLoanRequests"
-                        >ictApprovedLoanRequests()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a
-                        href="classes/App-Models-User.html#method_isHelpdeskStaff"
-                        >isHelpdeskStaff()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a href="classes/App-Models-User.html#method_isIctAdmin"
-                        >isIctAdmin()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a href="classes/App-Models-User.html#method_isSuperAdmin"
-                        >isSuperAdmin()</a
-                      >
-                    </li>
-                    <li class="">
-                      <a href="classes/App-Models-User.html#method_isSupervisor"
-                        >isSupervisor()</a
                       >
                     </li>
                     <li class="">
@@ -2533,6 +2701,11 @@
                     <li class="">
                       <a href="classes/App-Models-User.html#method_supervisor"
                         >supervisor()</a
+                      >
+                    </li>
+                    <li class="">
+                      <a href="classes/App-Models-User.html#method_tickets"
+                        >tickets()</a
                       >
                     </li>
                     <li class="">
