@@ -160,7 +160,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ICTServeFormsTest.php' => [
-            0 => 'bacf10ef2372c4ef209390a32446d74d8b86c799',
+            0 => '8a0e9a14d27fbbdcb9c1bca38b70c36e25e54f21',
             1 => [
                 0 => 'tests\\feature\\ictserveformstest',
             ],
@@ -223,7 +223,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\MyRequestsLivewireTest.php' => [
-            0 => '2b45ac703b1cb713d9869007edc5b7d179ab7882',
+            0 => '8fcae138fd42be513a55124e5bba6c24537b49fc',
             1 => [
                 0 => 'tests\\feature\\myrequestslivewiretest',
             ],
@@ -248,7 +248,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\ProfileTest.php' => [
-            0 => '97b57f41e6b09aff90ff9e0633d270e1d3d6b696',
+            0 => 'f96c7e2b59f8cde443c694d29dbdd63b7ed7492e',
             1 => [
                 0 => 'tests\\feature\\profiletest',
             ],
@@ -263,7 +263,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\TicketNotificationTest.php' => [
-            0 => '493603e92c7abb0b9a20346e83353219993429e4',
+            0 => '2cfd16440ab71b60802d316d4c6c5612423c4591',
             1 => [
                 0 => 'tests\\feature\\ticketnotificationtest',
             ],
@@ -313,7 +313,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Unit\\LoanRequestTrackerTest.php' => [
-            0 => '0f6852ac11b16abe8e89e74e5275dd194f9afe12',
+            0 => '4f9d483e495c71f47787bedc9f7bc6d8e1fbf06d',
             1 => [
                 0 => 'tests\\unit\\loanrequesttrackertest',
             ],
@@ -328,6 +328,18 @@ return \PHPStan\Cache\CacheItem::__set_state([
                 7 => 'tests\\unit\\test_displays_correct_status_badges',
                 8 => 'tests\\unit\\test_handles_null_loan_status_gracefully',
                 9 => 'tests\\unit\\test_shows_equipment_list_when_details_expanded',
+            ],
+            3 => [
+            ],
+        ],
+        'C:\\XAMPP\\htdocs\\ict-serve\\tests\\Feature\\AppNotificationTest.php' => [
+            0 => '975e5ff5be9f4415b7179186a11e350b150be898',
+            1 => [
+                0 => 'tests\\feature\\appnotificationtest',
+            ],
+            2 => [
+                0 => 'tests\\feature\\test_notification_can_be_created_for_user',
+                1 => 'tests\\feature\\test_notification_belongs_to_user',
             ],
             3 => [
             ],

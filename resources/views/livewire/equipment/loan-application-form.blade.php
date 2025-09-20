@@ -203,7 +203,7 @@
             id="officer_name"
             wire:model.blur="officer_name"
             placeholder="Contoh: Ahmad bin Ali"
-            :disabled="same_as_applicant"
+            :disabled="$same_as_applicant"
             required
           />
           <x-myds.error field="officer_name" />
@@ -217,7 +217,7 @@
             id="officer_position"
             wire:model.blur="officer_position"
             placeholder="Contoh: Pegawai Teknologi Maklumat"
-            :disabled="same_as_applicant"
+            :disabled="$same_as_applicant"
             required
           />
           <x-myds.error field="officer_position" />
@@ -229,7 +229,7 @@
           <x-myds.select
             id="officer_division"
             wire:model.blur="officer_division"
-            :disabled="same_as_applicant"
+            :disabled="$same_as_applicant"
             required
           >
             <option value="">Pilih Bahagian</option>
@@ -249,7 +249,7 @@
             wire:model.blur="officer_grade"
             placeholder="Contoh: N41, M48, JUSA C"
             maxlength="10"
-            :disabled="same_as_applicant"
+            :disabled="$same_as_applicant"
           />
           <p class="text-xs text-black-500 mt-1">Pilihan - Jika berkenaan</p>
         </div>
@@ -262,7 +262,7 @@
             id="officer_email"
             wire:model.blur="officer_email"
             placeholder="contoh@motac.gov.my"
-            :disabled="same_as_applicant"
+            :disabled="$same_as_applicant"
             required
           />
           <x-myds.error field="officer_email" />
@@ -278,7 +278,7 @@
             id="officer_phone"
             wire:model.blur="officer_phone"
             placeholder="Contoh: +60123456789 atau 0123456789"
-            :disabled="same_as_applicant"
+            :disabled="$same_as_applicant"
             required
           />
           <x-myds.error field="officer_phone" />

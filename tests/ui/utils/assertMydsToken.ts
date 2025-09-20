@@ -16,18 +16,28 @@ const TOKEN_MAP: Record<string, string> = {
   'gray-50': '#FAFAFA',
   'gray-100': '#F4F4F5',
   'otl-primary-300': '#96B7FF',
-  'fr-primary': '#96B7FF'
+  'fr-primary': '#96B7FF',
 };
 
-export async function assertMydsToken(page: Page, selector: string, property: 'background-color' | 'color' | 'border-color', tokenName: string) {
+export async function assertMydsToken(
+  page: Page,
+  selector: string,
+  property: 'background-color' | 'color' | 'border-color',
+  tokenName: string
+) {
   const expectedHex = TOKEN_MAP[tokenName];
   if (!expectedHex) throw new Error(`Unknown token ${tokenName}`);
   const el = await page.locator(selector).first();
-  const value = await el.evaluate((e, prop) => getComputedStyle(e as Element).getPropertyValue(prop), property);
+  const value = await el.evaluate(
+    (e, prop) => getComputedStyle(e as Element).getPropertyValue(prop),
+    property
+  );
   // normalize rgb/hex
   const normalized = rgbToHex(value.trim());
   if (normalized.toLowerCase() !== expectedHex.toLowerCase()) {
-    throw new Error(`Token mismatch for ${selector} ${property}: expected ${expectedHex} got ${normalized}`);
+    throw new Error(
+      `Token mismatch for ${selector} ${property}: expected ${expectedHex} got ${normalized}`
+    );
   }
 }
 
@@ -41,5 +51,7 @@ function rgbToHex(input: string) {
   const r = parseInt(m[1], 10);
   const g = parseInt(m[2], 10);
   const b = parseInt(m[3], 10);
-  return ('#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('')).toUpperCase();
+  return (
+    '#' + [r, g, b].map((x) => x.toString(16).padStart(2, '0')).join('')
+  ).toUpperCase();
 }

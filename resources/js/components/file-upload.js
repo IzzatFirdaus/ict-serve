@@ -59,7 +59,10 @@ export function fileUpload(config) {
 
     validateFile(file) {
       if (file.size > this.maxSize * 1024 * 1024) {
-        this.showToast(`Fail ${file.name} terlalu besar. Maksimum ${this.maxSize}MB`, 'error');
+        this.showToast(
+          `Fail ${file.name} terlalu besar. Maksimum ${this.maxSize}MB`,
+          'error'
+        );
         return false;
       }
 
@@ -111,7 +114,8 @@ export function fileUpload(config) {
 
         xhr.open('POST', config.uploadUrl);
         const csrf = document.querySelector('meta[name="csrf-token"]');
-        if (csrf) xhr.setRequestHeader('X-CSRF-TOKEN', csrf.getAttribute('content'));
+        if (csrf)
+          xhr.setRequestHeader('X-CSRF-TOKEN', csrf.getAttribute('content'));
         xhr.send(formData);
       } catch (error) {
         fileObj.uploading = false;
@@ -192,7 +196,16 @@ export function fileUpload(config) {
       if (window.showToast) {
         window.showToast(message, type);
       } else if (window.toast) {
-        window.toast(type === 'error' ? 'error' : type === 'success' ? 'success' : type === 'warning' ? 'warning' : 'info', message);
+        window.toast(
+          type === 'error'
+            ? 'error'
+            : type === 'success'
+              ? 'success'
+              : type === 'warning'
+                ? 'warning'
+                : 'info',
+          message
+        );
       } else {
         alert(message);
       }

@@ -21,16 +21,28 @@ async function crawl() {
       if (!res.ok) continue;
       const text = await res.text();
       const dom = new JSDOM(text);
-      const anchors = Array.from(dom.window.document.querySelectorAll('a[href]'))
-        .map(a => a.getAttribute('href'))
-        .filter(h => !!h);
-      const normalized = anchors.map(h => {
-        try { return new URL(h, href).toString(); } catch (e) { return null; }
-      }).filter(u => u && u.startsWith(origin));
+      const anchors = Array.from(
+        dom.window.document.querySelectorAll('a[href]')
+      )
+        .map((a) => a.getAttribute('href'))
+        .filter((h) => !!h);
+      const normalized = anchors
+        .map((h) => {
+          try {
+            return new URL(h, href).toString();
+          } catch (e) {
+            return null;
+          }
+        })
+        .filter((u) => u && u.startsWith(origin));
       visited.add(href);
-      fs.writeFileSync(out, JSON.stringify({ start, origin, pages: Array.from(visited) }, null, 2));
+      fs.writeFileSync(
+        out,
+        JSON.stringify({ start, origin, pages: Array.from(visited) }, null, 2)
+      );
       if (depth < maxDepth) {
-        for (const p of normalized) if (!visited.has(p)) queue.push({ href: p, depth: depth + 1 });
+        for (const p of normalized)
+          if (!visited.has(p)) queue.push({ href: p, depth: depth + 1 });
       }
     } catch (e) {
       console.error('Error crawling', href, e.message);
@@ -39,4 +51,9 @@ async function crawl() {
   console.log('Crawl complete. Pages:', visited.size);
 }
 
-crawl().then(() => process.exit(0)).catch(e => { console.error(e); process.exit(1); });
+crawl()
+  .then(() => process.exit(0))
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });

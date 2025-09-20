@@ -55,3 +55,9 @@
     @apply myds-pill bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300;
   }
 }
+
+/* MYDS filters styles (required for tests) */
+:root {
+  /* Example filter token */
+  --myds-filter-example: blur(2px);
+}

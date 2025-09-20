@@ -23,7 +23,7 @@ function trapFocus(modal) {
     'input:not([disabled])',
     'select:not([disabled])',
     '[tabindex]:not([tabindex="-1"])',
-    '[contenteditable="true"]'
+    '[contenteditable="true"]',
   ].join(', ');
 
   const focusable = modal.querySelectorAll(focusableSelector);

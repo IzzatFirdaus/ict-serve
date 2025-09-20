@@ -6,8 +6,8 @@ use App\Livewire\LoanRequestTracker;
 use App\Livewire\MyRequests;
 use App\Models\LoanRequest;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -29,7 +29,7 @@ class MyRequestsLivewireTest extends TestCase
 
         // Safely clear and reseed loan_statuses to avoid unique constraint violations
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        DB::table('loan_statuses')->delete();
+        DB::table('loan_statuses')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
         $this->seed(\Database\Seeders\LoanStatusSeeder::class);
     }
@@ -41,7 +41,8 @@ class MyRequestsLivewireTest extends TestCase
     {
         $response = $this->actingAs($this->user)->get('/my-requests');
         $response->assertStatus(200);
-        $response->assertSee('<livewire:my-requests');
+        $response->assertSee('My Requests');
+        $response->assertSee('No loan requests found');
     }
 
     /**

@@ -27,7 +27,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentCategoryFactory.php' => [
-            0 => 'd7ab0f77d6e2c394237ba06b82d6bbcc79d7f55e',
+            0 => '721cca44c854a8ca210fbc3c798bec493e19d4f7',
             1 => [
                 0 => 'database\\factories\\equipmentcategoryfactory',
             ],
@@ -40,7 +40,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\EquipmentItemFactory.php' => [
-            0 => '8a8995d33bc0470e31fb854747e3a4f6fa5990cd',
+            0 => 'a012d093ef3ba43997199879ca2c28d5902f99d0',
             1 => [
                 0 => 'database\\factories\\equipmentitemfactory',
             ],
@@ -75,7 +75,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanRequestFactory.php' => [
-            0 => 'c9a4fa7bc4d2975c2a5644608bc6f757242cfc28',
+            0 => '8f72ad765ed988e250aec892b6fd86d481b0c002',
             1 => [
                 0 => 'database\\factories\\loanrequestfactory',
             ],
@@ -86,7 +86,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\factories\\LoanStatusFactory.php' => [
-            0 => '247c6e08fbf6a20e90ed2ef2f253b0d96b8eb645',
+            0 => '862642acb677994922b72947c1019fcbcff6d408',
             1 => [
                 0 => 'database\\factories\\loanstatusfactory',
             ],
@@ -195,18 +195,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\0001_01_01_000003_create_users_table.php' => [
-            0 => '9acd8544bb402f0a6776eefec297d5f171f1e15a',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_092243_add_motac_fields_to_users_table.php' => [
-            0 => 'b56b7129b1888c55fe14228e265a03c436ebc50b',
+            0 => 'fd41f53bb58f0633fa3461bdb7916823c9a3b629',
             1 => [
             ],
             2 => [
@@ -315,17 +304,6 @@ return \PHPStan\Cache\CacheItem::__set_state([
             3 => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_08_170615_create_notifications_table.php' => [
-            0 => '1c14fd987c11e0ec836f0145c48f20947fc15731',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_09_145038_create_damage_types_table.php' => [
             0 => '4b0295c9814ad436adee34db3dc1b2ecab5b1989',
             1 => [
@@ -349,56 +327,10 @@ return \PHPStan\Cache\CacheItem::__set_state([
             3 => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_000001_add_created_at_index_to_loan_requests_table.php' => [
-            0 => '08cee3f2e7ca1d9a9e6040256e3d738da970d0ec',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_000002_add_created_at_index_to_helpdesk_tickets_table.php' => [
-            0 => 'c8a6cccb83166a936bd75018069a0503038346b9',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005303_create_activity_log_table.php' => [
             0 => '98d9d045b79b1133cb652e0910eb76798cab9fd3',
             1 => [
                 0 => 'createactivitylogtable',
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005304_add_event_column_to_activity_log_table.php' => [
-            0 => '08a0f379052dd0ed0b4538112e12cc99fd5784db',
-            1 => [
-                0 => 'addeventcolumntoactivitylogtable',
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_10_005305_add_batch_uuid_column_to_activity_log_table.php' => [
-            0 => '1f8453811012917c226c47e3740d567489594212',
-            1 => [
-                0 => 'addbatchuuidcolumntoactivitylogtable',
             ],
             2 => [
                 0 => 'up',
@@ -451,18 +383,6 @@ return \PHPStan\Cache\CacheItem::__set_state([
             3 => [
             ],
         ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_073118_create_telescope_entries_table.php' => [
-            0 => 'd867c55e53f3d43219474d2e7d97c6339bb79e4e',
-            1 => [
-            ],
-            2 => [
-                0 => 'getconnection',
-                1 => 'up',
-                2 => 'down',
-            ],
-            3 => [
-            ],
-        ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_130332_create_notifications_table.php' => [
             0 => '1afc274fa3ee907b42da59ce88e859496e0a998b',
             1 => [
@@ -475,62 +395,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_130500_create_app_notifications_table.php' => [
-            0 => '6703d86f957873a611dbc77b77bb0949d2e2bd18',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_133832_create_loan_statuses_table.php' => [
-            0 => '2bc88bb6f19dca717fa13d624b605ae02cfd7c65',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_12_133839_create_loan_requests_table.php' => [
-            0 => '14d313a94ee8ff793b5ec2840ea4c715b248032d',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000001_create_departments_table.php' => [
-            0 => '330a2f9156292212360f180ccea0be3bda466cb3',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000002_create_grades_table.php' => [
-            0 => 'ede573610dd1213166c3151f92cff6578bf2d924',
-            1 => [
-            ],
-            2 => [
-                0 => 'up',
-                1 => 'down',
-            ],
-            3 => [
-            ],
-        ],
-        'C:\\XAMPP\\htdocs\\ict-serve\\database\\migrations\\2025_09_14_000003_create_positions_table.php' => [
-            0 => '43d0bc122810d0286453e82d6468ba33a55d7c28',
+            0 => 'e3608d2e2a5d70c020faadbdc34de45c5add8347',
             1 => [
             ],
             2 => [

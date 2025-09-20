@@ -20,7 +20,7 @@ function showToast(message, type = 'info', duration = 5000) {
     success: 'bg-success-600 text-white border-success-600',
     error: 'bg-danger-600 text-white border-danger-600',
     warning: 'bg-warning-600 text-white border-warning-600',
-    info: 'bg-primary-600 text-white border-primary-600'
+    info: 'bg-primary-600 text-white border-primary-600',
   };
 
   toast.className += ` ${typeStyles[type] || typeStyles.info}`;
@@ -86,7 +86,7 @@ function fadeOutAndRemove(toast) {
  */
 function initializeDemoDashboard() {
   // Add keyboard support for demo actions
-  document.addEventListener('keydown', function(event) {
+  document.addEventListener('keydown', function (event) {
     // Demo: Press 'T' to show test toast
     if (event.key === 't' || event.key === 'T') {
       if (event.ctrlKey || event.metaKey) {

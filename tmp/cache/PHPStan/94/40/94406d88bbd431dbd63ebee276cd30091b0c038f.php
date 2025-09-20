@@ -53,7 +53,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Enums\\LoanRequestStatus.php' => [
-            0 => 'a47ea2ba1dbd20461c48c9ea7915677337058110',
+            0 => 'dc8cd9747f49b5e39fb0b5c76a6382360fe08bc7',
             1 => [
                 0 => 'app\\enums\\loanrequeststatus',
             ],
@@ -593,7 +593,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\HelpdeskTicketController.php' => [
-            0 => 'a1a1baf68b456a7c602e731a47f8ede6cf11d9ef',
+            0 => 'c47960ea9d5760f90c76a5ab53d065e2f51dc031',
             1 => [
                 0 => 'app\\http\\controllers\\api\\helpdeskticketcontroller',
             ],
@@ -611,7 +611,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Api\\LoanRequestController.php' => [
-            0 => 'd413834694fcb501055d0a3f2c9d0d130bc0cbe6',
+            0 => 'ed7cc854077668dc1bdf6b0e2a9f14c95a1df4f0',
             1 => [
                 0 => 'app\\http\\controllers\\api\\loanrequestcontroller',
             ],
@@ -845,7 +845,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicHelpdeskController.php' => [
-            0 => '6283603fbee2284d55e11cb7eeddde0585bc4fe6',
+            0 => '752e6131184f89bdea08c38ccf84fb23c3993de4',
             1 => [
                 0 => 'app\\http\\controllers\\public\\publichelpdeskcontroller',
             ],
@@ -862,7 +862,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\Public\\PublicLoanController.php' => [
-            0 => '2087cb69fb0b3ac23c3f552dc2aeba921523e157',
+            0 => '04c80311fac24c2533d3f14da518e388b0a31675',
             1 => [
                 0 => 'app\\http\\controllers\\public\\publicloancontroller',
             ],
@@ -878,7 +878,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Controllers\\PublicController.php' => [
-            0 => '35038b2a0819a43d44ce64b162cbb8a0b2b2d6fb',
+            0 => '52fac92be1f18d6e42033bf761bb86b06386ea42',
             1 => [
                 0 => 'app\\http\\controllers\\publiccontroller',
             ],
@@ -893,7 +893,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Http\\Middleware\\AdminMiddleware.php' => [
-            0 => '31a5e3004c296ac75f97042bd52c117584fdeece',
+            0 => 'b20705894e3a0496fdfa782cdd5db43eda6fb3ff',
             1 => [
                 0 => 'app\\http\\middleware\\adminmiddleware',
             ],
@@ -1347,7 +1347,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationForm.php' => [
-            0 => '326ff6fa2738274649d15e46f64bda1c3bba04cf',
+            0 => '4c21f993ee3b0f4e73abb15d1a25f5d41c052ffd',
             1 => [
                 0 => 'app\\livewire\\equipment\\loanapplicationform',
             ],
@@ -1396,7 +1396,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Equipment\\LoanApplicationList.php' => [
-            0 => 'ba7edbea9089680a84ab75d4b1970d2cd5054a27',
+            0 => '2d725a3dee17e5f9ddfccf54fb0cc23b579b04f2',
             1 => [
                 0 => 'app\\livewire\\equipment\\loanapplicationlist',
             ],
@@ -1501,7 +1501,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\Assignment.php' => [
-            0 => '010828a6592270ca1d1e470dca157aefed76f30a',
+            0 => '538ef9fb368a93f26a60b51977a028ca8ed18b9a',
             1 => [
                 0 => 'app\\livewire\\helpdesk\\assignment',
             ],
@@ -1522,7 +1522,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\AttachmentManager.php' => [
-            0 => 'b66bd377289e85795708f1d771f59c2f1ea7d87c',
+            0 => '33aad72b621a9d1eaa806611df41a060404dfbdf',
             1 => [
                 0 => 'app\\livewire\\helpdesk\\attachmentmanager',
             ],
@@ -1598,7 +1598,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\IndexEnhanced.php' => [
-            0 => 'bc48d7b19ecad2ea1c710e19f199a03764f1a6be',
+            0 => '0284e863dd151d7d847860afe972e59c4fa2c3e5',
             1 => [
                 0 => 'app\\livewire\\helpdesk\\indexenhanced',
             ],
@@ -1629,7 +1629,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\SlaTracker.php' => [
-            0 => '198a061ed166a9dc995da16d531016b8270f2417',
+            0 => 'beb6f270e14b5bdf99e3909aa2771ec038285bd4',
             1 => [
                 0 => 'app\\livewire\\helpdesk\\slatracker',
             ],
@@ -1655,7 +1655,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Helpdesk\\TicketDetail.php' => [
-            0 => '2793078497bc485eeb31c2ae250a08c903f89e52',
+            0 => 'd9540173d7c7e29e0bdbead4c776f36d9ed9cdaf',
             1 => [
                 0 => 'app\\livewire\\helpdesk\\ticketdetail',
             ],
@@ -1702,7 +1702,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\Ict\\AdminDropdownManager.php' => [
-            0 => '119fc5119334a582e45c3ed3593e936ed81f89f1',
+            0 => '25387b696fa7fd69b0a00a0e5768da65a5f0efc2',
             1 => [
                 0 => 'app\\livewire\\ict\\admindropdownmanager',
             ],
@@ -2042,7 +2042,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessIssuance.php' => [
-            0 => '86f5ec6f723ffce0c499c6eb845e4d21ea3bcdec',
+            0 => '7fa57647ff3ea980ee8127cfc3942c3297a4caa5',
             1 => [
                 0 => 'app\\livewire\\resourcemanagement\\admin\\bpm\\processissuance',
             ],
@@ -2058,7 +2058,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\ResourceManagement\\Admin\\BPM\\ProcessReturn.php' => [
-            0 => 'eb502639290fb52916471bf8ae5d3a60c39dffe1',
+            0 => '06366d649c1a42e2650ddbd777adc15c60c8b8c8',
             1 => [
                 0 => 'app\\livewire\\resourcemanagement\\admin\\bpm\\processreturn',
             ],
@@ -2104,7 +2104,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Livewire\\UserProfile.php' => [
-            0 => '0452b7cd0a01f859d5320de602ff590e5cf48ba3',
+            0 => '9acf6d897843f4aadbc503559220f6206434be1d',
             1 => [
                 0 => 'app\\livewire\\userprofile',
             ],
@@ -2124,7 +2124,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Mail\\HelpdeskTicketConfirmationMail.php' => [
-            0 => '0ae9a533599e62faf469d1dd4dcf392826d9e5b2',
+            0 => '5c0045fb2d67c314b286b4e39adaab88622804ba',
             1 => [
                 0 => 'app\\mail\\helpdeskticketconfirmationmail',
             ],
@@ -2138,7 +2138,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Mail\\LoanRequestConfirmationMail.php' => [
-            0 => 'd6ac059ba2e9bbe0148bdb18c3d29539269fa2cf',
+            0 => '1d36263f275baa75b78ae2c3d8dd71a252b8d207',
             1 => [
                 0 => 'app\\mail\\loanrequestconfirmationmail',
             ],
@@ -2255,7 +2255,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentItem.php' => [
-            0 => '00c965f40ec34001e499f90cde4caa7fe522d126',
+            0 => '7678e31696df31cb62df1b58344e06a6f1f639dc',
             1 => [
                 0 => 'app\\models\\equipmentitem',
             ],
@@ -2272,7 +2272,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\EquipmentLoan.php' => [
-            0 => 'db788e998a67e93d2869516b2002280785879bff',
+            0 => '4ab49040f20dc79968e639e629c92a77a74f65ec',
             1 => [
                 0 => 'app\\models\\equipmentloan',
             ],
@@ -2289,27 +2289,31 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\HelpdeskTicket.php' => [
-            0 => 'c0dabf4abcb00b04290f1be20429a36373895c6a',
+            0 => 'f2e358828aed300bf9fc63c16adbafa7f19f2d46',
             1 => [
                 0 => 'app\\models\\helpdeskticket',
             ],
             2 => [
                 0 => 'app\\models\\user',
                 1 => 'app\\models\\category',
-                2 => 'app\\models\\ticketstatus',
-                3 => 'app\\models\\assignedto',
-                4 => 'app\\models\\resolvedby',
-                5 => 'app\\models\\equipmentitem',
-                6 => 'app\\models\\isoverdue',
-                7 => 'app\\models\\isresolved',
-                8 => 'app\\models\\isclosed',
-                9 => 'app\\models\\getresponsetimeattribute',
-                10 => 'app\\models\\getresolutiontimeattribute',
-                11 => 'app\\models\\casts',
-                12 => 'app\\models\\boot',
-                13 => 'app\\models\\getassignedtoattribute',
-                14 => 'app\\models\\getactivitylogattribute',
-                15 => 'app\\models\\generateticketnumber',
+                2 => 'app\\models\\status',
+                3 => 'app\\models\\ticketstatus',
+                4 => 'app\\models\\assignedto',
+                5 => 'app\\models\\assignedtouser',
+                6 => 'app\\models\\resolvedby',
+                7 => 'app\\models\\resolvedbyuser',
+                8 => 'app\\models\\equipmentitem',
+                9 => 'app\\models\\comments',
+                10 => 'app\\models\\isoverdue',
+                11 => 'app\\models\\isresolved',
+                12 => 'app\\models\\isclosed',
+                13 => 'app\\models\\getresponsetimeattribute',
+                14 => 'app\\models\\getresolutiontimeattribute',
+                15 => 'app\\models\\casts',
+                16 => 'app\\models\\boot',
+                17 => 'app\\models\\getassignedtoattribute',
+                18 => 'app\\models\\getactivitylogattribute',
+                19 => 'app\\models\\generateticketnumber',
             ],
             3 => [
             ],
@@ -2327,7 +2331,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanItem.php' => [
-            0 => '267ca49e56e41ad80ce0fdfb79e4aa1076b361ce',
+            0 => '823aa5ae6f485a713f0c5324bfa8a214cc602ed4',
             1 => [
                 0 => 'app\\models\\loanitem',
             ],
@@ -2340,30 +2344,32 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\LoanRequest.php' => [
-            0 => 'b2f1779be198a4bd4554aac9c98174ade4c16d6f',
+            0 => 'bf5203ea0aca594646b930dad6c402628a1601d5',
             1 => [
                 0 => 'app\\models\\loanrequest',
             ],
             2 => [
-                0 => 'app\\models\\user',
-                1 => 'app\\models\\supervisor',
-                2 => 'app\\models\\ictadmin',
-                3 => 'app\\models\\issuedby',
-                4 => 'app\\models\\receivedby',
-                5 => 'app\\models\\loanitems',
-                6 => 'app\\models\\scopepending',
-                7 => 'app\\models\\equipmentitems',
-                8 => 'app\\models\\approvals',
-                9 => 'app\\models\\getequipmentitemattribute',
-                10 => 'app\\models\\scopeforuser',
-                11 => 'app\\models\\canbeedited',
-                12 => 'app\\models\\canbecancelled',
-                13 => 'app\\models\\isoverdue',
-                14 => 'app\\models\\getloandurationattribute',
-                15 => 'app\\models\\casts',
-                16 => 'app\\models\\boot',
-                17 => 'app\\models\\generaterequestnumber',
-                18 => 'app\\models\\generatereferencenumber',
+                0 => 'app\\models\\status',
+                1 => 'app\\models\\loanstatus',
+                2 => 'app\\models\\user',
+                3 => 'app\\models\\supervisor',
+                4 => 'app\\models\\ictadmin',
+                5 => 'app\\models\\issuedby',
+                6 => 'app\\models\\receivedby',
+                7 => 'app\\models\\loanitems',
+                8 => 'app\\models\\scopepending',
+                9 => 'app\\models\\equipmentitems',
+                10 => 'app\\models\\approvals',
+                11 => 'app\\models\\getequipmentitemattribute',
+                12 => 'app\\models\\scopeforuser',
+                13 => 'app\\models\\canbeedited',
+                14 => 'app\\models\\canbecancelled',
+                15 => 'app\\models\\isoverdue',
+                16 => 'app\\models\\getloandurationattribute',
+                17 => 'app\\models\\casts',
+                18 => 'app\\models\\boot',
+                19 => 'app\\models\\generaterequestnumber',
+                20 => 'app\\models\\generatereferencenumber',
             ],
             3 => [
             ],
@@ -2385,7 +2391,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\Notification.php' => [
-            0 => '5b57cfa2574c5095652d824befdcba8b6d8a23c6',
+            0 => '302373bc55670648b6a6429307c2bbc7bd29cf75',
             1 => [
                 0 => 'app\\models\\notification',
             ],
@@ -2457,7 +2463,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Models\\User.php' => [
-            0 => 'cd8580f7d03a8e073a41f0f5e77f480e71f6f346',
+            0 => 'c7955caa22c6df93280c1f904f8f58fe861c9ec9',
             1 => [
                 0 => 'app\\models\\user',
             ],
@@ -2468,10 +2474,15 @@ return \PHPStan\Cache\CacheItem::__set_state([
                 3 => 'app\\models\\loanrequests',
                 4 => 'app\\models\\supervisedloanrequests',
                 5 => 'app\\models\\tickets',
-                6 => 'app\\models\\assignedtickets',
-                7 => 'app\\models\\notifications',
-                8 => 'app\\models\\unreadnotifications',
-                9 => 'app\\models\\activitylogs',
+                6 => 'app\\models\\helpdesktickets',
+                7 => 'app\\models\\assignedtickets',
+                8 => 'app\\models\\notifications',
+                9 => 'app\\models\\unreadnotifications',
+                10 => 'app\\models\\activitylogs',
+                11 => 'app\\models\\activities',
+                12 => 'app\\models\\auditlogs',
+                13 => 'app\\models\\hasrole',
+                14 => 'app\\models\\hasanyrole',
             ],
             3 => [
             ],
@@ -2491,7 +2502,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\HelpdeskTicketSubmitted.php' => [
-            0 => '35b6368f131e29632b3f4d4812c2e140cff38f0a',
+            0 => '3d6e84e19b1a01f4c7065a40a3b37303317b0afb',
             1 => [
                 0 => 'app\\notifications\\helpdeskticketsubmitted',
             ],
@@ -2519,7 +2530,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\LoanRequestSubmittedNotification.php' => [
-            0 => '0b34a4d98350f28c690ab0ceb07ed97015428ec0',
+            0 => '5beb8268c5928c5f5111dab13d0886aba5ae2269',
             1 => [
                 0 => 'app\\notifications\\loanrequestsubmittednotification',
             ],
@@ -2533,29 +2544,31 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketCreatedNotification.php' => [
-            0 => '8ac3db40281d9be2dc3336f3cab017a6cf5c491b',
+            0 => 'd098c58b095999a4088aee5417c7fcea5f4ddc48',
             1 => [
                 0 => 'app\\notifications\\ticketcreatednotification',
             ],
             2 => [
                 0 => 'app\\notifications\\__construct',
-                1 => 'app\\notifications\\via',
-                2 => 'app\\notifications\\tomail',
-                3 => 'app\\notifications\\toarray',
+                1 => 'app\\notifications\\toappdatabase',
+                2 => 'app\\notifications\\via',
+                3 => 'app\\notifications\\tomail',
+                4 => 'app\\notifications\\toarray',
             ],
             3 => [
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\TicketStatusUpdatedNotification.php' => [
-            0 => '87b786cf3e39bfafd9ba7c074ba8de5131fb7533',
+            0 => '7efc963662358321b903c35ad4a240afbc66568d',
             1 => [
                 0 => 'app\\notifications\\ticketstatusupdatednotification',
             ],
             2 => [
                 0 => 'app\\notifications\\__construct',
-                1 => 'app\\notifications\\via',
-                2 => 'app\\notifications\\tomail',
-                3 => 'app\\notifications\\toarray',
+                1 => 'app\\notifications\\toappdatabase',
+                2 => 'app\\notifications\\via',
+                3 => 'app\\notifications\\tomail',
+                4 => 'app\\notifications\\toarray',
             ],
             3 => [
             ],
@@ -2587,7 +2600,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\AppServiceProvider.php' => [
-            0 => '26d3346442f9d77a87c8197ec19258c78d228b90',
+            0 => '216978b15309808f42a16453663b73b23378b214',
             1 => [
                 0 => 'app\\providers\\appserviceprovider',
             ],
@@ -2610,7 +2623,7 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
         ],
         'C:\\XAMPP\\htdocs\\ict-serve\\app\\Providers\\TelescopeServiceProvider.php' => [
-            0 => 'c55ef109743377bc527eb1b423751410b0824ea5',
+            0 => 'c5e2fc84e20b4e3c9049e9acb3b440473fb17d94',
             1 => [
                 0 => 'app\\providers\\telescopeserviceprovider',
             ],
@@ -2704,6 +2717,28 @@ return \PHPStan\Cache\CacheItem::__set_state([
             ],
             2 => [
                 0 => 'app\\view\\components\\render',
+            ],
+            3 => [
+            ],
+        ],
+        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\Channels\\AppDatabaseChannel.php' => [
+            0 => '93a41e695dd4f26af84d2fc3eeb1915c4ef2e9be',
+            1 => [
+                0 => 'app\\notifications\\channels\\appdatabasechannel',
+            ],
+            2 => [
+                0 => 'app\\notifications\\channels\\send',
+            ],
+            3 => [
+            ],
+        ],
+        'C:\\XAMPP\\htdocs\\ict-serve\\app\\Notifications\\Contracts\\AppDatabaseNotificationInterface.php' => [
+            0 => '2507d216b406d9c71cdeaa4d644f6a9667ede891',
+            1 => [
+                0 => 'app\\notifications\\contracts\\appdatabasenotificationinterface',
+            ],
+            2 => [
+                0 => 'app\\notifications\\contracts\\toappdatabase',
             ],
             3 => [
             ],
