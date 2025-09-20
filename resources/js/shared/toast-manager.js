@@ -64,7 +64,11 @@ function toastManager() {
  */
 function showToast(type, title, message, duration = 3000) {
   const toastContainer = document.querySelector('[x-data*="toastManager"]');
-  if (toastContainer && toastContainer._x_dataStack && toastContainer._x_dataStack[0]) {
+  if (
+    toastContainer &&
+    toastContainer._x_dataStack &&
+    toastContainer._x_dataStack[0]
+  ) {
     toastContainer._x_dataStack[0].addToast(type, title, message, duration);
   } else {
     // Fallback for when Alpine.js is not available

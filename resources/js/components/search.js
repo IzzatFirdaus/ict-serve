@@ -40,7 +40,9 @@ export function searchComponent(config) {
         const data = await response.json();
 
         this.results = Array.isArray(data.results) ? data.results : [];
-        this.totalResults = Number.isFinite(data.total) ? data.total : this.results.length;
+        this.totalResults = Number.isFinite(data.total)
+          ? data.total
+          : this.results.length;
         this.groupedResults = this.groupResultsByCategory(this.results);
         this.hasNoResults = this.results.length === 0;
         this.highlightedIndex = -1;
@@ -100,14 +102,20 @@ export function searchComponent(config) {
     },
 
     handleFocus() {
-      if (this.query.length >= config.minChars && (this.results.length > 0 || this.hasNoResults)) {
+      if (
+        this.query.length >= config.minChars &&
+        (this.results.length > 0 || this.hasNoResults)
+      ) {
         this.showResults = true;
       }
     },
 
     highlightNext() {
       if (!this.showResults || this.results.length === 0) return;
-      this.highlightedIndex = Math.min(this.highlightedIndex + 1, this.results.length - 1);
+      this.highlightedIndex = Math.min(
+        this.highlightedIndex + 1,
+        this.results.length - 1
+      );
     },
 
     highlightPrevious() {
@@ -126,7 +134,9 @@ export function searchComponent(config) {
     },
 
     isHighlighted(result) {
-      const index = this.results.findIndex((r) => (r.id ?? r.title) === (result.id ?? result.title));
+      const index = this.results.findIndex(
+        (r) => (r.id ?? r.title) === (result.id ?? result.title)
+      );
       return index === this.highlightedIndex;
     },
 

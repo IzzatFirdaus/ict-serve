@@ -19,19 +19,19 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Show loading indicator initially (for SPA/Livewire/JS hydration)
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const loading = document.getElementById('loading-indicator');
   if (loading) loading.style.display = 'flex';
 });
-window.addEventListener('load', function() {
-  setTimeout(function() {
+window.addEventListener('load', function () {
+  setTimeout(function () {
     const loading = document.getElementById('loading-indicator');
     if (loading) loading.style.display = 'none';
   }, 800); // Slight delay for perceived performance
 });
 
 // Accessibility: focus visible polyfill for better keyboard navigation
-(function() {
+(function () {
   if (!document.querySelector('#myds-focus-visible')) {
     var style = document.createElement('style');
     style.id = 'myds-focus-visible';

@@ -7,8 +7,7 @@ interface AppDatabaseNotificationInterface
     /**
      * Get the app database representation of the notification.
      *
-     * @param mixed $notifiable
-     * @return array
+     * @param  mixed  $notifiable
      */
     public function toAppDatabase($notifiable): array;
 }

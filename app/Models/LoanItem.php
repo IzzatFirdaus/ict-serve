@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $notes_in
  * @property bool $damage_reported
  * @property-read \App\Models\LoanRequest $loanRequest
- * @property-read \App\Models\EquipmentItem $equipmentItem
+ * @property-read \App\Models\EquipmentItem|null $equipmentItem
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */

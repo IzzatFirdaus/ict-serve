@@ -19,7 +19,7 @@
     "emergency_label": "ICT emergency:"
   },
   "literals": {
-  "equipment": "Equipment",
+    "equipment": "Equipment",
     "helpdesk.issue_reported_success": "Issue reported successfully! Your ticket number is: :ticket",
     "helpdesk.error_occurred": "An error occurred while submitting your report. Please try again.",
     "helpdesk.ticket_not_found": "Ticket number not found. Please check and try again.",
@@ -71,8 +71,7 @@
   "public": {
     "loan-request": "Equipment Loan Request",
     "damage-complaint": "Damage Complaint"
-  }
-  ,
+  },
   "user_profile": {
     "change_password": "Change password",
     "changing": "Changing...",
@@ -156,8 +155,7 @@
   "I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.": "I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.",
   "Cancel": "Cancel",
   "Submit Report": "Submit Report",
-  "Processing...": "Processing..."
-  ,
+  "Processing...": "Processing...",
   "Request/Ticket number not found. Please check and try again.": "Request/Ticket number not found. Please check and try again.",
   "my_requests.title": "My Requests",
   "my_requests.subtitle": "View and manage your equipment loan requests and helpdesk tickets.",

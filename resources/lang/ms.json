@@ -71,8 +71,7 @@
   "public": {
     "loan-request": "Permohonan Pinjaman Peralatan",
     "damage-complaint": "Aduan Kerosakan"
-  }
-  ,
+  },
   "user_profile": {
     "change_password": "Tukar Kata Laluan",
     "changing": "Menukar...",
@@ -156,10 +155,8 @@
   "I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.": "Saya bersetuju untuk pengumpulan, pemprosesan, dan penyimpanan data peribadi saya bagi tujuan pengurusan tiket sokongan ICT. Data ini akan digunakan untuk memproses permintaan sokongan saya, menghantar notifikasi status tiket, dan menyimpan rekod sokongan mengikut peraturan perlindungan data yang berkenaan.",
   "Cancel": "Batal",
   "Submit Report": "Hantar Laporan",
-  "Processing...": "Sedang diproses..."
-  ,
-  "Request/Ticket number not found. Please check and try again.": "Nombor Permintaan/Tiket tidak ditemui. Sila semak dan cuba lagi."
-  ,
+  "Processing...": "Sedang diproses...",
+  "Request/Ticket number not found. Please check and try again.": "Nombor Permintaan/Tiket tidak ditemui. Sila semak dan cuba lagi.",
   "my_requests.title": "My Requests",
   "my_requests.subtitle": "View and manage your equipment loan requests and helpdesk tickets.",
   "my_requests.auto_refreshing": "Auto-refreshing...",

@@ -6,7 +6,8 @@ export function userMenu() {
     markAllAsRead() {
       // Placeholder: trigger an API call or Livewire action to mark notifications as read
       this.showNotifications = false;
-      if (window.showToast) window.showToast('Semua notifikasi ditanda sebagai dibaca', 'success');
+      if (window.showToast)
+        window.showToast('Semua notifikasi ditanda sebagai dibaca', 'success');
     },
   };
 }

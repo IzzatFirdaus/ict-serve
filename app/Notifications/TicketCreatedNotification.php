@@ -3,14 +3,14 @@
 namespace App\Notifications;
 
 use App\Models\HelpdeskTicket;
+use App\Notifications\Contracts\AppDatabaseNotificationInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Laravel\Telescope\Telescope;
-use App\Notifications\Contracts\AppDatabaseNotificationInterface;
 
-class TicketCreatedNotification extends Notification implements ShouldQueue, AppDatabaseNotificationInterface
+class TicketCreatedNotification extends Notification implements AppDatabaseNotificationInterface, ShouldQueue
 {
     use Queueable;
 
@@ -59,7 +59,6 @@ class TicketCreatedNotification extends Notification implements ShouldQueue, App
             'action_url' => route('dashboard'),
         ];
     }
-
 
     /**
      * Get the notification's delivery channels.

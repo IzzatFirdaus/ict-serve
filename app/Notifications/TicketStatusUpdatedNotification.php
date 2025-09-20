@@ -4,20 +4,21 @@ namespace App\Notifications;
 
 use App\Models\HelpdeskTicket;
 use App\Models\TicketStatus;
+use App\Notifications\Contracts\AppDatabaseNotificationInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Laravel\Telescope\Telescope;
 
-use App\Notifications\Contracts\AppDatabaseNotificationInterface;
-
-class TicketStatusUpdatedNotification extends Notification implements ShouldQueue, AppDatabaseNotificationInterface
+class TicketStatusUpdatedNotification extends Notification implements AppDatabaseNotificationInterface, ShouldQueue
 {
     use Queueable;
 
     protected HelpdeskTicket $ticket;
+
     protected TicketStatus $oldStatus;
+
     protected TicketStatus $newStatus;
 
     public function __construct(HelpdeskTicket $ticket, TicketStatus $oldStatus, TicketStatus $newStatus)

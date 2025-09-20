@@ -2,11 +2,9 @@
 
 namespace App\Notifications\Channels;
 
-use Illuminate\Notifications\Notification;
-use Illuminate\Support\Facades\DB;
 use App\Models\Notification as AppNotification;
-
 use App\Notifications\Contracts\AppDatabaseNotificationInterface;
+use Illuminate\Notifications\Notification;
 
 class AppDatabaseChannel
 {
@@ -14,7 +12,6 @@ class AppDatabaseChannel
      * Send the given notification.
      *
      * @param  mixed  $notifiable
-     * @param  AppDatabaseNotificationInterface  $notification
      * @return void
      */
     public function send($notifiable, AppDatabaseNotificationInterface $notification)
@@ -22,7 +19,7 @@ class AppDatabaseChannel
         $data = $notification->toAppDatabase($notifiable);
 
         // Ensure required fields are present
-        if (!isset($data['title']) || !isset($data['message'])) {
+        if (! isset($data['title']) || ! isset($data['message'])) {
             throw new \InvalidArgumentException('App notification must have title and message.');
         }
 

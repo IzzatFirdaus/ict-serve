@@ -25,8 +25,8 @@ class LoanRequestFactory extends Factory
             'cancelled',
         ];
         $statusCode = $this->faker->randomElement($validCodes);
-    /** @var \App\Models\LoanStatus $loanStatus */
-    $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
+        /** @var \App\Models\LoanStatus $loanStatus */
+        $loanStatus = \App\Models\LoanStatus::factory()->create(['code' => $statusCode]);
 
         return [
             'reference_number' => $this->faker->unique()->numerify('REF-####'),
