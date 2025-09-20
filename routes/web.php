@@ -115,6 +115,11 @@ Route::get('/equipment-loan', function () {
     return view('equipment-loan');
 });
 
+// Backwards-compatible public alias for legacy path used in tests
+Route::get('/ict/damage-complaint', function () {
+    return view('damage-complaint');
+});
+
 // Email Approval Routes (Public but secured with tokens)
 Route::prefix('approve')->name('approve.')->group(function () {
     Route::get('/loan-request/{token}', [\App\Http\Controllers\Public\PublicLoanController::class, 'approveViaEmail'])->name('loan-request');

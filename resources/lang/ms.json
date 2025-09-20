@@ -1,192 +1,430 @@
 {
-  "buttons": {
-    "remove": "Buang",
-    "add_equipment": "Tambah Peralatan",
-    "submit_complaint": "Hantar Aduan",
-    "create_new_application": "Permohonan Baru"
-  },
-  "ui": {
-    "no_activity_title": "Tiada aktiviti terkini",
-    "no_activity_subtitle": "Anda belum menghantar sebarang permohonan pinjaman atau tiket helpdesk."
-  },
-  "help_panel": {
-    "title": "Maklumat Bantuan",
-    "processing_time": "Aduan akan diproses dalam tempoh 3 hari bekerja.",
-    "complaint_status": "Anda akan menerima maklum balas melalui e-mel yang didaftarkan.",
-    "emergency_contact": "Untuk isu kritikal, sila hubungi BPM di talian 03-XXXXXXX.",
-    "processing_label": "Masa pemprosesan:",
-    "status_label": "Status aduan:",
-    "emergency_label": "Kecemasan ICT:"
-  },
-  "literals": {
-    "helpdesk.issue_reported_success": "Aduan berjaya dihantar! Nombor tiket anda ialah: :ticket",
-    "helpdesk.error_occurred": "Ralat berlaku semasa menghantar laporan anda. Sila cuba lagi.",
-    "helpdesk.ticket_not_found": "Nombor tiket tidak dijumpai. Sila semak dan cuba lagi.",
-    "helpdesk.ticket_confirmation": "Pengesahan Tiket - :ticket",
-    "equipment": "Peralatan"
+  "navigation": {
+    "dashboard": "Utama",
+    "servicedesk": "ServiceDesk ICT",
+    "equipment_loan": "Pinjaman Peralatan ICT",
+    "complaint_form": "Borang Aduan Kerosakan ICT",
+    "equipment_catalog": "",
+    "loan_applications": "",
+    "open_menu": {
+      "sr_only": ""
+    }
   },
   "forms": {
-    "sections": {
-      "equipment_info": "Maklumat Peralatan",
-      "equipment_list": "Senarai Peralatan Diperlukan",
-      "equipment_attachments": "Peralatan & Lampiran",
-      "requested_equipment": "Peralatan yang Dipohon"
-    },
     "labels": {
-      "select_equipment": "Pilih Peralatan",
-      "equipment": "Peralatan",
-      "equipment_item": "Item Peralatan",
-      "related_equipment": "Peralatan Berkaitan",
-      "related_equipment_optional": "Peralatan Berkaitan (Pilihan)",
-      "damaged_equipment": "Peralatan yang Rosak"
+      "full_name": "Nama Penuh",
+      "equipment_type": "Jenis Peralatan",
+      "damage_type": "Jenis Kerosakan",
+      "description": "Keterangan",
+      "date": "Tarikh",
+      "department": "Bahagian",
+      "phone": "No. Telefon",
+      "email": "E-mel",
+      "location": "Lokasi",
+      "attachment": "Lampiran",
+      "position_grade": "Jawatan & Gred",
+      "purpose": "Tujuan Permohonan",
+      "loan_start_date": "Tarikh Mula Pinjaman",
+      "loan_end_date": "Tarikh Dijangka Pulang",
+      "same_as_applicant": "Pemohon adalah pegawai yang bertanggungjawab",
+      "quantity": "Kuantiti",
+      "notes": "Catatan",
+      "asset_number": "No. Aset / Printer ID",
+      "damage_info": "Maklumat Kerosakan",
+      "declaration_text": "Saya memperakui dan mengesahkan bahawa semua maklumat yang diberikan di dalam eBorang Laporan Kerosakan ini adalah benar, dan bersetuju menerima perkhidmatan Bahagian Pengurusan Maklumat (BPM) berdasarkan Piagam Pelanggan sedia ada.",
+      "select_equipment": "",
+      "equipment": "",
+      "equipment_item": "",
+      "related_equipment": "",
+      "related_equipment_optional": "",
+      "damaged_equipment": ""
     },
     "placeholders": {
-      "select_equipment": "-- Pilih Peralatan --",
-      "search_equipment": "Cari peralatan (nama, tag, jenama, model)...",
-      "select_equipment_item": "Pilih item peralatan",
-      "select_related_equipment": "Pilih peralatan berkaitan (jika ada)",
-      "no_specific_equipment": "Tiada peralatan khusus",
-      "purpose_of_use": "Nyatakan tujuan penggunaan peralatan...",
-      "select_equipment_heading": "Pilih Peralatan"
-    },
-    "messages": {
-      "no_equipment_matches": "Tiada peralatan sepadan dengan carian :search",
-      "equipment_list_placeholder": "Senarai peralatan akan dipaparkan di sini.",
-      "manage_loan_applications": "Lihat dan urus permohonan pinjaman peralatan anda"
+      "enter_full_name": "Masukkan nama penuh anda",
+      "enter_description": "Masukkan keterangan kerosakan",
+      "select_equipment_type": "Pilih jenis peralatan",
+      "select_damage_type": "Pilih jenis kerosakan",
+      "enter_department": "Masukkan nama bahagian",
+      "enter_phone": "Masukkan nombor telefon",
+      "enter_email": "Masukkan alamat e-mel",
+      "enter_location": "Masukkan lokasi",
+      "upload_attachment": "Muat naik lampiran",
+      "select_department": "Pilih bahagian/unit anda",
+      "enter_purpose": "Nyatakan tujuan penggunaan peralatan ICT...",
+      "example_position": "Contoh: Pegawai Tadbir N41",
+      "example_position_grade": "Contoh: 41, 44, 48",
+      "example_email": "nama@motac.gov.my",
+      "enter_asset_number": "Masukkan nombor aset atau printer ID",
+      "enter_damage_info": "Sila berikan butiran lengkap mengenai masalah yang dihadapi...",
+      "select_equipment": "",
+      "search_equipment": "",
+      "select_equipment_item": "",
+      "select_related_equipment": "",
+      "no_specific_equipment": "",
+      "purpose_of_use": "",
+      "select_equipment_heading": ""
     },
     "titles": {
-      "loan_request": "Borang Permohonan Pinjaman Peralatan ICT"
+      "equipment_loan_form": "Borang Permohonan Peminjaman Peralatan ICT",
+      "damage_complaint_form": "Borang Aduan Kerosakan ICT",
+      "equipment_loan_form_wizard": "Borang Permohonan Peminjaman Peralatan ICT - Wizard",
+      "loan_request": ""
+    },
+    "subtitles": {
+      "for_official_use": "Untuk Kegunaan Rasmi Kementerian Pelancongan, Seni dan Budaya"
+    },
+    "sections": {
+      "applicant_info": "Bahagian 1: Maklumat Pemohon",
+      "responsible_officer_info": "Bahagian 2: Maklumat Pegawai Bertanggungjawab",
+      "equipment_info": "Bahagian 3: Maklumat Peralatan",
+      "equipment_list": "",
+      "equipment_attachments": ""
+    },
+    "terms": {
+      "title": "Syarat-Syarat Permohonan",
+      "complete_form": "Sila isi borang ini dengan lengkap. Tanda * adalah WAJIB diisi.",
+      "availability": "Permohonan tertakluk kepada ketersediaan peralatan melalui konsep 'First Come, First Serve'.",
+      "processing_time": "Permohonan akan diproses dalam tempoh 3 hari bekerja dari tarikh permohonan lengkap diterima.",
+      "applicant_responsibility": "Pemohon bertanggungjawab sepenuhnya ke atas keselamatan dan pemulangan peralatan.",
+      "approval_requirement": "Permohonan memerlukan pengesahan daripada pegawai Gred 41 ke atas."
+    },
+    "help": {
+      "asset_number_required": "Nombor aset diperlukan untuk kerosakan perkakasan",
+      "provide_details": "Berikan penerangan yang terperinci untuk memudahkan diagnosis masalah"
+    },
+    "progress": {
+      "step_of": "Langkah :current daripada :total",
+      "percent_complete": ":percent% selesai"
+    },
+    "notice": {
+      "auto_save": "Kemajuan anda akan disimpan secara automatik apabila anda bergerak ke langkah seterusnya."
+    },
+    "messages": {
+      "no_equipment_matches": "",
+      "equipment_list_placeholder": "",
+      "manage_loan_applications": ""
     }
   },
-  "navigation": {
-    "equipment_catalog": "Katalog Peralatan",
-    "loan_applications": "Permohonan Pinjaman",
-    "open_menu": {
-      "sr_only": "Buka menu"
-    }
+  "buttons": {
+    "submit": "Hantar",
+    "reset": "Set Semula",
+    "support": "Sokong",
+    "reject": "Tolak",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "edit": "Sunting",
+    "delete": "Padam",
+    "back": "Kembali",
+    "add_equipment": "Tambah Peralatan",
+    "submit_application": "Hantar Permohonan",
+    "reset_form": "Reset Borang",
+    "submit_complaint": "Hantar Aduan",
+    "previous_step": "Langkah Sebelumnya",
+    "next_step": "Langkah Seterusnya",
+    "remove": "Buang",
+    "create_new_application": "Buat Permohonan Baharu",
+    "login": "Log Masuk",
+    "register": "Daftar",
+    "saving": "Menyimpan...",
+    "sending": "Menghantar..."
   },
   "status": {
-    "equipment_returned": "Peralatan Dipulangkan"
+    "open": "Buka",
+    "in_progress": "Dalam Tindakan",
+    "completed": "Selesai",
+    "supported": "Disokong",
+    "rejected": "Ditolak",
+    "pending_approval": "Menunggu Kelulusan",
+    "equipment_returned": ""
+  },
+  "table": {
+    "headers": {
+      "no": "Bil",
+      "name": "Nama",
+      "status": "Status",
+      "action": "Tindakan",
+      "date": "Tarikh",
+      "department": "Bahagian"
+    }
+  },
+  "alerts": {
+    "success": "Berjaya!",
+    "error": "Ralat!",
+    "info": "Maklumat",
+    "warning": "Amaran"
+  },
+  "instructions": {
+    "fill_all_fields": "Sila isi semua maklumat yang diperlukan.",
+    "attachment_optional": "Lampiran adalah pilihan.",
+    "review_before_submit": "Sila semak maklumat sebelum menghantar."
+  },
+  "ui": {
+    "show_details": "Tunjukkan Butiran",
+    "hide_details": "Sembunyikan Butiran",
+    "dropdown": {
+      "menu": "Menu Pilihan"
+    },
+    "no_activity_title": "Tiada Aktiviti Lagi",
+    "no_activity_subtitle": "Anda belum mempunyai sebarang aktiviti atau permohonan."
+  },
+  "polling": {
+    "stop_auto_refresh": "Stop Auto-refresh",
+    "enable_auto_refresh": "Enable Auto-refresh",
+    "refresh_now": "Refresh now"
+  },
+  "notifications": {
+    "status_updated": "Status dikemas kini",
+    "polling_enabled": "Auto-refresh diaktifkan",
+    "polling_disabled": "Auto-refresh dinyahaktifkan"
+  },
+  "auth": {
+    "login": "Log Masuk",
+    "register": "Daftar"
+  },
+  "help_panel": {
+    "title": "",
+    "processing_time": "",
+    "complaint_status": "",
+    "emergency_contact": "",
+    "processing_label": "",
+    "status_label": "",
+    "emergency_label": ""
+  },
+  "literals": {
+    "equipment": "",
+    "helpdesk": {
+      "issue_reported_success": "",
+      "error_occurred": "",
+      "ticket_not_found": "",
+      "ticket_confirmation": ""
+    }
   },
   "public": {
-    "loan-request": "Permohonan Pinjaman Peralatan",
-    "damage-complaint": "Aduan Kerosakan"
+    "loan-request": "",
+    "damage-complaint": ""
   },
   "user_profile": {
-    "change_password": "Tukar Kata Laluan",
-    "changing": "Menukar...",
-    "save_settings": "Simpan Tetapan",
-    "saving": "Menyimpan..."
+    "change_password": "",
+    "changing": "",
+    "save_settings": "",
+    "saving": ""
   },
   "profile": {
-    "title": "Profil Pengguna",
-    "subtitle": "Uruskan maklumat peribadi dan tetapan akaun anda",
+    "title": "",
+    "subtitle": "",
     "tabs": {
-      "personal": "Maklumat Peribadi",
-      "security": "Keselamatan",
-      "notifications": "Notifikasi",
-      "activity": "Aktiviti Terkini"
+      "personal": "",
+      "security": "",
+      "notifications": "",
+      "activity": ""
     },
     "buttons": {
-      "choose_new_avatar": "Pilih Avatar Baharu",
-      "remove_avatar": "Padam Avatar"
+      "choose_new_avatar": "",
+      "remove_avatar": ""
     }
   },
   "loan_application": {
-    "submit": "Hantar Permohonan",
-    "submitting": "Menghantar..."
+    "title": "",
+    "aria_label": "",
+    "instructions": "",
+    "sections": {
+      "applicant_info": "",
+      "officer_info": "",
+      "equipment_info": "",
+      "declaration": ""
+    },
+    "labels": {
+      "full_name": "",
+      "position": "",
+      "division": "",
+      "grade": "",
+      "email": "",
+      "phone": "",
+      "same_as_applicant": "",
+      "start_date": "",
+      "end_date": "",
+      "purpose": "",
+      "quantity": "",
+      "remarks": "",
+      "agree_declaration": "",
+      "cancel_confirm": "",
+      "cancel": "",
+      "submit": "",
+      "submitting": ""
+    },
+    "placeholders": {
+      "example_name": "",
+      "example_position": "",
+      "example_grade": "",
+      "example_email": "",
+      "example_phone": "",
+      "purpose_example": "",
+      "remarks_example": "",
+      "select_division": ""
+    },
+    "progress": {
+      "applicant_info": "",
+      "responsible_officer": "",
+      "equipment_information": "",
+      "declaration": ""
+    },
+    "declaration": {
+      "intro": "",
+      "items": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": ""
+      }
+    },
+    "security_notice": "",
+    "form_optional_note": "",
+    "notes": {
+      "same_as_applicant": ""
+    }
   },
   "realtime": {
-    "auto_refresh": "Auto Refresh"
+    "auto_refresh": ""
   },
   "loan": {
-    "module_title": "Modul Peminjaman",
-    "active_requests": "Permohonan Aktif",
-    "borrowed": "Sedang Dipinjam"
+    "module_title": "",
+    "active_requests": "",
+    "borrowed": ""
   },
   "search": {
-    "placeholder_equipment": "Cari peralatan..."
+    "placeholder_equipment": ""
   },
   "helpdesk": {
     "ticket": {
-      "success_submitted": "Aduan berjaya dihantar",
-      "error": "Ralat berlaku"
+      "success_submitted": "",
+      "error": ""
     },
     "status": {
-      "open": "Terbuka",
-      "completed": "Selesai"
+      "open": "",
+      "completed": ""
     }
   },
-
-  "For Emergency ICT Issues:": "Untuk Kecemasan ICT:",
-  "If you are experiencing critical system outages, security incidents, or urgent issues affecting operations, please call our emergency hotline: +60 3-xxxx xxxx (24/7)": "Sekiranya anda mengalami gangguan sistem kritikal, insiden keselamatan, atau isu mendesak yang menjejaskan operasi, sila hubungi talian kecemasan kami: +60 3-xxxx xxxx (24/7)",
-  "Reporter Information": "Maklumat Pelapor",
-  "Full Name": "Nama Penuh",
-  "Email Address": "Alamat E-mel",
-  "Phone Number": "Nombor Telefon",
-  "Contact Phone (if different)": "Telefon (jika berbeza)",
-  "Staff ID": "ID Staf",
-  "Department": "Jabatan",
-  "Division": "Bahagian",
-  "Position": "Jawatan",
-  "Issue Information": "Maklumat Isu",
-  "Issue Category": "Kategori Isu",
-  "Select a category...": "Pilih kategori...",
-  "Priority Level": "Tahap Keutamaan",
-  "Select priority level...": "Pilih tahap keutamaan...",
-  "Low - Can wait, not blocking work": "Rendah - Boleh tunggu, tidak menghalang kerja",
-  "Medium - Some impact on work": "Sederhana - Ada kesan pada kerja",
-  "High - Significantly affecting work": "Tinggi - Menjejaskan kerja dengan ketara",
-  "Urgent - Critical issue, work stopped": "Segera - Isu kritikal, kerja terhenti",
-  "Issue Title": "Tajuk Isu",
-  "Brief description of the issue...": "Ringkasan isu...",
-  "Detailed Description": "Huraian Terperinci",
-  "Please provide detailed information about the issue:\n* What happened?\n* When did it start occurring?\n* What were you trying to do?\n* Have you tried any solutions?\n* Any error messages received?": "Sila berikan maklumat terperinci tentang isu:\n* Apa yang berlaku?\n* Bila ia mula berlaku?\n* Apa yang anda cuba lakukan?\n* Adakah anda telah mencuba sebarang penyelesaian?\n* Ada mesej ralat diterima?",
-  "Location": "Lokasi",
-  "Building, Floor, Room number...": "Bangunan, Tingkat, Nombor bilik...",
-  "Related Equipment (if applicable)": "Peralatan Berkaitan (jika ada)",
-  "None / Not applicable": "Tiada / Tidak berkenaan",
-  "Attachments": "Lampiran",
-  "Upload files": "Muat naik fail",
-  "or drag and drop": "atau seret dan lepas",
-  "Screenshots, documents, error messages (Max 5 files, 10MB each)": "Tangkapan skrin, dokumen, mesej ralat (Maks 5 fail, 10MB setiap satu)",
-  "Supported: JPG, PNG, PDF, DOC, DOCX, TXT": "Disokong: JPG, PNG, PDF, DOC, DOCX, TXT",
-  "Data Processing Consent": "Persetujuan Pemprosesan Data",
-  "I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.": "Saya bersetuju untuk pengumpulan, pemprosesan, dan penyimpanan data peribadi saya bagi tujuan pengurusan tiket sokongan ICT. Data ini akan digunakan untuk memproses permintaan sokongan saya, menghantar notifikasi status tiket, dan menyimpan rekod sokongan mengikut peraturan perlindungan data yang berkenaan.",
-  "Cancel": "Batal",
-  "Submit Report": "Hantar Laporan",
-  "Processing...": "Sedang diproses...",
-  "Request/Ticket number not found. Please check and try again.": "Nombor Permintaan/Tiket tidak ditemui. Sila semak dan cuba lagi.",
-  "my_requests.title": "My Requests",
-  "my_requests.subtitle": "View and manage your equipment loan requests and helpdesk tickets.",
-  "my_requests.auto_refreshing": "Auto-refreshing...",
-  "my_requests.stop_auto_refresh": "Stop Auto-Refresh",
-  "my_requests.enable_auto_refresh": "Enable Auto-Refresh",
-  "my_requests.new_loan_request": "New Loan Request",
-  "my_requests.report_damage": "Report Damage",
-  "my_requests.tabs.loans": "Loan Requests",
-  "my_requests.tabs.tickets": "Support Tickets",
-  "my_requests.search_placeholder": "Search requests...",
-  "my_requests.filters.all_statuses": "All Statuses",
-  "my_requests.filters.pending_supervisor": "Pending Supervisor",
-  "my_requests.filters.approved_supervisor": "Approved by Supervisor",
-  "my_requests.filters.pending_ict": "Pending ICT Approval",
-  "my_requests.filters.approved_ict": "Approved by ICT",
-  "my_requests.filters.ready_pickup": "Ready for Pickup",
-  "my_requests.filters.in_use": "In Use",
-  "my_requests.filters.returned": "Returned",
-  "my_requests.filters.pending": "Pending",
-  "my_requests.filters.in_progress": "In Progress",
-  "my_requests.filters.resolved": "Resolved",
-  "my_requests.filters.closed": "Closed",
-  "my_requests.status.overdue": "Overdue",
-  "my_requests.view_details": "View Details",
-  "my_requests.empty_loans.title": "No loan requests found",
-  "my_requests.empty_loans.filters_no_match": "No loan requests match your filters.",
-  "my_requests.empty_loans.no_requests_yet": "You haven't submitted any equipment loan requests yet.",
-  "my_requests.empty_loans.submit_new": "Submit New Loan Request",
-  "my_requests.empty_tickets.title": "No support tickets found",
-  "my_requests.empty_tickets.filters_no_match": "No support tickets match your filters.",
-  "my_requests.empty_tickets.no_tickets_yet": "You haven't submitted any support tickets yet.",
-  "my_requests.empty_tickets.report_issue": "Report an Issue"
+  "For Emergency ICT Issues:": "",
+  "If you are experiencing critical system outages, security incidents, or urgent issues affecting operations, please call our emergency hotline: +60 3-xxxx xxxx (24/7)": "",
+  "Reporter Information": "",
+  "Full Name": "",
+  "Email Address": "",
+  "Phone Number": "",
+  "Contact Phone (if different)": "",
+  "Staff ID": "",
+  "Department": "",
+  "Division": "",
+  "Position": "",
+  "Issue Information": "",
+  "Issue Category": "",
+  "Select a category": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
+  "Priority Level": "",
+  "Select priority level": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
+  "Low - Can wait, not blocking work": "",
+  "Medium - Some impact on work": "",
+  "High - Significantly affecting work": "",
+  "Urgent - Critical issue, work stopped": "",
+  "Issue Title": "",
+  "Brief description of the issue": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
+  "Detailed Description": "",
+  "Please provide detailed information about the issue:\n* What happened?\n* When did it start occurring?\n* What were you trying to do?\n* Have you tried any solutions?\n* Any error messages received?": "",
+  "Location": "",
+  "Building, Floor, Room number": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
+  "Related Equipment (if applicable)": "",
+  "None / Not applicable": "",
+  "Attachments": "",
+  "Upload files": "",
+  "or drag and drop": "",
+  "Screenshots, documents, error messages (Max 5 files, 10MB each)": "",
+  "Supported: JPG, PNG, PDF, DOC, DOCX, TXT": "",
+  "Data Processing Consent": "",
+  "I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management": {
+    " This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations": {
+      "": ""
+    }
+  },
+  "Cancel": "",
+  "Submit Report": "",
+  "Processing": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
+  "Request/Ticket number not found": {
+    " Please check and try again": {
+      "": ""
+    }
+  },
+  "my_requests": {
+    "title": "",
+    "subtitle": "",
+    "auto_refreshing": "",
+    "stop_auto_refresh": "",
+    "enable_auto_refresh": "",
+    "new_loan_request": "",
+    "report_damage": "",
+    "tabs": {
+      "loans": "",
+      "tickets": ""
+    },
+    "search_placeholder": "",
+    "filters": {
+      "all_statuses": "",
+      "pending_supervisor": "",
+      "approved_supervisor": "",
+      "pending_ict": "",
+      "approved_ict": "",
+      "ready_pickup": "",
+      "in_use": "",
+      "returned": "",
+      "pending": "",
+      "in_progress": "",
+      "resolved": "",
+      "closed": ""
+    },
+    "status": {
+      "overdue": ""
+    },
+    "view_details": "",
+    "empty_loans": {
+      "title": "",
+      "filters_no_match": "",
+      "no_requests_yet": "",
+      "submit_new": ""
+    },
+    "empty_tickets": {
+      "title": "",
+      "filters_no_match": "",
+      "no_tickets_yet": "",
+      "report_issue": ""
+    }
+  }
 }

@@ -1,9 +1,10 @@
+<livewire:equipment.loan-application-form />
 <div class="max-w-6xl mx-auto py-8">
   <!-- Form Header -->
   <div class="mb-8">
     <div class="flex items-center justify-between mb-4">
       <h1 class="font-poppins text-2xl font-semibold text-black-900">
-        Borang Permohonan Pinjaman Peralatan ICT
+        {{ __('loan_application.title') }}
       </h1>
       <span
         class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800"
@@ -12,10 +13,7 @@
       </span>
     </div>
     <p class="font-inter text-sm text-black-700">
-      Sila lengkapkan borang ini untuk memohon pinjaman peralatan ICT. Semua
-      maklumat yang bertanda
-      <span class="text-danger-600">*</span>
-      adalah wajib diisi.
+      {!! __('loan_application.instructions', ['star' => '<span class="text-danger-600">*</span>']) !!}
     </p>
   </div>
 
@@ -23,39 +21,23 @@
   <div class="mb-8">
     <div class="flex items-center justify-between text-sm">
       <div class="flex items-center space-x-2">
-        <div
-          class="w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center font-medium"
-        >
-          1
-        </div>
-        <span class="text-black-700">Maklumat Pemohon</span>
+        <div class="w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center font-medium">1</div>
+        <span class="text-black-700">{{ __('loan_application.progress.applicant_info') }}</span>
       </div>
       <div class="flex-1 h-px bg-divider mx-4"></div>
       <div class="flex items-center space-x-2">
-        <div
-          class="w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center font-medium"
-        >
-          2
-        </div>
-        <span class="text-black-700">Pegawai Bertanggungjawab</span>
+        <div class="w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center font-medium">2</div>
+        <span class="text-black-700">{{ __('loan_application.progress.responsible_officer') }}</span>
       </div>
       <div class="flex-1 h-px bg-divider mx-4"></div>
       <div class="flex items-center space-x-2">
-        <div
-          class="w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center font-medium"
-        >
-          3
-        </div>
-        <span class="text-black-700">Maklumat Peralatan</span>
+        <div class="w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center font-medium">3</div>
+        <span class="text-black-700">{{ __('loan_application.progress.equipment_information') }}</span>
       </div>
       <div class="flex-1 h-px bg-divider mx-4"></div>
       <div class="flex items-center space-x-2">
-        <div
-          class="w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center font-medium"
-        >
-          4
-        </div>
-        <span class="text-black-700">Perakuan</span>
+        <div class="w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center font-medium">4</div>
+        <span class="text-black-700">{{ __('loan_application.progress.declaration') }}</span>
       </div>
     </div>
   </div>
@@ -65,7 +47,7 @@
     wire:submit="submit"
     class="space-y-8"
     novalidate
-    aria-label="Borang Permohonan Pinjaman Peralatan ICT"
+    aria-label="{{ __('loan_application.aria_label') }}"
   >
     <!-- Part 1: Applicant Information -->
     <section
@@ -76,18 +58,18 @@
         id="applicant-info-heading"
         class="font-poppins text-lg font-medium text-black-900 mb-6"
       >
-        Bahagian 1: Maklumat Pemohon
+        {{ __('loan_application.sections.applicant_info') }}
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Applicant Name -->
         <div>
-          <x-myds.label for="applicant_name" required>Nama Penuh</x-myds.label>
+          <x-myds.label for="applicant_name" required>{{ __('loan_application.labels.full_name') }}</x-myds.label>
           <x-myds.input
             type="text"
             id="applicant_name"
             wire:model.blur="applicant_name"
-            placeholder="Contoh: Ahmad bin Ali"
+            placeholder="{{ __('loan_application.placeholders.example_name') }}"
             required
           />
           <x-myds.error field="applicant_name" />
@@ -95,12 +77,12 @@
 
         <!-- Applicant Position -->
         <div>
-          <x-myds.label for="applicant_position" required>Jawatan</x-myds.label>
+          <x-myds.label for="applicant_position" required>{{ __('loan_application.labels.position') }}</x-myds.label>
           <x-myds.input
             type="text"
             id="applicant_position"
             wire:model.blur="applicant_position"
-            placeholder="Contoh: Penolong Pegawai Teknologi Maklumat"
+            placeholder="{{ __('loan_application.placeholders.example_position') }}"
             required
           />
           <x-myds.error field="applicant_position" />
@@ -108,15 +90,13 @@
 
         <!-- Applicant Division -->
         <div>
-          <x-myds.label for="applicant_division" required>
-            Bahagian
-          </x-myds.label>
+          <x-myds.label for="applicant_division" required>{{ __('loan_application.labels.division') }}</x-myds.label>
           <x-myds.select
             id="applicant_division"
             wire:model.blur="applicant_division"
             required
           >
-            <option value="">Pilih Bahagian</option>
+            <option value="">{{ __('loan_application.placeholders.select_division') }}</option>
             @foreach ($divisions as $div)
               <option value="{{ $div }}">{{ $div }}</option>
             @endforeach
@@ -126,27 +106,25 @@
 
         <!-- Applicant Grade -->
         <div>
-          <x-myds.label for="applicant_grade">Gred Jawatan</x-myds.label>
+          <x-myds.label for="applicant_grade">{{ __('loan_application.labels.grade') }}</x-myds.label>
           <x-myds.input
             type="text"
             id="applicant_grade"
             wire:model.blur="applicant_grade"
-            placeholder="Contoh: N41, M48, JUSA C"
+            placeholder="{{ __('loan_application.placeholders.example_grade') }}"
             maxlength="10"
           />
-          <p class="text-xs text-black-500 mt-1">Pilihan - Jika berkenaan</p>
+          <p class="text-xs text-black-500 mt-1">{{ __('loan_application.form_optional_note') }}</p>
         </div>
 
         <!-- Applicant Email -->
         <div>
-          <x-myds.label for="applicant_email" required>
-            Alamat E-mel
-          </x-myds.label>
+          <x-myds.label for="applicant_email" required>{{ __('loan_application.labels.email') }}</x-myds.label>
           <x-myds.input
             type="email"
             id="applicant_email"
             wire:model.blur="applicant_email"
-            placeholder="contoh@motac.gov.my"
+            placeholder="{{ __('loan_application.placeholders.example_email') }}"
             required
           />
           <x-myds.error field="applicant_email" />
@@ -154,14 +132,12 @@
 
         <!-- Applicant Phone -->
         <div>
-          <x-myds.label for="applicant_phone" required>
-            Nombor Telefon
-          </x-myds.label>
+          <x-myds.label for="applicant_phone" required>{{ __('loan_application.labels.phone') }}</x-myds.label>
           <x-myds.input
             type="tel"
             id="applicant_phone"
             wire:model.blur="applicant_phone"
-            placeholder="Contoh: +60123456789 atau 0123456789"
+            placeholder="{{ __('loan_application.placeholders.example_phone') }}"
             required
           />
           <x-myds.error field="applicant_phone" />
@@ -178,19 +154,19 @@
         id="officer-info-heading"
         class="font-poppins text-lg font-medium text-black-900 mb-6"
       >
-        Bahagian 2: Maklumat Pegawai Bertanggungjawab
+        {{ __('loan_application.sections.officer_info') }}
       </h2>
 
       <!-- Same as Applicant Checkbox -->
       <div class="mb-6">
         <x-myds.checkbox
           id="same_as_applicant"
-          wire:model.live="same_as_applicant"
+            wire:model.live="sameAsApplicant"
           value="1"
-          label="Sama seperti maklumat pemohon"
+          label="{{ __('loan_application.labels.same_as_applicant') }}"
         />
         <p class="text-xs text-black-500 mt-2">
-          Tandakan jika pegawai bertanggungjawab adalah sama dengan pemohon
+          {{ __('loan_application.notes.same_as_applicant') }}
         </p>
       </div>
 
@@ -203,7 +179,7 @@
             id="officer_name"
             wire:model.blur="officer_name"
             placeholder="Contoh: Ahmad bin Ali"
-            :disabled="$same_as_applicant"
+              :disabled="$sameAsApplicant"
             required
           />
           <x-myds.error field="officer_name" />
@@ -217,7 +193,7 @@
             id="officer_position"
             wire:model.blur="officer_position"
             placeholder="Contoh: Pegawai Teknologi Maklumat"
-            :disabled="$same_as_applicant"
+              :disabled="$sameAsApplicant"
             required
           />
           <x-myds.error field="officer_position" />
@@ -229,7 +205,7 @@
           <x-myds.select
             id="officer_division"
             wire:model.blur="officer_division"
-            :disabled="$same_as_applicant"
+              :disabled="$sameAsApplicant"
             required
           >
             <option value="">Pilih Bahagian</option>
@@ -249,7 +225,7 @@
             wire:model.blur="officer_grade"
             placeholder="Contoh: N41, M48, JUSA C"
             maxlength="10"
-            :disabled="$same_as_applicant"
+              :disabled="$sameAsApplicant"
           />
           <p class="text-xs text-black-500 mt-1">Pilihan - Jika berkenaan</p>
         </div>
@@ -262,7 +238,7 @@
             id="officer_email"
             wire:model.blur="officer_email"
             placeholder="contoh@motac.gov.my"
-            :disabled="$same_as_applicant"
+              :disabled="$sameAsApplicant"
             required
           />
           <x-myds.error field="officer_email" />
@@ -278,7 +254,7 @@
             id="officer_phone"
             wire:model.blur="officer_phone"
             placeholder="Contoh: +60123456789 atau 0123456789"
-            :disabled="$same_as_applicant"
+              :disabled="$sameAsApplicant"
             required
           />
           <x-myds.error field="officer_phone" />
@@ -295,16 +271,14 @@
         id="equipment-info-heading"
         class="font-poppins text-lg font-medium text-black-900 mb-6"
       >
-        Bahagian 3: Maklumat Peralatan dan Tempoh Pinjaman
+        {{ __('loan_application.sections.equipment_info') }}
       </h2>
 
       <!-- Loan Period -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <!-- Start Date -->
         <div>
-          <x-myds.label for="loan_start_date" required>
-            Tarikh Mula Pinjaman
-          </x-myds.label>
+          <x-myds.label for="loan_start_date" required>{{ __('loan_application.labels.start_date') }}</x-myds.label>
           <x-myds.input
             type="date"
             id="loan_start_date"
@@ -317,9 +291,7 @@
 
         <!-- End Date -->
         <div>
-          <x-myds.label for="loan_end_date" required>
-            Tarikh Tamat Pinjaman
-          </x-myds.label>
+          <x-myds.label for="loan_end_date" required>{{ __('loan_application.labels.end_date') }}</x-myds.label>
           <x-myds.input
             type="date"
             id="loan_end_date"
@@ -332,15 +304,13 @@
 
         <!-- Purpose -->
         <div class="md:col-span-2">
-          <x-myds.label for="loan_purpose" required>
-            Tujuan Pinjaman
-          </x-myds.label>
+          <x-myds.label for="loan_purpose" required>{{ __('loan_application.labels.purpose') }}</x-myds.label>
           <x-myds.textarea
             id="loan_purpose"
             wire:model.blur="loan_purpose"
             rows="3"
             maxlength="500"
-            placeholder="Contoh: Untuk persembahan projek di mesyuarat bulanan, kursus latihan, dll."
+            placeholder="{{ __('loan_application.placeholders.purpose_example') }}"
             required
           />
           <p class="text-xs text-black-500 mt-1">
@@ -355,7 +325,7 @@
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <h3 class="font-poppins text-base font-medium text-black-900">
-            Senarai Peralatan Diperlukan
+            {{ __('forms.sections.equipment_list') }}
           </h3>
           <x-myds.button
             type="button"
@@ -417,12 +387,12 @@
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <!-- Equipment Selection -->
                 <div>
-                  <x-myds.label
-                    for="equipment_requests.{{ $index }}.equipment_id"
-                    required
-                  >
-                    {{ __('forms.labels.select_equipment') }}
-                  </x-myds.label>
+                        <x-myds.label
+                          for="equipment_requests.{{ $index }}.equipment_id"
+                          required
+                        >
+                          {{ __('forms.labels.select_equipment') }}
+                        </x-myds.label>
                   <x-myds.select
                     wire:model.blur="equipment_requests.{{ $index }}.equipment_id"
                     required
@@ -447,7 +417,7 @@
                     for="equipment_requests.{{ $index }}.quantity"
                     required
                   >
-                    Kuantiti
+                    {{ __('loan_application.labels.quantity') }}
                   </x-myds.label>
                   <x-myds.input
                     type="number"
@@ -464,7 +434,7 @@
                 <!-- Remarks -->
                 <div>
                   <x-myds.label for="equipment_requests.{{ $index }}.remarks">
-                    Catatan
+                    {{ __('loan_application.labels.remarks') }}
                   </x-myds.label>
                   <x-myds.input
                     type="text"
@@ -499,36 +469,14 @@
           class="bg-washed p-4 rounded-lg border-l-4 border-primary-600 mb-4"
         >
           <p class="font-inter text-sm text-black-700 mb-3">
-            <strong>Saya dengan ini mengaku dan mengesahkan bahawa:</strong>
+            <strong>{{ __('loan_application.declaration.intro') }}</strong>
           </p>
           <ol
             class="list-decimal list-inside space-y-2 ml-4 font-inter text-sm text-black-700 leading-relaxed"
           >
-            <li>
-              Semua maklumat yang diberikan dalam borang ini adalah benar dan
-              tepat.
-            </li>
-            <li>
-              Saya akan menggunakan peralatan yang dipinjam dengan
-              bertanggungjawab dan hanya untuk tujuan rasmi yang dinyatakan.
-            </li>
-            <li>
-              Saya akan memulangkan peralatan dalam keadaan baik dan pada tarikh
-              yang ditetapkan.
-            </li>
-            <li>
-              Saya bertanggungjawab sepenuhnya ke atas sebarang kerosakan atau
-              kehilangan peralatan semasa tempoh pinjaman.
-            </li>
-            <li>
-              Saya akan melaporkan dengan segera sebarang kerosakan atau masalah
-              yang berlaku pada peralatan.
-            </li>
-            <li>
-              Saya memahami bahawa pelanggaran terhadap syarat-syarat ini boleh
-              mengakibatkan tindakan disiplin dan sekatan pinjaman pada masa
-              akan datang.
-            </li>
+            @foreach (__('loan_application.declaration.items') as $item)
+              <li>{{ $item }}</li>
+            @endforeach
           </ol>
         </div>
 
@@ -536,7 +484,7 @@
           id="declaration_accepted"
           wire:model.blur="declaration_accepted"
           value="1"
-          label="Saya bersetuju dengan perakuan di atas"
+          label="{{ __('loan_application.labels.agree_declaration') }}"
           required
         />
         <x-myds.error field="declaration_accepted" />
@@ -550,9 +498,7 @@
       <x-myds.button
         type="button"
         variant="secondary"
-        onclick="if(confirm('Adakah anda pasti mahu membatalkan? Semua data yang dimasukkan akan hilang.')) {
-                    window.history.back();
-                }"
+    onclick="if(confirm('{{ __('loan_application.labels.cancel_confirm') }}')) { window.history.back(); }"
       >
         <svg
           class="w-4 h-4 mr-2"
@@ -567,7 +513,7 @@
             d="M6 18L18 6M6 6l12 12"
           ></path>
         </svg>
-        Batal
+  {{ __('loan_application.labels.cancel') }}
       </x-myds.button>
 
       <x-myds.button
@@ -576,7 +522,7 @@
         wire:loading.attr="disabled"
         wire:target="submit"
       >
-        <span wire:loading.remove wire:target="submit">
+          <span wire:loading.remove wire:target="submit">
           <svg
             class="w-4 h-4 mr-2"
             fill="none"
@@ -590,9 +536,8 @@
               d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
             ></path>
           </svg>
-          Hantar Permohonan
+          {{ __('loan_application.labels.submit') }}
         </span>
-        <span wire:loading wire:target="submit" class="flex items-center">
           <svg
             class="animate-spin -ml-1 mr-3 h-4 w-4"
             fill="none"
@@ -612,7 +557,7 @@
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
           </svg>
-          Menghantar...
+          {{ __('loan_application.labels.submitting') }}
         </span>
       </x-myds.button>
     </div>
@@ -634,7 +579,7 @@
           clip-rule="evenodd"
         ></path>
       </svg>
-      <span>Maklumat anda dilindungi dan disulitkan</span>
+      <span>{{ __('loan_application.security_notice') }}</span>
     </div>
   </div>
 </div>

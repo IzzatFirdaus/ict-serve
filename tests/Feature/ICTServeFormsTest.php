@@ -20,16 +20,42 @@ class ICTServeFormsTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@motac.gov.my',
-        ]);
+        $this->user = User::firstOrCreate(
+            [
+                'email' => 'test@motac.gov.my',
+            ],
+            [
+                'name' => 'Test User',
+                'password' => bcrypt('password'),
+                'email_verified_at' => now(),
+            ]
+        );
 
-        $this->equipment = EquipmentItem::factory()->create([
-            'brand' => 'Test',
-            'model' => 'Computer',
-            'serial_number' => 'TEST001',
-        ]);
+        $category = \App\Models\EquipmentCategory::firstOrCreate(
+            [
+                'name' => 'Test Category',
+            ],
+            [
+                'name_bm' => 'Kategori Ujian',
+                'description' => 'Test category for equipment',
+                'description_bm' => 'Kategori ujian untuk peralatan',
+                'icon' => null,
+                'is_active' => true,
+                'sort_order' => 1,
+            ]
+        );
+
+        $this->equipment = \App\Models\EquipmentItem::firstOrCreate(
+            [
+                'serial_number' => 'TEST001',
+            ],
+            [
+                'brand' => 'Test',
+                'model' => 'Computer',
+                'category_id' => $category->id,
+                'asset_tag' => 'ASSET-001',
+            ]
+        );
     }
 
     /** @test */
