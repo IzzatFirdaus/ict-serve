@@ -4,7 +4,10 @@
 --}}
 <section>
   <header>
-    <h2 id="profile-information-heading" class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white">
+    <h2
+      id="profile-information-heading"
+      class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white"
+    >
       Maklumat Profil
     </h2>
 
@@ -64,13 +67,20 @@
         <div class="mt-2">
           <p class="text-sm text-txt-black-800 dark:text-txt-black-200">
             Alamat e-mel anda belum disahkan.
-            <x-myds.button form="send-verification" variant="outline" size="sm" class="inline-block align-baseline ml-2">
+            <x-myds.button
+              form="send-verification"
+              variant="outline"
+              size="sm"
+              class="inline-block align-baseline ml-2"
+            >
               Klik di sini untuk menghantar semula e-mel pengesahan.
             </x-myds.button>
           </p>
 
           @if (session('status') === 'verification-link-sent')
-            <p class="mt-2 font-medium text-sm text-txt-success dark:text-success-400">
+            <p
+              class="mt-2 font-medium text-sm text-txt-success dark:text-success-400"
+            >
               Pautan pengesahan baharu telah dihantar ke alamat e-mel anda.
             </p>
           @endif
@@ -83,7 +93,15 @@
       <x-myds.button type="submit" variant="primary">Simpan</x-myds.button>
 
       @if (session('status') === 'profile-updated')
-        <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => (show = false), 2000)" class="text-sm text-txt-success dark:text-success-400">Telah Disimpan.</p>
+        <p
+          x-data="{ show: true }"
+          x-show="show"
+          x-transition
+          x-init="setTimeout(() => (show = false), 2000)"
+          class="text-sm text-txt-success dark:text-success-400"
+        >
+          Telah Disimpan.
+        </p>
       @endif
     </div>
   </form>

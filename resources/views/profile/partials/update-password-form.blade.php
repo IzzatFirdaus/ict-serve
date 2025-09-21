@@ -73,8 +73,21 @@
           variant="secondary"
           size="sm"
         >
-          <x-myds.icon name="eye" size="16" x-show="!showPassword" aria-hidden="true" class="h-4 w-4" />
-          <x-myds.icon name="eye-off" size="16" x-show="showPassword" aria-hidden="true" class="h-4 w-4" x-cloak />
+          <x-myds.icon
+            name="eye"
+            size="16"
+            x-show="!showPassword"
+            aria-hidden="true"
+            class="h-4 w-4"
+          />
+          <x-myds.icon
+            name="eye-off"
+            size="16"
+            x-show="showPassword"
+            aria-hidden="true"
+            class="h-4 w-4"
+            x-cloak
+          />
         </x-myds.button>
       </div>
       @error('password', 'updatePassword')
@@ -106,8 +119,21 @@
           variant="secondary"
           size="sm"
         >
-          <x-myds.icon name="eye" size="16" x-show="!showPassword" aria-hidden="true" class="h-4 w-4" />
-          <x-myds.icon name="eye-off" size="16" x-show="showPassword" aria-hidden="true" class="h-4 w-4" x-cloak />
+          <x-myds.icon
+            name="eye"
+            size="16"
+            x-show="!showPassword"
+            aria-hidden="true"
+            class="h-4 w-4"
+          />
+          <x-myds.icon
+            name="eye-off"
+            size="16"
+            x-show="showPassword"
+            aria-hidden="true"
+            class="h-4 w-4"
+            x-cloak
+          />
         </x-myds.button>
       </div>
       @error('password_confirmation', 'updatePassword')
@@ -117,7 +143,9 @@
 
     {{-- Actions --}}
     <div class="flex items-center gap-4">
-      <x-myds.button type="submit" variant="primary" size="md">Simpan</x-myds.button>
+      <x-myds.button type="submit" variant="primary" size="md">
+        Simpan
+      </x-myds.button>
 
       @if (session('status') === 'password-updated')
         <p

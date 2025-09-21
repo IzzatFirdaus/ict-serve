@@ -29,7 +29,12 @@
         >
           {{-- Header: Home Icon and Title --}}
           <header class="flex items-center gap-3 px-6 py-5 bg-primary-600">
-            <x-myds.icon name="home" size="24" class="text-white" aria-hidden="true" />
+            <x-myds.icon
+              name="home"
+              size="24"
+              class="text-white"
+              aria-hidden="true"
+            />
             <span class="myds-heading-xs font-semibold text-white">
               Dashboard
             </span>
@@ -39,7 +44,12 @@
               {{-- MYDS Success Callout --}}
               <x-myds.callout variant="success" class="mb-6">
                 <div class="flex items-center gap-2">
-                  <x-myds.icon name="check-circle" size="20" class="text-success-700" aria-hidden="true" />
+                  <x-myds.icon
+                    name="check-circle"
+                    size="20"
+                    class="text-success-700"
+                    aria-hidden="true"
+                  />
                   <span class="myds-body-sm text-success-700">
                     {{ session('status') }}
                   </span>
@@ -54,9 +64,30 @@
               Anda telah berjaya log masuk ke ICTServe (iServe).
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-              <x-myds.button href="{{ route('dashboard') }}" variant="primary" size="md" aria-label="Pergi ke Dashboard ICTServe">Dashboard ICTServe</x-myds.button>
-              <x-myds.button href="{{ route('helpdesk.create-ticket') }}" variant="secondary" size="md" aria-label="Buat Aduan Kerosakan ICT">Buat Aduan Kerosakan</x-myds.button>
-              <x-myds.button href="{{ route('equipment-loan.create') }}" variant="secondary" size="md" aria-label="Mohon Peminjaman Peralatan ICT">Mohon Peminjaman ICT</x-myds.button>
+              <x-myds.button
+                href="{{ route('dashboard') }}"
+                variant="primary"
+                size="md"
+                aria-label="Pergi ke Dashboard ICTServe"
+              >
+                Dashboard ICTServe
+              </x-myds.button>
+              <x-myds.button
+                href="{{ route('helpdesk.create-ticket') }}"
+                variant="secondary"
+                size="md"
+                aria-label="Buat Aduan Kerosakan ICT"
+              >
+                Buat Aduan Kerosakan
+              </x-myds.button>
+              <x-myds.button
+                href="{{ route('equipment-loan.create') }}"
+                variant="secondary"
+                size="md"
+                aria-label="Mohon Peminjaman Peralatan ICT"
+              >
+                Mohon Peminjaman ICT
+              </x-myds.button>
             </div>
           </div>
         </div>

@@ -3,14 +3,18 @@
 @section('content')
   <div class="myds-container py-8">
     <!-- Test artifact (escaped): include escaped marker so tests that look for '&lt;livewire:ict.damage-complaint-form' can find it -->
-    <span aria-hidden="true" style="display:none">&lt;livewire:ict.damage-complaint-form</span>
+    <span aria-hidden="true" style="display: none">
+      &lt;livewire:ict.damage-complaint-form
+    </span>
     <h1 class="myds-heading text-heading-md">Borang Aduan Kerosakan</h1>
     <p class="mt-4">Maklumat Kerosakan</p>
 
     <p class="mt-2">Sila isi maklumat kerosakan di bawah.</p>
 
     <div class="mt-6">
-      <a href="{{ url('/') }}" class="text-primary-600">Kembali ke Laman Utama</a>
+      <a href="{{ url('/') }}" class="text-primary-600">
+        Kembali ke Laman Utama
+      </a>
     </div>
   </div>
 @endsection

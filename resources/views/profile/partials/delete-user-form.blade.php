@@ -10,7 +10,10 @@
   }"
 >
   <header>
-    <h2 id="delete-account-heading" class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white">
+    <h2
+      id="delete-account-heading"
+      class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white"
+    >
       Padam Akaun
     </h2>
     <p class="mt-1 text-sm text-txt-black-600 dark:text-txt-black-400">
@@ -20,7 +23,13 @@
     </p>
   </header>
 
-  <x-myds.button type="button" variant="danger" @click.prevent="showModal = true">Padam Akaun</x-myds.button>
+  <x-myds.button
+    type="button"
+    variant="danger"
+    @click.prevent="showModal = true"
+  >
+    Padam Akaun
+  </x-myds.button>
 
   {{-- Confirmation Modal (Styled as MYDS Alert Dialog) --}}
   <div
@@ -62,11 +71,30 @@
         @method('delete')
 
         <div class="p-6">
-          <h2 id="modal-title" class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white">Adakah anda pasti ingin memadamkan akaun anda?</h2>
-          <p id="modal-desc" class="mt-1 text-sm text-txt-black-600 dark:text-txt-black-400">Setelah akaun anda dipadamkan, semua datanya akan dipadamkan secara kekal. Sila masukkan kata laluan anda untuk mengesahkan anda ingin memadamkan akaun anda secara kekal.</p>
+          <h2
+            id="modal-title"
+            class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white"
+          >
+            Adakah anda pasti ingin memadamkan akaun anda?
+          </h2>
+          <p
+            id="modal-desc"
+            class="mt-1 text-sm text-txt-black-600 dark:text-txt-black-400"
+          >
+            Setelah akaun anda dipadamkan, semua datanya akan dipadamkan secara
+            kekal. Sila masukkan kata laluan anda untuk mengesahkan anda ingin
+            memadamkan akaun anda secara kekal.
+          </p>
 
           <div class="mt-6">
-            <x-myds.form-input id="password" name="password" label="Kata Laluan" type="password" placeholder="Kata Laluan" error="{{ $errors->first('password', 'userDeletion') }}" />
+            <x-myds.form-input
+              id="password"
+              name="password"
+              label="Kata Laluan"
+              type="password"
+              placeholder="Kata Laluan"
+              error="{{ $errors->first('password', 'userDeletion') }}"
+            />
           </div>
         </div>
 
@@ -74,8 +102,16 @@
         <div
           class="flex justify-end gap-4 bg-washed dark:bg-gray-950/50 px-6 py-4"
         >
-          <x-myds.button type="button" variant="secondary" @click.prevent="showModal = false">Batal</x-myds.button>
-          <x-myds.button type="submit" variant="danger">Padam Akaun</x-myds.button>
+          <x-myds.button
+            type="button"
+            variant="secondary"
+            @click.prevent="showModal = false"
+          >
+            Batal
+          </x-myds.button>
+          <x-myds.button type="submit" variant="danger">
+            Padam Akaun
+          </x-myds.button>
         </div>
       </form>
     </div>
