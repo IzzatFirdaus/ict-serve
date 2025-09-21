@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\DashboardController;
-use App\Http\Controllers\Api\HelpdeskTicketController;
-use App\Http\Controllers\Api\LoanRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -47,10 +44,10 @@ Route::post('/auth/login', function (Request $request) {
 
     $user = \App\Models\User::where('email', $validated['email'])->first();
 
-    if (!$user || !Hash::check($validated['password'], $user->password)) {
+    if (! $user || ! Hash::check($validated['password'], $user->password)) {
         return response()->json([
             'success' => false,
-            'message' => __('auth.failed') ?? 'Kelayakan tidak sah',
+            'message' => __('auth.failed'), // left side is not nullable
         ], 401);
     }
 
@@ -85,8 +82,6 @@ Route::post('/auth/logout', function (Request $request) {
 Route::get('/user', function (Request $request) {
     return response()->json($request->user());
 })->middleware('auth:sanctum');
-
-
 
 /*
 |--------------------------------------------------------------------------
