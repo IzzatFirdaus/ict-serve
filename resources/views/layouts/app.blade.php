@@ -499,20 +499,9 @@
                 type="button"
                 x-on:click="removeToast(toast.id)"
                 class="ml-4 flex-shrink-0 text-txt-black-400 hover:text-txt-black-600"
+                aria-label="Close notification"
               >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  ></path>
-                </svg>
+                <x-myds.icon name="x" class="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
           </div>

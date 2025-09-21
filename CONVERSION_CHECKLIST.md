@@ -41,6 +41,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 ---
 
+- [x] `resources/views/layouts/app.blade.php`
 - [ ] `resources/views/layouts/myds.blade.php`
 - [ ] `resources/views/layouts/public.blade.php`
 
