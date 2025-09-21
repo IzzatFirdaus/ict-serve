@@ -1,9 +1,10 @@
 ---
 applyTo: '**'
-
 ---
-applyTo: '**'
+
+applyTo: '\*\*'
 description: 'Comprehensive MyGovEA Design Principles and Implementation Guide for ICTServe (iServe) Laravel 12 Project'
+
 ---
 
 # MyGovEA Design Principles — Implementation Guide
@@ -14,73 +15,74 @@ This repository follows the [MyGovEA design principles](https://mygovea.jdn.gov.
 
 ## Quick Reference: MyGovEA Principles (Summary)
 
-| Principle | Summary |
-|-----------|---------|
-| Citizen-Centric | Prioritize real user needs, accessibility, and privacy |
-| Data-Driven | Use clear, secure, maintainable data models and APIs |
-| Planned Content | Structure content for clarity, completeness, and guidance |
-| Appropriate Technology | Use frameworks and stacks that fit project and team |
-| Minimal & Simple UI | Keep interfaces uncluttered, clear, and MYDS-compliant |
-| Consistency | Use tokens, components, and patterns consistently |
-| Clear Display & Menus | Logical, predictable navigation and labeling |
-| Realistic | Respect device, network, and time constraints |
-| Cognitive | Minimize user mental load, chunk info, clear feedback |
-| Flexible | Modular, extensible, and configurable systems |
-| Communication | Clear, documented decisions and collaboration |
-| Hierarchy | Semantic, well-structured HTML and ARIA |
-| UI/UX Components | Use MYDS/Filament components, provide usage examples |
-| Typography | Use Poppins/Inter, MYDS tokens, type scale |
-| Defaults | Secure, privacy-protecting defaults |
-| User Controls | Discoverable, accessible, consistent controls |
-| Error Prevention | Early validation, confirmations, actionable errors |
-| Guidance & Docs | Up-to-date guides, examples, and user help |
+| Principle              | Summary                                                   |
+| ---------------------- | --------------------------------------------------------- |
+| Citizen-Centric        | Prioritize real user needs, accessibility, and privacy    |
+| Data-Driven            | Use clear, secure, maintainable data models and APIs      |
+| Planned Content        | Structure content for clarity, completeness, and guidance |
+| Appropriate Technology | Use frameworks and stacks that fit project and team       |
+| Minimal & Simple UI    | Keep interfaces uncluttered, clear, and MYDS-compliant    |
+| Consistency            | Use tokens, components, and patterns consistently         |
+| Clear Display & Menus  | Logical, predictable navigation and labeling              |
+| Realistic              | Respect device, network, and time constraints             |
+| Cognitive              | Minimize user mental load, chunk info, clear feedback     |
+| Flexible               | Modular, extensible, and configurable systems             |
+| Communication          | Clear, documented decisions and collaboration             |
+| Hierarchy              | Semantic, well-structured HTML and ARIA                   |
+| UI/UX Components       | Use MYDS/Filament components, provide usage examples      |
+| Typography             | Use Poppins/Inter, MYDS tokens, type scale                |
+| Defaults               | Secure, privacy-protecting defaults                       |
+| User Controls          | Discoverable, accessible, consistent controls             |
+| Error Prevention       | Early validation, confirmations, actionable errors        |
+| Guidance & Docs        | Up-to-date guides, examples, and user help                |
 
 ---
 
 ## Core Principles (Prinsip Asas) with ICTServe Examples
 
 1. **Berpaksikan Rakyat (Citizen-Centric):**
-   - *Example*: All forms in ICTServe use inline validation, clear error messages, and ARIA labels. User research is documented in `/memory-bank/productContext.md`.
+   - _Example_: All forms in ICTServe use inline validation, clear error messages, and ARIA labels. User research is documented in `/memory-bank/productContext.md`.
 2. **Berpacukan Data (Data-Driven):**
-   - *Example*: All Eloquent models use explicit relationships and factories. API contracts are documented in `/memory-bank/techContext.md`.
+   - _Example_: All Eloquent models use explicit relationships and factories. API contracts are documented in `/memory-bank/techContext.md`.
 3. **Kandungan Terancang (Planned Content):**
-   - *Example*: User journeys and guardrails are mapped in `/memory-bank/systemPatterns.md` and `/memory-bank/productContext.md`.
+   - _Example_: User journeys and guardrails are mapped in `/memory-bank/systemPatterns.md` and `/memory-bank/productContext.md`.
 4. **Teknologi Bersesuaian (Appropriate Technology):**
-   - *Example*: Laravel 12, Filament v4, and Livewire 3 are selected for maintainability and team fit. Choices are documented in `/memory-bank/techContext.md`.
+   - _Example_: Laravel 12, Filament v4, and Livewire 3 are selected for maintainability and team fit. Choices are documented in `/memory-bank/techContext.md`.
 5. **Antara Muka Minimalis dan Mudah (Minimal & Simple UI):**
-   - *Example*: All admin UIs use Filament's unified schema and MYDS tokens for clarity and minimalism.
+   - _Example_: All admin UIs use Filament's unified schema and MYDS tokens for clarity and minimalism.
 6. **Seragam (Consistency):**
-   - *Example*: All layouts use the 12-8-4 grid, and MYDS tokens for color/spacing. See `/memory-bank/systemPatterns.md`.
+   - _Example_: All layouts use the 12-8-4 grid, and MYDS tokens for color/spacing. See `/memory-bank/systemPatterns.md`.
 7. **Paparan/Menu Jelas (Clear Display & Menus):**
-   - *Example*: Navigation and menus are defined in Blade/Filament resources with clear, accessible labels.
+   - _Example_: Navigation and menus are defined in Blade/Filament resources with clear, accessible labels.
 8. **Realistik (Realistic):**
-   - *Example*: All features are tested on multiple devices and network conditions. Fallbacks are documented in `/memory-bank/techContext.md`.
+   - _Example_: All features are tested on multiple devices and network conditions. Fallbacks are documented in `/memory-bank/techContext.md`.
 9. **Kognitif (Cognitive):**
-   - *Example*: Information is chunked in dashboards and forms. Inline help is provided in Filament resources.
+   - _Example_: Information is chunked in dashboards and forms. Inline help is provided in Filament resources.
 10. **Fleksibel (Flexible):**
-    - *Example*: Modular resource directories and extensible Filament schemas. Feature toggles documented in `/memory-bank/activeContext.md`.
+    - _Example_: Modular resource directories and extensible Filament schemas. Feature toggles documented in `/memory-bank/activeContext.md`.
 11. **Komunikasi (Communication):**
-    - *Example*: All design/tech decisions are logged in `/memory-bank/progress.md` and PR descriptions.
+    - _Example_: All design/tech decisions are logged in `/memory-bank/progress.md` and PR descriptions.
 12. **Struktur Hierarki (Hierarchy):**
-    - *Example*: All Blade and Filament UIs use semantic HTML, ARIA landmarks, and logical heading order.
+    - _Example_: All Blade and Filament UIs use semantic HTML, ARIA landmarks, and logical heading order.
 13. **Komponen UI/UX:**
-    - *Example*: All UI uses MYDS and Filament components. Custom components are documented in `/memory-bank/systemPatterns.md`.
+    - _Example_: All UI uses MYDS and Filament components. Custom components are documented in `/memory-bank/systemPatterns.md`.
 14. **Tipografi (Typography):**
-    - *Example*: Poppins/Inter loaded via Tailwind config. Type scale enforced in Blade/Filament.
+    - _Example_: Poppins/Inter loaded via Tailwind config. Type scale enforced in Blade/Filament.
 15. **Tetapan Lalai (Defaults):**
-    - *Example*: All config defaults are secure and privacy-protecting. See `/config/` and `/memory-bank/techContext.md`.
+    - _Example_: All config defaults are secure and privacy-protecting. See `/config/` and `/memory-bank/techContext.md`.
 16. **Kawalan Pengguna (User Controls):**
-    - *Example*: All controls are keyboard accessible, with visible focus and ARIA attributes. See `/resources/views/` and Filament resources.
+    - _Example_: All controls are keyboard accessible, with visible focus and ARIA attributes. See `/resources/views/` and Filament resources.
 17. **Pencegahan Ralat (Error Prevention):**
-    - *Example*: Form Requests used for all validation. Destructive actions require confirmation dialogs.
+    - _Example_: Form Requests used for all validation. Destructive actions require confirmation dialogs.
 18. **Panduan & Dokumentasi (Guidance & Documentation):**
-    - *Example*: All onboarding and usage guides are in `/memory-bank/` and `README.md`.
+    - _Example_: All onboarding and usage guides are in `/memory-bank/` and `README.md`.
 
 ---
 
 ## Enhanced PR & Compliance Checklist
 
 **For every Pull Request:**
+
 - [ ] Reference which MyGovEA principle(s) are being addressed
 - [ ] Use only MYDS tokens/components (fallback to `MYDS-Colour-Reference.md` if needed)
 - [ ] All new UIs pass accessibility checks:

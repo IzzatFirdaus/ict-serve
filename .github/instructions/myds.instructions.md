@@ -16,11 +16,12 @@ _Last updated: August 2025_
 
 ## About This File
 
-applyTo: '**.blade.php|**.js|**.jsx|**.ts|**.tsx|**.vue|**.php|**.md|**.css|**.scss|**.sass|**.less|**.json|**.yml|**.yaml'
+applyTo: '**.blade.php|**.js|**.jsx|**.ts|**.tsx|**.vue|**.php|**.md|**.css|**.scss|**.sass|**.less|**.json|**.yml|\*\*.yaml'
 fileType: 'MYDS-Instructions'
 lastUpdated: '2025-09-21'
 mydsVersion: '2025.2'
 compatibleWith: 'Laravel 12, Filament v4, Livewire 3, TailwindCSS 4, PHP 8.2'
+
 ---
 
 # Malaysia Government Design System (MYDS) — AI & Developer Instructions
@@ -94,7 +95,11 @@ compatibleWith: 'Laravel 12, Filament v4, Livewire 3, TailwindCSS 4, PHP 8.2'
 - Use only official MYDS icons (see [MYDS Icon Gallery](https://design.digital.gov.my/en/icon))
 - Example:
   ```blade
-  <x-myds.icon name="check-circle" class="text-success-600" aria-label="Success" />
+  <x-myds.icon
+    name="check-circle"
+    class="text-success-600"
+    aria-label="Success"
+  />
   ```
 
 ---
@@ -199,6 +204,7 @@ compatibleWith: 'Laravel 12, Filament v4, Livewire 3, TailwindCSS 4, PHP 8.2'
 
 > **This file is optimized for AI and human use.**
 > For full color and component details, always reference the linked files above.
+
 - **Stroke scaling**: Proportional adjustment for all sizes
 - **Style variants**:
   - **Outline**: Primary style with stroke outlining the glyph
