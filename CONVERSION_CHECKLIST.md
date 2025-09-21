@@ -62,7 +62,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 #### 4.2 Damage Complaints
 
 - [ ] `resources/views/livewire/ict/damage-complaint-form-new.blade.php`
-- [ ] `resources/views/livewire/damage-report-form.blade.php`
+- [x] `resources/views/livewire/damage-report-form.blade.php`
 
 #### 4.3 Requests & Lists
 

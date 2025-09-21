@@ -26,7 +26,7 @@
     <!-- Page Title -->
     <div class="myds-page-header">
       <h1 class="myds-heading-xl text-myds-gray-900 dark:text-myds-gray-100">
-        <i class="myds-icon-exclamation-triangle mr-3" aria-hidden="true"></i>
+        <x-myds.icon name="exclamation-triangle" class="mr-3" aria-hidden="true" />
         {{ __('damage_report.title') }}
       </h1>
       <p
@@ -44,7 +44,7 @@
     <div class="myds-card myds-card-elevated">
       <div class="myds-card-header">
         <h2 class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100">
-          <i class="myds-icon-clipboard-list mr-2" aria-hidden="true"></i>
+          <x-myds.icon name="clipboard-list" class="mr-2" aria-hidden="true" />
           {{ __('damage_report.section.damage_details') }}
         </h2>
       </div>
@@ -101,10 +101,7 @@
               @if ($selectedType && $selectedType['display_description'])
                 <div class="myds-callout myds-callout-info mt-3">
                   <div class="myds-callout-header">
-                    <i
-                      class="myds-icon-information-circle"
-                      aria-hidden="true"
-                    ></i>
+                    <x-myds.icon name="information-circle" aria-hidden="true" />
                     <span>
                       {{ __('damage_report.info.type_information') }}
                     </span>
@@ -212,7 +209,7 @@
           <h2
             class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100"
           >
-            <i class="myds-icon-desktop-computer mr-2" aria-hidden="true"></i>
+            <x-myds.icon name="desktop-computer" class="mr-2" aria-hidden="true" />
             Maklumat Peralatan / Equipment Information
           </h2>
         </div>
@@ -264,7 +261,7 @@
     <div class="myds-card myds-card-elevated">
       <div class="myds-card-header">
         <h2 class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100">
-          <i class="myds-icon-user mr-2" aria-hidden="true"></i>
+          <x-myds.icon name="user" class="mr-2" aria-hidden="true" />
           {{ __('damage_report.section.contact_information') }}
         </h2>
       </div>
@@ -327,42 +324,28 @@
           <div
             class="myds-text-body-sm text-myds-gray-600 dark:text-myds-gray-400"
           >
-            <i class="myds-icon-information-circle mr-1" aria-hidden="true"></i>
+            <x-myds.icon name="information-circle" class="mr-1" aria-hidden="true" />
             <span>
               {{ __('damage_report.notice.sent_to_team') }}
             </span>
           </div>
 
           <div class="myds-flex myds-space-x-4">
-            <a
-              href="{{ route('helpdesk.index') }}"
-              class="myds-button myds-button-secondary"
-            >
-              <i class="myds-icon-arrow-left mr-2" aria-hidden="true"></i>
+            <x-myds.button as="a" href="{{ route('helpdesk.index') }}" variant="secondary">
+              <x-myds.icon name="arrow-left" class="mr-2" aria-hidden="true" />
               {{ __('buttons.cancel') }}
-            </a>
+            </x-myds.button>
 
-            <button
-              type="submit"
-              class="myds-button myds-button-primary"
-              wire:loading.attr="disabled"
-              wire:target="submit"
-            >
+            <x-myds.button type="submit" variant="primary" wire:loading.attr="disabled" wire:target="submit">
               <span wire:loading.remove wire:target="submit">
-                <i
-                  class="myds-icon-exclamation-triangle mr-2"
-                  aria-hidden="true"
-                ></i>
+                <x-myds.icon name="exclamation-triangle" class="mr-2" aria-hidden="true" />
                 {{ __('buttons.submit_complaint') }}
               </span>
               <span wire:loading wire:target="submit">
-                <i
-                  class="myds-icon-refresh myds-animate-spin mr-2"
-                  aria-hidden="true"
-                ></i>
+                <x-myds.icon name="refresh" class="mr-2 animate-spin" aria-hidden="true" />
                 {{ __('buttons.sending') }}
               </span>
-            </button>
+            </x-myds.button>
           </div>
         </div>
       </div>
@@ -370,7 +353,7 @@
 
     @error('submit')
       <div class="myds-alert myds-alert-error" role="alert">
-        <i class="myds-icon-exclamation-circle" aria-hidden="true"></i>
+  <x-myds.icon name="exclamation-circle" aria-hidden="true" />
         <span>{{ $message }}</span>
       </div>
     @enderror
@@ -380,10 +363,7 @@
   @if (empty($damageTypes))
     <div class="myds-card myds-card-bordered">
       <div class="myds-card-body text-center py-12">
-        <i
-          class="myds-icon-exclamation-triangle myds-text-gray-400 text-6xl mb-4"
-          aria-hidden="true"
-        ></i>
+        <x-myds.icon name="exclamation-triangle" class="myds-text-gray-400 text-6xl mb-4" aria-hidden="true" />
         <h3
           class="myds-heading-md text-myds-gray-700 dark:text-myds-gray-300 mb-2"
         >
