@@ -34,7 +34,10 @@
     @click.outside="open = false"
     role="menu"
     aria-orientation="vertical"
-    class="absolute right-0 z-10 mt-2 w-80 origin-top-right rounded-lg bg-white dark:bg-dialog border border-divider shadow-lg focus:outline-none myds-dropdown-panel"
+    tabindex="-1"
+    aria-label="Notifikasi / Notifications dropdown panel"
+    class="absolute right-0 z-10 mt-2 w-80 origin-top-right rounded-lg bg-white dark:bg-dialog border border-divider shadow-lg focus:outline-none ring-2 ring-primary-300 focus:ring-4 focus:ring-primary-300"
+    style="min-width:20rem;"
   >
     {{-- Header --}}
     <div class="px-4 py-3 border-b border-divider">
@@ -87,95 +90,21 @@
                 @switch($notification->type)
                   @case('ticket_created')
                   @case('ticket_updated')
-                    <!-- Warning Triangle SVG -->
-                    <svg
-                      class="w-4 h-4 text-warning-600 dark:text-warning-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 14.5c-.77.833.192 2.5 1.732 2.5z"
-                      />
-                    </svg>
-
+                    <x-myds.icon name="alert-triangle" class="w-4 h-4 text-warning-600 dark:text-warning-400" aria-hidden="true" />
                     @break
                   @case('ticket_resolved')
                   @case('loan_approved')
-                    <!-- Check Circle SVG -->
-                    <svg
-                      class="w-4 h-4 text-success-600 dark:text-success-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-
+                    <x-myds.icon name="check-circle" class="w-4 h-4 text-success-600 dark:text-success-400" aria-hidden="true" />
                     @break
                   @case('loan_requested')
-                    <!-- Clipboard Document List SVG -->
-                    <svg
-                      class="w-4 h-4 text-primary-600 dark:text-primary-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                      />
-                    </svg>
-
+                    <x-myds.icon name="document" class="w-4 h-4 text-primary-600 dark:text-primary-400" aria-hidden="true" />
                     @break
                   @case('equipment_due')
                   @case('equipment_overdue')
-                    <!-- Clock SVG -->
-                    <svg
-                      class="w-4 h-4 text-warning-600 dark:text-warning-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-
+                    <x-myds.icon name="clock" class="w-4 h-4 text-warning-600 dark:text-warning-400" aria-hidden="true" />
                     @break
                   @default
-                    <!-- Info Circle SVG -->
-                    <svg
-                      class="w-4 h-4 text-primary-600 dark:text-primary-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                    <x-myds.icon name="info" class="w-4 h-4 text-primary-600 dark:text-primary-400" aria-hidden="true" />
                 @endswitch
               </div>
             </div>
@@ -233,21 +162,7 @@
         </div>
       @empty
         <div class="px-4 py-8 text-center">
-          <!-- Bell Icon SVG -->
-          <svg
-            class="mx-auto h-12 w-12 text-black-400 dark:text-black-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 17h5l-3-3V9A6 6 0 1 0 6 9v5l-3 3h5a3 3 0 1 0 6 0Z"
-            />
-          </svg>
+          <x-myds.icon name="bell" class="mx-auto h-12 w-12 text-black-400 dark:text-black-500" aria-hidden="true" />
           <h3
             class="mt-2 font-poppins text-sm font-medium text-black-900 dark:text-white"
           >
