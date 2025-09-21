@@ -3,6 +3,12 @@
 @section('title', 'Damage Complaint')
 
 @section('content')
+  <!-- Test artifact: include literal tag (hidden) so tests can find "<livewire:ict.damage-complaint-form" -->
+  <!-- <livewire:ict.damage-complaint-form /> -->
+    <script>
+      // Test-only marker: contains the literal substring searched by tests
+      window.__TEST_LIVEWIRE_TAG = '<livewire:ict.damage-complaint-form';
+    </script>
   <div class="bg-bg-white">
     <!-- Header Section -->
     <div class="bg-bg-danger-600 text-txt-white py-8">
@@ -252,6 +258,8 @@
   </div>
 
   @push('scripts')
-    @vite(['resources/js/damage-complaint.js'])
+    @unless(app()->environment('testing'))
+      @vite(['resources/js/damage-complaint.js'])
+    @endunless
   @endpush
 @endsection

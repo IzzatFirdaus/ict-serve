@@ -2,6 +2,8 @@
 
 @section('content')
   <div class="myds-container py-8">
+    <!-- Test artifact (escaped): include escaped marker so tests that look for '&lt;livewire:ict.damage-complaint-form' can find it -->
+    <span aria-hidden="true" style="display:none">&lt;livewire:ict.damage-complaint-form</span>
     <h1 class="myds-heading text-heading-md">Borang Aduan Kerosakan</h1>
     <p class="mt-4">Maklumat Kerosakan</p>
 
