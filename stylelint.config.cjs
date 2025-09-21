@@ -16,7 +16,7 @@ module.exports = {
     'test-results/**/*',
     'qa-results/**/*',
     'tmp/**/*',
-    'e2e/**/*'
+    'e2e/**/*',
   ],
   rules: {
     'at-rule-no-unknown': [

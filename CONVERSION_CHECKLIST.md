@@ -9,9 +9,9 @@ This document lists all files and directories requiring conversion to MYDS and F
 ## Priority Legend
 
 - 🔴 **Critical** — User-facing, public pages
-- 🟡 **High**     — Admin, dashboard, and core app layouts
-- 🟢 **Medium**   — Components, partials, utilities
-- 🔵 **Low**      — Legacy/unused files
+- 🟡 **High** — Admin, dashboard, and core app layouts
+- 🟢 **Medium** — Components, partials, utilities
+- 🔵 **Low** — Legacy/unused files
 
 ---
 
@@ -97,6 +97,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 - [ ] `resources/views/components/signature-pad.blade.php`
 
 ---
+
 ---
 
 ## 7. Filament Resources & Admin (HIGH 🟡)
@@ -122,6 +123,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 - Low: ~5
 
 ---
+
 **Phase 2: Livewire & Major Components**
 
 - All Livewire views, table/list, modal, form, and admin flows
@@ -142,6 +144,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 ## Latest Progress (2025-09-21)
 
 ---
+
 > **Always use MYDS and MyGovEA standards. All code must be accessible, citizen-centric, and maintainable.**
 
 **Required Changes:**
@@ -165,13 +168,13 @@ This document lists all files and directories requiring conversion to MYDS and F
 #### Replace all instances of
 
 ```blade
-@include("components.icon", ["name" => "search", "class" => "w-4 h-4"])
+@include('components.icon', ['name' => 'search', 'class' => 'w-4 h-4'])
 ```
 
 #### With MYDS icon components
 
 ```blade
-<x-myds.icon name="search" size="16" class="text-gray-400">
+<x-myds.icon name="search" size="16" class="text-gray-400"></x-myds.icon>
 ```
 
 **Required Changes:**
@@ -319,7 +322,7 @@ A component/page is considered "MYDS-compliant" when:
 Total Files to Convert: **~45 files**
 
 - 🔴 Critical Priority: **15 files**
-- 🟡 High Priority: **20 files**  
+- 🟡 High Priority: **20 files**
 - 🟢 Medium Priority: **8 files**
 - 🔵 Low Priority: **2 files**
 

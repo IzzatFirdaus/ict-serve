@@ -1,6 +1,7 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
-$app = require __DIR__ . '/../bootstrap/app.php';
+
+require __DIR__.'/../vendor/autoload.php';
+$app = require __DIR__.'/../bootstrap/app.php';
 // Register Filament service provider explicitly
 $app->register(\Filament\FilamentServiceProvider::class);
 // Boot the application
@@ -9,7 +10,7 @@ $kernel->bootstrap();
 try {
     $filament = $app->make('filament');
 } catch (Throwable $e) {
-    echo "Could not resolve 'filament' from container: " . $e->getMessage() . "\n";
+    echo "Could not resolve 'filament' from container: ".$e->getMessage()."\n";
     exit(1);
 }
 if (method_exists($filament, 'bootCurrentPanel')) {

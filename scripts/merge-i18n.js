@@ -64,7 +64,7 @@ const added = [];
 for (const key of Object.keys(flatEn)) {
   if (!(key in flatMs)) {
     // add with empty string placeholder
-    flatMs[key] = "";
+    flatMs[key] = '';
     added.push(key);
   }
 }

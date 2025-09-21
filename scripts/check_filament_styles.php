@@ -1,13 +1,14 @@
 <?php
-require __DIR__ . '/..//vendor/autoload.php';
-$app = require __DIR__ . '/..//bootstrap/app.php';
+
+require __DIR__.'/..//vendor/autoload.php';
+$app = require __DIR__.'/..//bootstrap/app.php';
 // Bootstrap application
 try {
     $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
     $kernel->bootstrap();
     echo "Kernel bootstrapped\n";
 } catch (Throwable $e) {
-    echo "Bootstrap error: " . $e->getMessage() . "\n";
+    echo 'Bootstrap error: '.$e->getMessage()."\n";
 }
 if (class_exists('\\Filament\\Filament')) {
     echo "Filament class exists\n";
@@ -33,7 +34,7 @@ if (class_exists('\\Filament\\Filament')) {
         echo "Rendered styles:\n";
         echo call_user_func(['\\Filament\\Filament', 'renderStyles']);
     } catch (Throwable $e) {
-        echo "getStyles error: " . $e->getMessage() . "\n";
+        echo 'getStyles error: '.$e->getMessage()."\n";
     }
 } else {
     echo "Filament class not found\n";

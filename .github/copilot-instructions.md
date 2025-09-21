@@ -159,22 +159,26 @@ This application uses these core packages:
 ## Filament v4.x
 
 **Requirements & Compatibility:**
+
 - **PHP 8.2+ and Laravel 11.28+** are required for Filament v4.
 - **Tailwind CSS v4.0+** is required. Filament v4 uses the OKLCH color space for more accurate colors.
 - The `doctrine/dbal` package is no longer required by Filament itself.
 
 **Architecture & Code Organization:**
+
 - **Unified Schema Architecture:** Filament v4 introduces a new schema core that unifies forms, tables, infolists, and layout components.
 - **Resource Directory Structure:** Resources are now generated within their own dedicated directories (e.g., `app/Filament/Resources/CustomerResource/`).
 - **Extract Schemas and Tables:** By default, `make:filament-resource` extracts form and table definitions into separate schema classes for improved code reuse.
 - **Unified Actions:** Action classes are now unified across forms, tables, and widgets.
 
 **Performance:**
+
 - **Faster Table Rendering:** Tables render significantly faster due to optimized rendering.
 - **Partial Rendering:** Leverages Livewire partial rendering to update only specific components.
 - **Semantic CSS:** Uses semantic CSS classes compiled from Tailwind utilities.
 
 **New Features & Changes:**
+
 - **Nested Resources:** Native support for nested resources (e.g., `/projects/{project}/tasks`).
 - **Page Schemas:** Customize page layouts using schema components within the `content()` method.
 - **Conditional Visibility with JavaScript:** Use `hiddenJs()` and `visibleJs()` with JavaScript expressions.
@@ -187,6 +191,7 @@ This application uses these core packages:
 - **File Visibility:** File visibility for non-local disks defaults to `private`.
 
 **Automation & Code Practices:**
+
 - Use `--generate` flag with `make:filament-resource` to automatically create forms and tables based on model schema.
 - For soft-deletable models, use `--soft-deletes` flag when generating resources.
 - Prefer using extracted schema and table classes for better organization.

@@ -1,6 +1,6 @@
 ---
-applyTo: "**"
-description: "Agent workflow instructions for autonomous Laravel task execution without confirmation prompts"
+applyTo: '**'
+description: 'Agent workflow instructions for autonomous Laravel task execution without confirmation prompts'
 ---
 
 # Agent Workflow Instructions for Laravel Projects
