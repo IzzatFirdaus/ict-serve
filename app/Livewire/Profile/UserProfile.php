@@ -50,11 +50,13 @@ class UserProfile extends Component
                 'base_uri' => config('app.url'),
                 'timeout' => 10.0,
             ]);
-            $token = Auth::user()->createToken('privacy')->plainTextToken;
+            // No API token available: Sanctum/Passport not installed, User model does not support createToken.
+            // For real API security, recommend installing Laravel Sanctum and using HasApiTokens.
+            // For now, call the endpoint without Authorization header (endpoint should be protected in future).
             $response = $client->delete('/api/privacy/memory', [
                 'headers' => [
                     'Accept' => 'application/json',
-                    'Authorization' => 'Bearer '.$token,
+                    // 'Authorization' => 'Bearer ...', // Placeholder for future
                 ],
             ]);
             if ($response->getStatusCode() === 200) {
