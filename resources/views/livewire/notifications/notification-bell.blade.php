@@ -1,28 +1,16 @@
 <div class="relative" x-data="{ open: @entangle('showDropdown') }">
   {{-- Bell Icon Button --}}
-  <button
-    @click="open = !open"
+  <x-myds.button
     type="button"
-    class="relative rounded-full bg-white dark:bg-dialog p-2 text-black-500 dark:text-black-400 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 border border-divider"
+    variant="secondary"
+    size="sm"
+    class="relative rounded-full p-2"
+    x-on:click="open = !open"
     aria-expanded="false"
     aria-haspopup="true"
-    aria-label="{{ __('Buka notifikasi / View notifications') }}"
+    :aria-label="__('Buka notifikasi / View notifications')"
   >
-    <!-- Bell Icon SVG -->
-    <svg
-      class="w-5 h-5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M15 17h5l-3-3V9A6 6 0 1 0 6 9v5l-3 3h5a3 3 0 1 0 6 0Z"
-      />
-    </svg>
+    <x-myds.icon name="bell" class="w-5 h-5" aria-hidden="true" />
 
     {{-- Notification Badge --}}
     @if ($unreadCount > 0)
@@ -44,7 +32,6 @@
     x-transition:leave-start="transform opacity-100 scale-100"
     x-transition:leave-end="transform opacity-0 scale-95"
     @click.outside="open = false"
-    class="absolute right-0 z-10 mt-2 w-80 origin-top-right rounded-lg bg-white dark:bg-dialog border border-divider shadow-lg focus:outline-none"
     role="menu"
     aria-orientation="vertical"
     class="absolute right-0 z-10 mt-2 w-80 origin-top-right rounded-lg bg-white dark:bg-dialog border border-divider shadow-lg focus:outline-none myds-dropdown-panel"
