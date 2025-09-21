@@ -19,116 +19,124 @@
 @section('content')
     {{-- This view is powered by the App\Livewire\MyRequests Livewire component. --}}
     {{-- All data ($this->loanRequests, $this->tickets) and actions (showLoanDetails, etc.) are handled by the component class. --}}
-    <div class="bg-bg-white dark:bg-gray-950/50">
+    <div class="bg-white">
 
-        <div class="bg-bg-primary-600 text-txt-white py-8 shadow-md">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold font-poppins mb-2">Permohonan Saya</h1>
-                <p class="text-lg text-txt-white opacity-80 font-inter">
+        <div class="bg-primary-600 text-white py-8 shadow-md">
+            <x-myds.container>
+                <h1 class="font-poppins text-2xl md:text-3xl font-bold mb-2">Permohonan Saya</h1>
+                <p class="font-inter text-base md:text-lg text-white/80">
                     Jejak status permohonan pinjaman peralatan dan aduan kerosakan anda.
                 </p>
-            </div>
+            </x-myds.container>
         </div>
 
-        <div class="bg-bg-white dark:bg-gray-900 border-b border-otl-divider dark:border-otl-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="bg-white border-b border-divider">
+            <x-myds.container class="py-4">
                 <div class="flex flex-wrap gap-4">
-                    <a href="{{-- route('public.loan-request') --}}" class="myds-btn myds-btn-primary">
-                        <x-heroicon-o-plus class="h-5 w-5 mr-2"/>
+                    <x-myds.button
+                        onclick="window.location='{{ route('public.loan-request') }}'"
+                        variant="primary"
+                        size="md"
+                        class="min-w-[180px]"
+                    >
+                        <x-myds.icon name="plus" size="20" class="mr-2" aria-hidden="true" />
                         Permohonan Pinjaman Baru
-                    </a>
-                    <a href="{{-- route('public.damage-complaint.guest') --}}" class="myds-btn myds-btn-danger">
-                        <x-heroicon-o-exclamation-triangle class="h-5 w-5 mr-2"/>
+                    </x-myds.button>
+                    <x-myds.button
+                        onclick="window.location='{{ route('public.damage-complaint.guest') }}'"
+                        variant="danger"
+                        size="md"
+                        class="min-w-[160px]"
+                    >
+                        <x-myds.icon name="exclamation-triangle" size="20" class="mr-2" aria-hidden="true" />
                         Lapor Kerosakan
-                    </a>
+                    </x-myds.button>
                 </div>
-            </div>
+            </x-myds.container>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <x-myds.container class="py-8">
             <div class="mb-12" wire:poll.15s>
                 <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-semibold font-poppins text-txt-black-900 dark:text-white">Permohonan Pinjaman Peralatan</h2>
-                    <span class="text-sm text-txt-black-500 dark:text-txt-black-400">{{-- $this->loanRequests->total() --}} 5 jumlah permohonan</span>
+                    <h2 class="font-poppins text-xl md:text-2xl font-semibold text-gray-900">Permohonan Pinjaman Peralatan</h2>
+                    <span class="font-inter text-xs text-gray-500">{{-- $this->loanRequests->total() --}} 5 jumlah permohonan</span>
                 </div>
 
-                <div class="bg-white dark:bg-gray-900 shadow-card border border-otl-gray-200 dark:border-otl-gray-800 rounded-lg overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-otl-divider dark:divide-otl-gray-800">
-                            <thead class="bg-washed dark:bg-gray-800/50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">No. Permohonan</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Tujuan</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Tempoh</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Status</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Dihantar Pada</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-txt-black-500 dark:text-txt-black-400 uppercase tracking-wider">Tindakan</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white dark:bg-gray-900 divide-y divide-otl-divider dark:divide-otl-gray-800">
-                                {{-- Loop through data from Livewire component: @foreach($this->loanRequests as $request) --}}
-                                <tr class="hover:bg-washed dark:hover:bg-gray-800/50">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary-600 dark:text-primary-400">ICT-LN-001</td>
-                                    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-txt-black-900 dark:text-white">Mesyuarat Luar Pejabat</div></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-txt-black-500 dark:text-txt-black-400">19 Sep - 21 Sep 2025</td>
-                                    <td class="px-6 py-4 whitespace-nowrap"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800 dark:bg-success-900/50 dark:text-success-300">Diluluskan</span></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-txt-black-500 dark:text-txt-black-400">18 Sep 2025</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <button wire:click="showLoanDetails(1)" class="myds-btn myds-btn-ghost text-primary-600 dark:text-primary-400">Lihat Butiran</button>
-                                    </td>
-                                </tr>
-                                {{-- @endforeach --}}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <x-myds.card class="overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No. Permohonan</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tujuan</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tempoh</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dihantar Pada</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tindakan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- Loop through data from Livewire component: @foreach($this->loanRequests as $request) --}}
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap font-inter text-sm text-primary-600">ICT-LN-001</td>
+                                <td class="px-6 py-4 whitespace-nowrap font-inter text-sm text-gray-900">Mesyuarat Luar Pejabat</td>
+                                <td class="px-6 py-4 whitespace-nowrap font-inter text-sm text-gray-600">19 Sep - 21 Sep 2025</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800">
+                                        <x-myds.icon name="check-circle" size="14" class="mr-1" aria-hidden="true" />
+                                        Diluluskan
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap font-inter text-sm text-gray-600">18 Sep 2025</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <x-myds.button wire:click="showLoanDetails(1)" variant="ghost" size="sm">
+                                        Lihat Butiran
+                                    </x-myds.button>
+                                </td>
+                            </tr>
+                            {{-- @endforeach --}}
+                        </tbody>
+                    </table>
+                </x-myds.card>
                 {{-- Pagination Links would be rendered here: {{ $this->loanRequests->links() }} --}}
             </div>
 
             {{-- Add other sections like Helpdesk Tickets similarly --}}
-        </div>
+    </x-myds.container>
 
-        <div x-data="{ open: @entangle('showingLoanModal') }"
-             x-show="open"
-             @keydown.escape.window="open = false"
-             class="fixed inset-0 z-50 flex items-center justify-center p-4" x-cloak>
-
-            <div x-show="open" x-transition.opacity class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm"></div>
-
-            <div x-show="open" x-transition @click.away="open = false"
-                 class="relative w-full max-w-2xl overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-xl border border-otl-gray-200 dark:border-otl-gray-800">
-
-                <div class="flex items-center justify-between p-6 border-b border-otl-divider dark:border-otl-gray-800">
-                    <h3 class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white">Butiran Permohonan Pinjaman</h3>
-                    <button @click="open = false" class="myds-btn myds-btn-ghost p-2 rounded-full">
-                        <x-heroicon-o-x-mark class="h-6 w-6"/>
-                    </button>
-                </div>
-
-                <div class="p-6 space-y-4 max-h-[60vh] overflow-y-auto">
-                    <p class="text-txt-black-700 dark:text-txt-black-300">No. Permohonan: <strong>{{-- $selectedLoan->request_number ?? 'ICT-LN-001' --}}</strong></p>
-                    <p class="text-txt-black-700 dark:text-txt-black-300">Tujuan: <strong>{{-- $selectedLoan->purpose ?? 'Mesyuarat Luar Pejabat' --}}</strong></p>
-
+        <x-myds.modal :show="@entangle('showingLoanModal')" @close="showingLoanModal = false" aria-labelledby="loan-modal-title">
+            <x-slot name="title">
+                <h3 id="loan-modal-title" class="font-poppins text-lg font-medium text-gray-900">Butiran Permohonan Pinjaman</h3>
+            </x-slot>
+            <x-slot name="content">
+                <div class="space-y-4 max-h-[60vh] overflow-y-auto">
+                    <p class="text-gray-700">No. Permohonan: <strong>{{-- $selectedLoan->request_number ?? 'ICT-LN-001' --}}</strong></p>
+                    <p class="text-gray-700">Tujuan: <strong>{{-- $selectedLoan->purpose ?? 'Mesyuarat Luar Pejabat' --}}</strong></p>
                     {{-- Digital Signature Section, powered by Alpine.js component defined in my-requests.js --}}
-                    <div class="pt-4 border-t border-otl-divider dark:border-otl-gray-800"
-                         x-data="signaturePad(@this)">
-                        <h4 class="font-medium text-txt-black-800 dark:text-white">Tandatangan Pengesahan Penerimaan</h4>
-                        <p class="text-sm text-txt-black-500 dark:text-txt-black-400 mb-2">Sila tandatangan di dalam kotak di bawah untuk mengesahkan penerimaan aset.</p>
-                        <div class="relative w-full h-48 bg-washed dark:bg-gray-800 rounded-md border-2 border-dashed border-otl-gray-300 dark:border-otl-gray-700">
-                            <canvas x-ref="signatureCanvas" class="w-full h-full"></canvas>
+                    <div class="pt-4 border-t border-divider" x-data="signaturePad(@this)">
+                        <h4 class="font-poppins text-base font-medium text-gray-800">Tandatangan Pengesahan Penerimaan</h4>
+                        <p class="font-inter text-xs text-gray-500 mb-2">Sila tandatangan di dalam kotak di bawah untuk mengesahkan penerimaan aset.</p>
+                        <div class="relative w-full h-48 bg-washed rounded-md border-2 border-dashed border-divider" aria-label="Kanvas Tandatangan" role="region">
+                            <canvas x-ref="signatureCanvas" class="w-full h-full" aria-label="Pad Tandatangan"></canvas>
                         </div>
-                        <div class="flex items-center justify-end mt-2 space-x-2">
-                            <button @click="clearSignature()" type="button" class="myds-btn myds-btn-secondary">Kosongkan</button>
-                            <button @click="saveSignature()" type="button" class="myds-btn myds-btn-primary">Simpan Tandatangan</button>
+                        <div class="flex items-center justify-end mt-2 gap-2">
+                            <x-myds.button @click="clearSignature()" type="button" variant="secondary">
+                                Kosongkan
+                            </x-myds.button>
+                            <x-myds.button @click="saveSignature()" type="button" variant="primary">
+                                Simpan Tandatangan
+                            </x-myds.button>
                         </div>
                     </div>
                 </div>
-
-                 <div class="flex justify-end gap-4 bg-washed dark:bg-gray-950/50 px-6 py-4 border-t border-otl-divider dark:border-otl-gray-800">
-                    <button @click="open = false" type="button" class="myds-btn myds-btn-secondary">Tutup</button>
+            </x-slot>
+            <x-slot name="footer">
+                <div class="flex justify-end gap-4 bg-washed px-6 py-4 border-t border-divider">
+                    <x-myds.button @click="$dispatch('close')" type="button" variant="secondary">
+                        Tutup
+                    </x-myds.button>
                 </div>
-            </div>
-        </div>
+            </x-slot>
+        </x-myds.modal>
     </div>
 @endsection
 

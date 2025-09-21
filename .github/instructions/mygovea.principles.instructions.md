@@ -1,108 +1,184 @@
 ---
 applyTo: '**'
+
+---
+applyTo: '**'
+description: 'Comprehensive MyGovEA Design Principles and Implementation Guide for ICTServe (iServe) Laravel 12 Project'
 ---
 
 # MyGovEA Design Principles — Implementation Guide
 
-This repository follows the [MyGovEA design principles](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/), which are mandatory for all Malaysian Government digital services.  
-**Every contributor must ensure all code, UI, and documentation align with the principles below.**
+This repository follows the [MyGovEA design principles](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/), which are mandatory for all Malaysian Government digital services. All code, UI, and documentation must align with these principles and be validated for compliance.
 
 ---
 
-## Core Principles (Prinsip Asas)
+## Quick Reference: MyGovEA Principles (Summary)
 
-1. **Berpaksikan Rakyat (Citizen-Centric):**  
-   Design every feature, interface, and API to prioritize the real needs and contexts of citizens.  
-   - Conduct regular user research and usability testing.
-   - Use clear, inclusive language and localize where appropriate.
-   - Prioritize accessibility and privacy for all users.
-2. **Berpacukan Data (Data-Driven):**  
-   Build with clear data models and secure, consent-based, well-documented APIs.
-   - Ensure data structures are consistent and maintainable.
-   - Document API contracts and ownership clearly.
-3. **Kandungan Terancang (Planned Content):**  
-   Structure content for clarity and completeness.
-   - Define user journeys and guardrails (e.g., character limits, validation).
-   - Provide content authoring guidance in forms and documentation.
-4. **Teknologi Bersesuaian (Appropriate Technology):**  
-   Select frameworks and stacks that suit project needs and team skills.
-   - Document technology choices and avoid unnecessary complexity.
-   - Ensure maintainability and operational fit.
-5. **Antara Muka Minimalis dan Mudah (Minimal & Simple UI):**  
-   Keep interfaces uncluttered and intuitive.
-   - Use MYDS components and avoid unnecessary visual elements.
-   - Make all actions and statuses clear.
-6. **Seragam (Consistency):**  
-   Adhere to consistent tokens, components, and design patterns.
-   - Centralize theme and style overrides.
-   - Reference MYDS and maintain a single source of design tokens.
-7. **Paparan/Menu Jelas (Clear Display & Menus):**  
-   Ensure navigation and menus are logical and predictable.
-   - Use consistent ordering, truncation, and tooltips.
-   - Make all labels meaningful and accessible.
-8. **Realistik (Realistic):**  
-   Respect user device, network, and time constraints.
-   - Provide progressive enhancement and fallback for critical flows.
-   - Test on a range of devices and connections.
-9. **Kognitif (Cognitive):**  
-   Minimize user mental load.
-   - Chunk information, prioritize actions, and avoid overwhelming choices.
-   - Use inline help, progressive disclosure, and clear feedback.
-10. **Fleksibel (Flexible):**  
-    Design modular, extensible, and configurable systems.
-    - Expose settings sensibly, and maintain backward compatibility.
-11. **Komunikasi (Communication):**  
-    Foster clear communication between product, design, and engineering.
-    - Record design and technical decisions in the repo.
-12. **Struktur Hierarki (Hierarchy):**  
-    Use semantic, well-structured HTML and ARIA landmarks.
-    - Maintain logical heading orders and clear layouts.
-13. **Komponen UI/UX:**  
-    Always use MYDS React components when possible.
-    - Wrap with local components for project-specific needs.
-    - Provide Storybook stories and usage examples.
-14. **Tipografi (Typography):**  
-    Use only approved fonts (Poppins/Inter) and MYDS typography tokens.
-    - Follow the type scale from `MYDS-Develop-Overview.md`.
-15. **Tetapan Lalai (Defaults):**  
-    Set secure, privacy-protecting defaults.
-    - Document all defaults and allow user override where appropriate.
-16. **Kawalan Pengguna (User Controls):**  
-    Make controls discoverable and accessible.
-    - Ensure minimum touch size, visible interactive states, and consistency.
-17. **Pencegahan Ralat (Error Prevention):**  
-    Validate early and often; require confirmation for destructive actions.
-    - Show inline, actionable error messages (never rely on color alone).
-18. **Panduan & Dokumentasi (Guidance & Documentation):**  
-    Maintain up-to-date guides, examples, and user help.
-    - Keep documentation versioned and close to the code.
+| Principle | Summary |
+|-----------|---------|
+| Citizen-Centric | Prioritize real user needs, accessibility, and privacy |
+| Data-Driven | Use clear, secure, maintainable data models and APIs |
+| Planned Content | Structure content for clarity, completeness, and guidance |
+| Appropriate Technology | Use frameworks and stacks that fit project and team |
+| Minimal & Simple UI | Keep interfaces uncluttered, clear, and MYDS-compliant |
+| Consistency | Use tokens, components, and patterns consistently |
+| Clear Display & Menus | Logical, predictable navigation and labeling |
+| Realistic | Respect device, network, and time constraints |
+| Cognitive | Minimize user mental load, chunk info, clear feedback |
+| Flexible | Modular, extensible, and configurable systems |
+| Communication | Clear, documented decisions and collaboration |
+| Hierarchy | Semantic, well-structured HTML and ARIA |
+| UI/UX Components | Use MYDS/Filament components, provide usage examples |
+| Typography | Use Poppins/Inter, MYDS tokens, type scale |
+| Defaults | Secure, privacy-protecting defaults |
+| User Controls | Discoverable, accessible, consistent controls |
+| Error Prevention | Early validation, confirmations, actionable errors |
+| Guidance & Docs | Up-to-date guides, examples, and user help |
 
 ---
 
-## Implementation Checklist
+## Core Principles (Prinsip Asas) with ICTServe Examples
+
+1. **Berpaksikan Rakyat (Citizen-Centric):**
+   - *Example*: All forms in ICTServe use inline validation, clear error messages, and ARIA labels. User research is documented in `/memory-bank/productContext.md`.
+2. **Berpacukan Data (Data-Driven):**
+   - *Example*: All Eloquent models use explicit relationships and factories. API contracts are documented in `/memory-bank/techContext.md`.
+3. **Kandungan Terancang (Planned Content):**
+   - *Example*: User journeys and guardrails are mapped in `/memory-bank/systemPatterns.md` and `/memory-bank/productContext.md`.
+4. **Teknologi Bersesuaian (Appropriate Technology):**
+   - *Example*: Laravel 12, Filament v4, and Livewire 3 are selected for maintainability and team fit. Choices are documented in `/memory-bank/techContext.md`.
+5. **Antara Muka Minimalis dan Mudah (Minimal & Simple UI):**
+   - *Example*: All admin UIs use Filament's unified schema and MYDS tokens for clarity and minimalism.
+6. **Seragam (Consistency):**
+   - *Example*: All layouts use the 12-8-4 grid, and MYDS tokens for color/spacing. See `/memory-bank/systemPatterns.md`.
+7. **Paparan/Menu Jelas (Clear Display & Menus):**
+   - *Example*: Navigation and menus are defined in Blade/Filament resources with clear, accessible labels.
+8. **Realistik (Realistic):**
+   - *Example*: All features are tested on multiple devices and network conditions. Fallbacks are documented in `/memory-bank/techContext.md`.
+9. **Kognitif (Cognitive):**
+   - *Example*: Information is chunked in dashboards and forms. Inline help is provided in Filament resources.
+10. **Fleksibel (Flexible):**
+    - *Example*: Modular resource directories and extensible Filament schemas. Feature toggles documented in `/memory-bank/activeContext.md`.
+11. **Komunikasi (Communication):**
+    - *Example*: All design/tech decisions are logged in `/memory-bank/progress.md` and PR descriptions.
+12. **Struktur Hierarki (Hierarchy):**
+    - *Example*: All Blade and Filament UIs use semantic HTML, ARIA landmarks, and logical heading order.
+13. **Komponen UI/UX:**
+    - *Example*: All UI uses MYDS and Filament components. Custom components are documented in `/memory-bank/systemPatterns.md`.
+14. **Tipografi (Typography):**
+    - *Example*: Poppins/Inter loaded via Tailwind config. Type scale enforced in Blade/Filament.
+15. **Tetapan Lalai (Defaults):**
+    - *Example*: All config defaults are secure and privacy-protecting. See `/config/` and `/memory-bank/techContext.md`.
+16. **Kawalan Pengguna (User Controls):**
+    - *Example*: All controls are keyboard accessible, with visible focus and ARIA attributes. See `/resources/views/` and Filament resources.
+17. **Pencegahan Ralat (Error Prevention):**
+    - *Example*: Form Requests used for all validation. Destructive actions require confirmation dialogs.
+18. **Panduan & Dokumentasi (Guidance & Documentation):**
+    - *Example*: All onboarding and usage guides are in `/memory-bank/` and `README.md`.
+
+---
+
+## Enhanced PR & Compliance Checklist
 
 **For every Pull Request:**
-- [ ] Reference which principle(s) are being addressed.
-- [ ] Use only MYDS tokens/components; fallback to values in `MYDS-Colour-Reference.md` if custom tokens are needed.
-- [ ] Ensure all new UIs pass accessibility checks:  
-  - Keyboard navigation  
-  - Visible focus states  
-  - ARIA attributes  
-  - Color-contrast (≥ 4.5:1 for body text)
-- [ ] Provide/Update Storybook or UI example for all new/changed components.
-- [ ] Validate forms and inputs for early error detection and accessible feedback.
-- [ ] All documentation and labels must be clear, concise, and accessible.
+- [ ] Reference which MyGovEA principle(s) are being addressed
+- [ ] Use only MYDS tokens/components (fallback to `MYDS-Colour-Reference.md` if needed)
+- [ ] All new UIs pass accessibility checks:
+  - Keyboard navigation
+  - Visible focus states
+  - ARIA attributes
+  - Color-contrast (≥ 4.5:1 for body text, WCAG 2.2)
+- [ ] Provide/Update Storybook or UI example for all new/changed components
+- [ ] Validate forms and inputs for early error detection and accessible feedback
+- [ ] All documentation and labels are clear, concise, and accessible
+- [ ] All Eloquent models use relationships and factories
+- [ ] All validation uses Form Requests (no inline validation)
+- [ ] All Filament resources use unified schema and extracted classes
+- [ ] All layouts use 12-8-4 grid and MYDS tokens
+- [ ] All code and UI changes are cross-referenced in `/memory-bank/` files
+- [ ] Security/privacy requirements are met (env vars, access control, audit logs)
+- [ ] Automated accessibility and linting checks pass in CI
 
 ---
 
-## Additional References
+## Laravel 12 & Filament v4: MyGovEA Alignment
 
-- [MYDS Develop Overview](https://design.digital.gov.my/en/docs/develop)
-- [MYDS Colour Reference](https://design.digital.gov.my/en/docs/design/color)
-- [Official MyGovEA Principles](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/)
+- **Eloquent Models**: Use relationships, factories, and PHPDoc. Example: `User` model with `hasMany` relationships and factory in `/app/Models/`.
+- **Form Requests**: All validation logic in Form Request classes (see `/app/Http/Requests/`).
+- **Filament Unified Schema**: All admin UIs use Filament's extracted schema classes for forms/tables (see `/app/Filament/Resources/`).
+- **MYDS Integration**: All styling uses MYDS tokens and grid via Tailwind config.
+- **Accessibility**: All forms/buttons have ARIA, focus, and keyboard support. See `/resources/views/` and Filament resources.
 
 ---
 
-> **Note:**  
-> These principles are not optional. All digital services and code contributions must comply.  
-> If in doubt, raise a question in the repository before merging or deploying.
+## Filament v4 & MYDS: Consistency and Minimal UI
+
+- **Unified Schema**: Filament v4's schema core ensures all forms, tables, and infolists are consistent and minimal.
+- **Component Reuse**: Use extracted schema/table classes and MYDS components for all UIs.
+- **Minimalism**: Avoid unnecessary visual elements; use MYDS tokens for clarity.
+
+---
+
+## Accessibility Deep Dive (WCAG 2.2 & Government Compliance)
+
+- **WCAG 2.2 Criteria**: All UIs must meet at least AA level:
+  - Keyboard navigation for all interactive elements
+  - Visible focus indicators (use MYDS tokens)
+  - ARIA attributes for all controls
+  - Color contrast ≥ 4.5:1 for text and UI
+  - Touch targets ≥ 48x48px
+  - Skip links at top of every page
+- **Testing Methods**:
+  - Automated: axe, Lighthouse, CI scripts
+  - Manual: Keyboard-only navigation, screen reader checks
+- **Documentation**: Accessibility requirements and test results are logged in `/memory-bank/progress.md` and `/memory-bank/systemPatterns.md`.
+
+---
+
+## Security & Privacy Compliance
+
+- **Environment Variables**: All secrets/config in `.env`, never committed
+- **Access Control**: Use Laravel Gates/Policies, role-based access in Filament
+- **Audit Logging**: Use `owen-it/laravel-auditing` for all critical actions
+- **Data Privacy**: Follow government data handling and retention policies
+- **CI Checks**: Automated security/linting in CI pipeline
+
+---
+
+## Common Pitfalls & How to Avoid Them
+
+- **Inline Validation**: Never validate in controllers or Blade; always use Form Requests
+- **Custom Styling**: Never use hardcoded colors; always use MYDS tokens
+- **Missing Accessibility**: All controls must have ARIA, focus, and keyboard support
+- **Untracked Decisions**: Always log design/tech decisions in `/memory-bank/progress.md`
+- **Component Duplication**: Always check for existing Blade/Filament components before creating new ones
+
+---
+
+## Validation Scripts & Linting
+
+- **Accessibility**: axe, Lighthouse run in CI
+- **PHP/JS Linting**: Pint, Prettier, Stylelint in CI
+- **Custom Checks**: See `/scripts/` for any project-specific validation scripts
+
+---
+
+## Integration & Cross-References
+
+- **copilot-instructions.md**: All MyGovEA principles are enforced in Copilot and agent workflows
+- **AGENTS.MD**: Agent mode and automation rules reference these principles
+- **memory-bank/**: All context, decisions, and compliance evidence are logged in memory bank files
+- **CONTRIBUTING.md**: Branching, PR, and review policies enforce MyGovEA and MYDS compliance
+- **Training Materials**: See onboarding docs and `/memory-bank/` for guides
+
+---
+
+## Version History
+
+- **2025-09-21**: Major enhancement — added project-specific examples, expanded checklist, accessibility/security deep dive, and cross-references
+- **2024-12-01**: Initial version for ICTServe Laravel 12 project
+
+---
+
+> **Note:**
+> These principles are not optional. All digital services and code contributions must comply. If in doubt, raise a question in the repository before merging or deploying.

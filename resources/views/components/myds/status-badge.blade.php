@@ -10,49 +10,45 @@
 @props([
   'status' => 'info',
   'size' => 'medium',
-  'variant' => 'filled', // filled | outline | subtle
+  'variant' => null, // optional override for badge variant
   'icon' => null,
   'dismissible' => false,
 ])
 
 @php
-  $base = 'inline-flex items-center justify-center font-medium rounded-full';
-  $sizeCls = match ($size) {
-    'small' => 'px-2 py-0.5 text-xs gap-1',
-    'large' => 'px-4 py-2 text-base gap-2',
-    default => 'px-3 py-1 text-sm gap-1.5',
+  // Map incoming status to x-myds.badge variant names
+  $variantMap = match (strtolower($status)) {
+    'success' => 'success',
+    'warning' => 'warning',
+    'danger', 'error' => 'danger',
+    'primary' => 'primary',
+    'info' => 'info',
+    default => 'secondary',
   };
 
-  // Token set mapping
-  $tone = match ($status) {
-    'success' => ['txt' => 'txt-success', 'bg' => 'bg-success-600', 'bgSubtle' => 'bg-success-50', 'bd' => 'border-otl-success-300'],
-    'warning' => ['txt' => 'txt-warning', 'bg' => 'bg-warning-600', 'bgSubtle' => 'bg-warning-50', 'bd' => 'border-otl-warning-300'],
-    'danger' => ['txt' => 'txt-danger', 'bg' => 'bg-danger-600', 'bgSubtle' => 'bg-danger-50', 'bd' => 'border-otl-danger-300'],
-    'primary' => ['txt' => 'txt-primary', 'bg' => 'bg-primary-600', 'bgSubtle' => 'bg-primary-50', 'bd' => 'border-otl-primary-300'],
-    default => ['txt' => 'txt-black-700', 'bg' => 'bg-black-300', 'bgSubtle' => 'bg-black-100', 'bd' => 'border-otl-gray-300'],
+  $sizeMap = match (strtolower($size)) {
+    'small' => 'sm',
+    'large' => 'lg',
+    default => null,
   };
 
-  $modeCls = match ($variant) {
-    'outline' => "bg-white {$tone['txt']} border {$tone['bd']}",
-    'subtle' => "{$tone['bgSubtle']} {$tone['txt']}",
-    default => "{$tone['bg']} txt-white",
-  };
-
-  $classes = trim("$base $sizeCls $modeCls");
+  $badgeVariant = $variant ?? $variantMap;
+  $badgeSize = $sizeMap;
 @endphp
 
-<span {{ $attributes->merge(['class' => $classes]) }}>
-  @if ($icon)
-    <span class="inline-flex items-center" aria-hidden="true">
-      {!! $icon !!}
-    </span>
-  @endif
+<span {{ $attributes->only('class')->merge([]) }}>
+  <x-myds.badge @if($badgeVariant) variant="{{ $badgeVariant }}" @endif @if($badgeSize) size="{{ $badgeSize }}" @endif>
+    @if ($icon)
+      <span class="inline-flex items-center mr-1" aria-hidden="true">{!! $icon !!}</span>
+    @endif
 
-  <span class="myds-badge-text">{{ $slot }}</span>
+    <span class="myds-badge-text">{{ $slot }}</span>
+  </x-myds.badge>
+
   @if ($dismissible)
     <button
       type="button"
-      class="ml-1 hover:opacity-80 transition-opacity"
+      class="ml-2 inline-flex items-center p-1 rounded hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-fr-primary"
       aria-label="Tutup"
       onclick="this.closest('span').remove()"
     >

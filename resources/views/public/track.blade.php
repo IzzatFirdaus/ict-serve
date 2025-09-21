@@ -16,53 +16,27 @@
 
     <!-- Search Form -->
     <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-      <form
-        action="{{ route('public.track') }}"
-        method="POST"
-        class="space-y-4"
-      >
+      <form action="{{ route('public.track') }}" method="POST" class="space-y-4">
         @csrf
         <div class="flex flex-col md:flex-row gap-4">
           <div class="flex-1">
-            <label
-              for="tracking_number"
-              class="block text-sm font-medium text-gray-700 mb-1"
-            >
-              {{ __('Request/Ticket Number') }}
-            </label>
-            <input
-              type="text"
+            <x-myds.label for="tracking_number">{{ __('Request/Ticket Number') }}</x-myds.label>
+            <x-myds.input
               id="tracking_number"
               name="tracking_number"
-              value="{{ request('tracking_number') ?? old('tracking_number') }}"
+              :value="request('tracking_number') ?? old('tracking_number')"
               placeholder="{{ __('e.g., REQ-20241210-ABC123 or TKT-20241210-XYZ456') }}"
               required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent @error('tracking_number') border-danger-500 @enderror"
             />
             @error('tracking_number')
-              <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+              <x-myds.callout type="danger" class="mt-2">{{ $message }}</x-myds.callout>
             @enderror
           </div>
           <div class="flex items-end">
-            <button
-              type="submit"
-              class="px-6 py-2 bg-primary-600 text-white rounded-md text-sm font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200 whitespace-nowrap"
-            >
-              <svg
-                class="w-4 h-4 mr-2 inline"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+            <x-myds.button type="submit" variant="primary" class="whitespace-nowrap">
+              <x-myds.icon name="search" size="16" class="mr-2 inline" aria-hidden="true"/>
               {{ __('Track Status') }}
-            </button>
+            </x-myds.button>
           </div>
         </div>
       </form>
@@ -108,25 +82,10 @@
         <p class="text-gray-600 text-sm mb-4">
           {{ __('Need equipment for your work? Submit a loan request with no login required.') }}
         </p>
-        <a
-          href="{{ route('public.loan-requests.create') }}"
-          class="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-md text-sm font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
-        >
+        <x-myds.button as="a" href="{{ route('public.loan-requests.create') }}" variant="primary" class="inline-flex items-center">
           {{ __('Submit Loan Request') }}
-          <svg
-            class="ml-2 w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </a>
+          <x-myds.icon name="arrow-right" size="16" class="ml-2" aria-hidden="true"/>
+        </x-myds.button>
       </div>
 
       <div class="bg-white rounded-lg shadow p-6 text-center">
@@ -153,25 +112,10 @@
         <p class="text-gray-600 text-sm mb-4">
           {{ __('Experiencing technical issues? Report them and get professional support.') }}
         </p>
-        <a
-          href="{{ route('public.helpdesk.create') }}"
-          class="inline-flex items-center px-4 py-2 bg-warning-600 text-white rounded-md text-sm font-medium hover:bg-warning-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-warning-500 transition-colors duration-200"
-        >
+        <x-myds.button as="a" href="{{ route('public.helpdesk.create') }}" variant="warning" class="inline-flex items-center">
           {{ __('Report Issue') }}
-          <svg
-            class="ml-2 w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </a>
+          <x-myds.icon name="arrow-right" size="16" class="ml-2" aria-hidden="true"/>
+        </x-myds.button>
       </div>
     </div>
 

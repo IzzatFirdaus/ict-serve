@@ -1,21 +1,23 @@
-<div class="myds-container myds-py-6">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
   <!-- Page Header -->
   <div class="mb-6">
     <!-- Breadcrumb Navigation -->
     <nav aria-label="Breadcrumb" class="mb-4">
-      <ol class="myds-breadcrumb">
-        <li class="myds-breadcrumb-item">
-          <a href="{{ route('dashboard') }}" class="myds-link">
+      <ol class="flex items-center space-x-2 text-sm">
+        <li>
+          <a href="{{ route('dashboard') }}" class="text-primary-600 hover:text-primary-800">
             Papan Pemuka / Dashboard
           </a>
         </li>
-        <li class="myds-breadcrumb-item">
-          <a href="{{ route('helpdesk.index') }}" class="myds-link">
+        <li class="text-gray-500">/</li>
+        <li>
+          <a href="{{ route('helpdesk.index') }}" class="text-primary-600 hover:text-primary-800">
             Bantuan Teknikal / Technical Support
           </a>
         </li>
+        <li class="text-gray-500">/</li>
         <li
-          class="myds-breadcrumb-item myds-breadcrumb-current"
+          class="text-gray-900 font-medium"
           aria-current="page"
         >
           Lapor Masalah / Report Issue
@@ -24,18 +26,18 @@
     </nav>
 
     <!-- Page Title -->
-    <div class="myds-page-header">
-      <h1 class="myds-heading-xl text-myds-gray-900 dark:text-myds-gray-100">
-        <i class="myds-icon-exclamation-triangle mr-3" aria-hidden="true"></i>
+    <div class="mb-6">
+      <h1 class="text-3xl font-bold font-poppins text-gray-900 dark:text-gray-100 flex items-center">
+        <x-myds.icon name="exclamation-triangle" size="24" class="mr-3" aria-hidden="true" />
         Lapor Masalah Teknikal
       </h1>
       <p
-        class="myds-text-body-lg text-myds-gray-600 dark:text-myds-gray-400 mt-2"
+        class="text-lg font-inter text-gray-600 dark:text-gray-400 mt-2"
       >
         Report Technical Issue
       </p>
       <p
-        class="myds-text-body-md text-myds-gray-600 dark:text-myds-gray-400 mt-4"
+        class="text-base text-gray-600 dark:text-gray-400 mt-4"
       >
         Sila lengkapkan borang di bawah untuk melaporkan masalah teknikal atau
         meminta bantuan ICT.
@@ -46,135 +48,84 @@
     </div>
   </div>
 
-  <form wire:submit.prevent="submit" class="myds-space-y-8">
+  <form wire:submit.prevent="submit" class="space-y-8">
     @csrf
 
     <!-- Issue Details Section -->
-    <div class="myds-card myds-card-elevated">
-      <div class="myds-card-header">
-        <h2 class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100">
-          <i class="myds-icon-clipboard-list mr-2" aria-hidden="true"></i>
+    <div class="bg-white rounded-lg shadow border border-gray-200 dark:bg-gray-900 dark:border-gray-800">
+      <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-800">
+        <h2 class="text-xl font-semibold font-poppins text-gray-900 dark:text-gray-100 flex items-center">
+          <x-myds.icon name="clipboard-list" size="20" class="mr-2" aria-hidden="true" />
           Butiran Masalah / Issue Details
         </h2>
       </div>
 
-      <div class="myds-card-body">
-        <div class="myds-form-grid">
+      <div class="px-6 py-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Issue Title -->
-          <div>
-            <label for="title" class="myds-label myds-required">
-              Tajuk Masalah / Issue Title
-            </label>
-            <input
-              type="text"
+          <div class="col-span-1">
+            <x-myds.form-input
+              label="Tajuk Masalah / Issue Title"
               id="title"
+              name="title"
               wire:model="title"
-              class="myds-input @error('title') myds-input-error @enderror"
               placeholder="Nyatakan masalah secara ringkas... / Brief description of the issue..."
               maxlength="255"
               required
-              aria-describedby="title-help @error('title') title-error @enderror"
+              helper="Berikan tajuk yang jelas untuk masalah anda. / Provide a clear title for your issue."
+              error="{{ $errors->first('title') }}"
             />
-            <p id="title-help" class="myds-help-text">
-              Berikan tajuk yang jelas untuk masalah anda. / Provide a clear
-              title for your issue.
-            </p>
-            @error('title')
-              <p id="title-error" class="myds-error-text" role="alert">
-                {{ $message }}
-              </p>
-            @enderror
           </div>
 
           <!-- Issue Category -->
-          <div>
-            <label for="category_id" class="myds-label myds-required">
-              Kategori Masalah / Issue Category
-            </label>
-            <select
+          <div class="col-span-1">
+            <x-myds.form-select
               id="category_id"
+              label="Kategori Masalah / Issue Category"
+              name="category_id"
               wire:model.live="category_id"
-              class="myds-select @error('category_id') myds-input-error @enderror"
               required
-              aria-describedby="@error('category_id') category-error @enderror"
+              error="{{ $errors->first('category_id') }}"
             >
               <option value="">Pilih kategori... / Select category...</option>
               @foreach ($ticketCategories as $category)
-                <option value="{{ $category['id'] }}">
-                  {{ $category['name'] }} / {{ $category['name_bm'] }}
-                </option>
+                <option value="{{ $category['id'] }}">{{ $category['name'] }} / {{ $category['name_bm'] }}</option>
               @endforeach
-            </select>
-            @error('category_id')
-              <p id="category-error" class="myds-error-text" role="alert">
-                {{ $message }}
-              </p>
-            @enderror
+            </x-myds.form-select>
           </div>
 
           <!-- Priority Level -->
-          <div>
-            <label for="priority" class="myds-label myds-required">
-              Tahap Keutamaan / Priority Level
-            </label>
-            <select
+          <div class="col-span-1">
+            <x-myds.form-select
               id="priority"
+              label="Tahap Keutamaan / Priority Level"
+              name="priority"
               wire:model="priority"
-              class="myds-select @error('priority') myds-input-error @enderror"
               required
-              aria-describedby="priority-help @error('priority') priority-error @enderror"
+              error="{{ $errors->first('priority') }}"
             >
-              <option value="low">
-                Rendah / Low - Tidak mengganggu kerja / Not affecting work
-              </option>
-              <option value="medium" selected>
-                Sederhana / Medium - Mengganggu sedikit / Slightly affecting
-                work
-              </option>
-              <option value="high">
-                Tinggi / High - Mengganggu kerja / Affecting work significantly
-              </option>
-              <option value="critical">
-                Kritikal / Critical - Menghentikan kerja / Stopping work
-                completely
-              </option>
-            </select>
-            <p id="priority-help" class="myds-help-text">
-              Pilih tahap keutamaan berdasarkan kesan terhadap kerja anda. /
-              Select priority level based on impact on your work.
-            </p>
-            @error('priority')
-              <p id="priority-error" class="myds-error-text" role="alert">
-                {{ $message }}
-              </p>
-            @enderror
+              <option value="low">Rendah / Low - Tidak mengganggu kerja / Not affecting work</option>
+              <option value="medium" selected>Sederhana / Medium - Mengganggu sedikit / Slightly affecting work</option>
+              <option value="high">Tinggi / High - Mengganggu kerja / Affecting work significantly</option>
+              <option value="critical">Kritikal / Critical - Menghentikan kerja / Stopping work completely</option>
+            </x-myds.form-select>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Pilih tahap keutamaan berdasarkan kesan terhadap kerja anda. / Select priority level based on impact on your work.</p>
           </div>
 
           <!-- Issue Description -->
-          <div class="myds-col-span-full">
-            <label for="description" class="myds-label myds-required">
-              Penerangan Masalah / Issue Description
-            </label>
-            <textarea
+          <div class="col-span-2">
+            <x-myds.form-textarea
               id="description"
+              name="description"
+              label="Penerangan Masalah / Issue Description"
               wire:model="description"
-              class="myds-textarea @error('description') myds-input-error @enderror"
               rows="5"
-              placeholder="Terangkan masalah dengan terperinci termasuk:&#10;- Apa yang berlaku?&#10;- Bila masalah bermula?&#10;- Langkah-langkah yang telah dicuba?&#10;&#10;Explain the issue in detail including:&#10;- What happened?&#10;- When did the issue start?&#10;- Steps already tried?"
+              placeholder="Terangkan masalah dengan terperinci termasuk: - Apa yang berlaku? - Bila masalah bermula? - Langkah-langkah yang telah dicuba? Explain the issue in detail including: - What happened? - When did the issue start? - Steps already tried?"
               maxlength="2000"
               required
-              aria-describedby="description-help @error('description') description-error @enderror"
-            ></textarea>
-            <p id="description-help" class="myds-help-text">
-              Berikan penerangan yang terperinci untuk membantu kami memahami
-              masalah. / Provide detailed description to help us understand the
-              issue.
-            </p>
-            @error('description')
-              <p id="description-error" class="myds-error-text" role="alert">
-                {{ $message }}
-              </p>
-            @enderror
+              error="{{ $errors->first('description') }}"
+            />
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Berikan penerangan yang terperinci untuk membantu kami memahami masalah. / Provide detailed description to help us understand the issue.</p>
           </div>
         </div>
       </div>
@@ -182,50 +133,30 @@
 
     <!-- Equipment Information Section (conditional) -->
     @if ($showEquipmentSelector)
-      <div class="myds-card myds-card-elevated">
-        <div class="myds-card-header">
-          <h2
-            class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100"
-          >
-            <i class="myds-icon-desktop-computer mr-2" aria-hidden="true"></i>
+      <div class="bg-white rounded-lg shadow p-6 space-y-6">
+        <div class="flex items-center">
+          <x-myds.icon name="desktop-computer" class="mr-2 text-gray-600" aria-hidden="true" />
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
             Maklumat Peralatan / Equipment Information
           </h2>
         </div>
 
-        <div class="myds-card-body">
-          <div class="myds-form-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Equipment Selection -->
-            <div class="myds-col-span-full">
-              <label for="equipment_item_id" class="myds-label">
-                {{ __('forms.labels.related_equipment') }}
-              </label>
-              <select
+            <div class="col-span-2">
+              <x-myds.form-select
                 id="equipment_item_id"
+                name="equipment_item_id"
+                label="{{ __('forms.labels.related_equipment') }}"
                 wire:model="equipment_item_id"
-                class="myds-select @error('equipment_item_id') myds-input-error @enderror"
-                aria-describedby="equipment-help @error('equipment_item_id') equipment-error @enderror"
+                error="{{ $errors->first('equipment_item_id') }}"
               >
-                <option value="">
-                  {{ __('forms.placeholders.select_related_equipment') }}
-                </option>
+                <option value="">{{ __('forms.placeholders.select_related_equipment') }}</option>
                 @foreach ($equipmentItems as $item)
-                  <option value="{{ $item['id'] }}">
-                    {{ $item['brand'] }} {{ $item['model'] }}
-                    @if (! empty($item['serial_number']))
-                        (S/N: {{ $item['serial_number'] }})
-                    @endif
-                  </option>
+                  <option value="{{ $item['id'] }}">{{ $item['brand'] }} {{ $item['model'] }}@if(! empty($item['serial_number'])) (S/N: {{ $item['serial_number'] }})@endif</option>
                 @endforeach
-              </select>
-              <p id="equipment-help" class="myds-help-text">
-                Pilih peralatan yang berkaitan dengan masalah ini (jika ada). /
-                Select equipment related to this issue (if any).
-              </p>
-              @error('equipment_item_id')
-                <p id="equipment-error" class="myds-error-text" role="alert">
-                  {{ $message }}
-                </p>
-              @enderror
+              </x-myds.form-select>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Pilih peralatan yang berkaitan dengan masalah ini (jika ada). / Select equipment related to this issue (if any).</p>
             </div>
           </div>
         </div>
@@ -233,117 +164,89 @@
     @endif
 
     <!-- Contact Information Section -->
-    <div class="myds-card myds-card-elevated">
-      <div class="myds-card-header">
-        <h2 class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100">
-          <i class="myds-icon-user mr-2" aria-hidden="true"></i>
+    <div class="bg-white rounded-lg shadow p-6 space-y-6">
+      <div class="flex items-center">
+        <x-myds.icon name="user" class="mr-2 text-gray-600" aria-hidden="true" />
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
           Maklumat Perhubungan / Contact Information
         </h2>
       </div>
 
-      <div class="myds-card-body">
-        <div class="myds-form-grid">
-          <!-- Location -->
-          <div>
-            <label for="location" class="myds-label">Lokasi / Location</label>
-            <input
-              type="text"
-              id="location"
-              wire:model="location"
-              class="myds-input @error('location') myds-input-error @enderror"
-              placeholder="Pejabat, bilik, atau lokasi..."
-              maxlength="255"
-              aria-describedby="location-help @error('location') location-error @enderror"
-            />
-            <p id="location-help" class="myds-help-text">
-              Nyatakan lokasi di mana masalah berlaku. / Specify the location
-              where the issue occurred.
-            </p>
-            @error('location')
-              <p id="location-error" class="myds-error-text" role="alert">
-                {{ $message }}
-              </p>
-            @enderror
-          </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Location -->
+        <div>
+          <x-myds.form-input
+            id="location"
+            name="location"
+            label="Lokasi / Location"
+            wire:model="location"
+            placeholder="Pejabat, bilik, atau lokasi..."
+            maxlength="255"
+            error="{{ $errors->first('location') }}"
+          />
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Nyatakan lokasi di mana masalah berlaku. / Specify the location where the issue occurred.</p>
+        </div>
 
-          <!-- Contact Phone -->
-          <div>
-            <label for="contact_phone" class="myds-label">
-              No. Telefon Perhubungan / Contact Phone
-            </label>
-            <input
-              type="tel"
-              id="contact_phone"
-              wire:model="contact_phone"
-              class="myds-input @error('contact_phone') myds-input-error @enderror"
-              placeholder="012-3456789"
-              maxlength="20"
-              aria-describedby="phone-help @error('contact_phone') phone-error @enderror"
-            />
-            <p id="phone-help" class="myds-help-text">
-              Untuk dihubungi jika diperlukan. / For contact if necessary.
-            </p>
-            @error('contact_phone')
-              <p id="phone-error" class="myds-error-text" role="alert">
-                {{ $message }}
-              </p>
-            @enderror
-          </div>
+        <!-- Contact Phone -->
+        <div>
+          <x-myds.form-input
+            id="contact_phone"
+            name="contact_phone"
+            label="No. Telefon Perhubungan / Contact Phone"
+            type="tel"
+            wire:model="contact_phone"
+            placeholder="012-3456789"
+            maxlength="20"
+            error="{{ $errors->first('contact_phone') }}"
+          />
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Untuk dihubungi jika diperlukan. / For contact if necessary.</p>
         </div>
       </div>
     </div>
 
     <!-- Form Actions -->
-    <div class="myds-card myds-card-bordered">
-      <div class="myds-card-body">
-        <div class="myds-flex myds-justify-between myds-items-center">
-          <div
-            class="myds-text-body-sm text-myds-gray-600 dark:text-myds-gray-400"
+    <div class="bg-white border border-gray-200 rounded-lg p-6">
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        <div class="flex items-start text-sm text-gray-600 dark:text-gray-400">
+          <x-myds.icon name="information-circle" class="mr-2 mt-0.5 flex-shrink-0" aria-hidden="true" />
+          <span>
+            Tiket akan dihantar kepada pasukan ICT untuk tindakan.
+            <br />
+            Ticket will be sent to ICT team for action.
+          </span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <x-myds.button
+            href="{{ route('helpdesk.index') }}"
+            variant="secondary"
+            iconLeading="arrow-left"
           >
-            <i class="myds-icon-information-circle mr-1" aria-hidden="true"></i>
-            <span>
-              Tiket akan dihantar kepada pasukan ICT untuk tindakan.
-              <br />
-              Ticket will be sent to ICT team for action.
+            Batal / Cancel
+          </x-myds.button>
+
+          <x-myds.button
+            type="submit"
+            variant="primary"
+            wire:loading.attr="disabled"
+            wire:target="submit"
+          >
+            <span wire:loading.remove wire:target="submit">
+              <x-myds.icon name="paper-airplane" class="mr-2" aria-hidden="true" />
+              Hantar Laporan / Submit Report
             </span>
-          </div>
-
-          <div class="myds-flex myds-space-x-4">
-            <a
-              href="{{ route('helpdesk.index') }}"
-              class="myds-button myds-button-secondary"
-            >
-              <i class="myds-icon-arrow-left mr-2" aria-hidden="true"></i>
-              Batal / Cancel
-            </a>
-
-            <button
-              type="submit"
-              class="myds-button myds-button-primary"
-              wire:loading.attr="disabled"
-              wire:target="submit"
-            >
-              <span wire:loading.remove wire:target="submit">
-                <i class="myds-icon-paper-airplane mr-2" aria-hidden="true"></i>
-                Hantar Laporan / Submit Report
-              </span>
-              <span wire:loading wire:target="submit">
-                <i
-                  class="myds-icon-refresh myds-animate-spin mr-2"
-                  aria-hidden="true"
-                ></i>
-                Menghantar... / Submitting...
-              </span>
-            </button>
-          </div>
+            <span wire:loading wire:target="submit">
+              <x-myds.icon name="refresh" class="mr-2 animate-spin" aria-hidden="true" />
+              Menghantar... / Submitting...
+            </span>
+          </x-myds.button>
         </div>
       </div>
     </div>
 
     @error('submit')
-      <div class="myds-alert myds-alert-error" role="alert">
-        <i class="myds-icon-exclamation-circle" aria-hidden="true"></i>
-        <span>{{ $message }}</span>
+      <div role="alert">
+        <x-myds.alert variant="danger" title="Ralat" description="{{ $message }}" />
       </div>
     @enderror
   </form>

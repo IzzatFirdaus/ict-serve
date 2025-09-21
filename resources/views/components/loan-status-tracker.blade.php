@@ -117,7 +117,7 @@
             ></span>
           </span>
         @else
-          @include("components.icon", ["name" => $statusConfig["icon"], "class" => "w-4 h-4 mr-2"])
+          <x-myds.icon name="{{ $statusConfig['icon'] }}" class="w-4 h-4 mr-2" aria-hidden="true" />
         @endif
         <span>{{ $loanRequest->loanStatus->name ?? "Pending" }}</span>
       </span>
@@ -127,7 +127,7 @@
           class="text-txt-black-500"
           title="Auto-refreshing every {{ $pollInterval }}"
         >
-          @include("components.icon", ["name" => "refresh", "class" => "w-4 h-4 animate-spin"])
+            <x-myds.icon name="refresh" class="w-4 h-4 animate-spin" aria-hidden="true" />
         </div>
       @endif
     </div>
@@ -150,7 +150,7 @@
         foreach ($progressSteps as $index => $step) {
             if ($step["completed"]) {
                 $currentStep = $index + 1;
-            }
+          $inner = '<x-myds.icon name="check" class="w-4 h-4" aria-hidden="true" />';
         }
       @endphp
 
@@ -158,9 +158,9 @@
         @foreach ($progressSteps as $index => $step)
           <div class="flex items-center @if(!$loop->last) flex-1 @endif">
             @php
-              if ($step["completed"]) {
+                if ($step["completed"]) {
                   $circleClass = "bg-success-500 border-success-500 text-txt-white";
-                  $inner = "@include('components.icon', ['name' => 'check', 'class' => 'w-4 h-4'])";
+                  $inner = '<x-myds.icon name="check" class="w-4 h-4" aria-hidden="true" />';
               } elseif ($index === $currentStep) {
                   $circleClass = "bg-primary-500 border-otl-primary-300 text-txt-white animate-pulse";
                   $inner = '<span class="w-3 h-3 bg-bg-white rounded-full animate-pulse"></span>';
@@ -220,7 +220,7 @@
               <div
                 class="h-8 w-8 rounded-full bg-success-500 flex items-center justify-center ring-8 ring-bg-white"
               >
-                @include("components.icon", ["name" => "plus", "class" => "w-4 h-4 text-txt-white"])
+                <x-myds.icon name="plus" class="w-4 h-4 text-txt-white" aria-hidden="true" />
               </div>
               <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                 <div>
@@ -256,7 +256,7 @@
                 <div
                   class="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-bg-white"
                 >
-                  @include("components.icon", ["name" => "check", "class" => "w-4 h-4 text-txt-white"])
+                  <x-myds.icon name="check" class="w-4 h-4 text-txt-white" aria-hidden="true" />
                 </div>
                 <div
                   class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
@@ -298,7 +298,7 @@
                 <div
                   class="h-8 w-8 rounded-full bg-success-500 flex items-center justify-center ring-8 ring-bg-white"
                 >
-                  @include("components.icon", ["name" => "check-circle", "class" => "w-4 h-4 text-txt-white"])
+              <x-myds.icon name="check-circle" class="w-4 h-4 text-txt-white" aria-hidden="true" />
                 </div>
                 <div
                   class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
@@ -340,7 +340,7 @@
                 <div
                   class="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-bg-white"
                 >
-                  @include("components.icon", ["name" => "cube", "class" => "w-4 h-4 text-txt-white"])
+              <x-myds.icon name="cube" class="w-4 h-4 text-txt-white" aria-hidden="true" />
                 </div>
                 <div
                   class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
@@ -348,7 +348,7 @@
                   <div>
                     <p class="text-sm text-txt-black-900">
                       Equipment issued by
-                      <span class="font-medium">
+                <x-myds.icon name="x-circle" class="w-4 h-4 text-txt-white" aria-hidden="true" />
                         {{ $loanRequest->issuedBy->name ?? "N/A" }}
                       </span>
                     </p>
@@ -377,7 +377,7 @@
                 <div
                   class="h-8 w-8 rounded-full bg-black-500 flex items-center justify-center ring-8 ring-bg-white"
                 >
-                  @include("components.icon", ["name" => "check-circle", "class" => "w-4 h-4 text-txt-white"])
+                  <x-myds.icon name="check-circle" class="w-4 h-4 text-txt-white" aria-hidden="true" />
                 </div>
                 <div
                   class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
@@ -411,7 +411,7 @@
                 <div
                   class="h-8 w-8 rounded-full bg-danger-500 flex items-center justify-center ring-8 ring-bg-white"
                 >
-                  @include("components.icon", ["name" => "x-circle", "class" => "w-4 h-4 text-txt-white"])
+                  <x-myds.icon name="x-circle" class="w-4 h-4 text-txt-white" aria-hidden="true" />
                 </div>
                 <div
                   class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"

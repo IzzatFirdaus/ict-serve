@@ -7,6 +7,7 @@
 <section>
   <header>
     <h2
+      id="update-password-heading"
       class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white"
     >
       Tukar Kata Laluan
@@ -22,6 +23,8 @@
     method="post"
     action="{{ route('password.update') }}"
     class="mt-6 space-y-6"
+    role="form"
+    aria-labelledby="update-password-heading"
   >
     @csrf
     @method('put')
@@ -34,15 +37,15 @@
       >
         Kata Laluan Semasa
       </label>
-      <input
+      <x-myds.input
         id="update_password_current_password"
         name="current_password"
         type="password"
         autocomplete="current-password"
-        class="mt-1 block w-full rounded-md border-otl-gray-300 dark:border-otl-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:border-primary-500 focus:ring focus:ring-fr-primary"
+        class="mt-1"
       />
       @error('current_password', 'updatePassword')
-        <p class="mt-2 text-sm text-txt-danger">{{ $message }}</p>
+        <p class="mt-2 text-xs text-danger-600" role="alert">{{ $message }}</p>
       @enderror
     </div>
 
@@ -55,30 +58,27 @@
         Kata Laluan Baharu
       </label>
       <div class="relative mt-1">
-        <input
+        <x-myds.input
           id="update_password_password"
           name="password"
           :type="showPassword ? 'text' : 'password'"
           autocomplete="new-password"
-          class="block w-full rounded-md border-otl-gray-300 dark:border-otl-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:border-primary-500 focus:ring focus:ring-fr-primary pr-10"
+          class="pr-10"
         />
-        <button
+        <x-myds.button
           type="button"
-          @click="showPassword = !showPassword"
-          class="absolute inset-y-0 right-0 flex items-center px-3 text-txt-black-500 hover:text-txt-black-700"
+          class="absolute inset-y-0 right-0 flex items-center px-3"
+          x-on:click="showPassword = !showPassword"
           aria-label="Tunjuk/Sembunyi Kata Laluan"
+          variant="secondary"
+          size="sm"
         >
-          {{-- The use of icons like 'eye-show' and 'eye-hide' is a standard MYDS pattern --}}
-          <x-heroicon-o-eye x-show="!showPassword" class="h-5 w-5" />
-          <x-heroicon-o-eye-slash
-            x-show="showPassword"
-            class="h-5 w-5"
-            x-cloak
-          />
-        </button>
+          <x-myds.icon name="eye" size="16" x-show="!showPassword" aria-hidden="true" class="h-4 w-4" />
+          <x-myds.icon name="eye-off" size="16" x-show="showPassword" aria-hidden="true" class="h-4 w-4" x-cloak />
+        </x-myds.button>
       </div>
       @error('password', 'updatePassword')
-        <p class="mt-2 text-sm text-txt-danger">{{ $message }}</p>
+        <p class="mt-2 text-xs text-danger-600" role="alert">{{ $message }}</p>
       @enderror
     </div>
 
@@ -91,41 +91,33 @@
         Sahkan Kata Laluan
       </label>
       <div class="relative mt-1">
-        <input
+        <x-myds.input
           id="update_password_password_confirmation"
           name="password_confirmation"
           :type="showPassword ? 'text' : 'password'"
           autocomplete="new-password"
-          class="block w-full rounded-md border-otl-gray-300 dark:border-otl-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:border-primary-500 focus:ring focus:ring-fr-primary pr-10"
+          class="pr-10"
         />
-        <button
+        <x-myds.button
           type="button"
-          @click="showPassword = !showPassword"
-          class="absolute inset-y-0 right-0 flex items-center px-3 text-txt-black-500 hover:text-txt-black-700"
+          class="absolute inset-y-0 right-0 flex items-center px-3"
+          x-on:click="showPassword = !showPassword"
           aria-label="Tunjuk/Sembunyi Kata Laluan"
+          variant="secondary"
+          size="sm"
         >
-          <x-heroicon-o-eye x-show="!showPassword" class="h-5 w-5" />
-          <x-heroicon-o-eye-slash
-            x-show="showPassword"
-            class="h-5 w-5"
-            x-cloak
-          />
-        </button>
+          <x-myds.icon name="eye" size="16" x-show="!showPassword" aria-hidden="true" class="h-4 w-4" />
+          <x-myds.icon name="eye-off" size="16" x-show="showPassword" aria-hidden="true" class="h-4 w-4" x-cloak />
+        </x-myds.button>
       </div>
       @error('password_confirmation', 'updatePassword')
-        <p class="mt-2 text-sm text-txt-danger">{{ $message }}</p>
+        <p class="mt-2 text-xs text-danger-600" role="alert">{{ $message }}</p>
       @enderror
     </div>
 
     {{-- Actions --}}
     <div class="flex items-center gap-4">
-      {{-- Buttons are styled according to MYDS specifications for primary actions --}}
-      <button
-        type="submit"
-        class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fr-primary"
-      >
-        Simpan
-      </button>
+      <x-myds.button type="submit" variant="primary" size="md">Simpan</x-myds.button>
 
       @if (session('status') === 'password-updated')
         <p
@@ -133,7 +125,7 @@
           x-show="show"
           x-transition
           x-init="setTimeout(() => (show = false), 2000)"
-          class="text-sm text-txt-success dark:text-success-400"
+          class="text-sm text-success-600"
         >
           Telah Disimpan.
         </p>

@@ -1,0 +1,26 @@
+{
+  "scannedAt": "2025-09-21T00:00:00Z",
+  "findings": {
+    "myds_prefix_matches": 20,
+    "files_with_raw_form_controls": [
+      "resources/views/livewire/my-requests.blade.php",
+      "resources/views/public/damage-complaint.blade.php",
+      "resources/views/livewire/helpdesk/index.blade.php",
+      "resources/views/layouts/app.blade.php",
+      "resources/views/components/myds/status-badge.blade.php",
+      "resources/views/public/helpdesk/create.blade.php",
+      "resources/views/livewire/damage-report-form.blade.php",
+      "resources/views/vendor/livewire/simple-bootstrap-4.blade.php",
+      "resources/views/public/loan-requests/create.blade.php",
+      "resources/views/profile/partials/update-password-form.blade.php",
+      "resources/views/profile/edit.blade.php",
+      "resources/views/livewire/user-profile.blade.php"
+    ],
+    "sample_myds_files": [
+      "resources/views/welcome.blade.php",
+      "resources/views/home.blade.php",
+      "resources/views/livewire/damage-report-form.blade.php",
+      "resources/views/livewire/loan-application-wizard.blade.php"
+    ]
+  }
+}

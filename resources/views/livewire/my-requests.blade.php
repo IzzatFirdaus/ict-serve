@@ -10,7 +10,11 @@
           <h1 class="text-3xl font-bold mb-2">
             {{ __("my_requests.title") }}
           </h1>
-          <p class="text-bg-primary-100">{{ __("my_requests.subtitle") }}</p>
+          <p class="text-bg-primary-                    <div class="flex items-center">
+                      <x-myds.icon name="clock" size="16" class="mr-1">
+                      {{ $request->created_at->diffForHumans() }}
+                    </div>
+                  </div>{{ __("my_requests.subtitle") }}</p>
         </div>
 
         <!-- Auto-refresh Toggle -->
@@ -26,25 +30,30 @@
             </div>
           @endif
 
-          <button
+          <x-myds.button
             wire:click="toggleAutoRefresh"
-            class="myds-btn-outline-white myds-btn-sm"
+            variant="outline"
+            size="sm"
+            class="text-white border-white hover:bg-white hover:text-primary-600"
           >
             @if ($autoRefresh)
-              @include("components.icon", ["name" => "pause", "class" => "w-4 h-4 mr-1"])
+              <x-myds.icon name="pause" size="16" class="mr-1">
               {{ __("my_requests.stop_auto_refresh") }}
             @else
-              @include("components.icon", ["name" => "refresh", "class" => "w-4 h-4 mr-1"])
+              <x-myds.icon name="refresh" size="16" class="mr-1">
               {{ __("my_requests.enable_auto_refresh") }}
             @endif
-          </button>
+          </x-myds.button>
 
-          <button
+          <x-myds.button
             wire:click="refreshRequests"
-            class="myds-btn-outline-white myds-btn-sm"
+            variant="outline"
+            size="sm"
+            iconOnly
+            class="text-white border-white hover:bg-white hover:text-primary-600"
           >
-            @include("components.icon", ["name" => "refresh", "class" => "w-4 h-4"])
-          </button>
+            <x-myds.icon name="refresh" size="16">
+          </x-myds.button>
         </div>
       </div>
     </div>
@@ -53,21 +62,28 @@
   <!-- Quick Actions -->
   <div class="bg-gray-50 border-b">
     <div class="max-w-6xl mx-auto px-4 py-4">
-      <div class="flex flex-wrap gap-4">
-        <a
-          href="{{ route("public.loan-request") }}"
-          class="myds-btn-primary myds-btn-sm"
+        <div class="flex flex-wrap gap-4">
+        <x-myds.button
+          as="a"
+          href="{{ route('public.loan-request') }}"
+          variant="primary"
+          size="sm"
+          class="inline-flex items-center gap-2"
         >
-          @include("components.icon", ["name" => "plus", "class" => "w-4 h-4 mr-2"])
+          <x-myds.icon name="plus" size="16" class="mr-1" />
           {{ __("my_requests.new_loan_request") }}
-        </a>
-        <a
-          href="{{ route("public.damage-complaint.guest") }}"
-          class="myds-btn-danger myds-btn-sm"
+        </x-myds.button>
+
+        <x-myds.button
+          as="a"
+          href="{{ route('public.damage-complaint.guest') }}"
+          variant="danger"
+          size="sm"
+          class="inline-flex items-center gap-2"
         >
-          @include("components.icon", ["name" => "exclamation-triangle", "class" => "w-4 h-4 mr-2"])
+          <x-myds.icon name="exclamation-triangle" size="16" class="mr-1" />
           {{ __("my_requests.report_damage") }}
-        </a>
+        </x-myds.button>
       </div>
     </div>
   </div>
@@ -133,17 +149,14 @@
       <!-- Search -->
       <div class="flex items-center space-x-4">
         <div class="relative">
-          <input
+          <x-myds.form-input
             wire:model.live.debounce.300ms="search"
             type="text"
             placeholder="{{ __("my_requests.search_placeholder") }}"
-            class="myds-input myds-input-sm pl-8 w-64"
+            size="sm"
+            class="pl-8 w-64"
+            icon="<x-myds.icon name='search' size='16' class='text-gray-400'>"
           />
-          <div
-            class="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none"
-          >
-            @include("components.icon", ["name" => "search", "class" => "w-4 h-4 text-gray-400"])
-          </div>
         </div>
       </div>
     </div>
@@ -152,87 +165,111 @@
     <div class="mb-6">
       @if ($activeTab === "loans")
         <div class="flex flex-wrap gap-2">
-          <button
+          <x-myds.button
             wire:click="$set('loanStatus', '')"
-            class="myds-filter-btn @if($loanStatus === '') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($loanStatus === '') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.all_statuses") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('loanStatus', 'pending_supervisor')"
-            class="myds-filter-btn @if($loanStatus === 'pending_supervisor') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($loanStatus === 'pending_supervisor') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.pending_supervisor") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('loanStatus', 'approved_supervisor')"
-            class="myds-filter-btn @if($loanStatus === 'approved_supervisor') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($loanStatus === 'approved_supervisor') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.approved_supervisor") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('loanStatus', 'pending_ict')"
-            class="myds-filter-btn @if($loanStatus === 'pending_ict') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($loanStatus === 'pending_ict') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.pending_ict") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('loanStatus', 'approved_ict')"
-            class="myds-filter-btn @if($loanStatus === 'approved_ict') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($loanStatus === 'approved_ict') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.approved_ict") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('loanStatus', 'ready_pickup')"
-            class="myds-filter-btn @if($loanStatus === 'ready_pickup') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($loanStatus === 'ready_pickup') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.ready_pickup") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('loanStatus', 'in_use')"
-            class="myds-filter-btn @if($loanStatus === 'in_use') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($loanStatus === 'in_use') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.in_use") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('loanStatus', 'returned')"
-            class="myds-filter-btn @if($loanStatus === 'returned') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($loanStatus === 'returned') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.returned") }}
-          </button>
+          </x-myds.button>
         </div>
       @else
         <div class="flex flex-wrap gap-2">
-          <button
+          <x-myds.button
             wire:click="$set('ticketStatus', '')"
-            class="myds-filter-btn @if($ticketStatus === '') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($ticketStatus === '') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.all_statuses") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('ticketStatus', 'pending')"
-            class="myds-filter-btn @if($ticketStatus === 'pending') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($ticketStatus === 'pending') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.pending") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('ticketStatus', 'in_progress')"
-            class="myds-filter-btn @if($ticketStatus === 'in_progress') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($ticketStatus === 'in_progress') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.in_progress") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('ticketStatus', 'resolved')"
-            class="myds-filter-btn @if($ticketStatus === 'resolved') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($ticketStatus === 'resolved') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.resolved") }}
-          </button>
-          <button
+          </x-myds.button>
+
+          <x-myds.button
             wire:click="$set('ticketStatus', 'closed')"
-            class="myds-filter-btn @if($ticketStatus === 'closed') myds-filter-btn-active @endif"
+            size="sm"
+            :variant="($ticketStatus === 'closed') ? 'primary' : 'outline'"
           >
             {{ __("my_requests.filters.closed") }}
-          </button>
+          </x-myds.button>
         </div>
       @endif
     </div>
@@ -295,7 +332,7 @@
                     class="flex items-center space-x-6 text-sm text-gray-500"
                   >
                     <div class="flex items-center">
-                      @include("components.icon", ["name" => "calendar", "class" => "w-4 h-4 mr-1"])
+                      <x-myds.icon name="calendar" size="16" class="mr-1">
                       {{ $request->requested_from->format("M j") }} -
                       {{ $request->requested_to->format("M j, Y") }}
                       <span class="ml-1">
@@ -304,13 +341,13 @@
                     </div>
 
                     <div class="flex items-center">
-                      @include("components.icon", ["name" => "clock", "class" => "w-4 h-4 mr-1"])
+                      <x-myds.icon name="clock" size="16" class="mr-1">
                       {{ $request->created_at->diffForHumans() }}
                     </div>
 
                     @if ($request->isOverdue())
                       <div class="flex items-center text-danger-600">
-                        @include("components.icon", ["name" => "exclamation-triangle", "class" => "w-4 h-4 mr-1"])
+                        <x-myds.icon name="exclamation-triangle" size="16" class="mr-1">
                         {{ __("my_requests.status.overdue") }}
                       </div>
                     @endif
@@ -318,12 +355,13 @@
                 </div>
 
                 <div class="flex items-center space-x-2">
-                  <button
+                  <x-myds.button
                     wire:click="showLoanDetails({{ $request->id }})"
-                    class="myds-btn-outline myds-btn-sm"
+                    variant="outline"
+                    size="small"
                   >
                     {{ __("my_requests.view_details") }}
-                  </button>
+                  </x-myds.button>
                 </div>
               </div>
             </div>
@@ -337,7 +375,7 @@
       @else
         <!-- Empty State -->
         <div class="text-center py-12 bg-gray-50 rounded-lg">
-          @include("components.icon", ["name" => "clipboard-list", "class" => "mx-auto h-12 w-12 text-gray-400 mb-4"])
+          <x-myds.icon name="clipboard-list" size="48" class="mx-auto text-gray-400 mb-4">
           <h3 class="text-lg font-medium text-gray-900 mb-2">
             {{ __("my_requests.empty_loans.title") }}
           </h3>
@@ -351,9 +389,9 @@
           @if (! $search && ! $loanStatus)
             <a
               href="{{ route("public.loan-request") }}"
-              class="myds-btn-primary"
+              class="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors"
             >
-              @include("components.icon", ["name" => "plus", "class" => "w-4 h-4 mr-2"])
+              <x-myds.icon name="plus" size="16" class="mr-2">
               {{ __("my_requests.empty_loans.submit_new") }}
             </a>
           @endif
@@ -416,24 +454,25 @@
                     class="flex items-center space-x-6 text-sm text-gray-500"
                   >
                     <div class="flex items-center">
-                      @include("components.icon", ["name" => "user", "class" => "w-4 h-4 mr-1"])
+                      <x-myds.icon name="user" size="16" class="mr-1">
                       {{ $ticket->assignedTo?->name ?? "Unassigned" }}
                     </div>
 
                     <div class="flex items-center">
-                      @include("components.icon", ["name" => "clock", "class" => "w-4 h-4 mr-1"])
+                      <x-myds.icon name="clock" size="16" class="mr-1">
                       {{ $ticket->created_at->diffForHumans() }}
                     </div>
                   </div>
                 </div>
 
                 <div class="flex items-center space-x-2">
-                  <button
+                  <x-myds.button
                     wire:click="showTicketDetails({{ $ticket->id }})"
-                    class="myds-btn-outline myds-btn-sm"
+                    variant="outline"
+                    size="small"
                   >
                     View Details
-                  </button>
+                  </x-myds.button>
                 </div>
               </div>
             </div>
@@ -447,7 +486,7 @@
       @else
         <!-- Empty State -->
         <div class="text-center py-12 bg-gray-50 rounded-lg">
-          @include("components.icon", ["name" => "exclamation-triangle", "class" => "mx-auto h-12 w-12 text-gray-400 mb-4"])
+          <x-myds.icon name="exclamation-triangle" size="48" class="mx-auto text-gray-400 mb-4">
           <h3 class="text-lg font-medium text-gray-900 mb-2">
             {{ __("my_requests.empty_tickets.title") }}
           </h3>
@@ -461,9 +500,9 @@
           @if (! $search && ! $ticketStatus)
             <a
               href="{{ route("public.damage-complaint.guest") }}"
-              class="myds-btn-danger"
+              class="inline-flex items-center px-4 py-2 bg-danger-600 text-white rounded-md hover:bg-danger-700 transition-colors"
             >
-              @include("components.icon", ["name" => "exclamation-triangle", "class" => "w-4 h-4 mr-2"])
+              <x-myds.icon name="exclamation-triangle" size="16" class="mr-2">
               {{ __("my_requests.empty_tickets.report_issue") }}
             </a>
           @endif
@@ -492,7 +531,7 @@
               variant="ghost"
               class="text-txt-black-400 hover:text-txt-black-600"
             >
-              @include("components.icon", ["name" => "x", "class" => "w-6 h-6"])
+              <x-myds.icon name="x" size="24">
             </x-myds.button>
           </div>
 
@@ -527,7 +566,7 @@
               variant="ghost"
               class="text-txt-black-400 hover:text-txt-black-600"
             >
-              @include("components.icon", ["name" => "x", "class" => "w-6 h-6"])
+              <x-myds.icon name="x" size="24">
             </x-myds.button>
           </div>
 

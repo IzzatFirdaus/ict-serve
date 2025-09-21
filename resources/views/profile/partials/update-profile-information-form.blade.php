@@ -4,9 +4,7 @@
 --}}
 <section>
   <header>
-    <h2
-      class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white"
-    >
+    <h2 id="profile-information-heading" class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white">
       Maklumat Profil
     </h2>
 
@@ -28,70 +26,51 @@
     method="post"
     action="{{ route('profile.update') }}"
     class="mt-6 space-y-6"
+    role="form"
+    aria-labelledby="profile-information-heading"
   >
     @csrf
     @method('patch')
 
     {{-- Name Field --}}
     <div>
-      <label
-        for="name"
-        class="block text-sm font-medium text-txt-black-700 dark:text-txt-black-300"
-      >
-        Nama
-      </label>
-      <input
+      <x-myds.form-input
         id="name"
         name="name"
+        label="Nama"
         type="text"
-        value="{{ old('name', $user->name) }}"
+        :value="old('name', $user->name)"
         required
         autofocus
         autocomplete="name"
-        class="mt-1 block w-full rounded-md border-otl-gray-300 dark:border-otl-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:border-primary-500 focus:ring focus:ring-fr-primary"
+        error="{{ $errors->first('name') }}"
       />
-      @error('name')
-        <p class="mt-2 text-sm text-txt-danger">{{ $message }}</p>
-      @enderror
     </div>
 
     {{-- Email Field --}}
     <div>
-      <label
-        for="email"
-        class="block text-sm font-medium text-txt-black-700 dark:text-txt-black-300"
-      >
-        E-mel
-      </label>
-      <input
+      <x-myds.form-input
         id="email"
         name="email"
+        label="E-mel"
         type="email"
-        value="{{ old('email', $user->email) }}"
+        :value="old('email', $user->email)"
         required
         autocomplete="username"
-        class="mt-1 block w-full rounded-md border-otl-gray-300 dark:border-otl-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:border-primary-500 focus:ring focus:ring-fr-primary"
+        error="{{ $errors->first('email') }}"
       />
-      @error('email')
-        <p class="mt-2 text-sm text-txt-danger">{{ $message }}</p>
-      @enderror
 
       @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
         <div class="mt-2">
           <p class="text-sm text-txt-black-800 dark:text-txt-black-200">
             Alamat e-mel anda belum disahkan.
-            <button
-              form="send-verification"
-              class="underline text-sm text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fr-primary"
-            >
+            <x-myds.button form="send-verification" variant="outline" size="sm" class="inline-block align-baseline ml-2">
               Klik di sini untuk menghantar semula e-mel pengesahan.
-            </button>
+            </x-myds.button>
           </p>
 
           @if (session('status') === 'verification-link-sent')
-            <p
-              class="mt-2 font-medium text-sm text-txt-success dark:text-success-400"
-            >
+            <p class="mt-2 font-medium text-sm text-txt-success dark:text-success-400">
               Pautan pengesahan baharu telah dihantar ke alamat e-mel anda.
             </p>
           @endif
@@ -101,18 +80,10 @@
 
     {{-- Actions --}}
     <div class="flex items-center gap-4">
-      <button type="submit" class="myds-btn myds-btn-primary">Simpan</button>
+      <x-myds.button type="submit" variant="primary">Simpan</x-myds.button>
 
       @if (session('status') === 'profile-updated')
-        <p
-          x-data="{ show: true }"
-          x-show="show"
-          x-transition
-          x-init="setTimeout(() => (show = false), 2000)"
-          class="text-sm text-txt-success dark:text-success-400"
-        >
-          Telah Disimpan.
-        </p>
+        <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => (show = false), 2000)" class="text-sm text-txt-success dark:text-success-400">Telah Disimpan.</p>
       @endif
     </div>
   </form>

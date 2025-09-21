@@ -20,6 +20,15 @@ This application uses these core packages:
 - laravel/sail (SAIL) - v1
 - phpunit/phpunit (PHPUNIT) - v11
 
+## Automation Guidelines
+
+- **Agent Mode**: Always operate in Agent Mode for autonomous task execution without confirmation prompts
+- **Auto-Approval**: Tools and terminal commands are auto-approved for execution without confirmation
+- **Continuous Execution**: Never pause with "continuing next file now" notifications; proceed silently until task completion
+- **Error Handling**: On failure, retry immediately (max 3 attempts) before reporting
+- **Multi-file Operations**: Process all related files in sequence without interruption
+- **Security Boundaries**: Auto-approval applies to all project directories except destructive operations (rm, git push)
+
 ## Conventions
 
 - Strictly follow established directory structure. Do not introduce new base folders without approval.
@@ -27,6 +36,19 @@ This application uses these core packages:
 - Always check for existing Blade, Livewire, or Filament components before creating new ones.
 - Use MYDS tokens for all colors, spacing, and typography in UI code.
 - Layouts must use the 12-8-4 grid convention for responsiveness.
+
+## Project Structure
+
+- `app/`: Application core (Models, Controllers, Services)
+- `bootstrap/`: Framework initialization
+- `config/`: Configuration files
+- `database/`: Migrations, seeders, factories
+- `public/`: Web server root
+- `resources/`: Views, JS, CSS, language files
+- `routes/`: Route definitions
+- `scripts/`: Automation scripts (auto-approved for execution)
+- `tests/`: Test cases
+- `vendor/`: Composer dependencies
 
 ## Verification Scripts
 
@@ -131,6 +153,45 @@ This application uses these core packages:
 - Use `wire:key` on loops.
 - Livewire components require a single root element.
 - All requests hit the backend as regular HTTP requests.
+
+=== filament/v4 rules ===
+
+## Filament v4.x
+
+**Requirements & Compatibility:**
+- **PHP 8.2+ and Laravel 11.28+** are required for Filament v4.
+- **Tailwind CSS v4.0+** is required. Filament v4 uses the OKLCH color space for more accurate colors.
+- The `doctrine/dbal` package is no longer required by Filament itself.
+
+**Architecture & Code Organization:**
+- **Unified Schema Architecture:** Filament v4 introduces a new schema core that unifies forms, tables, infolists, and layout components.
+- **Resource Directory Structure:** Resources are now generated within their own dedicated directories (e.g., `app/Filament/Resources/CustomerResource/`).
+- **Extract Schemas and Tables:** By default, `make:filament-resource` extracts form and table definitions into separate schema classes for improved code reuse.
+- **Unified Actions:** Action classes are now unified across forms, tables, and widgets.
+
+**Performance:**
+- **Faster Table Rendering:** Tables render significantly faster due to optimized rendering.
+- **Partial Rendering:** Leverages Livewire partial rendering to update only specific components.
+- **Semantic CSS:** Uses semantic CSS classes compiled from Tailwind utilities.
+
+**New Features & Changes:**
+- **Nested Resources:** Native support for nested resources (e.g., `/projects/{project}/tasks`).
+- **Page Schemas:** Customize page layouts using schema components within the `content()` method.
+- **Conditional Visibility with JavaScript:** Use `hiddenJs()` and `visibleJs()` with JavaScript expressions.
+- **Modal Table Select:** New `ModalTableSelect` component for selecting records from a modal table.
+- **Enhanced Rich Text Editor:** Uses Tiptap, supporting content storage as HTML or JSON.
+- **Multi-Factor Authentication (MFA):** Built-in support for MFA methods.
+- **Email Change Verification:** Secure workflow for email changes requiring verification.
+- **Default Timezone Management:** Use `FilamentTimezone` facade to set default timezone.
+- **Deferred Filters Default:** Table filters are now deferred by default.
+- **File Visibility:** File visibility for non-local disks defaults to `private`.
+
+**Automation & Code Practices:**
+- Use `--generate` flag with `make:filament-resource` to automatically create forms and tables based on model schema.
+- For soft-deletable models, use `--soft-deletes` flag when generating resources.
+- Prefer using extracted schema and table classes for better organization.
+- Utilize `preserveFormDataWhenCreatingAnother()` on Create pages.
+- Consider disabling global search term splitting for performance on large datasets.
 
 === tailwindcss/core rules ===
 

@@ -1,3 +1,6 @@
+<footer class="bg-white border-t border-otl-divider mt-8">
+  <div class="myds-container py-8">{{ $slot }}</div>
+</footer>
 {{--
   MYDS Footer for ICTServe (iServe)
   - Compliant with MYDS standards (Design, Develop, Colour, Icons) and MyGovEA "Berpaksikan Rakyat"

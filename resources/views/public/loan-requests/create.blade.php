@@ -31,67 +31,51 @@
             @csrf
 
             <!-- Personal Information -->
-            <div class="mb-8">
+                <div class="mb-8">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b">
                     {{ __('Personal Information') }}
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="borrower_name" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Full Name') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-@vite('resources/js/myds/loan-request-create.js')
+                        <x-myds.form-input
+                            id="borrower_name"
+                            name="borrower_name"
+                            label="{{ __('Full Name') }}"
+                            :value="old('borrower_name')"
+                            required
+                        />
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                     <div>
-                        <label for="department" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Department') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="department"
-                               name="department"
-                               value="{{ old('department') }}"
-                               required
-                               @php $hasError = $errors->has('department'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
-                        @error('department')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
-                        @enderror
+                        <x-myds.form-input
+                            id="department"
+                            name="department"
+                            label="{{ __('Department') }}"
+                            :value="old('department')"
+                            required
+                        />
                     </div>
 
                     <div>
-                        <label for="division" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Division') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="division"
-                               name="division"
-                               value="{{ old('division') }}"
-                               required
-                               @php $hasError = $errors->has('division'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
-                        @error('division')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
-                        @enderror
+                        <x-myds.form-input
+                            id="division"
+                            name="division"
+                            label="{{ __('Division') }}"
+                            :value="old('division')"
+                            required
+                        />
                     </div>
 
                     <div>
-                        <label for="position" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Position') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="position"
-                               name="position"
-                               value="{{ old('position') }}"
-                               required
-                               @php $hasError = $errors->has('position'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
-                        @error('position')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
-                        @enderror
+                        <x-myds.form-input
+                            id="position"
+                            name="position"
+                            label="{{ __('Position') }}"
+                            :value="old('position')"
+                            required
+                        />
                     </div>
                 </div>
             </div>
@@ -107,12 +91,12 @@
                     <label for="category-filter" class="block text-sm font-medium text-gray-700 mb-2">
                         {{ __('Filter by Category') }}
                     </label>
-                    <select id="category-filter" class="w-full md:w-1/3 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <x-myds.form-select id="category-filter" name="category_filter" label="{{ __('Filter by Category') }}">
                         <option value="">{{ __('All Categories') }}</option>
                         @foreach($equipment->keys() as $categoryName)
                             <option value="{{ $categoryName }}">{{ $categoryName }}</option>
                         @endforeach
-                    </select>
+                    </x-myds.form-select>
                 </div>
 
                 <!-- Equipment Items -->
@@ -123,7 +107,7 @@
                                  data-category="{{ $categoryName }}"
                                  data-available="{{ $item->is_available ? 'true' : 'false' }}">
                                 <div class="flex items-start space-x-3">
-                                    <input type="checkbox"
+                                            <input type="checkbox"
                                            id="item_{{ $item->id }}"
                                            name="equipment_items[]"
                                            value="{{ $item->id }}"
@@ -151,7 +135,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                                            <button class="btn">{{ __('buttons.add_equipment') }}</button>
+                                                            <x-myds.button size="sm" variant="secondary">{{ __('buttons.add_equipment') }}</x-myds.button>
                         @endforeach
                     @endforeach
                 </div>
@@ -207,12 +191,14 @@
                         {{ __('Purpose of Loan') }} <span class="text-danger-500">*</span>
                     </label>
                     @php $hasError = $errors->has('purpose'); @endphp
-                    <textarea id="purpose"
-                              name="purpose"
-                              rows="3"
-                              required
-                              placeholder="{{ __('Please describe the purpose and intended use of the equipment...') }}"
-                              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}">{{ old('purpose') }}</textarea>
+                    <x-myds.form-textarea
+                        id="purpose"
+                        name="purpose"
+                        :value="old('purpose')"
+                        rows="3"
+                        required
+                        placeholder="{{ __('Please describe the purpose and intended use of the equipment...') }}"
+                    />
                     @error('purpose')
                         <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
                     @enderror
@@ -260,16 +246,11 @@
 
             <!-- Submit Button -->
             <div class="flex justify-end space-x-4">
-                <a href="{{ url('/') }}"
-                   class="px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200">
-                    {{ __('Cancel') }}
-                </a>
-                <button type="submit"
-                        class="px-6 py-2 bg-primary-600 text-white rounded-md text-sm font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                        id="submit-btn">
+                <x-myds.button as="a" href="{{ url('/') }}" variant="tertiary">{{ __('Cancel') }}</x-myds.button>
+                <x-myds.button type="submit" id="submit-btn" variant="primary">
                     <span class="submit-text">{{ __('Submit Request') }}</span>
                     <span class="loading-text hidden">{{ __('Processing...') }}</span>
-                </button>
+                </x-myds.button>
             </div>
         </form>
     </div>

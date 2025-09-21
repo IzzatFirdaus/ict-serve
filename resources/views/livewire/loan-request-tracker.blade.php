@@ -15,45 +15,48 @@
 
   <!-- Toggle Details Button -->
   <div class="mt-6 flex items-center justify-between">
-    <button wire:click="toggleDetails" class="myds-btn-outline myds-btn-sm">
+    <x-myds.button wire:click="toggleDetails" variant="outline" size="sm">
       @if ($showDetails)
-        @include('components.icon', ['name' => 'chevron-up', 'class' => 'w-4 h-4 mr-1'])
+        <x-myds.icon name="chevron-up" class="w-4 h-4 mr-1" aria-hidden="true" />
         {{ __('ui.hide_details') }}
       @else
-        @include('components.icon', ['name' => 'chevron-down', 'class' => 'w-4 h-4 mr-1'])
+        <x-myds.icon name="chevron-down" class="w-4 h-4 mr-1" aria-hidden="true" />
         {{ __('ui.show_details') }}
       @endif
-    </button>
+    </x-myds.button>
 
     <!-- Polling Controls -->
     <div class="flex items-center space-x-2">
       @if ($polling)
-        <button
+        <x-myds.button
           wire:click="disablePolling"
-          class="myds-btn-outline-danger myds-btn-sm"
+          variant="danger-outline"
+          size="sm"
           :title="__('polling.stop_auto_refresh')"
         >
-          @include('components.icon', ['name' => 'pause', 'class' => 'w-4 h-4 mr-1'])
+          <x-myds.icon name="pause" class="w-4 h-4 mr-1" aria-hidden="true" />
           {{ __('polling.stop_auto_refresh') }}
-        </button>
+        </x-myds.button>
       @else
-        <button
+        <x-myds.button
           wire:click="enablePolling"
-          class="myds-btn-outline-primary myds-btn-sm"
+          variant="primary-outline"
+          size="sm"
           :title="__('polling.enable_auto_refresh') . ' ' . $pollInterval"
         >
-          @include('components.icon', ['name' => 'refresh', 'class' => 'w-4 h-4 mr-1'])
+          <x-myds.icon name="refresh" class="w-4 h-4 mr-1" aria-hidden="true" />
           {{ __('polling.enable_auto_refresh') }}
-        </button>
+        </x-myds.button>
       @endif
 
-      <button
+      <x-myds.button
         wire:click="refreshStatus"
-        class="myds-btn-outline myds-btn-sm"
+        variant="outline"
+        size="sm"
         :title="__('polling.refresh_now')"
       >
-        @include('components.icon', ['name' => 'refresh', 'class' => 'w-4 h-4'])
-      </button>
+        <x-myds.icon name="refresh" class="w-4 h-4" aria-hidden="true" />
+      </x-myds.button>
     </div>
   </div>
 

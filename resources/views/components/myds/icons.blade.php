@@ -14,11 +14,16 @@
   'size' => 20, // px, default MYDS grid
   'class' => '', // extra classes for sizing
   'colour' => null,
+  'name' => null,
 ])
 
-{{-- Example usage: <x-myds.icons.search size="24" class="txt-primary" /> --}}
+{{-- Example usage: <x-myds.icons.search size="24" class="txt-primary" /> or <x-myds.icons :name="$iconName" /> --}}
 
-@switch(trim($slot))
+@php
+  $iconName = $name ?? trim($slot);
+@endphp
+
+@switch($iconName)
   @case('search')
     {{-- Search Icon --}}
     <svg

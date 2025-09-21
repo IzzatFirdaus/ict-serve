@@ -10,9 +10,7 @@
   }"
 >
   <header>
-    <h2
-      class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white"
-    >
+    <h2 id="delete-account-heading" class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white">
       Padam Akaun
     </h2>
     <p class="mt-1 text-sm text-txt-black-600 dark:text-txt-black-400">
@@ -22,22 +20,17 @@
     </p>
   </header>
 
-  <button
-    @click="showModal = true"
-    type="button"
-    class="myds-btn myds-btn-danger"
-  >
-    Padam Akaun
-  </button>
+  <x-myds.button type="button" variant="danger" @click.prevent="showModal = true">Padam Akaun</x-myds.button>
 
   {{-- Confirmation Modal (Styled as MYDS Alert Dialog) --}}
   <div
     x-show="showModal"
     class="fixed inset-0 z-50 flex items-center justify-center p-4"
     x-trap.inert.noscroll="showModal"
-    aria-labelledby="modal-title"
     role="dialog"
     aria-modal="true"
+    aria-labelledby="modal-title"
+    aria-describedby="modal-desc"
     x-cloak
   >
     {{-- Modal Backdrop --}}
@@ -69,30 +62,11 @@
         @method('delete')
 
         <div class="p-6">
-          <h2
-            id="modal-title"
-            class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white"
-          >
-            Adakah anda pasti ingin memadamkan akaun anda?
-          </h2>
-          <p class="mt-1 text-sm text-txt-black-600 dark:text-txt-black-400">
-            Setelah akaun anda dipadamkan, semua datanya akan dipadamkan secara
-            kekal. Sila masukkan kata laluan anda untuk mengesahkan anda ingin
-            memadamkan akaun anda secara kekal.
-          </p>
+          <h2 id="modal-title" class="text-lg font-medium font-poppins text-txt-black-900 dark:text-white">Adakah anda pasti ingin memadamkan akaun anda?</h2>
+          <p id="modal-desc" class="mt-1 text-sm text-txt-black-600 dark:text-txt-black-400">Setelah akaun anda dipadamkan, semua datanya akan dipadamkan secara kekal. Sila masukkan kata laluan anda untuk mengesahkan anda ingin memadamkan akaun anda secara kekal.</p>
 
           <div class="mt-6">
-            <label for="password" class="sr-only">Kata Laluan</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Kata Laluan"
-              class="block w-full rounded-md border-otl-gray-300 dark:border-otl-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:border-primary-500 focus:ring focus:ring-fr-primary"
-            />
-            @error('password', 'userDeletion')
-              <p class="mt-2 text-sm text-txt-danger">{{ $message }}</p>
-            @enderror
+            <x-myds.form-input id="password" name="password" label="Kata Laluan" type="password" placeholder="Kata Laluan" error="{{ $errors->first('password', 'userDeletion') }}" />
           </div>
         </div>
 
@@ -100,16 +74,8 @@
         <div
           class="flex justify-end gap-4 bg-washed dark:bg-gray-950/50 px-6 py-4"
         >
-          <button
-            type="button"
-            @click="showModal = false"
-            class="myds-btn myds-btn-secondary"
-          >
-            Batal
-          </button>
-          <button type="submit" class="myds-btn myds-btn-danger">
-            Padam Akaun
-          </button>
+          <x-myds.button type="button" variant="secondary" @click.prevent="showModal = false">Batal</x-myds.button>
+          <x-myds.button type="submit" variant="danger">Padam Akaun</x-myds.button>
         </div>
       </form>
     </div>

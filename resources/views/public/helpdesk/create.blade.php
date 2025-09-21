@@ -39,130 +39,68 @@
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="reporter_name" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Full Name') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="reporter_name"
-                               name="reporter_name"
-                               value="{{ old('reporter_name') }}"
-                               required
-                               @php $hasError = $errors->has('reporter_name'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="reporter_name">{{ __('Full Name') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.input id="reporter_name" name="reporter_name" type="text" :value="old('reporter_name')" required />
                         @error('reporter_name')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="reporter_email" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Email Address') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="email"
-                               id="reporter_email"
-                               name="reporter_email"
-                               value="{{ old('reporter_email') }}"
-                               required
-                               @php $hasError = $errors->has('reporter_email'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="reporter_email">{{ __('Email Address') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.input id="reporter_email" name="reporter_email" type="email" :value="old('reporter_email')" required />
                         @error('reporter_email')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="reporter_phone" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Phone Number') }}
-                        </label>
-                        <input type="tel"
-                               id="reporter_phone"
-                               name="reporter_phone"
-                               value="{{ old('reporter_phone') }}"
-                               @php $hasError = $errors->has('reporter_phone'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="reporter_phone">{{ __('Phone Number') }}</x-myds.label>
+                        <x-myds.input id="reporter_phone" name="reporter_phone" type="tel" :value="old('reporter_phone')" />
                         @error('reporter_phone')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="contact_phone" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Contact Phone (if different)') }}
-                        </label>
-                        <input type="tel"
-                               id="contact_phone"
-                               name="contact_phone"
-                               value="{{ old('contact_phone') }}"
-                               @php $hasError = $errors->has('contact_phone'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="contact_phone">{{ __('Contact Phone (if different)') }}</x-myds.label>
+                        <x-myds.input id="contact_phone" name="contact_phone" type="tel" :value="old('contact_phone')" />
                         @error('contact_phone')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
                     <div>
-                        <label for="staff_id" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Staff ID') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="staff_id"
-                               name="staff_id"
-                               value="{{ old('staff_id') }}"
-                               required
-                               @php $hasError = $errors->has('staff_id'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="staff_id">{{ __('Staff ID') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.input id="staff_id" name="staff_id" type="text" :value="old('staff_id')" required />
                         @error('staff_id')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="department" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Department') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="department"
-                               name="department"
-                               value="{{ old('department') }}"
-                               required
-                               @php $hasError = $errors->has('department'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="department">{{ __('Department') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.input id="department" name="department" type="text" :value="old('department')" required />
                         @error('department')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="division" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Division') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="division"
-                               name="division"
-                               value="{{ old('division') }}"
-                               required
-                               @php $hasError = $errors->has('division'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="division">{{ __('Division') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.input id="division" name="division" type="text" :value="old('division')" required />
                         @error('division')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="position" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Position') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="position"
-                               name="position"
-                               value="{{ old('position') }}"
-                               required
-                               @php $hasError = $errors->has('position'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="position">{{ __('Position') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.input id="position" name="position" type="text" :value="old('position')" required />
                         @error('position')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
                 </div>
@@ -176,144 +114,83 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Issue Category') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <select id="category_id"
-                                name="category_id"
-                                required
-                                @php $hasError = $errors->has('category_id'); @endphp
-                                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="category_id">{{ __('Issue Category') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.select id="category_id" name="category_id" required>
                             <option value="">{{ __('Select a category...') }}</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}"
-                                        {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                     {{ $category->name }}
                                 </option>
                             @endforeach
-                        </select>
+                        </x-myds.select>
                         @error('category_id')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="priority" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Priority Level') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <select id="priority"
-                                name="priority"
-                                required
-                                @php $hasError = $errors->has('priority'); @endphp
-                                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="priority">{{ __('Priority Level') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.select id="priority" name="priority" required>
                             <option value="">{{ __('Select priority level...') }}</option>
-                            <option value="low" {{ old('priority') == 'low' ? 'selected' : '' }}>
-                                {{ __('Low - Can wait, not blocking work') }}
-                            </option>
-                            <option value="medium" {{ old('priority') == 'medium' ? 'selected' : '' }}>
-                                {{ __('Medium - Some impact on work') }}
-                            </option>
-                            <option value="high" {{ old('priority') == 'high' ? 'selected' : '' }}>
-                                {{ __('High - Significantly affecting work') }}
-                            </option>
-                            <option value="urgent" {{ old('priority') == 'urgent' ? 'selected' : '' }}>
-                                {{ __('Urgent - Critical issue, work stopped') }}
-                            </option>
-                        </select>
+                            <option value="low" {{ old('priority') == 'low' ? 'selected' : '' }}>{{ __('Low - Can wait, not blocking work') }}</option>
+                            <option value="medium" {{ old('priority') == 'medium' ? 'selected' : '' }}>{{ __('Medium - Some impact on work') }}</option>
+                            <option value="high" {{ old('priority') == 'high' ? 'selected' : '' }}>{{ __('High - Significantly affecting work') }}</option>
+                            <option value="urgent" {{ old('priority') == 'urgent' ? 'selected' : '' }}>{{ __('Urgent - Critical issue, work stopped') }}</option>
+                        </x-myds.select>
                         @error('priority')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
                 </div>
 
                 <div class="mb-6">
-                    <label for="title" class="block text-sm font-medium text-gray-700 mb-1">
-                        {{ __('Issue Title') }} <span class="text-danger-500">*</span>
-                    </label>
-                    <input type="text"
-                           id="title"
-                           name="title"
-                           value="{{ old('title') }}"
-                           required
-                           placeholder="{{ __('Brief description of the issue...') }}"
-                           @php $hasError = $errors->has('title'); @endphp
-                           class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                    <x-myds.label for="title">{{ __('Issue Title') }} <span class="text-danger-500">*</span></x-myds.label>
+                    <x-myds.input id="title" name="title" type="text" :value="old('title')" required placeholder="{{ __('Brief description of the issue...') }}" />
                     @error('title')
-                        <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                        <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                     @enderror
                 </div>
 
                 <div class="mb-6">
-                    <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
-                        {{ __('Detailed Description') }} <span class="text-danger-500">*</span>
-                    </label>
-                    <textarea id="description"
-                              name="description"
-                              rows="6"
-                              required
-                              placeholder="{{ __('Please provide detailed information about the issue:
-• What happened?
-• When did it start occurring?
-• What were you trying to do?
-• Have you tried any solutions?
-• Any error messages received?') }}"
-                              @php $hasError = $errors->has('description'); @endphp
-                              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}">{{ old('description') }}</textarea>
+                    <x-myds.label for="description">{{ __('Detailed Description') }} <span class="text-danger-500">*</span></x-myds.label>
+                    <x-myds.textarea id="description" name="description" rows="6" required placeholder="{{ __('Please provide detailed information about the issue:\n• What happened?\n• When did it start occurring?\n• What were you trying to do?\n• Have you tried any solutions?\n• Any error messages received?') }}">{{ old('description') }}</x-myds.textarea>
                     @error('description')
-                        <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                        <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                     @enderror
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <label for="location" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Location') }} <span class="text-danger-500">*</span>
-                        </label>
-                        <input type="text"
-                               id="location"
-                               name="location"
-                               value="{{ old('location') }}"
-                               required
-                               placeholder="{{ __('Building, Floor, Room number...') }}"
-                               @php $hasError = $errors->has('location'); @endphp
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="location">{{ __('Location') }} <span class="text-danger-500">*</span></x-myds.label>
+                        <x-myds.input id="location" name="location" type="text" :value="old('location')" required placeholder="{{ __('Building, Floor, Room number...') }}" />
                         @error('location')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
 
                     <div>
-                        <label for="equipment_item_id" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('Related Equipment (if applicable)') }}
-                        </label>
-                        <select id="equipment_item_id"
-                                name="equipment_item_id"
-                                @php $hasError = $errors->has('equipment_item_id'); @endphp
-                                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent {{ $hasError ? 'border-danger-500' : 'border-gray-300' }}"
+                        <x-myds.label for="equipment_item_id">{{ __('Related Equipment (if applicable)') }}</x-myds.label>
+                        <x-myds.select id="equipment_item_id" name="equipment_item_id">
                             <option value="">{{ __('None / Not applicable') }}</option>
                             @foreach($equipment as $categoryName => $items)
                                 <optgroup label="{{ $categoryName }}">
                                     @foreach($items as $item)
-                                        <option value="{{ $item->id }}"
-                                                {{ old('equipment_item_id') == $item->id ? 'selected' : '' }}>
-                                            {{ $item->brand }} {{ $item->model }}
-                                            @if($item->serial_number) ({{ $item->serial_number }}) @endif
+                                        <option value="{{ $item->id }}" {{ old('equipment_item_id') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->brand }} {{ $item->model }}@if($item->serial_number) ({{ $item->serial_number }})@endif
                                         </option>
                                     @endforeach
                                 </optgroup>
                             @endforeach
-                        </select>
+                        </x-myds.select>
                         @error('equipment_item_id')
-                            <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                            <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                         @enderror
                     </div>
                 </div>
 
                 <!-- File Attachments -->
                 <div class="mb-6">
-                    <label for="attachments" class="block text-sm font-medium text-gray-700 mb-1">
-                        {{ __('Attachments') }}
-                    </label>
+                    <x-myds.label for="attachments">{{ __('Attachments') }}</x-myds.label>
                     <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-gray-400 transition-colors duration-200">
                         <div class="space-y-1 text-center">
                             <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
@@ -332,10 +209,10 @@
                     </div>
                     <div id="file-list" class="mt-2 space-y-2"></div>
                     @error('attachments')
-                        <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                        <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                     @enderror
                     @error('attachments.*')
-                        <p class="text-sm text-danger-500 mt-1">{{ $message }}</p>
+                        <x-myds.callout type="danger" class="mt-1">{{ $message }}</x-myds.callout>
                     @enderror
                 </div>
             </div>
@@ -343,37 +220,24 @@
             <!-- Data Consent -->
             <div class="mb-8 p-4 bg-gray-50 rounded-lg">
                 <div class="flex items-start">
-                    <input type="checkbox"
-                           id="data_consent"
-                           name="data_consent"
-                           value="1"
-                           {{ old('data_consent') ? 'checked' : '' }}
-                           required
-                           class="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
-                    <label for="data_consent" class="ml-3 text-sm text-gray-700 cursor-pointer">
-                        <span class="font-medium">{{ __('Data Processing Consent') }} <span class="text-danger-500">*</span></span>
-                        <p class="mt-1">
-                            {{ __('I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.') }}
-                        </p>
-                    </label>
+                    <x-myds.checkbox id="data_consent" name="data_consent" value="1" :checked="old('data_consent')" required label="{{ __('Data Processing Consent') }}" />
+                    <div class="ml-3 text-sm text-gray-700">
+                        <p class="font-medium">&nbsp;</p>
+                        <p class="mt-1">{{ __('I consent to the collection, processing, and storage of my personal data for the purpose of ICT support ticket management. This data will be used to process my support request, send notifications about ticket status, and maintain support records in accordance with applicable data protection regulations.') }}</p>
+                    </div>
                 </div>
                 @error('data_consent')
-                    <p class="text-sm text-danger-500 mt-2 ml-7">{{ $message }}</p>
+                    <x-myds.callout type="danger" class="mt-2 ml-7">{{ $message }}</x-myds.callout>
                 @enderror
             </div>
 
             <!-- Submit Button -->
             <div class="flex justify-end space-x-4">
-                <a href="{{ url('/') }}"
-                   class="px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200">
-                    {{ __('Cancel') }}
-                </a>
-                <button type="submit"
-                        class="px-6 py-2 bg-primary-600 text-white rounded-md text-sm font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                        id="submit-btn">
+                <x-myds.button as="a" href="{{ url('/') }}" variant="secondary">{{ __('Cancel') }}</x-myds.button>
+                <x-myds.button type="submit" id="submit-btn" variant="primary">
                     <span class="submit-text">{{ __('Submit Report') }}</span>
                     <span class="loading-text hidden">{{ __('Processing...') }}</span>
-                </button>
+                </x-myds.button>
             </div>
         </form>
     </div>

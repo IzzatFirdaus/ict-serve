@@ -1,7 +1,11 @@
 <div
   x-data="{ open: localStorage.getItem('cookie-consent') !== 'accepted' }"
   x-show="open"
+  x-cloak
   x-transition
+  role="dialog"
+  aria-modal="false"
+  aria-label="Cookie consent"
   class="fixed bottom-4 inset-x-0 z-50"
 >
   <div class="myds-container">
@@ -13,20 +17,8 @@
         meneruskan, anda bersetuju dengan penggunaan kuki kami.
       </p>
       <div class="flex items-center gap-2">
-        <button
-          type="button"
-          class="myds-btn myds-btn-secondary myds-btn-sm"
-          @click="open = false"
-        >
-          Tolak
-        </button>
-        <button
-          type="button"
-          class="myds-btn myds-btn-primary myds-btn-sm"
-          @click="localStorage.setItem('cookie-consent','accepted'); open=false"
-        >
-          Terima
-        </button>
+        <x-myds.button type="button" variant="secondary" size="sm" @click="open = false" aria-label="Decline cookies">Tolak</x-myds.button>
+        <x-myds.button type="button" variant="primary" size="sm" @click="localStorage.setItem('cookie-consent','accepted'); open=false" aria-label="Accept cookies">Terima</x-myds.button>
       </div>
     </div>
   </div>

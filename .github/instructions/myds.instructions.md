@@ -16,321 +16,189 @@ _Last updated: August 2025_
 
 ## About This File
 
-- Location: `.github/instructions/` — the VS Code AI agent will read this file when active in the repository.
-- Purpose: Force AI-assisted UI work to behave as an MYDS expert and ensure generated UI code follows official tokens, components, and accessibility rules.
-
-## Design Overview
-
-This section imports the repository's MYDS design overview so agents have a concise reference for system goals, patterns, and component guidance.
-
-### Introduction to MYDS
-
-As digital government services become more widely used, maintaining high-quality, accessible platforms is essential. The Malaysia Government Design System (MYDS) supports this goal by providing standard tools, templates, and guidelines that enable agencies to build fast, user-friendly, and consistent digital services.
-
-Refer to the official design docs for the latest guidance: https://design.digital.gov.my/en/docs/design
-
-### What is MYDS?
-
-MYDS is a comprehensive design system for Malaysian government websites and digital platforms. It includes:
-
-- Components: Pre-built UI elements (buttons, forms, navigation, etc.) that promote consistency and speed development.
-- Theme Customizer: Tools for tailoring colours and styles while preserving a unified identity.
-- Patterns: Reusable layouts and patterns for common scenarios (login, data entry, dashboards).
-- Design Asset Library: Centralized design files for prototyping and consistent implementation.
-
-### Why Use MYDS?
-
-- Consistency: Creates a cohesive look and feel across government services.
-- Rapid Development: Reusable components reduce design and engineering effort.
-- Accessibility: Adheres to WCAG guidance to support inclusive access.
-- Scalability: Components and tokens enable safe customization per agency needs.
-
-### Use Cases
-
-- Agency websites (information pages, announcements).
-- Dashboards and portals for citizen services and internal tools.
-
-### Resources
-
-- Figma and design asset libraries (use official MYDS files when prototyping).
-
-### MYDS Grid System (12-8-4)
-
-The MYDS grid is responsive and supports 12/8/4 columns across desktop, tablet, and mobile:
-
-- Desktop (≥ 1024px): 12 columns, 24px gutters.
-- Tablet (768–1023px): 8 columns, 24px gutters.
-- Mobile (≤ 767px): 4 columns, 18px gutters.
-
-Usage notes:
-
-- Article content typically constrains to a readable max width (about 640px).
-- Images and visualisations can extend slightly beyond the article width for impact (up to ~740px) where appropriate.
-
-
-### MYDS Colour System (overview)
-
-Colour guidance in MYDS defines primary, semantic, and primitive tokens for light and dark modes. Use the colour tokens in **MYDS-Colour-Reference.md** (see `_reference/MYDS-Colour-Reference.md` in this repo, or [official docs](https://design.digital.gov.my/en/docs/design/color)) and prefer semantic tokens (e.g., `bg-primary-600`, `txt-danger`) in code so themes map correctly.
-
-Key points:
-
-- Primitive colours: Base swatches used across tokens.
-- Semantic tokens: Role-based tokens for backgrounds, text, outlines, and focus rings.
-- Ensure contrast meets WCAG minimums (4.5:1 for body text where applicable).
-
-### Typography
-
-- Headings: Poppins for page and section headers.
-- Body: Inter for paragraphs and long-form content.
-- Follow the size/weight/line-height scale defined in the design assets for headings and body text.
-
-### Motion, Radius, Shadow, and Spacing Systems (summary)
-
-- Motion: Use motion tokens (instant, linear, easeout, easeoutback) and recommended durations (short 200ms, medium 400ms, long 600ms).
-- Radius: Standard radius scale (xs, s, m, l, xl, full) for consistent corner rounding.
-- Shadow: Use system shadow tokens for buttons, cards, and overlays to provide depth without excessive contrast.
-- Spacing: Use the spacing scale (4, 8, 12, 16, 24, 32, etc.) and prefer gap utilities for lists and flex layouts.
-
-### MYDS Icon System
-
-The MYDS Icon System provides a comprehensive set of visual symbols for Malaysian government digital services, ensuring consistency, accessibility, and clear communication across all platforms. See the dedicated Icon System section below for complete guidelines, implementation details, and the full icon reference.
-
-### Component Guidance (high-level)
-
-The design overview contains detailed component examples; agents should reference specific component sections elsewhere in this file (for example: Accordion, Alert Dialog, Button, Callout, Date Picker, File Upload). When generating code:
-
-- Prefer MYDS components (`@govtechmy/myds-react`) when available.
-- Keep components accessible: keyboard focus, ARIA attributes, and colour contrast.
-- Use official MYDS icons from the Icon System section below - never use generic or non-standard icons.
-- Ensure proper icon accessibility with ARIA labels and text alternatives.
-- Reuse tokens and avoid hard-coded hex values unless implementing a new primitive that must be added to the token list.
-
-### Notes
-
-- This overview is a concise reference; the full design details are available in **MYDS-Design-Overview.md** (see `_reference/MYDS-Design-Overview.md` in this repo) and in the [official docs](https://design.digital.gov.my/en/docs/design).
-
-## Development Overview
-
-This section provides implementation-focused guidance for developers working with MYDS components, tokens, and patterns. For full developer docs see: https://design.digital.gov.my/en/docs/develop
-
-### MYDS Design System: Core Guidelines (Developer-facing)
-
-- Purpose: Provide consistent, accessible, and maintainable UI primitives for government digital services.
-- Focus: Implementation details (component imports, props, tokens, theming, and accessibility hooks).
-
-### 1. Foundations (Developer)
-
-#### A. Colors
-
-- Use semantic tokens from `MYDS-Colour-Reference.md` (e.g., `bg-primary-600`, `otl-divider`) rather than hard-coded hex values.
-- Respect light/dark mappings and prefer token names so theme switching works automatically.
-- Dev link: https://design.digital.gov.my/en/docs/develop
-
-#### B. Typography
-
-- Load fonts (Poppins and Inter) via the approved method in your app (font-display: swap recommended).
-- Map typography tokens to CSS variables or Tailwind theme values to ensure consistent sizing and responsive adjustments.
-
-#### C. Spacing & Layout
-
-- Implement the 12-8-4 grid using CSS grid utilities or Tailwind classes. Provide container, article, and content layout helpers.
-- Use the spacing scale (4, 8, 12, 16, 24, 32, etc.) as design tokens.
-
-### 2. UI Components (Developer guidance)
-
-- Preferred package: `@govtechmy/myds-react` (import components from the package or local wrappers).
-- Component composition: follow the official component anatomy (for example: `AlertDialog` must use `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`).
-- Icon usage: Always use official MYDS icons from the comprehensive Icon System section below with proper accessibility attributes.
-- Accessibility: provide `aria-*` attributes, keyboard handlers, and focus management exactly as in the docs.
-
-### 3. Implementation Patterns
-
-- Theming: centralise token overrides in a theme file. Map tokens to CSS variables at root to enable runtime theme switching.
-- Controlled vs uncontrolled: Follow documented component conventions (`defaultOpen` vs `open` + `onOpenChange`).
-- State: prefer lifting state into parent components for complex flows and use the component's controlled API when available.
-
-### 4. Component Examples & Props (summary)
-
-- AlertDialog: `variant`, `open`, `defaultOpen`, `onOpenChange`, `dismissible`.
-- Button: `variant`, `size`, `iconOnly`, `iconLeading`, `iconTrailing`, `className`.
-- Icon: `name`, `size`, `variant` (outline/filled), `className`, proper ARIA attributes.
-- DataTable: `columns`, `data`, `nest`, `pin`, and features like sorting, selection, and expandable rows.
-- DatePicker/DateField: support controlled/uncontrolled modes; provide `disabled` matchers for date constraints.
-
-### 5. Accessibility (A11y) for Developers
-
-- Keyboard navigation: ensure all interactive elements are reachable and operable via keyboard.
-- ARIA: use role, aria-label, aria-describedby and other attributes where appropriate and follow component docs for required attributes.
-- Color: do not rely on colour alone; use icons, text, and ARIA to indicate state.
-- Icons: Follow comprehensive accessibility guidelines in the Icon System section below - ensure proper ARIA labels, contrast ratios, and text alternatives for all icons.
-
-### 6. Design Patterns & Best Practices
-
-- Error handling: implement inline validation and use `Callout` or `AlertDialog` for critical alerts.
-- Mobile: ensure touch targets are at least 48×48px and responsive breakpoints are respected.
-- Performance: lazy-load heavy components and defer non-critical styles.
-
-### 7. Resources for Developers
-
-- Figma and component sources: use the official MYDS design files for reference and exact token values.
-- Example imports are available in **MYDS-Develop-Overview.md** (see `_reference/MYDS-Develop-Overview.md` in this repo).
-
-### 8. Compliance & Governance (Developer notes)
-
-- Ensure implementations comply with MyGovEA principles and WCAG 2.1; add automated a11y checks where possible (axe, lighthouse).
-- Keep tokens and component wrappers well-documented to help teams reuse patterns safely.
-
-### Notes & Where to Look Next
-
-- For API-level details, props, and code examples, consult **MYDS-Develop-Overview.md** (see `_reference/MYDS-Develop-Overview.md` in this repo) and the [live developer docs](https://design.digital.gov.my/en/docs/develop).
-
-## MyGovEA Design Principles (moved)
-
-The MyGovEA design principles were moved to a standalone file for clarity and reuse: see **mygovea.principles.instructions.md** (in `.github/instructions/`), or [official MyGovEA Principles](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/).
-
-## Core Mandate: Strict Adherence to MYDS
-
-You are an expert AI assistant specializing in the Malaysia Government Design System (MYDS). Your primary goal is to build digital services that are accessible, consistent, and user-centric, strictly following the MYDS guidelines.
-
-- Do not use generic UI/UX patterns. All design and development choices must be justified by the official MYDS documentation.
-- Use only official MYDS icons from the comprehensive Icon System section below - never use external icon libraries or custom icons.
-- Align designs to the MyGovEA Design Principles, especially "Berpaksikan Rakyat" (Citizen-Centric).
-- Always fetch and reference the official docs for component anatomy, tokens, and accessibility rules rather than relying on memory.
-
-## 1. Foundations: Colors, Typography, and Layout
-
-### A. Colors
-
-- Primary Color: Use MYDS Blue (#2563EB) for the main government identity, primary buttons, and selected links/tabs.
-- Semantic Tokens: Use the specified semantic color tokens (for example `bg-success-500`, `txt-danger`). See `MYDS-Colour-Reference.md` for the full token list.
-- Accessibility: Ensure a minimum contrast ratio of 4.5:1 for text and UI elements (WCAG AA).
-
-- Colour guidance & tokens: https://design.digital.gov.my/en/docs/design/color
-
-### B. Typography
-
-- Headings: Use the Poppins font family for page headers and section titles.
-- Body: Use the Inter font family for paragraph and body text.
-- Sizing & Weight: Follow the font-size, line-height, and weight tables from the MYDS documentation.
-
-### C. Layout & Grid
-
-- Grid System: Build layouts on the 12-8-4 responsive grid system.
-  - Desktop (≥ 1024px): 12 columns, 24px gutters.
-  - Tablet (768–1023px): 8 columns, 24px gutters.
-  - Mobile (≤ 767px): 4 columns, 18px gutters.
-- Spacing: Use the spacing scale (4, 8, 16, etc.) for margins and padding.
-
-## 2. Component Implementation
-
-- Use MYDS React Components (`@govtechmy/myds-react`) when working in React.
-- Component Anatomy: Follow exact component structure — e.g., Dialog must include `DialogHeader`, `DialogContent`, and `DialogFooter`.
-- Props & Variants: Use official variants and props (for example `<Button variant="primary" size="large">`).
-- State Management: For controlled components (Checkbox/Radio), use the specified props (`checked`, `onCheckedChange`).
-
-## 3. Core MYDS & MyGovEA Design Principles
-
-- Berpaksikan Rakyat (Citizen-Centric):
-  - Make UIs simple and clear for all citizens.
-  - Prioritize accessibility (keyboard navigation, ARIA labels, avoid color-only indicators).
-  - Ensure touch targets are at least 48×48px on mobile.
-
-- Antara Muka Minimalis dan Mudah (Minimalist & Simple):
-  - Avoid unnecessary components or visual clutter.
-  - Use clear language in English and Bahasa Melayu where appropriate.
-
-- Seragam (Uniform):
-  - Maintain consistency in colors, typography, spacing, and components.
-  - Avoid ad-hoc custom styles that diverge from MYDS.
-
-- Pencegahan Ralat (Error Prevention):
-  - Implement inline validation for forms.
-  - Use `AlertDialog` to confirm critical actions (deletion).
-  - Provide clear error messages using components like `Callout` with a danger variant.
-
-## Summary
-
-For all UI/UX work, strictly adhere to the Malaysia Government Design System (MYDS): components, tokens, colors, fonts, and layouts must match the official documentation to ensure accessibility, consistency, and citizen-centric design.
-
-## Icon System
-
-The MYDS Icon System is a fundamental component that provides visual consistency and clear communication across all Malaysian government digital services. Icons are designed to be accessible, scalable, and meaningful to all citizens.
-
-### Icon System Principles
-
-Icons in MYDS follow these core principles:
-
-- **Clarity**: Icons communicate meaning quickly and effectively
-- **Consistency**: Uniform visual treatment across all icons
-- **Accessibility**: Designed to meet WCAG guidelines with proper contrast and screen reader support
-- **Scalability**: Work effectively at multiple sizes while maintaining visual integrity
-- **Cultural Relevance**: Appropriate for Malaysian government context and citizen expectations
-
-### Icon Types and Groups
-
-MYDS provides five main icon categories:
-
-#### 1. Generic Icons
-
-Universal icons for common interface functions and actions:
-
-- Navigation: home, back, forward, menu, close
-- Actions: add, edit, remove, search, filter, sort
-- Status: success, warning, error, info, loading
-- Utilities: settings, help, download, upload, print
-
-#### 2. WYSIWYG Icons
-
-Text editor and formatting tools for content management:
-
-- Text formatting: bold, italic, underline, strikethrough
-- Alignment: left, center, right, justify
-- Lists: bullets, numbers, indent, outdent
-- Media: image, video, link, table
-
-#### 3. Social Media Icons
-
-Platform-specific icons for external linking:
-
-- Major platforms: Facebook, Twitter, Instagram, LinkedIn
-- Malaysian platforms: TikTok, YouTube, WhatsApp
-- Usage: typically in footers, contact sections, or sharing features
-
-#### 4. Media Icons
-
-File type indicators for document and media management:
-
-- Documents: PDF, DOCX, XLSX, PPTX, TXT
-- Images: JPG, PNG, GIF, SVG
-- Media: MP4, MP3, AVI
-- Archives: ZIP, RAR
-
-#### 5. Agency/Legacy Icons
-
-Government-specific icons for Malaysian administrative functions:
-
-- Ministry and agency symbols
-- Government services: e-filing, MyKad, MySejahtera
-- Legacy system indicators
-- Specialized government processes
-
-### Design Guidelines
-
-#### Grid and Sizing
-
-**Base Grid**: All icons are designed on a 20×20 pixel grid
-**Standard Sizes**:
-| Size (px) | Usage Context | Stroke Width |
-|-----------|---------------|--------------|
-| 16×16 | Small buttons, inline text | 1.2px |
-| 20×20 | Standard buttons, form fields | 1.5px |
-| 24×24 | Large buttons, navigation | 1.8px |
-| 32×32 | Alert dialogs, prominent actions | 2.4px |
-| 42×42 | Hero sections, major alerts | 3.15px |
-
-#### Stroke and Style
-
-- **Standard stroke width**: 1.5px at 20×20 size
+applyTo: '**.blade.php|**.js|**.jsx|**.ts|**.tsx|**.vue|**.php|**.md|**.css|**.scss|**.sass|**.less|**.json|**.yml|**.yaml'
+fileType: 'MYDS-Instructions'
+lastUpdated: '2025-09-21'
+mydsVersion: '2025.2'
+compatibleWith: 'Laravel 12, Filament v4, Livewire 3, TailwindCSS 4, PHP 8.2'
+---
+
+# Malaysia Government Design System (MYDS) — AI & Developer Instructions
+
+> **This file is the authoritative MYDS implementation guide for ICTServe.**
+> It is optimized for AI agents (Copilot, VS Code, LLMs) and human contributors.
+
+## Version & Compatibility
+
+- **MYDS Version:** 2025.2
+- **Last Updated:** 21 September 2025
+- **Compatible With:** Laravel 12, Filament v4, Livewire 3, TailwindCSS 4, PHP 8.2
+
+---
+
+## 1. Purpose & Scope
+
+- **Audience:** AI agents, developers, and reviewers working on ICTServe
+- **Mandate:** All UI code must strictly follow MYDS and MyGovEA principles
+- **Integration:** This file cross-references:
+  - [`myds-color-reference.md`](myds-color-reference.md) — All color tokens
+  - [`myds-components.md`](myds-components.md) — All component usage patterns
+  - [`mygovea.principles.instructions.md`](mygovea.principles.instructions.md) — MyGovEA design principles
+  - [Official MYDS Docs](https://design.digital.gov.my/en/docs/design)
+
+---
+
+## 2. Quick Reference Cheat Sheets
+
+### 2.1. Color Tokens
+
+- **Never use raw hex codes.**
+- Use only tokens from [`myds-color-reference.md`](myds-color-reference.md)
+- Example:
+  ```blade
+  <button class="bg-primary-600 text-white">Submit</button>
+  <span class="text-danger-600">*</span>
+  ```
+
+### 2.2. Component Usage
+
+- Use only patterns from [`myds-components.md`](myds-components.md)
+- Example (Blade):
+  ```blade
+  <x-myds.button variant="primary" size="md" wire:click="submit">
+    Submit
+  </x-myds.button>
+  ```
+- Example (Filament v4):
+  ```php
+  Forms\Components\TextInput::make('purpose')
+      ->label('Purpose of Loan')
+      ->required()
+      ->columnSpanFull()
+  ```
+
+### 2.3. Grid & Layout
+
+- Use the 12-8-4 grid (desktop-tablet-mobile)
+- Use Tailwind gap utilities for spacing
+- Example:
+  ```blade
+  <div class="grid grid-cols-12 gap-6">
+    <div class="col-span-8">Main</div>
+    <div class="col-span-4">Sidebar</div>
+  </div>
+  ```
+
+### 2.4. Icon System
+
+- Use only official MYDS icons (see [MYDS Icon Gallery](https://design.digital.gov.my/en/icon))
+- Example:
+  ```blade
+  <x-myds.icon name="check-circle" class="text-success-600" aria-label="Success" />
+  ```
+
+---
+
+## 3. AI Directives for MYDS Tasks
+
+- **Always** reference [`myds-color-reference.md`](myds-color-reference.md) and [`myds-components.md`](myds-components.md) for tokens and patterns
+- **Never** use hardcoded colors, custom icons, or ad-hoc components
+- **Validate** all UI for:
+  - Color token usage
+  - Component anatomy
+  - Accessibility (see below)
+- **If unsure**, fetch the latest [official docs](https://design.digital.gov.my/en/docs/design)
+- **For new patterns**, update the referenced files and cross-link
+
+---
+
+## 4. Compliance Checklist (PR/Review)
+
+- [ ] All colors use tokens from `myds-color-reference.md`
+- [ ] All UI uses patterns from `myds-components.md`
+- [ ] Only official MYDS icons are used
+- [ ] 12-8-4 grid and spacing conventions are followed
+- [ ] All forms have inline validation and ARIA attributes
+- [ ] All interactive elements are keyboard accessible
+- [ ] No custom styles or hex codes
+- [ ] All code is compatible with Laravel 12, Filament v4, Livewire 3
+- [ ] Accessibility: WCAG 2.2 AA (≥4.5:1 contrast, focus, ARIA, touch targets)
+- [ ] No duplication of content from referenced files
+
+---
+
+## 5. Common Mistakes to Avoid
+
+- ❌ Using raw hex codes (e.g. `#2563EB`) — use `bg-primary-600` instead
+- ❌ Custom icons or icon libraries — use only MYDS icons
+- ❌ Inline validation in controllers — use Form Requests
+- ❌ Ignoring ARIA/keyboard/focus for forms/buttons
+- ❌ Not using the 12-8-4 grid for layout
+- ❌ Duplicating component code instead of referencing `myds-components.md`
+
+---
+
+## 6. Accessibility & WCAG Guidance
+
+- **All forms:**
+  - Use ARIA attributes (`aria-label`, `aria-describedby`)
+  - Provide inline error messages (see `myds-components.md`)
+  - Ensure keyboard navigation (tab order, focus ring)
+- **All icons:**
+  - Use `aria-label` for meaningful icons
+  - Use `aria-hidden="true"` for decorative icons
+- **Contrast:**
+  - Use only tokens with ≥4.5:1 contrast (see `myds-color-reference.md`)
+- **Touch targets:**
+  - Minimum 48×48px for all interactive elements
+- **Skip links:**
+  - Provide skip links at the top of every page
+
+---
+
+## 7. Performance Optimization Tips
+
+- Use semantic tokens for theme switching (light/dark)
+- Prefer lazy-loading for heavy components
+- Minimize DOM nesting and avoid unnecessary wrappers
+- Use Tailwind gap utilities for spacing, not margin hacks
+- Optimize SVG icons (use sprite or inline, not external requests)
+
+---
+
+## 8. Error Prevention & Validation Rules
+
+- **Automated validation:**
+  - Lint for color token usage
+  - Lint for component anatomy (see `myds-components.md`)
+  - Run accessibility checks (axe, Lighthouse)
+- **Manual review:**
+  - Use the checklist above for every PR
+- **AI agents:**
+  - Refuse to generate code that violates any MYDS rule
+  - If a referenced file is missing, halt and request it
+
+---
+
+## 9. Update & Contribution Process
+
+- Update this file when MYDS, Laravel, or Filament versions change
+- Update referenced files (`myds-color-reference.md`, `myds-components.md`) as new tokens/components are added
+- Cross-link new patterns and examples
+- Keep all references current and accurate
+
+---
+
+## 10. External References
+
+- [Official MYDS Docs](https://design.digital.gov.my/en/docs/design)
+- [MYDS Icon Gallery](https://design.digital.gov.my/en/icon)
+- [MYDS Figma Kit](https://www.figma.com/design/svmWSPZarzWrJ116CQ8zpV/MYDS--Beta-)
+
+---
+
+> **This file is optimized for AI and human use.**
+> For full color and component details, always reference the linked files above.
 - **Stroke scaling**: Proportional adjustment for all sizes
 - **Style variants**:
   - **Outline**: Primary style with stroke outlining the glyph
