@@ -15,9 +15,66 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Layout('layouts.iserve')]
+
 class UserProfile extends Component
 {
     use WithFileUploads;
+
+    // Privacy Controls
+    public bool $showDeleteMemoryDialog = false;
+
+    /**
+     * Show the delete memory confirmation dialog.
+     */
+    public function confirmDeleteMemory(): void
+    {
+        $this->showDeleteMemoryDialog = true;
+    }
+
+    /**
+     * Cancel the delete memory dialog.
+     */
+    public function cancelDeleteMemory(): void
+    {
+        $this->showDeleteMemoryDialog = false;
+    }
+
+    /**
+     * Delete all user memory via privacy API endpoint.
+     */
+    public function deleteMemory(): void
+    {
+        $this->showDeleteMemoryDialog = false;
+        try {
+            $client = new \GuzzleHttp\Client([
+                'base_uri' => config('app.url'),
+                'timeout' => 10.0,
+            ]);
+            $token = Auth::user()->createToken('privacy')->plainTextToken;
+            $response = $client->delete('/api/privacy/memory', [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Bearer '.$token,
+                ],
+            ]);
+            if ($response->getStatusCode() === 200) {
+                $this->dispatch('profile-updated', [
+                    'message' => __('Memori anda telah dipadam. / Your memory has been deleted.'),
+                    'type' => 'success',
+                ]);
+            } else {
+                $this->dispatch('profile-updated', [
+                    'message' => __('Gagal memadam memori. / Failed to delete memory.'),
+                    'type' => 'error',
+                ]);
+            }
+        } catch (\Exception $e) {
+            $this->dispatch('profile-updated', [
+                'message' => __('Ralat: :msg', ['msg' => $e->getMessage()]),
+                'type' => 'error',
+            ]);
+        }
+    }
 
     // User Profile Data
     public string $name = '';
@@ -136,11 +193,6 @@ class UserProfile extends Component
 
         $this->loadUserStats();
         $this->loadRecentActivity();
-    }
-
-    public function __invoke()
-    {
-        return $this;
     }
 
     public function updateProfile(): void
@@ -294,7 +346,10 @@ class UserProfile extends Component
                 ->whereHas('status', fn ($q) => $q->where('is_final', true))
                 ->count(),
             'active_loans' => $user->loanRequests()
-                ->whereIn('status', ['approved', 'active'])
+                ->whereIn('status', [
+                    \App\Enums\LoanRequestStatus::READY_PICKUP->value,
+                    \App\Enums\LoanRequestStatus::IN_USE->value,
+                ])
                 ->count(),
             'total_loans' => $user->loanRequests()->count(),
             'join_date' => $user->created_at,

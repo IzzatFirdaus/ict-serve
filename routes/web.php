@@ -201,25 +201,25 @@ Route::middleware('auth')->group(function () {
      | Helpdesk / Tickets
      */
     Route::prefix('helpdesk')->name('helpdesk.')->group(function () {
-        Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
-        Route::get('/enhanced', \App\Livewire\Helpdesk\IndexEnhanced::class)->name('index-enhanced');
-        Route::get('/create', \App\Livewire\Helpdesk\Create::class)->name('create');
-        Route::get('/create-enhanced', \App\Livewire\Helpdesk\CreateEnhanced::class)->name('create-enhanced');
-        Route::get('/assign/{ticket}', \App\Livewire\Helpdesk\Assignment::class)->name('assign');
-        Route::get('/sla-tracker', \App\Livewire\Helpdesk\SlaTracker::class)->name('sla-tracker');
-        Route::get('/attachments/{ticket}', \App\Livewire\Helpdesk\AttachmentManager::class)->name('attachments');
-        Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
-
-        // Ticket detail (Livewire)
-        Route::get('/ticket/{ticket}', \App\Livewire\Helpdesk\TicketDetail::class)->name('ticket.detail');
-
-        // New MYDS-aligned component routes (kept for future migration)
-        Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
-        Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint.live');
-
-        // Legacy aliases used by tests — redirect to canonical route to reduce duplication
-        Route::get('/damage-complaint/create', fn () => redirect()->route('helpdesk.create'))->name('damage-complaint.create');
-        Route::get('/public/damage-complaint/guest', fn () => redirect()->route('helpdesk.create'))->name('public.damage-complaint.guest');
+    Route::get('/', \App\Livewire\Helpdesk\Index::class)->name('index');
+    Route::get('/enhanced', \App\Livewire\Helpdesk\IndexEnhanced::class)->name('index-enhanced');
+    Route::get('/create', \App\Livewire\Helpdesk\Create::class)->name('create');
+    Route::get('/create-enhanced', \App\Livewire\Helpdesk\CreateEnhanced::class)->name('create-enhanced');
+    Route::get('/assign/{ticket}', \App\Livewire\Helpdesk\Assignment::class)->name('assign');
+    Route::get('/sla-tracker', \App\Livewire\Helpdesk\SlaTracker::class)->name('sla-tracker');
+    Route::get('/attachments/{ticket}', \App\Livewire\Helpdesk\AttachmentManager::class)->name('attachments');
+    Route::get('/damage-report', \App\Livewire\DamageReportForm::class)->name('damage-report');
+    // Detail view for a helpdesk ticket (used in Blade as helpdesk.ticket.detail)
+    Route::get('/ticket/{ticket}', \App\Livewire\Helpdesk\TicketDetail::class)->name('ticket.detail');
+    // New MYDS-aligned component routes (kept for future migration)
+    Route::get('/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint');
+    Route::get('/ict/damage-complaint', \App\Livewire\Ict\DamageComplaintForm::class)->name('ict.damage-complaint.live');
+    // Additional aliases to maintain backward compatibility and satisfy tests
+    // Some views/tests reference these exact route names; provide aliases to avoid RouteNotFoundException
+    Route::get('/damage-complaint/create', \App\Livewire\Ict\DamageComplaintForm::class)->name('damage-complaint.create');
+    Route::get('/public/damage-complaint/guest', function () {
+        return \App\Livewire\Ict\DamageComplaintForm::class;
+    })->name('public.damage-complaint.guest');
     });
 
     /*

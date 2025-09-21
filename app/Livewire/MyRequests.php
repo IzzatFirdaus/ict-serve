@@ -109,7 +109,11 @@ class MyRequests extends Component
         // Enable auto-refresh if user has pending loan requests or tickets
         $user = Auth::user();
         $hasPendingLoans = $user->loanRequests()
-            ->whereHas('loanStatus', fn ($q) => $q->whereIn('code', ['pending_supervisor', 'pending_ict', 'ready_pickup']))
+            ->whereHas('loanStatus', fn ($q) => $q->whereIn('code', [
+                \App\Enums\LoanRequestStatus::PENDING_SUPERVISOR->value,
+                \App\Enums\LoanRequestStatus::PENDING_ICT->value,
+                \App\Enums\LoanRequestStatus::READY_PICKUP->value,
+            ]))
             ->exists();
 
         $hasPendingTickets = $user->tickets()

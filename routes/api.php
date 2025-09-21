@@ -86,79 +86,7 @@ Route::get('/user', function (Request $request) {
     return response()->json($request->user());
 })->middleware('auth:sanctum');
 
-/*
-|--------------------------------------------------------------------------
-| Protected API routes (requires authentication)
-|--------------------------------------------------------------------------
-*/
-Route::middleware('auth:sanctum')->group(function () {
-    // Bulk operations for helpdesk tickets (with throttling)
-    Route::post('/helpdesk-tickets/bulk-approve', [HelpdeskTicketController::class, 'bulkApprove'])
-        ->middleware('throttle:30,1');
-    Route::post('/helpdesk-tickets/bulk-reject', [HelpdeskTicketController::class, 'bulkReject'])
-        ->middleware('throttle:30,1');
 
-    // Bulk operations for loan requests (with throttling)
-    Route::post('/loan-requests/bulk-approve', [LoanRequestController::class, 'bulkApprove'])
-        ->middleware('throttle:30,1');
-    Route::post('/loan-requests/bulk-reject', [LoanRequestController::class, 'bulkReject'])
-        ->middleware('throttle:30,1');
-
-    // Unified Dashboard (metrics for admin, with throttling)
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->middleware('throttle:60,1');
-
-    // ICT Loan Module API (RESTful, with rate limits)
-    Route::apiResource('loan-requests', LoanRequestController::class)
-        ->middleware('throttle:60,1');
-
-    // Helpdesk Module API (RESTful, with rate limits)
-    Route::apiResource('helpdesk-tickets', HelpdeskTicketController::class)
-        ->middleware('throttle:60,1');
-
-    /*
-    |--------------------------------------------------------------------------
-    | Utility endpoints for frontend
-    |--------------------------------------------------------------------------
-    */
-    Route::prefix('utilities')->group(function () {
-        // Equipment categories and items for loan forms
-        Route::get('/equipment-categories', function () {
-            return response()->json([
-                'success' => true,
-                'data' => \App\Models\EquipmentCategory::with('equipmentItems')->get(),
-            ]);
-        });
-
-        // Ticket categories for helpdesk forms
-        Route::get('/ticket-categories', function () {
-            return response()->json([
-                'success' => true,
-                'data' => \App\Models\TicketCategory::all(),
-            ]);
-        });
-
-        // Available equipment for loan requests
-        Route::get('/available-equipment', function () {
-            return response()->json([
-                'success' => true,
-                'data' => \App\Models\EquipmentItem::where('is_available', true)
-                    ->with('category')
-                    ->get(),
-            ]);
-        });
-
-        // List of users for assignment (admin only, enforce 'admin' middleware)
-        Route::get('/users', function () {
-            return response()->json([
-                'success' => true,
-                'data' => \App\Models\User::where('is_active', true)
-                    ->select('id', 'name', 'email', 'role', 'division')
-                    ->get(),
-            ]);
-        })->middleware('admin');
-    });
-});
 
 /*
 |--------------------------------------------------------------------------

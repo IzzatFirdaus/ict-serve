@@ -98,13 +98,13 @@ class LoanApplicationList extends Component
         $counts = [
             'total' => LoanRequest::count(),
             'pending' => LoanRequest::whereIn('status', [
-                LoanRequestStatus::PENDING_SUPERVISOR,
-                LoanRequestStatus::APPROVED_SUPERVISOR,
-                LoanRequestStatus::PENDING_ICT,
+                LoanRequestStatus::PENDING_SUPERVISOR->value,
+                LoanRequestStatus::APPROVED_SUPERVISOR->value,
+                LoanRequestStatus::PENDING_ICT->value,
             ])->count(),
-            'approved' => LoanRequest::where('status', LoanRequestStatus::APPROVED_ICT)->count(),
-            'rejected' => LoanRequest::where('status', LoanRequestStatus::REJECTED)->count(),
-            'completed' => LoanRequest::where('status', LoanRequestStatus::RETURNED)->count(),
+            'approved' => LoanRequest::where('status', LoanRequestStatus::APPROVED_ICT->value)->count(),
+            'rejected' => LoanRequest::where('status', LoanRequestStatus::REJECTED->value)->count(),
+            'completed' => LoanRequest::where('status', LoanRequestStatus::RETURNED->value)->count(),
         ];
 
         return view('livewire.equipment.loan-application-list', [

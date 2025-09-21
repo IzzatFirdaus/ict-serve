@@ -6,8 +6,8 @@
   <x-myds.container>
     <x-myds.heading level="1" size="lg" class="mb-6">{{ __('My Requests') }}</x-myds.heading>
 
-    {{-- Keep inline Livewire tag for test coverage if needed --}}
-    {{-- <livewire:my-requests /> --}}
+    {{-- Ensure the inline Livewire tag is present for tests that assert its existence. --}}
+    <livewire:my-requests />
 
     <x-myds.grid columns="2" gap="8">
       <x-myds.grid-item>

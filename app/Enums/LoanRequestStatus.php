@@ -47,7 +47,7 @@ enum LoanRequestStatus: string
         return in_array($this, [
             self::PENDING_SUPERVISOR,
             self::PENDING_ICT,
-        ]);
+        ], true);
     }
 
     public function canBeCancelled(): bool
@@ -56,6 +56,6 @@ enum LoanRequestStatus: string
             self::RETURNED,
             self::CANCELLED,
             self::REJECTED,
-        ]);
+        ], true);
     }
 }
