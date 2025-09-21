@@ -571,7 +571,9 @@ Composer scripts (run with `composer run <name>`):
 - **[Redberry](https://redberry.international/laravel/)**
 - **[Active Logic](https://activelogic.com)**
 - **[byte5](https://byte5.de)**
+
 - # **[OP.GG](https://op.gg)**
+
 - dev — runs the development supervisor which starts artisan serve, queue listener, pail and vite (see `composer.json` scripts).
 - test — clears config and runs `php artisan test`.
 
@@ -617,10 +619,10 @@ All guidance must prioritise citizens’ needs and accessibility. Every UI, API,
 ### 5. Merge Conflicts & Troubleshooting
 
 - Resolve conflicts locally:
-  1.  Checkout the feature branch.
-  2.  Pull target (`git pull origin main`) to surface conflicts.
-  3.  Open conflict markers (`<<<<<<<` / `=======` / `>>>>>>>`) and reconcile.
-  4.  Test changes, `git add` resolved files, then `git commit -m "Resolve merge conflict: explain"` and `git push`.
+  1. Checkout the feature branch.
+  2. Pull target (`git pull origin main`) to surface conflicts.
+  3. Open conflict markers (`<<<<<<<` / `=======` / `>>>>>>>`) and reconcile.
+  4. Test changes, `git add` resolved files, then `git commit -m "Resolve merge conflict: explain"` and `git push`.
 
 - When stuck, create a minimal repro branch and request a reviewer to help.
 

@@ -6,16 +6,26 @@
  */
 @layer components {
   .myds-skip-link {
-    @apply absolute p-4 rounded-md bg-white text-txt-black-900 shadow-context-menu z-[1000] transition-all;
-
+    position: absolute;
     left: -9999px;
     top: -9999px;
+    padding: 1rem; /* p-4 */
+    border-radius: 8px; /* rounded-md */
+    background: #fff; /* bg-white */
+    color: #18181b; /* text-txt-black-900 */
+    box-shadow:
+      0 2px 6px 0 rgb(0 0 0 / 5%),
+      0 12px 50px 0 rgb(0 0 0 / 10%); /* shadow-context-menu */
+
+    z-index: 1000; /* z-[1000] */
+    transition: all 200ms cubic-bezier(0, 0, 0.58, 1);
   }
 
   .myds-skip-link:focus {
-    @apply ring-2 ring-offset-2 ring-fr-primary;
-
     left: 1rem;
     top: 1rem;
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px #2563eb; /* mimic ring-2 ring-offset-2 ring-fr-primary */
   }
 }

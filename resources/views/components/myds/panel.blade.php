@@ -37,10 +37,10 @@
 
   // Fallback icon by variant (MYDS icons, see MYDS-Icons-Overview.md)
   $fallbackIcon = match ($variant) {
-    'success' => '<x-myds.icons.check-circle class="w-5 h-5 txt-success" aria-hidden="true"/>',
-    'warning' => '<x-myds.icons.alert-triangle class="w-5 h-5 txt-warning" aria-hidden="true"/>',
-    'danger' => '<x-myds.icons.alert-triangle class="w-5 h-5 txt-danger" aria-hidden="true"/>',
-    'info' => '<x-myds.icons.info class="w-5 h-5 txt-primary" aria-hidden="true"/>',
+    'success' => '<x-myds.icons.check-circle class="w-5 h-5 text-txt-success" aria-hidden="true"/>',
+    'warning' => '<x-myds.icons.alert-triangle class="w-5 h-5 text-txt-warning" aria-hidden="true"/>',
+    'danger' => '<x-myds.icons.alert-triangle class="w-5 h-5 text-txt-danger" aria-hidden="true"/>',
+    'info' => '<x-myds.icons.info class="w-5 h-5 text-txt-primary" aria-hidden="true"/>',
     default => null,
   };
 
@@ -51,7 +51,7 @@
 
 <div
   id="{{ $panelId }}"
-  class="rounded-l border {{ $padding }} {{ $panelClass }} {{ $class }}"
+  class="rounded-lg border {{ $padding }} {{ $panelClass }} {{ $class }}"
   {{ $attributes->except('class') }}
   @if($role) role="{{ $role }}" aria-live="polite" @endif
 >
@@ -63,13 +63,13 @@
         </span>
       @endif
 
-      <h2 class="font-poppins text-lg md:text-xl font-semibold txt-black-900">
+      <h2 class="font-poppins text-lg md:text-xl font-semibold text-txt-black-900">
         {{ $title }}
       </h2>
     </div>
   @endif
 
-  <div class="font-inter text-base txt-black-900">
+  <div class="font-inter text-base text-txt-black-900">
     {{ $slot }}
   </div>
 </div>

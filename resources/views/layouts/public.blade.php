@@ -21,6 +21,16 @@
     <!-- Scripts and Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <!-- Additional page-specific styles -->
+    @hasSection('page-style')
+      @yield('page-style')
+    @endif
+
+    <!-- Filament compatibility fallbacks (if present) -->
+    @if (file_exists(public_path('css/filament/compat.css')))
+      <link rel="stylesheet" href="{{ asset('css/filament/compat.css') }}" />
+    @endif
+
     <!-- Additional head content -->
     @stack('head')
   </head>
@@ -364,10 +374,7 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
-    @vite(['resources/js/layouts/public.js'])
-
-    <!-- Additional scripts -->
-    @stack('scripts')
+  <!-- Additional scripts -->
+  @stack('scripts')
   </body>
 </html>

@@ -1,8 +1,9 @@
-import { defineConfig } from 'tailwindcss/lib/cjs/index.js';
+import { defineConfig } from 'tailwindcss';
 
 export default defineConfig({
   content: [
     './resources/**/*.blade.php',
+    './resources/**/*.css',
     './resources/**/*.js',
     './resources/**/*.vue',
     './app/**/*.php',
