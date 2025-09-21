@@ -21,6 +21,6 @@ class PrivacyCleanupJobTest extends TestCase
         $job->memoryMcpService = $mock;
 
         $job->handle();
-        $this->assertTrue(true);
+        // If no exception is thrown, the test passes
     }
 }

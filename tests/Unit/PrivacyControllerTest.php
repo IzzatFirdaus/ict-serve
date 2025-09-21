@@ -11,6 +11,6 @@ class PrivacyControllerTest extends TestCase
      */
     public function test_example(): void
     {
-        $this->assertTrue(true);
+        // If no exception is thrown, the test passes
     }
 }

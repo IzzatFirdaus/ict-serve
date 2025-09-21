@@ -22,10 +22,7 @@
     {
       "id": "accesskeys",
       "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "best-practice"
-      ],
+      "tags": ["cat.keyboard", "best-practice"],
       "description": "Ensure every accesskey attribute value is unique",
       "help": "accesskey attribute value should be unique",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/accesskeys?application=playwright",
@@ -56,13 +53,7 @@
     {
       "id": "aria-braille-equivalent",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure aria-braillelabel and aria-brailleroledescription have a non-braille equivalent",
       "help": "aria-braille attributes must have a non-braille equivalent",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-braille-equivalent?application=playwright",
@@ -89,10 +80,7 @@
     {
       "id": "aria-dialog-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice"
-      ],
+      "tags": ["cat.aria", "best-practice"],
       "description": "Ensure every ARIA dialog and alertdialog node has an accessible name",
       "help": "ARIA dialog and alertdialog nodes should have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-dialog-name?application=playwright",
@@ -119,13 +107,7 @@
     {
       "id": "aria-meter-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag111",
-        "EN-301-549",
-        "EN-9.1.1.1"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag111", "EN-301-549", "EN-9.1.1.1"],
       "description": "Ensure every ARIA meter node has an accessible name",
       "help": "ARIA meter nodes must have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-meter-name?application=playwright",
@@ -134,13 +116,7 @@
     {
       "id": "aria-progressbar-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag111",
-        "EN-301-549",
-        "EN-9.1.1.1"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag111", "EN-301-549", "EN-9.1.1.1"],
       "description": "Ensure every ARIA progressbar node has an accessible name",
       "help": "ARIA progressbar nodes must have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-progressbar-name?application=playwright",
@@ -149,13 +125,7 @@
     {
       "id": "aria-required-parent",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag131",
-        "EN-301-549",
-        "EN-9.1.3.1"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag131", "EN-301-549", "EN-9.1.3.1"],
       "description": "Ensure elements with an ARIA role that require parent roles are contained by them",
       "help": "Certain ARIA roles must be contained by particular parents",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-required-parent?application=playwright",
@@ -164,10 +134,7 @@
     {
       "id": "aria-text",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice"
-      ],
+      "tags": ["cat.aria", "best-practice"],
       "description": "Ensure role=\"text\" is used on elements with no focusable descendants",
       "help": "\"role=text\" should have no focusable descendants",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-text?application=playwright",
@@ -194,13 +161,7 @@
     {
       "id": "aria-tooltip-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure every ARIA tooltip node has an accessible name",
       "help": "ARIA tooltip nodes must have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-tooltip-name?application=playwright",
@@ -209,10 +170,7 @@
     {
       "id": "aria-treeitem-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice"
-      ],
+      "tags": ["cat.aria", "best-practice"],
       "description": "Ensure every ARIA treeitem node has an accessible name",
       "help": "ARIA treeitem nodes should have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-treeitem-name?application=playwright",
@@ -286,10 +244,7 @@
     {
       "id": "empty-table-header",
       "impact": null,
-      "tags": [
-        "cat.name-role-value",
-        "best-practice"
-      ],
+      "tags": ["cat.name-role-value", "best-practice"],
       "description": "Ensure table headers have discernible text",
       "help": "Table header text should not be empty",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=playwright",
@@ -315,11 +270,7 @@
     {
       "id": "frame-tested",
       "impact": null,
-      "tags": [
-        "cat.structure",
-        "best-practice",
-        "review-item"
-      ],
+      "tags": ["cat.structure", "best-practice", "review-item"],
       "description": "Ensure <iframe> and <frame> elements contain the axe-core script",
       "help": "Frames should be tested with axe-core",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/frame-tested?application=playwright",
@@ -422,10 +373,7 @@
     {
       "id": "landmark-complementary-is-top-level",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the complementary landmark or aside is at top level",
       "help": "Aside should not be contained in another landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-complementary-is-top-level?application=playwright",
@@ -485,11 +433,7 @@
     {
       "id": "presentation-role-conflict",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice",
-        "ACT"
-      ],
+      "tags": ["cat.aria", "best-practice", "ACT"],
       "description": "Elements marked as presentational should not have global ARIA or tabindex to ensure all screen readers ignore them",
       "help": "Ensure elements marked as presentational are consistently ignored",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/presentation-role-conflict?application=playwright",
@@ -518,10 +462,7 @@
     {
       "id": "scope-attr-valid",
       "impact": null,
-      "tags": [
-        "cat.tables",
-        "best-practice"
-      ],
+      "tags": ["cat.tables", "best-practice"],
       "description": "Ensure the scope attribute is used correctly on tables",
       "help": "scope attribute should be used correctly",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scope-attr-valid?application=playwright",
@@ -568,10 +509,7 @@
     {
       "id": "skip-link",
       "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "best-practice"
-      ],
+      "tags": ["cat.keyboard", "best-practice"],
       "description": "Ensure all skip links have a focusable target",
       "help": "The skip-link target should exist and be focusable",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/skip-link?application=playwright",
@@ -619,10 +557,7 @@
     {
       "id": "tabindex",
       "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "best-practice"
-      ],
+      "tags": ["cat.keyboard", "best-practice"],
       "description": "Ensure tabindex attribute values are not greater than 0",
       "help": "Elements should not have tabindex greater than zero",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/tabindex?application=playwright",
@@ -631,10 +566,7 @@
     {
       "id": "table-duplicate-name",
       "impact": null,
-      "tags": [
-        "cat.tables",
-        "best-practice"
-      ],
+      "tags": ["cat.tables", "best-practice"],
       "description": "Ensure the <caption> element does not contain the same text as the summary attribute",
       "help": "Tables should not have the same summary and caption",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/table-duplicate-name?application=playwright",
@@ -738,13 +670,7 @@
     {
       "id": "aria-allowed-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure an element's role supports its ARIA attributes",
       "help": "Elements must only use supported ARIA attributes",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-allowed-attr?application=playwright",
@@ -771,9 +697,7 @@
           ],
           "impact": null,
           "html": "<nav class=\"max-w-[1280px] mx-auto flex items-center justify-between px-6 py-3\" aria-label=\"Primary navigation\">",
-          "target": [
-            ".py-3"
-          ]
+          "target": [".py-3"]
         },
         {
           "any": [],
@@ -797,9 +721,7 @@
           ],
           "impact": null,
           "html": "<span class=\"myds-heading-sm font-semibold text-primary-600 tracking-wide\" aria-label=\"ICTServe (iServe)\">\n            ICTServe\n            <span class=\"sr-only\">(iServe)</span>\n          </span>",
-          "target": [
-            ".myds-heading-sm"
-          ]
+          "target": [".myds-heading-sm"]
         },
         {
           "any": [],
@@ -823,9 +745,7 @@
           ],
           "impact": null,
           "html": "<ul class=\"hidden md:flex gap-6 text-base\" aria-label=\"Main menu\">",
-          "target": [
-            "ul"
-          ]
+          "target": ["ul"]
         },
         {
           "any": [],
@@ -849,9 +769,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>",
-          "target": [
-            ".underline"
-          ]
+          "target": [".underline"]
         },
         {
           "any": [],
@@ -875,9 +793,7 @@
           ],
           "impact": null,
           "html": "<button type=\"button\" class=\"ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600\" aria-label=\"Cari dalam laman (Search)\">",
-          "target": [
-            ".ml-4"
-          ]
+          "target": [".ml-4"]
         },
         {
           "any": [],
@@ -901,9 +817,7 @@
           ],
           "impact": null,
           "html": "<section class=\"relative w-full bg-gradient-to-r from-primary-100 via-white to-primary-50 shadow-inner\" aria-label=\"Page intro\">",
-          "target": [
-            "section"
-          ]
+          "target": ["section"]
         },
         {
           "any": [],
@@ -927,9 +841,7 @@
           ],
           "impact": null,
           "html": "<nav class=\"mt-2 flex flex-wrap items-center text-sm text-txt-black-500\" aria-label=\"Breadcrumb\">",
-          "target": [
-            ".mt-2"
-          ]
+          "target": [".mt-2"]
         },
         {
           "any": [],
@@ -953,9 +865,7 @@
           ],
           "impact": null,
           "html": "<li class=\"text-txt-black-500\" aria-current=\"page\">\n                ServiceDesk ICT\n              </li>",
-          "target": [
-            ".text-txt-black-500[aria-current=\"page\"]"
-          ]
+          "target": [".text-txt-black-500[aria-current=\"page\"]"]
         },
         {
           "any": [],
@@ -979,9 +889,7 @@
           ],
           "impact": null,
           "html": "<div class=\"w-full max-w-xl bg-white rounded-lg shadow-card border border-otl-gray-200 p-8 relative\" aria-labelledby=\"page-title\">",
-          "target": [
-            ".max-w-xl"
-          ]
+          "target": [".max-w-xl"]
         },
         {
           "any": [],
@@ -1005,9 +913,7 @@
           ],
           "impact": null,
           "html": "<span class=\"absolute top-6 right-8 myds-body-sm text-txt-black-500 uppercase tracking-wider select-none\" aria-label=\"Form reference code\">\n          PK.(S).MOTAC.07.(L1)\n        </span>",
-          "target": [
-            ".uppercase"
-          ]
+          "target": [".uppercase"]
         },
         {
           "any": [],
@@ -1031,9 +937,7 @@
           ],
           "impact": null,
           "html": "<form action=\"http://127.0.0.1:8000/public/helpdesk\" method=\"POST\" class=\"flex flex-col gap-5\" autocomplete=\"on\" novalidate=\"\" aria-describedby=\"form-intro\">",
-          "target": [
-            "form"
-          ]
+          "target": ["form"]
         },
         {
           "any": [],
@@ -1057,9 +961,7 @@
           ],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [],
@@ -1083,9 +985,7 @@
           ],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [],
@@ -1109,9 +1009,7 @@
           ],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [],
@@ -1135,9 +1033,7 @@
           ],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [],
@@ -1161,9 +1057,7 @@
           ],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [],
@@ -1187,9 +1081,7 @@
           ],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [],
@@ -1213,9 +1105,7 @@
           ],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         },
         {
           "any": [],
@@ -1239,9 +1129,7 @@
           ],
           "impact": null,
           "html": "<button type=\"submit\" class=\"myds-btn myds-btn-primary px-6 py-2 rounded shadow-button font-semibold text-white bg-primary-600 hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary-600 transition\" aria-label=\"Hantar aduan (Submit complaint)\">",
-          "target": [
-            ".myds-btn"
-          ]
+          "target": [".myds-btn"]
         },
         {
           "any": [],
@@ -1265,9 +1153,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://www.facebook.com/motacmalaysia\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Facebook\"]"
-          ]
+          "target": ["a[aria-label=\"Facebook\"]"]
         },
         {
           "any": [],
@@ -1291,9 +1177,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://twitter.com/motacmalaysia\" aria-label=\"Twitter (X)\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Twitter (X)\"]"
-          ]
+          "target": ["a[aria-label=\"Twitter (X)\"]"]
         },
         {
           "any": [],
@@ -1317,9 +1201,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://instagram.com/motacmalaysia\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Instagram\"]"
-          ]
+          "target": ["a[aria-label=\"Instagram\"]"]
         },
         {
           "any": [],
@@ -1343,9 +1225,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://youtube.com/motacmalaysia\" aria-label=\"YouTube\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"YouTube\"]"
-          ]
+          "target": ["a[aria-label=\"YouTube\"]"]
         },
         {
           "any": [],
@@ -1369,19 +1249,14 @@
           ],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
     {
       "id": "aria-allowed-role",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice"
-      ],
+      "tags": ["cat.aria", "best-practice"],
       "description": "Ensure role attribute has an appropriate value for the element",
       "help": "ARIA role should be appropriate for the element",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-allowed-role?application=playwright",
@@ -1400,9 +1275,7 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"w-full shadow-card bg-white\" role=\"banner\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         },
         {
           "any": [
@@ -1418,22 +1291,14 @@
           "none": [],
           "impact": null,
           "html": "<ol class=\"inline-flex items-center gap-1\" role=\"list\">",
-          "target": [
-            "ol"
-          ]
+          "target": ["ol"]
         }
       ]
     },
     {
       "id": "aria-conditional-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure ARIA attributes are used as described in the specification of the element's role",
       "help": "ARIA attributes must be used as specified for the element's role",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-conditional-attr?application=playwright",
@@ -1452,9 +1317,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"max-w-[1280px] mx-auto flex items-center justify-between px-6 py-3\" aria-label=\"Primary navigation\">",
-          "target": [
-            ".py-3"
-          ]
+          "target": [".py-3"]
         },
         {
           "any": [],
@@ -1470,9 +1333,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"myds-heading-sm font-semibold text-primary-600 tracking-wide\" aria-label=\"ICTServe (iServe)\">\n            ICTServe\n            <span class=\"sr-only\">(iServe)</span>\n          </span>",
-          "target": [
-            ".myds-heading-sm"
-          ]
+          "target": [".myds-heading-sm"]
         },
         {
           "any": [],
@@ -1488,9 +1349,7 @@
           "none": [],
           "impact": null,
           "html": "<ul class=\"hidden md:flex gap-6 text-base\" aria-label=\"Main menu\">",
-          "target": [
-            "ul"
-          ]
+          "target": ["ul"]
         },
         {
           "any": [],
@@ -1506,9 +1365,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>",
-          "target": [
-            ".underline"
-          ]
+          "target": [".underline"]
         },
         {
           "any": [],
@@ -1524,9 +1381,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"button\" class=\"ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600\" aria-label=\"Cari dalam laman (Search)\">",
-          "target": [
-            ".ml-4"
-          ]
+          "target": [".ml-4"]
         },
         {
           "any": [],
@@ -1542,9 +1397,7 @@
           "none": [],
           "impact": null,
           "html": "<section class=\"relative w-full bg-gradient-to-r from-primary-100 via-white to-primary-50 shadow-inner\" aria-label=\"Page intro\">",
-          "target": [
-            "section"
-          ]
+          "target": ["section"]
         },
         {
           "any": [],
@@ -1560,9 +1413,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"mt-2 flex flex-wrap items-center text-sm text-txt-black-500\" aria-label=\"Breadcrumb\">",
-          "target": [
-            ".mt-2"
-          ]
+          "target": [".mt-2"]
         },
         {
           "any": [],
@@ -1578,9 +1429,7 @@
           "none": [],
           "impact": null,
           "html": "<li class=\"text-txt-black-500\" aria-current=\"page\">\n                ServiceDesk ICT\n              </li>",
-          "target": [
-            ".text-txt-black-500[aria-current=\"page\"]"
-          ]
+          "target": [".text-txt-black-500[aria-current=\"page\"]"]
         },
         {
           "any": [],
@@ -1596,9 +1445,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"w-full max-w-xl bg-white rounded-lg shadow-card border border-otl-gray-200 p-8 relative\" aria-labelledby=\"page-title\">",
-          "target": [
-            ".max-w-xl"
-          ]
+          "target": [".max-w-xl"]
         },
         {
           "any": [],
@@ -1614,9 +1461,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"absolute top-6 right-8 myds-body-sm text-txt-black-500 uppercase tracking-wider select-none\" aria-label=\"Form reference code\">\n          PK.(S).MOTAC.07.(L1)\n        </span>",
-          "target": [
-            ".uppercase"
-          ]
+          "target": [".uppercase"]
         },
         {
           "any": [],
@@ -1632,9 +1477,7 @@
           "none": [],
           "impact": null,
           "html": "<form action=\"http://127.0.0.1:8000/public/helpdesk\" method=\"POST\" class=\"flex flex-col gap-5\" autocomplete=\"on\" novalidate=\"\" aria-describedby=\"form-intro\">",
-          "target": [
-            "form"
-          ]
+          "target": ["form"]
         },
         {
           "any": [],
@@ -1650,9 +1493,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [],
@@ -1668,9 +1509,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [],
@@ -1686,9 +1525,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [],
@@ -1704,9 +1541,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [],
@@ -1722,9 +1557,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [],
@@ -1740,9 +1573,7 @@
           "none": [],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [],
@@ -1758,9 +1589,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         },
         {
           "any": [],
@@ -1776,9 +1605,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"submit\" class=\"myds-btn myds-btn-primary px-6 py-2 rounded shadow-button font-semibold text-white bg-primary-600 hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary-600 transition\" aria-label=\"Hantar aduan (Submit complaint)\">",
-          "target": [
-            ".myds-btn"
-          ]
+          "target": [".myds-btn"]
         },
         {
           "any": [],
@@ -1794,9 +1621,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://www.facebook.com/motacmalaysia\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Facebook\"]"
-          ]
+          "target": ["a[aria-label=\"Facebook\"]"]
         },
         {
           "any": [],
@@ -1812,9 +1637,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://twitter.com/motacmalaysia\" aria-label=\"Twitter (X)\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Twitter (X)\"]"
-          ]
+          "target": ["a[aria-label=\"Twitter (X)\"]"]
         },
         {
           "any": [],
@@ -1830,9 +1653,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://instagram.com/motacmalaysia\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Instagram\"]"
-          ]
+          "target": ["a[aria-label=\"Instagram\"]"]
         },
         {
           "any": [],
@@ -1848,9 +1669,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://youtube.com/motacmalaysia\" aria-label=\"YouTube\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"YouTube\"]"
-          ]
+          "target": ["a[aria-label=\"YouTube\"]"]
         },
         {
           "any": [],
@@ -1866,22 +1685,14 @@
           "none": [],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
     {
       "id": "aria-deprecated-role",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure elements do not use deprecated roles",
       "help": "Deprecated ARIA roles must not be used",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-deprecated-role?application=playwright",
@@ -1900,9 +1711,7 @@
           ],
           "impact": null,
           "html": "<header class=\"w-full shadow-card bg-white\" role=\"banner\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         },
         {
           "any": [],
@@ -1918,9 +1727,7 @@
           ],
           "impact": null,
           "html": "<ol class=\"inline-flex items-center gap-1\" role=\"list\">",
-          "target": [
-            "ol"
-          ]
+          "target": ["ol"]
         }
       ]
     },
@@ -1954,9 +1761,7 @@
           "none": [],
           "impact": null,
           "html": "<body class=\"font-sans bg-washed text-black min-h-screen flex flex-col\">",
-          "target": [
-            "body"
-          ]
+          "target": ["body"]
         }
       ]
     },
@@ -2004,9 +1809,7 @@
           "none": [],
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"none\" aria-hidden=\"true\" class=\"text-primary-600\">",
-          "target": [
-            ".ml-4 > svg[width=\"20\"][height=\"20\"]"
-          ]
+          "target": [".ml-4 > svg[width=\"20\"][height=\"20\"]"]
         },
         {
           "any": [],
@@ -2036,9 +1839,7 @@
           "none": [],
           "impact": null,
           "html": "<div aria-hidden=\"true\" class=\"absolute inset-0 z-0 pointer-events-none opacity-20\">",
-          "target": [
-            ".inset-0"
-          ]
+          "target": [".inset-0"]
         },
         {
           "any": [],
@@ -2068,9 +1869,7 @@
           "none": [],
           "impact": null,
           "html": "<li aria-hidden=\"true\" class=\"mx-2 text-gray-400\">/</li>",
-          "target": [
-            ".mx-2"
-          ]
+          "target": [".mx-2"]
         },
         {
           "any": [],
@@ -2100,9 +1899,7 @@
           "none": [],
           "impact": null,
           "html": "<span aria-hidden=\"true\" class=\"text-danger-600\">*</span>",
-          "target": [
-            "#form-intro > .text-danger-600"
-          ]
+          "target": ["#form-intro > .text-danger-600"]
         },
         {
           "any": [],
@@ -2132,9 +1929,7 @@
           "none": [],
           "impact": null,
           "html": "<span aria-hidden=\"true\" class=\"text-danger-600\">*</span>",
-          "target": [
-            "label[for=\"full_name\"] > .text-danger-600"
-          ]
+          "target": ["label[for=\"full_name\"] > .text-danger-600"]
         },
         {
           "any": [],
@@ -2164,9 +1959,7 @@
           "none": [],
           "impact": null,
           "html": "<span aria-hidden=\"true\" class=\"text-danger-600\">*</span>",
-          "target": [
-            "label[for=\"division\"] > .text-danger-600"
-          ]
+          "target": ["label[for=\"division\"] > .text-danger-600"]
         },
         {
           "any": [],
@@ -2196,9 +1989,7 @@
           "none": [],
           "impact": null,
           "html": "<span aria-hidden=\"true\" class=\"text-danger-600\">*</span>",
-          "target": [
-            "label[for=\"email\"] > .text-danger-600"
-          ]
+          "target": ["label[for=\"email\"] > .text-danger-600"]
         },
         {
           "any": [],
@@ -2228,9 +2019,7 @@
           "none": [],
           "impact": null,
           "html": "<span aria-hidden=\"true\" class=\"text-danger-600\">*</span>",
-          "target": [
-            "label[for=\"phone\"] > .text-danger-600"
-          ]
+          "target": ["label[for=\"phone\"] > .text-danger-600"]
         },
         {
           "any": [],
@@ -2260,9 +2049,7 @@
           "none": [],
           "impact": null,
           "html": "<span aria-hidden=\"true\" class=\"text-danger-600\">*</span>",
-          "target": [
-            "label[for=\"damage_type\"] > .text-danger-600"
-          ]
+          "target": ["label[for=\"damage_type\"] > .text-danger-600"]
         },
         {
           "any": [],
@@ -2292,9 +2079,7 @@
           "none": [],
           "impact": null,
           "html": "<span aria-hidden=\"true\" class=\"text-danger-600\">*</span>",
-          "target": [
-            "label[for=\"damage_info\"] > .text-danger-600"
-          ]
+          "target": ["label[for=\"damage_info\"] > .text-danger-600"]
         },
         {
           "any": [],
@@ -2324,9 +2109,7 @@
           "none": [],
           "impact": null,
           "html": "<span aria-hidden=\"true\" class=\"text-danger-600\">*</span>",
-          "target": [
-            "label[for=\"declaration\"] > .text-danger-600"
-          ]
+          "target": ["label[for=\"declaration\"] > .text-danger-600"]
         },
         {
           "any": [],
@@ -2493,13 +2276,7 @@
     {
       "id": "aria-prohibited-attr",
       "impact": "serious",
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure ARIA attributes are not prohibited for an element's role",
       "help": "Elements must only use permitted ARIA attributes",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-prohibited-attr?application=playwright",
@@ -2518,9 +2295,7 @@
           ],
           "impact": null,
           "html": "<nav class=\"max-w-[1280px] mx-auto flex items-center justify-between px-6 py-3\" aria-label=\"Primary navigation\">",
-          "target": [
-            ".py-3"
-          ]
+          "target": [".py-3"]
         },
         {
           "any": [],
@@ -2536,9 +2311,7 @@
           ],
           "impact": null,
           "html": "<ul class=\"hidden md:flex gap-6 text-base\" aria-label=\"Main menu\">",
-          "target": [
-            "ul"
-          ]
+          "target": ["ul"]
         },
         {
           "any": [],
@@ -2554,9 +2327,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>",
-          "target": [
-            ".underline"
-          ]
+          "target": [".underline"]
         },
         {
           "any": [],
@@ -2572,9 +2343,7 @@
           ],
           "impact": null,
           "html": "<button type=\"button\" class=\"ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600\" aria-label=\"Cari dalam laman (Search)\">",
-          "target": [
-            ".ml-4"
-          ]
+          "target": [".ml-4"]
         },
         {
           "any": [],
@@ -2590,9 +2359,7 @@
           ],
           "impact": null,
           "html": "<section class=\"relative w-full bg-gradient-to-r from-primary-100 via-white to-primary-50 shadow-inner\" aria-label=\"Page intro\">",
-          "target": [
-            "section"
-          ]
+          "target": ["section"]
         },
         {
           "any": [],
@@ -2608,9 +2375,7 @@
           ],
           "impact": null,
           "html": "<nav class=\"mt-2 flex flex-wrap items-center text-sm text-txt-black-500\" aria-label=\"Breadcrumb\">",
-          "target": [
-            ".mt-2"
-          ]
+          "target": [".mt-2"]
         },
         {
           "any": [],
@@ -2626,9 +2391,7 @@
           ],
           "impact": null,
           "html": "<li class=\"text-txt-black-500\" aria-current=\"page\">\n                ServiceDesk ICT\n              </li>",
-          "target": [
-            ".text-txt-black-500[aria-current=\"page\"]"
-          ]
+          "target": [".text-txt-black-500[aria-current=\"page\"]"]
         },
         {
           "any": [],
@@ -2644,9 +2407,7 @@
           ],
           "impact": null,
           "html": "<form action=\"http://127.0.0.1:8000/public/helpdesk\" method=\"POST\" class=\"flex flex-col gap-5\" autocomplete=\"on\" novalidate=\"\" aria-describedby=\"form-intro\">",
-          "target": [
-            "form"
-          ]
+          "target": ["form"]
         },
         {
           "any": [],
@@ -2662,9 +2423,7 @@
           ],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [],
@@ -2680,9 +2439,7 @@
           ],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [],
@@ -2698,9 +2455,7 @@
           ],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [],
@@ -2716,9 +2471,7 @@
           ],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [],
@@ -2734,9 +2487,7 @@
           ],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [],
@@ -2752,9 +2503,7 @@
           ],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [],
@@ -2770,9 +2519,7 @@
           ],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         },
         {
           "any": [],
@@ -2788,9 +2535,7 @@
           ],
           "impact": null,
           "html": "<button type=\"submit\" class=\"myds-btn myds-btn-primary px-6 py-2 rounded shadow-button font-semibold text-white bg-primary-600 hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary-600 transition\" aria-label=\"Hantar aduan (Submit complaint)\">",
-          "target": [
-            ".myds-btn"
-          ]
+          "target": [".myds-btn"]
         },
         {
           "any": [],
@@ -2806,9 +2551,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://www.facebook.com/motacmalaysia\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Facebook\"]"
-          ]
+          "target": ["a[aria-label=\"Facebook\"]"]
         },
         {
           "any": [],
@@ -2824,9 +2567,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://twitter.com/motacmalaysia\" aria-label=\"Twitter (X)\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Twitter (X)\"]"
-          ]
+          "target": ["a[aria-label=\"Twitter (X)\"]"]
         },
         {
           "any": [],
@@ -2842,9 +2583,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://instagram.com/motacmalaysia\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Instagram\"]"
-          ]
+          "target": ["a[aria-label=\"Instagram\"]"]
         },
         {
           "any": [],
@@ -2860,9 +2599,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://youtube.com/motacmalaysia\" aria-label=\"YouTube\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"YouTube\"]"
-          ]
+          "target": ["a[aria-label=\"YouTube\"]"]
         },
         {
           "any": [],
@@ -2878,22 +2615,14 @@
           ],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
     {
       "id": "aria-required-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure elements with ARIA roles have all required ARIA attributes",
       "help": "Required ARIA attributes must be provided",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-required-attr?application=playwright",
@@ -2912,9 +2641,7 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"w-full shadow-card bg-white\" role=\"banner\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         },
         {
           "any": [
@@ -2930,22 +2657,14 @@
           "none": [],
           "impact": null,
           "html": "<ol class=\"inline-flex items-center gap-1\" role=\"list\">",
-          "target": [
-            "ol"
-          ]
+          "target": ["ol"]
         }
       ]
     },
     {
       "id": "aria-required-children",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag131",
-        "EN-301-549",
-        "EN-9.1.3.1"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag131", "EN-301-549", "EN-9.1.3.1"],
       "description": "Ensure elements with an ARIA role that require child roles contain them",
       "help": "Certain ARIA roles must contain particular children",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-required-children?application=playwright",
@@ -2964,22 +2683,14 @@
           "none": [],
           "impact": null,
           "html": "<ol class=\"inline-flex items-center gap-1\" role=\"list\">",
-          "target": [
-            "ol"
-          ]
+          "target": ["ol"]
         }
       ]
     },
     {
       "id": "aria-roles",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure all elements with a role attribute use a valid value",
       "help": "ARIA roles used must conform to valid values",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-roles?application=playwright",
@@ -3012,9 +2723,7 @@
           ],
           "impact": null,
           "html": "<header class=\"w-full shadow-card bg-white\" role=\"banner\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         },
         {
           "any": [],
@@ -3044,22 +2753,14 @@
           ],
           "impact": null,
           "html": "<ol class=\"inline-flex items-center gap-1\" role=\"list\">",
-          "target": [
-            "ol"
-          ]
+          "target": ["ol"]
         }
       ]
     },
     {
       "id": "aria-valid-attr-value",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure all ARIA attributes have valid values",
       "help": "ARIA attributes must conform to valid values",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr-value?application=playwright",
@@ -3092,9 +2793,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"max-w-[1280px] mx-auto flex items-center justify-between px-6 py-3\" aria-label=\"Primary navigation\">",
-          "target": [
-            ".py-3"
-          ]
+          "target": [".py-3"]
         },
         {
           "any": [],
@@ -3124,9 +2823,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"myds-heading-sm font-semibold text-primary-600 tracking-wide\" aria-label=\"ICTServe (iServe)\">\n            ICTServe\n            <span class=\"sr-only\">(iServe)</span>\n          </span>",
-          "target": [
-            ".myds-heading-sm"
-          ]
+          "target": [".myds-heading-sm"]
         },
         {
           "any": [],
@@ -3156,9 +2853,7 @@
           "none": [],
           "impact": null,
           "html": "<ul class=\"hidden md:flex gap-6 text-base\" aria-label=\"Main menu\">",
-          "target": [
-            "ul"
-          ]
+          "target": ["ul"]
         },
         {
           "any": [],
@@ -3188,9 +2883,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>",
-          "target": [
-            ".underline"
-          ]
+          "target": [".underline"]
         },
         {
           "any": [],
@@ -3220,9 +2913,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"button\" class=\"ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600\" aria-label=\"Cari dalam laman (Search)\">",
-          "target": [
-            ".ml-4"
-          ]
+          "target": [".ml-4"]
         },
         {
           "any": [],
@@ -3252,9 +2943,7 @@
           "none": [],
           "impact": null,
           "html": "<section class=\"relative w-full bg-gradient-to-r from-primary-100 via-white to-primary-50 shadow-inner\" aria-label=\"Page intro\">",
-          "target": [
-            "section"
-          ]
+          "target": ["section"]
         },
         {
           "any": [],
@@ -3284,9 +2973,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"mt-2 flex flex-wrap items-center text-sm text-txt-black-500\" aria-label=\"Breadcrumb\">",
-          "target": [
-            ".mt-2"
-          ]
+          "target": [".mt-2"]
         },
         {
           "any": [],
@@ -3316,9 +3003,7 @@
           "none": [],
           "impact": null,
           "html": "<li class=\"text-txt-black-500\" aria-current=\"page\">\n                ServiceDesk ICT\n              </li>",
-          "target": [
-            ".text-txt-black-500[aria-current=\"page\"]"
-          ]
+          "target": [".text-txt-black-500[aria-current=\"page\"]"]
         },
         {
           "any": [],
@@ -3348,9 +3033,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"w-full max-w-xl bg-white rounded-lg shadow-card border border-otl-gray-200 p-8 relative\" aria-labelledby=\"page-title\">",
-          "target": [
-            ".max-w-xl"
-          ]
+          "target": [".max-w-xl"]
         },
         {
           "any": [],
@@ -3380,9 +3063,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"absolute top-6 right-8 myds-body-sm text-txt-black-500 uppercase tracking-wider select-none\" aria-label=\"Form reference code\">\n          PK.(S).MOTAC.07.(L1)\n        </span>",
-          "target": [
-            ".uppercase"
-          ]
+          "target": [".uppercase"]
         },
         {
           "any": [],
@@ -3412,9 +3093,7 @@
           "none": [],
           "impact": null,
           "html": "<form action=\"http://127.0.0.1:8000/public/helpdesk\" method=\"POST\" class=\"flex flex-col gap-5\" autocomplete=\"on\" novalidate=\"\" aria-describedby=\"form-intro\">",
-          "target": [
-            "form"
-          ]
+          "target": ["form"]
         },
         {
           "any": [],
@@ -3444,9 +3123,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [],
@@ -3476,9 +3153,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [],
@@ -3508,9 +3183,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [],
@@ -3540,9 +3213,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [],
@@ -3572,9 +3243,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [],
@@ -3604,9 +3273,7 @@
           "none": [],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [],
@@ -3636,9 +3303,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         },
         {
           "any": [],
@@ -3668,9 +3333,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"submit\" class=\"myds-btn myds-btn-primary px-6 py-2 rounded shadow-button font-semibold text-white bg-primary-600 hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary-600 transition\" aria-label=\"Hantar aduan (Submit complaint)\">",
-          "target": [
-            ".myds-btn"
-          ]
+          "target": [".myds-btn"]
         },
         {
           "any": [],
@@ -3700,9 +3363,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://www.facebook.com/motacmalaysia\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Facebook\"]"
-          ]
+          "target": ["a[aria-label=\"Facebook\"]"]
         },
         {
           "any": [],
@@ -3732,9 +3393,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://twitter.com/motacmalaysia\" aria-label=\"Twitter (X)\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Twitter (X)\"]"
-          ]
+          "target": ["a[aria-label=\"Twitter (X)\"]"]
         },
         {
           "any": [],
@@ -3764,9 +3423,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://instagram.com/motacmalaysia\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Instagram\"]"
-          ]
+          "target": ["a[aria-label=\"Instagram\"]"]
         },
         {
           "any": [],
@@ -3796,9 +3453,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://youtube.com/motacmalaysia\" aria-label=\"YouTube\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"YouTube\"]"
-          ]
+          "target": ["a[aria-label=\"YouTube\"]"]
         },
         {
           "any": [],
@@ -3828,22 +3483,14 @@
           "none": [],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
     {
       "id": "aria-valid-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure attributes that begin with aria- are valid ARIA attributes",
       "help": "ARIA attributes must conform to valid names",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr?application=playwright",
@@ -3862,9 +3509,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"max-w-[1280px] mx-auto flex items-center justify-between px-6 py-3\" aria-label=\"Primary navigation\">",
-          "target": [
-            ".py-3"
-          ]
+          "target": [".py-3"]
         },
         {
           "any": [
@@ -3880,9 +3525,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"myds-heading-sm font-semibold text-primary-600 tracking-wide\" aria-label=\"ICTServe (iServe)\">\n            ICTServe\n            <span class=\"sr-only\">(iServe)</span>\n          </span>",
-          "target": [
-            ".myds-heading-sm"
-          ]
+          "target": [".myds-heading-sm"]
         },
         {
           "any": [
@@ -3898,9 +3541,7 @@
           "none": [],
           "impact": null,
           "html": "<ul class=\"hidden md:flex gap-6 text-base\" aria-label=\"Main menu\">",
-          "target": [
-            "ul"
-          ]
+          "target": ["ul"]
         },
         {
           "any": [
@@ -3916,9 +3557,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>",
-          "target": [
-            ".underline"
-          ]
+          "target": [".underline"]
         },
         {
           "any": [
@@ -3934,9 +3573,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"button\" class=\"ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600\" aria-label=\"Cari dalam laman (Search)\">",
-          "target": [
-            ".ml-4"
-          ]
+          "target": [".ml-4"]
         },
         {
           "any": [
@@ -3952,9 +3589,7 @@
           "none": [],
           "impact": null,
           "html": "<section class=\"relative w-full bg-gradient-to-r from-primary-100 via-white to-primary-50 shadow-inner\" aria-label=\"Page intro\">",
-          "target": [
-            "section"
-          ]
+          "target": ["section"]
         },
         {
           "any": [
@@ -3970,9 +3605,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"mt-2 flex flex-wrap items-center text-sm text-txt-black-500\" aria-label=\"Breadcrumb\">",
-          "target": [
-            ".mt-2"
-          ]
+          "target": [".mt-2"]
         },
         {
           "any": [
@@ -3988,9 +3621,7 @@
           "none": [],
           "impact": null,
           "html": "<li class=\"text-txt-black-500\" aria-current=\"page\">\n                ServiceDesk ICT\n              </li>",
-          "target": [
-            ".text-txt-black-500[aria-current=\"page\"]"
-          ]
+          "target": [".text-txt-black-500[aria-current=\"page\"]"]
         },
         {
           "any": [
@@ -4006,9 +3637,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"w-full max-w-xl bg-white rounded-lg shadow-card border border-otl-gray-200 p-8 relative\" aria-labelledby=\"page-title\">",
-          "target": [
-            ".max-w-xl"
-          ]
+          "target": [".max-w-xl"]
         },
         {
           "any": [
@@ -4024,9 +3653,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"absolute top-6 right-8 myds-body-sm text-txt-black-500 uppercase tracking-wider select-none\" aria-label=\"Form reference code\">\n          PK.(S).MOTAC.07.(L1)\n        </span>",
-          "target": [
-            ".uppercase"
-          ]
+          "target": [".uppercase"]
         },
         {
           "any": [
@@ -4042,9 +3669,7 @@
           "none": [],
           "impact": null,
           "html": "<form action=\"http://127.0.0.1:8000/public/helpdesk\" method=\"POST\" class=\"flex flex-col gap-5\" autocomplete=\"on\" novalidate=\"\" aria-describedby=\"form-intro\">",
-          "target": [
-            "form"
-          ]
+          "target": ["form"]
         },
         {
           "any": [
@@ -4060,9 +3685,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [
@@ -4078,9 +3701,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [
@@ -4096,9 +3717,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [
@@ -4114,9 +3733,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [
@@ -4132,9 +3749,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [
@@ -4150,9 +3765,7 @@
           "none": [],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [
@@ -4168,9 +3781,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         },
         {
           "any": [
@@ -4186,9 +3797,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"submit\" class=\"myds-btn myds-btn-primary px-6 py-2 rounded shadow-button font-semibold text-white bg-primary-600 hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary-600 transition\" aria-label=\"Hantar aduan (Submit complaint)\">",
-          "target": [
-            ".myds-btn"
-          ]
+          "target": [".myds-btn"]
         },
         {
           "any": [
@@ -4204,9 +3813,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://www.facebook.com/motacmalaysia\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Facebook\"]"
-          ]
+          "target": ["a[aria-label=\"Facebook\"]"]
         },
         {
           "any": [
@@ -4222,9 +3829,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://twitter.com/motacmalaysia\" aria-label=\"Twitter (X)\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Twitter (X)\"]"
-          ]
+          "target": ["a[aria-label=\"Twitter (X)\"]"]
         },
         {
           "any": [
@@ -4240,9 +3845,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://instagram.com/motacmalaysia\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Instagram\"]"
-          ]
+          "target": ["a[aria-label=\"Instagram\"]"]
         },
         {
           "any": [
@@ -4258,9 +3861,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://youtube.com/motacmalaysia\" aria-label=\"YouTube\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"YouTube\"]"
-          ]
+          "target": ["a[aria-label=\"YouTube\"]"]
         },
         {
           "any": [
@@ -4276,9 +3877,7 @@
           "none": [],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
@@ -4311,9 +3910,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [],
@@ -4329,9 +3926,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"position_grade\" name=\"position_grade\" type=\"text\" maxlength=\"20\" class=\"myds-input w-full\" placeholder=\"Gred Jawatan\" autocomplete=\"organization-title\">",
-          "target": [
-            "#position_grade"
-          ]
+          "target": ["#position_grade"]
         },
         {
           "any": [],
@@ -4347,9 +3942,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [],
@@ -4365,9 +3958,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         }
       ]
     },
@@ -4404,9 +3995,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"button\" class=\"ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600\" aria-label=\"Cari dalam laman (Search)\">",
-          "target": [
-            ".ml-4"
-          ]
+          "target": [".ml-4"]
         },
         {
           "any": [
@@ -4429,9 +4018,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"submit\" class=\"myds-btn myds-btn-primary px-6 py-2 rounded shadow-button font-semibold text-white bg-primary-600 hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary-600 transition\" aria-label=\"Hantar aduan (Submit complaint)\">",
-          "target": [
-            ".myds-btn"
-          ]
+          "target": [".myds-btn"]
         }
       ]
     },
@@ -4468,15 +4055,11 @@
               "relatedNodes": [
                 {
                   "html": "<h1 class=\"myds-heading-lg font-semibold text-txt-black-900 tracking-tight\">\n            Borang Aduan Kerosakan ICT\n          </h1>",
-                  "target": [
-                    "h1"
-                  ]
+                  "target": ["h1"]
                 },
                 {
                   "html": "<h2 id=\"page-title\" class=\"myds-heading-md font-medium text-txt-black-900 mb-6\">\n          Aduan Kerosakan ICT\n        </h2>",
-                  "target": [
-                    "#page-title"
-                  ]
+                  "target": ["#page-title"]
                 }
               ],
               "impact": "serious",
@@ -4488,9 +4071,7 @@
               "relatedNodes": [
                 {
                   "html": "<main id=\"main-content\" class=\"flex-1 flex justify-center items-start bg-washed py-10 px-2\">",
-                  "target": [
-                    "#main-content"
-                  ]
+                  "target": ["#main-content"]
                 }
               ],
               "impact": "serious",
@@ -4501,9 +4082,7 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
@@ -4545,9 +4124,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"#main-content\" class=\"myds-skip-link sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:shadow-context-menu focus:rounded focus:p-4 focus:z-50 text-txt-black-900\">\n      Skip to main content\n    </a>",
-          "target": [
-            ".myds-skip-link"
-          ]
+          "target": [".myds-skip-link"]
         },
         {
           "any": [
@@ -4570,9 +4147,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"myds-heading-sm font-semibold text-primary-600 tracking-wide\" aria-label=\"ICTServe (iServe)\">\n            ICTServe\n            <span class=\"sr-only\">(iServe)</span>\n          </span>",
-          "target": [
-            ".myds-heading-sm"
-          ]
+          "target": [".myds-heading-sm"]
         },
         {
           "any": [
@@ -4595,9 +4170,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"sr-only\">(iServe)</span>",
-          "target": [
-            ".myds-heading-sm > .sr-only"
-          ]
+          "target": [".myds-heading-sm > .sr-only"]
         },
         {
           "any": [
@@ -4620,9 +4193,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Utama\n            </a>",
-          "target": [
-            ".underline-offset-4.text-txt-black-700[href=\"/\"]"
-          ]
+          "target": [".underline-offset-4.text-txt-black-700[href=\"/\"]"]
         },
         {
           "any": [
@@ -4645,9 +4216,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/informasi\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Informasi\n            </a>",
-          "target": [
-            "a[href$=\"informasi\"]"
-          ]
+          "target": ["a[href$=\"informasi\"]"]
         },
         {
           "any": [
@@ -4670,9 +4239,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/muat-turun\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Muat Turun\n            </a>",
-          "target": [
-            "a[href$=\"muat-turun\"]"
-          ]
+          "target": ["a[href$=\"muat-turun\"]"]
         },
         {
           "any": [
@@ -4695,9 +4262,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/direktori\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Direktori\n            </a>",
-          "target": [
-            "a[href$=\"direktori\"]"
-          ]
+          "target": ["a[href$=\"direktori\"]"]
         },
         {
           "any": [
@@ -4720,9 +4285,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>",
-          "target": [
-            ".underline"
-          ]
+          "target": [".underline"]
         },
         {
           "any": [
@@ -4745,9 +4308,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://webmail.mygovuc.gov.my\" target=\"_blank\" rel=\"noopener\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Webmail MyGovUC 3.0\n            </a>",
-          "target": [
-            "a[href$=\"webmail.mygovuc.gov.my\"]"
-          ]
+          "target": ["a[href$=\"webmail.mygovuc.gov.my\"]"]
         },
         {
           "any": [
@@ -4770,9 +4331,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/my-integriti\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              MY Integriti\n            </a>",
-          "target": [
-            "a[href$=\"my-integriti\"]"
-          ]
+          "target": ["a[href$=\"my-integriti\"]"]
         },
         {
           "any": [
@@ -4795,9 +4354,7 @@
           "none": [],
           "impact": null,
           "html": "<h1 class=\"myds-heading-lg font-semibold text-txt-black-900 tracking-tight\">\n            Borang Aduan Kerosakan ICT\n          </h1>",
-          "target": [
-            "h1"
-          ]
+          "target": ["h1"]
         },
         {
           "any": [
@@ -4820,9 +4377,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/\" class=\"hover:underline text-primary-600 focus-visible:outline-primary-600\">\n                  Utama\n                </a>",
-          "target": [
-            ".hover\\:underline.text-primary-600[href=\"/\"]"
-          ]
+          "target": [".hover\\:underline.text-primary-600[href=\"/\"]"]
         },
         {
           "any": [
@@ -4845,9 +4400,7 @@
           "none": [],
           "impact": null,
           "html": "<li class=\"text-txt-black-500\" aria-current=\"page\">\n                ServiceDesk ICT\n              </li>",
-          "target": [
-            ".text-txt-black-500[aria-current=\"page\"]"
-          ]
+          "target": [".text-txt-black-500[aria-current=\"page\"]"]
         },
         {
           "any": [
@@ -4870,9 +4423,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"absolute top-6 right-8 myds-body-sm text-txt-black-500 uppercase tracking-wider select-none\" aria-label=\"Form reference code\">\n          PK.(S).MOTAC.07.(L1)\n        </span>",
-          "target": [
-            ".uppercase"
-          ]
+          "target": [".uppercase"]
         },
         {
           "any": [
@@ -4895,9 +4446,7 @@
           "none": [],
           "impact": null,
           "html": "<h2 id=\"page-title\" class=\"myds-heading-md font-medium text-txt-black-900 mb-6\">\n          Aduan Kerosakan ICT\n        </h2>",
-          "target": [
-            "#page-title"
-          ]
+          "target": ["#page-title"]
         },
         {
           "any": [
@@ -4920,9 +4469,7 @@
           "none": [],
           "impact": null,
           "html": "<p id=\"form-intro\" class=\"myds-body-sm text-txt-black-500 mb-4\">\n            Sila isikan borang aduan di bawah. Medan bertanda\n            <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            adalah wajib diisi.\n          </p>",
-          "target": [
-            "#form-intro"
-          ]
+          "target": ["#form-intro"]
         },
         {
           "any": [
@@ -4945,9 +4492,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"full_name\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Nama Penuh\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"full_name\"]"
-          ]
+          "target": ["label[for=\"full_name\"]"]
         },
         {
           "any": [
@@ -4970,9 +4515,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [
@@ -4995,9 +4538,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"division\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Bahagian\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"division\"]"
-          ]
+          "target": ["label[for=\"division\"]"]
         },
         {
           "any": [
@@ -5020,9 +4561,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [
@@ -5045,9 +4584,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"position_grade\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Gred Jawatan\n            </label>",
-          "target": [
-            "label[for=\"position_grade\"]"
-          ]
+          "target": ["label[for=\"position_grade\"]"]
         },
         {
           "any": [
@@ -5070,9 +4607,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"position_grade\" name=\"position_grade\" type=\"text\" maxlength=\"20\" class=\"myds-input w-full\" placeholder=\"Gred Jawatan\" autocomplete=\"organization-title\">",
-          "target": [
-            "#position_grade"
-          ]
+          "target": ["#position_grade"]
         },
         {
           "any": [
@@ -5095,9 +4630,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"email\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              E-Mel\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"email\"]"
-          ]
+          "target": ["label[for=\"email\"]"]
         },
         {
           "any": [
@@ -5120,9 +4653,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [
@@ -5145,9 +4676,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"phone\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              No. Telefon\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"phone\"]"
-          ]
+          "target": ["label[for=\"phone\"]"]
         },
         {
           "any": [
@@ -5170,9 +4699,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [
@@ -5195,9 +4722,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"damage_type\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Jenis Kerosakan\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"damage_type\"]"
-          ]
+          "target": ["label[for=\"damage_type\"]"]
         },
         {
           "any": [
@@ -5220,9 +4745,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [
@@ -5245,9 +4768,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"damage_info\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Maklumat Kerosakan\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"damage_info\"]"
-          ]
+          "target": ["label[for=\"damage_info\"]"]
         },
         {
           "any": [
@@ -5270,9 +4791,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"declaration\" class=\"myds-body-sm text-txt-black-900\">",
-          "target": [
-            "label[for=\"declaration\"]"
-          ]
+          "target": ["label[for=\"declaration\"]"]
         },
         {
           "any": [
@@ -5295,9 +4814,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"inline-flex items-center gap-2\">",
-          "target": [
-            ".inline-flex.gap-2.items-center"
-          ]
+          "target": [".inline-flex.gap-2.items-center"]
         },
         {
           "any": [
@@ -5320,9 +4837,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"text-txt-black-500 text-sm text-center\">\n          © 2025 Hakcipta Terpelihara Bahagian Pengurusan Maklumat (BPM),\n          Kementerian Pelancongan, Seni dan Budaya Malaysia.\n        </div>",
-          "target": [
-            ".text-center"
-          ]
+          "target": [".text-center"]
         }
       ]
     },
@@ -5357,22 +4872,14 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
     {
       "id": "duplicate-id-aria",
       "impact": null,
-      "tags": [
-        "cat.parsing",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.parsing", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure every id attribute value used in ARIA and in labels is unique",
       "help": "IDs used in ARIA and labels must be unique",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/duplicate-id-aria?application=playwright",
@@ -5391,9 +4898,7 @@
           "none": [],
           "impact": null,
           "html": "<h2 id=\"page-title\" class=\"myds-heading-md font-medium text-txt-black-900 mb-6\">\n          Aduan Kerosakan ICT\n        </h2>",
-          "target": [
-            "#page-title"
-          ]
+          "target": ["#page-title"]
         },
         {
           "any": [
@@ -5409,9 +4914,7 @@
           "none": [],
           "impact": null,
           "html": "<p id=\"form-intro\" class=\"myds-body-sm text-txt-black-500 mb-4\">\n            Sila isikan borang aduan di bawah. Medan bertanda\n            <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            adalah wajib diisi.\n          </p>",
-          "target": [
-            "#form-intro"
-          ]
+          "target": ["#form-intro"]
         },
         {
           "any": [
@@ -5427,9 +4930,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [
@@ -5445,9 +4946,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [
@@ -5463,9 +4962,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"position_grade\" name=\"position_grade\" type=\"text\" maxlength=\"20\" class=\"myds-input w-full\" placeholder=\"Gred Jawatan\" autocomplete=\"organization-title\">",
-          "target": [
-            "#position_grade"
-          ]
+          "target": ["#position_grade"]
         },
         {
           "any": [
@@ -5481,9 +4978,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [
@@ -5499,9 +4994,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [
@@ -5517,9 +5010,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [
@@ -5535,9 +5026,7 @@
           "none": [],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [
@@ -5553,19 +5042,14 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         }
       ]
     },
     {
       "id": "empty-heading",
       "impact": null,
-      "tags": [
-        "cat.name-role-value",
-        "best-practice"
-      ],
+      "tags": ["cat.name-role-value", "best-practice"],
       "description": "Ensure headings have discernible text",
       "help": "Headings should not be empty",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-heading?application=playwright",
@@ -5584,9 +5068,7 @@
           "none": [],
           "impact": null,
           "html": "<h1 class=\"myds-heading-lg font-semibold text-txt-black-900 tracking-tight\">\n            Borang Aduan Kerosakan ICT\n          </h1>",
-          "target": [
-            "h1"
-          ]
+          "target": ["h1"]
         },
         {
           "any": [
@@ -5602,9 +5084,7 @@
           "none": [],
           "impact": null,
           "html": "<h2 id=\"page-title\" class=\"myds-heading-md font-medium text-txt-black-900 mb-6\">\n          Aduan Kerosakan ICT\n        </h2>",
-          "target": [
-            "#page-title"
-          ]
+          "target": ["#page-title"]
         }
       ]
     },
@@ -5634,9 +5114,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"full_name\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Nama Penuh\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"full_name\"]"
-                  ]
+                  "target": ["label[for=\"full_name\"]"]
                 }
               ],
               "impact": "moderate",
@@ -5645,9 +5123,7 @@
           ],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [],
@@ -5659,9 +5135,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"division\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Bahagian\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"division\"]"
-                  ]
+                  "target": ["label[for=\"division\"]"]
                 }
               ],
               "impact": "moderate",
@@ -5670,9 +5144,7 @@
           ],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [],
@@ -5684,9 +5156,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"position_grade\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Gred Jawatan\n            </label>",
-                  "target": [
-                    "label[for=\"position_grade\"]"
-                  ]
+                  "target": ["label[for=\"position_grade\"]"]
                 }
               ],
               "impact": "moderate",
@@ -5695,9 +5165,7 @@
           ],
           "impact": null,
           "html": "<input id=\"position_grade\" name=\"position_grade\" type=\"text\" maxlength=\"20\" class=\"myds-input w-full\" placeholder=\"Gred Jawatan\" autocomplete=\"organization-title\">",
-          "target": [
-            "#position_grade"
-          ]
+          "target": ["#position_grade"]
         },
         {
           "any": [],
@@ -5709,9 +5177,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"email\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              E-Mel\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"email\"]"
-                  ]
+                  "target": ["label[for=\"email\"]"]
                 }
               ],
               "impact": "moderate",
@@ -5720,9 +5186,7 @@
           ],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [],
@@ -5734,9 +5198,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"phone\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              No. Telefon\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"phone\"]"
-                  ]
+                  "target": ["label[for=\"phone\"]"]
                 }
               ],
               "impact": "moderate",
@@ -5745,9 +5207,7 @@
           ],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [],
@@ -5759,9 +5219,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"damage_type\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Jenis Kerosakan\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"damage_type\"]"
-                  ]
+                  "target": ["label[for=\"damage_type\"]"]
                 }
               ],
               "impact": "moderate",
@@ -5770,9 +5228,7 @@
           ],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [],
@@ -5784,9 +5240,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"damage_info\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Maklumat Kerosakan\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"damage_info\"]"
-                  ]
+                  "target": ["label[for=\"damage_info\"]"]
                 }
               ],
               "impact": "moderate",
@@ -5795,9 +5249,7 @@
           ],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [],
@@ -5809,9 +5261,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"declaration\" class=\"myds-body-sm text-txt-black-900\">",
-                  "target": [
-                    "label[for=\"declaration\"]"
-                  ]
+                  "target": ["label[for=\"declaration\"]"]
                 }
               ],
               "impact": "moderate",
@@ -5820,19 +5270,14 @@
           ],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         }
       ]
     },
     {
       "id": "heading-order",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the order of headings is semantically correct",
       "help": "Heading levels should only increase by one",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/heading-order?application=playwright",
@@ -5866,9 +5311,7 @@
           "none": [],
           "impact": null,
           "html": "<h1 class=\"myds-heading-lg font-semibold text-txt-black-900 tracking-tight\">\n            Borang Aduan Kerosakan ICT\n          </h1>",
-          "target": [
-            "h1"
-          ]
+          "target": ["h1"]
         },
         {
           "any": [
@@ -5884,9 +5327,7 @@
           "none": [],
           "impact": null,
           "html": "<h2 id=\"page-title\" class=\"myds-heading-md font-medium text-txt-black-900 mb-6\">\n          Aduan Kerosakan ICT\n        </h2>",
-          "target": [
-            "#page-title"
-          ]
+          "target": ["#page-title"]
         }
       ]
     },
@@ -5921,9 +5362,7 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
@@ -5958,9 +5397,7 @@
           ],
           "impact": null,
           "html": "<html lang=\"en\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
@@ -6006,9 +5443,7 @@
           ],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/malaysia_tourism_ministry_motac.jpeg\" alt=\"MOTAC\" class=\"h-10 w-auto\" onerror=\"this.onerror=null;this.src='https://placehold.co/120x40?text=MOTAC';\">",
-          "target": [
-            ".h-10"
-          ]
+          "target": [".h-10"]
         },
         {
           "any": [
@@ -6032,19 +5467,14 @@
           ],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/bpm-logo-50.png\" alt=\"Bahagian Pengurusan Maklumat\" class=\"h-8 w-auto\">",
-          "target": [
-            ".h-8"
-          ]
+          "target": [".h-8"]
         }
       ]
     },
     {
       "id": "image-redundant-alt",
       "impact": null,
-      "tags": [
-        "cat.text-alternatives",
-        "best-practice"
-      ],
+      "tags": ["cat.text-alternatives", "best-practice"],
       "description": "Ensure image alternative is not repeated as text",
       "help": "Alternative text of images should not be repeated as text",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/image-redundant-alt?application=playwright",
@@ -6063,9 +5493,7 @@
           ],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/malaysia_tourism_ministry_motac.jpeg\" alt=\"MOTAC\" class=\"h-10 w-auto\" onerror=\"this.onerror=null;this.src='https://placehold.co/120x40?text=MOTAC';\">",
-          "target": [
-            ".h-10"
-          ]
+          "target": [".h-10"]
         },
         {
           "any": [],
@@ -6081,19 +5509,14 @@
           ],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/bpm-logo-50.png\" alt=\"Bahagian Pengurusan Maklumat\" class=\"h-8 w-auto\">",
-          "target": [
-            ".h-8"
-          ]
+          "target": [".h-8"]
         }
       ]
     },
     {
       "id": "label-title-only",
       "impact": null,
-      "tags": [
-        "cat.forms",
-        "best-practice"
-      ],
+      "tags": ["cat.forms", "best-practice"],
       "description": "Ensure that every form element has a visible label and is not solely labeled using hidden labels, or the title or aria-describedby attributes",
       "help": "Form elements should have a visible label",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label-title-only?application=playwright",
@@ -6112,9 +5535,7 @@
           ],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [],
@@ -6130,9 +5551,7 @@
           ],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [],
@@ -6148,9 +5567,7 @@
           ],
           "impact": null,
           "html": "<input id=\"position_grade\" name=\"position_grade\" type=\"text\" maxlength=\"20\" class=\"myds-input w-full\" placeholder=\"Gred Jawatan\" autocomplete=\"organization-title\">",
-          "target": [
-            "#position_grade"
-          ]
+          "target": ["#position_grade"]
         },
         {
           "any": [],
@@ -6166,9 +5583,7 @@
           ],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [],
@@ -6184,9 +5599,7 @@
           ],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [],
@@ -6202,9 +5615,7 @@
           ],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [],
@@ -6220,9 +5631,7 @@
           ],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [],
@@ -6238,9 +5647,7 @@
           ],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         }
       ]
     },
@@ -6273,9 +5680,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"full_name\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Nama Penuh\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"full_name\"]"
-                  ]
+                  "target": ["label[for=\"full_name\"]"]
                 }
               ],
               "impact": "critical",
@@ -6301,9 +5706,7 @@
           ],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [
@@ -6315,9 +5718,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"position_grade\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Gred Jawatan\n            </label>",
-                  "target": [
-                    "label[for=\"position_grade\"]"
-                  ]
+                  "target": ["label[for=\"position_grade\"]"]
                 }
               ],
               "impact": "critical",
@@ -6343,9 +5744,7 @@
           ],
           "impact": null,
           "html": "<input id=\"position_grade\" name=\"position_grade\" type=\"text\" maxlength=\"20\" class=\"myds-input w-full\" placeholder=\"Gred Jawatan\" autocomplete=\"organization-title\">",
-          "target": [
-            "#position_grade"
-          ]
+          "target": ["#position_grade"]
         },
         {
           "any": [
@@ -6357,9 +5756,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"email\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              E-Mel\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"email\"]"
-                  ]
+                  "target": ["label[for=\"email\"]"]
                 }
               ],
               "impact": "critical",
@@ -6385,9 +5782,7 @@
           ],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [
@@ -6399,9 +5794,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"phone\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              No. Telefon\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"phone\"]"
-                  ]
+                  "target": ["label[for=\"phone\"]"]
                 }
               ],
               "impact": "critical",
@@ -6427,9 +5820,7 @@
           ],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [
@@ -6441,9 +5832,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"damage_info\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Maklumat Kerosakan\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"damage_info\"]"
-                  ]
+                  "target": ["label[for=\"damage_info\"]"]
                 }
               ],
               "impact": "critical",
@@ -6469,9 +5858,7 @@
           ],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [
@@ -6483,9 +5870,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"declaration\" class=\"myds-body-sm text-txt-black-900\">",
-                  "target": [
-                    "label[for=\"declaration\"]"
-                  ]
+                  "target": ["label[for=\"declaration\"]"]
                 }
               ],
               "impact": "critical",
@@ -6504,19 +5889,14 @@
           ],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         }
       ]
     },
     {
       "id": "landmark-banner-is-top-level",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the banner landmark is at top level",
       "help": "Banner landmark should not be contained in another landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-banner-is-top-level?application=playwright",
@@ -6537,19 +5917,14 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"w-full shadow-card bg-white\" role=\"banner\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         }
       ]
     },
     {
       "id": "landmark-contentinfo-is-top-level",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the contentinfo landmark is at top level",
       "help": "Contentinfo landmark should not be contained in another landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-contentinfo-is-top-level?application=playwright",
@@ -6570,19 +5945,14 @@
           "none": [],
           "impact": null,
           "html": "<footer class=\"w-full bg-white border-t border-otl-gray-200 shadow-inner mt-auto\">",
-          "target": [
-            "footer"
-          ]
+          "target": ["footer"]
         }
       ]
     },
     {
       "id": "landmark-main-is-top-level",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the main landmark is at top level",
       "help": "Main landmark should not be contained in another landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-main-is-top-level?application=playwright",
@@ -6603,19 +5973,14 @@
           "none": [],
           "impact": null,
           "html": "<main id=\"main-content\" class=\"flex-1 flex justify-center items-start bg-washed py-10 px-2\">",
-          "target": [
-            "#main-content"
-          ]
+          "target": ["#main-content"]
         }
       ]
     },
     {
       "id": "landmark-no-duplicate-banner",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the document has at most one banner landmark",
       "help": "Document should not have more than one banner landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-no-duplicate-banner?application=playwright",
@@ -6634,19 +5999,14 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"w-full shadow-card bg-white\" role=\"banner\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         }
       ]
     },
     {
       "id": "landmark-no-duplicate-contentinfo",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the document has at most one contentinfo landmark",
       "help": "Document should not have more than one contentinfo landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-no-duplicate-contentinfo?application=playwright",
@@ -6665,19 +6025,14 @@
           "none": [],
           "impact": null,
           "html": "<footer class=\"w-full bg-white border-t border-otl-gray-200 shadow-inner mt-auto\">",
-          "target": [
-            "footer"
-          ]
+          "target": ["footer"]
         }
       ]
     },
     {
       "id": "landmark-no-duplicate-main",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the document has at most one main landmark",
       "help": "Document should not have more than one main landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-no-duplicate-main?application=playwright",
@@ -6696,19 +6051,14 @@
           "none": [],
           "impact": null,
           "html": "<main id=\"main-content\" class=\"flex-1 flex justify-center items-start bg-washed py-10 px-2\">",
-          "target": [
-            "#main-content"
-          ]
+          "target": ["#main-content"]
         }
       ]
     },
     {
       "id": "landmark-one-main",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the document has a main landmark",
       "help": "Document should have one main landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-one-main?application=playwright",
@@ -6722,9 +6072,7 @@
               "relatedNodes": [
                 {
                   "html": "<main id=\"main-content\" class=\"flex-1 flex justify-center items-start bg-washed py-10 px-2\">",
-                  "target": [
-                    "#main-content"
-                  ]
+                  "target": ["#main-content"]
                 }
               ],
               "impact": "moderate",
@@ -6734,19 +6082,14 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
     {
       "id": "landmark-unique",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure landmarks are unique",
       "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-unique?application=playwright",
@@ -6768,9 +6111,7 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"w-full shadow-card bg-white\" role=\"banner\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         },
         {
           "any": [
@@ -6789,9 +6130,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"max-w-[1280px] mx-auto flex items-center justify-between px-6 py-3\" aria-label=\"Primary navigation\">",
-          "target": [
-            ".py-3"
-          ]
+          "target": [".py-3"]
         },
         {
           "any": [
@@ -6810,9 +6149,7 @@
           "none": [],
           "impact": null,
           "html": "<section class=\"relative w-full bg-gradient-to-r from-primary-100 via-white to-primary-50 shadow-inner\" aria-label=\"Page intro\">",
-          "target": [
-            "section"
-          ]
+          "target": ["section"]
         },
         {
           "any": [
@@ -6831,9 +6168,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"mt-2 flex flex-wrap items-center text-sm text-txt-black-500\" aria-label=\"Breadcrumb\">",
-          "target": [
-            ".mt-2"
-          ]
+          "target": [".mt-2"]
         },
         {
           "any": [
@@ -6852,9 +6187,7 @@
           "none": [],
           "impact": null,
           "html": "<main id=\"main-content\" class=\"flex-1 flex justify-center items-start bg-washed py-10 px-2\">",
-          "target": [
-            "#main-content"
-          ]
+          "target": ["#main-content"]
         },
         {
           "any": [
@@ -6873,9 +6206,7 @@
           "none": [],
           "impact": null,
           "html": "<footer class=\"w-full bg-white border-t border-otl-gray-200 shadow-inner mt-auto\">",
-          "target": [
-            "footer"
-          ]
+          "target": ["footer"]
         }
       ]
     },
@@ -6903,9 +6234,7 @@
               "relatedNodes": [
                 {
                   "html": "<body class=\"font-sans bg-washed text-black min-h-screen flex flex-col\">",
-                  "target": [
-                    "body"
-                  ]
+                  "target": ["body"]
                 }
               ],
               "impact": "serious",
@@ -6916,9 +6245,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"#main-content\" class=\"myds-skip-link sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:shadow-context-menu focus:rounded focus:p-4 focus:z-50 text-txt-black-900\">\n      Skip to main content\n    </a>",
-          "target": [
-            ".myds-skip-link"
-          ]
+          "target": [".myds-skip-link"]
         }
       ]
     },
@@ -6965,9 +6292,7 @@
           ],
           "impact": null,
           "html": "<a href=\"#main-content\" class=\"myds-skip-link sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:shadow-context-menu focus:rounded focus:p-4 focus:z-50 text-txt-black-900\">\n      Skip to main content\n    </a>",
-          "target": [
-            ".myds-skip-link"
-          ]
+          "target": [".myds-skip-link"]
         },
         {
           "any": [
@@ -6991,9 +6316,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Utama\n            </a>",
-          "target": [
-            ".underline-offset-4.text-txt-black-700[href=\"/\"]"
-          ]
+          "target": [".underline-offset-4.text-txt-black-700[href=\"/\"]"]
         },
         {
           "any": [
@@ -7017,9 +6340,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/informasi\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Informasi\n            </a>",
-          "target": [
-            "a[href$=\"informasi\"]"
-          ]
+          "target": ["a[href$=\"informasi\"]"]
         },
         {
           "any": [
@@ -7043,9 +6364,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/muat-turun\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Muat Turun\n            </a>",
-          "target": [
-            "a[href$=\"muat-turun\"]"
-          ]
+          "target": ["a[href$=\"muat-turun\"]"]
         },
         {
           "any": [
@@ -7069,9 +6388,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/direktori\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Direktori\n            </a>",
-          "target": [
-            "a[href$=\"direktori\"]"
-          ]
+          "target": ["a[href$=\"direktori\"]"]
         },
         {
           "any": [
@@ -7095,9 +6412,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>",
-          "target": [
-            ".underline"
-          ]
+          "target": [".underline"]
         },
         {
           "any": [
@@ -7121,9 +6436,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://webmail.mygovuc.gov.my\" target=\"_blank\" rel=\"noopener\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Webmail MyGovUC 3.0\n            </a>",
-          "target": [
-            "a[href$=\"webmail.mygovuc.gov.my\"]"
-          ]
+          "target": ["a[href$=\"webmail.mygovuc.gov.my\"]"]
         },
         {
           "any": [
@@ -7147,9 +6460,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/my-integriti\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              MY Integriti\n            </a>",
-          "target": [
-            "a[href$=\"my-integriti\"]"
-          ]
+          "target": ["a[href$=\"my-integriti\"]"]
         },
         {
           "any": [
@@ -7173,9 +6484,7 @@
           ],
           "impact": null,
           "html": "<a href=\"/\" class=\"hover:underline text-primary-600 focus-visible:outline-primary-600\">\n                  Utama\n                </a>",
-          "target": [
-            ".hover\\:underline.text-primary-600[href=\"/\"]"
-          ]
+          "target": [".hover\\:underline.text-primary-600[href=\"/\"]"]
         },
         {
           "any": [
@@ -7199,9 +6508,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://www.facebook.com/motacmalaysia\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Facebook\"]"
-          ]
+          "target": ["a[aria-label=\"Facebook\"]"]
         },
         {
           "any": [
@@ -7225,9 +6532,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://twitter.com/motacmalaysia\" aria-label=\"Twitter (X)\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Twitter (X)\"]"
-          ]
+          "target": ["a[aria-label=\"Twitter (X)\"]"]
         },
         {
           "any": [
@@ -7251,9 +6556,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://instagram.com/motacmalaysia\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Instagram\"]"
-          ]
+          "target": ["a[aria-label=\"Instagram\"]"]
         },
         {
           "any": [
@@ -7277,9 +6580,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://youtube.com/motacmalaysia\" aria-label=\"YouTube\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"YouTube\"]"
-          ]
+          "target": ["a[aria-label=\"YouTube\"]"]
         }
       ]
     },
@@ -7311,9 +6612,7 @@
           ],
           "impact": null,
           "html": "<ul class=\"hidden md:flex gap-6 text-base\" aria-label=\"Main menu\">",
-          "target": [
-            "ul"
-          ]
+          "target": ["ul"]
         }
       ]
     },
@@ -7345,9 +6644,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Utama\n            </a>\n          </li>",
-          "target": [
-            "ul > li:nth-child(1)"
-          ]
+          "target": ["ul > li:nth-child(1)"]
         },
         {
           "any": [
@@ -7363,9 +6660,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/informasi\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Informasi\n            </a>\n          </li>",
-          "target": [
-            "ul > li:nth-child(2)"
-          ]
+          "target": ["ul > li:nth-child(2)"]
         },
         {
           "any": [
@@ -7381,9 +6676,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/muat-turun\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Muat Turun\n            </a>\n          </li>",
-          "target": [
-            "ul > li:nth-child(3)"
-          ]
+          "target": ["ul > li:nth-child(3)"]
         },
         {
           "any": [
@@ -7399,9 +6692,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/direktori\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Direktori\n            </a>\n          </li>",
-          "target": [
-            "li:nth-child(4)"
-          ]
+          "target": ["li:nth-child(4)"]
         },
         {
           "any": [
@@ -7417,9 +6708,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>\n          </li>",
-          "target": [
-            "li:nth-child(5)"
-          ]
+          "target": ["li:nth-child(5)"]
         },
         {
           "any": [
@@ -7435,9 +6724,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"https://webmail.mygovuc.gov.my\" target=\"_blank\" rel=\"noopener\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Webmail MyGovUC 3.0\n            </a>\n          </li>",
-          "target": [
-            "li:nth-child(6)"
-          ]
+          "target": ["li:nth-child(6)"]
         },
         {
           "any": [
@@ -7453,9 +6740,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/my-integriti\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              MY Integriti\n            </a>\n          </li>",
-          "target": [
-            "li:nth-child(7)"
-          ]
+          "target": ["li:nth-child(7)"]
         },
         {
           "any": [
@@ -7471,9 +6756,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n                <a href=\"/\" class=\"hover:underline text-primary-600 focus-visible:outline-primary-600\">\n                  Utama\n                </a>\n              </li>",
-          "target": [
-            "ol > li:nth-child(1)"
-          ]
+          "target": ["ol > li:nth-child(1)"]
         },
         {
           "any": [
@@ -7489,19 +6772,14 @@
           "none": [],
           "impact": null,
           "html": "<li class=\"text-txt-black-500\" aria-current=\"page\">\n                ServiceDesk ICT\n              </li>",
-          "target": [
-            ".text-txt-black-500[aria-current=\"page\"]"
-          ]
+          "target": [".text-txt-black-500[aria-current=\"page\"]"]
         }
       ]
     },
     {
       "id": "meta-viewport-large",
       "impact": null,
-      "tags": [
-        "cat.sensory-and-visual-cues",
-        "best-practice"
-      ],
+      "tags": ["cat.sensory-and-visual-cues", "best-practice"],
       "description": "Ensure <meta name=\"viewport\"> can scale a significant amount",
       "help": "Users should be able to zoom and scale the text up to 500%",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/meta-viewport-large?application=playwright",
@@ -7520,9 +6798,7 @@
           "none": [],
           "impact": null,
           "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
-          "target": [
-            "meta[name=\"viewport\"]"
-          ]
+          "target": ["meta[name=\"viewport\"]"]
         }
       ]
     },
@@ -7555,9 +6831,7 @@
           "none": [],
           "impact": null,
           "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
-          "target": [
-            "meta[name=\"viewport\"]"
-          ]
+          "target": ["meta[name=\"viewport\"]"]
         }
       ]
     },
@@ -7591,9 +6865,7 @@
           "none": [],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/malaysia_tourism_ministry_motac.jpeg\" alt=\"MOTAC\" class=\"h-10 w-auto\" onerror=\"this.onerror=null;this.src='https://placehold.co/120x40?text=MOTAC';\">",
-          "target": [
-            ".h-10"
-          ]
+          "target": [".h-10"]
         },
         {
           "any": [
@@ -7609,9 +6881,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"button\" class=\"ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600\" aria-label=\"Cari dalam laman (Search)\">",
-          "target": [
-            ".ml-4"
-          ]
+          "target": [".ml-4"]
         },
         {
           "any": [
@@ -7627,9 +6897,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"BPM\">Bahagian Pengurusan Maklumat (BPM)</option>",
-          "target": [
-            "option[value=\"BPM\"]"
-          ]
+          "target": ["option[value=\"BPM\"]"]
         },
         {
           "any": [
@@ -7645,9 +6913,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Kewangan\">Bahagian Kewangan</option>",
-          "target": [
-            "option[value=\"Kewangan\"]"
-          ]
+          "target": ["option[value=\"Kewangan\"]"]
         },
         {
           "any": [
@@ -7663,9 +6929,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Sumber Manusia\">Bahagian Sumber Manusia</option>",
-          "target": [
-            "option[value=\"Sumber Manusia\"]"
-          ]
+          "target": ["option[value=\"Sumber Manusia\"]"]
         },
         {
           "any": [
@@ -7681,9 +6945,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Teknologi Maklumat\">\n                Bahagian Teknologi Maklumat\n              </option>",
-          "target": [
-            "option[value=\"Teknologi Maklumat\"]"
-          ]
+          "target": ["option[value=\"Teknologi Maklumat\"]"]
         },
         {
           "any": [
@@ -7699,9 +6961,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Lain-lain\">Lain-lain</option>",
-          "target": [
-            "#division > option[value=\"Lain-lain\"]"
-          ]
+          "target": ["#division > option[value=\"Lain-lain\"]"]
         },
         {
           "any": [
@@ -7717,9 +6977,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Komputer\">Komputer</option>",
-          "target": [
-            "option[value=\"Komputer\"]"
-          ]
+          "target": ["option[value=\"Komputer\"]"]
         },
         {
           "any": [
@@ -7735,9 +6993,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Pencetak\">Pencetak</option>",
-          "target": [
-            "option[value=\"Pencetak\"]"
-          ]
+          "target": ["option[value=\"Pencetak\"]"]
         },
         {
           "any": [
@@ -7753,9 +7009,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Rangkaian\">Rangkaian</option>",
-          "target": [
-            "option[value=\"Rangkaian\"]"
-          ]
+          "target": ["option[value=\"Rangkaian\"]"]
         },
         {
           "any": [
@@ -7771,9 +7025,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Perisian\">Perisian</option>",
-          "target": [
-            "option[value=\"Perisian\"]"
-          ]
+          "target": ["option[value=\"Perisian\"]"]
         },
         {
           "any": [
@@ -7789,9 +7041,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Lain-lain\">Lain-lain</option>",
-          "target": [
-            "#damage_type > option[value=\"Lain-lain\"]"
-          ]
+          "target": ["#damage_type > option[value=\"Lain-lain\"]"]
         },
         {
           "any": [
@@ -7807,9 +7057,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         },
         {
           "any": [
@@ -7825,9 +7073,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"submit\" class=\"myds-btn myds-btn-primary px-6 py-2 rounded shadow-button font-semibold text-white bg-primary-600 hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary-600 transition\" aria-label=\"Hantar aduan (Submit complaint)\">",
-          "target": [
-            ".myds-btn"
-          ]
+          "target": [".myds-btn"]
         },
         {
           "any": [
@@ -7843,19 +7089,14 @@
           "none": [],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/bpm-logo-50.png\" alt=\"Bahagian Pengurusan Maklumat\" class=\"h-8 w-auto\">",
-          "target": [
-            ".h-8"
-          ]
+          "target": [".h-8"]
         }
       ]
     },
     {
       "id": "page-has-heading-one",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
       "help": "Page should contain a level-one heading",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=playwright",
@@ -7869,9 +7110,7 @@
               "relatedNodes": [
                 {
                   "html": "<h1 class=\"myds-heading-lg font-semibold text-txt-black-900 tracking-tight\">\n            Borang Aduan Kerosakan ICT\n          </h1>",
-                  "target": [
-                    "h1"
-                  ]
+                  "target": ["h1"]
                 }
               ],
               "impact": "moderate",
@@ -7881,19 +7120,14 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
     {
       "id": "region",
       "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "best-practice"
-      ],
+      "tags": ["cat.keyboard", "best-practice"],
       "description": "Ensure all page content is contained by landmarks",
       "help": "All page content should be contained by landmarks",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=playwright",
@@ -7914,9 +7148,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"#main-content\" class=\"myds-skip-link sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:shadow-context-menu focus:rounded focus:p-4 focus:z-50 text-txt-black-900\">\n      Skip to main content\n    </a>",
-          "target": [
-            ".myds-skip-link"
-          ]
+          "target": [".myds-skip-link"]
         },
         {
           "any": [
@@ -7934,9 +7166,7 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"w-full shadow-card bg-white\" role=\"banner\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         },
         {
           "any": [
@@ -7954,9 +7184,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"max-w-[1280px] mx-auto flex items-center justify-between px-6 py-3\" aria-label=\"Primary navigation\">",
-          "target": [
-            ".py-3"
-          ]
+          "target": [".py-3"]
         },
         {
           "any": [
@@ -7974,9 +7202,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-center gap-3\">",
-          "target": [
-            ".py-3 > .gap-3.items-center.flex"
-          ]
+          "target": [".py-3 > .gap-3.items-center.flex"]
         },
         {
           "any": [
@@ -7994,9 +7220,7 @@
           "none": [],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/malaysia_tourism_ministry_motac.jpeg\" alt=\"MOTAC\" class=\"h-10 w-auto\" onerror=\"this.onerror=null;this.src='https://placehold.co/120x40?text=MOTAC';\">",
-          "target": [
-            ".h-10"
-          ]
+          "target": [".h-10"]
         },
         {
           "any": [
@@ -8014,9 +7238,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"myds-heading-sm font-semibold text-primary-600 tracking-wide\" aria-label=\"ICTServe (iServe)\">\n            ICTServe\n            <span class=\"sr-only\">(iServe)</span>\n          </span>",
-          "target": [
-            ".myds-heading-sm"
-          ]
+          "target": [".myds-heading-sm"]
         },
         {
           "any": [
@@ -8034,9 +7256,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"sr-only\">(iServe)</span>",
-          "target": [
-            ".myds-heading-sm > .sr-only"
-          ]
+          "target": [".myds-heading-sm > .sr-only"]
         },
         {
           "any": [
@@ -8054,9 +7274,7 @@
           "none": [],
           "impact": null,
           "html": "<ul class=\"hidden md:flex gap-6 text-base\" aria-label=\"Main menu\">",
-          "target": [
-            "ul"
-          ]
+          "target": ["ul"]
         },
         {
           "any": [
@@ -8074,9 +7292,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Utama\n            </a>\n          </li>",
-          "target": [
-            "ul > li:nth-child(1)"
-          ]
+          "target": ["ul > li:nth-child(1)"]
         },
         {
           "any": [
@@ -8094,9 +7310,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Utama\n            </a>",
-          "target": [
-            ".underline-offset-4.text-txt-black-700[href=\"/\"]"
-          ]
+          "target": [".underline-offset-4.text-txt-black-700[href=\"/\"]"]
         },
         {
           "any": [
@@ -8114,9 +7328,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/informasi\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Informasi\n            </a>\n          </li>",
-          "target": [
-            "ul > li:nth-child(2)"
-          ]
+          "target": ["ul > li:nth-child(2)"]
         },
         {
           "any": [
@@ -8134,9 +7346,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/informasi\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Informasi\n            </a>",
-          "target": [
-            "a[href$=\"informasi\"]"
-          ]
+          "target": ["a[href$=\"informasi\"]"]
         },
         {
           "any": [
@@ -8154,9 +7364,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/muat-turun\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Muat Turun\n            </a>\n          </li>",
-          "target": [
-            "ul > li:nth-child(3)"
-          ]
+          "target": ["ul > li:nth-child(3)"]
         },
         {
           "any": [
@@ -8174,9 +7382,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/muat-turun\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Muat Turun\n            </a>",
-          "target": [
-            "a[href$=\"muat-turun\"]"
-          ]
+          "target": ["a[href$=\"muat-turun\"]"]
         },
         {
           "any": [
@@ -8194,9 +7400,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/direktori\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Direktori\n            </a>\n          </li>",
-          "target": [
-            "li:nth-child(4)"
-          ]
+          "target": ["li:nth-child(4)"]
         },
         {
           "any": [
@@ -8214,9 +7418,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/direktori\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Direktori\n            </a>",
-          "target": [
-            "a[href$=\"direktori\"]"
-          ]
+          "target": ["a[href$=\"direktori\"]"]
         },
         {
           "any": [
@@ -8234,9 +7436,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>\n          </li>",
-          "target": [
-            "li:nth-child(5)"
-          ]
+          "target": ["li:nth-child(5)"]
         },
         {
           "any": [
@@ -8254,9 +7454,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/servicedesk\" class=\"font-semibold text-primary-600 underline underline-offset-8 pointer-events-none cursor-default\" aria-current=\"page\">\n              ServiceDesk ICT\n            </a>",
-          "target": [
-            ".underline"
-          ]
+          "target": [".underline"]
         },
         {
           "any": [
@@ -8274,9 +7472,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"https://webmail.mygovuc.gov.my\" target=\"_blank\" rel=\"noopener\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Webmail MyGovUC 3.0\n            </a>\n          </li>",
-          "target": [
-            "li:nth-child(6)"
-          ]
+          "target": ["li:nth-child(6)"]
         },
         {
           "any": [
@@ -8294,9 +7490,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://webmail.mygovuc.gov.my\" target=\"_blank\" rel=\"noopener\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              Webmail MyGovUC 3.0\n            </a>",
-          "target": [
-            "a[href$=\"webmail.mygovuc.gov.my\"]"
-          ]
+          "target": ["a[href$=\"webmail.mygovuc.gov.my\"]"]
         },
         {
           "any": [
@@ -8314,9 +7508,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n            <a href=\"/my-integriti\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              MY Integriti\n            </a>\n          </li>",
-          "target": [
-            "li:nth-child(7)"
-          ]
+          "target": ["li:nth-child(7)"]
         },
         {
           "any": [
@@ -8334,9 +7526,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/my-integriti\" class=\"focus-visible:outline-primary-600 hover:underline underline-offset-4 transition text-txt-black-700\">\n              MY Integriti\n            </a>",
-          "target": [
-            "a[href$=\"my-integriti\"]"
-          ]
+          "target": ["a[href$=\"my-integriti\"]"]
         },
         {
           "any": [
@@ -8354,9 +7544,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"button\" class=\"ml-4 p-2 rounded-full bg-washed hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-primary-600\" aria-label=\"Cari dalam laman (Search)\">",
-          "target": [
-            ".ml-4"
-          ]
+          "target": [".ml-4"]
         },
         {
           "any": [
@@ -8374,9 +7562,7 @@
           "none": [],
           "impact": null,
           "html": "<section class=\"relative w-full bg-gradient-to-r from-primary-100 via-white to-primary-50 shadow-inner\" aria-label=\"Page intro\">",
-          "target": [
-            "section"
-          ]
+          "target": ["section"]
         },
         {
           "any": [
@@ -8394,9 +7580,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"max-w-[1280px] mx-auto px-6 py-8 flex flex-col gap-2 md:gap-4\">",
-          "target": [
-            ".py-8"
-          ]
+          "target": [".py-8"]
         },
         {
           "any": [
@@ -8414,9 +7598,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"relative z-10\">",
-          "target": [
-            ".z-10"
-          ]
+          "target": [".z-10"]
         },
         {
           "any": [
@@ -8434,9 +7616,7 @@
           "none": [],
           "impact": null,
           "html": "<h1 class=\"myds-heading-lg font-semibold text-txt-black-900 tracking-tight\">\n            Borang Aduan Kerosakan ICT\n          </h1>",
-          "target": [
-            "h1"
-          ]
+          "target": ["h1"]
         },
         {
           "any": [
@@ -8454,9 +7634,7 @@
           "none": [],
           "impact": null,
           "html": "<nav class=\"mt-2 flex flex-wrap items-center text-sm text-txt-black-500\" aria-label=\"Breadcrumb\">",
-          "target": [
-            ".mt-2"
-          ]
+          "target": [".mt-2"]
         },
         {
           "any": [
@@ -8474,9 +7652,7 @@
           "none": [],
           "impact": null,
           "html": "<ol class=\"inline-flex items-center gap-1\" role=\"list\">",
-          "target": [
-            "ol"
-          ]
+          "target": ["ol"]
         },
         {
           "any": [
@@ -8494,9 +7670,7 @@
           "none": [],
           "impact": null,
           "html": "<li>\n                <a href=\"/\" class=\"hover:underline text-primary-600 focus-visible:outline-primary-600\">\n                  Utama\n                </a>\n              </li>",
-          "target": [
-            "ol > li:nth-child(1)"
-          ]
+          "target": ["ol > li:nth-child(1)"]
         },
         {
           "any": [
@@ -8514,9 +7688,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"/\" class=\"hover:underline text-primary-600 focus-visible:outline-primary-600\">\n                  Utama\n                </a>",
-          "target": [
-            ".hover\\:underline.text-primary-600[href=\"/\"]"
-          ]
+          "target": [".hover\\:underline.text-primary-600[href=\"/\"]"]
         },
         {
           "any": [
@@ -8534,9 +7706,7 @@
           "none": [],
           "impact": null,
           "html": "<li class=\"text-txt-black-500\" aria-current=\"page\">\n                ServiceDesk ICT\n              </li>",
-          "target": [
-            ".text-txt-black-500[aria-current=\"page\"]"
-          ]
+          "target": [".text-txt-black-500[aria-current=\"page\"]"]
         },
         {
           "any": [
@@ -8554,9 +7724,7 @@
           "none": [],
           "impact": null,
           "html": "<main id=\"main-content\" class=\"flex-1 flex justify-center items-start bg-washed py-10 px-2\">",
-          "target": [
-            "#main-content"
-          ]
+          "target": ["#main-content"]
         },
         {
           "any": [
@@ -8574,9 +7742,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"w-full max-w-xl bg-white rounded-lg shadow-card border border-otl-gray-200 p-8 relative\" aria-labelledby=\"page-title\">",
-          "target": [
-            ".max-w-xl"
-          ]
+          "target": [".max-w-xl"]
         },
         {
           "any": [
@@ -8594,9 +7760,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"absolute top-6 right-8 myds-body-sm text-txt-black-500 uppercase tracking-wider select-none\" aria-label=\"Form reference code\">\n          PK.(S).MOTAC.07.(L1)\n        </span>",
-          "target": [
-            ".uppercase"
-          ]
+          "target": [".uppercase"]
         },
         {
           "any": [
@@ -8614,9 +7778,7 @@
           "none": [],
           "impact": null,
           "html": "<h2 id=\"page-title\" class=\"myds-heading-md font-medium text-txt-black-900 mb-6\">\n          Aduan Kerosakan ICT\n        </h2>",
-          "target": [
-            "#page-title"
-          ]
+          "target": ["#page-title"]
         },
         {
           "any": [
@@ -8634,9 +7796,7 @@
           "none": [],
           "impact": null,
           "html": "<form action=\"http://127.0.0.1:8000/public/helpdesk\" method=\"POST\" class=\"flex flex-col gap-5\" autocomplete=\"on\" novalidate=\"\" aria-describedby=\"form-intro\">",
-          "target": [
-            "form"
-          ]
+          "target": ["form"]
         },
         {
           "any": [
@@ -8654,9 +7814,7 @@
           "none": [],
           "impact": null,
           "html": "<p id=\"form-intro\" class=\"myds-body-sm text-txt-black-500 mb-4\">\n            Sila isikan borang aduan di bawah. Medan bertanda\n            <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            adalah wajib diisi.\n          </p>",
-          "target": [
-            "#form-intro"
-          ]
+          "target": ["#form-intro"]
         },
         {
           "any": [
@@ -8674,9 +7832,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            "form > div:nth-child(3)"
-          ]
+          "target": ["form > div:nth-child(3)"]
         },
         {
           "any": [
@@ -8694,9 +7850,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"full_name\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Nama Penuh\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"full_name\"]"
-          ]
+          "target": ["label[for=\"full_name\"]"]
         },
         {
           "any": [
@@ -8714,9 +7868,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"full_name\" name=\"full_name\" type=\"text\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"Nama Penuh\" aria-required=\"true\" autocomplete=\"name\">",
-          "target": [
-            "#full_name"
-          ]
+          "target": ["#full_name"]
         },
         {
           "any": [
@@ -8734,9 +7886,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            "div:nth-child(4)"
-          ]
+          "target": ["div:nth-child(4)"]
         },
         {
           "any": [
@@ -8754,9 +7904,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"division\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Bahagian\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"division\"]"
-          ]
+          "target": ["label[for=\"division\"]"]
         },
         {
           "any": [
@@ -8774,9 +7922,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [
@@ -8794,9 +7940,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"BPM\">Bahagian Pengurusan Maklumat (BPM)</option>",
-          "target": [
-            "option[value=\"BPM\"]"
-          ]
+          "target": ["option[value=\"BPM\"]"]
         },
         {
           "any": [
@@ -8814,9 +7958,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Kewangan\">Bahagian Kewangan</option>",
-          "target": [
-            "option[value=\"Kewangan\"]"
-          ]
+          "target": ["option[value=\"Kewangan\"]"]
         },
         {
           "any": [
@@ -8834,9 +7976,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Sumber Manusia\">Bahagian Sumber Manusia</option>",
-          "target": [
-            "option[value=\"Sumber Manusia\"]"
-          ]
+          "target": ["option[value=\"Sumber Manusia\"]"]
         },
         {
           "any": [
@@ -8854,9 +7994,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Teknologi Maklumat\">\n                Bahagian Teknologi Maklumat\n              </option>",
-          "target": [
-            "option[value=\"Teknologi Maklumat\"]"
-          ]
+          "target": ["option[value=\"Teknologi Maklumat\"]"]
         },
         {
           "any": [
@@ -8874,9 +8012,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Lain-lain\">Lain-lain</option>",
-          "target": [
-            "#division > option[value=\"Lain-lain\"]"
-          ]
+          "target": ["#division > option[value=\"Lain-lain\"]"]
         },
         {
           "any": [
@@ -8894,9 +8030,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            "div:nth-child(5)"
-          ]
+          "target": ["div:nth-child(5)"]
         },
         {
           "any": [
@@ -8914,9 +8048,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"position_grade\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Gred Jawatan\n            </label>",
-          "target": [
-            "label[for=\"position_grade\"]"
-          ]
+          "target": ["label[for=\"position_grade\"]"]
         },
         {
           "any": [
@@ -8934,9 +8066,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"position_grade\" name=\"position_grade\" type=\"text\" maxlength=\"20\" class=\"myds-input w-full\" placeholder=\"Gred Jawatan\" autocomplete=\"organization-title\">",
-          "target": [
-            "#position_grade"
-          ]
+          "target": ["#position_grade"]
         },
         {
           "any": [
@@ -8954,9 +8084,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            "form > div:nth-child(6)"
-          ]
+          "target": ["form > div:nth-child(6)"]
         },
         {
           "any": [
@@ -8974,9 +8102,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"email\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              E-Mel\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"email\"]"
-          ]
+          "target": ["label[for=\"email\"]"]
         },
         {
           "any": [
@@ -8994,9 +8120,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"email\" name=\"email\" type=\"email\" required=\"\" maxlength=\"100\" class=\"myds-input w-full\" placeholder=\"nama@motac.gov.my\" aria-required=\"true\" autocomplete=\"email\">",
-          "target": [
-            "#email"
-          ]
+          "target": ["#email"]
         },
         {
           "any": [
@@ -9014,9 +8138,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            "div:nth-child(7)"
-          ]
+          "target": ["div:nth-child(7)"]
         },
         {
           "any": [
@@ -9034,9 +8156,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"phone\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              No. Telefon\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"phone\"]"
-          ]
+          "target": ["label[for=\"phone\"]"]
         },
         {
           "any": [
@@ -9054,9 +8174,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"phone\" name=\"phone\" type=\"tel\" required=\"\" maxlength=\"25\" class=\"myds-input w-full\" placeholder=\"Contoh: 012-3456789\" aria-required=\"true\" autocomplete=\"tel\">",
-          "target": [
-            "#phone"
-          ]
+          "target": ["#phone"]
         },
         {
           "any": [
@@ -9074,9 +8192,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            "div:nth-child(8)"
-          ]
+          "target": ["div:nth-child(8)"]
         },
         {
           "any": [
@@ -9094,9 +8210,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"damage_type\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Jenis Kerosakan\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"damage_type\"]"
-          ]
+          "target": ["label[for=\"damage_type\"]"]
         },
         {
           "any": [
@@ -9114,9 +8228,7 @@
           "none": [],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         },
         {
           "any": [
@@ -9134,9 +8246,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Komputer\">Komputer</option>",
-          "target": [
-            "option[value=\"Komputer\"]"
-          ]
+          "target": ["option[value=\"Komputer\"]"]
         },
         {
           "any": [
@@ -9154,9 +8264,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Pencetak\">Pencetak</option>",
-          "target": [
-            "option[value=\"Pencetak\"]"
-          ]
+          "target": ["option[value=\"Pencetak\"]"]
         },
         {
           "any": [
@@ -9174,9 +8282,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Rangkaian\">Rangkaian</option>",
-          "target": [
-            "option[value=\"Rangkaian\"]"
-          ]
+          "target": ["option[value=\"Rangkaian\"]"]
         },
         {
           "any": [
@@ -9194,9 +8300,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Perisian\">Perisian</option>",
-          "target": [
-            "option[value=\"Perisian\"]"
-          ]
+          "target": ["option[value=\"Perisian\"]"]
         },
         {
           "any": [
@@ -9214,9 +8318,7 @@
           "none": [],
           "impact": null,
           "html": "<option value=\"Lain-lain\">Lain-lain</option>",
-          "target": [
-            "#damage_type > option[value=\"Lain-lain\"]"
-          ]
+          "target": ["#damage_type > option[value=\"Lain-lain\"]"]
         },
         {
           "any": [
@@ -9234,9 +8336,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            "div:nth-child(9)"
-          ]
+          "target": ["div:nth-child(9)"]
         },
         {
           "any": [
@@ -9254,9 +8354,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"damage_info\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Maklumat Kerosakan\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-          "target": [
-            "label[for=\"damage_info\"]"
-          ]
+          "target": ["label[for=\"damage_info\"]"]
         },
         {
           "any": [
@@ -9274,9 +8372,7 @@
           "none": [],
           "impact": null,
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ]
+          "target": ["#damage_info"]
         },
         {
           "any": [
@@ -9294,9 +8390,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            "div:nth-child(10)"
-          ]
+          "target": ["div:nth-child(10)"]
         },
         {
           "any": [
@@ -9314,9 +8408,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-start gap-3\">",
-          "target": [
-            ".items-start.gap-3.flex"
-          ]
+          "target": [".items-start.gap-3.flex"]
         },
         {
           "any": [
@@ -9334,9 +8426,7 @@
           "none": [],
           "impact": null,
           "html": "<input id=\"declaration\" name=\"declaration\" type=\"checkbox\" required=\"\" class=\"myds-checkbox mt-1\" aria-required=\"true\">",
-          "target": [
-            "#declaration"
-          ]
+          "target": ["#declaration"]
         },
         {
           "any": [
@@ -9354,9 +8444,7 @@
           "none": [],
           "impact": null,
           "html": "<label for=\"declaration\" class=\"myds-body-sm text-txt-black-900\">",
-          "target": [
-            "label[for=\"declaration\"]"
-          ]
+          "target": ["label[for=\"declaration\"]"]
         },
         {
           "any": [
@@ -9374,9 +8462,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"mt-6 flex justify-end\">",
-          "target": [
-            ".mt-6"
-          ]
+          "target": [".mt-6"]
         },
         {
           "any": [
@@ -9394,9 +8480,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"submit\" class=\"myds-btn myds-btn-primary px-6 py-2 rounded shadow-button font-semibold text-white bg-primary-600 hover:bg-primary-700 focus-visible:outline-2 focus-visible:outline-primary-600 transition\" aria-label=\"Hantar aduan (Submit complaint)\">",
-          "target": [
-            ".myds-btn"
-          ]
+          "target": [".myds-btn"]
         },
         {
           "any": [
@@ -9414,9 +8498,7 @@
           "none": [],
           "impact": null,
           "html": "<span class=\"inline-flex items-center gap-2\">",
-          "target": [
-            ".inline-flex.gap-2.items-center"
-          ]
+          "target": [".inline-flex.gap-2.items-center"]
         },
         {
           "any": [
@@ -9434,9 +8516,7 @@
           "none": [],
           "impact": null,
           "html": "<footer class=\"w-full bg-white border-t border-otl-gray-200 shadow-inner mt-auto\">",
-          "target": [
-            "footer"
-          ]
+          "target": ["footer"]
         },
         {
           "any": [
@@ -9454,9 +8534,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"max-w-[1280px] mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4\">",
-          "target": [
-            ".py-6"
-          ]
+          "target": [".py-6"]
         },
         {
           "any": [
@@ -9474,9 +8552,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-center gap-2\">\n          \n          <img src=\"http://127.0.0.1:8000/images/bpm-logo-50.png\" alt=\"Bahagian Pengurusan Maklumat\" class=\"h-8 w-auto\">\n        </div>",
-          "target": [
-            ".gap-2.items-center.flex"
-          ]
+          "target": [".gap-2.items-center.flex"]
         },
         {
           "any": [
@@ -9494,9 +8570,7 @@
           "none": [],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/bpm-logo-50.png\" alt=\"Bahagian Pengurusan Maklumat\" class=\"h-8 w-auto\">",
-          "target": [
-            ".h-8"
-          ]
+          "target": [".h-8"]
         },
         {
           "any": [
@@ -9514,9 +8588,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"text-txt-black-500 text-sm text-center\">\n          © 2025 Hakcipta Terpelihara Bahagian Pengurusan Maklumat (BPM),\n          Kementerian Pelancongan, Seni dan Budaya Malaysia.\n        </div>",
-          "target": [
-            ".text-center"
-          ]
+          "target": [".text-center"]
         },
         {
           "any": [
@@ -9534,9 +8606,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-center gap-3\">",
-          "target": [
-            ".py-6 > .gap-3.items-center.flex"
-          ]
+          "target": [".py-6 > .gap-3.items-center.flex"]
         },
         {
           "any": [
@@ -9554,9 +8624,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://www.facebook.com/motacmalaysia\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Facebook\"]"
-          ]
+          "target": ["a[aria-label=\"Facebook\"]"]
         },
         {
           "any": [
@@ -9574,9 +8642,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://twitter.com/motacmalaysia\" aria-label=\"Twitter (X)\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Twitter (X)\"]"
-          ]
+          "target": ["a[aria-label=\"Twitter (X)\"]"]
         },
         {
           "any": [
@@ -9594,9 +8660,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://instagram.com/motacmalaysia\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"Instagram\"]"
-          ]
+          "target": ["a[aria-label=\"Instagram\"]"]
         },
         {
           "any": [
@@ -9614,9 +8678,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://youtube.com/motacmalaysia\" aria-label=\"YouTube\" target=\"_blank\" rel=\"noopener\" class=\"p-2 rounded-full hover:bg-primary-50 focus-visible:outline-primary-600 transition\">",
-          "target": [
-            "a[aria-label=\"YouTube\"]"
-          ]
+          "target": ["a[aria-label=\"YouTube\"]"]
         },
         {
           "any": [
@@ -9634,9 +8696,7 @@
           "none": [],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
@@ -9669,9 +8729,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"division\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Bahagian\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"division\"]"
-                  ]
+                  "target": ["label[for=\"division\"]"]
                 }
               ],
               "impact": "critical",
@@ -9690,9 +8748,7 @@
           ],
           "impact": null,
           "html": "<select id=\"division\" name=\"division\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#division"
-          ]
+          "target": ["#division"]
         },
         {
           "any": [
@@ -9704,9 +8760,7 @@
               "relatedNodes": [
                 {
                   "html": "<label for=\"damage_type\" class=\"mb-1 myds-body-md font-medium text-txt-black-900 block\">\n              Jenis Kerosakan\n              <span aria-hidden=\"true\" class=\"text-danger-600\">*</span>\n            </label>",
-                  "target": [
-                    "label[for=\"damage_type\"]"
-                  ]
+                  "target": ["label[for=\"damage_type\"]"]
                 }
               ],
               "impact": "critical",
@@ -9725,9 +8779,7 @@
           ],
           "impact": null,
           "html": "<select id=\"damage_type\" name=\"damage_type\" required=\"\" class=\"myds-select w-full\" aria-required=\"true\">",
-          "target": [
-            "#damage_type"
-          ]
+          "target": ["#damage_type"]
         }
       ]
     }
@@ -9736,13 +8788,7 @@
     {
       "id": "aria-prohibited-attr",
       "impact": "serious",
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure ARIA attributes are not prohibited for an element's role",
       "help": "Elements must only use permitted ARIA attributes",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-prohibited-attr?application=playwright",
@@ -9757,9 +8803,7 @@
                 "role": null,
                 "nodeName": "span",
                 "messageKey": "noRoleSingular",
-                "prohibited": [
-                  "aria-label"
-                ]
+                "prohibited": ["aria-label"]
               },
               "relatedNodes": [],
               "impact": "serious",
@@ -9768,9 +8812,7 @@
           ],
           "impact": "serious",
           "html": "<span class=\"myds-heading-sm font-semibold text-primary-600 tracking-wide\" aria-label=\"ICTServe (iServe)\">\n            ICTServe\n            <span class=\"sr-only\">(iServe)</span>\n          </span>",
-          "target": [
-            ".myds-heading-sm"
-          ],
+          "target": [".myds-heading-sm"],
           "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on a span with no valid role attribute."
         },
         {
@@ -9783,9 +8825,7 @@
                 "role": null,
                 "nodeName": "div",
                 "messageKey": "noRoleSingular",
-                "prohibited": [
-                  "aria-labelledby"
-                ]
+                "prohibited": ["aria-labelledby"]
               },
               "relatedNodes": [],
               "impact": "serious",
@@ -9794,9 +8834,7 @@
           ],
           "impact": "serious",
           "html": "<div class=\"w-full max-w-xl bg-white rounded-lg shadow-card border border-otl-gray-200 p-8 relative\" aria-labelledby=\"page-title\">",
-          "target": [
-            ".max-w-xl"
-          ],
+          "target": [".max-w-xl"],
           "failureSummary": "Fix all of the following:\n  aria-labelledby attribute is not well supported on a div with no valid role attribute."
         },
         {
@@ -9809,9 +8847,7 @@
                 "role": null,
                 "nodeName": "span",
                 "messageKey": "noRoleSingular",
-                "prohibited": [
-                  "aria-label"
-                ]
+                "prohibited": ["aria-label"]
               },
               "relatedNodes": [],
               "impact": "serious",
@@ -9820,9 +8856,7 @@
           ],
           "impact": "serious",
           "html": "<span class=\"absolute top-6 right-8 myds-body-sm text-txt-black-500 uppercase tracking-wider select-none\" aria-label=\"Form reference code\">\n          PK.(S).MOTAC.07.(L1)\n        </span>",
-          "target": [
-            ".uppercase"
-          ],
+          "target": [".uppercase"],
           "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on a span with no valid role attribute."
         }
       ]
@@ -9858,9 +8892,7 @@
               "relatedNodes": [
                 {
                   "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-                  "target": [
-                    "#damage_info"
-                  ]
+                  "target": ["#damage_info"]
                 }
               ],
               "impact": "serious",
@@ -9871,9 +8903,7 @@
           "none": [],
           "impact": "serious",
           "html": "<textarea id=\"damage_info\" name=\"damage_info\" required=\"\" maxlength=\"1000\" rows=\"4\" class=\"myds-textarea w-full resize-y\" placeholder=\"Maklumat Kerosakan\" aria-required=\"true\"></textarea>",
-          "target": [
-            "#damage_info"
-          ],
+          "target": ["#damage_info"],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
         }
       ]

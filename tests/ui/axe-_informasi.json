@@ -22,10 +22,7 @@
     {
       "id": "accesskeys",
       "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "best-practice"
-      ],
+      "tags": ["cat.keyboard", "best-practice"],
       "description": "Ensure every accesskey attribute value is unique",
       "help": "accesskey attribute value should be unique",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/accesskeys?application=playwright",
@@ -56,13 +53,7 @@
     {
       "id": "aria-braille-equivalent",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure aria-braillelabel and aria-brailleroledescription have a non-braille equivalent",
       "help": "aria-braille attributes must have a non-braille equivalent",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-braille-equivalent?application=playwright",
@@ -89,13 +80,7 @@
     {
       "id": "aria-deprecated-role",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure elements do not use deprecated roles",
       "help": "Deprecated ARIA roles must not be used",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-deprecated-role?application=playwright",
@@ -104,10 +89,7 @@
     {
       "id": "aria-dialog-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice"
-      ],
+      "tags": ["cat.aria", "best-practice"],
       "description": "Ensure every ARIA dialog and alertdialog node has an accessible name",
       "help": "ARIA dialog and alertdialog nodes should have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-dialog-name?application=playwright",
@@ -134,13 +116,7 @@
     {
       "id": "aria-meter-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag111",
-        "EN-301-549",
-        "EN-9.1.1.1"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag111", "EN-301-549", "EN-9.1.1.1"],
       "description": "Ensure every ARIA meter node has an accessible name",
       "help": "ARIA meter nodes must have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-meter-name?application=playwright",
@@ -149,13 +125,7 @@
     {
       "id": "aria-progressbar-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag111",
-        "EN-301-549",
-        "EN-9.1.1.1"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag111", "EN-301-549", "EN-9.1.1.1"],
       "description": "Ensure every ARIA progressbar node has an accessible name",
       "help": "ARIA progressbar nodes must have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-progressbar-name?application=playwright",
@@ -164,13 +134,7 @@
     {
       "id": "aria-required-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure elements with ARIA roles have all required ARIA attributes",
       "help": "Required ARIA attributes must be provided",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-required-attr?application=playwright",
@@ -179,13 +143,7 @@
     {
       "id": "aria-required-children",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag131",
-        "EN-301-549",
-        "EN-9.1.3.1"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag131", "EN-301-549", "EN-9.1.3.1"],
       "description": "Ensure elements with an ARIA role that require child roles contain them",
       "help": "Certain ARIA roles must contain particular children",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-required-children?application=playwright",
@@ -194,13 +152,7 @@
     {
       "id": "aria-required-parent",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag131",
-        "EN-301-549",
-        "EN-9.1.3.1"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag131", "EN-301-549", "EN-9.1.3.1"],
       "description": "Ensure elements with an ARIA role that require parent roles are contained by them",
       "help": "Certain ARIA roles must be contained by particular parents",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-required-parent?application=playwright",
@@ -209,13 +161,7 @@
     {
       "id": "aria-roles",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure all elements with a role attribute use a valid value",
       "help": "ARIA roles used must conform to valid values",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-roles?application=playwright",
@@ -224,10 +170,7 @@
     {
       "id": "aria-text",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice"
-      ],
+      "tags": ["cat.aria", "best-practice"],
       "description": "Ensure role=\"text\" is used on elements with no focusable descendants",
       "help": "\"role=text\" should have no focusable descendants",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-text?application=playwright",
@@ -254,13 +197,7 @@
     {
       "id": "aria-tooltip-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure every ARIA tooltip node has an accessible name",
       "help": "ARIA tooltip nodes must have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-tooltip-name?application=playwright",
@@ -269,10 +206,7 @@
     {
       "id": "aria-treeitem-name",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice"
-      ],
+      "tags": ["cat.aria", "best-practice"],
       "description": "Ensure every ARIA treeitem node has an accessible name",
       "help": "ARIA treeitem nodes should have an accessible name",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-treeitem-name?application=playwright",
@@ -362,13 +296,7 @@
     {
       "id": "duplicate-id-aria",
       "impact": null,
-      "tags": [
-        "cat.parsing",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.parsing", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure every id attribute value used in ARIA and in labels is unique",
       "help": "IDs used in ARIA and labels must be unique",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/duplicate-id-aria?application=playwright",
@@ -377,10 +305,7 @@
     {
       "id": "empty-table-header",
       "impact": null,
-      "tags": [
-        "cat.name-role-value",
-        "best-practice"
-      ],
+      "tags": ["cat.name-role-value", "best-practice"],
       "description": "Ensure table headers have discernible text",
       "help": "Table header text should not be empty",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=playwright",
@@ -423,11 +348,7 @@
     {
       "id": "frame-tested",
       "impact": null,
-      "tags": [
-        "cat.structure",
-        "best-practice",
-        "review-item"
-      ],
+      "tags": ["cat.structure", "best-practice", "review-item"],
       "description": "Ensure <iframe> and <frame> elements contain the axe-core script",
       "help": "Frames should be tested with axe-core",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/frame-tested?application=playwright",
@@ -530,10 +451,7 @@
     {
       "id": "label-title-only",
       "impact": null,
-      "tags": [
-        "cat.forms",
-        "best-practice"
-      ],
+      "tags": ["cat.forms", "best-practice"],
       "description": "Ensure that every form element has a visible label and is not solely labeled using hidden labels, or the title or aria-describedby attributes",
       "help": "Form elements should have a visible label",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label-title-only?application=playwright",
@@ -562,10 +480,7 @@
     {
       "id": "landmark-complementary-is-top-level",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the complementary landmark or aside is at top level",
       "help": "Aside should not be contained in another landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-complementary-is-top-level?application=playwright",
@@ -625,11 +540,7 @@
     {
       "id": "presentation-role-conflict",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice",
-        "ACT"
-      ],
+      "tags": ["cat.aria", "best-practice", "ACT"],
       "description": "Elements marked as presentational should not have global ARIA or tabindex to ensure all screen readers ignore them",
       "help": "Ensure elements marked as presentational are consistently ignored",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/presentation-role-conflict?application=playwright",
@@ -658,10 +569,7 @@
     {
       "id": "scope-attr-valid",
       "impact": null,
-      "tags": [
-        "cat.tables",
-        "best-practice"
-      ],
+      "tags": ["cat.tables", "best-practice"],
       "description": "Ensure the scope attribute is used correctly on tables",
       "help": "scope attribute should be used correctly",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scope-attr-valid?application=playwright",
@@ -767,10 +675,7 @@
     {
       "id": "tabindex",
       "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "best-practice"
-      ],
+      "tags": ["cat.keyboard", "best-practice"],
       "description": "Ensure tabindex attribute values are not greater than 0",
       "help": "Elements should not have tabindex greater than zero",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/tabindex?application=playwright",
@@ -779,10 +684,7 @@
     {
       "id": "table-duplicate-name",
       "impact": null,
-      "tags": [
-        "cat.tables",
-        "best-practice"
-      ],
+      "tags": ["cat.tables", "best-practice"],
       "description": "Ensure the <caption> element does not contain the same text as the summary attribute",
       "help": "Tables should not have the same summary and caption",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/table-duplicate-name?application=playwright",
@@ -886,13 +788,7 @@
     {
       "id": "aria-allowed-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure an element's role supports its ARIA attributes",
       "help": "Elements must only use supported ARIA attributes",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-allowed-attr?application=playwright",
@@ -919,9 +815,7 @@
           ],
           "impact": null,
           "html": "<button @click=\"toggle()\" class=\"p-2 rounded-s txt-black-500 hover:txt-black-700 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors\" :aria-expanded=\"open.toString()\" aria-haspopup=\"true\" :aria-label=\"`Tema semasa: ${getThemeLabel()}. Klik untuk tukar.`\" title=\"Tukar tema\" aria-expanded=\"false\" aria-label=\"Tema semasa: undefined. Klik untuk tukar.\">",
-          "target": [
-            ".p-2"
-          ]
+          "target": [".p-2"]
         },
         {
           "any": [],
@@ -945,19 +839,14 @@
           ],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
     {
       "id": "aria-allowed-role",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice"
-      ],
+      "tags": ["cat.aria", "best-practice"],
       "description": "Ensure role attribute has an appropriate value for the element",
       "help": "ARIA role should be appropriate for the element",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-allowed-role?application=playwright",
@@ -976,9 +865,7 @@
           "none": [],
           "impact": null,
           "html": "<div x-show=\"open\" x-transition:enter=\"transition ease-out duration-200\" x-transition:enter-start=\"opacity-0 scale-95\" x-transition:enter-end=\"opacity-100 scale-100\" x-transition:leave=\"transition ease-in duration-75\" x-transition:leave-start=\"opacity-100 scale-100\" x-transition:leave-end=\"opacity-0 scale-95\" class=\"absolute left-0 origin-top-left mt-2 w-48 rounded-m shadow-context-menu bg-white ring-1 ring-otl-gray-200 focus:outline-none z-50\" role=\"menu\" aria-orientation=\"vertical\" style=\"display: none;\">",
-          "target": [
-            ".absolute"
-          ]
+          "target": [".absolute"]
         },
         {
           "any": [
@@ -994,9 +881,7 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"setTheme('light'); close()\" class=\"flex items-center w-full px-3 py-2 text-sm rounded-s transition-colors focus:outline-none focus:ring-2 focus:ring-fr-primary txt-black-700 hover:bg-black-100\" :class=\"{ 'bg-primary-50 txt-primary': theme === 'light', 'txt-black-700 hover:bg-black-100': theme !== 'light' }\" role=\"menuitem\">",
-          "target": [
-            "button[\\@click=\"setTheme('light'); close()\"]"
-          ]
+          "target": ["button[\\@click=\"setTheme('light'); close()\"]"]
         },
         {
           "any": [
@@ -1012,9 +897,7 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"setTheme('dark'); close()\" class=\"flex items-center w-full px-3 py-2 text-sm rounded-s transition-colors focus:outline-none focus:ring-2 focus:ring-fr-primary txt-black-700 hover:bg-black-100\" :class=\"{ 'bg-primary-50 txt-primary': theme === 'dark', 'txt-black-700 hover:bg-black-100': theme !== 'dark' }\" role=\"menuitem\">",
-          "target": [
-            "button[\\@click=\"setTheme('dark'); close()\"]"
-          ]
+          "target": ["button[\\@click=\"setTheme('dark'); close()\"]"]
         },
         {
           "any": [
@@ -1030,22 +913,14 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"setTheme('system'); close()\" class=\"flex items-center w-full px-3 py-2 text-sm rounded-s transition-colors focus:outline-none focus:ring-2 focus:ring-fr-primary bg-primary-50 txt-primary\" :class=\"{ 'bg-primary-50 txt-primary': theme === 'system', 'txt-black-700 hover:bg-black-100': theme !== 'system' }\" role=\"menuitem\">",
-          "target": [
-            ".bg-primary-50"
-          ]
+          "target": [".bg-primary-50"]
         }
       ]
     },
     {
       "id": "aria-conditional-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure ARIA attributes are used as described in the specification of the element's role",
       "help": "ARIA attributes must be used as specified for the element's role",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-conditional-attr?application=playwright",
@@ -1064,9 +939,7 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"toggle()\" class=\"p-2 rounded-s txt-black-500 hover:txt-black-700 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors\" :aria-expanded=\"open.toString()\" aria-haspopup=\"true\" :aria-label=\"`Tema semasa: ${getThemeLabel()}. Klik untuk tukar.`\" title=\"Tukar tema\" aria-expanded=\"false\" aria-label=\"Tema semasa: undefined. Klik untuk tukar.\">",
-          "target": [
-            ".p-2"
-          ]
+          "target": [".p-2"]
         },
         {
           "any": [],
@@ -1082,9 +955,7 @@
           "none": [],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
@@ -1118,9 +989,7 @@
           "none": [],
           "impact": null,
           "html": "<body class=\"font-sans myds-body bg-bg-white-0 text-txt-black-900 antialiased transition-colors duration-200\">",
-          "target": [
-            "body"
-          ]
+          "target": ["body"]
         }
       ]
     },
@@ -1168,9 +1037,7 @@
           "none": [],
           "impact": null,
           "html": "<svg class=\"w-5 h-5\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\">",
-          "target": [
-            ".w-5"
-          ]
+          "target": [".w-5"]
         },
         {
           "any": [],
@@ -1369,13 +1236,7 @@
     {
       "id": "aria-prohibited-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure ARIA attributes are not prohibited for an element's role",
       "help": "Elements must only use permitted ARIA attributes",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-prohibited-attr?application=playwright",
@@ -1394,9 +1255,7 @@
           ],
           "impact": null,
           "html": "<button @click=\"toggle()\" class=\"p-2 rounded-s txt-black-500 hover:txt-black-700 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors\" :aria-expanded=\"open.toString()\" aria-haspopup=\"true\" :aria-label=\"`Tema semasa: ${getThemeLabel()}. Klik untuk tukar.`\" title=\"Tukar tema\" aria-expanded=\"false\" aria-label=\"Tema semasa: undefined. Klik untuk tukar.\">",
-          "target": [
-            ".p-2"
-          ]
+          "target": [".p-2"]
         },
         {
           "any": [],
@@ -1412,22 +1271,14 @@
           ],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
     {
       "id": "aria-valid-attr-value",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure all ARIA attributes have valid values",
       "help": "ARIA attributes must conform to valid values",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr-value?application=playwright",
@@ -1460,9 +1311,7 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"toggle()\" class=\"p-2 rounded-s txt-black-500 hover:txt-black-700 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors\" :aria-expanded=\"open.toString()\" aria-haspopup=\"true\" :aria-label=\"`Tema semasa: ${getThemeLabel()}. Klik untuk tukar.`\" title=\"Tukar tema\" aria-expanded=\"false\" aria-label=\"Tema semasa: undefined. Klik untuk tukar.\">",
-          "target": [
-            ".p-2"
-          ]
+          "target": [".p-2"]
         },
         {
           "any": [],
@@ -1492,22 +1341,14 @@
           "none": [],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
     {
       "id": "aria-valid-attr",
       "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
+      "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
       "description": "Ensure attributes that begin with aria- are valid ARIA attributes",
       "help": "ARIA attributes must conform to valid names",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr?application=playwright",
@@ -1526,9 +1367,7 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"toggle()\" class=\"p-2 rounded-s txt-black-500 hover:txt-black-700 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors\" :aria-expanded=\"open.toString()\" aria-haspopup=\"true\" :aria-label=\"`Tema semasa: ${getThemeLabel()}. Klik untuk tukar.`\" title=\"Tukar tema\" aria-expanded=\"false\" aria-label=\"Tema semasa: undefined. Klik untuk tukar.\">",
-          "target": [
-            ".p-2"
-          ]
+          "target": [".p-2"]
         },
         {
           "any": [
@@ -1544,9 +1383,7 @@
           "none": [],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
@@ -1590,9 +1427,7 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"toggle()\" class=\"p-2 rounded-s txt-black-500 hover:txt-black-700 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors\" :aria-expanded=\"open.toString()\" aria-haspopup=\"true\" :aria-label=\"`Tema semasa: ${getThemeLabel()}. Klik untuk tukar.`\" title=\"Tukar tema\" aria-expanded=\"false\" aria-label=\"Tema semasa: undefined. Klik untuk tukar.\">",
-          "target": [
-            ".p-2"
-          ]
+          "target": [".p-2"]
         }
       ]
     },
@@ -1629,21 +1464,15 @@
               "relatedNodes": [
                 {
                   "html": "<h1 class=\"myds-heading text-heading-2xs font-medium text-txt-black-900\">\n                  <a href=\"http://127.0.0.1:8000/dashboard\" class=\"hover:text-primary-600 transition-colors\">\n                    iServe\n                  </a>\n                </h1>",
-                  "target": [
-                    ".text-heading-2xs"
-                  ]
+                  "target": [".text-heading-2xs"]
                 },
                 {
                   "html": "<h1>Informasi</h1>",
-                  "target": [
-                    ".container > h1"
-                  ]
+                  "target": [".container > h1"]
                 },
                 {
                   "html": "<h3 class=\"myds-heading text-heading-3xs font-medium text-txt-black-900\">\n                    iServe - ICT Equipment Management\n                  </h3>",
-                  "target": [
-                    ".text-heading-3xs"
-                  ]
+                  "target": [".text-heading-3xs"]
                 },
                 {
                   "html": "<h3 class=\"myds-heading text-heading-4xs font-medium text-txt-black-900 mb-3\">\n                Quick Links\n              </h3>",
@@ -1667,9 +1496,7 @@
               "relatedNodes": [
                 {
                   "html": "<main class=\"flex-1 bg-bg-white-50\" id=\"main-content\">",
-                  "target": [
-                    "#main-content"
-                  ]
+                  "target": ["#main-content"]
                 }
               ],
               "impact": "serious",
@@ -1680,9 +1507,7 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\" x-data=\"themeManager()\" x-bind:class=\"{ 'dark': isDark }\" data-theme=\"light\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
@@ -1724,9 +1549,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/dashboard\" class=\"hover:text-primary-600 transition-colors\">\n                    iServe\n                  </a>",
-          "target": [
-            ".transition-colors.hover\\:text-primary-600"
-          ]
+          "target": [".transition-colors.hover\\:text-primary-600"]
         },
         {
           "any": [
@@ -1749,9 +1572,7 @@
           "none": [],
           "impact": null,
           "html": "<p class=\"text-body-xs text-txt-black-500\">\n                  ICT Equipment Management\n                </p>",
-          "target": [
-            ".border-l > .text-body-xs.text-txt-black-500"
-          ]
+          "target": [".border-l > .text-body-xs.text-txt-black-500"]
         },
         {
           "any": [
@@ -1774,9 +1595,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/login\" class=\"myds-btn-tertiary myds-btn-sm\">\n                    Sign In\n                  </a>",
-          "target": [
-            ".myds-btn-tertiary"
-          ]
+          "target": [".myds-btn-tertiary"]
         },
         {
           "any": [
@@ -1799,9 +1618,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/register\" class=\"myds-btn-primary myds-btn-sm\">\n                    Register\n                  </a>",
-          "target": [
-            ".myds-btn-primary"
-          ]
+          "target": [".myds-btn-primary"]
         },
         {
           "any": [
@@ -1824,9 +1641,7 @@
           "none": [],
           "impact": null,
           "html": "<h1>Informasi</h1>",
-          "target": [
-            ".container > h1"
-          ]
+          "target": [".container > h1"]
         },
         {
           "any": [
@@ -1849,9 +1664,7 @@
           "none": [],
           "impact": null,
           "html": "<p>This is the Informasi page.</p>",
-          "target": [
-            ".container > p"
-          ]
+          "target": [".container > p"]
         },
         {
           "any": [
@@ -1874,9 +1687,7 @@
           "none": [],
           "impact": null,
           "html": "<h3 class=\"myds-heading text-heading-3xs font-medium text-txt-black-900\">\n                    iServe - ICT Equipment Management\n                  </h3>",
-          "target": [
-            ".text-heading-3xs"
-          ]
+          "target": [".text-heading-3xs"]
         },
         {
           "any": [
@@ -1924,9 +1735,7 @@
           "none": [],
           "impact": null,
           "html": "<p class=\"text-body-sm text-txt-black-700 mb-4\">\n                Comprehensive ICT equipment and helpdesk management system\n                designed for government agencies, built following Malaysia\n                Government Design System (MYDS) standards.\n              </p>",
-          "target": [
-            ".mb-4:nth-child(2)"
-          ]
+          "target": [".mb-4:nth-child(2)"]
         },
         {
           "any": [
@@ -1999,9 +1808,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/loan\" class=\"text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline\">\n                    Loan Requests\n                  </a>",
-          "target": [
-            "a[href$=\"loan\"]"
-          ]
+          "target": ["a[href$=\"loan\"]"]
         },
         {
           "any": [
@@ -2024,9 +1831,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/helpdesk\" class=\"text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline\">\n                    Helpdesk\n                  </a>",
-          "target": [
-            "a[href$=\"helpdesk\"]"
-          ]
+          "target": ["a[href$=\"helpdesk\"]"]
         },
         {
           "any": [
@@ -2199,9 +2004,7 @@
           "none": [],
           "impact": null,
           "html": "<p class=\"text-body-xs text-txt-black-500\">",
-          "target": [
-            ".md\\:flex-row > .text-body-xs.text-txt-black-500"
-          ]
+          "target": [".md\\:flex-row > .text-body-xs.text-txt-black-500"]
         },
         {
           "any": [
@@ -2224,9 +2027,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://myds.malaysia.gov.my/\" class=\"text-primary-600 hover:text-primary-700 myds-hover-underline\" target=\"_blank\" rel=\"noopener\">\n                  Malaysia Government Design System (MYDS)\n                </a>",
-          "target": [
-            ".text-primary-600"
-          ]
+          "target": [".text-primary-600"]
         }
       ]
     },
@@ -2261,19 +2062,14 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\" x-data=\"themeManager()\" x-bind:class=\"{ 'dark': isDark }\" data-theme=\"light\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
     {
       "id": "empty-heading",
       "impact": null,
-      "tags": [
-        "cat.name-role-value",
-        "best-practice"
-      ],
+      "tags": ["cat.name-role-value", "best-practice"],
       "description": "Ensure headings have discernible text",
       "help": "Headings should not be empty",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-heading?application=playwright",
@@ -2292,9 +2088,7 @@
           "none": [],
           "impact": null,
           "html": "<h1 class=\"myds-heading text-heading-2xs font-medium text-txt-black-900\">\n                  <a href=\"http://127.0.0.1:8000/dashboard\" class=\"hover:text-primary-600 transition-colors\">\n                    iServe\n                  </a>\n                </h1>",
-          "target": [
-            ".text-heading-2xs"
-          ]
+          "target": [".text-heading-2xs"]
         },
         {
           "any": [
@@ -2310,9 +2104,7 @@
           "none": [],
           "impact": null,
           "html": "<h1>Informasi</h1>",
-          "target": [
-            ".container > h1"
-          ]
+          "target": [".container > h1"]
         },
         {
           "any": [
@@ -2328,9 +2120,7 @@
           "none": [],
           "impact": null,
           "html": "<h3 class=\"myds-heading text-heading-3xs font-medium text-txt-black-900\">\n                    iServe - ICT Equipment Management\n                  </h3>",
-          "target": [
-            ".text-heading-3xs"
-          ]
+          "target": [".text-heading-3xs"]
         },
         {
           "any": [
@@ -2373,10 +2163,7 @@
     {
       "id": "heading-order",
       "impact": "moderate",
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the order of headings is semantically correct",
       "help": "Heading levels should only increase by one",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/heading-order?application=playwright",
@@ -2428,9 +2215,7 @@
           "none": [],
           "impact": null,
           "html": "<h1 class=\"myds-heading text-heading-2xs font-medium text-txt-black-900\">\n                  <a href=\"http://127.0.0.1:8000/dashboard\" class=\"hover:text-primary-600 transition-colors\">\n                    iServe\n                  </a>\n                </h1>",
-          "target": [
-            ".text-heading-2xs"
-          ]
+          "target": [".text-heading-2xs"]
         },
         {
           "any": [
@@ -2446,9 +2231,7 @@
           "none": [],
           "impact": null,
           "html": "<h1>Informasi</h1>",
-          "target": [
-            ".container > h1"
-          ]
+          "target": [".container > h1"]
         },
         {
           "any": [
@@ -2519,9 +2302,7 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\" x-data=\"themeManager()\" x-bind:class=\"{ 'dark': isDark }\" data-theme=\"light\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
@@ -2556,9 +2337,7 @@
           ],
           "impact": null,
           "html": "<html lang=\"en\" x-data=\"themeManager()\" x-bind:class=\"{ 'dark': isDark }\" data-theme=\"light\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
@@ -2604,9 +2383,7 @@
           ],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-10 w-auto\">",
-          "target": [
-            ".h-10"
-          ]
+          "target": [".h-10"]
         },
         {
           "any": [
@@ -2630,19 +2407,14 @@
           ],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-8 w-auto\">",
-          "target": [
-            ".h-8"
-          ]
+          "target": [".h-8"]
         }
       ]
     },
     {
       "id": "image-redundant-alt",
       "impact": null,
-      "tags": [
-        "cat.text-alternatives",
-        "best-practice"
-      ],
+      "tags": ["cat.text-alternatives", "best-practice"],
       "description": "Ensure image alternative is not repeated as text",
       "help": "Alternative text of images should not be repeated as text",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/image-redundant-alt?application=playwright",
@@ -2661,9 +2433,7 @@
           ],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-10 w-auto\">",
-          "target": [
-            ".h-10"
-          ]
+          "target": [".h-10"]
         },
         {
           "any": [],
@@ -2679,19 +2449,14 @@
           ],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-8 w-auto\">",
-          "target": [
-            ".h-8"
-          ]
+          "target": [".h-8"]
         }
       ]
     },
     {
       "id": "landmark-banner-is-top-level",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the banner landmark is at top level",
       "help": "Banner landmark should not be contained in another landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-banner-is-top-level?application=playwright",
@@ -2712,19 +2477,14 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"bg-bg-white-0 border-b border-otl-gray-200 sticky top-0 z-40\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         }
       ]
     },
     {
       "id": "landmark-contentinfo-is-top-level",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the contentinfo landmark is at top level",
       "help": "Contentinfo landmark should not be contained in another landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-contentinfo-is-top-level?application=playwright",
@@ -2745,19 +2505,14 @@
           "none": [],
           "impact": null,
           "html": "<footer class=\"bg-bg-white-0 border-t border-otl-gray-200 mt-auto\">",
-          "target": [
-            "footer"
-          ]
+          "target": ["footer"]
         }
       ]
     },
     {
       "id": "landmark-main-is-top-level",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the main landmark is at top level",
       "help": "Main landmark should not be contained in another landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-main-is-top-level?application=playwright",
@@ -2778,19 +2533,14 @@
           "none": [],
           "impact": null,
           "html": "<main class=\"flex-1 bg-bg-white-50\" id=\"main-content\">",
-          "target": [
-            "#main-content"
-          ]
+          "target": ["#main-content"]
         }
       ]
     },
     {
       "id": "landmark-no-duplicate-banner",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the document has at most one banner landmark",
       "help": "Document should not have more than one banner landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-no-duplicate-banner?application=playwright",
@@ -2809,19 +2559,14 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"bg-bg-white-0 border-b border-otl-gray-200 sticky top-0 z-40\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         }
       ]
     },
     {
       "id": "landmark-no-duplicate-contentinfo",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the document has at most one contentinfo landmark",
       "help": "Document should not have more than one contentinfo landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-no-duplicate-contentinfo?application=playwright",
@@ -2840,19 +2585,14 @@
           "none": [],
           "impact": null,
           "html": "<footer class=\"bg-bg-white-0 border-t border-otl-gray-200 mt-auto\">",
-          "target": [
-            "footer"
-          ]
+          "target": ["footer"]
         }
       ]
     },
     {
       "id": "landmark-no-duplicate-main",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the document has at most one main landmark",
       "help": "Document should not have more than one main landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-no-duplicate-main?application=playwright",
@@ -2871,19 +2611,14 @@
           "none": [],
           "impact": null,
           "html": "<main class=\"flex-1 bg-bg-white-50\" id=\"main-content\">",
-          "target": [
-            "#main-content"
-          ]
+          "target": ["#main-content"]
         }
       ]
     },
     {
       "id": "landmark-one-main",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the document has a main landmark",
       "help": "Document should have one main landmark",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-one-main?application=playwright",
@@ -2897,9 +2632,7 @@
               "relatedNodes": [
                 {
                   "html": "<main class=\"flex-1 bg-bg-white-50\" id=\"main-content\">",
-                  "target": [
-                    "#main-content"
-                  ]
+                  "target": ["#main-content"]
                 }
               ],
               "impact": "moderate",
@@ -2909,19 +2642,14 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\" x-data=\"themeManager()\" x-bind:class=\"{ 'dark': isDark }\" data-theme=\"light\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
     {
       "id": "landmark-unique",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure landmarks are unique",
       "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-unique?application=playwright",
@@ -2943,9 +2671,7 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"bg-bg-white-0 border-b border-otl-gray-200 sticky top-0 z-40\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         },
         {
           "any": [
@@ -2964,9 +2690,7 @@
           "none": [],
           "impact": null,
           "html": "<main class=\"flex-1 bg-bg-white-50\" id=\"main-content\">",
-          "target": [
-            "#main-content"
-          ]
+          "target": ["#main-content"]
         },
         {
           "any": [
@@ -2985,9 +2709,7 @@
           "none": [],
           "impact": null,
           "html": "<footer class=\"bg-bg-white-0 border-t border-otl-gray-200 mt-auto\">",
-          "target": [
-            "footer"
-          ]
+          "target": ["footer"]
         }
       ]
     },
@@ -3028,9 +2750,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://myds.malaysia.gov.my/\" class=\"text-primary-600 hover:text-primary-700 myds-hover-underline\" target=\"_blank\" rel=\"noopener\">\n                  Malaysia Government Design System (MYDS)\n                </a>",
-          "target": [
-            ".text-primary-600"
-          ]
+          "target": [".text-primary-600"]
         }
       ]
     },
@@ -3077,9 +2797,7 @@
           ],
           "impact": null,
           "html": "<a href=\"#main-content\" class=\"myds-skip-link myds-focus-visible\">\n      Skip to main content\n    </a>",
-          "target": [
-            ".myds-skip-link"
-          ]
+          "target": [".myds-skip-link"]
         },
         {
           "any": [
@@ -3103,9 +2821,7 @@
           ],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/dashboard\" class=\"hover:text-primary-600 transition-colors\">\n                    iServe\n                  </a>",
-          "target": [
-            ".transition-colors.hover\\:text-primary-600"
-          ]
+          "target": [".transition-colors.hover\\:text-primary-600"]
         },
         {
           "any": [
@@ -3129,9 +2845,7 @@
           ],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/login\" class=\"myds-btn-tertiary myds-btn-sm\">\n                    Sign In\n                  </a>",
-          "target": [
-            ".myds-btn-tertiary"
-          ]
+          "target": [".myds-btn-tertiary"]
         },
         {
           "any": [
@@ -3155,9 +2869,7 @@
           ],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/register\" class=\"myds-btn-primary myds-btn-sm\">\n                    Register\n                  </a>",
-          "target": [
-            ".myds-btn-primary"
-          ]
+          "target": [".myds-btn-primary"]
         },
         {
           "any": [
@@ -3207,9 +2919,7 @@
           ],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/loan\" class=\"text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline\">\n                    Loan Requests\n                  </a>",
-          "target": [
-            "a[href$=\"loan\"]"
-          ]
+          "target": ["a[href$=\"loan\"]"]
         },
         {
           "any": [
@@ -3233,9 +2943,7 @@
           ],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/helpdesk\" class=\"text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline\">\n                    Helpdesk\n                  </a>",
-          "target": [
-            "a[href$=\"helpdesk\"]"
-          ]
+          "target": ["a[href$=\"helpdesk\"]"]
         },
         {
           "any": [
@@ -3389,9 +3097,7 @@
           ],
           "impact": null,
           "html": "<a href=\"https://myds.malaysia.gov.my/\" class=\"text-primary-600 hover:text-primary-700 myds-hover-underline\" target=\"_blank\" rel=\"noopener\">\n                  Malaysia Government Design System (MYDS)\n                </a>",
-          "target": [
-            ".text-primary-600"
-          ]
+          "target": [".text-primary-600"]
         }
       ]
     },
@@ -3610,10 +3316,7 @@
     {
       "id": "meta-viewport-large",
       "impact": null,
-      "tags": [
-        "cat.sensory-and-visual-cues",
-        "best-practice"
-      ],
+      "tags": ["cat.sensory-and-visual-cues", "best-practice"],
       "description": "Ensure <meta name=\"viewport\"> can scale a significant amount",
       "help": "Users should be able to zoom and scale the text up to 500%",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/meta-viewport-large?application=playwright",
@@ -3632,9 +3335,7 @@
           "none": [],
           "impact": null,
           "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
-          "target": [
-            "meta[name=\"viewport\"]"
-          ]
+          "target": ["meta[name=\"viewport\"]"]
         }
       ]
     },
@@ -3667,9 +3368,7 @@
           "none": [],
           "impact": null,
           "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
-          "target": [
-            "meta[name=\"viewport\"]"
-          ]
+          "target": ["meta[name=\"viewport\"]"]
         }
       ]
     },
@@ -3703,9 +3402,7 @@
           "none": [],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-10 w-auto\">",
-          "target": [
-            ".h-10"
-          ]
+          "target": [".h-10"]
         },
         {
           "any": [
@@ -3721,9 +3418,7 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"toggle()\" class=\"p-2 rounded-s txt-black-500 hover:txt-black-700 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors\" :aria-expanded=\"open.toString()\" aria-haspopup=\"true\" :aria-label=\"`Tema semasa: ${getThemeLabel()}. Klik untuk tukar.`\" title=\"Tukar tema\" aria-expanded=\"false\" aria-label=\"Tema semasa: undefined. Klik untuk tukar.\">",
-          "target": [
-            ".p-2"
-          ]
+          "target": [".p-2"]
         },
         {
           "any": [
@@ -3739,9 +3434,7 @@
           "none": [],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-8 w-auto\">",
-          "target": [
-            ".h-8"
-          ]
+          "target": [".h-8"]
         },
         {
           "any": [
@@ -3757,19 +3450,14 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"button\" x-on:click=\"\n                    darkMode = ! darkMode\n                    localStorage.setItem('darkMode', darkMode)\n                  \" class=\"text-body-xs text-txt-black-500 hover:text-txt-black-700\">",
-          "target": [
-            ".hover\\:text-txt-black-700"
-          ]
+          "target": [".hover\\:text-txt-black-700"]
         }
       ]
     },
     {
       "id": "page-has-heading-one",
       "impact": null,
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
       "help": "Page should contain a level-one heading",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=playwright",
@@ -3783,15 +3471,11 @@
               "relatedNodes": [
                 {
                   "html": "<h1 class=\"myds-heading text-heading-2xs font-medium text-txt-black-900\">\n                  <a href=\"http://127.0.0.1:8000/dashboard\" class=\"hover:text-primary-600 transition-colors\">\n                    iServe\n                  </a>\n                </h1>",
-                  "target": [
-                    ".text-heading-2xs"
-                  ]
+                  "target": [".text-heading-2xs"]
                 },
                 {
                   "html": "<h1>Informasi</h1>",
-                  "target": [
-                    ".container > h1"
-                  ]
+                  "target": [".container > h1"]
                 }
               ],
               "impact": "moderate",
@@ -3801,19 +3485,14 @@
           "none": [],
           "impact": null,
           "html": "<html lang=\"en\" x-data=\"themeManager()\" x-bind:class=\"{ 'dark': isDark }\" data-theme=\"light\">",
-          "target": [
-            "html"
-          ]
+          "target": ["html"]
         }
       ]
     },
     {
       "id": "region",
       "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "best-practice"
-      ],
+      "tags": ["cat.keyboard", "best-practice"],
       "description": "Ensure all page content is contained by landmarks",
       "help": "All page content should be contained by landmarks",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=playwright",
@@ -3834,9 +3513,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"#main-content\" class=\"myds-skip-link myds-focus-visible\">\n      Skip to main content\n    </a>",
-          "target": [
-            ".myds-skip-link"
-          ]
+          "target": [".myds-skip-link"]
         },
         {
           "any": [
@@ -3854,9 +3531,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"min-h-screen flex flex-col\">",
-          "target": [
-            ".min-h-screen"
-          ]
+          "target": [".min-h-screen"]
         },
         {
           "any": [
@@ -3874,9 +3549,7 @@
           "none": [],
           "impact": null,
           "html": "<header class=\"bg-bg-white-0 border-b border-otl-gray-200 sticky top-0 z-40\">",
-          "target": [
-            "header"
-          ]
+          "target": ["header"]
         },
         {
           "any": [
@@ -3894,9 +3567,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"myds-container\">",
-          "target": [
-            "header > .myds-container"
-          ]
+          "target": ["header > .myds-container"]
         },
         {
           "any": [
@@ -3914,9 +3585,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-center justify-between py-4\">",
-          "target": [
-            ".justify-between"
-          ]
+          "target": [".justify-between"]
         },
         {
           "any": [
@@ -3934,9 +3603,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-center space-x-4\">",
-          "target": [
-            ".justify-between > .space-x-4.items-center.flex"
-          ]
+          "target": [".justify-between > .space-x-4.items-center.flex"]
         },
         {
           "any": [
@@ -3954,9 +3621,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex-shrink-0\">\n                <img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-10 w-auto\">\n              </div>",
-          "target": [
-            ".flex-shrink-0"
-          ]
+          "target": [".flex-shrink-0"]
         },
         {
           "any": [
@@ -3974,9 +3639,7 @@
           "none": [],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-10 w-auto\">",
-          "target": [
-            ".h-10"
-          ]
+          "target": [".h-10"]
         },
         {
           "any": [
@@ -3994,9 +3657,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"border-l border-otl-gray-300 pl-4\">",
-          "target": [
-            ".border-l"
-          ]
+          "target": [".border-l"]
         },
         {
           "any": [
@@ -4014,9 +3675,7 @@
           "none": [],
           "impact": null,
           "html": "<h1 class=\"myds-heading text-heading-2xs font-medium text-txt-black-900\">\n                  <a href=\"http://127.0.0.1:8000/dashboard\" class=\"hover:text-primary-600 transition-colors\">\n                    iServe\n                  </a>\n                </h1>",
-          "target": [
-            ".text-heading-2xs"
-          ]
+          "target": [".text-heading-2xs"]
         },
         {
           "any": [
@@ -4034,9 +3693,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/dashboard\" class=\"hover:text-primary-600 transition-colors\">\n                    iServe\n                  </a>",
-          "target": [
-            ".transition-colors.hover\\:text-primary-600"
-          ]
+          "target": [".transition-colors.hover\\:text-primary-600"]
         },
         {
           "any": [
@@ -4054,9 +3711,7 @@
           "none": [],
           "impact": null,
           "html": "<p class=\"text-body-xs text-txt-black-500\">\n                  ICT Equipment Management\n                </p>",
-          "target": [
-            ".border-l > .text-body-xs.text-txt-black-500"
-          ]
+          "target": [".border-l > .text-body-xs.text-txt-black-500"]
         },
         {
           "any": [
@@ -4074,9 +3729,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-center space-x-3\">",
-          "target": [
-            ".space-x-3"
-          ]
+          "target": [".space-x-3"]
         },
         {
           "any": [
@@ -4094,9 +3747,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"relative\" x-data=\"{\n                    open: false,\n                    theme: localStorage.getItem('theme') || 'system',\n                    getThemeIcon() { return this.theme === 'dark' ? 'moon' : (this.theme === 'system' ? 'computer' : 'sun') },\n                    getThemeLabel() { this.theme.charAt(0).toUpperCase() + this.theme.slice(1) },\n                    toggle() { this.open = !this.open },\n                    close() { this.open = false },\n                    setTheme(t) {\n                        this.theme = t;\n                        localStorage.setItem('theme', t);\n                        if (t === 'system') {\n                            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;\n                            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');\n                        } else {\n                            document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');\n                        }\n                    },\n                    init() { this.setTheme(this.theme); }\n             }\" x-init=\"init()\" @keydown.escape=\"close()\" @click.outside=\"close()\">",
-          "target": [
-            ".relative"
-          ]
+          "target": [".relative"]
         },
         {
           "any": [
@@ -4114,9 +3765,7 @@
           "none": [],
           "impact": null,
           "html": "<button @click=\"toggle()\" class=\"p-2 rounded-s txt-black-500 hover:txt-black-700 focus:outline-none focus:ring-2 focus:ring-fr-primary transition-colors\" :aria-expanded=\"open.toString()\" aria-haspopup=\"true\" :aria-label=\"`Tema semasa: ${getThemeLabel()}. Klik untuk tukar.`\" title=\"Tukar tema\" aria-expanded=\"false\" aria-label=\"Tema semasa: undefined. Klik untuk tukar.\">",
-          "target": [
-            ".p-2"
-          ]
+          "target": [".p-2"]
         },
         {
           "any": [
@@ -4134,9 +3783,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-center space-x-2\">",
-          "target": [
-            ".space-x-2"
-          ]
+          "target": [".space-x-2"]
         },
         {
           "any": [
@@ -4154,9 +3801,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/login\" class=\"myds-btn-tertiary myds-btn-sm\">\n                    Sign In\n                  </a>",
-          "target": [
-            ".myds-btn-tertiary"
-          ]
+          "target": [".myds-btn-tertiary"]
         },
         {
           "any": [
@@ -4174,9 +3819,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/register\" class=\"myds-btn-primary myds-btn-sm\">\n                    Register\n                  </a>",
-          "target": [
-            ".myds-btn-primary"
-          ]
+          "target": [".myds-btn-primary"]
         },
         {
           "any": [
@@ -4194,9 +3837,7 @@
           "none": [],
           "impact": null,
           "html": "<main class=\"flex-1 bg-bg-white-50\" id=\"main-content\">",
-          "target": [
-            "#main-content"
-          ]
+          "target": ["#main-content"]
         },
         {
           "any": [
@@ -4214,9 +3855,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"myds-container py-6\">\n                          <div class=\"container\">\n        <h1>Informasi</h1>\n        <p>This is the Informasi page.</p>\n    </div>\n                  </div>",
-          "target": [
-            ".py-6"
-          ]
+          "target": [".py-6"]
         },
         {
           "any": [
@@ -4234,9 +3873,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"container\">\n        <h1>Informasi</h1>\n        <p>This is the Informasi page.</p>\n    </div>",
-          "target": [
-            ".container"
-          ]
+          "target": [".container"]
         },
         {
           "any": [
@@ -4254,9 +3891,7 @@
           "none": [],
           "impact": null,
           "html": "<h1>Informasi</h1>",
-          "target": [
-            ".container > h1"
-          ]
+          "target": [".container > h1"]
         },
         {
           "any": [
@@ -4274,9 +3909,7 @@
           "none": [],
           "impact": null,
           "html": "<p>This is the Informasi page.</p>",
-          "target": [
-            ".container > p"
-          ]
+          "target": [".container > p"]
         },
         {
           "any": [
@@ -4294,9 +3927,7 @@
           "none": [],
           "impact": null,
           "html": "<footer class=\"bg-bg-white-0 border-t border-otl-gray-200 mt-auto\">",
-          "target": [
-            "footer"
-          ]
+          "target": ["footer"]
         },
         {
           "any": [
@@ -4314,9 +3945,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"myds-container py-8\">",
-          "target": [
-            ".py-8"
-          ]
+          "target": [".py-8"]
         },
         {
           "any": [
@@ -4334,9 +3963,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"myds-grid\">",
-          "target": [
-            ".myds-grid"
-          ]
+          "target": [".myds-grid"]
         },
         {
           "any": [
@@ -4354,9 +3981,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"col-span-4 tablet:col-span-6 desktop:col-span-8\">",
-          "target": [
-            ".tablet\\:col-span-6"
-          ]
+          "target": [".tablet\\:col-span-6"]
         },
         {
           "any": [
@@ -4374,9 +3999,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex items-center space-x-4 mb-4\">",
-          "target": [
-            ".mb-4.space-x-4.items-center"
-          ]
+          "target": [".mb-4.space-x-4.items-center"]
         },
         {
           "any": [
@@ -4394,9 +4017,7 @@
           "none": [],
           "impact": null,
           "html": "<img src=\"http://127.0.0.1:8000/images/jata-negara.svg\" alt=\"Jata Negara Malaysia\" class=\"h-8 w-auto\">",
-          "target": [
-            ".h-8"
-          ]
+          "target": [".h-8"]
         },
         {
           "any": [
@@ -4414,9 +4035,7 @@
           "none": [],
           "impact": null,
           "html": "<div>",
-          "target": [
-            ".mb-4.space-x-4.items-center > div"
-          ]
+          "target": [".mb-4.space-x-4.items-center > div"]
         },
         {
           "any": [
@@ -4434,9 +4053,7 @@
           "none": [],
           "impact": null,
           "html": "<h3 class=\"myds-heading text-heading-3xs font-medium text-txt-black-900\">\n                    iServe - ICT Equipment Management\n                  </h3>",
-          "target": [
-            ".text-heading-3xs"
-          ]
+          "target": [".text-heading-3xs"]
         },
         {
           "any": [
@@ -4474,9 +4091,7 @@
           "none": [],
           "impact": null,
           "html": "<p class=\"text-body-sm text-txt-black-700 mb-4\">\n                Comprehensive ICT equipment and helpdesk management system\n                designed for government agencies, built following Malaysia\n                Government Design System (MYDS) standards.\n              </p>",
-          "target": [
-            ".mb-4:nth-child(2)"
-          ]
+          "target": [".mb-4:nth-child(2)"]
         },
         {
           "any": [
@@ -4614,9 +4229,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/loan\" class=\"text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline\">\n                    Loan Requests\n                  </a>",
-          "target": [
-            "a[href$=\"loan\"]"
-          ]
+          "target": ["a[href$=\"loan\"]"]
         },
         {
           "any": [
@@ -4654,9 +4267,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"http://127.0.0.1:8000/helpdesk\" class=\"text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline\">\n                    Helpdesk\n                  </a>",
-          "target": [
-            "a[href$=\"helpdesk\"]"
-          ]
+          "target": ["a[href$=\"helpdesk\"]"]
         },
         {
           "any": [
@@ -4934,9 +4545,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"border-t border-otl-gray-200 pt-6 mt-8\">",
-          "target": [
-            ".pt-6"
-          ]
+          "target": [".pt-6"]
         },
         {
           "any": [
@@ -4954,9 +4563,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"flex flex-col md:flex-row md:items-center md:justify-between\">",
-          "target": [
-            ".md\\:flex-row"
-          ]
+          "target": [".md\\:flex-row"]
         },
         {
           "any": [
@@ -4974,9 +4581,7 @@
           "none": [],
           "impact": null,
           "html": "<p class=\"text-body-xs text-txt-black-500\">",
-          "target": [
-            ".md\\:flex-row > .text-body-xs.text-txt-black-500"
-          ]
+          "target": [".md\\:flex-row > .text-body-xs.text-txt-black-500"]
         },
         {
           "any": [
@@ -4994,9 +4599,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"https://myds.malaysia.gov.my/\" class=\"text-primary-600 hover:text-primary-700 myds-hover-underline\" target=\"_blank\" rel=\"noopener\">\n                  Malaysia Government Design System (MYDS)\n                </a>",
-          "target": [
-            ".text-primary-600"
-          ]
+          "target": [".text-primary-600"]
         },
         {
           "any": [
@@ -5014,9 +4617,7 @@
           "none": [],
           "impact": null,
           "html": "<div class=\"mt-4 md:mt-0 flex items-center space-x-4\">",
-          "target": [
-            ".mt-4"
-          ]
+          "target": [".mt-4"]
         },
         {
           "any": [
@@ -5034,9 +4635,7 @@
           "none": [],
           "impact": null,
           "html": "<button type=\"button\" x-on:click=\"\n                    darkMode = ! darkMode\n                    localStorage.setItem('darkMode', darkMode)\n                  \" class=\"text-body-xs text-txt-black-500 hover:text-txt-black-700\">",
-          "target": [
-            ".hover\\:text-txt-black-700"
-          ]
+          "target": [".hover\\:text-txt-black-700"]
         },
         {
           "any": [
@@ -5054,9 +4653,7 @@
           "none": [],
           "impact": null,
           "html": "<span x-text=\"darkMode ? 'Light Mode' : 'Dark Mode'\"></span>",
-          "target": [
-            ".hover\\:text-txt-black-700 > span"
-          ]
+          "target": [".hover\\:text-txt-black-700 > span"]
         },
         {
           "any": [
@@ -5074,9 +4671,7 @@
           "none": [],
           "impact": null,
           "html": "<div id=\"toast-container\" class=\"fixed bottom-6 right-6 space-y-3 z-50 pointer-events-none\" x-data=\"toastManager()\">",
-          "target": [
-            "#toast-container"
-          ]
+          "target": ["#toast-container"]
         },
         {
           "any": [
@@ -5094,19 +4689,14 @@
           "none": [],
           "impact": null,
           "html": "<div aria-live=\"polite\" aria-atomic=\"true\" class=\"sr-only\" id=\"theme-announcer\"></div>",
-          "target": [
-            "#theme-announcer"
-          ]
+          "target": ["#theme-announcer"]
         }
       ]
     },
     {
       "id": "skip-link",
       "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "best-practice"
-      ],
+      "tags": ["cat.keyboard", "best-practice"],
       "description": "Ensure all skip links have a focusable target",
       "help": "The skip-link target should exist and be focusable",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/skip-link?application=playwright",
@@ -5125,9 +4715,7 @@
           "none": [],
           "impact": null,
           "html": "<a href=\"#main-content\" class=\"myds-skip-link myds-focus-visible\">\n      Skip to main content\n    </a>",
-          "target": [
-            ".myds-skip-link"
-          ]
+          "target": [".myds-skip-link"]
         }
       ]
     }
@@ -5211,9 +4799,7 @@
           "none": [],
           "impact": "critical",
           "html": "<button type=\"button\" x-on:click=\"\n                    darkMode = ! darkMode\n                    localStorage.setItem('darkMode', darkMode)\n                  \" class=\"text-body-xs text-txt-black-500 hover:text-txt-black-700\">",
-          "target": [
-            ".hover\\:text-txt-black-700"
-          ],
+          "target": [".hover\\:text-txt-black-700"],
           "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
         }
       ]
@@ -5221,10 +4807,7 @@
     {
       "id": "heading-order",
       "impact": "moderate",
-      "tags": [
-        "cat.semantics",
-        "best-practice"
-      ],
+      "tags": ["cat.semantics", "best-practice"],
       "description": "Ensure the order of headings is semantically correct",
       "help": "Heading levels should only increase by one",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/heading-order?application=playwright",
@@ -5243,9 +4826,7 @@
           "none": [],
           "impact": "moderate",
           "html": "<h3 class=\"myds-heading text-heading-3xs font-medium text-txt-black-900\">\n                    iServe - ICT Equipment Management\n                  </h3>",
-          "target": [
-            ".text-heading-3xs"
-          ],
+          "target": [".text-heading-3xs"],
           "failureSummary": "Fix any of the following:\n  Heading order invalid"
         }
       ]
