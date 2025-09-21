@@ -20,7 +20,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 ### 1.1 Main Entry & Welcome
 
 - [ ] `resources/views/welcome.blade.php` — Full MYDS conversion (layout, navbar, skiplink, grid, footer)
-- [ ] `resources/views/home.blade.php` — Full MYDS, remove legacy classes, grid/typography
+- [x] `resources/views/home.blade.php` — Full MYDS, remove legacy classes, grid/typography
 - [ ] `resources/views/public/track.blade.php`
 - [x] `resources/views/public/track-result.blade.php`
 - [x] `resources/views/public/my-requests.blade.php`
