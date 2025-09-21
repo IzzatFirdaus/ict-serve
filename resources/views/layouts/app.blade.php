@@ -64,28 +64,26 @@
   </head>
 
   <body
-    class="font-sans myds-body bg-bg-white-0 text-txt-black-900 antialiased transition-colors duration-200"
+    class="font-sans bg-white text-gray-900 antialiased transition-colors duration-200"
   >
     <!-- MYDS Skip Link for Accessibility -->
-    <a href="#main-content" class="myds-skip-link myds-focus-visible">
-      Skip to main content
-    </a>
+    <x-myds.skip-link href="#main-content">Skip to main content</x-myds.skip-link>
 
     <!-- MYDS Phase Banner (if needed) -->
     @if (isset($phaseBanner))
-      <div class="bg-primary-50 border-b border-otl-gray-200">
-        <div class="myds-container py-2">
+      <div class="bg-primary-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
           <div class="flex flex-wrap items-center gap-3">
-            <span class="myds-tag myds-tag-primary text-body-sm font-medium">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
               {{ $phaseBanner['phase'] ?? 'BETA' }}
             </span>
-            <p class="text-body-sm text-txt-black-700">
+            <p class="text-sm text-gray-700">
               {{ $phaseBanner['description'] ?? 'This is a new service – your feedback will help us to improve it.' }}
             </p>
             @if (isset($phaseBanner['feedbackUrl']))
               <a
                 href="{{ $phaseBanner['feedbackUrl'] }}"
-                class="text-body-sm text-primary-600 hover:text-primary-700 myds-hover-underline"
+                class="text-sm text-primary-600 hover:text-primary-700 underline"
               >
                 {{ $phaseBanner['feedbackText'] ?? 'Give feedback' }}
               </a>
@@ -99,9 +97,9 @@
     <div class="min-h-screen flex flex-col">
       <!-- MYDS Header -->
       <header
-        class="bg-bg-white-0 border-b border-otl-gray-200 sticky top-0 z-40"
+        class="bg-white border-b border-gray-200 sticky top-0 z-40"
       >
-        <div class="myds-container">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <!-- Top Bar with Logo and Controls -->
           <div class="flex items-center justify-between py-4">
             <!-- Logo and Title -->
@@ -116,9 +114,9 @@
               </div>
 
               <!-- Site Title -->
-              <div class="border-l border-otl-gray-300 pl-4">
+              <div class="border-l border-gray-300 pl-4">
                 <h1
-                  class="myds-heading text-heading-2xs font-medium text-txt-black-900"
+                  class="text-lg font-medium text-gray-900"
                 >
                   <a
                     href="{{ route('dashboard') }}"
@@ -127,7 +125,7 @@
                     iServe
                   </a>
                 </h1>
-                <p class="text-body-xs text-txt-black-500">
+                <p class="text-sm text-gray-500">
                   ICT Equipment Management
                 </p>
               </div>
@@ -141,62 +139,56 @@
               <!-- User Menu -->
               @auth
                 <div class="relative" x-data="{ open: false }">
-                  <button
+                  <x-myds.button
+                    id="user-menu-button"
                     type="button"
                     x-on:click="open = !open"
                     x-on:click.away="open = false"
                     class="flex items-center space-x-2 p-2 rounded-lg hover:bg-bg-washed transition-colors"
-                    aria-expanded="false"
+                    :aria-expanded="open"
                     aria-haspopup="true"
+                    aria-controls="user-menu"
+                    :size="'md'"
                   >
-                    <div
-                      class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center"
-                    >
-                      <span class="text-white text-body-sm font-medium">
-                        {{ substr(auth()->user()->name, 0, 1) }}
-                      </span>
+                    <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                      <span class="text-white text-body-sm font-medium">{{ substr(auth()->user()->name, 0, 1) }}</span>
                     </div>
+
                     <div class="hidden md:block text-left">
-                      <p class="text-body-sm font-medium text-txt-black-900">
-                        {{ auth()->user()->name }}
-                      </p>
-                      <p class="text-body-xs text-txt-black-500">
-                        {{ auth()->user()->email }}
-                      </p>
+                      <p class="text-body-sm font-medium text-txt-black-900">{{ auth()->user()->name }}</p>
+                      <p class="text-body-xs text-txt-black-500">{{ auth()->user()->email }}</p>
                     </div>
-                    <svg
-                      class="w-4 h-4 text-txt-black-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M19 9l-7 7-7-7"
-                      ></path>
-                    </svg>
-                  </button>
+
+                    <x-myds.icon name="chevron-down" class="w-4 h-4 text-txt-black-400" />
+                  </x-myds.button>
 
                   <!-- User Dropdown -->
                   <div
                     x-show="open"
+                    x-cloak
                     x-transition:enter="transition ease-out duration-200"
                     x-transition:enter-start="opacity-0 scale-95"
                     x-transition:enter-end="opacity-100 scale-100"
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="opacity-100 scale-100"
                     x-transition:leave-end="opacity-0 scale-95"
+                    id="user-menu"
+                    role="menu"
+                    aria-labelledby="user-menu-button"
                     class="absolute right-0 mt-2 w-48 bg-bg-white-0 border border-otl-gray-200 rounded-lg shadow-context-menu z-50"
                   >
                     <div class="py-2">
-                      <a
+                      <x-myds.button
+                        as="a"
                         href="{{ route('profile.index') }}"
-                        class="block px-4 py-2 text-body-sm text-txt-black-700 hover:bg-bg-washed"
+                        role="menuitem"
+                        tabindex="0"
+                        variant="tertiary"
+                        size="sm"
+                        class="w-full text-left px-4 py-2"
                       >
                         Profile Settings
-                      </a>
+                      </x-myds.button>
                       <hr class="border-otl-gray-200 my-1" />
                       <form
                         method="POST"
@@ -204,30 +196,17 @@
                         class="block"
                       >
                         @csrf
-                        <button
-                          type="submit"
-                          class="w-full text-left px-4 py-2 text-body-sm text-danger-600 hover:bg-bg-washed"
-                        >
+                        <x-myds.button type="submit" variant="danger" class="w-full text-left px-4 py-2" aria-label="Sign out">
                           Sign Out
-                        </button>
+                        </x-myds.button>
                       </form>
                     </div>
                   </div>
                 </div>
               @else
                 <div class="flex items-center space-x-2">
-                  <a
-                    href="{{ route('login') }}"
-                    class="myds-btn-tertiary myds-btn-sm"
-                  >
-                    Sign In
-                  </a>
-                  <a
-                    href="{{ route('register') }}"
-                    class="myds-btn-primary myds-btn-sm"
-                  >
-                    Register
-                  </a>
+                  <x-myds.button href="{{ route('login') }}" variant="secondary" size="sm">Sign In</x-myds.button>
+                  <x-myds.button href="{{ route('register') }}" variant="primary" size="sm">Register</x-myds.button>
                 </div>
               @endauth
             </div>
@@ -241,29 +220,19 @@
       </header>
 
       <!-- MYDS Main Content Area -->
-      <main class="flex-1 bg-bg-white-50" id="main-content">
+      <main class="flex-1 bg-gray-50" id="main-content">
         <!-- Page Header (if provided) -->
         @if (isset($pageTitle) || isset($breadcrumbs) || isset($header))
-          <div class="bg-bg-white-0 border-b border-otl-gray-200">
-            <div class="myds-container py-6">
+          <div class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
               <!-- Breadcrumbs -->
               @if (isset($breadcrumbs))
                 <nav class="mb-4" aria-label="Breadcrumb">
-                  <ol class="flex items-center space-x-2 text-body-sm">
+                  <ol class="flex items-center space-x-2 text-sm">
                     @foreach ($breadcrumbs as $breadcrumb)
                       <li class="flex items-center">
                         @if (! $loop->first)
-                          <svg
-                            class="w-3 h-3 text-txt-black-400 mx-2"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clip-rule="evenodd"
-                            ></path>
-                          </svg>
+                          <x-myds.icon name="chevron-right" class="w-3 h-3 text-gray-400 mx-2" />
                         @endif
 
                         @if ($loop->last)
@@ -317,7 +286,7 @@
         @endif
 
         <!-- Page Content -->
-        <div class="myds-container py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           @hasSection('content')
             @yield('content')
           @else
@@ -327,11 +296,11 @@
       </main>
 
       <!-- MYDS Footer -->
-      <footer class="bg-bg-white-0 border-t border-otl-gray-200 mt-auto">
-        <div class="myds-container py-8">
-          <div class="myds-grid">
+      <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
             <!-- Footer Content -->
-            <div class="col-span-4 tablet:col-span-6 desktop:col-span-8">
+            <div class="col-span-4 md:col-span-6 lg:col-span-8">
               <div class="flex items-center space-x-4 mb-4">
                 <img
                   src="{{ asset('images/jata-negara.svg') }}"
@@ -340,16 +309,16 @@
                 />
                 <div>
                   <h3
-                    class="myds-heading text-heading-3xs font-medium text-txt-black-900"
+                    class="text-base font-medium text-gray-900"
                   >
                     iServe - ICT Equipment Management
                   </h3>
-                  <p class="text-body-xs text-txt-black-500">
+                  <p class="text-sm text-gray-500">
                     Government of Malaysia
                   </p>
                 </div>
               </div>
-              <p class="text-body-sm text-txt-black-700 mb-4">
+              <p class="text-sm text-gray-700 mb-4">
                 Comprehensive ICT equipment and helpdesk management system
                 designed for government agencies, built following Malaysia
                 Government Design System (MYDS) standards.
@@ -357,9 +326,9 @@
             </div>
 
             <!-- Quick Links -->
-            <div class="col-span-4 tablet:col-span-2 desktop:col-span-2">
+            <div class="col-span-4 md:col-span-2 lg:col-span-2">
               <h3
-                class="myds-heading text-heading-4xs font-medium text-txt-black-900 mb-3"
+                class="text-sm font-medium text-gray-900 mb-3"
               >
                 Quick Links
               </h3>
@@ -367,7 +336,7 @@
                 <li>
                   <a
                     href="{{ route('dashboard') }}"
-                    class="text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline"
+                    class="text-sm text-gray-700 hover:text-primary-600 underline"
                   >
                     Dashboard
                   </a>
@@ -375,7 +344,7 @@
                 <li>
                   <a
                     href="{{ route('loan.index') }}"
-                    class="text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline"
+                    class="text-sm text-gray-700 hover:text-primary-600 underline"
                   >
                     Loan Requests
                   </a>
@@ -383,7 +352,7 @@
                 <li>
                   <a
                     href="{{ route('helpdesk.index') }}"
-                    class="text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline"
+                    class="text-sm text-gray-700 hover:text-primary-600 underline"
                   >
                     Helpdesk
                   </a>
@@ -391,7 +360,7 @@
                 <li>
                   <a
                     href="{{ route('equipment.index') }}"
-                    class="text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline"
+                    class="text-sm text-gray-700 hover:text-primary-600 underline"
                   >
                     Equipment
                   </a>
@@ -400,9 +369,9 @@
             </div>
 
             <!-- Support -->
-            <div class="col-span-4 tablet:col-span-2 desktop:col-span-2">
+            <div class="col-span-4 md:col-span-2 lg:col-span-2">
               <h3
-                class="myds-heading text-heading-4xs font-medium text-txt-black-900 mb-3"
+                class="text-sm font-medium text-gray-900 mb-3"
               >
                 Support
               </h3>
@@ -410,7 +379,7 @@
                 <li>
                   <a
                     href="#"
-                    class="text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline"
+                    class="text-sm text-gray-700 hover:text-primary-600 underline"
                   >
                     Help Center
                   </a>
@@ -418,7 +387,7 @@
                 <li>
                   <a
                     href="#"
-                    class="text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline"
+                    class="text-sm text-gray-700 hover:text-primary-600 underline"
                   >
                     Contact Us
                   </a>
@@ -426,7 +395,7 @@
                 <li>
                   <a
                     href="#"
-                    class="text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline"
+                    class="text-sm text-gray-700 hover:text-primary-600 underline"
                   >
                     Privacy Policy
                   </a>
@@ -434,7 +403,7 @@
                 <li>
                   <a
                     href="#"
-                    class="text-body-sm text-txt-black-700 hover:text-primary-600 myds-hover-underline"
+                    class="text-sm text-gray-700 hover:text-primary-600 underline"
                   >
                     Terms of Service
                   </a>
@@ -444,15 +413,15 @@
           </div>
 
           <!-- Footer Bottom -->
-          <div class="border-t border-otl-gray-200 pt-6 mt-8">
+          <div class="border-t border-gray-200 pt-6 mt-8">
             <div
               class="flex flex-col md:flex-row md:items-center md:justify-between"
             >
-              <p class="text-body-xs text-txt-black-500">
+              <p class="text-xs text-gray-500">
                 © {{ date('Y') }} Government of Malaysia. Built with
                 <a
                   href="https://myds.malaysia.gov.my/"
-                  class="text-primary-600 hover:text-primary-700 myds-hover-underline"
+                  class="text-primary-600 hover:text-primary-700 underline"
                   target="_blank"
                   rel="noopener"
                 >
@@ -460,18 +429,15 @@
                 </a>
               </p>
               <div class="mt-4 md:mt-0 flex items-center space-x-4">
-                <button
+                <x-myds.button
                   type="button"
-                  x-on:click="
-                    darkMode = ! darkMode
-                    localStorage.setItem('darkMode', darkMode)
-                  "
+                  variant="tertiary"
+                  size="sm"
+                  x-on:click="darkMode = ! darkMode; localStorage.setItem('darkMode', darkMode)"
                   class="text-body-xs text-txt-black-500 hover:text-txt-black-700"
                 >
-                  <span
-                    x-text="darkMode ? 'Light Mode' : 'Dark Mode'"
-                  ></span>
-                </button>
+                  <span x-text="darkMode ? 'Light Mode' : 'Dark Mode'"></span>
+                </x-myds.button>
               </div>
             </div>
           </div>
@@ -502,67 +468,27 @@
             <div class="flex items-start">
               <!-- Icon -->
               <div class="flex-shrink-0">
-                <!-- Success Icon -->
-                <svg
-                  x-show="toast.type === 'success'"
-                  class="w-5 h-5 text-success-600"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <!-- Error Icon -->
-                <svg
-                  x-show="toast.type === 'error'"
-                  class="w-5 h-5 text-danger-600"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <!-- Warning Icon -->
-                <svg
-                  x-show="toast.type === 'warning'"
-                  class="w-5 h-5 text-warning-600"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <!-- Info Icon -->
-                <svg
-                  x-show="toast.type === 'info'"
-                  class="w-5 h-5 text-primary-600"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
+                <template x-if="toast.type === 'success'">
+                  <x-myds.icon name="check-circle" class="w-5 h-5 text-success-600" aria-hidden="true" />
+                </template>
+                <template x-if="toast.type === 'error'">
+                  <x-myds.icon name="x-circle" class="w-5 h-5 text-danger-600" aria-hidden="true" />
+                </template>
+                <template x-if="toast.type === 'warning'">
+                  <x-myds.icon name="alert-triangle" class="w-5 h-5 text-warning-600" aria-hidden="true" />
+                </template>
+                <template x-if="toast.type === 'info'">
+                  <x-myds.icon name="info" class="w-5 h-5 text-primary-600" aria-hidden="true" />
+                </template>
               </div>
-
-              <!-- Content -->
-              <div class="ml-3 flex-1">
-                <p
-                  class="text-body-sm font-medium text-txt-black-900"
-                  x-text="toast.title"
-                ></p>
-                <p
+                <a
+                  href="https://myds.malaysia.gov.my/"
+                  class="text-primary-600 hover:text-primary-700 underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Malaysia Government Design System (MYDS)
+                </a>
                   class="mt-1 text-body-sm text-txt-black-700"
                   x-text="toast.message"
                 ></p>
