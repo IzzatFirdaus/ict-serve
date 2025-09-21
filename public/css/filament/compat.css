@@ -1,0 +1,48 @@
+/* Compatibility fallbacks for Filament generated CSS
+   Added vendor-prefixed properties to improve editor/browser compatibility warnings.
+   This file is safe to keep and will be loaded after Filament's main CSS. */
+
+/* user-select fallbacks */
+.fi-btn,
+.fi-badge,
+.fi-dropdown-list-item,
+.fi-avatar,
+.fi-btn * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* text-size-adjust fallback */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* mask-image/-mask fallbacks (common patterns) */
+/* Provide prefixed properties where generator used unprefixed ones */
+.fi-icon,
+.fi-avatar img {
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* pointer-events and touch-action fallbacks often used in components */
+.fi-btn,
+.fi-dropdown-trigger,
+.fi-badge {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+/* Add -webkit-appearance fallbacks for certain inputs/buttons */
+button,
+input[type='button'],
+input[type='submit'] {
+  -webkit-appearance: button;
+  appearance: button;
+}
