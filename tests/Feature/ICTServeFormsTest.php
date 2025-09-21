@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
+use App\Livewire\Ict\DamageComplaintForm;
+use App\Livewire\Equipment\LoanApplicationForm;
 
 class ICTServeFormsTest extends TestCase
 {
@@ -71,7 +73,7 @@ class ICTServeFormsTest extends TestCase
     public function damage_complaint_form_validates_required_fields()
     {
         Livewire::actingAs($this->user)
-            ->test('ict.damage-complaint-form')
+            ->test(DamageComplaintForm::class)
             ->call('submitComplaint')
             ->assertHasErrors([
                 'damageTypeId' => 'required',

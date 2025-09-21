@@ -11,49 +11,91 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| ICTServe (iServe) Auth Routes — MYDS & MyGovEA Aligned
+|--------------------------------------------------------------------------
+| All authentication endpoints are grouped for clarity, maintainability,
+| and future extensibility. Route names and flows are explicit and
+| accessible, supporting both MYDS and MyGovEA principles:
+|   - Citizen-centric (clear, actionable, inclusive)
+|   - Error prevention (validations, confirmations)
+|   - Accessibility (user flow and route structure)
+|   - Consistency (route names, HTTP method, grouping)
+|   - Security (throttle, signed, minimal info leakage)
+|
+| All public-facing auth routes are guest-only. Authenticated flows are
+| protected. Error cases return actionable, localised messages.
+| All endpoints use POST for state-changing operations and GET for views.
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Guest Routes (Unauthenticated)
+|--------------------------------------------------------------------------
+*/
 Route::middleware('guest')->group(function () {
+    // User registration
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
-
     Route::post('register', [RegisteredUserController::class, 'store']);
 
+    // Login
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
-
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
+    // Password reset initiation
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
-
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
         ->name('password.email');
 
+    // Password reset (with token)
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
         ->name('password.reset');
-
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes (User must be logged in)
+|--------------------------------------------------------------------------
+*/
 Route::middleware('auth')->group(function () {
+    // Email verification prompt & flow
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
-
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
         ->middleware(['signed', 'throttle:6,1'])
         ->name('verification.verify');
-
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
         ->middleware('throttle:6,1')
         ->name('verification.send');
 
+    // Password confirmation (for sensitive actions)
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
         ->name('password.confirm');
-
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    // Password change (from profile/settings)
+    Route::put('password', [PasswordController::class, 'update'])
+        ->name('password.update');
 
+    // Logout (always POST for CSRF protection)
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Accessibility, Error Prevention, and Citizen-Centricity
+|--------------------------------------------------------------------------
+| - All actions are split by authentication state.
+| - All forms and error pages must provide actionable, short, localised messages.
+| - Throttle on sensitive endpoints to prevent abuse (see above).
+| - Route names are explicit (no ambiguity).
+| - Provide actionable error messages and next steps in UI.
+|--------------------------------------------------------------------------
+*/
