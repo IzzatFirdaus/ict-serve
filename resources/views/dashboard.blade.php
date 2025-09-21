@@ -37,109 +37,46 @@
             Borang Permohonan Peminjaman Peralatan ICT
           </div>
           <div class="flex flex-wrap justify-center gap-4">
-            <a
+            <x-myds.button
               href="{{ route('equipment-loan.create') }}"
-              class="myds-btn myds-btn-secondary px-6 py-3 rounded myds-body-sm font-medium text-txt-primary bg-white shadow-button hover:bg-white-hover focus-visible:outline-primary-600 transition-colors"
-              role="button"
+              variant="secondary"
+              class="px-6 py-3 rounded myds-body-sm font-medium"
               aria-label="Mohon Peminjaman Peralatan ICT"
             >
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <rect
-                  x="3"
-                  y="4"
-                  width="14"
-                  height="12"
-                  rx="2"
-                  stroke="currentColor"
-                />
-                <path
-                  d="M6 8h8M6 12h4"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <x-myds.icon name="document" size="20" class="mr-2 text-primary-600" aria-hidden="true" />
               Mohon Peminjaman
-            </a>
-            <a
+            </x-myds.button>
+
+            <x-myds.button
               href="{{ route('helpdesk.create-ticket') }}"
-              class="myds-btn myds-btn-danger px-6 py-3 rounded myds-body-sm font-medium text-txt-white bg-danger-600 shadow-button hover:bg-danger-700 focus-visible:outline-danger-600 transition-colors"
-              role="button"
+              variant="danger"
+              class="px-6 py-3 rounded myds-body-sm font-medium"
               aria-label="Buat Aduan Kerosakan"
             >
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <circle cx="10" cy="10" r="8" stroke="currentColor" />
-                <path
-                  d="M10 6v4m0 4h.01"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <x-myds.icon name="alert-triangle" size="20" class="mr-2 text-danger-600" aria-hidden="true" />
               Aduan Kerosakan
-            </a>
-            <a
+            </x-myds.button>
+
+            <x-myds.button
               href="{{ route('helpdesk.my-tickets') }}"
-              class="myds-btn myds-btn-success px-6 py-3 rounded myds-body-sm font-medium text-txt-white bg-success-600 shadow-button hover:bg-success-700 focus-visible:outline-success-600 transition-colors"
-              role="button"
+              variant="success"
+              class="px-6 py-3 rounded myds-body-sm font-medium"
               aria-label="Lihat Aduan Saya"
             >
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <rect
-                  x="4"
-                  y="5"
-                  width="12"
-                  height="10"
-                  rx="2"
-                  stroke="currentColor"
-                />
-                <path d="M8 7h4" stroke="currentColor" stroke-linecap="round" />
-              </svg>
+              <x-myds.icon name="check-circle" size="20" class="mr-2 text-success-700" aria-hidden="true" />
               Aduan Saya
-            </a>
+            </x-myds.button>
+
             <!-- Test compliance: visible link to damage-complaint.create -->
-            <a
+            <x-myds.button
               href="{{ route('damage-complaint.create') }}"
-              class="myds-btn myds-btn-warning px-6 py-3 rounded myds-body-sm font-medium text-txt-warning bg-warning-100 shadow-button hover:bg-warning-200 focus-visible:outline-warning-600 transition-colors"
-              role="button"
+              variant="warning"
+              class="px-6 py-3 rounded myds-body-sm font-medium"
               aria-label="Borang Aduan Kerosakan ICT"
             >
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <circle cx="10" cy="10" r="8" stroke="currentColor" />
-                <path
-                  d="M10 7v3m0 3h.01"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <x-myds.icon name="alert-triangle" size="20" class="mr-2 text-warning-700" aria-hidden="true" />
               Borang Aduan Kerosakan ICT
-            </a>
+            </x-myds.button>
           </div>
         </div>
       </div>
@@ -169,27 +106,7 @@
               <div
                 class="w-10 h-10 rounded-md bg-primary-100 flex items-center justify-center"
               >
-                <svg
-                  class="w-6 h-6 text-primary-600"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  viewBox="0 0 20 20"
-                >
-                  <rect
-                    x="3"
-                    y="4"
-                    width="14"
-                    height="12"
-                    rx="2"
-                    stroke="currentColor"
-                  />
-                  <path
-                    d="M6 8h8M6 12h4"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                  />
-                </svg>
+                <x-myds.icon name="document" size="24" class="text-primary-600" aria-hidden="true" />
               </div>
               <div class="ml-4">
                 <div class="myds-body-sm font-medium text-txt-black-700">
@@ -208,20 +125,7 @@
               <div
                 class="w-10 h-10 rounded-md bg-danger-100 flex items-center justify-center"
               >
-                <svg
-                  class="w-6 h-6 text-danger-600"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  viewBox="0 0 20 20"
-                >
-                  <circle cx="10" cy="10" r="8" stroke="currentColor" />
-                  <path
-                    d="M10 6v4m0 4h.01"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                  />
-                </svg>
+                <x-myds.icon name="alert-triangle" size="24" class="text-danger-600" aria-hidden="true" />
               </div>
               <div class="ml-4">
                 <div class="myds-body-sm font-medium text-txt-black-700">
@@ -240,27 +144,7 @@
               <div
                 class="w-10 h-10 rounded-md bg-success-100 flex items-center justify-center"
               >
-                <svg
-                  class="w-6 h-6 text-success-700"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  viewBox="0 0 20 20"
-                >
-                  <rect
-                    x="4"
-                    y="5"
-                    width="12"
-                    height="10"
-                    rx="2"
-                    stroke="currentColor"
-                  />
-                  <path
-                    d="M8 7h4"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                  />
-                </svg>
+                <x-myds.icon name="check-circle" size="24" class="text-success-700" aria-hidden="true" />
               </div>
               <div class="ml-4">
                 <div class="myds-body-sm font-medium text-txt-black-700">
@@ -273,10 +157,10 @@
             </div>
           </div>
           <div class="text-center mt-8">
-            <a
+            <x-myds.button
               href="{{ route('public.my-requests') }}"
-              class="myds-btn myds-btn-tertiary px-4 py-2 border border-otl-primary-300 rounded-md myds-body-sm font-medium text-txt-primary hover:bg-primary-50 transition"
-              role="button"
+              variant="tertiary"
+              class="px-4 py-2 border border-otl-primary-300 rounded-md myds-body-sm font-medium text-txt-primary"
               aria-label="Lihat Semua Permintaan Saya"
             >
               Lihat Semua Permintaan
@@ -294,7 +178,7 @@
                   stroke-linecap="round"
                 />
               </svg>
-            </a>
+            </x-myds.button>
           </div>
         </section>
       @endauth
@@ -323,27 +207,7 @@
             <div
               class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4"
             >
-              <svg
-                class="w-6 h-6 text-primary-600"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-              >
-                <rect
-                  x="3"
-                  y="4"
-                  width="14"
-                  height="12"
-                  rx="2"
-                  stroke="currentColor"
-                />
-                <path
-                  d="M6 8h8M6 12h4"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <x-myds.icon name="document" size="24" class="text-primary-600" aria-hidden="true" />
             </div>
             <h3
               id="equipment-loans-title"
@@ -372,20 +236,7 @@
             <div
               class="w-12 h-12 bg-danger-100 rounded-lg flex items-center justify-center mb-4"
             >
-              <svg
-                class="w-6 h-6 text-danger-600"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-              >
-                <circle cx="10" cy="10" r="8" stroke="currentColor" />
-                <path
-                  d="M10 6v4m0 4h.01"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <x-myds.icon name="alert-triangle" size="24" class="text-danger-600" aria-hidden="true" />
             </div>
             <h3
               id="helpdesk-title"
@@ -414,23 +265,7 @@
             <div
               class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center mb-4"
             >
-              <svg
-                class="w-6 h-6 text-success-700"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-              >
-                <rect
-                  x="4"
-                  y="5"
-                  width="12"
-                  height="10"
-                  rx="2"
-                  stroke="currentColor"
-                />
-                <path d="M8 7h4" stroke="currentColor" stroke-linecap="round" />
-              </svg>
+              <x-myds.icon name="check-circle" size="24" class="text-success-700" aria-hidden="true" />
             </div>
             <h3
               id="my-tickets-title"
@@ -458,27 +293,7 @@
             <div
               class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4"
             >
-              <svg
-                class="w-6 h-6 text-primary-600"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-              >
-                <rect
-                  x="3"
-                  y="4"
-                  width="14"
-                  height="12"
-                  rx="2"
-                  stroke="currentColor"
-                />
-                <path
-                  d="M6 8h8M6 12h4"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <x-myds.icon name="document" size="24" class="text-primary-600" aria-hidden="true" />
             </div>
             <h3
               id="all-requests-title"
@@ -509,21 +324,7 @@
                 <div
                   class="w-12 h-12 bg-black-100 rounded-lg flex items-center justify-center mb-4"
                 >
-                  <svg
-                    class="w-6 h-6 text-black-700"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <circle cx="10" cy="10" r="8" stroke="currentColor" />
-                    <path
-                      d="M10 7v3m0 3h.01"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                    />
-                  </svg>
+                  <x-myds.icon name="alert-triangle" size="24" class="text-black-700" aria-hidden="true" />
                 </div>
                 <h3
                   id="admin-panel-title"
@@ -555,21 +356,7 @@
             <div
               class="w-12 h-12 bg-warning-100 rounded-lg flex items-center justify-center mb-4"
             >
-              <svg
-                class="w-6 h-6 text-warning-700"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <circle cx="10" cy="10" r="8" stroke="currentColor" />
-                <path
-                  d="M10 7v3m0 3h.01"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <x-myds.icon name="alert-triangle" size="24" class="text-warning-700" aria-hidden="true" />
             </div>
             <h3
               id="knowledge-base-title"
@@ -591,19 +378,7 @@
             <div
               class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4"
             >
-              <svg
-                class="w-6 h-6 text-primary-600"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                  stroke="currentColor"
-                />
-              </svg>
+              <x-myds.icon name="phone" size="24" class="text-primary-600" aria-hidden="true" />
             </div>
             <h3
               id="contact-title"
@@ -635,32 +410,15 @@
             Sila log masuk dengan akaun MOTAC anda untuk akses penuh ke
             perkhidmatan ICT.
           </p>
-          <div class="text-center">
-            <a
-              href="{{ route('login') }}"
-              class="myds-btn myds-btn-primary px-6 py-3 rounded myds-body-sm font-medium text-white bg-primary-600 shadow-button hover:bg-primary-700 focus-visible:outline-primary-600 transition-colors"
-              role="button"
-              aria-label="Log masuk untuk akses ICTServe"
-            >
-              Log Masuk
-              <svg
-                class="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
+            <div class="text-center">
+              <x-myds.button
+                href="{{ route('login') }}"
+                variant="primary"
+                class="px-6 py-3 rounded myds-body-sm font-medium"
+                aria-label="Log masuk untuk akses ICTServe"
               >
-                <path
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </a>
-          </div>
-        </section>
-      @endguest
-    </main>
-  </div>
-@endsection
+                Log Masuk
+                <x-myds.icon name="arrow-right" size="16" class="ml-2" aria-hidden="true" />
+              </x-myds.button>
+                <x-myds.icon name="arrow-right" size="16" class="ml-2" aria-hidden="true" />
+                stroke-width="1.5"
