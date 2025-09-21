@@ -2,40 +2,91 @@
    Each error Blade adds a page-specific class on the container (e.g. .error-404)
    so we can scope the display colours and illustration sizes per page. */
 
-.misc-wrapper { text-align: center; }
+.misc-wrapper {
+  text-align: center;
+}
 
 /* 503 */
-.error-503 .misc-wrapper .display-5 { color: var(--bs-info); }
-.error-503 .myds-error-illustration { max-width: 350px; }
+.error-503 .misc-wrapper .display-5 {
+  color: var(--bs-info);
+}
+
+.error-503 .myds-error-illustration {
+  max-width: 350px;
+}
 
 /* 404 */
-.error-404 .misc-wrapper .error-code { font-size: 6rem; font-weight: bold; color: var(--bs-secondary); }
-.error-404 .misc-wrapper .error-title { color: var(--bs-primary); }
-.error-404 .myds-error-illustration { max-width: 250px; }
+.error-404 .misc-wrapper .error-code {
+  font-size: 6rem;
+  font-weight: bold;
+  color: var(--bs-secondary);
+}
+
+.error-404 .misc-wrapper .error-title {
+  color: var(--bs-primary);
+}
+
+.error-404 .myds-error-illustration {
+  max-width: 250px;
+}
 
 /* 401 */
-.error-401 .misc-wrapper .display-5 { color: var(--bs-danger); }
-.error-401 .myds-error-illustration { max-width: 250px; }
+.error-401 .misc-wrapper .display-5 {
+  color: var(--bs-danger);
+}
+
+.error-401 .myds-error-illustration {
+  max-width: 250px;
+}
 
 /* 403 */
-.error-403 .misc-wrapper .display-5 { color: var(--bs-danger); }
-.error-403 .myds-error-illustration { max-width: 250px; }
+.error-403 .misc-wrapper .display-5 {
+  color: var(--bs-danger);
+}
+
+.error-403 .myds-error-illustration {
+  max-width: 250px;
+}
 
 /* 419 */
-.error-419 .misc-wrapper .display-5 { color: var(--bs-warning); }
-.error-419 .myds-error-illustration { max-width: 250px; }
+.error-419 .misc-wrapper .display-5 {
+  color: var(--bs-warning);
+}
+
+.error-419 .myds-error-illustration {
+  max-width: 250px;
+}
 
 /* 422 */
-.error-422 .misc-wrapper .display-5 { color: var(--bs-secondary); }
-.error-422 .myds-error-illustration { max-width: 250px; }
+.error-422 .misc-wrapper .display-5 {
+  color: var(--bs-secondary);
+}
+
+.error-422 .myds-error-illustration {
+  max-width: 250px;
+}
 
 /* 429 */
-.error-429 .misc-wrapper .display-5 { color: var(--bs-info); }
-.error-429 .myds-error-illustration { max-width: 250px; }
+.error-429 .misc-wrapper .display-5 {
+  color: var(--bs-info);
+}
+
+.error-429 .myds-error-illustration {
+  max-width: 250px;
+}
 
 /* 500 */
-.error-500 .misc-wrapper .display-5 { color: var(--bs-danger); }
-.error-500 .myds-error-illustration { max-width: 300px; }
+.error-500 .misc-wrapper .display-5 {
+  color: var(--bs-danger);
+}
+
+.error-500 .myds-error-illustration {
+  max-width: 300px;
+}
 
 /* General adjustments */
-.myds-error-illustration { width: 100%; height: auto; display: inline-block; }
+.myds-error-illustration {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}

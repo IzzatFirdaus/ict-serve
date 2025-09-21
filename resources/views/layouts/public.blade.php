@@ -374,7 +374,7 @@
       </div>
     </footer>
 
-  <!-- Additional scripts -->
-  @stack('scripts')
+    <!-- Additional scripts -->
+    @stack('scripts')
   </body>
 </html>

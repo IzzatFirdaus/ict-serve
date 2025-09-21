@@ -16,11 +16,17 @@
 
     <!-- Search Form -->
     <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-      <form action="{{ route('public.track') }}" method="POST" class="space-y-4">
+      <form
+        action="{{ route('public.track') }}"
+        method="POST"
+        class="space-y-4"
+      >
         @csrf
         <div class="flex flex-col md:flex-row gap-4">
           <div class="flex-1">
-            <x-myds.label for="tracking_number">{{ __('Request/Ticket Number') }}</x-myds.label>
+            <x-myds.label for="tracking_number">
+              {{ __('Request/Ticket Number') }}
+            </x-myds.label>
             <x-myds.input
               id="tracking_number"
               name="tracking_number"
@@ -29,12 +35,23 @@
               required
             />
             @error('tracking_number')
-              <x-myds.callout type="danger" class="mt-2">{{ $message }}</x-myds.callout>
+              <x-myds.callout type="danger" class="mt-2">
+                {{ $message }}
+              </x-myds.callout>
             @enderror
           </div>
           <div class="flex items-end">
-            <x-myds.button type="submit" variant="primary" class="whitespace-nowrap">
-              <x-myds.icon name="search" size="16" class="mr-2 inline" aria-hidden="true"/>
+            <x-myds.button
+              type="submit"
+              variant="primary"
+              class="whitespace-nowrap"
+            >
+              <x-myds.icon
+                name="search"
+                size="16"
+                class="mr-2 inline"
+                aria-hidden="true"
+              />
               {{ __('Track Status') }}
             </x-myds.button>
           </div>
@@ -82,9 +99,19 @@
         <p class="text-gray-600 text-sm mb-4">
           {{ __('Need equipment for your work? Submit a loan request with no login required.') }}
         </p>
-        <x-myds.button as="a" href="{{ route('public.loan-requests.create') }}" variant="primary" class="inline-flex items-center">
+        <x-myds.button
+          as="a"
+          href="{{ route('public.loan-requests.create') }}"
+          variant="primary"
+          class="inline-flex items-center"
+        >
           {{ __('Submit Loan Request') }}
-          <x-myds.icon name="arrow-right" size="16" class="ml-2" aria-hidden="true"/>
+          <x-myds.icon
+            name="arrow-right"
+            size="16"
+            class="ml-2"
+            aria-hidden="true"
+          />
         </x-myds.button>
       </div>
 
@@ -112,9 +139,19 @@
         <p class="text-gray-600 text-sm mb-4">
           {{ __('Experiencing technical issues? Report them and get professional support.') }}
         </p>
-        <x-myds.button as="a" href="{{ route('public.helpdesk.create') }}" variant="warning" class="inline-flex items-center">
+        <x-myds.button
+          as="a"
+          href="{{ route('public.helpdesk.create') }}"
+          variant="warning"
+          class="inline-flex items-center"
+        >
           {{ __('Report Issue') }}
-          <x-myds.icon name="arrow-right" size="16" class="ml-2" aria-hidden="true"/>
+          <x-myds.icon
+            name="arrow-right"
+            size="16"
+            class="ml-2"
+            aria-hidden="true"
+          />
         </x-myds.button>
       </div>
     </div>

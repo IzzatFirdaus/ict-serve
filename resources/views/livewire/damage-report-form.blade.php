@@ -26,7 +26,11 @@
     <!-- Page Title -->
     <div class="myds-page-header">
       <h1 class="myds-heading-xl text-myds-gray-900 dark:text-myds-gray-100">
-        <x-myds.icon name="exclamation-triangle" class="mr-3" aria-hidden="true" />
+        <x-myds.icon
+          name="exclamation-triangle"
+          class="mr-3"
+          aria-hidden="true"
+        />
         {{ __('damage_report.title') }}
       </h1>
       <p
@@ -77,8 +81,8 @@
 
                   {{ $damageType['display_name'] }}
                   @if ($damageType['display_description'])
-                      -
-                      {{ Str::limit($damageType['display_description'], 50) }}
+                    -
+                    {{ Str::limit($damageType['display_description'], 50) }}
                   @endif
                 </option>
               @endforeach
@@ -209,7 +213,11 @@
           <h2
             class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100"
           >
-            <x-myds.icon name="desktop-computer" class="mr-2" aria-hidden="true" />
+            <x-myds.icon
+              name="desktop-computer"
+              class="mr-2"
+              aria-hidden="true"
+            />
             Maklumat Peralatan / Equipment Information
           </h2>
         </div>
@@ -324,25 +332,46 @@
           <div
             class="myds-text-body-sm text-myds-gray-600 dark:text-myds-gray-400"
           >
-            <x-myds.icon name="information-circle" class="mr-1" aria-hidden="true" />
+            <x-myds.icon
+              name="information-circle"
+              class="mr-1"
+              aria-hidden="true"
+            />
             <span>
               {{ __('damage_report.notice.sent_to_team') }}
             </span>
           </div>
 
           <div class="myds-flex myds-space-x-4">
-            <x-myds.button as="a" href="{{ route('helpdesk.index') }}" variant="secondary">
+            <x-myds.button
+              as="a"
+              href="{{ route('helpdesk.index') }}"
+              variant="secondary"
+            >
               <x-myds.icon name="arrow-left" class="mr-2" aria-hidden="true" />
               {{ __('buttons.cancel') }}
             </x-myds.button>
 
-            <x-myds.button type="submit" variant="primary" wire:loading.attr="disabled" wire:target="submit">
+            <x-myds.button
+              type="submit"
+              variant="primary"
+              wire:loading.attr="disabled"
+              wire:target="submit"
+            >
               <span wire:loading.remove wire:target="submit">
-                <x-myds.icon name="exclamation-triangle" class="mr-2" aria-hidden="true" />
+                <x-myds.icon
+                  name="exclamation-triangle"
+                  class="mr-2"
+                  aria-hidden="true"
+                />
                 {{ __('buttons.submit_complaint') }}
               </span>
               <span wire:loading wire:target="submit">
-                <x-myds.icon name="refresh" class="mr-2 animate-spin" aria-hidden="true" />
+                <x-myds.icon
+                  name="refresh"
+                  class="mr-2 animate-spin"
+                  aria-hidden="true"
+                />
                 {{ __('buttons.sending') }}
               </span>
             </x-myds.button>
@@ -353,7 +382,7 @@
 
     @error('submit')
       <div class="myds-alert myds-alert-error" role="alert">
-  <x-myds.icon name="exclamation-circle" aria-hidden="true" />
+        <x-myds.icon name="exclamation-circle" aria-hidden="true" />
         <span>{{ $message }}</span>
       </div>
     @enderror
@@ -363,7 +392,11 @@
   @if (empty($damageTypes))
     <div class="myds-card myds-card-bordered">
       <div class="myds-card-body text-center py-12">
-        <x-myds.icon name="exclamation-triangle" class="myds-text-gray-400 text-6xl mb-4" aria-hidden="true" />
+        <x-myds.icon
+          name="exclamation-triangle"
+          class="myds-text-gray-400 text-6xl mb-4"
+          aria-hidden="true"
+        />
         <h3
           class="myds-heading-md text-myds-gray-700 dark:text-myds-gray-300 mb-2"
         >

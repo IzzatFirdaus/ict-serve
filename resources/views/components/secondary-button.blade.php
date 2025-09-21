@@ -26,8 +26,8 @@
   {{
     $attributes->merge([
       'class' => 'inline-flex items-center gap-2 px-4 py-2 bg-white text-txt-primary font-semibold text-sm rounded-md border border-otl-primary-300 shadow-button
-                            hover:bg-primary-50 hover:text-txt-primary focus:bg-primary-50 focus-visible:ring-2 focus-visible:ring-fr-primary
-                            transition-colors duration-150 disabled:bg-white-disabled disabled:text-txt-primary-disabled disabled:border-otl-primary-disabled disabled:cursor-not-allowed',
+                                    hover:bg-primary-50 hover:text-txt-primary focus:bg-primary-50 focus-visible:ring-2 focus-visible:ring-fr-primary
+                                    transition-colors duration-150 disabled:bg-white-disabled disabled:text-txt-primary-disabled disabled:border-otl-primary-disabled disabled:cursor-not-allowed',
     ])
   }}
 >

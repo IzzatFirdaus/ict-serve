@@ -24,8 +24,8 @@
   {{
     $attributes->merge([
       'class' => 'inline-flex items-center gap-2 px-4 py-2 bg-danger-600 text-white font-semibold text-sm rounded-md shadow-button
-                            hover:bg-danger-700 focus:bg-danger-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-fr-danger
-                            transition-colors duration-150 disabled:bg-danger-200 disabled:text-white disabled:cursor-not-allowed',
+                                    hover:bg-danger-700 focus:bg-danger-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-fr-danger
+                                    transition-colors duration-150 disabled:bg-danger-200 disabled:text-white disabled:cursor-not-allowed',
     ])
   }}
 >

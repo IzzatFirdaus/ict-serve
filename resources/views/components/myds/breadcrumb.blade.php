@@ -1,6 +1,9 @@
 <nav aria-label="Breadcrumb">
-  <ol class="flex items-center text-sm">{{ $slot }}</ol>
+  <ol class="flex items-center text-sm">
+    {{ $slot }}
+  </ol>
 </nav>
+
 @props([
   'items' => [],
   'separator' => '/',

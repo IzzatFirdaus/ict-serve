@@ -1,4 +1,6 @@
-@props(['name'])
+@props([
+  'name',
+])
 <span class="inline-block" aria-hidden="true">[icon: {{ $name }}]</span>
 {{--
   ICTServe (iServe) Icon Component

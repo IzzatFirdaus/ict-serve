@@ -1,4 +1,3 @@
-
 {
   "buttons": {
     "remove": "Remove",
@@ -149,8 +148,7 @@
       }
     },
     "security_notice": "Your information is protected and encrypted",
-    "form_optional_note": "Optional - If applicable"
-  ,
+    "form_optional_note": "Optional - If applicable",
     "notes": {
       "same_as_applicant": "Check if the responsible officer information is the same as the applicant."
     }

@@ -19,7 +19,11 @@
             {{ __("Current status and progress of your submission") }}
           </p>
         </div>
-        <x-myds.button :href="route('public.track')" variant="secondary" iconLeading="search">
+        <x-myds.button
+          :href="route('public.track')"
+          variant="secondary"
+          iconLeading="search"
+        >
           {{ __("Track Another") }}
         </x-myds.button>
       </div>
@@ -254,9 +258,9 @@
               </p>
             </div>
             <div class="text-right">
-        <x-myds.badge :variant="$ticket->status->code">
-        {{ $ticket->status->name }}
-        </x-myds.badge>
+              <x-myds.badge :variant="$ticket->status->code">
+                {{ $ticket->status->name }}
+              </x-myds.badge>
               <p class="text-xs text-gray-600 mt-1">
                 {{ __("Priority: :priority", ["priority" => ucfirst(is_object($ticket->priority) && method_exists($ticket->priority, "value") ? (string) $ticket->priority->value : (string) $ticket->priority)]) }}
               </p>
@@ -476,15 +480,27 @@
 
     <!-- Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <x-myds.button :href="route('public.track')" variant="primary" iconLeading="search">
+      <x-myds.button
+        :href="route('public.track')"
+        variant="primary"
+        iconLeading="search"
+      >
         {{ __("Track Another Request") }}
       </x-myds.button>
       @if (isset($request))
-        <x-myds.button :href="route('public.loan-requests.create')" variant="secondary" iconLeading="plus">
+        <x-myds.button
+          :href="route('public.loan-requests.create')"
+          variant="secondary"
+          iconLeading="plus"
+        >
           {{ __("Submit New Loan Request") }}
         </x-myds.button>
       @elseif (isset($ticket))
-        <x-myds.button :href="route('public.helpdesk.create')" variant="secondary" iconLeading="plus">
+        <x-myds.button
+          :href="route('public.helpdesk.create')"
+          variant="secondary"
+          iconLeading="plus"
+        >
           {{ __("Report Another Issue") }}
         </x-myds.button>
       @endif

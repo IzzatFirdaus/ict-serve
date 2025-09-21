@@ -37,9 +37,18 @@
 @endphp
 
 <span {{ $attributes->only('class')->merge([]) }}>
-  <x-myds.badge @if($badgeVariant) variant="{{ $badgeVariant }}" @endif @if($badgeSize) size="{{ $badgeSize }}" @endif>
+  <x-myds.badge
+    @if ($badgeVariant)
+    variant="{{ $badgeVariant }}"
+    @endif
+    @if ($badgeSize)
+    size="{{ $badgeSize }}"
+    @endif
+  >
     @if ($icon)
-      <span class="inline-flex items-center mr-1" aria-hidden="true">{!! $icon !!}</span>
+      <span class="inline-flex items-center mr-1" aria-hidden="true">
+        {!! $icon !!}
+      </span>
     @endif
 
     <span class="myds-badge-text">{{ $slot }}</span>

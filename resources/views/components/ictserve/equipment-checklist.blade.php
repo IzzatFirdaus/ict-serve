@@ -3,8 +3,8 @@
     "checklist" => [],
     "mode" => "view",
     //'view',
-    'issue',
-    'return',
+    "issue",
+    "return",
     "readonly" => false,
     "showCondition" => false,
 ])

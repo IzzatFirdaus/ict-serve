@@ -16,13 +16,19 @@
 --}}
 
 @props([
-  'name', // icon name (required)
-  'size' => 'md', // xs, sm, md, lg, xl, or int px
-  'colour' => 'black-900', // MYDS colour token
-  'class' => '', // extra classes for sizing
-  'title' => null, // for accessibility
-  'ariaLabel' => null, // for accessibility
-  'type' => 'outline', // 'outline' or 'filled'
+  'name',
+  //iconname(required)'size' => 'md',
+  //xs,
+  sm,
+  md,
+  lg,
+  xl,
+  orintpx'colour' => 'black-900',
+  //MYDScolourtoken'class' => '',
+  //extraclassesforsizing'title' => null,
+  //foraccessibility'ariaLabel' => null,
+  //foraccessibility'type' => 'outline',
+  //'outline'or'filled',
 ])
 
 @php

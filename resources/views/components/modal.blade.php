@@ -14,7 +14,7 @@
   'title' => null,
   'show' => false,
   'maxWidth' => 'md',
-  // 'sm',
+  //'sm',
   'md',
   'lg',
   'xl',
@@ -122,5 +122,5 @@
   Ensures keyboard navigation is trapped within modal when open.
 --}}
 @push('scripts')
-@vite('resources/js/shared/modal-focus-trap.js')
+  @vite('resources/js/shared/modal-focus-trap.js')
 @endpush

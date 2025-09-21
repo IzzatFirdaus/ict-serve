@@ -140,7 +140,7 @@
 
         {{-- Progress bar for auto-hide --}}
         @if (! $currentNotification['persistent'])
-                <div class="h-1 bg-black-200">
+          <div class="h-1 bg-black-200">
             <div
               class="h-full bg-primary-600 transition-all toast-progress-track"
               x-data="{ progress: 0 }"

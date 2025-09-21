@@ -24,7 +24,7 @@
     <!-- Page Title -->
     <div class="myds-page-header">
       <h1 class="myds-heading-xl text-myds-gray-900 dark:text-myds-gray-100">
-  <x-myds.icon name="cog" class="mr-3" aria-hidden="true" />
+        <x-myds.icon name="cog" class="mr-3" aria-hidden="true" />
         Pengurusan Jenis Kerosakan
       </h1>
       <p
@@ -47,14 +47,14 @@
   <!-- Flash Messages -->
   @if (session()->has('success'))
     <div class="myds-alert myds-alert-success mb-6" role="alert">
-  <x-myds.icon name="check-circle" aria-hidden="true" />
+      <x-myds.icon name="check-circle" aria-hidden="true" />
       <span>{{ session('success') }}</span>
     </div>
   @endif
 
   @if (session()->has('error'))
     <div class="myds-alert myds-alert-error mb-6" role="alert">
-  <x-myds.icon name="exclamation-circle" aria-hidden="true" />
+      <x-myds.icon name="exclamation-circle" aria-hidden="true" />
       <span>{{ session('error') }}</span>
     </div>
   @endif
@@ -330,12 +330,21 @@
         <div
           class="myds-flex myds-justify-end myds-space-x-4 mt-6 pt-6 border-t border-myds-gray-200"
         >
-          <x-myds.button type="button" wire:click="cancelEdit" variant="secondary">
+          <x-myds.button
+            type="button"
+            wire:click="cancelEdit"
+            variant="secondary"
+          >
             <x-myds.icon name="x" class="mr-2" aria-hidden="true" />
             Batal / Cancel
           </x-myds.button>
 
-          <x-myds.button type="submit" variant="primary" wire:loading.attr="disabled" wire:target="save">
+          <x-myds.button
+            type="submit"
+            variant="primary"
+            wire:loading.attr="disabled"
+            wire:target="save"
+          >
             <span wire:loading.remove wire:target="save">
               <x-myds.icon name="check" class="mr-2" aria-hidden="true" />
               @if ($editingId)
@@ -345,7 +354,11 @@
               @endif
             </span>
             <span wire:loading wire:target="save">
-              <x-myds.icon name="refresh" class="mr-2 animate-spin" aria-hidden="true" />
+              <x-myds.icon
+                name="refresh"
+                class="mr-2 animate-spin"
+                aria-hidden="true"
+              />
               Menyimpan... / Saving...
             </span>
           </x-myds.button>
@@ -365,7 +378,7 @@
   <div class="myds-card myds-card-bordered">
     <div class="myds-card-header">
       <h2 class="myds-heading-lg text-myds-gray-900 dark:text-myds-gray-100">
-  <x-myds.icon name="view-list" class="mr-2" aria-hidden="true" />
+        <x-myds.icon name="view-list" class="mr-2" aria-hidden="true" />
         Senarai Jenis Kerosakan / Damage Types List
       </h2>
     </div>
@@ -388,7 +401,9 @@
               @foreach ($damageTypes as $damageType)
                 <tr class="myds-table-row">
                   <td class="myds-table-td">
-                    <x-myds.badge variant="neutral">{{ $damageType->sort_order }}</x-myds.badge>
+                    <x-myds.badge variant="neutral">
+                      {{ $damageType->sort_order }}
+                    </x-myds.badge>
                   </td>
                   <td class="myds-table-td">
                     <div class="myds-flex myds-items-center">
@@ -420,12 +435,16 @@
                       $config = $severityConfig[$damageType->severity];
                     @endphp
 
-                    <x-myds.badge variant="{{ str_contains($config['class'], 'success') ? 'success' : (str_contains($config['class'], 'warning') ? 'warning' : 'danger') }}">
+                    <x-myds.badge
+                      variant="{{ str_contains($config['class'], 'success') ? 'success' : (str_contains($config['class'], 'warning') ? 'warning' : 'danger') }}"
+                    >
                       {{ $config['text'] }}
                     </x-myds.badge>
                   </td>
                   <td class="myds-table-td">
-                    <x-myds.badge variant="{{ $damageType->is_active ? 'success' : 'neutral' }}">
+                    <x-myds.badge
+                      variant="{{ $damageType->is_active ? 'success' : 'neutral' }}"
+                    >
                       {{ $damageType->is_active ? 'Aktif / Active' : 'Tidak Aktif / Inactive' }}
                     </x-myds.badge>
                   </td>
@@ -439,12 +458,26 @@
                   </td>
                   <td class="myds-table-td">
                     <div class="myds-flex myds-space-x-2">
-                      <x-myds.button type="button" wire:click="edit({{ $damageType->id }})" variant="secondary" size="sm" title="Kemaskini / Edit">
+                      <x-myds.button
+                        type="button"
+                        wire:click="edit({{ $damageType->id }})"
+                        variant="secondary"
+                        size="sm"
+                        title="Kemaskini / Edit"
+                      >
                         <x-myds.icon name="pencil" aria-hidden="true" />
                         <span class="sr-only">Kemaskini / Edit</span>
                       </x-myds.button>
 
-                      <x-myds.button type="button" wire:click="toggleStatus({{ $damageType->id }})" variant="{{ $damageType->is_active ? 'warning' : 'success' }}" size="sm" title="{{ $damageType->is_active ? 'Nyahaktifkan / Deactivate' : 'Aktifkan / Activate' }}" wire:loading.attr="disabled" wire:target="toggleStatus({{ $damageType->id }})">
+                      <x-myds.button
+                        type="button"
+                        wire:click="toggleStatus({{ $damageType->id }})"
+                        variant="{{ $damageType->is_active ? 'warning' : 'success' }}"
+                        size="sm"
+                        title="{{ $damageType->is_active ? 'Nyahaktifkan / Deactivate' : 'Aktifkan / Activate' }}"
+                        wire:loading.attr="disabled"
+                        wire:target="toggleStatus({{ $damageType->id }})"
+                      >
                         <i
                           class="{{ $damageType->is_active ? 'myds-icon-eye-off' : 'myds-icon-eye' }}"
                           aria-hidden="true"
@@ -454,7 +487,16 @@
                         </span>
                       </x-myds.button>
 
-                      <x-myds.button type="button" wire:click="delete({{ $damageType->id }})" wire:confirm="Adakah anda pasti untuk memadam jenis kerosakan ini? / Are you sure you want to delete this damage type?" variant="danger" size="sm" title="Padam / Delete" wire:loading.attr="disabled" wire:target="delete({{ $damageType->id }})">
+                      <x-myds.button
+                        type="button"
+                        wire:click="delete({{ $damageType->id }})"
+                        wire:confirm="Adakah anda pasti untuk memadam jenis kerosakan ini? / Are you sure you want to delete this damage type?"
+                        variant="danger"
+                        size="sm"
+                        title="Padam / Delete"
+                        wire:loading.attr="disabled"
+                        wire:target="delete({{ $damageType->id }})"
+                      >
                         <x-myds.icon name="trash" aria-hidden="true" />
                         <span class="sr-only">Padam / Delete</span>
                       </x-myds.button>
@@ -495,7 +537,12 @@
             @endif
           </p>
           @if (! $search && ! $severityFilter && ! $statusFilter)
-            <x-myds.button type="button" wire:click="create" variant="primary" class="mt-4">
+            <x-myds.button
+              type="button"
+              wire:click="create"
+              variant="primary"
+              class="mt-4"
+            >
               <x-myds.icon name="plus" class="mr-2" aria-hidden="true" />
               Tambah Jenis Kerosakan Pertama / Add First Damage Type
             </x-myds.button>

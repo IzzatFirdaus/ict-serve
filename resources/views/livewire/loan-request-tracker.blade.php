@@ -17,10 +17,18 @@
   <div class="mt-6 flex items-center justify-between">
     <x-myds.button wire:click="toggleDetails" variant="outline" size="sm">
       @if ($showDetails)
-        <x-myds.icon name="chevron-up" class="w-4 h-4 mr-1" aria-hidden="true" />
+        <x-myds.icon
+          name="chevron-up"
+          class="w-4 h-4 mr-1"
+          aria-hidden="true"
+        />
         {{ __('ui.hide_details') }}
       @else
-        <x-myds.icon name="chevron-down" class="w-4 h-4 mr-1" aria-hidden="true" />
+        <x-myds.icon
+          name="chevron-down"
+          class="w-4 h-4 mr-1"
+          aria-hidden="true"
+        />
         {{ __('ui.show_details') }}
       @endif
     </x-myds.button>

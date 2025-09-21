@@ -63,7 +63,9 @@
         </span>
       @endif
 
-      <h2 class="font-poppins text-lg md:text-xl font-semibold text-txt-black-900">
+      <h2
+        class="font-poppins text-lg md:text-xl font-semibold text-txt-black-900"
+      >
         {{ $title }}
       </h2>
     </div>

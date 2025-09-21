@@ -48,7 +48,11 @@
         <span
           class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $statusConfig['bg'] }} {{ $statusConfig['text'] }}"
         >
-          <x-myds.icon name="{{ $statusConfig['icon'] }}" class="w-4 h-4 mr-2" aria-hidden="true" />
+          <x-myds.icon
+            name="{{ $statusConfig['icon'] }}"
+            class="w-4 h-4 mr-2"
+            aria-hidden="true"
+          />
           <span>{{ $loanRequest->loanStatus->name ?? 'Pending' }}</span>
         </span>
 
@@ -63,7 +67,11 @@
             aria-expanded="open"
             class="focus-visible:ring-2 focus-visible:ring-fr-primary"
           >
-            <x-myds.icon name="dots-vertical" class="w-4 h-4" aria-hidden="true" />
+            <x-myds.icon
+              name="dots-vertical"
+              class="w-4 h-4"
+              aria-hidden="true"
+            />
             <span class="sr-only">Open actions</span>
           </x-myds.button>
 
@@ -90,7 +98,11 @@
                   role="menuitem"
                   tabindex="0"
                 >
-                  <x-myds.icon name="edit" class="w-4 h-4 mr-2 inline" aria-hidden="true" />
+                  <x-myds.icon
+                    name="edit"
+                    class="w-4 h-4 mr-2 inline"
+                    aria-hidden="true"
+                  />
                   Edit Request
                 </a>
               @endif
@@ -101,7 +113,11 @@
                 role="menuitem"
                 tabindex="0"
               >
-                <x-myds.icon name="download" class="w-4 h-4 mr-2 inline" aria-hidden="true" />
+                <x-myds.icon
+                  name="download"
+                  class="w-4 h-4 mr-2 inline"
+                  aria-hidden="true"
+                />
                 Download PDF
               </a>
 
@@ -111,7 +127,11 @@
                 role="menuitem"
                 tabindex="0"
               >
-                <x-myds.icon name="share" class="w-4 h-4 mr-2 inline" aria-hidden="true" />
+                <x-myds.icon
+                  name="share"
+                  class="w-4 h-4 mr-2 inline"
+                  aria-hidden="true"
+                />
                 Share
               </a>
 
@@ -123,7 +143,11 @@
                   role="menuitem"
                   tabindex="0"
                 >
-                  <x-myds.icon name="x-circle" class="w-4 h-4 mr-2 inline" aria-hidden="true" />
+                  <x-myds.icon
+                    name="x-circle"
+                    class="w-4 h-4 mr-2 inline"
+                    aria-hidden="true"
+                  />
                   Cancel Request
                 </a>
               @endif
@@ -220,7 +244,11 @@
                   <div
                     class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center"
                   >
-                    <x-myds.icon name="desktop-computer" class="w-6 h-6 text-txt-primary" aria-hidden="true" />
+                    <x-myds.icon
+                      name="desktop-computer"
+                      class="w-6 h-6 text-txt-primary"
+                      aria-hidden="true"
+                    />
                   </div>
                   <div>
                     <h4 class="text-sm font-medium text-txt-black-900">
@@ -271,7 +299,11 @@
                   <div
                     class="flex-shrink-0 w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center"
                   >
-                    <x-myds.icon name="cube" class="w-6 h-6 text-success-600" aria-hidden="true" />
+                    <x-myds.icon
+                      name="cube"
+                      class="w-6 h-6 text-success-600"
+                      aria-hidden="true"
+                    />
                   </div>
                   <div>
                     <h4 class="text-sm font-medium text-txt-black-900">
@@ -372,7 +404,11 @@
             <div
               class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center"
             >
-              <x-myds.icon name="user" class="w-5 h-5 text-txt-primary" aria-hidden="true" />
+              <x-myds.icon
+                name="user"
+                class="w-5 h-5 text-txt-primary"
+                aria-hidden="true"
+              />
             </div>
           </div>
           <div>
@@ -466,13 +502,21 @@
               <div
                 class="flex-shrink-0 w-6 h-6 bg-success-100 rounded-full flex items-center justify-center"
               >
-                <x-myds.icon name="check" class="w-3 h-3 text-success-600" aria-hidden="true" />
+                <x-myds.icon
+                  name="check"
+                  class="w-3 h-3 text-success-600"
+                  aria-hidden="true"
+                />
               </div>
             @else
               <div
                 class="flex-shrink-0 w-6 h-6 bg-black-100 rounded-full flex items-center justify-center"
               >
-                <x-myds.icon name="clock" class="w-3 h-3 text-txt-black-500" aria-hidden="true" />
+                <x-myds.icon
+                  name="clock"
+                  class="w-3 h-3 text-txt-black-500"
+                  aria-hidden="true"
+                />
               </div>
             @endif
             <div class="flex-1">
@@ -501,13 +545,21 @@
               <div
                 class="flex-shrink-0 w-6 h-6 bg-success-100 rounded-full flex items-center justify-center"
               >
-                <x-myds.icon name="check" class="w-3 h-3 text-success-600" aria-hidden="true" />
+                <x-myds.icon
+                  name="check"
+                  class="w-3 h-3 text-success-600"
+                  aria-hidden="true"
+                />
               </div>
             @else
               <div
                 class="flex-shrink-0 w-6 h-6 bg-black-100 rounded-full flex items-center justify-center"
               >
-                <x-myds.icon name="clock" class="w-3 h-3 text-txt-black-500" aria-hidden="true" />
+                <x-myds.icon
+                  name="clock"
+                  class="w-3 h-3 text-txt-black-500"
+                  aria-hidden="true"
+                />
               </div>
             @endif
             <div class="flex-1">

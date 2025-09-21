@@ -14,7 +14,8 @@
   'href',
   'active' => false,
   'icon' => null,
-  'ariaLabel' => null, // Optional: ARIA label for accessibility
+  'ariaLabel' => null,
+  //Optional:ARIAlabelforaccessibility,
 ])
 
 @php

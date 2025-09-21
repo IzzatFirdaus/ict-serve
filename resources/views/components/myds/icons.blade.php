@@ -11,9 +11,10 @@
 {{-- Generic Icons --}}
 
 @props([
-  'size' => 20, // px, default MYDS grid
-  'class' => '', // extra classes for sizing
-  'colour' => null,
+  'size' => 20,
+  //px,
+  defaultMYDSgrid'class' => '',
+  //extraclassesforsizing'colour' => null,
   'name' => null,
 ])
 

@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>
       {{ isset($title) ? $title . ' - ' . config('app.name') : config('app.name') }}
-
+      
     </title>
 
     <!-- MYDS Fonts -->

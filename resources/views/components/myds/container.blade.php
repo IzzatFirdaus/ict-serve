@@ -1,11 +1,11 @@
 @props([
   'variant' => 'default',
-  // default,
+  //default,
   'narrow',
   'wide',
   'full',
   'padding' => 'default',
-  // none,
+  //none,
   'sm',
   'default',
   'lg',

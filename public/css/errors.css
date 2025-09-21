@@ -1,10 +1,33 @@
 /* Minimal error page styles (placeholder) */
-.error-404 .error-code, .error-500 .error-code { color: #111827; font-size: 6rem; }
-.error-title { color: #111827; }
-.myds-btn { display: inline-block; text-decoration: none; padding: 0.5rem 1rem; border-radius: 0.375rem; }
-.bg-primary-600 { background-color: #2563EB; }
-.bg-danger-600 { background-color: #DC2626; }
-.bg-secondary { background-color: #6B7280; }
-.bg-info { background-color: #0EA5E9; }
-.text-white { color: #ffffff; }
-.myds-error-illustration { max-width: 320px; }
+.error-404 .error-code,
+.error-500 .error-code {
+  color: #111827;
+  font-size: 6rem;
+}
+.error-title {
+  color: #111827;
+}
+.myds-btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
+.bg-primary-600 {
+  background-color: #2563eb;
+}
+.bg-danger-600 {
+  background-color: #dc2626;
+}
+.bg-secondary {
+  background-color: #6b7280;
+}
+.bg-info {
+  background-color: #0ea5e9;
+}
+.text-white {
+  color: #ffffff;
+}
+.myds-error-illustration {
+  max-width: 320px;
+}
