@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $comments
  * @property \Carbon\Carbon|null $approved_at
  * @property-read User $approver
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class LoanApproval extends Model
 {
@@ -36,6 +38,9 @@ class LoanApproval extends Model
         ];
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function approver(): BelongsTo
     {
         return $this->belongsTo(User::class, 'approved_by');

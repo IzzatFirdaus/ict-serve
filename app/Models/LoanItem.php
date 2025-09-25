@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\LoanRequest $loanRequest
  * @property-read \App\Models\EquipmentItem|null $equipmentItem
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin \Illuminate\Database\Eloquent\Builder<\App\Models\LoanItem>
  */
 class LoanItem extends Model
 {
@@ -41,6 +41,9 @@ class LoanItem extends Model
     /**
      * Get the loan request this item belongs to
      */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function loanRequest(): BelongsTo
     {
         return $this->belongsTo(LoanRequest::class);
@@ -48,6 +51,9 @@ class LoanItem extends Model
 
     /**
      * Get the equipment item
+     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function equipmentItem(): BelongsTo
     {

@@ -8,8 +8,13 @@ use App\Enums\TicketPriority;
 use App\Enums\TicketUrgency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Auditable;
+use App\Models\User;
+use App\Models\HelpdeskCategory;
+use App\Models\HelpdeskComment;
+use App\Models\DamageReport;
 
 /**
  * @property int $id
@@ -90,7 +95,10 @@ class HelpdeskTicket extends Model
     /**
      * Get the user who created the ticket.
      */
-    public function user(): BelongsTo
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, HelpdeskTicket>
+     */
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -98,39 +106,33 @@ class HelpdeskTicket extends Model
     /**
      * Get the ticket category.
      */
-    public function category(): BelongsTo
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<HelpdeskCategory, HelpdeskTicket>
+     */
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(TicketCategory::class, 'category_id');
+        return $this->belongsTo(HelpdeskCategory::class, 'helpdesk_category_id');
     }
 
     /**
      * Get the ticket status (alias: status).
      */
-    public function status(): BelongsTo
-    {
-        return $this->belongsTo(TicketStatus::class, 'status_id');
-    }
-
-    /**
-     * Backwards compatible relation name used in some places.
-     */
-    public function ticketStatus(): BelongsTo
-    {
-        return $this->status();
-    }
+    // Remove status and ticketStatus relationships (not in planned model set)
 
     /**
      * Get the assigned staff member.
      */
-    public function assignedTo(): BelongsTo
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, HelpdeskTicket>
+     */
+    public function assignedTo(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }
-
     /**
-     * Alias for assigned user relation used across the codebase.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, HelpdeskTicket>
      */
-    public function assignedToUser(): BelongsTo
+    public function assignedToUser(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->assignedTo();
     }
@@ -138,15 +140,17 @@ class HelpdeskTicket extends Model
     /**
      * Get the staff who resolved the ticket.
      */
-    public function resolvedBy(): BelongsTo
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, HelpdeskTicket>
+     */
+    public function resolvedBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'resolved_by');
     }
-
     /**
-     * Alias for resolver relation used across the codebase.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, HelpdeskTicket>
      */
-    public function resolvedByUser(): BelongsTo
+    public function resolvedByUser(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->resolvedBy();
     }
@@ -154,17 +158,23 @@ class HelpdeskTicket extends Model
     /**
      * Get the equipment item related to this ticket.
      */
-    public function equipmentItem(): BelongsTo
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Equipment, HelpdeskTicket>
+     */
+    public function equipment(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(EquipmentItem::class, 'equipment_item_id');
+        return $this->belongsTo(Equipment::class, 'equipment_id');
     }
 
     /**
      * Ticket comments relation.
      */
-    public function comments(): HasMany
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<HelpdeskComment>
+     */
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(TicketComment::class, 'ticket_id');
+        return $this->hasMany(HelpdeskComment::class, 'helpdesk_ticket_id');
     }
 
     /**

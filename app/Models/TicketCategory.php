@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $total
  * @property int $met_sla
  * @property int $breached_sla
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $tickets
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -49,6 +50,8 @@ class TicketCategory extends Model
 
     /**
      * Get the tickets in this category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tickets(): HasMany
     {
@@ -71,3 +74,4 @@ class TicketCategory extends Model
         return $query->orderBy('sort_order', 'asc')->orderBy('name', 'asc');
     }
 }
+

@@ -7,18 +7,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\HelpdeskTicket;
+use App\Models\User;
 
 /**
  * @property int $id
  * @property int $ticket_id
  * @property int $user_id
  * @property string $comment
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read HelpdeskTicket $ticket
  * @property-read User $user
+ *
+ * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class TicketComment extends Model
+class TicketComment extends \Illuminate\Database\Eloquent\Model
 {
     use HasFactory;
 
@@ -33,8 +37,11 @@ class TicketComment extends Model
         'updated_at' => 'datetime',
     ];
 
+
     /**
      * Get the ticket this comment belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function ticket(): BelongsTo
     {
@@ -43,6 +50,8 @@ class TicketComment extends Model
 
     /**
      * Get the user who made this comment.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): BelongsTo
     {

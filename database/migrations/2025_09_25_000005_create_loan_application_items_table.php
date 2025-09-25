@@ -11,23 +11,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Equipment categories table: stores equipment category master data
-        Schema::create('equipment_categories', function (Blueprint $table) {
+        // Loan application items table: stores requested equipment for each application
+        Schema::create('loan_application_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique()->comment('Category name');
-            $table->text('description')->nullable()->comment('Description');
-            $table->boolean('is_active')->default(true)->comment('Active status');
+            $table->unsignedBigInteger('loan_application_id')->comment('FK to loan_applications');
+            $table->string('equipment_type')->comment('Type of equipment requested');
+            $table->integer('quantity_requested')->comment('Requested quantity');
+            $table->integer('quantity_approved')->nullable()->comment('Approved quantity');
+            $table->integer('quantity_issued')->nullable()->comment('Issued quantity');
+            $table->integer('quantity_returned')->nullable()->comment('Returned quantity');
             $table->unsignedBigInteger('created_by')->nullable()->comment('FK to users: created by');
             $table->unsignedBigInteger('updated_by')->nullable()->comment('FK to users: updated by');
             $table->unsignedBigInteger('deleted_by')->nullable()->comment('FK to users: deleted by');
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('loan_application_id')->references('id')->on('loan_applications')->cascadeOnDelete();
             $table->foreign('created_by')->references('id')->on('users')->nullOnDelete();
             $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
             $table->foreign('deleted_by')->references('id')->on('users')->nullOnDelete();
 
-            $table->index('is_active');
+            $table->index(['loan_application_id', 'equipment_type']);
         });
     }
 
@@ -36,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('equipment_categories');
+        Schema::dropIfExists('loan_application_items');
     }
 };
