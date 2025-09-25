@@ -4,7 +4,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 
 ## Primary Color Tokens
 
-### Background Tokens
+### Primary Background Tokens
 
 - `bg-primary-50` - Lightest primary background
 - `bg-primary-100` - Very light primary background
@@ -18,7 +18,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-primary-900` - Very dark primary background
 - `bg-primary-950` - Darkest primary background
 
-### Text Tokens
+### Primary Text Tokens
 
 - `text-primary-50` - Lightest primary text
 - `text-primary-100` - Very light primary text
@@ -32,7 +32,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `text-primary-900` - Very dark primary text
 - `text-primary-950` - Darkest primary text
 
-### Border Tokens
+### Primary Border Tokens
 
 - `border-primary-200` - Light primary border
 - `border-primary-300` - Medium-light primary border
@@ -40,7 +40,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 
 ## Danger/Critical Color Tokens
 
-### Background Tokens
+### Danger Background Tokens
 
 - `bg-danger-50` - Lightest danger background
 - `bg-danger-100` - Very light danger background
@@ -54,7 +54,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-danger-900` - Very dark danger background
 - `bg-danger-950` - Darkest danger background
 
-### Text Tokens
+### Danger Text Tokens
 
 - `text-danger-50` - Lightest danger text
 - `text-danger-100` - Very light danger text
@@ -70,7 +70,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 
 ## Success Color Tokens
 
-### Background Tokens
+### Success Background Tokens
 
 - `bg-success-50` - Lightest success background
 - `bg-success-100` - Very light success background
@@ -84,7 +84,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-success-900` - Very dark success background
 - `bg-success-950` - Darkest success background
 
-### Text Tokens
+### Success Text Tokens
 
 - `text-success-50` - Lightest success text
 - `text-success-100` - Very light success text
@@ -100,7 +100,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 
 ## Warning Color Tokens
 
-### Background Tokens
+### Warning Background Tokens
 
 - `bg-warning-50` - Lightest warning background
 - `bg-warning-100` - Very light warning background
@@ -114,7 +114,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-warning-900` - Very dark warning background
 - `bg-warning-950` - Darkest warning background
 
-### Text Tokens
+### Warning Text Tokens
 
 - `text-warning-50` - Lightest warning text
 - `text-warning-100` - Very light warning text
@@ -130,7 +130,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 
 ## Neutral/Gray Color Tokens
 
-### Background Tokens
+### Neutral/Gray Background Tokens
 
 - `bg-gray-50` - Lightest gray background (#FAFAFA)
 - `bg-gray-100` - Very light gray background (#F4F4F5)
@@ -143,7 +143,7 @@ This document contains the complete MYDS color token reference for the ICTServe 
 - `bg-gray-800` - Very dark gray background (#27272A)
 - `bg-gray-900` - Darkest gray background (#18181B)
 
-### Text Tokens
+### Neutral/Gray Text Tokens
 
 - `text-gray-50` - Lightest gray text
 - `text-gray-100` - Very light gray text
