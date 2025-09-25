@@ -59,60 +59,45 @@
 
 <x-myds.tokens />
 
-@if ($label)
-  <label for="{{ $fieldId }}" class="myds-label">
-    {{ $label }}
-    @if ($required)
-      <span class="txt-danger">*</span>
-    @endif
-  </label>
-@endif
-
-<div class="relative">
-  @if ($icon)
-    <span
-      class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-    >
-      {!! $icon !!}
-    </span>
+<div class="myds-input-wrapper">
+  @if ($label)
+    <label for="{{ $fieldId }}" class="myds-label">
+      {{ $label }}
+      @if ($required)
+        <span class="text-danger-600">*</span>
+      @endif
+    </label>
   @endif
-
-  <input
-    id="{{ $fieldId }}"
-    name="{{ $name ?? $fieldId }}"
-    type="{{ $type }}"
-    @if(!is_null($value)) value="{{ old($name ?? $fieldId, $value) }}" @endif
-    @class([
-      'myds-input',
-      $sizeClass,
-      $invalidClass,
-      $inputPaddingLeft,
-      $inputPaddingRight,
-      $class,
-      // For a11y, always show pointer unless disabled
-      'cursor-not-allowed opacity-60' => $disabled,
-    ])
-    placeholder="{{ $placeholder }}"
-    @if($disabled) disabled @endif
-    @if($required) aria-required="true" required @endif
-    @if($describedBy) aria-describedby="{{ $describedBy }}" @endif
-    @if($isInvalid) aria-invalid="true" @endif
-    @if($autocomplete) autocomplete="{{ $autocomplete }}" @endif
-    @if($inputmode) inputmode="{{ $inputmode }}" @endif
-  />
-  @if ($trailingIcon)
-    <span
-      class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"
-    >
-      {!! $trailingIcon !!}
-    </span>
+  <div class="relative">
+    @if ($icon)
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+        {{ $icon }}
+      </span>
+    @endif
+    <input
+      id="{{ $fieldId }}"
+      name="{{ $name }}"
+      type="{{ $type }}"
+      value="{{ $value }}"
+      placeholder="{{ $placeholder }}"
+      autocomplete="{{ $autocomplete }}"
+      inputmode="{{ $inputmode }}"
+      {{ $attributes->merge([
+        'class' => "myds-input $sizeClass $class",
+        'aria-invalid' => $error ? 'true' : 'false',
+        'aria-describedby' => $hint ? "$fieldId-hint" : null,
+      ]) }}
+    />
+    @if ($trailingIcon)
+      <span class="absolute inset-y-0 right-0 flex items-center pr-3">
+        {{ $trailingIcon }}
+      </span>
+    @endif
+  </div>
+  @if ($hint)
+    <p id="{{ $fieldId }}-hint" class="myds-hint">{{ $hint }}</p>
+  @endif
+  @if ($error)
+    <p class="myds-error" role="alert">{{ $error }}</p>
   @endif
 </div>
-
-@if ($isInvalid)
-  <p id="{{ $errorId }}" class="myds-hint error mt-1" role="alert">
-    {{ $error }}
-  </p>
-@elseif ($hint)
-  <p id="{{ $hintId }}" class="myds-hint mt-1">{{ $hint }}</p>
-@endif
