@@ -369,3 +369,87 @@ Route::view('/motac-info', 'public.motac-info')->name('public.motac-info');
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| ICTServe (iServe) — Controller-based BREAD & Custom Routes
+|--------------------------------------------------------------------------
+| All BREAD and custom controller routes for core, admin, helpdesk, workflow, etc.
+| Grouped and commented for clarity. Uses latest Laravel 12 conventions.
+*/
+
+// -------------------
+// User & Organization
+// -------------------
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('users', App\Http\Controllers\UserController::class);
+    Route::post('users/{user}/reset-password', [App\Http\Controllers\UserController::class, 'resetPassword'])->name('users.reset_password');
+    Route::post('users/{user}/impersonate', [App\Http\Controllers\UserController::class, 'impersonate'])->name('users.impersonate');
+    Route::resource('departments', App\Http\Controllers\DepartmentController::class);
+    Route::resource('positions', App\Http\Controllers\PositionController::class);
+    Route::resource('grades', App\Http\Controllers\GradeController::class);
+});
+Route::middleware(['auth'])->group(function () {
+    Route::post('users/profile/update', [App\Http\Controllers\UserController::class, 'profileUpdate'])->name('users.profile_update');
+});
+
+// -------------------
+// Equipment & Location
+// -------------------
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('equipment-categories', App\Http\Controllers\EquipmentCategoryController::class);
+    Route::resource('sub-categories', App\Http\Controllers\SubCategoryController::class);
+});
+Route::middleware(['auth', 'role:admin,staff'])->group(function () {
+    Route::resource('locations', App\Http\Controllers\LocationController::class);
+    Route::resource('equipment', App\Http\Controllers\EquipmentController::class);
+    Route::get('equipment/{equipment}/history', [App\Http\Controllers\EquipmentController::class, 'history'])->name('equipment.history');
+});
+
+// -------------------
+// ICT Loan Module
+// -------------------
+Route::middleware(['auth'])->group(function () {
+    Route::resource('loan-applications', App\Http\Controllers\LoanApplicationController::class);
+    Route::post('loan-applications/{loan_application}/submit', [App\Http\Controllers\LoanApplicationController::class, 'submit'])->name('loan_applications.submit');
+    Route::post('loan-applications/{loan_application}/cancel', [App\Http\Controllers\LoanApplicationController::class, 'cancel'])->name('loan_applications.cancel');
+    Route::get('loan-applications/{loan_application}/pdf', [App\Http\Controllers\LoanApplicationController::class, 'pdf'])->name('loan_applications.pdf');
+    Route::resource('loan-applications.items', App\Http\Controllers\LoanApplicationItemController::class);
+    Route::resource('loan-transactions', App\Http\Controllers\LoanTransactionController::class);
+    Route::post('loan-transactions/{loan_transaction}/process', [App\Http\Controllers\LoanTransactionController::class, 'process'])->name('loan_transactions.process');
+    Route::resource('loan-transactions.items', App\Http\Controllers\LoanTransactionItemController::class);
+});
+
+// -------------------
+// Helpdesk & Support
+// -------------------
+Route::prefix('helpdesk')->middleware(['auth'])->group(function () {
+    Route::resource('tickets', App\Http\Controllers\Helpdesk\TicketController::class);
+    Route::post('tickets/{ticket}/assign', [App\Http\Controllers\Helpdesk\TicketController::class, 'assign'])->name('tickets.assign');
+    Route::post('tickets/{ticket}/close', [App\Http\Controllers\Helpdesk\TicketController::class, 'close'])->name('tickets.close');
+    Route::post('tickets/{ticket}/reopen', [App\Http\Controllers\Helpdesk\TicketController::class, 'reopen'])->name('tickets.reopen');
+    Route::resource('damage-reports', App\Http\Controllers\Helpdesk\DamageReportController::class);
+    Route::resource('categories', App\Http\Controllers\HelpdeskCategoryController::class);
+    Route::resource('tickets.comments', App\Http\Controllers\HelpdeskCommentController::class)->only(['index', 'store', 'destroy']);
+});
+
+// -------------------
+// Workflow, Notification, Utilities
+// -------------------
+Route::middleware(['auth'])->group(function () {
+    Route::resource('approvals', App\Http\Controllers\ApprovalController::class);
+    Route::post('approvals/{approval}/approve', [App\Http\Controllers\ApprovalController::class, 'approve'])->name('approvals.approve');
+    Route::post('approvals/{approval}/reject', [App\Http\Controllers\ApprovalController::class, 'reject'])->name('approvals.reject');
+    Route::resource('notifications', App\Http\Controllers\NotificationController::class)->only(['index', 'show', 'destroy']);
+    Route::post('notifications/{id}/mark-as-read', [App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.mark_as_read');
+});
+
+// -------------------
+// Admin (Settings, Roles, Permissions)
+// -------------------
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('settings', App\Http\Controllers\Admin\SettingsController::class)->only(['index', 'edit', 'update']);
+    Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
+    Route::resource('permissions', App\Http\Controllers\Admin\PermissionController::class);
+});
