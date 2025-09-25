@@ -20,7 +20,7 @@ test('form: damage complaint presence', async ({ page }) => {
     } catch (err) {
       continue;
     }
-    const form = page.locator('form, [role="form"], .damage-form, .myds-form');
+  const form = page.locator('form, [role="form"], .damage-form, .form-wrapper');
     if ((await form.count()) > 0) {
       await expect(form.first()).toBeVisible({ timeout: 8000 });
       // check for key fields (best-effort)

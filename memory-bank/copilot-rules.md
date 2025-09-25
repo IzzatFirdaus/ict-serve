@@ -12,8 +12,6 @@
 
 - Use `laravel-boost` for all framework operations
 - Follow Laravel 12 streamlined structure and Filament v4 unified schema architecture
-- Enforce MYDS design system compliance throughout
-- Utilize artisan commands for all file generation (`php artisan make:`)
 
 ## Project Conventions
 
@@ -27,7 +25,7 @@
 - Auto-approve development commands but require confirmation for destructive operations
 - Never commit secrets - use environment variables only
 - Maintain WCAG AA accessibility compliance throughout
-- Follow MyGovEA principles for government applications
+- Follow government digital design principles for public sector applications
 
 ## Memory Bank Integration
 

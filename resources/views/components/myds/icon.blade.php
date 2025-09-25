@@ -1,38 +1,32 @@
+<x-ictserve.icon {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.icon>
 {{--
-  MYDS Icon Component for ICTServe (iServe)
-  - Follows MYDS standards: Design, Develop, Icons, Colour tokens, consistent grid and sizing
-  - Fulfills MyGovEA principles: clear, seragam, accessible, minimalis, and citizen-centric
-  - Usage:
-  <x-myds.icon name="search" size="md" colour="primary" class="mr-2" />
-  <x-myds.icon name="facebook" size="lg" colour="black-700" />
+  Icon component (ICTServe)
+  - Centralized icon helper for the ICTServe design system.
+  - Usage examples are intentionally generic; use the site's icon set via the 'name' prop.
   - Props:
-  name: string (required; icon name as per MYDS icon set)
-  size: string ('xs'|'sm'|'md'|'lg'|'xl'|int px; default: 'md' = 20px)
-  colour: string (MYDS token, e.g., 'primary', 'danger', 'success', 'black-700', etc; default: 'black-900')
-  class: string|null (additional CSS classes)
-  title: string|null (for accessibility)
-  ariaLabel: string|null (for accessibility; if set, aria-hidden is false)
-  type: 'outline'|'filled' (default: 'outline')
+    - name: string (required; icon name)
+    - size: string ('xs'|'sm'|'md'|'lg'|'xl'|int px)
+    - colour: string (design token or color identifier)
+    - class: string|null (additional CSS classes)
+    - title: string|null (for accessibility)
+    - ariaLabel: string|null (for accessibility)
+    - type: 'outline'|'filled'
 --}}
 
 @props([
   'name',
-  //iconname(required)'size' => 'md',
-  //xs,
-  sm,
-  md,
-  lg,
-  xl,
-  orintpx'colour' => 'black-900',
-  //MYDScolourtoken'class' => '',
-  //extraclassesforsizing'title' => null,
-  //foraccessibility'ariaLabel' => null,
-  //foraccessibility'type' => 'outline',
-  //'outline'or'filled',
+  'size' => 'md',
+  'colour' => 'black-900',
+  'class' => '',
+  'title' => null,
+  'ariaLabel' => null,
+  'type' => 'outline',
 ])
 
 @php
-  // Map size tokens to px as per MYDS icon spec
+  // Map size tokens to px as per project icon spec
   $sizeMap = [
     'xs' => 16,
     'sm' => 18,
@@ -42,7 +36,7 @@
   ];
   $iconSize = is_numeric($size) ? intval($size) : $sizeMap[$size] ?? 20;
 
-  // MYDS colour token to class
+  // Colour token to class
   $colourClass = match ($colour) {
     'primary' => 'txt-primary',
     'danger' => 'txt-danger',
@@ -59,7 +53,7 @@
   $titleAttr = $title ? 'title="' . $title . '"' : '';
   $ariaAttrs = $ariaLabel ? 'role="img" aria-label="' . $ariaLabel . '"' : 'aria-hidden="true" focusable="false"';
 
-  // Icon SVG repository: icons should be included as Blade partials or inline SVGs matching MYDS
+  // Icon SVG repository: icons should be included as Blade partials or inline SVGs
   // Recommend: Place icons/svg/[name]-[type].blade.php (e.g., icons/svg/search-outline.blade.php)
   $iconBladePath = 'myds.icons.svg.' . $name . '-' . $type;
 @endphp
@@ -89,7 +83,7 @@
       fill="none"
       stroke="currentColor"
       stroke-width="1.5"
-      class="myds-icon {{ $colourClass }}"
+  class="myds-icon {{ $colourClass }}"
     >
       <rect
         x="2"

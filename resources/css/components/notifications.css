@@ -9,10 +9,37 @@
 
 /* toast progress track smoothing and accessibility */
 .toast-progress-track {
-  transition: width 0.05s linear;
+  transition: width var(--motion-fast, 150ms) linear;
 }
 
 /* ensure toast progress fill can animate smoothly */
 .toast-progress-fill {
-  transition: width 0.05s linear;
+  transition: width var(--motion-fast, 150ms) linear;
+}
+
+/* Status color helpers (use tokens) */
+.toast-success {
+  background: var(--bg-success-600, #16a34a);
+  color: var(--txt-white, #fff);
+}
+
+.toast-error {
+  background: var(--bg-danger-600, #dc2626);
+  color: var(--txt-white, #fff);
+}
+
+.toast-warning {
+  background: var(--bg-warning-500, #eab308);
+  color: var(--txt-white, #fff);
+}
+
+.toast-info {
+  background: var(--bg-primary-600, #2563eb);
+  color: var(--txt-white, #fff);
+}
+
+/* Ensure toasts are keyboard focusable and have visible focus */
+.toast:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--fr-primary, #96b7ff);
 }

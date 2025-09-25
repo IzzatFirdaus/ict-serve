@@ -8,7 +8,7 @@
 - **Core Objectives**:
   - Streamline ICT service requests and approvals for MOTAC
   - Provide a unified portal for staff, administrators, and public users
-  - Ensure compliance with MYDS, MyGovEA, and government digital standards
+  - Ensure compliance with government digital standards and guidelines
   - Improve operational efficiency and transparency
 
 ## Target Users & Stakeholders
@@ -31,7 +31,7 @@
   - ICT damage complaint and service desk workflows
   - User authentication and role-based access
   - Admin dashboard and reporting
-  - MYDS-compliant UI and accessibility features
+  - Accessible UI and compliance with government digital standards
 - **In-Progress Features**:
   - Enhanced reporting and analytics
   - Integration with government SSO and external APIs
@@ -46,8 +46,8 @@
 
 ## Government Compliance & Standards
 
-- **MYDS Compliance**: All UI uses MYDS tokens, grid, and components; ongoing audits for full compliance
-- **MyGovEA Principles**: Architecture and workflows align with MyGovEA guidelines for digital government
+- **UI/UX Compliance**: All UI uses project design tokens, grid, and components; ongoing audits for full compliance
+- **Design Principles**: Architecture and workflows align with government digital guidelines
 - **Accessibility**: WCAG AA compliance enforced; all forms, navigation, and content tested for accessibility
 - **Security Standards**: Follows government security policies; uses environment variables, role-based access, and regular audits
 

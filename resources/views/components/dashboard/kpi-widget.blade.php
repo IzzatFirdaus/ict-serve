@@ -2,11 +2,7 @@
   'title',
   'value',
   'icon' => 'chart',
-  //Defaulticontype'color' => 'primary',
-  //Semanticcolor:primary,
-  success,
-  warning,
-  danger,
+  'color' => 'primary',
 ])
 
 @php
@@ -21,11 +17,10 @@
   // Accessible icon map (MYDS outline style, 20x20 grid, 1.5px stroke)
   $iconMap = [
     'device' => '<svg aria-hidden="true" focusable="false" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="14" height="10" rx="2"/><path d="M8 17h4"/><path d="M10 14v3"/></svg>',
-    'clipboard' => '<svg aria-hidden="true" focusable="false" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="4" width="10" height="12" rx="2"/><path d="M9 3h2a1 1 0 0 1 1 1v2H8V4a1 1 0 0 1 1-1z"/></svg>',
+    'clipboard-list' => '<svg aria-hidden="true" focusable="false" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="12" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 8h4M8 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
     'support' => '<svg aria-hidden="true" focusable="false" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8"/><circle cx="10" cy="10" r="4"/></svg>',
-    'check' => '<svg aria-hidden="true" focusable="false" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8"/><path d="M7 11l2 2 4-4"/></svg>',
+    'check-circle' => '<svg aria-hidden="true" focusable="false" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8"/><path d="M7 11l2 2 4-4"/></svg>',
     'chart' => '<svg aria-hidden="true" focusable="false" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="11" width="3" height="6" rx="1"/><rect x="8.5" y="7" width="3" height="10" rx="1"/><rect x="14" y="4" width="3" height="13" rx="1"/></svg>',
-    // Add more icons as needed (use MYDS outline, 20x20 grid, 1.5 stroke)
   ];
 
   // Fallbacks

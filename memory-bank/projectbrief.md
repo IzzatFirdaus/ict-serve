@@ -2,7 +2,7 @@
 
 ## Project Goals
 
-- Deliver a robust, accessible, and maintainable digital service platform for MOTAC, following MYDS and MyGovEA principles
+- Deliver a robust, accessible, and maintainable digital service platform for MOTAC, following government digital principles
 - Ensure all features and UIs are compliant with WCAG AA and government standards
 - Enable rapid onboarding and contribution for new developers
 

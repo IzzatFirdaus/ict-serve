@@ -19,7 +19,7 @@ const TOKEN_MAP: Record<string, string> = {
   'fr-primary': '#96B7FF',
 };
 
-export async function assertMydsToken(
+export async function assertIserveToken(
   page: Page,
   selector: string,
   property: 'background-color' | 'color' | 'border-color',

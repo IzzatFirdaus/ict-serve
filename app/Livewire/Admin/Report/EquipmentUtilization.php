@@ -14,8 +14,15 @@ class EquipmentUtilization extends Component
     public function mount(): void
     {
         $this->utilizationStats = cache()->remember('equipment_utilization_stats', 300, function () {
+            $statusAvailable = \App\Enums\EquipmentStatus::AVAILABLE->value;
+            $statusOnLoan = \App\Enums\EquipmentStatus::ON_LOAN->value;
+            // Use proper SQL string interpolation for status values
             return EquipmentItem::query()
-                ->selectRaw('category_id, COUNT(*) as total, SUM(is_available) as available, SUM(NOT is_available) as loaned')
+                ->selectRaw(
+                    'category_id, COUNT(*) as total, '
+                    . "SUM(CASE WHEN status = '" . $statusAvailable . "' AND is_active = 1 THEN 1 ELSE 0 END) as available, "
+                    . "SUM(CASE WHEN status = '" . $statusOnLoan . "' AND is_active = 1 THEN 1 ELSE 0 END) as loaned"
+                )
                 ->groupBy('category_id')
                 ->with('category')
                 ->get();

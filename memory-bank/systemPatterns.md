@@ -4,7 +4,7 @@
 
 - Modular Laravel 12 structure with strict separation of concerns
 - Use of Filament v4 and Livewire 3 for admin and interactive UI
-- TailwindCSS 4 with MYDS tokens for all styling
+- TailwindCSS 4 with project tokens for all styling
 
 ## Workflow Patterns
 
@@ -14,6 +14,6 @@
 
 ## Best Practices
 
-- All code and UI must comply with MYDS and MyGovEA standards
+- All code and UI must comply with accessibility and government digital standards
 - Documentation and onboarding materials kept up to date
 - Use of markdown templates for memory bank and feature documentation

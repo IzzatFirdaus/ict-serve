@@ -4,27 +4,27 @@
   - Responsive, accessible, and easy to extend for modular navigation
   - Usage: Place at top of page, before main content
   - Props:
-  navLinks: Array of ['href' => string, 'label' => string, 'active' => bool] (optional, for dynamic menus)
-  user: Object|null (for user info/actions, optional)
-  class: string|null
+    navLinks: Array of ['href' => string, 'label' => string, 'active' => bool] (optional, for dynamic menus)
+    user: Object|null (for user info/actions, optional)
+    class: string|null
 --}}
 
-{{--
-  @php
-  // Default navigation links (can be overridden via slot/prop)
-  $navLinks = $navLinks ?? [
-  ['href' => '/', 'label' => 'Utama', 'active' => request()->is('/')],
-  ['href' => '/informasi', 'label' => 'Informasi', 'active' => request()->is('informasi*')],
-  ['href' => '/muat-turun', 'label' => 'Muat Turun', 'active' => request()->is('muat-turun*')],
-  ['href' => '/direktori', 'label' => 'Direktori', 'active' => request()->is('direktori*')],
-  // ServiceDesk ICT dropdown handled below
-  ['href' => '/webmail', 'label' => 'Webmail MyGovUC 3.0', 'active' => request()->is('webmail*')],
-  ['href' => '/my-integriti', 'label' => 'MY Integriti', 'active' => request()->is('my-integriti*')],
+@php
+// Always define $navLinks as array if not set or not array
+if (!isset($navLinks) || !is_array($navLinks)) {
+  $navLinks = [
+    ['href' => '/', 'label' => 'Utama', 'active' => request()->is('/')],
+    ['href' => '/informasi', 'label' => 'Informasi', 'active' => request()->is('informasi*')],
+    ['href' => '/muat-turun', 'label' => 'Muat Turun', 'active' => request()->is('muat-turun*')],
+    ['href' => '/direktori', 'label' => 'Direktori', 'active' => request()->is('direktori*')],
+    // ServiceDesk ICT dropdown handled below
+    ['href' => '/webmail', 'label' => 'Webmail MyGovUC 3.0', 'active' => request()->is('webmail*')],
+    ['href' => '/my-integriti', 'label' => 'MY Integriti', 'active' => request()->is('my-integriti*')],
   ];
-  @endphp
---}}
+}
+@endphp
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 <nav
   class="bg-white border-b border-otl-divider shadow-none z-40 relative {{ $class ?? '' }}"

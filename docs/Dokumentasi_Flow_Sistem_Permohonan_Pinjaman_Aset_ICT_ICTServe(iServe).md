@@ -1,206 +1,165 @@
-# Dokumentasi Aliran Sistem Permohonan Pinjaman Peralatan ICT (v4.1 – MYDS & MyGovEA-Compliant)
+# Dokumentasi Aliran Sistem Helpdesk ServiceDesk ICTServe (iServe) v1.0
 
-> **See Also:**
+> **Rujukan Berkaitan:**
 >
-> - [Jadual Data Pengguna & Organisasi Teras](<./Dokumentasi_Jadual_Data_Pengguna_Organisasi_Teras_ICTServe(iServe).md>)
+> - [ICT DAMAGE COMPLAINT FORM – DETAILS](<./ICT%20DAMAGE%20COMPLAINT%20FORM%20(ServiceDesk%20ICT)%20-%20DETAILED%20BREAKDOWN.md>)
 > - [Reka Bentuk ICTServe](<./Dokumentasi_Reka_Bentuk_ICTServe(iServe).md>)
 > - [Reka Bentuk Sistem ICTServe](<./Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md>)
 > - [Sistem ICTServe Overview](<./Dokumentasi_Sistem_ICTServe(iServe).md>)
 > - [Sistem Notifikasi E-mel](<./Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md>)
 
-Dokumen ini menerangkan keseluruhan aliran kerja untuk modul Pinjaman Peralatan ICT, sebagai komponen utama dalam Sistem Pengurusan Sumber Terintegrasi MOTAC. Dokumentasi ini telah dikemaskini sepenuhnya selaras dengan [PRINSIP REKA BENTUK MYGOVEA (18 Prinsip)](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/) dan [Malaysia Government Design System (MYDS)](https://design.digital.gov.my/) untuk memastikan kepatuhan kepada piawaian UI/UX, aksesibiliti, dan pengalaman pengguna berpaksikan rakyat.
+---
+
+## 1. Gambaran Umum Aliran Helpdesk
+
+Dokumen ini menerangkan aliran kerja terperinci untuk pengurusan aduan kerosakan ICT melalui modul Helpdesk ServiceDesk dalam ICTServe (iServe). Aliran ini memastikan piawaian UI/UX, aksesibiliti, dan pengalaman pengguna berpaksikan rakyat.
 
 ---
 
-## 1. Permulaan Permohonan & Pengesahan
+## 2. Aliran Proses Aduan Kerosakan ICT
 
-### Proses Permohonan
+### 2.1 Senarai Langkah Utama
 
-- Pemohon mengakses dashboard utama dan memilih "Permohonan Pinjaman ICT".
-- Borang permohonan disediakan sebagai komponen Livewire, mengikut struktur [ICT EQUIPMENT LOAN APPLICATION FORM - DETAILED BREAKDOWN.txt].
-- Borang ini menggunakan grid responsif MYDS (12-8-4) dan komponen rasmi MYDS untuk semua input, tarikh, checkbox, dan dropdown.
-- Medan borang:
-  - **Bahagian 1**: Maklumat Pemohon (nama, jawatan & gred, bahagian/unit, tujuan, telefon, lokasi, tarikh pinjaman & dijangka pulang).
-  - **Bahagian 2**: Maklumat Pegawai Bertanggungjawab (checkbox: sama dengan pemohon, atau isikan maklumat pegawai).
-  - **Bahagian 3**: Butiran Peralatan (jadual permohonan peralatan, jenis, kuantiti, catatan).
-  - **Bahagian 4**: Pengesahan Pemohon/Pegawai Bertanggungjawab (tarikh, nama, tandatangan digital).
-  - **Bahagian 5**: Pengesahan Penyokong (Pegawai Gred 41+, pilihan DISOKONG / TIDAK DISOKONG, tarikh, nama, tandatangan digital).
+1. **Mula (Start)**
+   - Proses bermula apabila pengguna ingin melaporkan masalah ICT.
 
-### Komponen Kod Permohonan
+2. **Pengguna Hantar Aduan**
+   - Pengguna log masuk ke ICTServe dan mengisi Borang Aduan Kerosakan ICT.
+   - Medan wajib: Nama, Bahagian, E-mel, No. Telefon, Jenis Kerosakan, Maklumat Kerosakan, Perakuan.
+   - Dropdown dan input mengikut komponen rasmi, grid responsif 12-8-4.
+   - Jika aduan melibatkan perkakasan, medan No. Aset/Printer ID akan dipaparkan secara dinamik.
 
-- **UI**: `App\Livewire\ResourceManagement\LoanApplication\ApplicationForm`
-- **Templat Blade**: `resources/views/livewire/resource-management/loan-application/application-form.blade.php`
-- **Service**: `app/Services/LoanApplicationService`
-- **Model**: `App/Models/LoanApplication`, `App/Models/LoanApplicationItem`
-- **Request**: `app/Http/Requests/StoreLoanApplicationRequest`, `UpdateLoanApplicationRequest`
-- **Policy**: `app/Policies/LoanApplicationPolicy`
-- **Notifikasi**: `App/Notifications/ApplicationSubmitted`
+3. **Sistem Hantar Emel Pengesahan**
+   - Sistem menghantar emel pengesahan kepada pengguna (pelapor) secara automatik.
+   - Notifikasi juga direkod dalam dashboard ICTServe.
 
-### MYDS & MyGovEA Compliance Permohonan
+4. **Sistem Hantar Aduan Kepada Pentadbir**
+   - Sistem mengarahkan aduan kepada pentadbir Helpdesk untuk tindakan lanjut.
+   - Emel notifikasi dihantar kepada pentadbir, dan tiket aduan direkodkan dalam sistem.
 
-- **UI/UX**: Semua medan dan komponen mengikut MYDS, warna, tipografi, spacing, dan token.
-- **Aksesibiliti**: ARIA label, contrast ratio ≥ 4.5:1, navigasi keyboard.
-- **Error Prevention**: Validasi Livewire & backend, mesej ralat jelas dan actionable.
-- **Berpaksikan Rakyat**: Maklumat auto-isi, susunan logik, bantuan inline.
+5. **Pentadbir Terima Notifikasi Aduan**
+   - Pentadbir menerima emel dan notifikasi dalam dashboard pentadbir.
 
----
+6. **Pentadbir Semak & Ambil Tindakan**
+   - Pentadbir menyemak butiran aduan, mengklasifikasikan kategori, dan mengambil tindakan penyelesaian.
+   - Status tiket diubah mengikut perkembangan: "Dalam Tindakan", "Menunggu Maklumat", "Selesai".
 
-## 2. Aliran Kelulusan Permohonan
+7. **Tindakan Diambil & Status Dikemaskini**
+   - Pentadbir/agen IT mengambil tindakan (pembaikan, komunikasi dengan pelapor, dsb).
+   - Semua tindakan dan komen direkod dalam thread tiket.
 
-### Proses Kelulusan
+8. **Status Aduan: Selesai**
+   - Setelah masalah diselesaikan, status tiket diubah kepada "Selesai".
 
-- Selepas penghantaran, permohonan masuk ke senarai semakan pegawai penyokong (Gred 41+).
-- Pegawai menyemak, memberi keputusan (DISOKONG / TIDAK DISOKONG) dengan komen.
-- Status permohonan dikemaskini serta notifikasi dihantar kepada pemohon dan BPM.
+9. **Sistem Hantar Emel Penyelesaian**
+   - Sistem menghantar emel automatik kepada pelapor, memaklumkan aduan telah diselesaikan.
+   - Notifikasi penutupan juga direkod dalam dashboard.
 
-### Komponen Kod Kelulusan
-
-- **UI**: `App\Livewire\ResourceManagement\Approval\Dashboard`
-- **Service**: `app/Services/ApprovalService`
-- **Controller**: `App/Http/Controllers/ApprovalController`
-- **Model**: `App/Models/Approval`, `App/Models/LoanApplication`, `App/Models/LoanApplicationItem`
-- **Policy**: `app/Policies/LoanApplicationPolicy`, `app/Policies/ApprovalPolicy`
-- **Notifikasi**: `App/Notifications/ApplicationNeedsAction`, `ApplicationApproved`, `ApplicationRejected`, `LoanApplicationReadyForIssuanceNotification`
-
-### MYDS & MyGovEA Compliance Kelulusan
-
-- **Struktur Hierarki**: Proses kelulusan bertingkat, status jelas melalui tag MYDS.
-- **Komunikasi**: Notifikasi dua saluran (emel, sistem).
-- **Seragam**: Semua modul kelulusan guna komponen dan token yang konsisten.
+10. **Tamat (End)**
+    - Proses aduan kerosakan ICT selesai dan direkodkan untuk audit.
 
 ---
 
-## 3. Proses Pengeluaran Peralatan
+## 3. Komponen Kod & Infrastruktur Utama
 
-### Proses Pengeluaran
+### 3.1 Komponen UI/UX
 
-- Permohonan yang diluluskan diproses BPM.
-- Staf BPM memilih aset spesifik, merekod pengeluaran (jenis, jenama, model, siri, aksesori).
-- Pengesahan digital kedua-dua pihak (pengeluar dan penerima) melalui MYDS Alert Dialog.
-- Status aset ditukar kepada `on_loan`.
+- **Form Aduan:** `App\Livewire\Helpdesk\TicketForm`
+- **List Tiket:** `App\Livewire\Helpdesk\TicketList`
+- **Butiran Tiket:** `App\Livewire\Helpdesk\TicketDetail`
+- **Admin Dashboard:** `App\Livewire\Helpdesk\Admin\TicketManagement`
+- **Templat Blade:** `resources/views/livewire/helpdesk/ticket-form.blade.php`
+- **Grid Layout:** Menggunakan grid 12-8-4, token warna projek, tipografi Poppins/Inter.
 
-### Komponen Kod Pengeluaran
+### 3.2 Model & Servis
 
-- **UI**: `App\Livewire\ResourceManagement\Admin\BPM\ProcessIssuance`
-- **Service**: `app/Services/LoanTransactionService` (`processNewIssue()`)
-- **Templat**: `resources/views/loan_transactions/issue.blade.php`
-- **Model**: `App/Models/LoanTransaction`, `LoanTransactionItem`, `Equipment`, `LoanApplication`
-- **Policy**: `app/Policies/LoanTransactionPolicy`
-- **Notifikasi**: `App/Notifications/EquipmentIssuedNotification`
+- **Model:** `HelpdeskTicket`, `HelpdeskCategory`, `HelpdeskComment`, `User`
+- **Service:** `app/Services/HelpdeskService`
+- **Controller:** `app/Http/Controllers/Helpdesk/TicketController`
+- **Notification:** `App/Notifications/DamageReportSubmittedNotification`, `DamageReportAssignedNotification`, `DamageReportResolvedNotification`
+- **Policy:** `app/Policies/HelpdeskTicketPolicy`
 
-### MYDS & MyGovEA Compliance Pengeluaran
+### 3.3 Notifikasi & Audit
 
-- **Paparan Terancang**: Senarai semak aksesori, status visual (pill/tag MYDS).
-- **Fleksibel**: Proses pengeluaran boleh suai mengikut inventori.
-- **Pencegahan Ralat**: Validasi dan senarai semak digital.
-
----
-
-## 4. Proses Pemulangan Peralatan
-
-### Proses Pemulangan
-
-- Pemohon/pegawai memulangkan peralatan; BPM menyemak keadaan peralatan dan aksesori.
-- Pengesahan digital kedua-dua pihak (pengembali dan penerima pulangan) melalui Alert Dialog MYDS.
-- Status aset dikemas kini kepada `available`, `under_maintenance`, atau lain-lain.
-- Catatan dan gambar boleh dimuat naik jika ada isu (mengguna komponen File Upload MYDS).
-
-### Komponen Kod Pemulangan
-
-- **UI**: `App\Livewire\ResourceManagement\Admin\BPM\ProcessReturn`
-- **Controller**: `App/Http/Controllers/LoanTransactionController`
-- **Service**: `app/Services/LoanTransactionService` (`processExistingReturn()`)
-- **Templat**: `resources/views/loan_transactions/return.blade.php`
-- **Model**: `App/Models/LoanTransaction`, `LoanTransactionItem`, `Equipment`, `LoanApplication`
-- **Policy**: `app/Policies/LoanTransactionPolicy`
-- **Notifikasi**: `App/Notifications/EquipmentReturnedNotification`, `EquipmentReturnReminderNotification`, `EquipmentOverdueNotification`, `EquipmentIncidentNotification`, `EquipmentLostNotification`, `EquipmentDamagedNotification`
-- **Mailables**: `App/Mail/EquipmentReturnedNotification`
-
-### MYDS & MyGovEA Compliance Pemulangan
-
-- **Komponen UI/UX**: Borang pemulangan konsisten, mudah difahami, aksesibiliti terjamin.
-- **Pencegahan Ralat**: Senarai semak dan pengesahan keadaan peralatan.
-- **Kandungan Terancang**: Nota keadaan dan rekod pemulangan jelas, gambar sebagai bukti.
+- **Automated Email:** Sistem gunakan Laravel Notification dan Mailable untuk semua notifikasi.
+- **Audit Log:** Semua perubahan status dan komen disimpan untuk jejak audit (`owen-it/laravel-auditing`).
+- **Database:** Semua tiket, komen, status, dan notifikasi direkod dalam pangkalan data.
 
 ---
 
-## 5. Komponen Berkongsi & Infrastruktur
+## 4. Pematuhan Rekabentuk & Aksesibiliti
 
-### Komponen & Infrastruktur Utama (Berkongsi)
-
-- **Model**: `User.php`, `Department.php`, `Position.php`, `Grade.php`
-- **Observer**: `app/Observers/BlameableObserver.php` (audit trail, created_by, updated_by, deleted_by)
-- **Middleware**: `auth:sanctum`, `check.gradelevel`, `can:`
-- **Routing**: `routes/web.php` (semua laluan aplikasi)
-- **Service Provider**: `AppServiceProvider`, `AuthServiceProvider`, `EventServiceProvider`
-- **Konfigurasi**: `config/motac.php` (gred minimum, senarai aksesori pinjaman)
-- **Komponen Blade**: `resources/views/components/` (lencana status, pill, tag)
-- **Helper**: `app/Helpers/Helpers.php`
-
-### MYDS & MyGovEA Compliance Berkongsi
-
-- **Seragam & Fleksibel**: Seni bina modular, komponen boleh guna semula.
-- **Panduan & Dokumentasi**: Semua kod, polisi dan tetapan didokumentasi.
-- **Teknologi Bersesuaian**: Struktur optimum Laravel + Livewire + Filament.
+- **UI/UX Konsisten:** Setiap input, dropdown, dan butang menggunakan komponen dan token warna rasmi projek.
+- **Aksesibiliti:** ARIA label, keyboard navigation, kontras warna minimum 4.5:1.
+- **Grid Responsif:** 12-8-4 grid digunakan, visual dioptimumkan untuk desktop, tablet, dan telefon.
+- **Error Prevention:** Validasi real-time dan mesej ralat jelas pada setiap langkah.
+- **Komunikasi Dua Saluran:** Notifikasi melalui emel dan dashboard aplikasi.
 
 ---
 
-## 6. Senarai Semak Pematuhan 18 Prinsip MyGOVEA
+## 5. Carta Alir Proses (Flowchart)
 
-| Prinsip                         | Status      | Penjelasan Ringkas                     |
-| ------------------------------- | ----------- | -------------------------------------- |
-| Berpaksikan Rakyat              | ✅ Dipenuhi | Borang jelas, auto-isi, susunan logik  |
-| Berpacukan Data                 | ✅ Dipenuhi | Rekod status, audit trail              |
-| Kandungan Terancang             | ✅ Dipenuhi | Struktur langkah, senarai semak        |
-| Teknologi Bersesuaian           | ✅ Dipenuhi | Laravel 12, Livewire 3, Filament 4     |
-| Antara Muka Minimalis dan Mudah | ✅ Dipenuhi | UI ringkas, token MYDS                 |
-| Seragam                         | ✅ Dipenuhi | Pola konsisten, komponen MYDS          |
-| Paparan/Menu Jelas              | ✅ Dipenuhi | Dashboard, label status, breadcrumbs   |
-| Realistik                       | ✅ Dipenuhi | Syarat gred, ketersediaan aset         |
-| Kognitif                        | ✅ Dipenuhi | Kurang beban kognitif, langkah ringkas |
-| Fleksibel                       | ✅ Dipenuhi | Proses boleh suai, modular             |
-| Komunikasi                      | ✅ Dipenuhi | Notifikasi dua saluran                 |
-| Struktur Hierarki               | ✅ Dipenuhi | Rantai kelulusan bertahap              |
-| Komponen UI/UX                  | ✅ Dipenuhi | Komponen boleh guna semula, MYDS       |
-| Tipografi                       | ✅ Dipenuhi | Poppins (heading), Inter (body)        |
-| Tetapan Lalai                   | ✅ Dipenuhi | Auto-isi profil, lalai sistem          |
-| Kawalan Pengguna                | ✅ Dipenuhi | Policy, peranan, kebenaran             |
-| Pencegahan Ralat                | ✅ Dipenuhi | Validasi, pengesahan                   |
-| Panduan & Dokumentasi           | ✅ Dipenuhi | Rujukan kod, fail README.md            |
+```mermaid
+graph TD
+    A[Mula] --> B[Pengguna Hantar Aduan]
+    B --> C[Sistem Hantar Emel Pengesahan]
+    C --> D[Sistem Hantar Aduan Kepada Pentadbir]
+    D --> E[Pentadbir Terima Notifikasi Aduan]
+    E --> F[Pentadbir Semak & Ambil Tindakan]
+    F --> G[Tindakan Diambil & Status Dikemaskini]
+    G --> H[Status Aduan: Selesai]
+    H --> I[Sistem Hantar Emel Penyelesaian]
+    I --> J[Tamat]
+```
 
 ---
 
-## 7. MYDS Implementation Notes
+## 6. Senarai Semak Pematuhan Prinsip
 
-- **Grid**: Semua paparan mengikut grid responsif 12-8-4 (lihat MYDS-Design-Overview.md).
-- **Warna & Token**: Guna token MYDS (lihat MYDS-Colour-Reference.md), tidak hard-coded HEX.
-- **Komponen**: Input, select, date, checkbox, pill, tag, button, alert dialog, table, summary list, file upload – semua mengikut spesifikasi MYDS.
-- **Aksesibiliti**: ARIA, contrast, keyboard navigation, skiplink, error prevention.
-- **Dark Mode**: Sokongan penuh, token automatik (bg-primary-600, txt-danger, dsb).
-- **Dokumentasi**: Setiap fungsi dan kelas utama ada PHPDoc ringkas.
+| Prinsip                         | Status | Penjelasan Ringkas                               |
+| ------------------------------- | ------ | ------------------------------------------------ |
+| Berpaksikan Rakyat              | ✅     | Borang ringkas, navigasi dua klik, panduan jelas |
+| Berpacukan Data                 | ✅     | Audit log dan rekod status yang konsisten        |
+| Kandungan Terancang             | ✅     | Struktur borang dan proses jelas                 |
+| Teknologi Bersesuaian           | ✅     | Laravel 12, Livewire 3, Filament 4               |
+| Antara Muka Minimalis dan Mudah | ✅     | UI ringkas, tidak berlebihan                     |
+| Seragam                         | ✅     | Token warna & komponen projek sahaja             |
+| Paparan/Menu Jelas              | ✅     | Breadcrumb, label jelas, status pill             |
+| Realistik                       | ✅     | Proses mengikut keperluan sebenar BPM            |
+| Kognitif                        | ✅     | Susunan borang kurangkan beban kognitif          |
+| Fleksibel                       | ✅     | Modular, boleh tambah kategori baru              |
+| Komunikasi                      | ✅     | Emel & dashboard notifikasi                      |
+| Struktur Hierarki               | ✅     | Hierarki tiket & kategori jelas                  |
+| Komponen UI/UX                  | ✅     | Input, dropdown, butang projek                   |
+| Tipografi                       | ✅     | Poppins/Inter, saiz label ikut projek            |
+| Tetapan Lalai                   | ✅     | Auto-isi bahagian, e-mel jika tersedia           |
+| Kawalan Pengguna                | ✅     | Role, policy, akses mengikut peranan             |
+| Pencegahan Ralat                | ✅     | Validasi input, pengesahan sebelum submit        |
+| Panduan & Dokumentasi           | ✅     | Fail ini, README.md, penerangan langkah          |
 
 ---
 
-## Penutup
+## 7. Nota Implementasi
 
-Aliran sistem pinjaman ICT telah diselaraskan sepenuhnya dengan 18 Prinsip Reka Bentuk MyGOVEA dan MYDS, menjamin aplikasi mesra rakyat, selamat, konsisten, mudah diselenggara dan mendukung keberkesanan operasi digital MOTAC.
+- **Warna & Token:** Semua elemen menggunakan token projek (cth: bg-primary-600, txt-danger).
+- **Komponen:** Input, select, textarea, button, alert dialog, pill, tag mesti ikut spesifikasi projek.
+- **Aksesibiliti:** ARIA, kontras warna, keyboard navigation, skip link.
+- **Dark Mode:** Sokongan penuh untuk token automatik.
+- **Dokumentasi:** PHPDoc untuk servis/kod utama.
+
+---
+
+## 8. Penutup
+
+Aliran sistem Helpdesk ServiceDesk ICTServe (iServe) direka dan dibangunkan untuk memenuhi keperluan pengurusan aduan kerosakan ICT MOTAC secara digital, selaras dengan piawaian rekabentuk dan aksesibiliti. Aliran ini menjamin pengalaman pengguna yang inklusif, responsif, selamat, dan seragam.
 
 Sebarang penambahbaikan atau maklum balas boleh disalurkan melalui saluran rasmi BPM/MOTAC atau email [design@tech.gov.my](mailto:design@tech.gov.my).
 
 ---
 
-## References
+## Rujukan
 
-- [MYDS Official Site](https://design.digital.gov.my/)
-- [MYDS Figma Kit](<https://www.figma.com/file/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta)>)
-- [MYDS Storybook](https://myds-storybook.vercel.app/)
-- [MYDS Colour Reference](https://design.digital.gov.my/en/docs/design/color)
-- [MyGovEA Principles](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/)
 - [Laravel Documentation](https://laravel.com/docs)
 - [Filament Documentation](https://filamentphp.com/docs)
 - [Livewire Documentation](https://laravel-livewire.com/docs)
-- [See Also: Jadual Data Pengguna & Organisasi Teras](<./Dokumentasi_Jadual_Data_Pengguna_Organisasi_Teras_ICTServe(iServe).md>)
-- [See Also: Reka Bentuk ICTServe](<./Dokumentasi_Reka_Bentuk_ICTServe(iServe).md>)
-- [See Also: Reka Bentuk Sistem ICTServe](<./Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md>)
-- [See Also: Sistem ICTServe Overview](<./Dokumentasi_Sistem_ICTServe(iServe).md>)
-- [See Also: Sistem Notifikasi E-mel](<./Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md>)
+- [ICT DAMAGE COMPLAINT FORM – DETAILS](<./ICT%20DAMAGE%20COMPLAINT%20FORM%20(ServiceDesk%20ICT)%20-%20DETAILED%20BREAKDOWN.md>)

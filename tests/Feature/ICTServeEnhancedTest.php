@@ -21,9 +21,9 @@ class ICTServeEnhancedTest extends TestCase
     }
 
     /**
-     * Test that MYDS component styles are properly built.
+    * Test that component styles are properly built.
      */
-    public function test_myds_component_styles_are_built(): void
+    public function test_component_styles_are_built(): void
     {
         // Check that the CSS file exists after build
         $cssPath = public_path('build');
@@ -81,13 +81,13 @@ class ICTServeEnhancedTest extends TestCase
     }
 
     /**
-     * Test that MYDS styles are properly imported.
+    * Test that styles are properly imported.
      */
-    public function test_myds_styles_are_imported(): void
+    public function test_styles_are_imported(): void
     {
         // Check that app.css includes the filters import
-        $appCss = file_get_contents(resource_path('css/app.css'));
-        $this->assertStringContainsString('@import "./components/filters.css";', $appCss);
+    $appCss = file_get_contents(resource_path('css/app.css'));
+    $this->assertStringContainsString('@import "./components/filters.css";', $appCss);
 
         // Check that filters.css exists
         $this->assertFileExists(resource_path('css/components/filters.css'));

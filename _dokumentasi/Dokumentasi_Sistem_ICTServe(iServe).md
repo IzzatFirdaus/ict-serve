@@ -103,16 +103,16 @@ Selaras dengan prinsip **Antara Muka Minimalis dan Mudah**, **Kawalan Pengguna**
 
 ---
 
-## 7. Pematuhan 18 Prinsip MyGOVEA (Ringkas)
+## 7. Prinsip Reka Bentuk (Ringkas)
 
-ICTServe dibangunkan dengan mengikuti prinsip-prinsip utama MyGOVEA:
+ICTServe dibangunkan dengan mengikuti prinsip-prinsip utama berikut:
 
 - **Berpaksikan Rakyat:** Antara muka mesra pengguna, borang mudah diisi, navigasi dua klik ke fungsi utama.
 - **Berpacukan Data:** Skema terperinci, audit lengkap, penjejakan semua transaksi.
 - **Kandungan Terancang:** Struktur aplikasi jelas, medan konsisten, label bermakna.
 - **Teknologi Bersesuaian:** Laravel 12, Livewire 3, Filament 4, dan mengikuti piawai semasa.
 - **Antara Muka Minimalis dan Mudah:** Komponen ringkas, layout bersih, tidak ada elemen berlebihan.
-- **Seragam:** Pola konsisten untuk semua modul, kod warna dan ikon MYDS.
+- **Seragam:** Pola konsisten untuk semua modul, kod warna dan ikon projek.
 - **Komunikasi:** Notifikasi jelas, komen kronologi, status berkod warna.
 - **Fleksibel:** Modular, konfigurasi mudah, API untuk integrasi, sokongan multi-peranan.
 - **Pencegahan Ralat:** Validasi, pengesahan tindakan, mesej ralat jelas, ujian pengguna.
@@ -342,7 +342,7 @@ Menggunakan Laravel (MVC), Livewire, dan Filament (**Teknologi Bersesuaian**, **
 
 ## 8. Penutup
 
-Sistem Pengurusan Perkhidmatan ICT MOTAC (ICTServe v1.0) adalah penyelesaian terintegrasi yang moden, selamat, dan cekap untuk pengurusan pinjaman peralatan dan sokongan ICT. Dengan tumpuan kepada prinsip MYDS dan MyGOVEA, sistem ini menyediakan UI yang mesra rakyat, modular, dan mudah diperluas selaras dengan keperluan operasi BPM.
+Sistem Pengurusan Perkhidmatan ICT MOTAC (ICTServe v1.0) adalah penyelesaian terintegrasi yang moden, selamat, dan cekap untuk pengurusan pinjaman peralatan dan sokongan ICT. Sistem ini menyediakan UI yang mesra rakyat, modular, dan mudah diperluas selaras dengan keperluan operasi BPM.
 
 **Manfaat utama:**
 

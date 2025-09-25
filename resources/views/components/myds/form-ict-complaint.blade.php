@@ -1,7 +1,6 @@
 {{--
   Borang Aduan Kerosakan ICT (ServiceDesk ICT)
-  - MYDS & MyGovEA: citizen-centric, accessible, high contrast, error-prevention, responsive 12/8/4 grid.
-  - Follows: MYDS Colour, Design, Icon, Develop, MyGovEA principles.
+  - Design and accessibility guidance: citizen-centric, accessible, high contrast, error-prevention, responsive 12/8/4 grid.
   - Usage: <x-myds.form-ict-complaint :divisions="$divisions" :damageTypes="$damageTypes" :values="old()" :errorsBag="$errors->toArray()" />
 --}}
 
@@ -19,10 +18,10 @@
   $err = fn ($k) => $errorsBag[$k] ?? null;
 @endphp
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 <section class="bg-gray-50 dark:bg-black-100 py-8">
-  <div class="myds-container">
+  <div class="container">
     <div
       class="bg-white dark:bg-dialog radius-l shadow-card border border-divider p-6"
       aria-labelledby="ict-complaint-title"

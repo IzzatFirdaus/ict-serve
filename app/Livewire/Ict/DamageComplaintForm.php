@@ -255,7 +255,7 @@ class DamageComplaintForm extends Component
                     'name_bm' => 'Laporan Kerosakan ICT',
                     'description' => 'ICT equipment damage reports and complaints',
                     'description_bm' => 'Laporan dan aduan kerosakan peralatan ICT',
-                    'icon' => 'myds-icon-exclamation-triangle',
+                    'icon' => 'icon-exclamation-triangle',
                     'priority' => 'high',
                     'default_sla_hours' => 4,
                     'is_active' => true,

@@ -3,9 +3,9 @@
 **Versi Dokumen:** 1.0
 **Tarikh Semakan:** 12 September 2025
 **Penulis:** IzzatFirdaus
-**Berdasarkan:** BORANG PINJAMAN PERALATAN ICT 2024 SEWAAN C, BORANG ADUAN KEROSAKAN ICT, keperluan helpdesk dalaman, dan pematuhan MYDS/MyGOVEA.
+**Berdasarkan:** BORANG PINJAMAN PERALATAN ICT 2024 SEWAAN C, BORANG ADUAN KEROSAKAN ICT, keperluan helpdesk dalaman.
 
-<!-- Nota: Dokumen ini telah disemak untuk pematuhan kepada MYDS dan 18 Prinsip MyGOVEA. -->
+<!-- Nota: Pemutakhiran dokumen. -->
 
 ---
 
@@ -16,7 +16,7 @@ Sistem Pengurusan Perkhidmatan ICT MOTAC (ICTServe v1.0) adalah platform moden d
 - **Pengurusan Pinjaman Peralatan ICT:** Memudahkan permintaan, kelulusan, pengeluaran dan pemulangan peralatan ICT (laptop, projektor, dan lain-lain) untuk tujuan rasmi.
 - **Pengurusan Helpdesk & Sokongan ICT:** Sistem tiket menyeluruh untuk mengurus permintaan sokongan IT, aduan kerosakan, dan operasi helpdesk.
 
-Sistem ini menyediakan platform berasaskan Laravel 12 yang menyatukan aliran kerja, menguatkuasakan peraturan perniagaan, dan memberikan pengalaman pengguna yang konsisten mengikut MYDS (Malaysia Government Design System). Reka bentuk ini menggabungkan keperluan daripada borang rasmi permohonan dan mencerminkan struktur projek yang dioptimumkan untuk keperluan operasi teras MOTAC.
+Sistem ini menyediakan platform berasaskan Laravel 12 yang menyatukan aliran kerja, menguatkuasakan peraturan perniagaan, dan memberikan pengalaman pengguna yang konsisten. Reka bentuk ini menggabungkan keperluan daripada borang rasmi permohonan dan mencerminkan struktur projek yang dioptimumkan untuk keperluan operasi teras MOTAC.
 
 ---
 
@@ -28,7 +28,6 @@ Sistem ini menyediakan platform berasaskan Laravel 12 yang menyatukan aliran ker
 - **Laporan & Notifikasi Masa Sebenar:** Membolehkan laporan masa sebenar mengenai penggunaan sumber dan prestasi sokongan serta memaklumkan pengguna tentang kejadian kritikal melalui e-mel dan notifikasi dalam aplikasi.
 - **Seni Bina Modular & Boleh Skala:** Membina sistem menggunakan rangka kerja Laravel 12 MVC dengan pemisahan fungsi yang jelas, menggunakan Livewire untuk antara muka dinamik dan lapisan servis yang tersusun.
 - **Sokongan Operasi Diperhebat:** Menyediakan pengurusan tiket sokongan IT yang komprehensif dengan fungsi penugasan, penjejakan, eskalasi dan penyelesaian.
-- **Kepatuhan MYDS:** Mematuhi garis panduan Malaysia Government Design System untuk memastikan antara muka dan pengalaman pengguna yang konsisten.
 
 ---
 
@@ -87,7 +86,7 @@ Mewakili dan mengurus data menggunakan Eloquent ORM, termasuk hubungan polimorfi
 
 #### Paparan (Views)
 
-Templat Blade merender antara muka pengguna, termasuk komponen Livewire untuk seksyen dinamik. Komponen direka untuk mematuhi sepenuhnya piawaian MYDS. Terletak di `resources/views/` dan `resources/views/livewire/`.
+Templat Blade merender antara muka pengguna, termasuk komponen Livewire untuk seksyen dinamik. Komponen direka untuk konsistensi dan kebolehgunaan. Terletak di `resources/views/` dan `resources/views/livewire/`.
 
 **Direktori paparan utama:**
 
@@ -97,7 +96,6 @@ Templat Blade merender antara muka pengguna, termasuk komponen Livewire untuk se
 - `resources/views/damage-reports/`: Paparan untuk aduan kerosakan
 - `resources/views/livewire/`: Paparan komponen Livewire dinamik
 - `resources/views/emails/`: Templat notifikasi e-mel
-- `resources/views/components/myds/`: Komponen MYDS (butang, medan teks, pemberitahuan, dll.)
 
 #### Servis
 
@@ -749,17 +747,12 @@ Notifikasi sistem untuk pengguna.
 
 ## 6. Antara Muka Pengguna & Pengalaman
 
-### 6.1 Penjenamaan dan Susun Atur
-
-Sistem mengekalkan penjenamaan MOTAC yang konsisten dengan mematuhi MYDS di semua antara muka dengan prinsip reka bentuk responsif bagi memastikan kebolehcapaian di desktop, tablet dan peranti mudah alih. Antara muka menggunakan skema warna rasmi MYDS dan garis panduan tipografi seperti yang ditetapkan dalam spesifikasi MYDS.
-
-**Elemen Reka Bentuk Utama:**
+Sistem mengekalkan penjenamaan MOTAC yang konsisten dengan prinsip reka bentuk responsif bagi memastikan kebolehcapaian di desktop, tablet dan peranti mudah alih. Antara muka menggunakan skema warna rasmi dan garis panduan tipografi yang konsisten.
 
 - Logo rasmi MOTAC dan penjenamaan di header dan footer
 - Corak navigasi konsisten di semua modul
 - Sistem grid responsif 12-8-4 untuk paparan optimum pada semua peranti
 - Pematuhan kebolehcapaian mengikut piawaian WCAG 2.1 AA
-- Skema warna MYDS dengan warna primary (`#2563EB`), success, danger, dan warning
 - Tipografi menggunakan font Poppins untuk tajuk dan Inter untuk teks badan
 
 ### 6.2 Dashboard Berdasarkan Peranan
@@ -797,7 +790,7 @@ Setiap peranan pengguna mempunyai antara muka dashboard yang dioptimumkan untuk 
 
 ### 6.3 Komponen Dinamik dan Boleh Diguna Semula
 
-Sistem menggunakan komponen Livewire dan MYDS untuk mempertingkat pengalaman pengguna:
+Sistem menggunakan komponen Livewire untuk mempertingkat pengalaman pengguna:
 
 **Borang Dinamik:**
 
@@ -822,120 +815,35 @@ Sistem menggunakan komponen Livewire dan MYDS untuk mempertingkat pengalaman pen
 
 ---
 
-## 7. Peraturan Perniagaan & Validasi
+## 7. Prinsip Reka Bentuk & Pembangunan
 
-### 7.1 Peraturan Pinjaman Peralatan ICT
+ICTServe dibangunkan dengan mengikuti prinsip-prinsip utama pembangunan sistem moden:
 
-**Keperluan Kelayakan:**
-
-- Hanya staf MOTAC yang aktif boleh menghantar permohonan pinjaman
-- Pengguna mesti mempunyai jabatan dan jawatan yang sah
-- Pinjaman peralatan tertakluk kepada ketersediaan dan kelulusan
-- Had tempoh pinjaman maksimum berdasarkan jenis dan tujuan peralatan
-
-**Kuasa Kelulusan:**
-
-- Pegawai penyokong mesti Gred 41 ke atas seperti yang dikonfigurasi dalam `config/ictserve.php`
-- Kuasa kelulusan ditentukan mengikut hierarki organisasi
-- Keperluan gred dikuatkuasakan melalui middleware dan polisi
-
-**Pengurusan Peralatan:**
-
-- Peralatan mesti sedia dan dalam keadaan baik untuk pengeluaran
-- Penjejakan nombor siri untuk semua item yang dikeluarkan
-- Senarai semak aksesori wajib semasa pengeluaran dan pemulangan
-- Penilaian keadaan wajib untuk semua pemulangan
-
-### 7.2 Peraturan Sistem Helpdesk
-
-**Penciptaan Tiket dan Aduan:**
-
-- Semua staf MOTAC boleh mencipta tiket helpdesk atau aduan kerosakan
-- Medan wajib termasuk kategori, subjek dan penerangan
-- Tahap keutamaan dihadkan berdasarkan peranan pengguna dan jenis isu
-- Sistem penomboran tiket automatik untuk penjejakan
-
-**Logik Penugasan:**
-
-- Tiket baru dan aduan kerosakan automatik kelihatan kepada pasukan admin IT
-- Penugasan berdasarkan kepakaran kategori dan keseimbangan beban kerja
-- Prosedur eskalasi untuk tiket keutamaan tinggi atau tertunda
-- Penjejakan pematuhan SLA untuk masa respons dan penyelesaian
-
-### 7.3 Peraturan Validasi
-
-**Validasi Data:**
-
-- Kelas FormRequest untuk validasi input menyeluruh
-- Validasi logik perniagaan di lapisan servis
-- Kekangan pangkalan data untuk integriti data
-- Validasi masa nyata di sisi klien untuk pengalaman pengguna
-
-**Validasi Keselamatan:**
-
-- Perlindungan CSRF pada semua borang
-- Pembersihan input dan pencegahan suntikan SQL
-- Validasi muat naik fail untuk lampiran helpdesk
-- Had kadar pada endpoint API
+- **Berpaksikan Rakyat:** Antara muka mesra pengguna, borang mudah diisi, navigasi dua klik ke fungsi utama.
+- **Berpacukan Data:** Skema terperinci, audit lengkap, penjejakan semua transaksi.
+- **Kandungan Terancang:** Struktur aplikasi jelas, medan konsisten, label bermakna.
+- **Teknologi Bersesuaian:** Laravel 12, Livewire 3, Filament 4, dan mengikuti piawai semasa.
+- **Antara Muka Minimalis dan Mudah:** Komponen ringkas, layout bersih, tidak ada elemen berlebihan.
+- **Seragam:** Pola konsisten untuk semua modul, kod warna dan ikon konsisten.
+- **Komunikasi:** Notifikasi jelas, komen kronologi, status berkod warna.
+- **Fleksibel:** Modular, konfigurasi mudah, API untuk integrasi, sokongan multi-peranan.
+- **Pencegahan Ralat:** Validasi, pengesahan tindakan, mesej ralat jelas, ujian pengguna.
 
 ---
 
-## 8. Pertimbangan Teknikal
+## Contributor Guidance
 
-### 8.1 Keselamatan
+- Dokumentasi ini adalah rujukan utama untuk semua perubahan pada seni bina dan reka bentuk sistem.
+- Pastikan setiap kemas kini pada kod atau dokumentasi mengekalkan konsistensi, aksesibiliti, dan pematuhan kepada prinsip dalaman projek.
+- Apabila mengubah struktur data, aliran kerja, atau antara muka, kemas kini dokumen ini dan cross-reference ke dokumen lain dalam `/docs`.
 
-**Autentikasi & Kebenaran:**
+---
 
-- Laravel Fortify untuk aliran autentikasi mantap
-- Laravel Jetstream untuk pengurusan profil pengguna
-- Spatie Laravel Permission untuk kawalan akses berasaskan peranan
-- Middleware khusus gred untuk penguatkuasaan hierarki kelulusan
+## References
 
-**Perlindungan Data:**
-
-- Penyimpanan kata laluan terenkripsi menggunakan hashing Laravel
-- Validasi token CSRF pada semua operasi yang mengubah status
-- Validasi dan pembersihan input pada semua input pengguna
-- Pengendalian muat naik fail selamat dengan sekatan jenis dan saiz
-
-**Audit & Pematuhan:**
-
-- Jejak audit menyeluruh melalui Laravel Auditing
-- Logging pangkalan data untuk semua operasi kritikal
-- Penjejakan tindakan pengguna untuk laporan pematuhan
-- Pengurusan sesi selamat dan polisi tamat sesi
-
-### 8.2 Prestasi & Skalabiliti
-
-**Pengoptimuman Pangkalan Data:**
-
-- Pengindeksan yang betul pada medan yang kerap digunakan
-- Pengoptimuman query menggunakan amalan terbaik Eloquent
-- Pooling sambungan pangkalan data untuk pengguna serentak
-- Jadual penyelenggaraan dan pengoptimuman berkala
-
-**Strategi Caching:**
-
-- Caching di peringkat aplikasi untuk data yang kerap dicapai
-- Caching sesi untuk status autentikasi pengguna
-- Caching berasaskan fail untuk data konfigurasi statik
-- Strategi invalidasi cache untuk konsistensi data
-
-### 8.3 Amalan Pembangunan
-
-**Kualiti Kod:**
-
-- Pematuhan standard kod PSR-12 menggunakan Laravel Pint
-- Ujian unit dan ciri yang komprehensif
-- Proses semakan kod untuk semua perubahan
-- Ujian automatik dalam pipeline CI/CD
-
-**Deploymen:**
-
-- Persekitaran pembangunan dan pengeluaran berasaskan Docker
-- Deploymen automatik melalui GitHub Actions
-- Pengurusan migrasi pangkalan data
-- Pengurusan konfigurasi khusus persekitaran
+- [Laravel Documentation](https://laravel.com/docs)
+- [Filament Documentation](https://filamentphp.com/docs)
+- [Livewire Documentation](https://laravel-livewire.com/docs)
 
 ---
 
@@ -1127,14 +1035,6 @@ Sistem menggunakan komponen Livewire dan MYDS untuk mempertingkat pengalaman pen
 - Konfigurasi senarai aksesori pinjaman
 - Definisi kategori dan keutamaan helpdesk
 
-**Komponen MYDS:**
-
-- `resources/views/components/myds/button.blade.php`: Komponen butang MYDS
-- `resources/views/components/myds/input.blade.php`: Komponen input MYDS
-- `resources/views/components/myds/select.blade.php`: Komponen pilihan MYDS
-- `resources/views/components/myds/checkbox.blade.php`: Komponen kotak semak MYDS
-- `resources/views/components/myds/callout.blade.php`: Komponen amaran dan notifikasi MYDS
-
 ---
 
 ## 10. Strategi Deploymen & Pelaksanaan
@@ -1147,7 +1047,6 @@ Sistem menggunakan komponen Livewire dan MYDS untuk mempertingkat pengalaman pen
 - Pangkalan data tempatan dengan data ujian menyeluruh
 - Mailtrap untuk ujian e-mel semasa pembangunan
 
-**Persekitaran Staging:**
 **Persekitaran Staging:**
 
 - Persekitaran mirip produksi untuk ujian penerimaan pengguna (UAT) dan validasi ciri baharu sebelum deploy ke pengeluaran.
@@ -1199,32 +1098,9 @@ Sistem menggunakan komponen Livewire dan MYDS untuk mempertingkat pengalaman pen
 
 ---
 
-## 11. Pematuhan 18 Prinsip MyGOVEA (Ringkas)
-
-- **Berpaksikan Rakyat:** UI mesra dan jelas, borang mudah diisi, navigasi dua klik ke fungsi utama.
-- **Berpacukan Data:** Skema dan audit lengkap, penjejakan semua transaksi dan interaksi.
-- **Kandungan Terancang:** Struktur dokumen dan aplikasi jelas, medannya konsisten, label bermakna.
-- **Teknologi Bersesuaian:** Laravel 12, Livewire 3, Filament 4, dan piawai infrastruktur semasa.
-- **Antara Muka Minimalis dan Mudah:** Komponen ringkas, layout bersih, tiada elemen berlebihan.
-- **Seragam:** Pola konsisten untuk semua modul, kod warna, ikon, tipografi MYDS.
-- **Paparan/Menu Jelas:** Navigasi utama jelas, menu dan sub-menu mudah difahami.
-- **Realistik:** Kekangan hierarki dan inventori, aliran kerja mengikut proses sebenar BPM.
-- **Kognitif:** Pengurangan beban informasi, hanya info penting dipaparkan di dashboard dan borang.
-- **Fleksibel:** Modular, konfigurasi mudah, API untuk integrasi, sokongan multi-peranan.
-- **Komunikasi:** Notifikasi, helpdesk, thread komen kronologi, status lencana warna.
-- **Struktur Hierarki:** Organisasi, kelulusan, kategori, dan navigasi bertingkat.
-- **Komponen UI/UX:** Pustaka komponen MYDS, responsif, boleh guna semula.
-- **Tipografi:** Skala tipografi Poppins dan Inter, kontras dan hierarki visual.
-- **Tetapan Lalai:** Config lalai untuk tema, gred kelulusan, dan aksesori pinjaman.
-- **Kawalan Pengguna:** Polisi/roles granular, kawalan akses mengikut gred dan peranan.
-- **Pencegahan Ralat:** Validasi, pengesahan tindakan, error message jelas, ujian pengguna.
-- **Panduan & Dokumentasi:** Dokumentasi lengkap, onboarding, FAQ, dan changelog.
-
----
-
 ## 12. Penutup
 
-Sistem Pengurusan Perkhidmatan ICT MOTAC (ICTServe v1.0) adalah penyelesaian terintegrasi yang moden, selamat, dan cekap untuk pengurusan pinjaman peralatan dan sokongan ICT. Dengan tumpuan kepada prinsip MYDS dan MyGOVEA, sistem ini menyediakan UI yang mesra rakyat, modular, dan mudah diperluas selaras dengan keperluan operasi BPM.
+Sistem Pengurusan Perkhidmatan ICT MOTAC (ICTServe v1.0) adalah penyelesaian terintegrasi yang moden, selamat, dan cekap untuk pengurusan pinjaman peralatan dan sokongan ICT. Sistem ini menyediakan UI yang mesra rakyat, modular, dan mudah diperluas selaras dengan keperluan operasi BPM.
 
 **Manfaat utama:**
 

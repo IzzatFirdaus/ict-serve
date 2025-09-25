@@ -1,280 +1,263 @@
-# ICTServe (iServe) - Sistem Pengurusan Perkhidmatan ICT MOTAC
+# Jadual Data Pengguna & Organisasi Teras (v1.0)
 
-Dokumentasi Bahasa Reka Bentuk Versi 1.0 | Untuk Bahagian Pengurusan Maklumat (BPM)
-
-<!-- Dokumen ini memetakan keputusan reka bentuk kepada 18 Prinsip MyGOVEA; rujuk bahagian "Pematuhan MyGOVEA" di akhir. -->
+Dokumen ini menyediakan gambaran keseluruhan tahap tinggi mengenai jadual pangkalan data teras dalam ICTServe (iServe) v1.0, komponen Laravel yang berkaitan, serta tujuan penggunaannya dalam sistem.
 
 ---
 
-## 1. Prinsip Teras Reka Bentuk
+## 1. Jadual Data Pengguna & Organisasi Teras
 
-### 1.1 Berpaksikan Rakyat (Mesra Pengguna & Jelas)
+Jadual-jadual ini mendasari pengurusan pengguna, peranan, dan struktur organisasi, sejajar dengan prinsip Berpaksikan Rakyat, Komunikasi, Struktur Hierarki dan Tipografi.
 
-- **Akses Pengguna:** Reka bentuk aplikasi menempatkan keperluan dan kehendak pengguna sebagai fokus utama. Paparan antara muka, penggunaan menu, mesej dan komponen dibuat mudah difahami dan relevan.
-- **Bahasa Melayu Utama:** Bahasa utama antara muka ialah Bahasa Melayu, dengan pilihan Inggeris secara kontekstual.
-- **Penglibatan Pengguna:** Pengguna dilibatkan dalam setiap fasa pembangunan untuk memastikan aplikasi memenuhi keperluan mereka.
-- **Memudahkan Pengguna:** Penggunaan navigasi dua klik ke fungsi utama, penandaan medan wajib dengan asterisk merah (\*), dan arahan jelas.
+### 1.1 `users` (Pengguna)
 
-### 1.2 Berpacukan Data
+Menyimpan maklumat semua pengguna sistem. Versi v1.0 telah diperkemas untuk menghapuskan medan modul legasi dan menambah integrasi dengan rekabentuk terkini.
 
-- **Pengurusan Data Selamat:** Data perkhidmatan ICT diurus secara selamat dan mematuhi undang-undang privasi.
-- **Pemodelan Data:** Struktur data pinjaman peralatan dan aduan kerosakan dianalisis dan direka supaya mudah difahami oleh semua pihak.
-- **Perkongsian Data:** Data perkhidmatan ICT dikongsi mengikut keperluan, persetujuan dan menambah nilai kepada agensi dan pengguna.
+- **Model:** `app/Models/User.php`
+- **Controller:** `app/Http/Controllers/UserController.php`, pelbagai pengawal autentikasi
+- **Factory:** `Database\Factories\UserFactory.php`
+- **Seeder:** `Database\Seeders\UserSeeder.php`, `Database\Seeders\AdminUserSeeder.php`
 
-### 1.3 Kandungan Terancang
+#### Prinsip Berkaitan Pengguna
 
-- **Penyediaan Kandungan:** Kandungan, paparan dan maklumat aplikasi ICTServe disusun secara jelas, tepat dan terancang agar matlamat perkhidmatan tercapai.
-- **Fasa Reka Bentuk:** Meliputi reka bentuk konsep dan seni bina, termasuk integrasi dengan sistem lain dan keselamatan data pengguna.
-
-### 1.4 Teknologi Bersesuaian
-
-- **Pilihan Teknologi:** Penggunaan Laravel 12, Filament, dan MYDS sebagai teknologi dan alat pembangunan yang sesuai dengan objektif projek.
-- **Keselarasan Infrastruktur:** Infrastruktur, hosting dan sistem keselamatan dipilih mengikut keperluan aplikasi perkhidmatan ICT.
-
-### 1.5 Antara Muka Minimalis dan Mudah
-
-- **Minimalis:** Antara muka direka supaya mudah difahami, bebas komponen tidak perlu, dan navigasi intuitif.
-- **Responsif:** Rekaan responsif mengikut prinsip 12-8-4 grid MYDS untuk pelbagai peranti dan saiz skrin.
-
-### 1.6 Seragam
-
-- **Keseragaman:** Penggunaan piawaian konsisten dari MYDS untuk memastikan kualiti, kebolehgunaan dan kebolehoperasian antara modul aplikasi.
-- **Penyelenggaraan Mudah:** Piawaian memudahkan kemas kini dan mengurangkan kos pembangunan.
-
-### 1.7 Paparan/Menu Jelas
-
-- **Paparan & Menu:** Elemen dan menu dipaparkan secara konsisten, mudah dikenali, dan memberikan maklum balas yang jelas kepada pengguna.
-
-### 1.8 Realistik
-
-- **Ketepatan Fungsi:** Aplikasi dibangunkan mengikut keperluan sebenar pengguna BPM dan keupayaan teknikal pasukan.
-- **Analisis Keperluan:** Pengujian dan penambahbaikan berterusan berdasarkan maklum balas pengguna sistem.
-
-### 1.9 Kognitif
-
-- **Reka Bentuk Kognitif:** Antara muka memudahkan proses kognitif pengguna, mengurangkan beban maklumat berlebihan dalam borang pinjaman dan aduan.
-- **Maklum Balas Visual:** Penggunaan maklum balas visual dan naratif untuk meningkatkan pengalaman pengguna.
-
-### 1.10 Fleksibel
-
-- **Kebolehskalaan & Modular:** Aplikasi mudah diperluas, diperkecil atau diubah suai tanpa menjejaskan prestasi.
-- **Konfigurasi & Integrasi:** Pengguna boleh mengubah tetapan aplikasi. Mudah diintegrasi dengan sistem lain melalui API/Web Services.
-- **Pengurusan Data Dinamik:** Mudah untuk import, eksport dan transformasi data perkhidmatan ICT.
-
-### 1.11 Komunikasi
-
-- **Komunikasi Berkesan:** Proses komunikasi antara pengguna, pasukan pembangunan dan pihak berkepentingan adalah jelas dan terbuka.
-- **Pengurusan Perubahan:** Semua perubahan dalam aliran kerja ICT dimaklumkan kepada pihak terlibat untuk mengelakkan konflik.
-
-### 1.12 Struktur Hierarki
-
-- **Susunan Hierarki:** Elemen antara muka diatur secara teratur mengikut hierarki logik untuk memudahkan navigasi dan penggunaan.
-- **Struktur Papan Pemuka:** Halaman utama, aduan kerosakan, pinjaman peralatan, sejarah perkhidmatan dan subsistem berkaitan.
-
-### 1.13 Komponen Antara Muka & Pengalaman Pengguna (UI/UX)
-
-- **Komponen UI:** Butang, input, menu, bar navigasi dan petunjuk menggunakan komponen MYDS secara konsisten.
-- **Pengalaman UX:** Interaksi pengguna, persepsi terhadap aplikasi dan respons emosi diambil kira untuk menjamin kepuasan.
-
-### 1.14 Tipografi
-
-- **Jenis & Saiz Huruf:** Pemilihan jenis huruf, saiz dan jarak antara huruf mengikut piawaian MYDS untuk keterbacaan.
-- **Hierarki Visual:** Menggunakan tipografi untuk membentuk hierarki maklumat dalam borang dan paparan.
-
-### 1.15 Tetapan Lalai
-
-- **Nilai Lalai:** Penetapan nilai lalai pada konfigurasi, reka bentuk antara muka, keselamatan dan privasi untuk memudahkan penggunaan serta meningkatkan keselamatan.
-- **Responsif Peranti:** Tetapan lalai mengambil kira pelbagai dimensi peranti mengikut grid 12-8-4 MYDS.
-
-### 1.16 Kawalan Pengguna
-
-- **Kawalan Interaktif:** Pengguna diberikan kawalan jelas melalui butang, input, menu dan penunjuk dalam semua borang.
-- **Konsisten & Mudah Diakses:** Kawalan konsisten, mudah diakses dan sesuai dengan peranti.
-
-### 1.17 Pencegahan Ralat
-
-- **Panduan & Bantuan:** Menyediakan penunjuk dan bantuan jelas untuk elak kesilapan dalam borang pinjaman dan aduan.
-- **Pengesahan & Ujian:** Pengesahan tindakan kritikal dan ujian pengguna untuk meningkatkan ketepatan data.
-
-### 1.18 Panduan & Dokumentasi
-
-- **Panduan Pembangunan:** Arahan dan prosedur pembangunan, ujian dan pelaksanaan aplikasi.
-- **Dokumentasi Teknikal & Pengguna:** Manual pengguna, tutorial, FAQ, sejarah perubahan dan dokumentasi keselamatan.
-- **Rujukan SPDK:** Agensi disarankan merujuk dokumen SPDK secara berterusan untuk penambahbaikan.
+- **Berpaksikan Rakyat**: Pengurusan pengguna direka untuk memenuhi keperluan sebenar pengguna/agensi.
+- **Komunikasi**: Pengguna boleh menerima notifikasi dan berinteraksi dalam sistem.
 
 ---
 
-## 2. Asas Visual
+### 1.2 `roles`, `permissions`, `model_has_roles`, dsb
 
-### 2.1 Palet Warna
+Jadual ini diurus oleh pakej [spatie/laravel-permission](https://github.com/spatie/laravel-permission) dan mendefinisikan kawalan akses terperinci.
 
-| Peranan   | Mod Cerah            | Mod Gelap | Penggunaan                                      |
-| --------- | -------------------- | --------- | ----------------------------------------------- |
-| Utama     | #0055A4 (Biru MOTAC) | #3D8FD1   | Butang utama, keadaan aktif, pautan, tajuk.     |
-| Sekunder  | #6c757d (Kelabu)     | #adb5bd   | Tindakan sekunder, teks tidak aktif, sempadan.  |
-| Aksen     | #E60000 (Merah BPM)  | #FF5252   | Ikon grid aplikasi, sorotan, notifikasi segera. |
-| Latar     | #F8F9FA              | #121826   | Latar kandungan utama.                          |
-| Permukaan | #FFFFFF              | #1E293B   | Kad, panel borang, modals.                      |
-| Kritikal  | #DC3545              | #F87171   | Ralat, tindakan merosakkan (cth: butang hapus). |
-| Berjaya   | #28A745              | #4ADE80   | Tindakan selesai, mesej kejayaan.               |
-| Amaran    | #FFC107              | #FFD60A   | Status tertunda, amaran berhati-hati.           |
+- **Model:** `Spatie\Permission\Models\Role`, `Spatie\Permission\Models\Permission`
+- **Seeder:** `Database\Seeders\RoleAndPermissionSeeder.php`
 
-### 2.2 Tipografi
+#### Prinsip Berkaitan Settings
 
-- **Font Utama:** Inter untuk keterbacaan Bahasa Melayu dan Inggeris.
-- **Skala:**
-  - h1: 1.75rem (28px) • Semibold
-  - h2: 1.5rem (24px) • Semibold
-  - h3: 1.25rem (20px) • Medium
-  - Badan: 0.875rem (14px) • Regular
-  - Label: 0.75rem (12px) • Medium
-- **Ketinggian Garis:** 1.6 untuk teks badan bagi keterbacaan optimum.
-
-### 2.3 Ikonografi
-
-- **Set Utama:** MYDS Icons dan Bootstrap Icons v1.8+
-- **Prinsip Penggunaan:**
-  - Ikon digabung dengan label teks untuk kejelasan.
-  - Saiz standard: 16px untuk teks, 24px untuk butang.
-  - Penggunaan warna semantik (merah untuk hapus, hijau untuk tambah).
+- **Kawalan Pengguna**: Pengguna diberikan kawalan akses berdasarkan peranan dan kebenaran.
+- **Pencegahan Ralat**: Pengurusan peranan/kebenaran membantu mengurangkan kesilapan akses.
 
 ---
 
-## 3. Pelaksanaan Jenama
+### 1.3 `departments`, `positions`, `grades`
 
-### 3.1 Penggunaan Logo
+Jadual ini menyimpan struktur organisasi MOTAC.
 
-| Konteks         | Logo           | Format | Spesifikasi                               |
-| --------------- | -------------- | ------ | ----------------------------------------- |
-| Header Intranet | MOTAC Intranet | SVG    | Tinggi 40px, termasuk teks "intranet".    |
-| Header Sistem   | ICTServe       | SVG    | Tinggi 40px, dengan teks "iServe".        |
-| Footer          | BPM Rasmi      | SVG    | Tinggi 32px, kotak merah berteks putih.   |
-| Eksport PDF     | MOTAC Rasmi    | Vektor | Lebar 20mm, di header dokumen.            |
-| Templat E-mel   | MOTAC Rasmi    | PNG    | Lebar 120px, dengan alt text yang sesuai. |
+- **Model:** `app/Models/Department.php`, `app/Models/Position.php`, `app/Models/Grade.php`
+- **Controller:** `app/Http/Controllers/Admin/DepartmentController.php`, dsb.
+- **Seeder:** `Database\Seeders\DepartmentSeeder.php`, `Database\Seeders\PositionSeeder.php`, `Database\Seeders\GradesSeeder.php`
 
-### 3.2 Templat E-mel
+#### Prinsip Berkaitan Organisasi
 
-- **Struktur:** Gunakan mjml untuk responsif dan konsisten.
-- **Penjenamaan:** E-mel bermula dengan header logo MOTAC dan diakhiri footer maklumat penghantar (Bahagian Pengurusan Maklumat).
-- **Kandungan:** Subjek jelas, salam formal ("Yang dihormati..."), dan arahan langsung jika respon diperlukan.
+- **Struktur Hierarki**: Menyusun organisasi secara hierarki untuk navigasi & pengurusan jelas.
+- **Seragam**: Penyeragaman struktur organisasi di seluruh modul.
 
 ---
 
-## 4. Pola Khusus Aliran Kerja
+## 2. Jadual Peralatan ICT & Lokasi
 
-### 4.1 Pengurusan Pinjaman ICT
+Jadual ini khusus untuk pengurusan aset fizikal ICT dan lokasinya, selaras dengan prinsip Teknologi Bersesuaian, Fleksibel, Kandungan Terancang dan Seragam.
 
-- **Struktur Borang:** Borang dibahagi kepada bahagian bernombor (BAHAGIAN 1, 2, dst.) mengikut borang rasmi PK.(S).MOTAC.07.(L3).
-- **Senarai Semak Peralatan:** Semasa pengeluaran/pulangan, senarai semak aksesori digunakan (Power Adapter, Beg, dll).
-- **Aliran Kelulusan:** Sistem memaparkan aliran kelulusan secara visual.
+### 2.1 `equipment_categories` & `sub_categories`
 
-```mermaid
-%% Carta alir ini menerangkan langkah utama pinjaman ICT dari permohonan sehingga pengeluaran
-graph LR
-    A[Pemohon: Hantar Permohonan] --> B(Pegawai Penyokong: Semak & Sokong)
-    B --> C(BPM: Proses & Luluskan)
-    C --> D[BPM: Keluaran Peralatan]
-```
+Mengatur peralatan dalam struktur hierarki.
 
-### 4.2 Sistem Helpdesk ICT
-
-- **Struktur Borang:** "Borang Aduan Kerosakan ICT" (PK.(S).MOTAC.07.(L1)), borang satu lajur untuk penyerahan tiket pantas.
-- **Paparan Butiran Tiket:** Ringkasan tiket di bahagian atas, diikuti thread komen kronologi antara pengguna & agen IT.
-- **Penunjuk Status:** Lencana warna dan ikon jelas untuk status tiket (Buka, Dalam Tindakan, Selesai, Ditutup).
-
-| Status         | Ikon             | Warna     | Label          |
-| -------------- | ---------------- | --------- | -------------- |
-| Buka           | bi-envelope-open | $utama    | Buka           |
-| Dalam Tindakan | bi-arrow-repeat  | $amaran   | Dalam Tindakan |
-| Selesai        | bi-check-circle  | $berjaya  | Selesai        |
-| Ditutup        | bi-archive       | $sekunder | Ditutup        |
+- **Model:** `app/Models/EquipmentCategory.php`, `app/Models/SubCategory.php`
+- **Controller:** `app/Http/Controllers/Admin/EquipmentCategoryController.php`
+- **Seeder:** `Database\Seeders\EquipmentCategorySeeder.php`, `Database\Seeders\SubCategoriesSeeder.php`
 
 ---
 
-## 5. Pustaka Komponen
+### 2.2 `equipment`
 
-### 5.1 Navigasi
+Menyimpan butiran semua peralatan ICT yang boleh dipinjam.
 
-- **Navigasi Sisi Menegak:** Menu boleh dilipat, ikon sahaja dipaparkan secara lalai dan kembang semasa hover/pin. Keadaan disimpan dalam localStorage.
-- **Bar Tindakan Atas:** Logo ICTServe, notifikasi global, penukar bahasa dan dropdown profil pengguna.
-
-### 5.2 Input Data
-
-- **Medan Borang:** Setiap medan input mesti ada `<label>` dan teks placeholder. Teks bantuan boleh diberikan di bawah medan.
-- **Medan Wajib:** Label untuk medan wajib mesti mempunyai asterisk merah: `<span class="text-danger">*</span>`.
-
-### 5.3 Widget Dashboard
-
-- **Kad Statistik:** Digunakan di papan pemuka untuk paparan metrik utama (cth: "Kelulusan Menunggu," "Tiket Terbuka"). Kad visual yang memudahkan pengguna melihat tugas tertunda.
-- **Kad Perkhidmatan:** Panel akses pantas ke fungsi utama sistem (Aduan Kerosakan, Pinjaman Peralatan).
+- **Model:** `app/Models/Equipment.php`
+- **Controller:** `app/Http/Controllers/Admin/EquipmentController.php`
+- **Seeder:** `Database\Seeders\EquipmentSeeder.php`
 
 ---
 
-## 6. Kebolehcapaian & Tadbir Urus Reka Bentuk
+### 2.3 `locations`
 
-### 6.1 Standard Kebolehcapaian
+Mengurus lokasi fizikal peralatan boleh disimpan atau digunakan.
 
-- **Navigasi Papan Kekunci:** Susunan tab logik dan semua elemen interaktif mesti mempunyai penunjuk fokus jelas (cth: outline biru 3px).
-- **Pembaca Skrin:** Gunakan HTML semantik dan label ARIA (cth: `<nav aria-label="Navigasi utama">`).
-- **Pengurangan Animasi:** Animasi/transisi mestilah minimum dan menghormati tetapan OS untuk pengurangan gerakan.
+- **Model:** `app/Models/Location.php`
+- **Controller:** `app/Http/Controllers/Admin/LocationController.php`
+- **Seeder:** `Database\Seeders\LocationSeeder.php`
 
-### 6.2 Tadbir Urus Reka Bentuk
+#### Prinsip Berkaitan Helpdesk
 
-- **Kawalan Versi:** Token reka bentuk disimpan dalam `design-tokens.json`. Rekod perubahan disimpan dalam `DESIGN_CHANGELOG.md`.
-- **Senarai Semak Pematuhan:** Sebelum komponen baru dilepas, ia mesti divalidasi:
-  - Teks Bahasa Melayu jelas dan formal.
-  - Nisbah kontras WCAG 2.1 AA dipatuhi.
-  - Komponen responsif sepenuhnya pada telefon, tablet & desktop.
-  - Reka bentuk selaras dengan pola dokumen ini.
-  - Penjenamaan MOTAC dan BPM diaplikasi dengan betul.
+- **Realistik**: Lokasi dan kategori diurus mengikut keperluan sebenar operasi.
+- **Struktur Hierarki**: Mengatur kategori, subkategori dan lokasi secara hierarki.
 
 ---
 
-## 7. Pematuhan 18 Prinsip Reka Bentuk MyGOVEA (Ringkas)
+## 3. Jadual Modul Pinjaman ICT
 
-- Berpaksikan Rakyat, Berpacukan Data, Kandungan Terancang, Teknologi Bersesuaian
-- Antara Muka Minimalis dan Mudah, Seragam, Paparan/Menu Jelas
-- Realistik, Kognitif, Fleksibel, Komunikasi, Struktur Hierarki
-- Komponen UI/UX, Tipografi, Tetapan Lalai, Kawalan Pengguna
-- Pencegahan Ralat, Panduan & Dokumentasi
+Jadual ini khusus untuk fungsi pinjaman peralatan ICT, menepati prinsip Kawalan Pengguna, Fleksibel dan Pencegahan Ralat.
 
-Semua keputusan reka bentuk dalam dokumen ini disemak melawan prinsip di atas. Rujuk fail prinsip-reka-bentuk-mygovea.md untuk butiran prinsip.
+### 3.1 `loan_applications` & `loan_application_items`
 
----
+Merekod semua permohonan pinjaman peralatan ICT dan item yang dimohon.
 
-## See Also
-
-- [System Design Documentation](<Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md>)
-- [ICT Equipment Loan Application Flow](<Dokumentasi_Flow_Sistem_Permohonan_Pinjaman_Aset_ICT_ICTServe(iServe).md>)
-- [Email Notification System](<Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md>)
-- [General System Documentation](<Dokumentasi_Sistem_ICTServe(iServe).md>)
-- [Core User and Organization Data Tables](<Dokumentasi_Jadual_Data_Pengguna_Organisasi_Teras_ICTServe(iServe).md>)
+- **Model:** `app/Models/LoanApplication.php`, `app/Models/LoanApplicationItem.php`
+- **Controller:** `app/Http/Controllers/LoanApplicationController.php`
+- **Livewire:** `App\Livewire\ResourceManagement\LoanApplication\ApplicationForm.php`
+- **Seeder:** `Database\Seeders\LoanApplicationSeeder.php`
 
 ---
 
-## Contributor Guidance & MYDS/MyGovEA Compliance
+### 3.2 `loan_transactions` & `loan_transaction_items`
 
-This document must be maintained in accordance with the standards set by the Malaysia Government Design System (MYDS) and MyGovEA principles. All contributors must adhere to the following:
+Merekod pengeluaran dan pemulangan item peralatan yang dipinjam.
 
-- **Clarity and Conciseness**: Ensure all descriptions are clear, unambiguous, and easy for both technical and non-technical stakeholders to understand.
-- **MYDS Compliance**: All UI/UX components referenced or documented must align with the official MYDS component library, tokens, and accessibility standards.
-- **MyGovEA Principles**: Documentation should reflect citizen-centric design ("Berpaksikan Rakyat"), simplicity ("Antara Muka Minimalis dan Mudah"), and uniformity ("Seragam").
-- **Version Control**: All changes must be tracked via Git, with clear commit messages explaining the purpose of the update.
-- **Review Process**: Significant changes must be submitted via a pull request and reviewed by the project maintainer to ensure compliance and accuracy.
+- **Model:** `app/Models/LoanTransaction.php`, `app/Models/LoanTransactionItem.php`
+- **Controller:** `app/Http/Controllers/LoanTransactionController.php`
+- **Livewire:** `App\Livewire\ResourceManagement\Admin\BPM\ProcessIssuance.php`, `ProcessReturn.php`
+- **Seeder:** `Database\Seeders\LoanTransactionSeeder.php`
 
-Failure to adhere to these standards may result in the rejection of contributions.
+#### Prinsip Berkaitan
 
----
-
-## References
-
-- **MYDS Official Documentation**: [design.digital.gov.my](https://design.digital.gov.my/en)
-- **MyGovEA Design Principles**: [MyGovEA Prinsip Reka Bentuk](https://www.digital.gov.my/storage/2023/11/MyGOVEA-Prinsip-Reka-Bentuk-Perkhidmatan-Digital-Kerajaan.pdf)
-- **Laravel 12 Documentation**: [laravel.com/docs/12.x](https://laravel.com/docs/12.x)
-- **Filament 4 Documentation**: [filamentphp.com/docs/4.x](https://filamentphp.com/docs/4.x)
-- **Livewire 3 Documentation**: [livewire.laravel.com/docs/3.x](https://livewire.laravel.com/docs/3.x)
+- **Fleksibel**: Proses pinjaman boleh diubah suai mengikut keperluan.
+- **Pencegahan Ralat**: Kawalan dan pengesahan jelas semasa transaksi.
 
 ---
 
-_Dokumen diselenggara oleh Pejabat Reka Bentuk BPM_  
-_Tarikh dokumen: 13 September 2025_
+## 4. Jadual Modul Helpdesk & Sokongan ICT
+
+Jadual untuk menyokong sistem helpdesk dan pengurusan tiket, berteraskan prinsip Komunikasi, Kawalan Pengguna dan Panduan.
+
+### 4.1 `helpdesk_tickets`
+
+Menyimpan maklumat teras setiap tiket aduan kerosakan ICT yang dihantar pengguna.
+
+- **Model:** `app/Models/HelpdeskTicket.php`
+- **Controller:** `app/Http/Controllers/Helpdesk/TicketController.php`
+- **Livewire:** `App\Livewire\Helpdesk\TicketForm.php`, `TicketList.php`, `TicketDetail.php`
+- **Factory:** `Database\Factories\HelpdeskTicketFactory.php`
+- **Seeder:** `Database\Seeders\HelpdeskTicketSeeder.php`
+
+---
+
+### 4.2 `helpdesk_categories`
+
+Menentukan kategori tiket helpdesk (cth: 'Perkakasan', 'Perisian', 'Rangkaian').
+
+- **Model:** `app/Models/HelpdeskCategory.php`
+- **Controller:** `app/Http/Controllers/Admin/HelpdeskCategoryController.php`
+- **Factory:** `Database\Factories\HelpdeskCategoryFactory.php`
+- **Seeder:** `Database\Seeders\HelpdeskCategorySeeder.php`
+
+---
+
+### 4.3 `helpdesk_comments`
+
+Menyimpan komen dan respons berangkai bagi setiap tiket helpdesk untuk komunikasi antara pengguna dan agen IT.
+
+- **Model:** `app/Models/HelpdeskComment.php`
+- **Controller:** Diurus dalam `app/Http/Controllers/Helpdesk/TicketController.php`
+- **Factory:** `Database\Factories\HelpdeskCommentFactory.php`
+- **Seeder:** Disemai bersama `HelpdeskTicketSeeder.php`
+
+#### 4.4 Prinsip Berkaitan
+
+- **Komunikasi**: Memudahkan komunikasi jelas antara pengguna dan penyokong IT.
+- **Panduan & Dokumentasi**: Memudahkan rujukan dan rekod interaksi.
+
+---
+
+## 5. Jadual Aliran Kerja & Utiliti Berkongsi
+
+Menyokong aliran kerja dan fungsi sistem yang digunakan oleh pelbagai modul, menepati prinsip Struktur Hierarki, Kawalan Pengguna, Komunikasi dan Realistik.
+
+### 5.1 `approvals`
+
+Jadual polimorfik untuk menyimpan maklumat kelulusan pelbagai proses seperti permohonan pinjaman ICT.
+
+- **Model:** `app/Models/Approval.php`
+- **Controller:** `app/Http/Controllers/ApprovalController.php`
+- **Livewire:** `App\Livewire\ResourceManagement\Approval\Dashboard.php`
+- **Seeder:** `Database\Seeders\ApprovalSeeder.php`
+
+---
+
+### 5.2 `notifications`
+
+Menyimpan notifikasi pangkalan data untuk pengguna.
+
+- **Model:** `app/Models/Notification.php`
+- **Controller:** `app/Http/Controllers/NotificationController.php`
+- **Seeder:** `Database\Seeders\NotificationSeeder.php`
+
+---
+
+### 5.3 `settings`
+
+Jadual satu baris untuk menyimpan tetapan global aplikasi.
+
+- **Model:** `app/Models/Setting.php`
+- **Controller:** `app/Http/Controllers/Admin/SettingsController.php`
+- **Seeder:** `Database\Seeders\SettingsSeeder.php`
+
+#### 5.4 Prinsip Berkaitan Settings
+
+- **Tetapan Lalai**: Mengurus nilai lalai aplikasi untuk memudahkan penggunaan.
+- **Pencegahan Ralat**: Mengurangkan kesilapan dengan tetapan lalai yang sesuai.
+- **Kebolehcapaian & Fleksibel**: Tetapan boleh diubah mengikut keperluan.
+
+---
+
+## 6. Senarai Semak Prinsip Rekabentuk (Ringkas)
+
+- **Berpaksikan Rakyat**: Struktur jadual menyokong pengalaman pengguna yang jelas
+- **Berpacukan Data**: Skema konsisten dan boleh audit
+- **Kandungan Terancang**: Penamaan jadual/medan konsisten dan bermakna
+- **Teknologi Bersesuaian**: Laravel 12 + MySQL piawai + Livewire 3 + Filament 4
+- **Antara Muka Minimalis dan Mudah**: Skema memudahkan pemetaan UI ringkas
+- **Seragam**: Konvensyen penamaan seragam merentas modul
+- **Paparan/Menu Jelas**: Medan menyokong label/paparan yang jelas
+- **Realistik**: Jadual memodelkan kekangan operasi sebenar
+- **Kognitif**: Struktur data mengurangkan beban kognitif pembangun
+- **Fleksibel**: Jadual polimorfik dan konfigurasi tetapan
+- **Komunikasi**: Jadual komen/notifikasi menyokong komunikasi
+- **Struktur Hierarki**: Model organisasi dan kategori berhierarki
+- **Komponen UI/UX**: Data menyokong komponen UI standard projek
+- **Tipografi**: Medan label/teks membolehkan tipografi konsisten projek
+- **Tetapan Lalai**: Jadual `settings` mengurus lalai sistem
+- **Kawalan Pengguna**: Jadual peranan/kebenaran
+- **Pencegahan Ralat**: Kekangan skema dan validasi menyokong pencegahan
+- **Panduan & Dokumentasi**: Fail ini berperanan sebagai rujukan skema
+
+---
+
+## 7. Catatan Implementasi Integrasi UI/UX
+
+### 7.1 Warna & Token
+
+ICTServe menggunakan sistem token warna dan reka bentuk untuk memastikan keseragaman visual dan aksesibiliti:
+
+- **Primitive Colours**: Warna asas yang tetap untuk semua mod (light/dark)
+- **Colour Tokens**: Token dinamik yang berubah mengikut mod (contoh: `bg-primary-600`, `txt-danger`)
+- **Focus Rings**: Untuk tumpuan papan kekunci (aksesibiliti) dengan `fr-primary`
+- **Outline Tokens**: Untuk sempadan dan pemisah dengan `otl-divider`
+
+### 7.2 Tipografi
+
+- **Heading**: Poppins untuk tajuk dan seksyen
+- **Body**: Inter untuk teks badan dan butiran
+- **Rich Text Format**: Untuk artikel dan dokumentasi
+
+### 7.3 Komponen UI Terintegrasi
+
+Komponen UI yang digunakan dalam ICTServe telah diselaraskan mengikut spesifikasi projek:
+
+- **Buttons**: Termasuk variasi Primary, Secondary, Danger untuk pelbagai keperluan
+- **Forms**: Input, Select, Date Field, Radio, Checkbox mengikut spesifikasi projek
+- **Feedback**: Alert, Toast, dan Dialog untuk pemberitahuan dan interaksi
+- **Tables**: Dengan pengepala, badan, dan kaki meja yang konsisten
+- **Layout**: Struktur grid 12-8-4 untuk semua halaman dan seksyen
+
+---
+
+**Catatan Implementasi:**
+ICTServe (iServe) adalah penambahbaikan daripada sistem terdahulu dengan fokus pada kebolehcapaian yang lebih baik dan pengalaman pengguna yang berpaksikan rakyat. Struktur pangkalan data dikekalkan dengan penambahbaikan untuk memenuhi keperluan semasa.

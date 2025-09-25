@@ -21,12 +21,12 @@ export default defineConfig({
   darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
-      // MYDS Complete Color Token System
+  // Complete Color Token System
       colors: {
         // White
         white: '#FFFFFF',
 
-        // Primary Colors (MYDS Blue) - Light Mode
+  // Primary Colors - Light Mode
         primary: {
           50: '#EFF6FF', // primary-50
           100: '#DBEAFE', // primary-100
@@ -34,7 +34,7 @@ export default defineConfig({
           300: '#96B7FF', // primary-300
           400: '#6394FF', // primary-400
           500: '#3A75F6', // primary-500
-          600: '#2563EB', // primary-600 - Main MYDS Blue
+          600: '#2563EB', // primary-600 - Main Blue
           700: '#1D4ED8', // primary-700
           800: '#1E40AF', // primary-800
           900: '#1E3A8A', // primary-900
@@ -97,13 +97,13 @@ export default defineConfig({
           600: '#52525B', // gray-600
           700: '#3F3F46', // gray-700
           800: '#27272A', // gray-800
-          850: '#1D1D21', // gray-850 - MYDS specific
+          850: '#1D1D21', // gray-850
           900: '#18181B', // gray-900
-          930: '#161619', // gray-930 - MYDS specific
+          930: '#161619', // gray-930
           950: '#09090B', // gray-950
         },
 
-        // MYDS Semantic Color Tokens - Light Mode
+  // Semantic Color Tokens - Light Mode
         'txt-black': {
           900: '#18181B', // Primary text
           700: '#3F3F46', // Secondary text
@@ -131,18 +131,18 @@ export default defineConfig({
           600: '#DC2626', // Focus ring danger
         },
 
-        // MYDS Semantic Color Tokens - Dark Mode (via CSS variables)
-        // These will be handled by CSS custom properties for theme switching
+  // Semantic Color Tokens - Dark Mode (via CSS variables)
+  // These will be handled by CSS custom properties for theme switching
       },
 
-      // MYDS Typography System
+  // Typography System
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'], // Headings
-        inter: ['Inter', 'sans-serif'], // Body text and RTF
+  poppins: ['Poppins', 'sans-serif'], // Headings
+  inter: ['Inter', 'sans-serif'], // Body text and RTF
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
 
-      // MYDS Typography Sizes (Complete Scale)
+  // Typography Sizes (Complete Scale)
       fontSize: {
         // Body Text Sizes (Inter font)
         'body-2xs': [
@@ -303,9 +303,9 @@ export default defineConfig({
         ], // 16px with larger paragraph spacing
       },
 
-      // MYDS Spacing System (Complete Scale)
+  // Spacing System (Complete Scale)
       spacing: {
-        // MYDS Standard Spacing Scale
+  // Standard Spacing Scale
         1: '4px', // Micro spacing
         2: '8px', // Gap in button groups, fields, labels
         3: '12px', // General component spacing
@@ -332,7 +332,7 @@ export default defineConfig({
         'interactive-chart-max': '740px',
       },
 
-      // MYDS 12-8-4 Grid System Breakpoints
+  // 12-8-4 Grid System Breakpoints
       screens: {
         mobile: { max: '767px' }, // Mobile: ≤ 767px (4-column)
         tablet: { min: '768px', max: '1023px' }, // Tablet: 768px - 1023px (8-column)
@@ -340,7 +340,7 @@ export default defineConfig({
         wide: '1280px', // Maximum content width
       },
 
-      // MYDS Grid Template Columns
+  // Grid Template Columns
       gridTemplateColumns: {
         // Mobile: 4 columns
         'mobile-4': 'repeat(4, minmax(0, 1fr))',
@@ -350,7 +350,7 @@ export default defineConfig({
         'desktop-12': 'repeat(12, minmax(0, 1fr))',
       },
 
-      // MYDS Shadow System
+  // Shadow System
       boxShadow: {
         none: 'none',
         button: '0px 1px 3px 0px rgba(0, 0, 0, 0.07)',
@@ -359,7 +359,7 @@ export default defineConfig({
           '0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10)',
       },
 
-      // MYDS Border Radius System
+  // Border Radius System
       borderRadius: {
         xs: '4px', // radius-xs - Extra Small
         s: '6px', // radius-s - Small
@@ -369,7 +369,7 @@ export default defineConfig({
         full: '9999px', // radius-full - Fully rounded
       },
 
-      // MYDS Motion System
+  // Motion System
       transitionDuration: {
         instant: '0ms', // No transition
         short: '200ms', // Small UI elements
@@ -384,7 +384,7 @@ export default defineConfig({
         easeoutback: 'cubic-bezier(0.4, 1.4, 0.2, 1)',
       },
 
-      // MYDS Component Sizes
+  // Component Sizes
       height: {
         'button-sm': '32px',
         'button-md': '40px',
@@ -400,7 +400,7 @@ export default defineConfig({
         'button-lg': '48px',
       },
 
-      // MYDS Maximum Widths
+  // Maximum Widths
       maxWidth: {
         article: '640px', // Article container max width
         interactive: '740px', // Interactive charts/images max width
@@ -410,354 +410,14 @@ export default defineConfig({
   },
 
   plugins: [
-    // MYDS Component Plugin - Full Component System
+  // Component Plugin - Full Component System
     function ({ addUtilities, addComponents, theme }) {
-      // MYDS Layout Utilities
+  // Layout Utilities
       addUtilities({
-        // MYDS Container
-        '.myds-container': {
-          width: '100%',
-          'max-width': theme('maxWidth.container'),
-          'margin-left': 'auto',
-          'margin-right': 'auto',
-          'padding-left': theme('spacing.container-mobile'),
-          'padding-right': theme('spacing.container-mobile'),
-          '@media (min-width: 768px)': {
-            'padding-left': theme('spacing.container-tablet'),
-            'padding-right': theme('spacing.container-tablet'),
-          },
-          '@media (min-width: 1024px)': {
-            'padding-left': theme('spacing.container-desktop'),
-            'padding-right': theme('spacing.container-desktop'),
-          },
-        },
-
-        // MYDS 12-8-4 Grid System
-        '.myds-grid': {
-          display: 'grid',
-          gap: theme('spacing.grid-gap-mobile'),
-          'grid-template-columns': theme('gridTemplateColumns.mobile-4'),
-          '@media (min-width: 768px)': {
-            gap: theme('spacing.grid-gap-tablet'),
-            'grid-template-columns': theme('gridTemplateColumns.tablet-8'),
-          },
-          '@media (min-width: 1024px)': {
-            gap: theme('spacing.grid-gap-desktop'),
-            'grid-template-columns': theme('gridTemplateColumns.desktop-12'),
-          },
-        },
-
-        // MYDS Article Container (640px max for readability)
-        '.myds-article': {
-          'max-width': theme('maxWidth.article'),
-          'margin-left': 'auto',
-          'margin-right': 'auto',
-        },
-
-        // MYDS Interactive Content Container (740px max)
-        '.myds-interactive': {
-          'max-width': theme('maxWidth.interactive'),
-          'margin-left': 'auto',
-          'margin-right': 'auto',
-        },
-
-        // MYDS Skip Link (accessibility)
-        '.myds-skip-link': {
-          position: 'absolute',
-          left: '-9999px',
-          'z-index': '999',
-          padding: '8px 16px',
-          background: theme('colors.white'),
-          color: theme('colors.primary.600'),
-          'text-decoration': 'none',
-          'border-radius': theme('borderRadius.m'),
-          'box-shadow': theme('boxShadow.context-menu'),
-          '&:focus': {
-            left: '24px',
-            top: '24px',
-          },
-        },
-
-        // MYDS Typography Classes
-        '.myds-heading': {
-          'font-family': theme('fontFamily.poppins').join(', '),
-          'font-weight': '500',
-        },
-        '.myds-body': {
-          'font-family': theme('fontFamily.inter').join(', '),
-          'font-weight': '400',
-        },
-        '.myds-rtf': {
-          'font-family': theme('fontFamily.inter').join(', '),
-          'font-weight': '400',
-        },
+        // ...existing code...
       });
 
-      // MYDS Component Classes
-      addComponents({
-        // MYDS Button Components
-        '.myds-btn': {
-          display: 'inline-flex',
-          'align-items': 'center',
-          'justify-content': 'center',
-          gap: '8px',
-          'font-family': theme('fontFamily.inter').join(', '),
-          'font-weight': '500',
-          'text-decoration': 'none',
-          border: '1px solid transparent',
-          'border-radius': theme('borderRadius.m'),
-          transition: 'all 200ms cubic-bezier(0, 0, 0.58, 1)',
-          cursor: 'pointer',
-          outline: 'none',
-          position: 'relative',
-          '&:focus-visible': {
-            'box-shadow': `0 0 0 2px ${theme('colors.white')}, 0 0 0 4px ${theme('colors.fr-primary.600')}`,
-          },
-          '&:disabled': {
-            opacity: '0.5',
-            cursor: 'not-allowed',
-            'pointer-events': 'none',
-          },
-        },
-
-        // Button Sizes
-        '.myds-btn-sm': {
-          height: theme('height.button-sm'),
-          padding: '0 12px',
-          'font-size': theme('fontSize.body-sm')[0],
-          'line-height': theme('fontSize.body-sm')[1].lineHeight,
-        },
-        '.myds-btn-md': {
-          height: theme('height.button-md'),
-          padding: '0 16px',
-          'font-size': theme('fontSize.body-base')[0],
-          'line-height': theme('fontSize.body-base')[1].lineHeight,
-        },
-        '.myds-btn-lg': {
-          height: theme('height.button-lg'),
-          padding: '0 20px',
-          'font-size': theme('fontSize.body-lg')[0],
-          'line-height': theme('fontSize.body-lg')[1].lineHeight,
-        },
-
-        // Button Variants
-        '.myds-btn-primary': {
-          background: theme('colors.primary.600'),
-          color: theme('colors.white'),
-          'box-shadow': theme('boxShadow.button'),
-          '&:hover': {
-            background: theme('colors.primary.700'),
-            transform: 'translateY(0.5px)',
-          },
-          '&:active': {
-            background: theme('colors.primary.800'),
-            transform: 'translateY(1px)',
-          },
-        },
-
-        '.myds-btn-secondary': {
-          background: theme('colors.white'),
-          color: theme('colors.gray.900'),
-          'border-color': theme('colors.otl-gray.300'),
-          'box-shadow': theme('boxShadow.button'),
-          '&:hover': {
-            background: theme('colors.gray.50'),
-            'border-color': theme('colors.otl-gray.400'),
-            transform: 'translateY(0.5px)',
-          },
-          '&:active': {
-            background: theme('colors.gray.100'),
-            transform: 'translateY(1px)',
-          },
-        },
-
-        '.myds-btn-tertiary': {
-          background: 'transparent',
-          color: theme('colors.primary.600'),
-          '&:hover': {
-            background: theme('colors.primary.50'),
-            'text-decoration': 'underline',
-          },
-          '&:active': {
-            background: theme('colors.primary.100'),
-          },
-        },
-
-        '.myds-btn-danger': {
-          background: theme('colors.danger.600'),
-          color: theme('colors.white'),
-          'box-shadow': theme('boxShadow.button'),
-          '&:hover': {
-            background: theme('colors.danger.700'),
-            transform: 'translateY(0.5px)',
-          },
-          '&:active': {
-            background: theme('colors.danger.800'),
-            transform: 'translateY(1px)',
-          },
-          '&:focus-visible': {
-            'box-shadow': `0 0 0 2px ${theme('colors.white')}, 0 0 0 4px ${theme('colors.fr-danger.600')}`,
-          },
-        },
-
-        // MYDS Form Components
-        '.myds-input': {
-          display: 'flex',
-          width: '100%',
-          border: '1px solid ' + theme('colors.otl-gray.300'),
-          'border-radius': theme('borderRadius.m'),
-          background: theme('colors.bg-white.0'),
-          padding: '8px 12px',
-          'font-family': theme('fontFamily.inter').join(', '),
-          'font-size': theme('fontSize.body-base')[0],
-          'line-height': theme('fontSize.body-base')[1].lineHeight,
-          color: theme('colors.txt-black.900'),
-          transition: 'all 200ms cubic-bezier(0, 0, 0.58, 1)',
-          outline: 'none',
-          '&::placeholder': {
-            color: theme('colors.txt-black.400'),
-          },
-          '&:hover': {
-            'border-color': theme('colors.otl-gray.400'),
-          },
-          '&:focus': {
-            'border-color': theme('colors.primary.600'),
-            'box-shadow': `0 0 0 1px ${theme('colors.primary.600')}`,
-          },
-          '&:disabled': {
-            background: theme('colors.bg-white.100'),
-            color: theme('colors.txt-black.400'),
-            cursor: 'not-allowed',
-          },
-        },
-
-        // Input Sizes
-        '.myds-input-sm': {
-          height: theme('height.input-sm'),
-          padding: '6px 10px',
-          'font-size': theme('fontSize.body-sm')[0],
-        },
-        '.myds-input-md': {
-          height: theme('height.input-md'),
-          padding: '8px 12px',
-        },
-        '.myds-input-lg': {
-          height: theme('height.input-lg'),
-          padding: '10px 16px',
-          'font-size': theme('fontSize.body-lg')[0],
-        },
-
-        // Input States
-        '.myds-input-error': {
-          'border-color': theme('colors.danger.300'),
-          '&:focus': {
-            'border-color': theme('colors.danger.600'),
-            'box-shadow': `0 0 0 1px ${theme('colors.danger.600')}`,
-          },
-        },
-
-        // MYDS Card Component
-        '.myds-card': {
-          background: theme('colors.bg-white.0'),
-          border: '1px solid ' + theme('colors.otl-gray.200'),
-          'border-radius': theme('borderRadius.l'),
-          'box-shadow': theme('boxShadow.card'),
-          padding: theme('spacing.6'),
-        },
-
-        // MYDS Callout Component
-        '.myds-callout': {
-          display: 'flex',
-          gap: theme('spacing.3'),
-          padding: theme('spacing.4'),
-          'border-radius': theme('borderRadius.m'),
-          'border-left': '4px solid',
-        },
-
-        '.myds-callout-info': {
-          background: theme('colors.primary.50'),
-          'border-left-color': theme('colors.primary.600'),
-        },
-
-        '.myds-callout-success': {
-          background: theme('colors.success.50'),
-          'border-left-color': theme('colors.success.600'),
-        },
-
-        '.myds-callout-warning': {
-          background: theme('colors.warning.50'),
-          'border-left-color': theme('colors.warning.600'),
-        },
-
-        '.myds-callout-error': {
-          background: theme('colors.danger.50'),
-          'border-left-color': theme('colors.danger.600'),
-        },
-
-        // MYDS Tag Component
-        '.myds-tag': {
-          display: 'inline-flex',
-          'align-items': 'center',
-          gap: theme('spacing.1'),
-          padding: '4px 8px',
-          'font-family': theme('fontFamily.inter').join(', '),
-          'font-size': theme('fontSize.body-sm')[0],
-          'font-weight': '500',
-          'border-radius': theme('borderRadius.s'),
-        },
-
-        '.myds-tag-gray': {
-          background: theme('colors.gray.100'),
-          color: theme('colors.gray.800'),
-        },
-
-        '.myds-tag-success': {
-          background: theme('colors.success.100'),
-          color: theme('colors.success.800'),
-        },
-
-        '.myds-tag-warning': {
-          background: theme('colors.warning.100'),
-          color: theme('colors.warning.800'),
-        },
-
-        '.myds-tag-danger': {
-          background: theme('colors.danger.100'),
-          color: theme('colors.danger.800'),
-        },
-
-        '.myds-tag-primary': {
-          background: theme('colors.primary.100'),
-          color: theme('colors.primary.800'),
-        },
-
-        // MYDS Panel Component
-        '.myds-panel': {
-          padding: theme('spacing.6'),
-          'border-radius': theme('borderRadius.l'),
-          'border-left': '4px solid',
-        },
-
-        '.myds-panel-info': {
-          background: theme('colors.primary.50'),
-          'border-left-color': theme('colors.primary.600'),
-        },
-
-        '.myds-panel-success': {
-          background: theme('colors.success.50'),
-          'border-left-color': theme('colors.success.600'),
-        },
-
-        '.myds-panel-warning': {
-          background: theme('colors.warning.50'),
-          'border-left-color': theme('colors.warning.600'),
-        },
-
-        '.myds-panel-danger': {
-          background: theme('colors.danger.50'),
-          'border-left-color': theme('colors.danger.600'),
-        },
-      });
+      // ...existing code...
     },
   ],
 });

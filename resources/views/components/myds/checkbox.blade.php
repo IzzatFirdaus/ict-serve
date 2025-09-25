@@ -1,4 +1,8 @@
-{{-- Komponen Checkbox MYDS (BM, Aksesibiliti, Token, Ralat) --}}
+<x-ictserve.checkbox {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.checkbox>
+<x-ictserve.checkbox {{ $attributes->merge([]) }} />
+{{-- Komponen Checkbox (BM, Aksesibiliti, Token, Ralat) --}}
 
 @props([
   'label' => '',
@@ -78,10 +82,10 @@
   </div>
 
   @if ($error)
-    <x-myds.error id="{{ $checkboxId }}-error" class="mt-2">
+    <x-ictserve.error id="{{ $checkboxId }}-error" class="mt-2">
       {{ $error }}
-    </x-myds.error>
+    </x-ictserve.error>
   @elseif ($name && $errors->has($name))
-    <x-myds.error id="{{ $checkboxId }}-error" :field="$name" class="mt-2" />
+    <x-ictserve.error id="{{ $checkboxId }}-error" :field="$name" class="mt-2" />
   @endif
 </div>

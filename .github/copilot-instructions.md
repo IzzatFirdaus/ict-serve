@@ -3,7 +3,7 @@
 
 # Laravel Boost Guidelines
 
-These guidelines are for the **ICTServe (iServe)** Laravel 12 application for MOTAC. All contributors must follow these rules to ensure code quality, maintainability, and compliance with MYDS and MyGovEA principles.
+These guidelines are for the **ICTServe (iServe)** Laravel 12 application for MOTAC. All contributors must follow these rules to ensure code quality and maintainability.
 
 ## Foundational Context
 
@@ -34,7 +34,7 @@ This application uses these core packages:
 - Strictly follow established directory structure. Do not introduce new base folders without approval.
 - Use descriptive names for variables, functions, and components (e.g., `isLoanApproved`, not `loan()`).
 - Always check for existing Blade, Livewire, or Filament components before creating new ones.
-- Use MYDS tokens for all colors, spacing, and typography in UI code.
+- Use tokens for all colors, spacing, and typography in UI code.
 - Layouts must use the 12-8-4 grid convention for responsiveness.
 
 ## Project Structure
@@ -207,12 +207,12 @@ This application uses these core packages:
 - Use dark mode classes as per project convention.
 - Prefer extracting repeated patterns into Blade/JSX/Vue components.
 
-=== myds/core rules ===
+=== tokens/core rules ===
 
-## MYDS (Malaysia Government Design System)
+## Tokens
 
-- Use only MYDS tokens for all styling: colors, spacing, typography, shadows, radius, etc.
-- Use MYDS pre-built components for buttons, forms, tables, alerts, dialogs, icons, etc.
+- Use only tokens for all styling: colors, spacing, typography, shadows, radius, etc.
+- Use pre-built components for buttons, forms, tables, alerts, dialogs, icons, etc.
 - All UI must support keyboard navigation, visible focus states, ARIA attributes.
 - All forms must provide inline validation, error messages, and prevention.
 - All pages must support the 12-8-4 grid and be responsive on desktop, tablet, and mobile.
@@ -220,7 +220,7 @@ This application uses these core packages:
 - All interactive elements must have sufficient contrast (WCAG AA, 4.5:1).
 - Use skip links for accessibility.
 - Test keyboard-only flows and screen readers in CI.
-- Use MYDS Figma kit and official docs for component reference.
+- Use Figma kit and official docs for component reference.
 
 === git/project rules ===
 
@@ -242,7 +242,7 @@ This application uses these core packages:
 - Keep README.md, CONTRIBUTING.md, and setup docs up to date.
 - Add quickstart, migration, seeding, troubleshooting sections.
 - Use short, focused PHPDoc blocks for functions/classes.
-- Document all custom MYDS components and their usage.
+- Document all custom components and their usage.
 
 === accessibility/core rules ===
 
@@ -267,7 +267,7 @@ This application uses these core packages:
 
 ## Final Notes
 
-- Always frame technical advice by MYDS and MyGovEA principles: simple, inclusive, and consistent.
+- Always frame technical advice by principles of simplicity, inclusiveness, and consistency.
 - Verify third-party tool compatibility with Laravel 12 before recommending.
 - Avoid introducing breaking changes without migration guidance.
 

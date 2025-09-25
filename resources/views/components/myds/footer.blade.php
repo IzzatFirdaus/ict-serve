@@ -2,10 +2,10 @@
   <div class="myds-container py-8">{{ $slot }}</div>
 </footer>
 {{--
-  MYDS Footer for ICTServe (iServe)
-  - Compliant with MYDS standards (Design, Develop, Colour, Icons) and MyGovEA "Berpaksikan Rakyat"
+  Footer for ICTServe (iServe)
+  - Compliant with the project's design standards and citizen-centric principles
   - Responsive 12/8/4 grid, accessible, keyboard navigable, high contrast, supports dark mode
-  - Includes official MOTAC social media links (Facebook, X/Twitter, Instagram, YouTube) per MYDS-Icons-Overview.md
+  - Includes official MOTAC social media links (Facebook, X/Twitter, Instagram, YouTube)
   - Semantic roles and aria-labels for a11y; clear Malay labelling
 --}}
 @php
@@ -38,7 +38,7 @@
   ];
 @endphp
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 <footer
   class="bg-black-50 border border-divider mt-8"

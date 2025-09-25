@@ -1,8 +1,11 @@
 /* Toast progress/timing styles */
 .toast-progress-fill {
-  transition: width 0.05s linear;
+  transition: width var(--motion-fast, 150ms) linear;
 }
 
 .toast-progress-track {
-  transition-duration: 0.2s; /* default smoothing for programmatic updates */
+  transition-duration: var(
+    --motion-medium,
+    250ms
+  ); /* default smoothing for programmatic updates */
 }

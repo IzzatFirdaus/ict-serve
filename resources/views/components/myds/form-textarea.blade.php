@@ -1,6 +1,9 @@
+<x-ictserve.form-textarea {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.form-textarea>
 {{--
-  MYDS Textarea Field for ICTServe (iServe)
-  - Standards: MYDS tokens, label, error/hint, a11y, MyGovEA citizen-centric
+  Textarea Field for ICTServe (iServe)
+  - Standards: tokens, label, error/hint, a11y, citizen-centric principles
   - Props:
   id: string (required)
   label: string
@@ -31,9 +34,9 @@
 
 @php
   $sizeClass = match ($size) {
-    'sm' => 'myds-textarea-sm',
-    'lg' => 'myds-textarea-lg',
-    default => 'myds-textarea-md',
+    'sm' => 'textarea-sm',
+    'lg' => 'textarea-lg',
+    default => 'textarea-md',
   };
   $invalid = ! empty($error);
   $invalidClass = $invalid ? 'invalid' : '';
@@ -41,10 +44,10 @@
   $errorId = $invalid ? $id . '-error' : null;
 @endphp
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 @if ($label)
-  <label for="{{ $id }}" class="myds-label">
+  <label for="{{ $id }}" class="label">
     {{ $label }}
     @if ($required)
       <span class="txt-danger">*</span>
@@ -56,7 +59,7 @@
   id="{{ $id }}"
   name="{{ $id }}"
   rows="{{ $rows }}"
-  @class(['myds-textarea', $sizeClass, $invalidClass])
+  @class(['textarea', $sizeClass, $invalidClass])
   placeholder="{{ $placeholder }}"
   @if($disabled) disabled @endif
   @if($required) aria-required="true" required @endif
@@ -67,7 +70,7 @@
 >
 
 @if ($invalid)
-  <p id="{{ $errorId }}" class="myds-hint error mt-1">{{ $error }}</p>
+  <p id="{{ $errorId }}" class="hint error mt-1">{{ $error }}</p>
 @elseif ($hint)
-  <p id="{{ $hintId }}" class="myds-hint mt-1">{{ $hint }}</p>
+  <p id="{{ $hintId }}" class="hint mt-1">{{ $hint }}</p>
 @endif

@@ -1,7 +1,10 @@
+<x-ictserve.heading {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.heading>
 {{--
-  MYDS Heading component for ICTServe (iServe)
-  - Conforms to MYDS: typography scale, colour tokens, Poppins font, spacing, icon option
-  - MyGovEA: clear hierarchy, accessibility, minimalis, citizen-centric
+  ICTServe Heading component (iServe)
+  - Conforms to ICTServe typography scale, colour tokens, Poppins font, spacing, icon option
+  - Accessibility: clear hierarchy, accessible defaults, citizen-centric design
   - Props:
   level: 1-6 (HTML heading level, required)
   class: string|null (extra classes)
@@ -26,7 +29,7 @@
 ])
 
 @php
-  // Default sizes for heading levels (MYDS typography scale)
+  // Default sizes for heading levels (typography scale)
   $defaultSize = match ((int) $level) {
     1 => 'text-4xl md:text-5xl lg:text-6xl',
     2 => 'text-3xl md:text-4xl lg:text-5xl',
@@ -72,7 +75,7 @@
   $srClass = $sr ? 'sr-only' : '';
 @endphp
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 <{{ $headingTag }}
   {{ $attributes->merge(['class' => "font-poppins {$sizeClasses} {$weightClasses} {$variantClasses} {$spacingClasses} {$srClass} {$class} leading-tight tracking-tight"]) }}
@@ -85,5 +88,5 @@
 </{{ $headingTag }}>
 
 @once
-  <link rel="stylesheet" href="{{ asset('css/myds/heading.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/ictserve/heading.css') }}" />
 @endonce

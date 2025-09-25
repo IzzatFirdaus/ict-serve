@@ -2,16 +2,6 @@
 
 ---
 
-## See Also
-
-- [Dokumentasi Flow Sistem Permohonan Pinjaman Aset ICT](<./Dokumentasi_Flow_Sistem_Permohonan_Pinjaman_Aset_ICT_ICTServe(iServe).md>)
-- [Dokumentasi Jadual Data Pengguna & Organisasi Teras](<./Dokumentasi_Jadual_Data_Pengguna_Organisasi_Teras_ICTServe(iServe).md>)
-- [Dokumentasi Reka Bentuk ICTServe](<./Dokumentasi_Reka_Bentuk_ICTServe(iServe).md>)
-- [Dokumentasi Reka Bentuk Sistem ICTServe](<./Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md>)
-- [Dokumentasi Sistem Notifikasi E-mel ICTServe](<./Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md>)
-
----
-
 ## Siapa yang Perlu Baca Panduan Ini?
 
 Panduan ini khas untuk semua warga kerja MOTAC. Ia menerangkan sistem baharu ini secara mudah, supaya anda faham apa fungsinya, mengapa ia berguna, dan bagaimana ia memudahkan kerja harian kita.
@@ -113,16 +103,16 @@ Selaras dengan prinsip **Antara Muka Minimalis dan Mudah**, **Kawalan Pengguna**
 
 ---
 
-## 7. Pematuhan 18 Prinsip MyGOVEA (Ringkas)
+## 7. Prinsip Reka Bentuk (Ringkas)
 
-ICTServe dibangunkan dengan mengikuti prinsip-prinsip utama MyGOVEA:
+ICTServe dibangunkan dengan mengikuti prinsip-prinsip utama berikut:
 
 - **Berpaksikan Rakyat:** Antara muka mesra pengguna, borang mudah diisi, navigasi dua klik ke fungsi utama.
 - **Berpacukan Data:** Skema terperinci, audit lengkap, penjejakan semua transaksi.
 - **Kandungan Terancang:** Struktur aplikasi jelas, medan konsisten, label bermakna.
 - **Teknologi Bersesuaian:** Laravel 12, Livewire 3, Filament 4, dan mengikuti piawai semasa.
 - **Antara Muka Minimalis dan Mudah:** Komponen ringkas, layout bersih, tidak ada elemen berlebihan.
-- **Seragam:** Pola konsisten untuk semua modul, kod warna dan ikon MYDS.
+- **Seragam:** Pola konsisten untuk semua modul, kod warna dan ikon projek.
 - **Komunikasi:** Notifikasi jelas, komen kronologi, status berkod warna.
 - **Fleksibel:** Modular, konfigurasi mudah, API untuk integrasi, sokongan multi-peranan.
 - **Pencegahan Ralat:** Validasi, pengesahan tindakan, mesej ralat jelas, ujian pengguna.
@@ -166,14 +156,14 @@ Menggunakan Laravel (MVC), Livewire, dan Filament (**Teknologi Bersesuaian**, **
 
 **Pengawal (Controllers):**
 
-- `App/Http/Controllers/ApprovalController.php`
-- `App/Http/Controllers/EquipmentController.php`
-- `App/Http/Controllers/LoanApplicationController.php`
-- `App/Http/Controllers/LoanTransactionController.php`
-- `App/Http/Controllers/Helpdesk/TicketController.php`
-- `App/Http/Controllers/NotificationController.php`
-- `App/Http/Controllers/ReportController.php`
-- `App/Http/Controllers/Admin/*Controller.php`
+- `App\Http\Controllers\ApprovalController.php`
+- `App\Http\Controllers\EquipmentController.php`
+- `App\Http\Controllers\LoanApplicationController.php`
+- `App\Http\Controllers\LoanTransactionController.php`
+- `App\Http\Controllers\Helpdesk\TicketController.php`
+- `App\Http\Controllers\NotificationController.php`
+- `App\Http\Controllers\ReportController.php`
+- `App\Http\Controllers\Admin\*Controller.php`
 
 **Model:**
 
@@ -184,20 +174,20 @@ Menggunakan Laravel (MVC), Livewire, dan Filament (**Teknologi Bersesuaian**, **
 
 **Filament Resources:**
 
-- `App/Filament/Resources/UserResource`
-- `App/Filament/Resources/EquipmentResource`
-- `App/Filament/Resources/LoanApplicationResource`
-- `App/Filament/Resources/HelpdeskTicketResource`
+- `App\Filament\Resources\UserResource`
+- `App\Filament\Resources\EquipmentResource`
+- `App\Filament\Resources\LoanApplicationResource`
+- `App\Filament\Resources\HelpdeskTicketResource`
 
 **Paparan (Views) & Livewire:**
 
 - `resources/views/`
 - `resources/views/livewire/`
 - `resources/views/emails/`
-- `App/Livewire/LoanApplicationForm`
-- `App/Livewire/HelpdeskTicketForm`
-- `App/Livewire/Dashboard/UserDashboard`
-- `App/Livewire/Dashboard/AdminDashboard`
+- `App\Livewire\LoanApplicationForm`
+- `App\Livewire\HelpdeskTicketForm`
+- `App\Livewire\Dashboard\UserDashboard`
+- `App\Livewire\Dashboard\AdminDashboard`
 
 **Servis:**
 
@@ -255,13 +245,13 @@ Menggunakan Laravel (MVC), Livewire, dan Filament (**Teknologi Bersesuaian**, **
 **Permulaan & Pengesahan Permohonan:**
 
 - **Pelaku:** Pemohon
-- **UI:** `App/Livewire/LoanApplication/ApplicationForm`
+- **UI:** `App\Livewire\LoanApplication\ApplicationForm`
 - **Logik:** Isi borang, sahkan, status jadi `pending_support`.
 
 **Kelulusan Pegawai Penyokong:**
 
 - **Pelaku:** Pegawai Penyokong
-- **UI:** `App/Livewire/Approval/Dashboard`
+- **UI:** `App\Livewire\Approval\Dashboard`
 - **Logik:** Dirouting melalui `ApprovalService` kepada pegawai yang cukup gred.
 
 **Pengeluaran & Pemulangan Peralatan:**
@@ -274,19 +264,19 @@ Menggunakan Laravel (MVC), Livewire, dan Filament (**Teknologi Bersesuaian**, **
 **Cipta Tiket:**
 
 - **Pelaku:** Pengguna/Pemohon
-- **UI:** `App/Livewire/Helpdesk/CreateTicketForm`
+- **UI:** `App\Livewire\Helpdesk\CreateTicketForm`
 - **Logik:** Pengguna hantar tiket, status `open`. Notifikasi `TicketCreatedNotification` dihantar.
 
 **Pengurusan & Penugasan Tiket:**
 
 - **Pelaku:** Pentadbir IT/Helpdesk Manager
-- **UI:** `App/Livewire/Helpdesk/Admin/TicketManagement`
+- **UI:** `App\Livewire\Helpdesk\Admin\TicketManagement`
 - **Logik:** Tiket ditugaskan kepada agen IT, status jadi `in_progress`. Notifikasi `TicketAssignedNotification` dihantar.
 
 **Penyelesaian Tiket:**
 
 - **Pelaku:** Agen IT, Pengguna
-- **UI:** `App/Livewire/Helpdesk/TicketDetails`
+- **UI:** `App\Livewire\Helpdesk\TicketDetails`
 - **Logik:** Agen berinteraksi melalui komen, status jadi `resolved` selepas selesai.
 
 **Penutupan Tiket:**
@@ -350,31 +340,9 @@ Menggunakan Laravel (MVC), Livewire, dan Filament (**Teknologi Bersesuaian**, **
 
 ---
 
-## Contributor Guidance & MYDS/MyGovEA Compliance
-
-- Dokumentasi ini adalah rujukan utama untuk semua perubahan pada seni bina dan reka bentuk sistem.
-- Sentiasa rujuk [MYDS](https://design.digital.gov.my/en/docs/design) dan [MyGovEA Principles](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/) sebelum membuat perubahan pada antara muka atau aliran kerja.
-- Pastikan setiap kemas kini pada kod atau dokumentasi mengekalkan konsistensi, aksesibiliti, dan pematuhan kepada prinsip MYDS/MyGovEA.
-- Apabila mengubah struktur data, aliran kerja, atau antara muka, kemas kini dokumen ini dan cross-reference ke dokumen lain dalam `/docs`.
-
----
-
-## References
-
-- [MYDS Official Site](https://design.digital.gov.my/)
-- [MYDS Figma Kit](<https://www.figma.com/file/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta)>)
-- [MYDS Storybook](https://myds-storybook.vercel.app/)
-- [MyGovEA Principles](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/)
-- [Laravel Documentation](https://laravel.com/docs)
-- [Filament Documentation](https://filamentphp.com/docs)
-- [Livewire Documentation](https://laravel-livewire.com/docs)
-- [See Also: Dokumentasi Sistem ICTServe](<./Dokumentasi_Sistem_ICTServe(iServe).md>)
-
----
-
 ## 8. Penutup
 
-Sistem Pengurusan Perkhidmatan ICT MOTAC (ICTServe v1.0) adalah penyelesaian terintegrasi yang moden, selamat, dan cekap untuk pengurusan pinjaman peralatan dan sokongan ICT. Dengan tumpuan kepada prinsip MYDS dan MyGOVEA, sistem ini menyediakan UI yang mesra rakyat, modular, dan mudah diperluas selaras dengan keperluan operasi BPM.
+Sistem Pengurusan Perkhidmatan ICT MOTAC (ICTServe v1.0) adalah penyelesaian terintegrasi yang moden, selamat, dan cekap untuk pengurusan pinjaman peralatan dan sokongan ICT. Sistem ini menyediakan UI yang mesra rakyat, modular, dan mudah diperluas selaras dengan keperluan operasi BPM.
 
 **Manfaat utama:**
 

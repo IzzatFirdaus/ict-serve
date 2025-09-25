@@ -1,8 +1,6 @@
 # Jadual Data Pengguna & Organisasi Teras (v1.0)
 
-Dokumen ini menyediakan gambaran keseluruhan tahap tinggi mengenai jadual pangkalan data teras dalam ICTServe (iServe) v1.0, komponen Laravel yang berkaitan, serta tujuan penggunaannya dalam sistem. Penambahbaikan selaras dengan PRINSIP REKA BENTUK MYGOVEA (18 Prinsip) dan MYDS (Malaysia Government Design System).
-
-<!-- Nota: Pemetaan prinsip MyGOVEA disediakan di bahagian akhir untuk verifikasi pematuhan. -->
+Dokumen ini menyediakan gambaran keseluruhan tahap tinggi mengenai jadual pangkalan data teras dalam ICTServe (iServe) v1.0, komponen Laravel yang berkaitan, serta tujuan penggunaannya dalam sistem.
 
 ---
 
@@ -12,7 +10,7 @@ Jadual-jadual ini mendasari pengurusan pengguna, peranan, dan struktur organisas
 
 ### 1.1 `users` (Pengguna)
 
-Menyimpan maklumat semua pengguna sistem. Versi v1.0 telah diperkemas untuk menghapuskan medan modul legasi dan menambah integrasi MYDS.
+Menyimpan maklumat semua pengguna sistem. Versi v1.0 telah diperkemas untuk menghapuskan medan modul legasi dan menambah integrasi dengan rekabentuk terkini.
 
 - **Model:** `app/Models/User.php`
 - **Controller:** `app/Http/Controllers/UserController.php`, pelbagai pengawal autentikasi
@@ -209,7 +207,7 @@ Jadual satu baris untuk menyimpan tetapan global aplikasi.
 
 ---
 
-## 6. Senarai Semak Pematuhan 18 Prinsip MyGOVEA (Ringkas)
+## 6. Senarai Semak Prinsip Rekabentuk (Ringkas)
 
 - **Berpaksikan Rakyat**: Struktur jadual menyokong pengalaman pengguna yang jelas
 - **Berpacukan Data**: Skema konsisten dan boleh audit
@@ -223,8 +221,8 @@ Jadual satu baris untuk menyimpan tetapan global aplikasi.
 - **Fleksibel**: Jadual polimorfik dan konfigurasi tetapan
 - **Komunikasi**: Jadual komen/notifikasi menyokong komunikasi
 - **Struktur Hierarki**: Model organisasi dan kategori berhierarki
-- **Komponen UI/UX**: Data menyokong komponen UI standard MYDS
-- **Tipografi**: Medan label/teks membolehkan tipografi konsisten MYDS
+- **Komponen UI/UX**: Data menyokong komponen UI standard projek
+- **Tipografi**: Medan label/teks membolehkan tipografi konsisten projek
 - **Tetapan Lalai**: Jadual `settings` mengurus lalai sistem
 - **Kawalan Pengguna**: Jadual peranan/kebenaran
 - **Pencegahan Ralat**: Kekangan skema dan validasi menyokong pencegahan
@@ -232,29 +230,29 @@ Jadual satu baris untuk menyimpan tetapan global aplikasi.
 
 ---
 
-## 7. Integrasi MYDS (Malaysia Government Design System)
+## 7. Catatan Implementasi Integrasi UI/UX
 
-### 7.1 Warna & Token MYDS
+### 7.1 Warna & Token
 
-ICTServe menggunakan sistem token MYDS untuk memastikan keseragaman visual dan aksesibiliti:
+ICTServe menggunakan sistem token warna dan reka bentuk untuk memastikan keseragaman visual dan aksesibiliti:
 
 - **Primitive Colours**: Warna asas yang tetap untuk semua mod (light/dark)
 - **Colour Tokens**: Token dinamik yang berubah mengikut mod (contoh: `bg-primary-600`, `txt-danger`)
 - **Focus Rings**: Untuk tumpuan papan kekunci (aksesibiliti) dengan `fr-primary`
 - **Outline Tokens**: Untuk sempadan dan pemisah dengan `otl-divider`
 
-### 7.2 Tipografi MYDS
+### 7.2 Tipografi
 
 - **Heading**: Poppins untuk tajuk dan seksyen
 - **Body**: Inter untuk teks badan dan butiran
 - **Rich Text Format**: Untuk artikel dan dokumentasi
 
-### 7.3 Komponen MYDS Terintegrasi
+### 7.3 Komponen UI Terintegrasi
 
-Komponen UI yang digunakan dalam ICTServe telah diselaraskan dengan MYDS:
+Komponen UI yang digunakan dalam ICTServe telah diselaraskan mengikut spesifikasi projek:
 
 - **Buttons**: Termasuk variasi Primary, Secondary, Danger untuk pelbagai keperluan
-- **Forms**: Input, Select, Date Field, Radio, Checkbox mengikut spesifikasi MYDS
+- **Forms**: Input, Select, Date Field, Radio, Checkbox mengikut spesifikasi projek
 - **Feedback**: Alert, Toast, dan Dialog untuk pemberitahuan dan interaksi
 - **Tables**: Dengan pengepala, badan, dan kaki meja yang konsisten
 - **Layout**: Struktur grid 12-8-4 untuk semua halaman dan seksyen
@@ -262,4 +260,4 @@ Komponen UI yang digunakan dalam ICTServe telah diselaraskan dengan MYDS:
 ---
 
 **Catatan Implementasi:**
-ICTServe (iServe) adalah penambahbaikan daripada sistem terdahulu dengan fokus pada pematuhan MYDS, kebolehcapaian yang lebih baik, dan pengalaman pengguna yang berpaksikan rakyat. Struktur pangkalan data dikekalkan dengan penambahbaikan untuk memenuhi keperluan semasa.
+ICTServe (iServe) adalah penambahbaikan daripada sistem terdahulu dengan fokus pada kebolehcapaian yang lebih baik dan pengalaman pengguna yang berpaksikan rakyat. Struktur pangkalan data dikekalkan dengan penambahbaikan untuk memenuhi keperluan semasa.

@@ -54,11 +54,11 @@
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <x-myds.label for="reporter_name">
+              <x-ictserve.label for="reporter_name">
                 {{ __("Full Name") }}
                 <span class="text-danger-500">*</span>
-              </x-myds.label>
-              <x-myds.input
+              </x-ictserve.label>
+              <x-ictserve.input
                 id="reporter_name"
                 name="reporter_name"
                 type="text"
@@ -66,18 +66,18 @@
                 required
               />
               @error("reporter_name")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
-                </x-myds.callout>
+                </x-ictserve.callout>
               @enderror
             </div>
 
             <div>
-              <x-myds.label for="reporter_email">
+              <x-ictserve.label for="reporter_email">
                 {{ __("Email Address") }}
                 <span class="text-danger-500">*</span>
-              </x-myds.label>
-              <x-myds.input
+              </x-ictserve.label>
+              <x-ictserve.input
                 id="reporter_email"
                 name="reporter_email"
                 type="email"
@@ -85,54 +85,54 @@
                 required
               />
               @error("reporter_email")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
-                </x-myds.callout>
+                </x-ictserve.callout>
               @enderror
             </div>
 
             <div>
-              <x-myds.label for="reporter_phone">
+              <x-ictserve.label for="reporter_phone">
                 {{ __("Phone Number") }}
-              </x-myds.label>
-              <x-myds.input
+              </x-ictserve.label>
+              <x-ictserve.input
                 id="reporter_phone"
                 name="reporter_phone"
                 type="tel"
                 :value="old('reporter_phone')"
               />
               @error("reporter_phone")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
-                </x-myds.callout>
+                </x-ictserve.callout>
               @enderror
             </div>
 
             <div>
-              <x-myds.label for="contact_phone">
+              <x-ictserve.label for="contact_phone">
                 {{ __("Contact Phone (if different)") }}
-              </x-myds.label>
-              <x-myds.input
+              </x-ictserve.label>
+              <x-ictserve.input
                 id="contact_phone"
                 name="contact_phone"
                 type="tel"
                 :value="old('contact_phone')"
               />
               @error("contact_phone")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
-                </x-myds.callout>
+                </x-ictserve.callout>
               @enderror
             </div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
             <div>
-              <x-myds.label for="staff_id">
+              <x-ictserve.label for="staff_id">
                 {{ __("Staff ID") }}
                 <span class="text-danger-500">*</span>
-              </x-myds.label>
-              <x-myds.input
+              </x-ictserve.label>
+              <x-ictserve.input
                 id="staff_id"
                 name="staff_id"
                 type="text"
@@ -140,18 +140,18 @@
                 required
               />
               @error("staff_id")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
-                </x-myds.callout>
+                </x-ictserve.callout>
               @enderror
             </div>
 
             <div>
-              <x-myds.label for="department">
+              <x-ictserve.label for="department">
                 {{ __("Department") }}
                 <span class="text-danger-500">*</span>
               </x-myds.label>
-              <x-myds.input
+              <x-ictserve.input
                 id="department"
                 name="department"
                 type="text"
@@ -159,18 +159,18 @@
                 required
               />
               @error("department")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
                 </x-myds.callout>
               @enderror
             </div>
 
             <div>
-              <x-myds.label for="division">
+              <x-ictserve.label for="division">
                 {{ __("Division") }}
                 <span class="text-danger-500">*</span>
               </x-myds.label>
-              <x-myds.input
+              <x-ictserve.input
                 id="division"
                 name="division"
                 type="text"
@@ -178,18 +178,18 @@
                 required
               />
               @error("division")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
                 </x-myds.callout>
               @enderror
             </div>
 
             <div>
-              <x-myds.label for="position">
+              <x-ictserve.label for="position">
                 {{ __("Position") }}
                 <span class="text-danger-500">*</span>
               </x-myds.label>
-              <x-myds.input
+              <x-ictserve.input
                 id="position"
                 name="position"
                 type="text"
@@ -197,7 +197,7 @@
                 required
               />
               @error("position")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
                 </x-myds.callout>
               @enderror
@@ -213,11 +213,11 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <x-myds.label for="category_id">
+              <x-ictserve.label for="category_id">
                 {{ __("Issue Category") }}
                 <span class="text-danger-500">*</span>
               </x-myds.label>
-              <x-myds.select id="category_id" name="category_id" required>
+              <x-ictserve.select id="category_id" name="category_id" required>
                 <option value="">{{ __("Select a category...") }}</option>
                 @foreach ($categories as $category)
                   <option
@@ -229,18 +229,18 @@
                 @endforeach
               </x-myds.select>
               @error("category_id")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
                 </x-myds.callout>
               @enderror
             </div>
 
             <div>
-              <x-myds.label for="priority">
+              <x-ictserve.label for="priority">
                 {{ __("Priority Level") }}
                 <span class="text-danger-500">*</span>
               </x-myds.label>
-              <x-myds.select id="priority" name="priority" required>
+              <x-ictserve.select id="priority" name="priority" required>
                 <option value="">{{ __("Select priority level...") }}</option>
                 <option
                   value="low"
@@ -268,7 +268,7 @@
                 </option>
               </x-myds.select>
               @error("priority")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
                 </x-myds.callout>
               @enderror
@@ -276,11 +276,11 @@
           </div>
 
           <div class="mb-6">
-            <x-myds.label for="title">
+            <x-ictserve.label for="title">
               {{ __("Issue Title") }}
               <span class="text-danger-500">*</span>
             </x-myds.label>
-            <x-myds.input
+            <x-ictserve.input
               id="title"
               name="title"
               type="text"
@@ -289,18 +289,18 @@
               placeholder="{{ __('Brief description of the issue...') }}"
             />
             @error("title")
-              <x-myds.callout type="danger" class="mt-1">
+              <x-ictserve.callout type="danger" class="mt-1">
                 {{ $message }}
               </x-myds.callout>
             @enderror
           </div>
 
           <div class="mb-6">
-            <x-myds.label for="description">
+            <x-ictserve.label for="description">
               {{ __("Detailed Description") }}
               <span class="text-danger-500">*</span>
             </x-myds.label>
-            <x-myds.textarea
+            <x-ictserve.textarea
               id="description"
               name="description"
               rows="6"
@@ -310,7 +310,7 @@
               {{ old("description") }}
             </x-myds.textarea>
             @error("description")
-              <x-myds.callout type="danger" class="mt-1">
+              <x-ictserve.callout type="danger" class="mt-1">
                 {{ $message }}
               </x-myds.callout>
             @enderror
@@ -318,11 +318,11 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <x-myds.label for="location">
+              <x-ictserve.label for="location">
                 {{ __("Location") }}
                 <span class="text-danger-500">*</span>
               </x-myds.label>
-              <x-myds.input
+              <x-ictserve.input
                 id="location"
                 name="location"
                 type="text"
@@ -331,17 +331,17 @@
                 placeholder="{{ __('Building, Floor, Room number...') }}"
               />
               @error("location")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
                 </x-myds.callout>
               @enderror
             </div>
 
             <div>
-              <x-myds.label for="equipment_item_id">
+              <x-ictserve.label for="equipment_item_id">
                 {{ __("Related Equipment (if applicable)") }}
               </x-myds.label>
-              <x-myds.select id="equipment_item_id" name="equipment_item_id">
+              <x-ictserve.select id="equipment_item_id" name="equipment_item_id">
                 <option value="">{{ __("None / Not applicable") }}</option>
                 @foreach ($equipment as $categoryName => $items)
                   <optgroup label="{{ $categoryName }}">
@@ -359,7 +359,7 @@
                 @endforeach
               </x-myds.select>
               @error("equipment_item_id")
-                <x-myds.callout type="danger" class="mt-1">
+                <x-ictserve.callout type="danger" class="mt-1">
                   {{ $message }}
                 </x-myds.callout>
               @enderror
@@ -368,7 +368,7 @@
 
           <!-- File Attachments -->
           <div class="mb-6">
-            <x-myds.label for="attachments">
+            <x-ictserve.label for="attachments">
               {{ __("Attachments") }}
             </x-myds.label>
             <div
@@ -415,7 +415,7 @@
             </div>
             <div id="file-list" class="mt-2 space-y-2"></div>
             @error("attachments")
-              <x-myds.callout type="danger" class="mt-1">
+              <x-ictserve.callout type="danger" class="mt-1">
                 {{ $message }}
               </x-myds.callout>
             @enderror
@@ -431,7 +431,7 @@
         <!-- Data Consent -->
         <div class="mb-8 p-4 bg-gray-50 rounded-lg">
           <div class="flex items-start">
-            <x-myds.checkbox
+            <x-ictserve.checkbox
               id="data_consent"
               name="data_consent"
               value="1"
@@ -447,21 +447,21 @@
             </div>
           </div>
           @error("data_consent")
-            <x-myds.callout type="danger" class="mt-2 ml-7">
+            <x-ictserve.callout type="danger" class="mt-2 ml-7">
               {{ $message }}
-            </x-myds.callout>
+            </x-ictserve.callout>
           @enderror
         </div>
 
         <!-- Submit Button -->
         <div class="flex justify-end space-x-4">
-          <x-myds.button as="a" href="{{ url('/') }}" variant="secondary">
+          <x-ictserve.button as="a" href="{{ url('/') }}" variant="secondary">
             {{ __("Cancel") }}
-          </x-myds.button>
-          <x-myds.button type="submit" id="submit-btn" variant="primary">
+          </x-ictserve.button>
+          <x-ictserve.button type="submit" id="submit-btn" variant="primary">
             <span class="submit-text">{{ __("Submit Report") }}</span>
             <span class="loading-text hidden">{{ __("Processing...") }}</span>
-          </x-myds.button>
+          </x-ictserve.button>
         </div>
       </form>
     </div>

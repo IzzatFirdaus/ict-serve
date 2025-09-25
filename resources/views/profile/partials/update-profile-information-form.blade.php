@@ -20,7 +20,7 @@
   <form
     id="send-verification"
     method="post"
-    action="{{ route('verification.send') }}"
+          <x-ictserve.form-input
   >
     @csrf
   </form>
@@ -61,7 +61,7 @@
         required
         autocomplete="username"
         error="{{ $errors->first('email') }}"
-      />
+              <x-ictserve.button
 
       @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
         <div class="mt-2">
@@ -76,7 +76,7 @@
               Klik di sini untuk menghantar semula e-mel pengesahan.
             </x-myds.button>
           </p>
-
+          <x-ictserve.button type="submit" variant="primary">Simpan</x-ictserve.button>
           @if (session('status') === 'verification-link-sent')
             <p
               class="mt-2 font-medium text-sm text-txt-success dark:text-success-400"

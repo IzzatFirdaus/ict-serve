@@ -138,14 +138,14 @@
 
               <!-- User Menu -->
               @auth
-                <div class="relative" x-data="{ open: false }">
+                <div class="relative" x-data="{ userMenuOpen: false }">
                   <x-myds.button
                     id="user-menu-button"
                     type="button"
-                    x-on:click="open = !open"
-                    x-on:click.away="open = false"
+                    x-on:click="userMenuOpen = !userMenuOpen"
+                    x-on:click.away="userMenuOpen = false"
                     class="flex items-center space-x-2 p-2 rounded-lg hover:bg-bg-washed transition-colors"
-                    :aria-expanded="open"
+                    :aria-expanded="'userMenuOpen'"
                     aria-haspopup="true"
                     aria-controls="user-menu"
                     :size="'md'"
@@ -164,7 +164,7 @@
 
                   <!-- User Dropdown -->
                   <div
-                    x-show="open"
+                    x-show="userMenuOpen"
                     x-cloak
                     x-transition:enter="transition ease-out duration-200"
                     x-transition:enter-start="opacity-0 scale-95"

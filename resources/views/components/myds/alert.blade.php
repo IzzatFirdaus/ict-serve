@@ -1,6 +1,9 @@
+<x-ictserve.alert {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.alert>
 {{--
-  MYDS Alert for ICTServe (iServe)
-  - Compliant with MYDS: colour tokens, icon, grid, accessible, dismissible.
+  Alert for ICTServe (iServe)
+  - Compliant with design tokens: colour tokens, icon, grid, accessible, dismissible.
   - Props:
   variant: info|success|warning|danger
   title?: string
@@ -32,7 +35,7 @@
   ];
 @endphp
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 <div
   @class(['myds-callout', $variantClass, 'grid', 'gap-3', 'radius-m', 'border', 'p-4', 'items-center'])

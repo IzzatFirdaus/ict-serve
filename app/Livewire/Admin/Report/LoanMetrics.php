@@ -21,7 +21,12 @@ class LoanMetrics extends Component
                 'active' => LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'active'))->count(),
                 'returned' => LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'returned'))->count(),
                 'rejected' => LoanRequest::whereHas('status', fn ($q) => $q->where('code', 'rejected'))->count(),
-                'monthly' => LoanRequest::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as count')
+                // SQLite does not support YEAR() or MONTH(), so use strftime for year/month extraction
+                'monthly' => LoanRequest::selectRaw(
+                        	"CAST(strftime('%Y', created_at) AS INTEGER) as year, " .
+                        	"CAST(strftime('%m', created_at) AS INTEGER) as month, " .
+                        	"COUNT(*) as count"
+                    )
                     ->groupBy('year', 'month')
                     ->orderBy('year', 'desc')
                     ->orderBy('month', 'desc')

@@ -1,24 +1,24 @@
 {{--
-  MYDS Icons Blade Registry for ICTServe (iServe)
-  - Provides standard icon includes for MYDS-compliant applications
+  Icons Blade Registry for ICTServe (iServe)
+  - Provides standard icon includes for applications
   - Follows 20x20 grid, 1.5px stroke, consistent names, and tokens (colour, size)
   - Social media and generic icons included; easy to extend for new icons
-  - Usage: <x-myds.icons.[icon-name] :size="24" :class="'txt-primary'" />
+  - Usage: <x-ictserve.icons.[icon-name] :size="24" :class="'txt-primary'" />
   - Accessible: SVGs use currentColor for easy theming and support aria-hidden
-  - Icons: Only MYDS official set (see MYDS-Icons-Overview.md)
 --}}
 
 {{-- Generic Icons --}}
 
 @props([
   'size' => 20,
+  'class' => '',
   //px,
-  defaultMYDSgrid'class' => '',
+  // defaultMYDSgrid: removed invalid prop
   //extraclassesforsizing'colour' => null,
   'name' => null,
 ])
 
-{{-- Example usage: <x-myds.icons.search size="24" class="txt-primary" /> or <x-myds.icons :name="$iconName" /> --}}
+{{-- Example usage: <x-ictserve.icons.search size="24" class="txt-primary" /> or <x-ictserve.icons :name="$iconName" /> --}}
 
 @php
   $iconName = $name ?? trim($slot);
@@ -35,7 +35,7 @@
       viewBox="0 0 20 20"
       stroke="currentColor"
       stroke-width="1.5"
-      class="myds-icon {{ $class }}"
+  class="ictserve-icon {{ $class }}"
       aria-hidden="true"
     >
       <circle cx="9" cy="9" r="6" />
@@ -53,7 +53,7 @@
       viewBox="0 0 20 20"
       stroke="currentColor"
       stroke-width="1.5"
-      class="myds-icon {{ $class }}"
+  class="ictserve-icon {{ $class }}"
       aria-hidden="true"
     >
       <polyline points="5 8 10 13 15 8" fill="none" />
@@ -70,7 +70,7 @@
       viewBox="0 0 20 20"
       stroke="currentColor"
       stroke-width="1.5"
-      class="myds-icon {{ $class }}"
+  class="ictserve-icon {{ $class }}"
       aria-hidden="true"
     >
       <polygon points="10 3 19 17 1 17 10 3" fill="none" />
@@ -89,7 +89,7 @@
       viewBox="0 0 20 20"
       stroke="currentColor"
       stroke-width="1.5"
-      class="myds-icon {{ $class }}"
+  class="ictserve-icon {{ $class }}"
       aria-hidden="true"
     >
       <rect x="3" y="5" width="14" height="10" rx="2" />
@@ -109,7 +109,7 @@
       viewBox="0 0 20 20"
       stroke="currentColor"
       stroke-width="1.5"
-      class="myds-icon {{ $class }}"
+  class="ictserve-icon {{ $class }}"
       aria-hidden="true"
     >
       <rect x="4" y="3" width="12" height="14" rx="2" />
@@ -128,7 +128,7 @@
       viewBox="0 0 20 20"
       stroke="currentColor"
       stroke-width="1.5"
-      class="myds-icon {{ $class }}"
+  class="ictserve-icon {{ $class }}"
       aria-hidden="true"
     >
       <circle cx="10" cy="10" r="8" />
@@ -148,7 +148,7 @@
       fill="none"
       stroke="currentColor"
       stroke-width="1.5"
-      class="myds-icon {{ $class }}"
+  class="ictserve-icon {{ $class }}"
       aria-hidden="true"
     >
       <rect

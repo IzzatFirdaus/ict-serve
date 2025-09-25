@@ -7,7 +7,7 @@
 
     <title>{{ config('app.name', 'ICTServe (iServe)') }} - Sistem Perkhidmatan ICT MOTAC</title>
 
-    <!-- MYDS Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
 </head>
 <body class="antialiased font-sans bg-washed text-black-900 min-h-screen flex flex-col">
     {{-- MYDS Skip Link: Appears on keyboard tab, points to #main-content --}}
-    <a href="#main-content" class="myds-skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     {{-- The main layout slot, which should include the header/nav, main, and footer --}}
     <div id="app-root" class="flex flex-col min-h-screen">
@@ -57,14 +57,14 @@
 
     {{-- Fallback for users with JavaScript disabled --}}
     <noscript>
-        <div class="myds-noscript-container">
-            <h1 class="myds-noscript-title">ICTServe (iServe)</h1>
-            <p class="myds-noscript-subtitle">Sistem Perkhidmatan ICT MOTAC</p>
-            <p class="myds-noscript-strong">
+        <div class="noscript-container">
+            <h1 class="noscript-title">ICTServe (iServe)</h1>
+            <p class="noscript-subtitle">Sistem Perkhidmatan ICT MOTAC</p>
+            <p class="noscript-strong">
                 <strong>JavaScript diperlukan untuk menggunakan aplikasi ini.</strong>
             </p>
             <p>Sila aktifkan JavaScript dalam pelayar web anda untuk menggunakan sistem ini.</p>
-            <p class="myds-noscript-contact">
+            <p class="noscript-contact">
                 <a href="mailto:ict@motac.gov.my">Hubungi Jabatan ICT</a>
                 jika anda memerlukan bantuan.
             </p>
@@ -74,7 +74,7 @@
     {{-- MYDS Loading Indicator (Spinner) --}}
     <div id="loading-indicator" class="fixed inset-0 flex items-center justify-center bg-black/10 z-[9999]" hidden>
         <div class="rounded-full bg-white p-4 shadow-card">
-            <!-- MYDS Spinner SVG  -->
+            <!-- Spinner SVG  -->
             <svg class="animate-spin w-10 h-10 text-primary-600" fill="none" viewBox="0 0 40 40" aria-hidden="true">
                 <circle class="opacity-20" cx="20" cy="20" r="16" stroke="currentColor" stroke-width="4"/>
                 <path d="M36 20a16 16 0 0 0-16-16" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>

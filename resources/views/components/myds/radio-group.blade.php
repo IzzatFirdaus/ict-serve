@@ -100,7 +100,7 @@
   @endforeach
 </fieldset>
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 @if ($label)
   <div class="myds-label" id="{{ $name }}-legend">

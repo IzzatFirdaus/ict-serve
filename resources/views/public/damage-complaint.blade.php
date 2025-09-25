@@ -23,14 +23,14 @@
     <!-- Form Section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       @if (session('success'))
-        <x-myds.callout variant="success" class="mb-6">
+  <x-ictserve.callout variant="success" class="mb-6">
           <div class="flex items-start space-x-3">
-            <x-myds.icon name="check-circle" size="20" class="mt-0.5 text-success-600" aria-hidden="true" />
+            <x-ictserve.icon name="check-circle" size="20" class="mt-0.5 text-success-600" aria-hidden="true" />
             <div>
               <p class="font-inter text-sm text-success-700">{{ session('success') }}</p>
             </div>
           </div>
-        </x-myds.callout>
+  </x-ictserve.callout>
       @endif
 
       <form
@@ -50,7 +50,7 @@
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="col-span-1">
-              <x-myds.form-input
+              <x-ictserve.form-input
                 label="Name"
                 name="name"
                 value="{{ auth()->user()->name }}"
@@ -58,7 +58,7 @@
               >
             </div>
             <div class="col-span-1">
-              <x-myds.form-input
+              <x-ictserve.form-input
                 label="Department"
                 name="department"
                 value="{{ auth()->user()->department ?? 'N/A' }}"
@@ -66,7 +66,7 @@
               >
             </div>
             <div class="col-span-1">
-              <x-myds.form-input
+              <x-ictserve.form-input
                 label="Contact Phone"
                 name="contact_phone"
                 value="{{ old('contact_phone', auth()->user()->phone) }}"
@@ -75,7 +75,7 @@
               >
             </div>
             <div class="col-span-1">
-              <x-myds.form-input
+              <x-ictserve.form-input
                 label="Location"
                 name="location"
                 value="{{ old('location') }}"
@@ -93,7 +93,7 @@
         >
           <h2 class="text-lg font-semibold font-poppins text-txt-black-900 mb-4">Issue Details</h2>
           <div class="space-y-4">
-            <x-myds.form-input
+            <x-ictserve.form-input
               label="Issue Title"
               name="title"
               value="{{ old('title') }}"
@@ -102,7 +102,7 @@
               error="{{ $errors->first('title') }}"
             >
 
-            <x-myds.form-textarea
+            <x-ictserve.form-textarea
               label="Detailed Description"
               name="description"
               value="{{ old('description') }}"
@@ -123,7 +123,7 @@
                   }
                 @endphp
 
-                <x-myds.form-select
+                <x-ictserve.form-select
                   label="Affected Equipment (if applicable)"
                   name="equipment_item_id"
                   :options="$equipmentOptions"
@@ -144,7 +144,7 @@
                   ];
                 @endphp
 
-                <x-myds.form-select
+                <x-ictserve.form-select
                   label="Damage Type"
                   name="damage_type"
                   :options="$damageTypeOptions"
@@ -165,7 +165,7 @@
               ];
             @endphp
 
-            <x-myds.form-select
+            <x-ictserve.form-select
               label="Priority Level"
               name="priority"
               :options="$priorityOptions"
@@ -196,7 +196,7 @@
                 aria-labelledby="attachments-label"
               >
                 <div class="space-y-1 text-center">
-                  <x-myds.icon name="upload" size="48" class="mx-auto text-gray-400" aria-hidden="true" />
+                  <x-ictserve.icon name="upload" size="48" class="mx-auto text-gray-400" aria-hidden="true" />
                   <div class="flex text-sm text-txt-black-600 items-center justify-center">
                     <label
                       id="attachments-label"
@@ -231,16 +231,16 @@
 
         <!-- Submit Button -->
         <div class="flex justify-end space-x-4">
-          <x-myds.button
+          <x-ictserve.button
             as="a"
             href="{{ route('public.my-requests') }}"
             variant="secondary"
           >
             Cancel
-          </x-myds.button>
-          <x-myds.button type="submit" variant="danger">
+          </x-ictserve.button>
+          <x-ictserve.button type="submit" variant="danger">
             Submit Complaint
-          </x-myds.button>
+          </x-ictserve.button>
         </div>
       </form>
     </div>

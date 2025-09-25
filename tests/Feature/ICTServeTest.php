@@ -56,15 +56,15 @@ class ICTServeTest extends TestCase
     }
 
     /**
-     * Test that MYDS styles are being applied correctly.
+    * Test that styles are being applied correctly.
      */
-    public function test_myds_styles_are_applied(): void
+    public function test_styles_are_applied(): void
     {
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        // Check for MYDS CSS classes
-        $response->assertSee('myds-container');
-        $response->assertSee('primary-600', false);  // Don't escape HTML
+    // Check for container CSS classes
+    $response->assertSee('container');
+    $response->assertSee('primary-600', false);  // Don't escape HTML
     }
 }

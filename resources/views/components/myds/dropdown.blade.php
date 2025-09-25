@@ -26,7 +26,7 @@
   'center',
 ])
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 @php
   $buttonClasses = match ($variant) {

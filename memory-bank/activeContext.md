@@ -2,7 +2,7 @@
 
 ## Current Focus
 
-- Ongoing compliance with MYDS and MyGovEA standards
+- Ongoing compliance with project accessibility and government standards
 - Migration and maintenance of Laravel 12, Filament v4, and Livewire 3
 - Ensuring all UI and backend code follows latest accessibility and security guidelines
 

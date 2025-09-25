@@ -1,3 +1,6 @@
+<x-ictserve.container {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.container>
 @props([
   'variant' => 'default',
   //default,
@@ -33,7 +36,7 @@
   $centeredClasses = $centered ? 'mx-auto' : '';
 @endphp
 
-{{-- Komponen Container MYDS (Grid 12-8-4, BM, Responsif) --}}
+{{-- Generic Container Component (Grid 12-8-4, Responsive) --}}
 <div
   {{ $attributes->merge(['class' => "w-full {$variantClasses} {$paddingClasses} {$centeredClasses} grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-6"]) }}
 >

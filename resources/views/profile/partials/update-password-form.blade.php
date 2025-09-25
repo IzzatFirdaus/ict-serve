@@ -37,7 +37,7 @@
       >
         Kata Laluan Semasa
       </label>
-      <x-myds.input
+  <x-ictserve.input
         id="update_password_current_password"
         name="current_password"
         type="password"
@@ -58,14 +58,14 @@
         Kata Laluan Baharu
       </label>
       <div class="relative mt-1">
-        <x-myds.input
+  <x-ictserve.input
           id="update_password_password"
           name="password"
           :type="showPassword ? 'text' : 'password'"
           autocomplete="new-password"
           class="pr-10"
         />
-        <x-myds.button
+  <x-ictserve.button
           type="button"
           class="absolute inset-y-0 right-0 flex items-center px-3"
           x-on:click="showPassword = !showPassword"
@@ -73,14 +73,14 @@
           variant="secondary"
           size="sm"
         >
-          <x-myds.icon
+          <x-ictserve.icon
             name="eye"
             size="16"
             x-show="!showPassword"
             aria-hidden="true"
             class="h-4 w-4"
           />
-          <x-myds.icon
+          <x-ictserve.icon
             name="eye-off"
             size="16"
             x-show="showPassword"
@@ -88,7 +88,7 @@
             class="h-4 w-4"
             x-cloak
           />
-        </x-myds.button>
+  </x-ictserve.button>
       </div>
       @error('password', 'updatePassword')
         <p class="mt-2 text-xs text-danger-600" role="alert">{{ $message }}</p>
@@ -104,14 +104,14 @@
         Sahkan Kata Laluan
       </label>
       <div class="relative mt-1">
-        <x-myds.input
+  <x-ictserve.input
           id="update_password_password_confirmation"
           name="password_confirmation"
           :type="showPassword ? 'text' : 'password'"
           autocomplete="new-password"
           class="pr-10"
         />
-        <x-myds.button
+  <x-ictserve.button
           type="button"
           class="absolute inset-y-0 right-0 flex items-center px-3"
           x-on:click="showPassword = !showPassword"
@@ -119,14 +119,14 @@
           variant="secondary"
           size="sm"
         >
-          <x-myds.icon
+          <x-ictserve.icon
             name="eye"
             size="16"
             x-show="!showPassword"
             aria-hidden="true"
             class="h-4 w-4"
           />
-          <x-myds.icon
+          <x-ictserve.icon
             name="eye-off"
             size="16"
             x-show="showPassword"
@@ -134,7 +134,7 @@
             class="h-4 w-4"
             x-cloak
           />
-        </x-myds.button>
+  </x-ictserve.button>
       </div>
       @error('password_confirmation', 'updatePassword')
         <p class="mt-2 text-xs text-danger-600" role="alert">{{ $message }}</p>
@@ -143,7 +143,7 @@
 
     {{-- Actions --}}
     <div class="flex items-center gap-4">
-      <x-myds.button type="submit" variant="primary" size="md">
+  <x-ictserve.button type="submit" variant="primary" size="md">
         Simpan
       </x-myds.button>
 

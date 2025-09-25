@@ -3,11 +3,19 @@
    - Uses semantic tokens from MYDS
 */
 .myds-dropdown-menu {
-  min-width: 12rem; /* matches previous inline style */
+  /* Use semantic spacing token where possible; fallback to 12rem */
+  min-width: var(
+    --dropdown-min-width,
+    12rem
+  ); /* matches previous inline style */
 }
 
 /* Ensure focus visibility for dropdown items */
 .myds-dropdown-menu [role='menuitem']:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgb(150 180 255 / 25%); /* fallback focus ring mapped to fr-primary */
+  box-shadow:
+    0 0 0 4px var(--fr-primary, #96b7ff),
+    var(--shadow-button);
+
+  /* Uses MYDS focus ring and button shadow tokens */
 }

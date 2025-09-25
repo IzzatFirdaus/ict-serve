@@ -12,7 +12,7 @@
 
 ## 1. Gambaran Umum Aliran Helpdesk
 
-Dokumen ini menerangkan aliran kerja terperinci untuk pengurusan aduan kerosakan ICT melalui modul Helpdesk ServiceDesk dalam ICTServe (iServe). Aliran ini menepati [PRINSIP REKA BENTUK MYGOVEA (18 Prinsip)](https://mygovea.jdn.gov.my/page-prinsip-reka-bentuk/) dan [Malaysia Government Design System (MYDS)](https://design.digital.gov.my/) untuk memastikan piawaian UI/UX, aksesibiliti, dan pengalaman pengguna berpaksikan rakyat.
+Dokumen ini menerangkan aliran kerja terperinci untuk pengurusan aduan kerosakan ICT melalui modul Helpdesk ServiceDesk dalam ICTServe (iServe). Aliran ini memastikan piawaian UI/UX, aksesibiliti, dan pengalaman pengguna berpaksikan rakyat.
 
 ---
 
@@ -26,7 +26,7 @@ Dokumen ini menerangkan aliran kerja terperinci untuk pengurusan aduan kerosakan
 2. **Pengguna Hantar Aduan**
    - Pengguna log masuk ke ICTServe dan mengisi Borang Aduan Kerosakan ICT.
    - Medan wajib: Nama, Bahagian, E-mel, No. Telefon, Jenis Kerosakan, Maklumat Kerosakan, Perakuan.
-   - Dropdown dan input mengikut komponen rasmi MYDS, grid responsif 12-8-4.
+   - Dropdown dan input mengikut komponen rasmi, grid responsif 12-8-4.
    - Jika aduan melibatkan perkakasan, medan No. Aset/Printer ID akan dipaparkan secara dinamik.
 
 3. **Sistem Hantar Emel Pengesahan**
@@ -69,7 +69,7 @@ Dokumen ini menerangkan aliran kerja terperinci untuk pengurusan aduan kerosakan
 - **Butiran Tiket:** `App\Livewire\Helpdesk\TicketDetail`
 - **Admin Dashboard:** `App\Livewire\Helpdesk\Admin\TicketManagement`
 - **Templat Blade:** `resources/views/livewire/helpdesk/ticket-form.blade.php`
-- **Grid Layout:** Menggunakan grid 12-8-4 MYDS, token warna MYDS, tipografi Poppins/Inter.
+- **Grid Layout:** Menggunakan grid 12-8-4, token warna projek, tipografi Poppins/Inter.
 
 ### 3.2 Model & Servis
 
@@ -87,9 +87,9 @@ Dokumen ini menerangkan aliran kerja terperinci untuk pengurusan aduan kerosakan
 
 ---
 
-## 4. Pematuhan MYDS & MyGovEA
+## 4. Pematuhan Rekabentuk & Aksesibiliti
 
-- **UI/UX Konsisten:** Setiap input, dropdown, dan butang menggunakan komponen MYDS dan token warna rasmi.
+- **UI/UX Konsisten:** Setiap input, dropdown, dan butang menggunakan komponen dan token warna rasmi projek.
 - **Aksesibiliti:** ARIA label, keyboard navigation, kontras warna minimum 4.5:1.
 - **Grid Responsif:** 12-8-4 grid digunakan, visual dioptimumkan untuk desktop, tablet, dan telefon.
 - **Error Prevention:** Validasi real-time dan mesej ralat jelas pada setiap langkah.
@@ -114,7 +114,7 @@ graph TD
 
 ---
 
-## 6. Senarai Semak Pematuhan Prinsip MyGovEA
+## 6. Senarai Semak Pematuhan Prinsip
 
 | Prinsip                         | Status | Penjelasan Ringkas                               |
 | ------------------------------- | ------ | ------------------------------------------------ |
@@ -123,15 +123,15 @@ graph TD
 | Kandungan Terancang             | ✅     | Struktur borang dan proses jelas                 |
 | Teknologi Bersesuaian           | ✅     | Laravel 12, Livewire 3, Filament 4               |
 | Antara Muka Minimalis dan Mudah | ✅     | UI ringkas, tidak berlebihan                     |
-| Seragam                         | ✅     | Token warna & komponen MYDS sahaja               |
+| Seragam                         | ✅     | Token warna & komponen projek sahaja             |
 | Paparan/Menu Jelas              | ✅     | Breadcrumb, label jelas, status pill             |
 | Realistik                       | ✅     | Proses mengikut keperluan sebenar BPM            |
 | Kognitif                        | ✅     | Susunan borang kurangkan beban kognitif          |
 | Fleksibel                       | ✅     | Modular, boleh tambah kategori baru              |
 | Komunikasi                      | ✅     | Emel & dashboard notifikasi                      |
 | Struktur Hierarki               | ✅     | Hierarki tiket & kategori jelas                  |
-| Komponen UI/UX                  | ✅     | Input, dropdown, butang MYDS                     |
-| Tipografi                       | ✅     | Poppins/Inter, saiz label ikut MYDS              |
+| Komponen UI/UX                  | ✅     | Input, dropdown, butang projek                   |
+| Tipografi                       | ✅     | Poppins/Inter, saiz label ikut projek            |
 | Tetapan Lalai                   | ✅     | Auto-isi bahagian, e-mel jika tersedia           |
 | Kawalan Pengguna                | ✅     | Role, policy, akses mengikut peranan             |
 | Pencegahan Ralat                | ✅     | Validasi input, pengesahan sebelum submit        |
@@ -139,10 +139,10 @@ graph TD
 
 ---
 
-## 7. Nota Implementasi MYDS
+## 7. Nota Implementasi
 
-- **Warna & Token:** Semua elemen menggunakan token MYDS (cth: bg-primary-600, txt-danger).
-- **Komponen:** Input, select, textarea, button, alert dialog, pill, tag mesti ikut spesifikasi MYDS.
+- **Warna & Token:** Semua elemen menggunakan token projek (cth: bg-primary-600, txt-danger).
+- **Komponen:** Input, select, textarea, button, alert dialog, pill, tag mesti ikut spesifikasi projek.
 - **Aksesibiliti:** ARIA, kontras warna, keyboard navigation, skip link.
 - **Dark Mode:** Sokongan penuh untuk token automatik.
 - **Dokumentasi:** PHPDoc untuk servis/kod utama.
@@ -151,7 +151,7 @@ graph TD
 
 ## 8. Penutup
 
-Aliran sistem Helpdesk ServiceDesk ICTServe (iServe) direka dan dibangunkan untuk memenuhi keperluan pengurusan aduan kerosakan ICT MOTAC secara digital, selaras dengan piawaian MYDS dan prinsip MyGovEA. Aliran ini menjamin pengalaman pengguna yang inklusif, responsif, selamat, dan seragam.
+Aliran sistem Helpdesk ServiceDesk ICTServe (iServe) direka dan dibangunkan untuk memenuhi keperluan pengurusan aduan kerosakan ICT MOTAC secara digital, selaras dengan piawaian rekabentuk dan aksesibiliti. Aliran ini menjamin pengalaman pengguna yang inklusif, responsif, selamat, dan seragam.
 
 Sebarang penambahbaikan atau maklum balas boleh disalurkan melalui saluran rasmi BPM/MOTAC atau email [design@tech.gov.my](mailto:design@tech.gov.my).
 
@@ -159,11 +159,6 @@ Sebarang penambahbaikan atau maklum balas boleh disalurkan melalui saluran rasmi
 
 ## Rujukan
 
-- [MYDS Official Site](https://design.digital.gov.my/)
-- [MYDS Figma Kit](<https://www.figma.com/file/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta)>)
-- [MYDS Storybook](https://myds-storybook.vercel.app/)
-- [MYDS Colour Reference](./MYDS-Colour-Reference.md)
-- [MyGovEA Principles](./prinsip-reka-bentuk-mygovea.md)
 - [Laravel Documentation](https://laravel.com/docs)
 - [Filament Documentation](https://filamentphp.com/docs)
 - [Livewire Documentation](https://laravel-livewire.com/docs)

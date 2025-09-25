@@ -1,8 +1,8 @@
-# MYDS/Filament Conversion Checklist
+# UI/Filament Conversion Checklist
 
 ## Project-Wide UI Standardization Checklist
 
-This document lists all files and directories requiring conversion to MYDS and Filament standards. This ensures compliance with Malaysia Government Design System (MYDS) and MyGovEA principles: accessibility, consistency, and citizen-centricity.
+This document lists all files and directories requiring conversion to project UI and Filament standards. This ensures compliance with accessibility, consistency, and citizen-centricity.
 
 ---
 
@@ -19,8 +19,8 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 ### 1.1 Main Entry & Welcome
 
-- [ ] `resources/views/welcome.blade.php` — Full MYDS conversion (layout, navbar, skiplink, grid, footer)
-- [x] `resources/views/home.blade.php` — Full MYDS, remove legacy classes, grid/typography
+- [ ] `resources/views/welcome.blade.php` — Full UI conversion (layout, navbar, skiplink, grid, footer)
+- [x] `resources/views/home.blade.php` — Full UI, remove legacy classes, grid/typography
 - [ ] `resources/views/public/track.blade.php`
 - [x] `resources/views/public/track-result.blade.php`
 - [x] `resources/views/public/my-requests.blade.php`
@@ -32,17 +32,17 @@ This document lists all files and directories requiring conversion to MYDS and F
 - [ ] `resources/views/public/helpdesk/create.blade.php`
 - [ ] `resources/views/public/helpdesk/success.blade.php`
 - [ ] `resources/views/public/motac-info.blade.php`
-- [ ] `resources/views/myds-test.blade.php`
+- [ ] `resources/views/layouts/test.blade.php`
 - [ ] `resources/views/test-notifications.blade.php`
 
 ### 1.2 Authentication
 
-- [ ] All files in `resources/views/auth/` & `resources/views/auth/passwords/` — Login, register, reset, verify: MYDS forms, error display, password fields
+- [ ] All files in `resources/views/auth/` & `resources/views/auth/passwords/` — Login, register, reset, verify: forms, error display, password fields
 
 ---
 
 - [x] `resources/views/layouts/app.blade.php`
-- [ ] `resources/views/layouts/myds.blade.php`
+- [ ] `resources/views/layouts/ui.blade.php`
 - [ ] `resources/views/layouts/public.blade.php`
 
 ---
@@ -73,7 +73,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 - [ ] `resources/views/livewire/helpdesk/index.blade.php`
 - [ ] `resources/views/livewire/helpdesk/index-enhanced.blade.php`
 - [ ] `resources/views/livewire/admin/report/loan-metrics.blade.php`
-- [x] `resources/views/livewire/notifications/notification-bell.blade.php` — MYDS dropdown wrapper, all icons replaced with <x-myds.icon>, ARIA/accessibility validated
+- [x] `resources/views/livewire/notifications/notification-bell.blade.php` — Dropdown wrapper, all icons replaced with <x-icon>, ARIA/accessibility validated
 - [ ] `resources/views/livewire/notifications/notification-center.blade.php`
 
 ## 5. Components and Partials (MEDIUM 🟢/HIGH 🟡)
@@ -107,14 +107,14 @@ This document lists all files and directories requiring conversion to MYDS and F
 ## 12. Accessibility & Responsive Checks (ALL 🔴/🟡)
 
 - [ ] Add skip links, ARIA, heading hierarchy, focus outlines, keyboard navigation
-- [ ] Apply 12/8/4 MYDS grid everywhere
+- [ ] Apply 12/8/4 grid everywhere
 - [ ] Test all main flows on keyboard, screen reader, and mobile devices
 - [ ] Add/verify Lighthouse and axe-core tests in CI
 - [ ] Review all color, spacing, and typography for token usage & WCAG AA
 
 ---
 
-- [ ] Check/clean up README.md, CONTRIBUTING.md for MYDS/PR/commit standards
+- [ ] Check/clean up README.md, CONTRIBUTING.md for PR/commit standards
 
 ---
 
@@ -137,7 +137,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 ## Completion Criteria
 
-- ✅ All color/spacing/typography via MYDS tokens
+- ✅ All color/spacing/typography via project tokens
 - ✅ Follows 12/8/4 grid and responsive breakpoints
 - ✅ Passes accessibility (WCAG AA, keyboard, screen reader)
 
@@ -145,11 +145,11 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 ---
 
-> **Always use MYDS and MyGovEA standards. All code must be accessible, citizen-centric, and maintainable.**
+> **Always use the project’s accessibility and design standards. All code must be accessible, citizen-centric, and maintainable.**
 
 **Required Changes:**
 
-- [ ] Remove legacy Bootstrap/Tailwind classes not part of MYDS
+- [ ] Remove legacy Bootstrap/Tailwind classes not part of the project’s design system
 
 #### Custom CSS files 🔴
 
@@ -159,7 +159,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 **Required Changes:**
 
-- [ ] Ensure any custom interactions follow MYDS patterns
+- [ ] Ensure any custom interactions follow project design patterns
 
 ## 7. Icon System (HIGH PRIORITY 🟡)
 
@@ -171,17 +171,17 @@ This document lists all files and directories requiring conversion to MYDS and F
 @include('components.icon', ['name' => 'search', 'class' => 'w-4 h-4'])
 ```
 
-#### With MYDS icon components
+#### With icon components
 
 ```blade
-<x-myds.icon name="search" size="16" class="text-gray-400"></x-myds.icon>
+<x-icon name="search" size="16" class="text-gray-400"></x-icon>
 ```
 
 **Required Changes:**
 
 - [ ] Find all `@include("components.icon")` calls
-- [ ] Replace with proper `<x-myds.icon>` components
-- [ ] Ensure icon names match MYDS icon library
+- [ ] Replace with proper `<x-icon>` components
+- [ ] Ensure icon names match icon library
 - [ ] Add proper accessibility attributes (aria-hidden, etc.)
 
 ---
@@ -194,10 +194,10 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 **Required Changes:**
 
-- [ ] Convert to MYDS table components
-- [ ] Implement proper MYDS pagination
-- [ ] Add MYDS sorting indicators
-- [ ] Use MYDS status badges for table cells
+- [ ] Convert to table components
+- [ ] Implement proper pagination
+- [ ] Add sorting indicators
+- [ ] Use status badges for table cells
 
 ---
 
@@ -209,9 +209,9 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 **Required Changes:**
 
-- [ ] Convert error pages to use MYDS layout
-- [ ] Implement proper MYDS error messaging
-- [ ] Add MYDS buttons for error actions
+- [ ] Convert error pages to use project layout
+- [ ] Implement proper error messaging
+- [ ] Add project buttons for error actions
 
 ### 9.2 Validation Styling
 
@@ -219,9 +219,9 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 **Required Changes:**
 
-- [ ] Ensure error messages use MYDS error styling
-- [ ] Implement MYDS success message styling
-- [ ] Add proper MYDS field validation states
+- [ ] Ensure error messages use project error styling
+- [ ] Implement success message styling
+- [ ] Add proper field validation states
 
 ---
 
@@ -233,11 +233,11 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 **Required Changes:**
 
-- [ ] Add skip-to-content links using MYDS skip link component
+- [ ] Add skip-to-content links using skip link component
 - [ ] Ensure all forms have proper labels and ARIA attributes
 - [ ] Implement proper heading hierarchy (h1, h2, h3)
 - [ ] Add ARIA landmarks and roles
-- [ ] Ensure keyboard navigation works with MYDS components
+- [ ] Ensure keyboard navigation works with UI components
 
 ### 10.2 Responsive Grid
 
@@ -245,7 +245,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 
 **Required Changes:**
 
-- [ ] Implement MYDS 12/8/4 grid system consistently
+- [ ] Implement 12/8/4 grid system consistently
 - [ ] Test all breakpoints (desktop, tablet, mobile)
 - [ ] Ensure touch targets are minimum 48x48px
 - [ ] Verify text contrast meets WCAG AA standards
@@ -290,7 +290,7 @@ This document lists all files and directories requiring conversion to MYDS and F
 - [ ] Verify screen reader compatibility
 - [ ] Test on mobile, tablet, and desktop
 - [ ] Validate color contrast
-- [ ] Check MYDS token usage
+- [ ] Check design token usage
 - [ ] Verify accessibility compliance
 
 ### Automated Testing
@@ -298,20 +298,20 @@ This document lists all files and directories requiring conversion to MYDS and F
 - [ ] Add Lighthouse accessibility tests
 - [ ] Implement axe-core testing
 - [ ] Add visual regression tests
-- [ ] Create MYDS compliance tests
+- [ ] Create UI compliance tests
 
 ---
 
 ## Completion Criteria
 
-A component/page is considered "MYDS-compliant" when:
+A component/page is considered converted when:
 
-1. ✅ Uses only MYDS components (`<x-myds.*>`) for UI elements
-2. ✅ Uses only MYDS color tokens and design tokens
-3. ✅ Follows MYDS grid system (12/8/4)
+1. ✅ Uses only project UI components (`<x-*>`) for UI elements
+2. ✅ Uses only project color tokens and design tokens
+3. ✅ Follows grid system (12/8/4)
 4. ✅ Meets WCAG AA accessibility standards
 5. ✅ Passes automated accessibility tests
-6. ✅ Uses proper MYDS icons with accessibility attributes
+6. ✅ Uses proper icons with accessibility attributes
 7. ✅ Implements proper focus management and keyboard navigation
 8. ✅ Uses semantic HTML structure with proper ARIA landmarks
 
@@ -333,46 +333,46 @@ Track progress by checking off completed items and moving to the next phase once
 ## Recent Progress (2025-09-21)
 
 - **Files converted / updated:**
-  - `resources/views/livewire/my-requests.blade.php` — Filter buttons and quick-action anchors converted to `<x-myds.button>`; search input already uses `<x-myds.form-input>`.
-  - `resources/views/components/myds/cookie-banner.blade.php` — Buttons converted to `<x-myds.button>` and Alpine/localStorage behaviour preserved.
-  - `resources/views/public/loan-request.blade.php` — Form inputs standardized to MYDS form components (noted above).
+  - `resources/views/livewire/my-requests.blade.php` — Filter buttons and quick-action anchors converted to `<x-button>`; search input already uses `<x-form-input>`.
+  - `resources/views/components/cookie-banner.blade.php` — Buttons converted to `<x-button>` and Alpine/localStorage behaviour preserved.
+  - `resources/views/public/loan-request.blade.php` — Form inputs standardized to form components (noted above).
 
 - **Wrapper components added (temporary, 1:1 forwarding):**
-  - `resources/views/components/myds/icons.blade.php` — updated to accept a `name` prop and centralize icons.
-  - `resources/views/components/myds/icons/*` — small per-icon wrapper views added for dotted component resolution (examples: `chevron-down`, `x`, `x-circle`, `check-circle`, `alert-triangle`, `search`, `table`, `document`).
-  - Navbar / Breadcrumb / Footer wrappers: `resources/views/components/myds/navbar-*.blade.php`, `breadcrumb-*.blade.php`, `footer-*.blade.php` and `skip-link.blade.php` were added as minimal forwards to restore template buildability during conversion.
+  - `resources/views/components/icons.blade.php` — updated to accept a `name` prop and centralize icons.
+  - `resources/views/components/icons/*` — small per-icon wrapper views added for dotted component resolution (examples: `chevron-down`, `x`, `x-circle`, `check-circle`, `alert-triangle`, `search`, `table`, `document`).
+  - Navbar / Breadcrumb / Footer wrappers: `resources/views/components/navbar-*.blade.php`, `breadcrumb-*.blade.php`, `footer-*.blade.php` and `skip-link.blade.php` were added as minimal forwards to restore template buildability during conversion.
 
 - **Validation performed:**
   - After each atomic change, `php artisan view:clear` and `php artisan view:cache` were run to surface missing components; final run completed with "Blade templates cached successfully.".
 
 - **Next consolidation steps (short-term):**
-  - Replace temporary wrapper forwards with canonical MYDS Blade components (add ARIA, keyboard behaviour, and tokenized styles).
-  - Sweep repository for any remaining `@include('components.icon')` usages and convert to `<x-myds.icon>` (icons migration still in-progress).
+  - Replace temporary wrapper forwards with canonical UI Blade components (add ARIA, keyboard behaviour, and tokenized styles).
+  - Sweep repository for any remaining `@include('components.icon')` usages and convert to `<x-icon>` (icons migration still in-progress).
   - Continue converting `resources/views/layouts/app.blade.php`, `resources/views/home.blade.php`, and `resources/views/dashboard.blade.php` next.
 
 ## Automated Scan Results (2025-09-21)
 
-I ran a repository scan for legacy MYDS utility classes and common non-MYDS patterns (`myds-btn*`, `myds-badge*`, `myds-dropdown-panel`, and `@include('components.icon')`). Below are prioritized findings with suggested fixes — use this as the next working backlog.
+I ran a repository scan for legacy utility classes and common non-design-system patterns (`btn*`, `badge*`, `dropdown-panel`, and `@include('components.icon')`). Below are prioritized findings with suggested fixes — use this as the next working backlog.
 
 - Total matches found (representative): ~60 occurrences across Blade views and components.
 
 - High-priority files (start here):
-  - `resources/views/layouts/app.blade.php` — legacy button classes in header/profile controls; replace with `<x-myds.button>`.
-    - `resources/views/livewire/loan-request-tracker.blade.php` — several `myds-btn-*` buttons; convert to `<x-myds.button>`.
-      **Updated 2025-09-21:** Replaced `myds-btn*` buttons with `<x-myds.button>` preserving Livewire attributes; validated views.
-  - `resources/views/livewire/admin/dropdown-manager.blade.php` — many `myds-badge-*` class usages; replace with `<x-myds.badge>` or `components.myds.status-badge`. **Updated 2025-09-21:** Replaced table badge spans and action buttons with `<x-myds.badge>` and `<x-myds.button>` components; cleared compiled views and validated Blade templates. **Refactor: completed**
-    - `resources/views/layouts/app.blade.php` — header guest links and sign-out button updated to use `<x-myds.button>`; fixed meta viewport corruption. **Updated 2025-09-21.**
-      - `resources/views/layouts/app.blade.php` — header/profile trigger replaced to use `<x-myds.button>` and `<x-myds.icon>` for chevron; preserves Alpine dropdown behaviour. **Updated 2025-09-21.**
-  - `resources/views/livewire/notifications/notification-bell.blade.php` — MYDS dropdown wrapper and icons: completed, ARIA/accessibility validated
-  - `resources/views/home.blade.php` and `resources/views/dashboard.blade.php` — multiple `myds-btn` utilities; convert primary/secondary actions.
-  - `resources/views/errors/*.blade.php` — error page action buttons use legacy classes; convert to `<x-myds.button>`.
+  - `resources/views/layouts/app.blade.php` — legacy button classes in header/profile controls; replace with `<x-button>`.
+    - `resources/views/livewire/loan-request-tracker.blade.php` — several `btn-*` buttons; convert to `<x-button>`.
+      **Updated 2025-09-21:** Replaced `btn*` buttons with `<x-button>` preserving Livewire attributes; validated views.
+  - `resources/views/livewire/admin/dropdown-manager.blade.php` — many `badge-*` class usages; replace with `<x-badge>` or `components.status-badge`. **Updated 2025-09-21:** Replaced table badge spans and action buttons with `<x-badge>` and `<x-button>` components; cleared compiled views and validated Blade templates. **Refactor: completed**
+    - `resources/views/layouts/app.blade.php` — header guest links and sign-out button updated to use `<x-button>`; fixed meta viewport corruption. **Updated 2025-09-21.**
+      - `resources/views/layouts/app.blade.php` — header/profile trigger replaced to use `<x-button>` and `<x-icon>` for chevron; preserves Alpine dropdown behaviour. **Updated 2025-09-21.**
+  - `resources/views/livewire/notifications/notification-bell.blade.php` — Dropdown wrapper and icons: completed, ARIA/accessibility validated
+  - `resources/views/home.blade.php` and `resources/views/dashboard.blade.php` — multiple `btn` utilities; convert primary/secondary actions.
+  - `resources/views/errors/*.blade.php` — error page action buttons use legacy classes; convert to `<x-button>`.
 
 - Medium-priority files (next pass):
-  - `resources/views/components/myds/cookie-banner.blade.php` — buttons using `myds-btn-*` (small file - quick win).
-    **Updated 2025-09-21:** Buttons converted to `<x-myds.button>` and Alpine/localStorage handlers preserved.
+  - `resources/views/components/cookie-banner.blade.php` — buttons using `btn-*` (small file - quick win).
+    **Updated 2025-09-21:** Buttons converted to `<x-button>` and Alpine/localStorage handlers preserved.
   - `resources/views/components/loan-detail-view.blade.php` — action buttons with long class lists.
-    **Updated 2025-09-21:** Replaced action/menu button with `<x-myds.button>` preserving ARIA and focus behavior.
-  - `resources/views/livewire/counter.blade.php` — simple component with `myds-btn` classes.
+    **Updated 2025-09-21:** Replaced action/menu button with `<x-button>` preserving ARIA and focus behavior.
+  - `resources/views/livewire/counter.blade.php` — simple component with `btn` classes.
 
 - Livewire areas with mixed patterns (need careful, file-by-file refactor):
   - `resources/views/livewire/loan-application-wizard.blade.php`
@@ -380,13 +380,12 @@ I ran a repository scan for legacy MYDS utility classes and common non-MYDS patt
   - `resources/views/livewire/helpdesk/*.blade.php` (create/index/tickets)
 
 - Icon include conversions:
-  - Replace `@include('components.icon', ['name' => ...])` occurrences with `<x-myds.icon name="..." size="...">` and ensure `aria-hidden` or `aria-label` as needed.
+  - Replace `@include('components.icon', ['name' => ...])` occurrences with `<x-icon name="..." size="...">` and ensure `aria-hidden` or `aria-label` as needed.
 
 Suggested approach for each file:
-Suggested approach for each file:
 
-1. Make a small focused change: replace one or two buttons or badges with MYDS components.
+1. Make a small focused change: replace one or two buttons or badges with project UI components.
 2. Run template error checks: `php artisan view:clear` and verify with the application or `php artisan` checks.
 3. Commit the small change with an atomic message and mark the item complete in `CONVERSION_CHECKLIST.md`.
 
-If you want, I can start converting the high-priority files one-by-one (I recommend starting with `resources/views/components/myds/cookie-banner.blade.php` as a quick win, then `layouts/app.blade.php`, then the admin `dropdown-manager` file). I will continue automatically and mark progress in the checklist.
+If you want, I can start converting the high-priority files one-by-one (I recommend starting with `resources/views/components/cookie-banner.blade.php` as a quick win, then `layouts/app.blade.php`, then the admin `dropdown-manager` file). I will continue automatically and mark progress in the checklist.

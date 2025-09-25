@@ -1,31 +1,67 @@
+
 /**
  * MYDS Component Style: Skip Link (Accessibility)
  * ================================================
- * Styles for the "Skip to main content" link, crucial for keyboard navigation.
- *
+ * Canonical skip link style for "Skip to main content" links.
+ * - Use only this file for skip link styling in ICTServe.
+ * - Fully MYDS tokenized, accessible, and dark mode ready.
+ * - Remove all other skip link CSS files from imports.
  */
 @layer components {
-  .myds-skip-link {
+  .skip-link {
     position: absolute;
     left: -9999px;
     top: -9999px;
-    padding: 1rem; /* p-4 */
-    border-radius: 8px; /* rounded-md */
-    background: #fff; /* bg-white */
-    color: #18181b; /* text-txt-black-900 */
-    box-shadow:
-      0 2px 6px 0 rgb(0 0 0 / 5%),
-      0 12px 50px 0 rgb(0 0 0 / 10%); /* shadow-context-menu */
-
-    z-index: 1000; /* z-[1000] */
-    transition: all 200ms cubic-bezier(0, 0, 0.58, 1);
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    border-radius: var(--radius-m, 8px);
+    background: var(--bg-white, #fff);
+    color: var(--txt-black-900, #18181b);
+    box-shadow: var(--shadow-context-menu, 0 2px 6px 0 rgb(0 0 0 / 5%), 0 12px 50px 0 rgb(0 0 0 / 10%));
+    z-index: 1000;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all var(--motion-fast, 150ms) var(--motion-ease, cubic-bezier(0.2, 0.8, 0.2, 1));
   }
 
-  .myds-skip-link:focus {
+  .skip-link:focus {
     left: 1rem;
     top: 1rem;
+    background: var(--bg-primary-600, #2563eb);
+    color: var(--txt-white, #fff);
+    border-color: var(--bg-white, #fff);
     box-shadow:
-      0 0 0 2px #fff,
-      0 0 0 4px #2563eb; /* mimic ring-2 ring-offset-2 ring-fr-primary */
+      0 0 0 2px var(--bg-white, #fff),
+      0 0 0 4px var(--fr-primary, #96b7ff),
+      var(--shadow-context-menu, 0 2px 6px 0 rgb(0 0 0 / 5%), 0 12px 50px 0 rgb(0 0 0 / 10%));
+    outline: none;
+  }
+
+  .skip-link:hover {
+    background: var(--bg-primary-700, #1d4ed8);
+    color: var(--txt-white, #fff);
+    text-decoration: underline;
+  }
+
+  @media (prefers-contrast: high) {
+    .skip-link {
+      background: #000;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+
+    .skip-link:focus {
+      background: #fff;
+      color: #000;
+      border-color: #000;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skip-link {
+      transition: none;
+    }
   }
 }

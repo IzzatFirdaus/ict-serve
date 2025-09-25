@@ -3,23 +3,22 @@
 declare(strict_types=1);
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes (routes/web.php)
-|--------------------------------------------------------------------------
-|
-| ICTServe (iServe) — route definitions.
-|
-| This file has been reorganised for clarity, consistency and maintainability.
-| It follows MyGovEA principles (Berpaksikan Rakyat — citizen-centric) and MYDS
-| guidance for developer patterns: clear naming, predictable routes, accessibility
-| considerations and backward-compatible aliases.
-|
-| Notes:
-| - Prefer controllers / Livewire components for pages with logic.
-| - Use Route::view for static views to keep routes cacheable where possible.
-| - Avoid heavy logic inside route closures; move to controllers/services where needed.
-| - Keep legacy aliases that tests/external links expect, but redirect them to canonical routes.
-|
+--------------------------------------------------------------------------
+ Web Routes (routes/web.php)
+--------------------------------------------------------------------------
+
+ ICTServe (iServe) — route definitions.
+
+ This file has been reorganised for clarity, consistency and maintainability.
+ It follows MyGovEA principles (Berpaksikan Rakyat — citizen-centric) and MYDS
+ guidance for developer patterns: clear naming, predictable routes, accessibility
+ considerations and backward-compatible aliases.
+
+ Notes:
+ - Prefer controllers / Livewire components for pages with logic.
+ - Use Route::view for static views to keep routes cacheable where possible.
+ - Avoid heavy logic inside route closures; move to controllers/services where needed.
+ - Keep legacy aliases that tests/external links expect, but redirect them to canonical routes.
 */
 
 use App\Http\Controllers\InventoryController;
@@ -34,6 +33,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::view('/', 'welcome')->name('home');
 /*
 |--------------------------------------------------------------------------
 | Authentication Routes (Livewire)

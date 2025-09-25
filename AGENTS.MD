@@ -37,7 +37,7 @@ description: 'Agent workflow instructions for autonomous Laravel task execution 
 - [ ] Step 1: Load all memory bank files and analyze requirements
 - [ ] Step 2: Search for relevant code/docs using context7 and existing patterns
 - [ ] Step 3: Develop detailed implementation plan with specific file changes
-- [ ] Step 4: Verify plan against MYDS and Laravel 12 standards
+- [ ] Step 4: Verify plan against Laravel 12 standards
 
 ### Execution Phase (Autonomous Operation)
 
@@ -49,7 +49,7 @@ description: 'Agent workflow instructions for autonomous Laravel task execution 
 ### Validation Phase (Quality Assurance)
 
 - [ ] Step 9: Run comprehensive test suite (PHPUnit, Pest)
-- [ ] Step 10: Verify MYDS compliance and accessibility standards
+- [ ] Step 10: Verify accessibility standards
 - [ ] Step 11: Check for regression issues and performance impacts
 - [ ] Step 12: Mark all todos as completed and update documentation
 
@@ -67,7 +67,7 @@ description: 'Agent workflow instructions for autonomous Laravel task execution 
 
 - **Strict Conventions**: Follow established directory structure; no new base folders without approval
 - **Component Reuse**: Always check for existing Blade/Livewire/Filament components before creating new ones
-- **MYDS Integration**: Use MYDS tokens for all styling (colors, spacing, typography)
+- **Styling Integration**: Use project tokens for all styling (colors, spacing, typography)
 - **Grid System**: All layouts must use 12-8-4 grid convention for responsiveness
 
 ### Filament v4 Specific Rules
@@ -133,8 +133,7 @@ description: 'Agent workflow instructions for autonomous Laravel task execution 
 
 ### Compliance Requirements
 
-- **MYDS Standards**: All UI must meet WCAG AA accessibility requirements
-- **Government Compliance**: Follow MyGovEA principles for government applications
+- **Accessibility Standards**: All UI must meet WCAG AA accessibility requirements
 - **Data Privacy**: Implement proper data handling per MOTAC requirements
 
 ## Communication Protocol
@@ -175,13 +174,12 @@ description: 'Agent workflow instructions for autonomous Laravel task execution 
 
 - [MCP Agent Documentation](https://github.com/lastmile-ai/mcp-agent)
 - [Laravel Boost Integration Guide](https://github.com/laravel-boost/documentation)
-- [MYDS Design System Guidelines](https://design.digital.gov.my/en)
 - [Filament v4 Documentation](https://filamentphp.com/docs)
 - [GitHub Copilot Instructions Format](https://docs.github.com/en/copilot/github-copilot-chat/using-github-copilot-chat#using-custom-instructions)
 
 ---
 
-**Version**: 2.0  
-**Last Updated**: 2024  
-**Compatibility**: Laravel 12, Filament v4, PHP 8.2+  
+**Version**: 2.0
+**Last Updated**: 2024
+**Compatibility**: Laravel 12, Filament v4, PHP 8.2+
 **Status**: Active - For autonomous agent execution without confirmations

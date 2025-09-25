@@ -1,6 +1,9 @@
+<x-ictserve.form-input {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.form-input>
 {{--
-  MYDS Input Field for ICTServe (iServe)
-  - Adheres to MYDS standards (Design, Develop, Icons, Colour) and MyGovEA citizen-centric, error-preventive principles.
+  Form Input Field for ICTServe (iServe)
+  - Adheres to the project's design tokens and accessibility principles.
   - Features: visible top label, hint/error below, semantic tokens, a11y, responsive, icon support.
   - Props:
   id: string (required)
@@ -36,9 +39,9 @@
 
 @php
   $sizeClass = match ($size) {
-    'sm' => 'myds-input-sm',
-    'lg' => 'myds-input-lg',
-    default => 'myds-input-md',
+    'sm' => 'input-sm',
+    'lg' => 'input-lg',
+    default => 'input-md',
   };
   $isInvalid = filled($error);
   $invalidClass = $isInvalid ? 'invalid' : '';
@@ -48,10 +51,10 @@
   $inputPaddingLeft = $icon ? 'pl-10' : '';
 @endphp
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 @if ($label)
-  <label for="{{ $id }}" class="myds-label">
+  <label for="{{ $id }}" class="label">
     {{ $label }}
     @if ($required)
       <span class="txt-danger">*</span>
@@ -74,7 +77,7 @@
     type="{{ $type }}"
     @if(!is_null($value)) value="{{ old($id, $value) }}" @endif
     @class([
-      'myds-input',
+    'input',
       $sizeClass,
       $invalidClass,
       $inputPaddingLeft,
@@ -91,9 +94,9 @@
 </div>
 
 @if ($isInvalid)
-  <p id="{{ $errorId }}" class="myds-hint error mt-1" role="alert">
+  <p id="{{ $errorId }}" class="hint error mt-1" role="alert">
     {{ $error }}
   </p>
 @elseif ($hint)
-  <p id="{{ $hintId }}" class="myds-hint mt-1">{{ $hint }}</p>
+  <p id="{{ $hintId }}" class="hint mt-1">{{ $hint }}</p>
 @endif

@@ -1,5 +1,5 @@
 /**
- * MYDS Component Styles: Filters, Buttons, Badges
+ * Component Styles: Filters, Buttons, Badges
  * ================================================
  * This file defines reusable component classes using Tailwind's @apply directive.
  * This keeps HTML clean while ensuring styles are consistent and maintainable.
@@ -7,8 +7,8 @@
  *
  */
 @layer components {
-  /* MYDS Button Variants */
-  .myds-btn {
+  /* Button Variants */
+  .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -28,66 +28,70 @@
     cursor: pointer;
   }
 
-  .myds-btn:disabled {
+  .btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
   }
 
-  .myds-btn-primary {
-    background: #2563eb; /* primary-600 */
-    color: #fff;
+  .btn-primary {
+    background: var(--btn-primary-bg, #2563eb);
+    color: var(--txt-white, #fff);
   }
 
-  .myds-btn-primary:hover {
-    background: #1d4ed8; /* primary-700 */
+  .btn-primary:hover {
+    background: var(--btn-primary-bg-hover, #1d4ed8);
     transform: translateY(0.5px);
   }
 
-  .myds-btn-primary:focus-visible {
+  .btn-primary:focus-visible {
     box-shadow:
-      0 0 0 2px #fff,
-      0 0 0 4px #2563eb;
+      0 0 0 4px rgb(150 180 255 / 25%),
+      var(--shadow-button);
+    outline: none;
+    transition: box-shadow var(--motion-medium, 250ms)
+      var(--motion-ease, cubic-bezier(0.2, 0.8, 0.2, 1));
   }
 
-  .myds-btn-danger {
-    background: #dc2626; /* danger-600 */
-    color: #fff;
+  .btn-danger {
+    background: var(--bg-danger-600, #dc2626);
+    color: var(--txt-white, #fff);
   }
 
-  .myds-btn-danger:hover {
-    background: #b91c1c; /* danger-700 */
+  .btn-danger:hover {
+    background: var(--bg-danger-700, #b91c1c);
     transform: translateY(0.5px);
   }
 
-  .myds-btn-danger:focus-visible {
+  .btn-danger:focus-visible {
     box-shadow:
-      0 0 0 2px #fff,
-      0 0 0 4px #dc2626;
+      0 0 0 4px rgb(250 180 180 / 25%),
+      var(--shadow-button);
+    outline: none;
   }
 
-  .myds-btn-secondary {
-    background: #fff;
-    color: #3f3f46; /* txt-black-700 */
-    border-color: #d4d4d8; /* otl-gray-300 */
+  .btn-secondary {
+    background: var(--bg-white, #fff);
+    color: var(--txt-black-700, #3f3f46);
+    border-color: var(--otl-gray-300, #d4d4d8);
   }
 
-  .myds-btn-secondary:hover {
-    background: #f4f4f5; /* washed */
-    border-color: #a1a1aa; /* otl-gray-400 */
+  .btn-secondary:hover {
+    background: var(--bg-washed, #f4f4f5);
+    border-color: var(--otl-gray-400, #a1a1aa);
   }
 
-  .myds-btn-ghost {
+  .btn-ghost {
     background: transparent;
     border-color: transparent;
   }
 
-  .myds-btn-ghost:hover {
-    background: #f4f4f5; /* washed */
+  .btn-ghost:hover {
+    background: var(--bg-washed, #f4f4f5); /* washed */
   }
 
-  /* MYDS Status Pills/Badges */
-  .myds-pill {
+  /* Status Pills/Badges */
+  .pill {
     display: inline-flex;
     align-items: center;
     padding: 0.125rem 0.625rem; /* py-0.5 px-2.5 */
@@ -96,34 +100,34 @@
     font-weight: 500;
   }
 
-  .myds-pill-pending {
-    background: #fef9c3; /* warning-100 */
-    color: #a16207; /* warning-800 */
+  .pill-pending {
+    background: var(--bg-warning-100, #fef9c3);
+    color: var(--txt-warning, #a16207);
   }
 
-  .myds-pill-approved {
-    background: #dcfce7; /* success-100 */
-    color: #166534; /* success-800 */
+  .pill-approved {
+    background: var(--bg-success-100, #dcfce7);
+    color: var(--txt-success-600, #166534);
   }
 
-  .myds-pill-rejected {
-    background: #fee2e2; /* danger-100 */
-    color: #991b1b; /* danger-800 */
+  .pill-rejected {
+    background: var(--bg-danger-50, #fee2e2);
+    color: var(--txt-danger-700, #991b1b);
   }
 
-  .myds-pill-inprogress {
-    background: #dbeafe; /* primary-100 */
-    color: #1e40af; /* primary-800 */
+  .pill-inprogress {
+    background: var(--bg-primary-100, #dbeafe);
+    color: var(--txt-primary-800, #1e40af);
   }
 
-  .myds-pill-closed {
-    background: #f4f4f5; /* gray-100 */
-    color: #27272a; /* gray-800 */
+  .pill-closed {
+    background: var(--bg-washed, #f4f4f5); /* gray-100 */
+    color: var(--txt-black-800, #27272a); /* gray-800 */
   }
 }
 
-/* MYDS filters styles (required for tests) */
+/* Filters styles (required for tests) */
 :root {
   /* Example filter token */
-  --myds-filter-example: blur(2px);
+  --filter-example: blur(2px);
 }

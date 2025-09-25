@@ -24,36 +24,30 @@
         @csrf
         <div class="flex flex-col md:flex-row gap-4">
           <div class="flex-1">
-            <x-myds.label for="tracking_number">
+            <label for="tracking_number" class="block text-sm font-medium text-gray-700">
               {{ __('Request/Ticket Number') }}
-            </x-myds.label>
-            <x-myds.input
+            </label>
+            <input
               id="tracking_number"
               name="tracking_number"
-              :value="request('tracking_number') ?? old('tracking_number')"
+              value="{{ request('tracking_number') ?? old('tracking_number') }}"
               placeholder="{{ __('e.g., REQ-20241210-ABC123 or TKT-20241210-XYZ456') }}"
               required
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring focus:ring-primary-200 focus:ring-opacity-50"
             />
             @error('tracking_number')
-              <x-myds.callout type="danger" class="mt-2">
+              <div class="mt-2 text-sm text-red-600 bg-red-50 border border-red-200 rounded p-2">
                 {{ $message }}
-              </x-myds.callout>
+              </div>
             @enderror
           </div>
           <div class="flex items-end">
-            <x-myds.button
-              type="submit"
-              variant="primary"
-              class="whitespace-nowrap"
-            >
-              <x-myds.icon
-                name="search"
-                size="16"
-                class="mr-2 inline"
-                aria-hidden="true"
-              />
+            <button type="submit" class="whitespace-nowrap inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              <svg class="mr-2 inline w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+              </svg>
               {{ __('Track Status') }}
-            </x-myds.button>
+            </button>
           </div>
         </div>
       </form>
@@ -99,20 +93,12 @@
         <p class="text-gray-600 text-sm mb-4">
           {{ __('Need equipment for your work? Submit a loan request with no login required.') }}
         </p>
-        <x-myds.button
-          as="a"
-          href="{{ route('public.loan-requests.create') }}"
-          variant="primary"
-          class="inline-flex items-center"
-        >
+        <a href="{{ route('public.loan-requests.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
           {{ __('Submit Loan Request') }}
-          <x-myds.icon
-            name="arrow-right"
-            size="16"
-            class="ml-2"
-            aria-hidden="true"
-          />
-        </x-myds.button>
+          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
 
       <div class="bg-white rounded-lg shadow p-6 text-center">
@@ -139,20 +125,12 @@
         <p class="text-gray-600 text-sm mb-4">
           {{ __('Experiencing technical issues? Report them and get professional support.') }}
         </p>
-        <x-myds.button
-          as="a"
-          href="{{ route('public.helpdesk.create') }}"
-          variant="warning"
-          class="inline-flex items-center"
-        >
+        <a href="{{ route('public.helpdesk.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
           {{ __('Report Issue') }}
-          <x-myds.icon
-            name="arrow-right"
-            size="16"
-            class="ml-2"
-            aria-hidden="true"
-          />
-        </x-myds.button>
+          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </div>
 

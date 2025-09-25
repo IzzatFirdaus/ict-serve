@@ -1,3 +1,6 @@
+<x-ictserve.progress {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.progress>
 @props([
   'value' => 0,
   'max' => 100,

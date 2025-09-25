@@ -3,29 +3,25 @@
 @section("title", "Request Status - ICT Serve")
 
 @section("content")
-  <x-myds.container class="max-w-4xl mx-auto px-4 py-8">
+  <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Header -->
     <div class="mb-8">
       <div class="flex items-center justify-between">
         <div>
-          <x-myds.heading level="1" class="mb-1">
+          <h1 class="mb-1 text-2xl font-bold">
             @if (isset($request))
               {{ __("Equipment Loan Request Status") }}
             @elseif (isset($ticket))
               {{ __("Support Ticket Status") }}
             @endif
-          </x-myds.heading>
+          </h1>
           <p class="txt-black-500">
             {{ __("Current status and progress of your submission") }}
           </p>
         </div>
-        <x-myds.button
-          :href="route('public.track')"
-          variant="secondary"
-          iconLeading="search"
-        >
+        <a href="{{ route('public.track') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500">
           {{ __("Track Another") }}
-        </x-myds.button>
+        </a>
       </div>
     </div>
 
@@ -44,9 +40,9 @@
               </p>
             </div>
             <div class="text-right">
-              <x-myds.badge :variant="$request->status->code">
+              <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-200 text-gray-800">
                 {{ $request->status->name }}
-              </x-myds.badge>
+              </span>
               @if ($request->priority)
                 <p class="text-xs text-gray-600 mt-1">
                   {{ __("Priority: :priority", ["priority" => ucfirst(is_object($request->priority) && method_exists($request->priority, "value") ? (string) $request->priority->value : (string) $request->priority)]) }}
@@ -258,9 +254,9 @@
               </p>
             </div>
             <div class="text-right">
-              <x-myds.badge :variant="$ticket->status->code">
+              <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-200 text-gray-800">
                 {{ $ticket->status->name }}
-              </x-myds.badge>
+              </span>
               <p class="text-xs text-gray-600 mt-1">
                 {{ __("Priority: :priority", ["priority" => ucfirst(is_object($ticket->priority) && method_exists($ticket->priority, "value") ? (string) $ticket->priority->value : (string) $ticket->priority)]) }}
               </p>
@@ -480,41 +476,29 @@
 
     <!-- Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <x-myds.button
-        :href="route('public.track')"
-        variant="primary"
-        iconLeading="search"
-      >
+      <a href="{{ route('public.track') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
         {{ __("Track Another Request") }}
-      </x-myds.button>
+      </a>
       @if (isset($request))
-        <x-myds.button
-          :href="route('public.loan-requests.create')"
-          variant="secondary"
-          iconLeading="plus"
-        >
+        <a href="{{ route('public.loan-requests.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500">
           {{ __("Submit New Loan Request") }}
-        </x-myds.button>
+        </a>
       @elseif (isset($ticket))
-        <x-myds.button
-          :href="route('public.helpdesk.create')"
-          variant="secondary"
-          iconLeading="plus"
-        >
+        <a href="{{ route('public.helpdesk.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500">
           {{ __("Report Another Issue") }}
-        </x-myds.button>
+        </a>
       @endif
-      <x-myds.button :href="url('/')" variant="secondary" iconLeading="home">
+      <a href="{{ url('/') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500">
         {{ __("Back to Home") }}
-      </x-myds.button>
+      </a>
     </div>
 
     <!-- Contact Information -->
-    <x-myds.card class="mt-8 pt-6 border-t border-gray-200 text-center">
-      <p class="text-sm txt-black-500 mb-2">
+  <div class="mt-8 pt-6 border-t border-gray-200 text-center bg-white rounded-lg shadow">
+  <p class="text-sm text-gray-500 mb-2">
         {{ __("Need help or have questions?") }}
       </p>
-      <div class="text-sm txt-black-700 space-y-1">
+  <div class="text-sm text-gray-700 space-y-1">
         <p>
           <span class="font-medium">{{ __("Email:") }}</span>
           ict-support@example.gov.my
@@ -532,6 +516,6 @@
           {{ __("Monday - Friday, 8:00 AM - 5:00 PM") }}
         </p>
       </div>
-    </x-myds.card>
-  </x-myds.container>
+  </div>
+  </div>
 @endsection

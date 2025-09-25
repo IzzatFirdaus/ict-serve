@@ -1,4 +1,4 @@
-// Strictly follows MYDS standards and MyGovEA principles
+// Follows project UI standards and accessibility principles
 // Bahasa Melayu comments for accessibility and citizen-centricity
 document.addEventListener('alpine:init', () => {
   // Navigasi Mudah Alih (Mobile Navigation)
@@ -194,8 +194,9 @@ document.addEventListener('alpine:init', () => {
   }));
 });
 
-// Utiliti MYDS Global
-window.MYDS = {
+// Global utilities
+// Expose small global utilities under a neutral namespace
+window.ISERVE = {
   // Pengurusan Fokus (Focus management)
   trapFocus(element) {
     const focusableElements = element.querySelectorAll(
@@ -243,10 +244,10 @@ window.MYDS = {
   // Pengurusan Tema (Theme management)
   setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('myds-theme', theme);
+    localStorage.setItem('iserve-theme', theme);
   },
   getTheme() {
-    return localStorage.getItem('myds-theme') || 'light';
+    return localStorage.getItem('iserve-theme') || 'light';
   },
   initTheme() {
     const savedTheme = this.getTheme();
@@ -255,5 +256,7 @@ window.MYDS = {
 };
 // Inisialisasi tema pada muat halaman
 document.addEventListener('DOMContentLoaded', () => {
-  window.MYDS.initTheme();
+  if (window.ISERVE && typeof window.ISERVE.initTheme === 'function') {
+    window.ISERVE.initTheme();
+  }
 });

@@ -1,9 +1,12 @@
+<x-ictserve.skiplink {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.skiplink>
 {{--
-  MYDS Skip Link for ICTServe (iServe)
-  - Accessible, visible on focus, follows MYDS guidance and MyGovEA
+  Skip Link component for ICTServe (iServe)
+  - Accessible, visible on focus; neutral naming (non-branded)
   - Props:
-  href: target section id (default '#main-content')
-  label: visible text (default: "Langkau ke kandungan utama")
+    href: target section id (default '#main-content')
+    label: visible text (default: "Langkau ke kandungan utama")
 --}}
 
 @props([
@@ -11,9 +14,9 @@
   'label' => 'Langkau ke kandungan utama',
 ])
 @once
-  <link rel="stylesheet" href="{{ asset('css/myds/skiplink.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/shared/skip-link.css') }}" />
 @endonce
 
-<a href="{{ $href }}" class="myds-skip-link" aria-label="{{ $label }}">
+<a href="{{ $href }}" class="skip-link" aria-label="{{ $label }}">
   {{ $label }}
 </a>

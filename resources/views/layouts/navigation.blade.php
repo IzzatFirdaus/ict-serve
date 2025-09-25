@@ -37,7 +37,7 @@
               id="servicedesk-dropdown-trigger"
               x-on:click="open = !open"
               aria-haspopup="true"
-              :aria-expanded="open"
+              x-bind:aria-expanded="open"
               aria-controls="servicedesk-dropdown"
               class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent myds-body-sm font-medium leading-5 text-txt-black-500 hover:text-txt-black-700 hover:border-otl-gray-200 focus:outline-none focus:text-txt-black-700 focus:border-otl-gray-200 transition duration-150 ease-in-out"
             >
@@ -188,7 +188,7 @@
           type="button"
           variant="tertiary"
           size="sm"
-          x-on:click="open = ! open"
+          x-on:click="open = !open"
           aria-label="Open navigation menu"
           class="inline-flex items-center justify-center p-2 rounded-md text-txt-black-500 hover:text-txt-black-700 hover:bg-bg-gray-50 focus:outline-none focus:bg-bg-gray-50 focus:text-txt-black-700 transition duration-150 ease-in-out"
         >
@@ -204,7 +204,7 @@
   </div>
 
   <!-- Responsive Navigation Menu -->
-  <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+  <div :class="{'block': open, 'hidden': !open}" class="hidden sm:hidden">
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link
         :href="route('dashboard')"

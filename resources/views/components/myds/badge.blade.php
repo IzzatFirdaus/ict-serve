@@ -30,7 +30,7 @@
   $radius = $pill ? 'radius-full' : 'radius-s';
 @endphp
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 <span
   @class(['inline-flex items-center gap-1 font-medium', $vClass, $sClass, $radius])

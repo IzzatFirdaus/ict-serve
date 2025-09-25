@@ -1,3 +1,9 @@
+<x-ictserve.select {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.select>
+<x-ictserve.select {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.select>
 @props([
   'name' => null,
   'label' => null,
@@ -74,7 +80,7 @@
       @endif
     </select>
 
-    <!-- MYDS dropdown arrow -->
+  <!-- Dropdown arrow -->
     <div
       class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
     >

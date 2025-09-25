@@ -1,15 +1,21 @@
 /**
  * ICTServe (iServe) - Main Application Stylesheet
  * ===============================================
- * CORRECTION: Added './' to local @import paths to ensure the Vite build
- * process resolves them relative to the current file directory.
+ * Purpose: Central entrypoint for Tailwind layers and component styles.
+ * Notes:
+ * - Keep all `@import` statements at the top so Vite/Tailwind resolves them.
+ * - Use semantic tokens from `myds-tokens.css` for colors, spacing and shadows.
  */
 
-/* 1. Import Tailwind CSS layers and all custom styles. All imports MUST be at the top. */
+/* 1. Tailwind Preflight (base reset) */
 @import 'tailwindcss/preflight';
+
+/* 2. Design tokens (semantic variables) */
 @import './myds-tokens.css';
+
+/* 3. Component layers (skip link, components) */
 @import './myds/skiplink.css';
 @import './components/filters.css';
 
-/* 2. Inject Tailwind's utility styles. */
+/* 4. Tailwind utilities layer: keep at bottom after imports */
 @tailwind utilities;

@@ -1,6 +1,12 @@
+<x-ictserve.label {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.label>
+<x-ictserve.label {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.label>
 {{--
-  MYDS Label Component for ICTServe (iServe)
-  - Complies with MYDS standards (Design, Develop, Colour, Icons) and MyGovEA principles (citizen-centric, clear hierarchy, minimalis, accessibility).
+  ICTServe Label component (iServe)
+  - Complies with project design tokens and accessibility principles (citizen-centric, clear hierarchy, minimal, accessible).
   - Props:
   for: string|null (id of the associated input)
   required: bool (show required indicator)
@@ -20,7 +26,7 @@
 ])
 
 @php
-  // MYDS label sizes (Design/Develop-Overview)
+  // Label sizes (Design/Develop overview)
   $sizeClass = match ($size) {
     'sm' => 'text-sm leading-[20px] font-medium mb-1',
     'lg' => 'text-lg leading-[28px] font-semibold mb-2',
@@ -31,7 +37,7 @@
 
 <label
   @if($for) for="{{ $for }}" @endif
-  class="myds-label font-poppins txt-black-900 {{ $sizeClass }} {{ $srClass }} {{ $class }}"
+  class="ictserve-label font-poppins txt-black-900 {{ $sizeClass }} {{ $srClass }} {{ $class }}"
 >
   {{ $slot }}
   @if ($required)
@@ -41,5 +47,5 @@
 </label>
 
 @if ($hint)
-  <p class="myds-label-hint text-xs txt-black-500 mt-1">{{ $hint }}</p>
+  <p class="ictserve-label-hint text-xs txt-black-500 mt-1">{{ $hint }}</p>
 @endif

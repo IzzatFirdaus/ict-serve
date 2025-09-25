@@ -23,13 +23,13 @@
     </p>
   </header>
 
-  <x-myds.button
+  <x-ictserve.button
     type="button"
     variant="danger"
     @click.prevent="showModal = true"
   >
     Padam Akaun
-  </x-myds.button>
+  </x-ictserve.button>
 
   {{-- Confirmation Modal (Styled as MYDS Alert Dialog) --}}
   <div
@@ -87,7 +87,7 @@
           </p>
 
           <div class="mt-6">
-            <x-myds.form-input
+            <x-ictserve.form-input
               id="password"
               name="password"
               label="Kata Laluan"
@@ -102,16 +102,16 @@
         <div
           class="flex justify-end gap-4 bg-washed dark:bg-gray-950/50 px-6 py-4"
         >
-          <x-myds.button
+          <x-ictserve.button
             type="button"
             variant="secondary"
             @click.prevent="showModal = false"
           >
             Batal
-          </x-myds.button>
-          <x-myds.button type="submit" variant="danger">
+          </x-ictserve.button>
+          <x-ictserve.button type="submit" variant="danger">
             Padam Akaun
-          </x-myds.button>
+          </x-ictserve.button>
         </div>
       </form>
     </div>

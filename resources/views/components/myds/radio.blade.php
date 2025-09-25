@@ -1,3 +1,4 @@
+<x-ictserve.radio {{ $attributes->merge([]) }} />
 @props([
     "label" => "",
     "name" => "",

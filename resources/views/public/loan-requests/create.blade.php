@@ -37,7 +37,7 @@
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <x-myds.form-input
+                        <x-ictserve.form-input
                             id="borrower_name"
                             name="borrower_name"
                             label="{{ __('Full Name') }}"
@@ -49,7 +49,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                     <div>
-                        <x-myds.form-input
+                        <x-ictserve.form-input
                             id="department"
                             name="department"
                             label="{{ __('Department') }}"
@@ -59,7 +59,7 @@
                     </div>
 
                     <div>
-                        <x-myds.form-input
+                        <x-ictserve.form-input
                             id="division"
                             name="division"
                             label="{{ __('Division') }}"
@@ -69,7 +69,7 @@
                     </div>
 
                     <div>
-                        <x-myds.form-input
+                        <x-ictserve.form-input
                             id="position"
                             name="position"
                             label="{{ __('Position') }}"
@@ -91,7 +91,7 @@
                     <label for="category-filter" class="block text-sm font-medium text-gray-700 mb-2">
                         {{ __('Filter by Category') }}
                     </label>
-                    <x-myds.form-select id="category-filter" name="category_filter" label="{{ __('Filter by Category') }}">
+                    <x-ictserve.form-select id="category-filter" name="category_filter" label="{{ __('Filter by Category') }}">
                         <option value="">{{ __('All Categories') }}</option>
                         @foreach($equipment->keys() as $categoryName)
                             <option value="{{ $categoryName }}">{{ $categoryName }}</option>
@@ -135,7 +135,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                                            <x-myds.button size="sm" variant="secondary">{{ __('buttons.add_equipment') }}</x-myds.button>
+                                                            <x-ictserve.button size="sm" variant="secondary">{{ __('buttons.add_equipment') }}</x-ictserve.button>
                         @endforeach
                     @endforeach
                 </div>
@@ -191,7 +191,7 @@
                         {{ __('Purpose of Loan') }} <span class="text-danger-500">*</span>
                     </label>
                     @php $hasError = $errors->has('purpose'); @endphp
-                    <x-myds.form-textarea
+                    <x-ictserve.form-textarea
                         id="purpose"
                         name="purpose"
                         :value="old('purpose')"
@@ -246,8 +246,8 @@
 
             <!-- Submit Button -->
             <div class="flex justify-end space-x-4">
-                <x-myds.button as="a" href="{{ url('/') }}" variant="tertiary">{{ __('Cancel') }}</x-myds.button>
-                <x-myds.button type="submit" id="submit-btn" variant="primary">
+                <x-ictserve.button as="a" href="{{ url('/') }}" variant="tertiary">{{ __('Cancel') }}</x-ictserve.button>
+                <x-ictserve.button type="submit" id="submit-btn" variant="primary">
                     <span class="submit-text">{{ __('Submit Request') }}</span>
                     <span class="loading-text hidden">{{ __('Processing...') }}</span>
                 </x-myds.button>

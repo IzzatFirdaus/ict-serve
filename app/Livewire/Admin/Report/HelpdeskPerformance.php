@@ -19,7 +19,12 @@ class HelpdeskPerformance extends Component
                 'in_progress' => HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'in_progress'))->count(),
                 'resolved' => HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'resolved'))->count(),
                 'closed' => HelpdeskTicket::whereHas('status', fn ($q) => $q->where('code', 'closed'))->count(),
-                'monthly' => HelpdeskTicket::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as count')
+                // SQLite-compatible: use strftime for year/month extraction everywhere
+                'monthly' => HelpdeskTicket::selectRaw(
+                    "CAST(strftime('%Y', created_at) AS INTEGER) as year, " .
+                    "CAST(strftime('%m', created_at) AS INTEGER) as month, " .
+                    "COUNT(*) as count"
+                )
                     ->groupBy('year', 'month')
                     ->orderBy('year', 'desc')
                     ->orderBy('month', 'desc')

@@ -29,9 +29,9 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                // MYDS primary blue scale mapped via Tailwind's Blue palette closest to #2563EB (blue-600)
+                // Primary blue scale mapped via Tailwind's Blue palette closest to #2563EB (blue-600)
                 'primary' => Color::Blue,
-                // Optionally set other semantic colors to align with MYDS (success/danger/warning/gray/info)
+                // Optionally set other semantic colors to align with project (success/danger/warning/gray/info)
                 'success' => Color::Green,
                 'danger' => Color::Red,
                 'warning' => Color::Yellow,

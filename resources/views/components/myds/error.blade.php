@@ -1,3 +1,6 @@
+<x-ictserve.error {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.error>
 {{--
   MYDS Error Message for ICTServe (iServe)
   - Accessible, clear, semantic token, ARIA role, citizen-centric, follows MYDS colour.

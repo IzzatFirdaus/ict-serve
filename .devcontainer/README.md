@@ -1,6 +1,6 @@
 # VSCode Dev Container for ICTServe
 
-This project supports VSCode Dev Containers for a consistent, secure, and accessible development environment, in line with MYDS & MyGovEA standards.
+This project supports VSCode Dev Containers for a consistent, secure, and accessible development environment.
 
 ## Usage
 

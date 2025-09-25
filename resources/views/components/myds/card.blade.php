@@ -1,5 +1,8 @@
+<x-ictserve.card {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.card>
 {{--
-  MYDS Card Component for ICTServe (iServe)
+  Generic Card Component
   - Props:
   title?: string
   subtitle?: string
@@ -8,7 +11,7 @@
   border?: bool
   shadow?: bool
   radius?: string (xs|s|m|l|xl|full)
-  bg?: string (use MYDS tokens)
+  bg?: string
 --}}
 
 @props([
@@ -22,7 +25,6 @@
   'bg' => 'bg-white',
 ])
 
-<x-myds.tokens />
 
 <div
   @class([
@@ -36,18 +38,18 @@
 >
   @if ($icon)
     <div class="mb-3">
-      <x-myds.icons :name="$icon" class="myds-icon txt-primary" />
+      <span class="icon txt-primary">{!! $icon !!}</span>
     </div>
   @endif
 
   @if ($title)
-    <h2 class="font-poppins font-semibold text-xl txt-black-900 mb-2">
+    <h2 class="font-semibold text-xl mb-2">
       {{ $title }}
     </h2>
   @endif
 
   @if ($subtitle)
-    <p class="text-sm txt-black-500 mb-3">{{ $subtitle }}</p>
+    <p class="text-sm mb-3">{{ $subtitle }}</p>
   @endif
 
   <div>

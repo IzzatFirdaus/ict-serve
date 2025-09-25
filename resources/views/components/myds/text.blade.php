@@ -1,7 +1,10 @@
+<x-ictserve.text {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.text>
 {{--
-  MYDS Text for ICTServe (iServe)
+  ICTServe Text component (iServe)
   - Props: size (xs|sm|base|lg|xl), variant, weight (light|normal|medium|semibold|bold), spacing (none|tight|default|loose)
-  - Uses Inter font per MYDS body typography
+  - Uses Inter font per project body typography
 --}}
 
 @props([
@@ -54,5 +57,5 @@
 </p>
 
 @once
-  <link rel="stylesheet" href="{{ asset('css/myds/text.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/ictserve/text.css') }}" />
 @endonce

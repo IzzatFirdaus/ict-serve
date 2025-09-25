@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <!-- MYDS Compliance: Clear, descriptive title -->
+  <!-- Site title and description -->
     <title>
       {{ isset($title) ? $title . ' - ' : '' }}ICT Serve (iServe) - MOTAC
     </title>
 
-    <!-- MYDS Government Site Identity -->
+  <!-- Government site identity -->
     <meta
       name="description"
       content="ICT Serve (iServe) - Sistem Bersepadu Perkhidmatan ICT MOTAC"
@@ -23,11 +23,11 @@
       content="Kementerian Pelancongan, Seni dan Budaya Malaysia (MOTAC)"
     />
 
-    <!-- MYDS Favicon and Icons -->
+  <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- MYDS Font Support -->
+  <!-- Font Support -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,11 +35,11 @@
       rel="stylesheet"
     />
 
-    <!-- MYDS Styles -->
+  <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
-    <!-- MYDS Accessibility: Skip Links -->
+  <!-- Accessibility: Skip Links -->
     @vite(['resources/css/layouts/iserve.css'])
 
     {{ $head ?? '' }}
@@ -52,8 +52,8 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <a href="#main-navigation" class="skip-link">Skip to navigation</a>
 
-    <!-- MYDS Header -->
-    <header class="bg-white shadow-sm border-b border-gray-200" role="banner">
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b border-gray-200" role="banner">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <!-- Logo and System Name -->
@@ -179,7 +179,7 @@
       </div>
     </header>
 
-    <!-- MYDS Main Layout -->
+  <!-- Main Layout -->
     <div class="flex h-screen bg-gray-50">
       <!-- Sidebar Navigation -->
       @auth
@@ -405,7 +405,7 @@
         role="main"
       >
         <div class="p-6">
-          <!-- MYDS Breadcrumb -->
+        <!-- Breadcrumb -->
           @if (isset($breadcrumbs))
             <nav class="flex mb-6" aria-label="Breadcrumb">
               <ol class="flex items-center space-x-4">
@@ -453,7 +453,7 @@
       </main>
     </div>
 
-    <!-- MYDS Footer -->
+  <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6" role="contentinfo">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
@@ -475,14 +475,14 @@
               &copy; {{ date('Y') }} Kerajaan Malaysia. Hak Cipta Terpelihara.
             </p>
             <p class="text-xs text-gray-400">
-              Dibina mengikut MYDS dan MyGOVEA
+              Dibina mengikut garis panduan rekabentuk kerajaan Malaysia
             </p>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- MYDS Toast Notifications -->
+  <!-- Toast Notifications -->
     <div
       id="toast-container"
       class="fixed top-4 right-4 z-50 space-y-2"
@@ -494,13 +494,9 @@
 
     @livewireScripts
 
-    <!-- Alpine.js for interactivity -->
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
 
-    <!-- MYDS Language Switcher -->
+
+  <!-- Language Switcher -->
     @vite(['resources/js/layouts/iserve.js'])
 
     {{ $scripts ?? '' }}

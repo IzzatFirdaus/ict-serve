@@ -44,18 +44,18 @@
     <!-- Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Skip Links for Accessibility -->
-    @vite('resources/css/shared/skip-links.css')
+  <!-- Skip Links for Accessibility -->
+  @vite('resources/css/shared/skip-links.css')
 
     @livewireStyles
   </head>
   <body class="antialiased">
-    <!-- Skip Links for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <a href="#navigation" class="skip-link">Skip to navigation</a>
+  <!-- Skip Links for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#navigation" class="skip-link">Skip to navigation</a>
 
     <div class="min-h-screen bg-slate-50">
-      <!-- MYDS-styled Header -->
+  <!-- Header -->
       <header class="bg-white shadow-sm border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">

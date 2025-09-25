@@ -9,7 +9,7 @@
 
 ## [2025-09-20] Sprint Review
 
-- Completed: Ensured all UI and backend code follows MYDS and MyGovEA standards
+- Completed: Ensured all UI and backend code follows project design and accessibility standards
 - Completed: Updated accessibility and security guidelines in project documentation
 - Blocker: Awaiting feedback on new architectural pattern proposals
 

@@ -1,99 +1,165 @@
-# ICTServe (iServe): Sistem Notifikasi E-mel (v1.0)
+# Dokumentasi Aliran Sistem Helpdesk ServiceDesk ICTServe (iServe) v1.0
 
-Dokumen ini menerangkan pelaksanaan sistem notifikasi e-mel dalam aplikasi ICTServe (iServe) v1.0. Dalam versi ini, "ciri e-mel" merujuk khusus kepada notifikasi automatik yang dihantar kepada pengguna untuk memaklumkan kejadian dan perubahan status dalam modul teras aplikasi. Dokumentasi ini telah diselaraskan dengan PRINSIP REKA BENTUK MYGOVEA (18 Prinsip).
+> **Rujukan Berkaitan:**
+>
+> - [ICT DAMAGE COMPLAINT FORM – DETAILS](<./ICT%20DAMAGE%20COMPLAINT%20FORM%20(ServiceDesk%20ICT)%20-%20DETAILED%20BREAKDOWN.md>)
+> - [Reka Bentuk ICTServe](<./Dokumentasi_Reka_Bentuk_ICTServe(iServe).md>)
+> - [Reka Bentuk Sistem ICTServe](<./Dokumentasi_Reka_Bentuk_Sistem_ICTServe(iServe).md>)
+> - [Sistem ICTServe Overview](<./Dokumentasi_Sistem_ICTServe(iServe).md>)
+> - [Sistem Notifikasi E-mel](<./Dokumentasi_Sistem_Notifikasi_E-mel_ICTServe(iServe).md>)
 
-## 1. Gambaran Umum
+---
 
-Sistem notifikasi e-mel berfungsi sebagai utiliti latar belakang untuk memastikan pengguna, pegawai penyokong, dan pentadbir sentiasa dimaklumkan mengenai perkembangan permohonan mereka. Ia bukan modul yang boleh diakses pengguna secara langsung, sebaliknya menjadi saluran komunikasi utama yang menyokong aliran kerja aplikasi.
+## 1. Gambaran Umum Aliran Helpdesk
 
-Notifikasi dihantar secara automatik untuk kejadian penting dalam modul-modul berikut:
+Dokumen ini menerangkan aliran kerja terperinci untuk pengurusan aduan kerosakan ICT melalui modul Helpdesk ServiceDesk dalam ICTServe (iServe). Aliran ini memastikan piawaian UI/UX, aksesibiliti, dan pengalaman pengguna berpaksikan rakyat.
 
-- **Pengurusan Pinjaman Peralatan ICT**
-- **Pengurusan Aduan Kerosakan ICT**
+---
 
-Selaras dengan prinsip **Komunikasi** dan **Berpaksikan Rakyat**, sistem ini bertujuan untuk memastikan maklumat sampai kepada semua pihak berkepentingan dengan jelas dan tepat pada masanya.
+## 2. Aliran Proses Aduan Kerosakan ICT
 
-## 2. Bagaimana Ia Berfungsi: Aliran Notifikasi
+### 2.1 Senarai Langkah Utama
 
-Proses notifikasi mengikut pola konsisten berasaskan kejadian di seluruh aplikasi, mematuhi prinsip **Paparan/Menu Jelas**, **Pencegahan Ralat**, dan **Kawalan Pengguna**.
+1. **Mula (Start)**
+   - Proses bermula apabila pengguna ingin melaporkan masalah ICT.
 
-1. **Tindakan Pengguna Berlaku:**  
-   Pengguna atau pentadbir melakukan tindakan penting dalam sistem (cth: menghantar permohonan pinjaman, pentadbir menetapkan tiket aduan).
+2. **Pengguna Hantar Aduan**
+   - Pengguna log masuk ke ICTServe dan mengisi Borang Aduan Kerosakan ICT.
+   - Medan wajib: Nama, Bahagian, E-mel, No. Telefon, Jenis Kerosakan, Maklumat Kerosakan, Perakuan.
+   - Dropdown dan input mengikut komponen rasmi, grid responsif 12-8-4.
+   - Jika aduan melibatkan perkakasan, medan No. Aset/Printer ID akan dipaparkan secara dinamik.
 
-2. **Logik Lapisan Servis:**  
-   Kelas servis berkaitan (cth: `LoanService`, `HelpdeskService`) memproses tindakan tersebut.
+3. **Sistem Hantar Emel Pengesahan**
+   - Sistem menghantar emel pengesahan kepada pengguna (pelapor) secara automatik.
+   - Notifikasi juga direkod dalam dashboard ICTServe.
 
-3. **Notifikasi Dijalankan (Dispatched):**  
-   Selepas tindakan berjaya dilaksanakan, servis memanggil `NotificationService` untuk menyediakan dan menjadualkan notifikasi spesifik.
+4. **Sistem Hantar Aduan Kepada Pentadbir**
+   - Sistem mengarahkan aduan kepada pentadbir Helpdesk untuk tindakan lanjut.
+   - Emel notifikasi dihantar kepada pentadbir, dan tiket aduan direkodkan dalam sistem.
 
-4. **Notifikasi Dihantar:**  
-   Sistem menghantar notifikasi kepada pengguna melalui dua saluran:
-   - **Pangkalan Data:** Notifikasi dalam aplikasi direkodkan dalam jadual notifikasi, boleh dilihat di dashboard pengguna.
-   - **E-mel:** E-mel berbentuk rasmi dihantar ke alamat e-mel pengguna yang berdaftar menggunakan pemandu e-mel aplikasi (cth: SMTP).
+5. **Pentadbir Terima Notifikasi Aduan**
+   - Pentadbir menerima emel dan notifikasi dalam dashboard pentadbir.
+
+6. **Pentadbir Semak & Ambil Tindakan**
+   - Pentadbir menyemak butiran aduan, mengklasifikasikan kategori, dan mengambil tindakan penyelesaian.
+   - Status tiket diubah mengikut perkembangan: "Dalam Tindakan", "Menunggu Maklumat", "Selesai".
+
+7. **Tindakan Diambil & Status Dikemaskini**
+   - Pentadbir/agen IT mengambil tindakan (pembaikan, komunikasi dengan pelapor, dsb).
+   - Semua tindakan dan komen direkod dalam thread tiket.
+
+8. **Status Aduan: Selesai**
+   - Setelah masalah diselesaikan, status tiket diubah kepada "Selesai".
+
+9. **Sistem Hantar Emel Penyelesaian**
+   - Sistem menghantar emel automatik kepada pelapor, memaklumkan aduan telah diselesaikan.
+   - Notifikasi penutupan juga direkod dalam dashboard.
+
+10. **Tamat (End)**
+    - Proses aduan kerosakan ICT selesai dan direkodkan untuk audit.
+
+---
+
+## 3. Komponen Kod & Infrastruktur Utama
+
+### 3.1 Komponen UI/UX
+
+- **Form Aduan:** `App\Livewire\Helpdesk\TicketForm`
+- **List Tiket:** `App\Livewire\Helpdesk\TicketList`
+- **Butiran Tiket:** `App\Livewire\Helpdesk\TicketDetail`
+- **Admin Dashboard:** `App\Livewire\Helpdesk\Admin\TicketManagement`
+- **Templat Blade:** `resources/views/livewire/helpdesk/ticket-form.blade.php`
+- **Grid Layout:** Menggunakan grid 12-8-4, token warna projek, tipografi Poppins/Inter.
+
+### 3.2 Model & Servis
+
+- **Model:** `HelpdeskTicket`, `HelpdeskCategory`, `HelpdeskComment`, `User`
+- **Service:** `app/Services/HelpdeskService`
+- **Controller:** `app/Http/Controllers/Helpdesk/TicketController`
+- **Notification:** `App/Notifications/DamageReportSubmittedNotification`, `DamageReportAssignedNotification`, `DamageReportResolvedNotification`
+- **Policy:** `app/Policies/HelpdeskTicketPolicy`
+
+### 3.3 Notifikasi & Audit
+
+- **Automated Email:** Sistem gunakan Laravel Notification dan Mailable untuk semua notifikasi.
+- **Audit Log:** Semua perubahan status dan komen disimpan untuk jejak audit (`owen-it/laravel-auditing`).
+- **Database:** Semua tiket, komen, status, dan notifikasi direkod dalam pangkalan data.
+
+---
+
+## 4. Pematuhan Rekabentuk & Aksesibiliti
+
+- **UI/UX Konsisten:** Setiap input, dropdown, dan butang menggunakan komponen dan token warna rasmi projek.
+- **Aksesibiliti:** ARIA label, keyboard navigation, kontras warna minimum 4.5:1.
+- **Grid Responsif:** 12-8-4 grid digunakan, visual dioptimumkan untuk desktop, tablet, dan telefon.
+- **Error Prevention:** Validasi real-time dan mesej ralat jelas pada setiap langkah.
+- **Komunikasi Dua Saluran:** Notifikasi melalui emel dan dashboard aplikasi.
+
+---
+
+## 5. Carta Alir Proses (Flowchart)
 
 ```mermaid
 graph TD
-    A[Tindakan Pengguna (cth: Hantar Permohonan Pinjaman)] --> B{Lapisan Servis (cth: LoanService)}
-    B --> C{NotificationService Dipanggil}
-    C --> D[Bina Notifikasi Pangkalan Data]
-    C --> E[Hantar Notifikasi E-mel]
-    D --> F[Pengguna nampak amaran di Dashboard ICTServe]
-    E --> G[Pengguna terima e-mel di peti masuk]
+    A[Mula] --> B[Pengguna Hantar Aduan]
+    B --> C[Sistem Hantar Emel Pengesahan]
+    C --> D[Sistem Hantar Aduan Kepada Pentadbir]
+    D --> E[Pentadbir Terima Notifikasi Aduan]
+    E --> F[Pentadbir Semak & Ambil Tindakan]
+    F --> G[Tindakan Diambil & Status Dikemaskini]
+    G --> H[Status Aduan: Selesai]
+    H --> I[Sistem Hantar Emel Penyelesaian]
+    I --> J[Tamat]
 ```
 
-## 3. Kejadian Utama Notifikasi Mengikut Modul
+---
 
-Jadual berikut menyenaraikan kejadian utama yang akan mencetuskan notifikasi e-mel, selaras dengan prinsip **Komunikasi**, **Pencegahan Ralat**, dan **Panduan & Dokumentasi**.
+## 6. Senarai Semak Pematuhan Prinsip
 
-### 3.1 Modul Pinjaman Peralatan ICT
+| Prinsip                         | Status | Penjelasan Ringkas                               |
+| ------------------------------- | ------ | ------------------------------------------------ |
+| Berpaksikan Rakyat              | ✅     | Borang ringkas, navigasi dua klik, panduan jelas |
+| Berpacukan Data                 | ✅     | Audit log dan rekod status yang konsisten        |
+| Kandungan Terancang             | ✅     | Struktur borang dan proses jelas                 |
+| Teknologi Bersesuaian           | ✅     | Laravel 12, Livewire 3, Filament 4               |
+| Antara Muka Minimalis dan Mudah | ✅     | UI ringkas, tidak berlebihan                     |
+| Seragam                         | ✅     | Token warna & komponen projek sahaja             |
+| Paparan/Menu Jelas              | ✅     | Breadcrumb, label jelas, status pill             |
+| Realistik                       | ✅     | Proses mengikut keperluan sebenar BPM            |
+| Kognitif                        | ✅     | Susunan borang kurangkan beban kognitif          |
+| Fleksibel                       | ✅     | Modular, boleh tambah kategori baru              |
+| Komunikasi                      | ✅     | Emel & dashboard notifikasi                      |
+| Struktur Hierarki               | ✅     | Hierarki tiket & kategori jelas                  |
+| Komponen UI/UX                  | ✅     | Input, dropdown, butang projek                   |
+| Tipografi                       | ✅     | Poppins/Inter, saiz label ikut projek            |
+| Tetapan Lalai                   | ✅     | Auto-isi bahagian, e-mel jika tersedia           |
+| Kawalan Pengguna                | ✅     | Role, policy, akses mengikut peranan             |
+| Pencegahan Ralat                | ✅     | Validasi input, pengesahan sebelum submit        |
+| Panduan & Dokumentasi           | ✅     | Fail ini, README.md, penerangan langkah          |
 
-| Kelas Notifikasi                              | Kejadian Pencetus                             | Penerima                    |
-| --------------------------------------------- | --------------------------------------------- | --------------------------- |
-| `LoanApplicationSubmitted`                    | Pengguna menghantar permohonan pinjaman baru. | Pemohon                     |
-| `LoanApplicationNeedsAction`                  | Permohonan sedia untuk kelulusan.             | Pegawai Penyokong           |
-| `LoanApplicationApproved`                     | Permohonan pinjaman diluluskan.               | Pemohon                     |
-| `LoanApplicationRejected`                     | Permohonan pinjaman ditolak.                  | Pemohon                     |
-| `LoanApplicationReadyForIssuanceNotification` | Pinjaman diluluskan sedia untuk diproses.     | Staf BPM                    |
-| `EquipmentIssuedNotification`                 | Peralatan dikeluarkan kepada pemohon.         | Pemohon                     |
-| `EquipmentReturnedNotification`               | Peralatan yang dipinjam telah dipulangkan.    | Pemohon                     |
-| `EquipmentReturnReminderNotification`         | Tarikh akhir pemulangan hampir tiba.          | Pemohon                     |
-| `EquipmentOverdueNotification`                | Tarikh akhir pemulangan telah melepasi.       | Pemohon, Staf BPM           |
-| `EquipmentIncidentNotification`               | Peralatan dilaporkan hilang/rosak.            | Staf BPM, pegawai berkaitan |
+---
 
-### 3.2 Modul Aduan Kerosakan ICT
+## 7. Nota Implementasi
 
-| Kelas Notifikasi                        | Kejadian Pencetus                         | Penerima             |
-| --------------------------------------- | ----------------------------------------- | -------------------- |
-| `DamageReportSubmittedNotification`     | Pengguna menghantar aduan kerosakan baru. | Pengguna, Pasukan IT |
-| `DamageReportAssignedNotification`      | Aduan diberikan kepada agen IT.           | Agen IT              |
-| `DamageReportStatusUpdatedNotification` | Status aduan berubah.                     | Pengguna             |
-| `DamageReportCommentAddedNotification`  | Komen baru ditambah pada aduan.           | Pengguna, Agen IT    |
-| `DamageReportResolvedNotification`      | Aduan telah diselesaikan.                 | Pengguna             |
+- **Warna & Token:** Semua elemen menggunakan token projek (cth: bg-primary-600, txt-danger).
+- **Komponen:** Input, select, textarea, button, alert dialog, pill, tag mesti ikut spesifikasi projek.
+- **Aksesibiliti:** ARIA, kontras warna, keyboard navigation, skip link.
+- **Dark Mode:** Sokongan penuh untuk token automatik.
+- **Dokumentasi:** PHPDoc untuk servis/kod utama.
 
-## 4. Pelaksanaan Teknikal
+---
 
-Sistem notifikasi dibina menggunakan ciri standard Laravel dan kelas servis khusus, mematuhi prinsip **Teknologi Bersesuaian**, **Seragam**, dan **Panduan & Dokumentasi**.
+## 8. Penutup
 
-| Komponen             | Laluan / Contoh                        | Tujuan                                                                                                                                                                        |
-| -------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Notification Service | `app/Services/NotificationService.php` | Kelas servis pusat untuk penghantaran semua notifikasi.                                                                                                                       |
-| Notification Classes | `app/Notifications/`                   | Setiap kejadian notifikasi ada kelas sendiri (cth: `App\Notifications\LoanApplicationApproved`) yang menentukan saluran penghantaran (e-mel, pangkalan data) dan format data. |
-| Mailable Classes     | `app/Mail/`                            | Untuk e-mel kompleks, kelas Mailable (cth: `App\Mail\EquipmentReturnReminder`) digunakan untuk membina kandungan e-mel dan lampiran.                                          |
-| Email Templates      | `resources/views/emails/`              | Templat Blade yang menentukan struktur HTML dan kandungan e-mel keluar.                                                                                                       |
-| Configuration        | `config/mail.php`, `.env`              | Fail `.env` dan `config/mail.php` digunakan untuk tetapan pemandu e-mel (SMTP, Mailgun) dan kelayakan. Untuk pembangunan, Mailtrap biasanya digunakan.                        |
+Aliran sistem Helpdesk ServiceDesk ICTServe (iServe) direka dan dibangunkan untuk memenuhi keperluan pengurusan aduan kerosakan ICT MOTAC secara digital, selaras dengan piawaian rekabentuk dan aksesibiliti. Aliran ini menjamin pengalaman pengguna yang inklusif, responsif, selamat, dan seragam.
 
-## 5. Pematuhan 18 Prinsip MyGOVEA (Ringkas)
+Sebarang penambahbaikan atau maklum balas boleh disalurkan melalui saluran rasmi BPM/MOTAC atau email [design@tech.gov.my](mailto:design@tech.gov.my).
 
-- **Komunikasi**: Notifikasi tepat masa, jelas dan relevan
-- **Paparan/Menu Jelas**: Kandungan e-mel dan notifikasi ringkas dan boleh diimbas
-- **Kawalan Pengguna**: Keutamaan notifikasi boleh dikonfigurasi (melalui tetapan sistem)
-- **Pencegahan Ralat**: Peringatan tarikh akhir dan amaran lewat
-- **Panduan & Dokumentasi**: Komen kod dan templat e-mel didokumentasi
-- **Teknologi Bersesuaian**: Gunakan saluran e-mel dan pangkalan data standard
-- **Seragam**: Pola notifikasi konsisten merentas modul
+---
 
-## 6. Kesimpulan
+## Rujukan
 
-Dalam versi 1.0 ICTServe (iServe), sistem e-mel adalah utiliti sokongan kritikal yang menumpukan kepada komunikasi. Ia memastikan semua pihak berkepentingan sentiasa dimaklumkan sepanjang aliran kerja pinjaman ICT dan aduan kerosakan, memupuk ketelusan dan meningkatkan pengalaman pengguna tanpa menjadi modul aplikasi yang boleh diakses secara langsung.
-
-Sistem ini selaras dengan PRINSIP REKA BENTUK MYGOVEA, mengutamakan komunikasi jelas, kawalan pengguna, pencegahan ralat serta dokumentasi lengkap untuk kelancaran operasi aplikasi kerajaan.
+- [Laravel Documentation](https://laravel.com/docs)
+- [Filament Documentation](https://filamentphp.com/docs)
+- [Livewire Documentation](https://laravel-livewire.com/docs)
+- [ICT DAMAGE COMPLAINT FORM – DETAILS](<./ICT%20DAMAGE%20COMPLAINT%20FORM%20(ServiceDesk%20ICT)%20-%20DETAILED%20BREAKDOWN.md>)

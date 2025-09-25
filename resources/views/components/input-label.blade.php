@@ -1,6 +1,6 @@
 {{--
   ICTServe (iServe) Input Label Component
-  MYDS & MyGovEA Compliance:
+  Design system & accessibility compliance:
   - Follows MYDS form label standards: aligned top-left, Inter font, font-medium, text-sm, text-txt-black-900 (see MYDS-Design-Overview.md, MYDS-Develop-Overview.md).
   - Required mark: strong visual indicator using text-txt-danger and aria-label="required" for accessibility.
   - Spacing: 4px bottom margin (MYDS spacing), as per field-label gap.

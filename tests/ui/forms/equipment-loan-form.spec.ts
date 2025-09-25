@@ -29,7 +29,7 @@ test('form: equipment loan presence', async ({ page }) => {
   }
 
   // look for a form in the visited page
-  const form = page.locator('form, [role="form"], .form-wrapper, .myds-form');
+  const form = page.locator('form, [role="form"], .form-wrapper');
   if ((await form.count()) === 0) {
     throw new Error(
       `No form found after visiting candidates (last visited: ${visited})`

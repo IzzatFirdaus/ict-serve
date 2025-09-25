@@ -2,6 +2,7 @@
  * Email Styles for ICTServe (iServe)
  * MYDS-compliant email templates with inline-compatible styles
  * Supports both helpdesk tickets and loan request confirmations
+ * NOTE: Email clients strip external CSS; ensure critical tokens are inlined during rendering.
  */
 
 /* Email base styles - table-based layout for maximum compatibility */

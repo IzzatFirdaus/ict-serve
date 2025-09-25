@@ -1,0 +1,162 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Langkau ke kandungan utama" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Navigasi utama" [ref=e3]:
+    - generic [ref=e5]:
+      - generic:
+        - link "Laman Utama MOTAC":
+          - /url: /
+          - img "Logo MOTAC"
+      - generic [ref=e6]:
+        - button "Cari" [ref=e7]:
+          - img [ref=e8]
+        - button "Buka menu utama"
+    - generic [ref=e12]:
+      - link "Utama" [ref=e13] [cursor=pointer]:
+        - /url: /
+      - link "Informasi" [ref=e14] [cursor=pointer]:
+        - /url: /informasi
+      - link "Muat Turun" [ref=e15] [cursor=pointer]:
+        - /url: /muat-turun
+      - link "Direktori" [ref=e16] [cursor=pointer]:
+        - /url: /direktori
+      - link "Webmail MyGovUC 3.0" [ref=e17] [cursor=pointer]:
+        - /url: /webmail
+      - link "MY Integriti" [ref=e18] [cursor=pointer]:
+        - /url: /my-integriti
+      - generic [ref=e19]:
+        - generic [ref=e20]: ServiceDesk ICT
+        - link "Permohonan Pinjaman Peralatan ICT" [ref=e21] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/public/loan-request
+        - link "Aduan Kerosakan/Isu ICT" [ref=e22] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/public/damage-complaint/guest
+        - link "Permohonan Saya" [ref=e23] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/public/my-requests
+        - link "Panel Admin" [ref=e24] [cursor=pointer]:
+          - /url: /admin
+  - region "Page intro" [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Borang Aduan Kerosakan ICT" [level=1] [ref=e27]
+      - navigation "Breadcrumb" [ref=e28]:
+        - list [ref=e29]:
+          - listitem [ref=e30]:
+            - link "Utama" [ref=e31] [cursor=pointer]:
+              - /url: /
+          - img [ref=e32]
+          - listitem [ref=e34]:
+            - generic [ref=e35]: ServiceDesk ICT
+      - navigation "Breadcrumb" [ref=e36]:
+        - list [ref=e37]:
+          - listitem [ref=e38]:
+            - link "Utama" [ref=e39] [cursor=pointer]:
+              - /url: /
+          - listitem
+          - listitem [ref=e40]:
+            - link "Utama" [ref=e41] [cursor=pointer]:
+              - /url: /
+          - img [ref=e42]
+          - listitem [ref=e44]:
+            - generic [ref=e45]: ServiceDesk ICT
+  - main [ref=e46]:
+    - generic [ref=e51]:
+      - generic "Form reference code" [ref=e52]: PK.(S).MOTAC.07.(L1)
+      - heading "Aduan Kerosakan ICT" [level=2] [ref=e53]
+      - form "Aduan Kerosakan ICT" [ref=e54]:
+        - paragraph [ref=e55]:
+          - text: Sila isikan borang aduan di bawah. Medan bertanda
+          - generic [ref=e56]: "*"
+          - text: adalah wajib diisi.
+        - generic [ref=e57]:
+          - text: Nama Penuh
+          - generic [ref=e58]: "*"
+        - textbox "Nama Penuh *" [ref=e60]
+        - generic [ref=e61]:
+          - text: Bahagian
+          - generic [ref=e62]: "*"
+        - generic [ref=e63]:
+          - combobox "Bahagian *" [ref=e64]:
+            - option "Sila Pilih" [disabled] [selected]
+            - option "Bahagian Pengurusan Maklumat (BPM)"
+            - option "Bahagian Kewangan"
+            - option "Bahagian Sumber Manusia"
+            - option "Bahagian Teknologi Maklumat"
+            - option "Lain-lain"
+          - generic:
+            - img
+        - generic [ref=e65]: Gred Jawatan
+        - textbox "Gred Jawatan" [ref=e67]
+        - generic [ref=e68]:
+          - text: E-Mel
+          - generic [ref=e69]: "*"
+        - textbox "E-Mel *" [ref=e71]
+        - generic [ref=e72]:
+          - text: No. Telefon
+          - generic [ref=e73]: "*"
+        - textbox "No. Telefon *" [ref=e75]
+        - generic [ref=e76]:
+          - text: Jenis Kerosakan
+          - generic [ref=e77]: "*"
+        - generic [ref=e78]:
+          - combobox "Jenis Kerosakan *" [ref=e79]:
+            - option "Sila Pilih" [disabled] [selected]
+            - option "Komputer"
+            - option "Pencetak"
+            - option "Rangkaian"
+            - option "Perisian"
+            - option "Lain-lain"
+          - generic:
+            - img
+        - generic [ref=e80]:
+          - text: Maklumat Kerosakan
+          - generic [ref=e81]: "*"
+        - textbox "Maklumat Kerosakan *" [ref=e82]
+        - generic [ref=e84]:
+          - checkbox "Saya memperakui dan mengesahkan bahawa semua maklumat yang diberikan di dalam eBorang Laporan Kerosakan ini adalah benar, dan bersetuju menerima perkhidmatan Bahagian Pengurusan Maklumat (BPM) berdasarkan Piagam Pelanggan sedia ada. required" [ref=e86]
+          - generic [ref=e88] [cursor=pointer]:
+            - text: Saya memperakui dan mengesahkan bahawa semua maklumat yang diberikan di dalam eBorang Laporan Kerosakan ini adalah benar, dan bersetuju menerima perkhidmatan Bahagian Pengurusan Maklumat (BPM) berdasarkan Piagam Pelanggan sedia ada.
+            - generic "required" [ref=e89] [cursor=pointer]: "*"
+        - button "send Hantar Aduan" [ref=e91]:
+          - generic [ref=e92]: send
+          - generic [ref=e93]: Hantar Aduan
+  - contentinfo [ref=e94]:
+    - generic [ref=e96]:
+      - generic [ref=e97]:
+        - generic:
+          - img "Bahagian Pengurusan Maklumat"
+        - generic [ref=e98]: Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.
+      - generic [ref=e99]:
+        - heading "Follow us" [level=4] [ref=e100]
+        - link "Facebook" [ref=e101] [cursor=pointer]:
+          - /url: https://www.facebook.com/motacmalaysia
+          - img [ref=e103] [cursor=pointer]
+        - link "Twitter" [ref=e107] [cursor=pointer]:
+          - /url: https://twitter.com/motacmalaysia
+          - img [ref=e109] [cursor=pointer]
+        - link "Instagram" [ref=e113] [cursor=pointer]:
+          - /url: https://instagram.com/motacmalaysia
+          - img [ref=e115] [cursor=pointer]
+        - link "YouTube" [ref=e119] [cursor=pointer]:
+          - /url: https://youtube.com/motacmalaysia
+          - img [ref=e121] [cursor=pointer]
+      - generic [ref=e125]: © 2025 Hakcipta Terpelihara Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.
+  - contentinfo "Maklumat Footer" [ref=e126]:
+    - generic [ref=e128]:
+      - img "Logo Bahagian Pengurusan Maklumat MOTAC" [ref=e130]
+      - generic [ref=e131]: © 2025 Hakcipta Terpelihara Bahagian Pengurusan Maklumat (BPM), Kementerian Pelancongan, Seni dan Budaya Malaysia.
+      - generic "Pautan Media Sosial MOTAC" [ref=e132]:
+        - link "Facebook MyMOTAC Malaysia" [ref=e133] [cursor=pointer]:
+          - /url: https://www.facebook.com/MyMOTAC/
+          - img [ref=e134] [cursor=pointer]
+        - link "X / Twitter MyMOTAC Malaysia" [ref=e137] [cursor=pointer]:
+          - /url: https://twitter.com/MyMOTAC
+          - img [ref=e138] [cursor=pointer]
+        - link "Instagram MyMOTAC Malaysia" [ref=e142] [cursor=pointer]:
+          - /url: https://www.instagram.com/mymotac
+          - img [ref=e143] [cursor=pointer]
+        - link "YouTube MyMOTAC Malaysia" [ref=e147] [cursor=pointer]:
+          - /url: https://www.youtube.com/@MyMOTAC
+          - img [ref=e148] [cursor=pointer]
+```

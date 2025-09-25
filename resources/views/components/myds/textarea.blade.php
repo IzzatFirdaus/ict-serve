@@ -1,3 +1,6 @@
+<x-ictserve.textarea {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.textarea>
 @props([
     "name" => null,
     "label" => null,
@@ -15,7 +18,7 @@
   $textareaId = $id ?? ($name ?? "textarea-" . str()->random(6));
   $hasError = $error || ($name && $errors->has($name));
 
-  // MYDS textarea styling
+  // Textarea styling
   $textareaClasses = "block w-full rounded-lg border font-inter text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 resize-y";
 
   if ($hasError) {

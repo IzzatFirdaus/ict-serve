@@ -24,7 +24,7 @@
 ## Integration Points
 
 - Filament and Livewire for all admin and interactive UI
-- TailwindCSS for all styling, using MYDS tokens and conventions
+- TailwindCSS for all styling, using project tokens and conventions
 - SQLite for local development; production DB may differ
 - Automated testing and static analysis in CI
 

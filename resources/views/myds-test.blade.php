@@ -1,15 +1,15 @@
-{{-- MYDS Component Test Page --}}
+{{-- Component Library Test Page --}}
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MYDS Components Test</title>
+  <title>Component Library Test</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
   <body class="bg-washed">
-    {{-- Include MYDS Alpine Data --}}
-    @include('components.myds.alpine-data')
+  {{-- Include Alpine Data --}}
+  @include('components.ictserve.alpine-data')
 
     <div class="min-h-screen">
       {{-- Header Test --}}

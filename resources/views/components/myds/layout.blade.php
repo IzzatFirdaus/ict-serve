@@ -1,12 +1,12 @@
 {{--
-  MYDS Layout Component for ICTServe (iServe)
-  - Applies MYDS 12/8/4 responsive grid, spacing, and bg tokens
-  - Ensures accessible structure, skip link, logical hierarchy (MyGovEA)
+  Layout Component for ICTServe (iServe)
+  - Applies responsive grid, spacing, and colour tokens
+  - Ensures accessible structure, skip link, logical hierarchy
   - Usage: Wraps page content, header, footer, and slot for main
   - Slots:
-  header: App header/navigation (e.g., <x-myds.header />)
+  header: App header/navigation (e.g., <x-ictserve.header />)
   main: Main content (should have id="main-content")
-  footer: App footer (e.g., <x-myds.footer />)
+  footer: App footer (e.g., <x-ictserve.footer />)
   sidebar: (optional) Left nav/aside for dashboard or apps
 --}}
 
@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ $title ? $title . ' | ' : '' }}ICTServe (iServe)</title>
     <meta name="theme-color" content="#2563EB" />
-    {{-- MYDS: Poppins & Inter fonts, favicon, and MYDS tokens --}}
+  {{-- Poppins & Inter fonts, favicon, and ICTServe tokens --}}
     <link rel="icon" href="/favicon.ico" />
     <link
       rel="stylesheet"
@@ -32,17 +32,17 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Inter:400,500,600&display=swap"
     />
-    <x-myds.tokens />
+  <x-ictserve.tokens />
     {{-- Add custom styles if needed --}}
     @stack('styles')
   </head>
   <body
     class="min-h-screen flex flex-col bg-bg-washed txt-black-900 antialiased"
   >
-    {{-- MYDS Skip Link for accessibility --}}
+    {{-- Skip link for accessibility --}}
     <a
       href="#main-content"
-      class="myds-skip-link sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-white shadow-context-menu z-50 px-4 py-2 txt-black-900 radius-m transition"
+      class="skip-link sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-white shadow-context-menu z-50 px-4 py-2 txt-black-900 radius-m transition"
       tabindex="0"
     >
       Lompat ke kandungan utama

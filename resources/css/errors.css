@@ -6,12 +6,23 @@
   text-align: center;
 }
 
-/* 503 */
-.error-503 .misc-wrapper .display-5 {
-  color: var(--bs-info);
+/* General adjustments: ensure illustrations scale responsively */
+
+/* Error illustration styles */
+.error-illustration {
+  width: 100%;
+  height: auto;
+  display: inline-block;
 }
 
-.error-503 .myds-error-illustration {
+/* 503 */
+
+.error-503 .misc-wrapper .display-5 {
+  /* Map informational color to primary */
+  color: var(--txt-primary, #2563eb);
+}
+
+.error-503 .error-illustration {
   max-width: 350px;
 }
 
@@ -19,74 +30,69 @@
 .error-404 .misc-wrapper .error-code {
   font-size: 6rem;
   font-weight: bold;
-  color: var(--bs-secondary);
+  color: var(--txt-black-700, #3f3f46);
 }
 
 .error-404 .misc-wrapper .error-title {
-  color: var(--bs-primary);
+  color: var(--txt-primary, #2563eb);
 }
 
-.error-404 .myds-error-illustration {
+.error-404 .error-illustration {
   max-width: 250px;
 }
 
 /* 401 */
 .error-401 .misc-wrapper .display-5 {
-  color: var(--bs-danger);
+  color: var(--txt-danger, #dc2626);
 }
 
-.error-401 .myds-error-illustration {
+.error-401 .error-illustration {
   max-width: 250px;
 }
 
 /* 403 */
 .error-403 .misc-wrapper .display-5 {
-  color: var(--bs-danger);
+  color: var(--txt-danger, #dc2626);
 }
 
-.error-403 .myds-error-illustration {
+.error-403 .error-illustration {
   max-width: 250px;
 }
 
 /* 419 */
 .error-419 .misc-wrapper .display-5 {
-  color: var(--bs-warning);
+  color: var(--txt-warning, #a16207);
 }
 
-.error-419 .myds-error-illustration {
+.error-419 .error-illustration {
   max-width: 250px;
 }
 
 /* 422 */
 .error-422 .misc-wrapper .display-5 {
-  color: var(--bs-secondary);
+  color: var(--txt-black-700, #3f3f46);
 }
 
-.error-422 .myds-error-illustration {
+.error-422 .error-illustration {
   max-width: 250px;
 }
 
 /* 429 */
 .error-429 .misc-wrapper .display-5 {
-  color: var(--bs-info);
+  color: var(--txt-primary, #2563eb);
 }
 
-.error-429 .myds-error-illustration {
+.error-429 .error-illustration {
   max-width: 250px;
 }
 
 /* 500 */
 .error-500 .misc-wrapper .display-5 {
-  color: var(--bs-danger);
+  color: var(--txt-danger, #dc2626);
 }
 
-.error-500 .myds-error-illustration {
+.error-500 .error-illustration {
   max-width: 300px;
 }
 
 /* General adjustments */
-.myds-error-illustration {
-  width: 100%;
-  height: auto;
-  display: inline-block;
-}

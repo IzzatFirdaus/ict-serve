@@ -1,6 +1,11 @@
+<x-ictserve.button {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.button>
+<x-ictserve.button {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.button>
 @props([
   'variant' => 'primary',
-  //primary,
   'secondary',
   'secondary-colour',
   'tertiary',
@@ -9,11 +14,9 @@
   'danger-secondary',
   'danger-tertiary',
   'size' => 'medium',
-  //small,
   'medium',
   'large',
   'type' => 'button',
-  //button,
   'submit',
   'reset',
   'disabled' => false,
@@ -25,17 +28,15 @@
 ])
 
 @php
-  $baseClasses = 'myds-button relative inline-flex items-center justify-center font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2';
+  $baseClasses = 'relative inline-flex items-center justify-center font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
-  // Size classes
   $sizeClasses = match ($size) {
     'small' => 'px-3 py-1.5 text-sm gap-1.5',
     'large' => 'px-6 py-3 text-lg gap-3',
     'default' => 'px-4 py-2 text-sm',
-    default => 'px-4 py-2 text-sm', // medium
+    default => 'px-4 py-2 text-sm',
   };
 
-  // Icon-only sizing
   if ($iconOnly) {
     $sizeClasses = match ($size) {
       'small' => 'p-1.5',
@@ -44,7 +45,6 @@
     };
   }
 
-  // Variant classes based on MYDS specifications
   $variantClasses = match ($variant) {
     'primary' => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5',
     'secondary' => 'bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 hover:border-gray-400 focus:ring-blue-500 active:translate-y-0.5',
@@ -60,7 +60,6 @@
     default => 'bg-blue-600 text-white border border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-500 active:translate-y-0.5',
   };
 
-  // Disabled state
   if ($disabled || $loading) {
     $variantClasses = 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed active:translate-y-0';
   }
@@ -94,25 +93,25 @@
       ></path>
     </svg>
   @elseif ($iconLeading)
-    <span class="myds-button-icon-leading">
+    <span class="icon-leading">
       {!! $iconLeading !!}
     </span>
   @endif
 
   @unless ($iconOnly)
-    <span class="myds-button-text">{{ $slot }}</span>
+    <span class="button-text">{{ $slot }}</span>
   @endunless
 
   @if ($counter)
     <span
-      class="myds-button-counter ml-1 px-1.5 py-0.5 text-xs bg-white/20 rounded-full"
+      class="button-counter ml-1 px-1.5 py-0.5 text-xs bg-white/20 rounded-full"
     >
       {{ $counter }}
     </span>
   @endif
 
   @if ($iconTrailing && ! $loading)
-    <span class="myds-button-icon-trailing">
+    <span class="icon-trailing">
       {!! $iconTrailing !!}
     </span>
   @endif

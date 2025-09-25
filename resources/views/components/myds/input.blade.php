@@ -1,7 +1,10 @@
+<x-ictserve.input {{ $attributes->merge([]) }}>
+    {{ $slot }}
+</x-ictserve.input>
+<x-ictserve.input {{ $attributes->merge([]) }} />
 {{--
-  MYDS Input Field for ICTServe (iServe)
-  - Conforms to MYDS standards (Design, Develop, Icons, Colour) and MyGovEA (Citizen-Centric, Hierarki, Minimalis, Seragam).
-  - Features: label on top, error/hint below, semantic tokens, leading/trailing icon support, clear focus, a11y.
+  Generic Input Field Component
+  - Features: label on top, error/hint below, icon support, clear focus, a11y.
   - Props:
   id: string (required)
   label: string|null
@@ -40,13 +43,11 @@
 ])
 
 @php
-  // Determine the id to use - use explicit id if provided, otherwise use name, or generate random
   $fieldId = $id ?? ($name ?? 'input-' . uniqid());
-  // Sizing and spacing tokens per MYDS
   $sizeClass = match ($size) {
-    'sm' => 'myds-input-sm',
-    'lg' => 'myds-input-lg',
-    default => 'myds-input-md',
+    'sm' => 'input-sm',
+    'lg' => 'input-lg',
+    default => 'input-md',
   };
   $isInvalid = filled($error);
   $invalidClass = $isInvalid ? 'invalid' : '';
@@ -57,13 +58,11 @@
   $inputPaddingRight = $trailingIcon ? 'pr-10' : '';
 @endphp
 
-<x-myds.tokens />
-
 @if ($label)
-  <label for="{{ $fieldId }}" class="myds-label">
+  <label for="{{ $fieldId }}" class="input-label">
     {{ $label }}
     @if ($required)
-      <span class="txt-danger">*</span>
+      <span class="text-danger">*</span>
     @endif
   </label>
 @endif
@@ -83,13 +82,12 @@
     type="{{ $type }}"
     @if(!is_null($value)) value="{{ old($name ?? $fieldId, $value) }}" @endif
     @class([
-      'myds-input',
+      'input',
       $sizeClass,
       $invalidClass,
       $inputPaddingLeft,
       $inputPaddingRight,
       $class,
-      // For a11y, always show pointer unless disabled
       'cursor-not-allowed opacity-60' => $disabled,
     ])
     placeholder="{{ $placeholder }}"
@@ -110,9 +108,9 @@
 </div>
 
 @if ($isInvalid)
-  <p id="{{ $errorId }}" class="myds-hint error mt-1" role="alert">
+  <p id="{{ $errorId }}" class="input-hint error mt-1" role="alert">
     {{ $error }}
   </p>
 @elseif ($hint)
-  <p id="{{ $hintId }}" class="myds-hint mt-1">{{ $hint }}</p>
+  <p id="{{ $hintId }}" class="input-hint mt-1">{{ $hint }}</p>
 @endif

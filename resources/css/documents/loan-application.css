@@ -1,21 +1,22 @@
 /* MYDS-aligned colour tokens (light mode). Values taken from MYDS-Colour-Reference.md (primary, gray scale, semantic tokens). These are used in the PDF/web export to keep consistent branding. */
 :root {
-  --color-primary-600: #2563eb; /* MYDS Blue */
-  --color-primary-500: #3a75f6;
-  --color-gray-900: #18181b;
+  /* Map to MYDS tokens where possible */
+  --color-primary-600: var(--bg-primary-600, #2563eb); /* MYDS Blue */
+  --color-primary-500: var(--txt-primary-500, #3a75f6);
+  --color-gray-900: var(--txt-black-900, #18181b);
   --color-gray-800: #27272a;
-  --color-gray-700: #3f3f46;
-  --color-gray-600: #52525b;
-  --color-gray-500: #71717a;
+  --color-gray-700: var(--txt-black-700, #3f3f46);
+  --color-gray-600: var(--txt-black-600, #52525b);
+  --color-gray-500: var(--txt-black-500, #71717a);
   --color-gray-400: #a1a1aa;
   --color-gray-300: #d4d4d8;
   --color-gray-200: #e4e4e7;
-  --color-gray-100: #f4f4f5;
-  --color-gray-50: #fafafa;
+  --color-gray-100: var(--bg-washed, #f4f4f5);
+  --color-gray-50: var(--bg-gray-50, #fafafa);
   --color-black: #000;
-  --color-white: #fff;
+  --color-white: var(--bg-white, #fff);
 
-  /* Spacing / rhythm */
+  /* Spacing / rhythm: Prefer token scale; these are kept for PDF layout compatibility */
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;

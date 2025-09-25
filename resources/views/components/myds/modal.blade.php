@@ -1,6 +1,5 @@
 {{--
-  MYDS Modal (Dialog) Component for ICTServe (iServe)
-  - Follows MYDS standards (Design, Develop, Icons, Colour) and MyGovEA principles (citizen-centric, minimalis, seragam, accessible)
+  Generic Modal (Dialog) Component
   - Features:
   * Sticky header and footer sections for long dialogs
   * Focus management, ARIA roles, and keyboard accessibility (Esc to close, focus trap)
@@ -31,24 +30,21 @@
   'title' => null,
   'icon' => null,
   'variant' => 'default',
-  //default|info|success|warning|danger'size' => 'md',
-  //sm|md|lg|xl'class' => '',
+  'size' => 'md',
+  'class' => '',
   'ariaLabel' => null,
   'ariaDescribedby' => null,
   'closeLabel' => 'Tutup',
-  //defaultBahasaMelayu,
 ])
 
 @php
-  // Modal sizing per MYDS specs
   $maxWidth = match ($size) {
-    'sm' => 'max-w-md', // ~400px
-    'lg' => 'max-w-3xl', // ~800px
-    'xl' => 'max-w-5xl', // ~1200px
-    default => 'max-w-xl', // ~600px
+    'sm' => 'max-w-md',
+    'lg' => 'max-w-3xl',
+    'xl' => 'max-w-5xl',
+    default => 'max-w-xl',
   };
 
-  // Variant colour ring/shadow
   $variantRing = match ($variant) {
     'info' => 'ring-primary-300',
     'success' => 'ring-success-300',
@@ -57,58 +53,36 @@
     default => 'ring-primary-300',
   };
 
-  // Variant icon fallback
-  $variantIcon = match ($variant) {
-    'info' => '<x-myds.icons.info class="txt-primary" />',
-    'success' => '<x-myds.icons.check-circle class="txt-success" />',
-    'warning' => '<x-myds.icons.alert-triangle class="txt-warning" />',
-    'danger' => '<x-myds.icons.alert-triangle class="txt-danger" />',
-    default => null,
-  };
-
-  $modalId = $id ?? 'myds-modal-' . uniqid();
+  $variantIcon = null;
+  $modalId = $id ?? 'modal-' . uniqid();
   $labelledBy = $ariaLabel ? null : $modalId . '-title';
   $describedBy = $ariaDescribedby ? $ariaDescribedby : ($title ? $modalId . '-desc' : null);
 @endphp
 
 @if ($open)
-  {{-- Overlay (modal backdrop) --}}
   <div
-    class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 transition-all easeoutback.short"
-    x-data="{ focusTrap: null }"
-    x-init="
-      focusTrap = $el.querySelector('[tabindex]')
-      focusTrap && focusTrap.focus()
-    "
-    @keydown.escape.window="if ({{ $dismissible ? 'true' : 'false' }}) $dispatch('close-modal-{{ $modalId }}')"
-    @click.self="if ({{ $dismissible ? 'true' : 'false' }}) $dispatch('close-modal-{{ $modalId }}')"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 transition-all"
     role="dialog"
     aria-modal="true"
     aria-labelledby="{{ $labelledBy }}"
-    @close-modal-{{ $modalId }}.window="$el.remove()"
   >
-    {{-- Dialog Panel --}}
     <div
-      class="relative bg-bg-dialog shadow-context-menu {{ $maxWidth }} w-full radius-l transition-all easeoutback.short outline-none {{ $class }}"
-      @click.stop
+      class="relative bg-white shadow-lg {{ $maxWidth }} w-full rounded-lg outline-none {{ $class }}"
       tabindex="0"
       id="{{ $modalId }}"
-      @keydown.tab.prevent=" /* Focus trap: TODO if Alpine/JS present */ "
-      @keydown.shift.tab.prevent=" /* Focus trap: TODO if Alpine/JS present */ "
     >
-      {{-- Sticky Header --}}
       <header
-        class="sticky top-0 z-10 bg-bg-dialog px-6 py-4 border-b border-otl-divider flex items-center gap-3"
+        class="sticky top-0 z-10 bg-white px-6 py-4 border-b flex items-center gap-3"
         @if($labelledBy) id="{{ $labelledBy }}" @endif
       >
-        @if ($icon || $variantIcon)
+        @if ($icon)
           <span class="inline-flex items-center justify-center w-7 h-7">
-            {!! $icon ?? $variantIcon !!}
+            {!! $icon !!}
           </span>
         @endif
 
         @if ($title)
-          <span class="font-poppins font-semibold text-xl txt-black-900">
+          <span class="font-semibold text-xl">
             {{ $title }}
           </span>
         @endif
@@ -117,16 +91,15 @@
         @if ($dismissible)
           <button
             type="button"
-            class="ml-4 text-txt-black-500 hover:text-txt-black-900 focus:outline-none focus:ring-2 focus:ring-fr-primary rounded-full transition"
+            class="ml-4 text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary rounded-full transition"
             aria-label="{{ $closeLabel }}"
             @click="$dispatch('close-modal-{{ $modalId }}')"
           >
-            <x-myds.icons.x class="w-6 h-6" />
+            <span class="w-6 h-6">&times;</span>
           </button>
         @endif
       </header>
 
-      {{-- Modal Content --}}
       <div
         class="px-6 py-6 text-base {{ $describedBy ? 'has-desc' : '' }}"
         @if($describedBy) id="{{ $describedBy }}" @endif
@@ -134,10 +107,9 @@
         {{ $content ?? $slot }}
       </div>
 
-      {{-- Sticky Footer --}}
       @if (isset($actions))
         <footer
-          class="sticky bottom-0 z-10 bg-bg-dialog px-6 py-4 border-t border-otl-divider flex flex-row-reverse gap-3"
+          class="sticky bottom-0 z-10 bg-white px-6 py-4 border-t flex flex-row-reverse gap-3"
         >
           {{ $actions }}
         </footer>

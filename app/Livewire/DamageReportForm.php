@@ -157,7 +157,7 @@ class DamageReportForm extends Component
                         'name_bm' => 'Kerosakan Peralatan',
                         'description' => 'Reports related to equipment damage',
                         'description_bm' => 'Laporan berkaitan kerosakan peralatan',
-                        'icon' => 'myds-icon-exclamation-triangle',
+                        'icon' => 'icon-exclamation-triangle',
                         'priority' => 'high',
                         'default_sla_hours' => 4,
                         'is_active' => true,

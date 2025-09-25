@@ -22,7 +22,7 @@
   @endphp
 --}}
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 <nav
   class="bg-white border-b border-otl-divider shadow-none z-30 relative {{ $class ?? '' }}"

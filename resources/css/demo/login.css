@@ -1,16 +1,14 @@
 :root {
-  --primary-600: #2563eb;
-  --primary-500: #3a75f6;
-  --danger-600: #dc2626;
-  --gray-100: #f4f4f5;
-  --gray-300: #d4d4d8;
-  --gray-500: #71717a;
-  --gray-900: #18181b;
+  --primary-600: var(--bg-primary-600, #2563eb);
+  --primary-500: var(--txt-primary-500, #3a75f6);
+  --danger-600: var(--bg-danger-600, #dc2626);
+  --gray-100: var(--bg-washed, #f4f4f5);
+  --gray-300: var(--otl-gray-300, #d4d4d8);
+  --gray-500: var(--txt-black-500, #71717a);
+  --gray-900: var(--txt-black-900, #18181b);
 }
 
-body {
-  /* Add any additional body styles here if present in the original */
-}
+/* Body styles are handled by global layout; keep this file component-scoped */
 
 /* Styles for demo login page extracted from inline styles in demo/login.blade.php */
 .login-logo-circle {

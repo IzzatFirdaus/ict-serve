@@ -26,7 +26,7 @@
   'paginator' => null,
 ])
 
-<x-myds.tokens />
+<x-ictserve.tokens />
 
 <div
   class="bg-white dark:bg-dialog border border-divider radius-l shadow-card overflow-hidden"

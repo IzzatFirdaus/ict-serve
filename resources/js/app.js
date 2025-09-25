@@ -11,8 +11,9 @@ window.Alpine = Alpine;
 Alpine.start();
 
 // Initialize any custom JavaScript functionality here
+
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('ICT Serve application initialized with MYDS theme support');
+  console.log('ICT Serve application initialized.');
 
   // Custom Alpine.js data or directives can be added here
   // window.Alpine is automatically available with Livewire 3
@@ -32,19 +33,19 @@ window.addEventListener('load', function () {
 
 // Accessibility: focus visible polyfill for better keyboard navigation
 (function () {
-  if (!document.querySelector('#myds-focus-visible')) {
+  if (!document.querySelector('#focus-visible-polyfill')) {
     var style = document.createElement('style');
-    style.id = 'myds-focus-visible';
+    style.id = 'focus-visible-polyfill';
     style.innerHTML = `.js-focus-visible :focus:not([data-focus-visible-added]) { outline: none !important; }`;
     document.head.appendChild(style);
   }
 })();
 
-// Enhanced notification system with MYDS styling
+// Enhanced notification system with project styling
 window.showNotification = function (message, type = 'info', duration = 5000) {
   const notification = document.createElement('div');
 
-  // MYDS-compliant notification styling
+  // Notification styling
   const typeClasses = {
     success: 'bg-success-600 text-white border-success-600',
     error: 'bg-danger-600 text-white border-danger-600',
@@ -101,9 +102,9 @@ window.showNotification = function (message, type = 'info', duration = 5000) {
 };
 
 // Add CSS animations for notifications
-if (!document.querySelector('#myds-animations')) {
+if (!document.querySelector('#notification-animations')) {
   const style = document.createElement('style');
-  style.id = 'myds-animations';
+  style.id = 'notification-animations';
   style.textContent = `
     @keyframes slide-in-right {
       from {
