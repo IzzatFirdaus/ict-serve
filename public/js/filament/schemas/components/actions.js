@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var o = () => ({
   isSticky: !1,
   init() {
@@ -11,3 +12,6 @@ var o = () => ({
   },
 });
 export { o as default };
+=======
+var i=()=>({isSticky:!1,enableSticky(){this.isSticky=this.$el.getBoundingClientRect().top>0},disableSticky(){this.isSticky=!1}});export{i as default};
+>>>>>>> 443b60369b64d127b8d7d91c1163796596918291

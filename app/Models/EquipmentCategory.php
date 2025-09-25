@@ -6,6 +6,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Auditable;
+use App\Models\EquipmentItem;
+use App\Models\Equipment;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -25,9 +30,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class EquipmentCategory extends Model
+class EquipmentCategory extends Model implements AuditableContract
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes, Auditable;
 
     protected $fillable = [
         'name',
@@ -42,6 +47,11 @@ class EquipmentCategory extends Model
     /**
      * Get the equipment items in this category.
      */
+    /**
+     * Get the equipment items in this category.
+     *
+     * @return HasMany<\App\Models\EquipmentItem>
+     */
     public function equipmentItems(): HasMany
     {
         return $this->hasMany(EquipmentItem::class, 'category_id');
@@ -49,6 +59,11 @@ class EquipmentCategory extends Model
 
     /**
      * Get active equipment items in this category
+     */
+    /**
+     * Get active equipment items in this category.
+     *
+     * @return HasMany<\App\Models\EquipmentItem>
      */
     public function activeEquipmentItems(): HasMany
     {
@@ -58,6 +73,11 @@ class EquipmentCategory extends Model
 
     /**
      * Get available equipment items for loan
+     */
+    /**
+     * Get available equipment items for loan.
+     *
+     * @return HasMany<\App\Models\EquipmentItem>
      */
     public function availableEquipmentItems(): HasMany
     {

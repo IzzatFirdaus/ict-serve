@@ -6,7 +6,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Auditable;
+use App\Models\User;
 
 /**
  * @property int $id
@@ -14,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $user_id
  * @property string $title
  * @property string $message
- * @property ?array $data
+ * @property array<string,mixed>|null $data
  * @property string $category
  * @property string $priority
  * @property bool $is_read
@@ -27,10 +30,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property-read User $user
  * @property-read string $time_ago
+ *
+ * @extends \Illuminate\Database\Eloquent\Model<\App\Models\Notification>
+ * @mixin \Illuminate\Database\Eloquent\Builder<\App\Models\Notification>
  */
-class Notification extends Model
+class Notification extends Model implements AuditableContract
 {
-    use HasFactory;
+    /** @use HasFactory<\Database\Factories\NotificationFactory> */
+    use HasFactory, SoftDeletes, Auditable;
 
     /**
      * The table associated with the model.
@@ -40,20 +47,13 @@ class Notification extends Model
     protected $table = 'app_notifications';
 
     protected $fillable = [
-        'type',
-        'user_id',
-        'title',
-        'message',
-        'data',
-        'category',
-        'priority',
-        'is_read',
-        'read_at',
-        'action_url',
-        'icon',
-        'color',
-        'expires_at',
+        'user_id', 'type', 'title', 'body', 'action_url', 'status', 'read_at', 'created_by', 'updated_by', 'deleted_by',
     ];
+
+    protected $casts = [
+        'read_at' => 'datetime',
+    ];
+
 
     protected function casts(): array
     {
@@ -66,46 +66,49 @@ class Notification extends Model
     }
 
     // Relationships
-    public function user(): BelongsTo
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, Notification>
+     */
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     // Scopes
-    public function scopeUnread($query)
+    public function scopeUnread(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('is_read', false);
     }
 
-    public function scopeRead($query)
+    public function scopeRead(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('is_read', true);
     }
 
-    public function scopeByType($query, string $type)
+    public function scopeByType(\Illuminate\Database\Eloquent\Builder $query, string $type): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('type', $type);
     }
 
-    public function scopeByCategory($query, string $category)
+    public function scopeByCategory(\Illuminate\Database\Eloquent\Builder $query, string $category): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('category', $category);
     }
 
-    public function scopeByPriority($query, string $priority)
+    public function scopeByPriority(\Illuminate\Database\Eloquent\Builder $query, string $priority): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('priority', $priority);
     }
 
-    public function scopeNotExpired($query)
+    public function scopeNotExpired(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
     {
-        return $query->where(function ($q) {
+        return $query->where(function (\Illuminate\Database\Eloquent\Builder $q) {
             $q->whereNull('expires_at')
                 ->orWhere('expires_at', '>', now());
         });
     }
 
-    public function scopeRecent($query)
+    public function scopeRecent(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
     {
         return $query->orderBy('created_at', 'desc');
     }

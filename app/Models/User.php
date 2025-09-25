@@ -21,21 +21,24 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $avatar_url
  * @property array|null $notification_preferences
  * @property string|null $department
+ * @property string|null $division
  * @property string|null $phone
  * @property string|null $position
  * @property int|null $supervisor_id
  * @property string|null $profile_picture
  * @property UserRole $role
  * @property array|null $preferences
+ * @property bool|null $is_active
  * @property \Illuminate\Support\Carbon|null $last_login_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $helpdeskTickets
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $loanRequests
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Notification> $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ActivityLog> $activityLogs
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -93,47 +96,59 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the supervisor that this user reports to.
+     * Get the supervisor for this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<self, self>
      */
-    public function supervisor()
+    public function supervisor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'supervisor_id');
     }
 
     /**
      * Get the subordinates that report to this user.
+     *
+     * @return HasMany<self>
      */
-    public function subordinates()
+    public function subordinates(): HasMany
     {
         return $this->hasMany(User::class, 'supervisor_id');
     }
 
     /**
      * Get the loan requests created by this user.
+     *
+     * @return HasMany<\App\Models\LoanRequest>
      */
-    public function loanRequests()
+    public function loanRequests(): HasMany
     {
         return $this->hasMany(LoanRequest::class, 'user_id');
     }
 
     /**
      * Get the loan requests supervised by this user.
+     *
+     * @return HasMany<\App\Models\LoanRequest>
      */
-    public function supervisedLoanRequests()
+    public function supervisedLoanRequests(): HasMany
     {
         return $this->hasMany(LoanRequest::class, 'supervisor_id');
     }
 
     /**
      * Get the helpdesk tickets created by this user.
+     *
+     * @return HasMany<\App\Models\HelpdeskTicket>
      */
-    public function tickets()
+    public function tickets(): HasMany
     {
         return $this->hasMany(HelpdeskTicket::class, 'user_id');
     }
 
     /**
      * Alias for tickets relation used across codebase.
+     *
+     * @return HasMany<\App\Models\HelpdeskTicket>
      */
     public function helpdeskTickets(): HasMany
     {
@@ -142,14 +157,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the helpdesk tickets assigned to this user.
+     *
+     * @return HasMany<\App\Models\HelpdeskTicket>
      */
-    public function assignedTickets()
+    public function assignedTickets(): HasMany
     {
         return $this->hasMany(HelpdeskTicket::class, 'assigned_to');
     }
 
     /**
-     * Get notifications for this user
+     * Get notifications for this user.
+     *
+     * @return HasMany<\App\Models\Notification>
      */
     public function notifications(): HasMany
     {
@@ -157,7 +176,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get unread notifications for this user
+     * Get unread notifications for this user.
+     *
+     * @return HasMany<\App\Models\Notification>
      */
     public function unreadNotifications(): HasMany
     {
@@ -166,14 +187,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the activity logs for this user.
+     *
+     * @return HasMany<\App\Models\ActivityLog>
      */
-    public function activityLogs()
+    public function activityLogs(): HasMany
     {
         return $this->hasMany(ActivityLog::class, 'user_id');
     }
 
     /**
      * Alias used by some components.
+     *
+     * @return HasMany<\App\Models\ActivityLog>
      */
     public function activities(): HasMany
     {
@@ -182,6 +207,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Alias for activityLogs used by admin audit log viewer.
+     *
+     * @return HasMany<\App\Models\ActivityLog>
      */
     public function auditLogs(): HasMany
     {

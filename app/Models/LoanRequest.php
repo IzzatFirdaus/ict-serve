@@ -57,7 +57,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanItem> $loanItems
  * @property LoanRequestStatus $status
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin \Illuminate\Database\Eloquent\Builder<\App\Models\LoanRequest>
  */
 class LoanRequest extends Model
 {
@@ -113,6 +113,9 @@ class LoanRequest extends Model
     /**
      * Loan status relation via status_id foreign key.
      */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function status(): EloquentBelongsTo
     {
         return $this->belongsTo(LoanStatus::class, 'status_id');
@@ -120,6 +123,9 @@ class LoanRequest extends Model
 
     /**
      * Backwards compatible alias used in some parts of the app.
+     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function loanStatus(): EloquentBelongsTo
     {
@@ -129,6 +135,9 @@ class LoanRequest extends Model
     /**
      * Get the user who made the request.
      */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -136,6 +145,9 @@ class LoanRequest extends Model
 
     /**
      * Get the supervisor who needs to approve.
+     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function supervisor(): BelongsTo
     {
@@ -145,6 +157,9 @@ class LoanRequest extends Model
     /**
      * Get the ICT admin who approved.
      */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function ictAdmin(): BelongsTo
     {
         return $this->belongsTo(User::class, 'ict_admin_id');
@@ -152,6 +167,9 @@ class LoanRequest extends Model
 
     /**
      * Get the staff who issued the equipment.
+     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function issuedBy(): BelongsTo
     {
@@ -161,6 +179,9 @@ class LoanRequest extends Model
     /**
      * Get the person who received the equipment.
      */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function receivedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'received_by');
@@ -168,6 +189,9 @@ class LoanRequest extends Model
 
     /**
      * Get loan items for this request
+     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function loanItems(): HasMany
     {
@@ -189,6 +213,9 @@ class LoanRequest extends Model
     /**
      * Get equipment items for this request (via loan items)
      */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function equipmentItems(): HasManyThrough
     {
         return $this->hasManyThrough(
@@ -204,6 +231,9 @@ class LoanRequest extends Model
     /**
      * Get the approvals for this request.
      */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function approvals(): HasMany
     {
         return $this->hasMany(LoanApproval::class, 'loan_request_id');
@@ -215,6 +245,17 @@ class LoanRequest extends Model
     public function getEquipmentItemAttribute(): ?EquipmentItem
     {
         return $this->equipmentItems->first();
+    }
+
+    /**
+     * Backwards-compatible alias method used in some parts of the app.
+     * Provides access to equipment items relation for static analysis.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function equipmentItem(): HasManyThrough
+    {
+        return $this->equipmentItems();
     }
 
     /**

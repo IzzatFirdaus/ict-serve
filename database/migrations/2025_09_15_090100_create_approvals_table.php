@@ -13,15 +13,48 @@ return new class extends Migration
     {
         Schema::create('approvals', function (Blueprint $table) {
             $table->id();
-            $table->morphs('approvable');
-            $table->foreignId('approver_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->string('decision')->nullable(); // approved, rejected, pending
-            $table->timestamp('decided_at')->nullable();
-            $table->text('comments')->nullable();
-            $table->json('metadata')->nullable();
+            // Polymorphic relation to any approvable model (loan, helpdesk, etc)
+            $table->morphs('approvable', 'approvals_approvable_index');
+            // Approver (user who makes the decision)
+            $table->foreignId('approver_id')
+                ->nullable()
+                ->comment('User who made the approval decision')
+                ->constrained('users')
+                ->nullOnDelete();
+            // Enum for decision: approved, rejected, pending
+            $table->enum('decision', ['approved', 'rejected', 'pending'])
+                ->default('pending')
+                ->comment('Approval decision status');
+            $table->timestamp('decided_at')
+                ->nullable()
+                ->comment('When the decision was made');
+            $table->text('comments')
+                ->nullable()
+                ->comment('Optional comments from approver');
+            $table->json('metadata')
+                ->nullable()
+                ->comment('Additional metadata for audit or workflow');
+            // Audit fields
+            $table->foreignId('created_by')
+                ->nullable()
+                ->comment('User who created the record')
+                ->constrained('users')
+                ->nullOnDelete();
+            $table->foreignId('updated_by')
+                ->nullable()
+                ->comment('User who last updated the record')
+                ->constrained('users')
+                ->nullOnDelete();
+            $table->foreignId('deleted_by')
+                ->nullable()
+                ->comment('User who deleted the record (soft delete)')
+                ->constrained('users')
+                ->nullOnDelete();
             $table->timestamps();
+            $table->softDeletes();
 
-            $table->index(['decided_at']);
+            $table->index(['approver_id'], 'approvals_approver_id_index');
+            $table->index(['decided_at'], 'approvals_decided_at_index');
         });
     }
 

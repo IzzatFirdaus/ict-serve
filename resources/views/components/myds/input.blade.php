@@ -58,6 +58,7 @@
   $inputPaddingRight = $trailingIcon ? 'pr-10' : '';
 @endphp
 
+<<<<<<< HEAD
 @if ($label)
   <label for="{{ $fieldId }}" class="input-label">
     {{ $label }}
@@ -114,3 +115,49 @@
 @elseif ($hint)
   <p id="{{ $hintId }}" class="input-hint mt-1">{{ $hint }}</p>
 @endif
+=======
+<x-myds.tokens />
+
+<div class="myds-input-wrapper">
+  @if ($label)
+    <label for="{{ $fieldId }}" class="myds-label">
+      {{ $label }}
+      @if ($required)
+        <span class="text-danger-600">*</span>
+      @endif
+    </label>
+  @endif
+  <div class="relative">
+    @if ($icon)
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+        {{ $icon }}
+      </span>
+    @endif
+    <input
+      id="{{ $fieldId }}"
+      name="{{ $name }}"
+      type="{{ $type }}"
+      value="{{ $value }}"
+      placeholder="{{ $placeholder }}"
+      autocomplete="{{ $autocomplete }}"
+      inputmode="{{ $inputmode }}"
+      {{ $attributes->merge([
+        'class' => "myds-input $sizeClass $class",
+        'aria-invalid' => $error ? 'true' : 'false',
+        'aria-describedby' => $hint ? "$fieldId-hint" : null,
+      ]) }}
+    />
+    @if ($trailingIcon)
+      <span class="absolute inset-y-0 right-0 flex items-center pr-3">
+        {{ $trailingIcon }}
+      </span>
+    @endif
+  </div>
+  @if ($hint)
+    <p id="{{ $fieldId }}-hint" class="myds-hint">{{ $hint }}</p>
+  @endif
+  @if ($error)
+    <p class="myds-error" role="alert">{{ $error }}</p>
+  @endif
+</div>
+>>>>>>> 443b60369b64d127b8d7d91c1163796596918291

@@ -69,9 +69,13 @@
 
 <button
   type="{{ $type }}"
-  {{ $disabled || $loading ? 'disabled' : '' }}
-  {{ $attributes->merge(['class' => $classes]) }}
+  {{ $attributes->merge([
+    'class' => "$baseClasses $sizeClasses $variantClasses",
+    'aria-disabled' => $disabled ? 'true' : null,
+    'disabled' => $disabled,
+  ]) }}
 >
+<<<<<<< HEAD
   @if ($loading)
     <svg
       class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
@@ -114,5 +118,13 @@
     <span class="icon-trailing">
       {!! $iconTrailing !!}
     </span>
+=======
+  @if ($iconLeading)
+    <span class="mr-2">{{ $iconLeading }}</span>
+  @endif
+  {{ $slot }}
+  @if ($iconTrailing)
+    <span class="ml-2">{{ $iconTrailing }}</span>
+>>>>>>> 443b60369b64d127b8d7d91c1163796596918291
   @endif
 </button>

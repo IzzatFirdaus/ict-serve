@@ -92,6 +92,16 @@ class EquipmentItem extends Model
     }
 
     /**
+     * Backwards-compatible alias used by some Livewire components (`equipment`).
+     *
+     * @return BelongsTo
+     */
+    public function equipment(): BelongsTo
+    {
+        return $this->category();
+    }
+
+    /**
      * Check if equipment is available for loan.
      */
     public function isAvailable(): bool

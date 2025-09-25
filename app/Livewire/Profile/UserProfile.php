@@ -397,7 +397,9 @@ class UserProfile extends Component
             ->limit(5)
             ->get();
 
-        $recentLoans = $recentLoansCollection->map(function (\App\Models\LoanRequest $loan) {
+        /** @var \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $recentLoansCollection */
+        $recentLoans = $recentLoansCollection->map(function ($loan) {
+            /** @var \App\Models\LoanRequest $loan */
             return [
                 'type' => 'loan',
                 'title' => 'Pinjaman Peralatan',

@@ -240,22 +240,32 @@ class UserProfile extends Component
         $user = Auth::user();
 
         // Get recent loan requests
-        $recentLoans = $user->loanRequests()
+        $recentLoansCollection = $user->loanRequests()
             ->latest()
             ->limit(5)
-            ->get()
-            ->map(function ($loan) {
-                $status = is_object($loan->status) && method_exists($loan->status, 'value') ? $loan->status->value : (string) $loan->status;
+            ->get();
 
-                return [
-                    'type' => 'loan',
-                    'title' => "Permohonan Pinjaman #{$loan->id}",
-                    'description' => 'Status: '.ucfirst($status),
-                    'date' => $loan->created_at->format('d/m/Y H:i'),
-                    'icon' => 'clipboard-list',
-                    'color' => $this->getStatusColor($status),
-                ];
-            });
+        /** @var \Illuminate\Database\Eloquent\Collection<int, \App\Models\LoanRequest> $recentLoansCollection */
+        $recentLoans = $recentLoansCollection->map(function ($loan) {
+            /** @var \App\Models\LoanRequest $loan */
+            // LoanRequest->status may be a string or an enum; prefer string when available
+            /** @var \BackedEnum|string $statusProp */
+            $statusProp = $loan->status ?? '';
+            if (is_string($statusProp)) {
+                $statusValue = $statusProp;
+            } else {
+                $statusValue = $statusProp->value;
+            }
+
+            return [
+                'type' => 'loan',
+                'title' => "Permohonan Pinjaman #{$loan->id}",
+                'description' => 'Status: '.ucfirst($statusValue),
+                'date' => $loan->created_at->format('d/m/Y H:i'),
+                'icon' => 'clipboard-list',
+                'color' => $this->getStatusColor($statusValue),
+            ];
+        });
 
         return $recentLoans->toArray();
     }

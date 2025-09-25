@@ -30,7 +30,12 @@ class ActivityLog extends Model
     /**
      * Get the user who performed the action.
      */
-    public function user()
+    /**
+     * Get the user who performed the action.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -38,8 +43,23 @@ class ActivityLog extends Model
     /**
      * Get the subject of the activity.
      */
-    public function subject()
+    /**
+     * Morph relation to the subject of the activity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function subject(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
+    }
+
+    /**
+     * Alias expected by some consumers for the causer of the activity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function causer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->user();
     }
 }

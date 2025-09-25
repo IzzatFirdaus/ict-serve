@@ -20,10 +20,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property bool $is_final
  * @property int $sort_order
  * @property-read string $label
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HelpdeskTicket> $tickets
  *
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class TicketStatus extends Model
+class TicketStatus extends \Illuminate\Database\Eloquent\Model
 {
     use HasFactory;
 
@@ -55,10 +56,12 @@ class TicketStatus extends Model
 
     /**
      * Get the tickets with this status.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tickets(): HasMany
     {
-        return $this->hasMany(HelpdeskTicket::class, 'status_id');
+        return $this->hasMany(\App\Models\HelpdeskTicket::class, 'status_id');
     }
 
     /**
